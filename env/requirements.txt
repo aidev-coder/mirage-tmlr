@@ -10,7 +10,7 @@ requests>=2.28
 
 # Substrate + probes (Stages 0-2; GPU box)
 torch>=2.1
-transformers>=4.44
+transformers>=4.44,<5
 accelerate>=0.30
 sentencepiece>=0.1.99
 

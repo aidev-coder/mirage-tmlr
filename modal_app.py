@@ -33,7 +33,7 @@ image = (
     modal.Image.debian_slim(python_version="3.11")
     .pip_install(
         "torch>=2.1",
-        "transformers>=4.44",
+        "transformers>=4.44,<5",
         "accelerate>=0.30",
         "sentencepiece>=0.1.99",
         "numpy>=1.26,<3",
@@ -57,15 +57,19 @@ VOLUMES = {"/root/hf-cache": hf_cache, "/root/activations": activations}
 SECRETS = [modal.Secret.from_name("huggingface")]
 
 
-@app.function(image=image, gpu=GPU, volumes=VOLUMES, secrets=SECRETS,
-              timeout=3600)
-def stage0_sanity(model_id: str) -> dict:
-    """Stage 0 gate for one model (the project's standing directive §3 Stage 0)."""
+def _setup():
     import os
     import sys
 
     os.environ["HF_HOME"] = "/root/hf-cache"
     sys.path.insert(0, "/root/mirage")
+
+
+@app.function(image=image, gpu=GPU, volumes=VOLUMES, secrets=SECRETS,
+              timeout=3600)
+def stage0_sanity(model_id: str) -> dict:
+    """Stage 0 gate for one model (the project's standing directive §3 Stage 0)."""
+    _setup()
     from src.substrate import Substrate
 
     sub = Substrate(model_id, cache_dir="/root/activations")
@@ -75,24 +79,58 @@ def stage0_sanity(model_id: str) -> dict:
     return report
 
 
-@app.local_entrypoint()
-def main(stage: str = "sanity", model: str = ""):
-    import yaml
+@app.function(image=image, gpu=GPU, volumes=VOLUMES, secrets=SECRETS,
+              timeout=6 * 3600)
+def stage1_saplma(model_id: str, max_per_topic: int = 0) -> dict:
+    """Stage 1 SAPLMA headline reproduction for one model (the project's standing directive §3 Stage 1).
 
-    if stage != "sanity":
-        raise SystemExit(f"unknown/not-yet-implemented stage: {stage}")
+    Requires data/raw/ to be populated locally BEFORE `modal run` (the image
+    ships the local mirage/ tree, so run `python mirage/data/raw/fetch.py` first).
+    """
+    _setup()
+    from src.stage1 import run
+    from src.substrate import Substrate
+
+    sub = Substrate(model_id, cache_dir="/root/activations")
+    result = run(sub, max_statements_per_topic=max_per_topic or None)
+    activations.commit()
+    hf_cache.commit()
+    return result
+
+
+@app.local_entrypoint()
+def main(stage: str = "sanity", model: str = "", max_per_topic: int = 0):
+    """
+    modal run mirage/modal_app.py --stage sanity                     # Stage 0, all models
+    modal run mirage/modal_app.py --stage stage1 --model <id>        # Stage 1, one model
+    modal run mirage/modal_app.py --stage stage1                     # Stage 1, all models
+    modal run mirage/modal_app.py --stage stage1 --max-per-topic 50  # smoke run
+    """
+    from datetime import date
+
+    import yaml
 
     cfg = yaml.safe_load((_HERE / "configs" / "models.yaml").read_text())
     ids = [model] if model else [m["id"] for m in cfg["substrates"]]
 
-    # run models in parallel on separate containers
-    results = list(stage0_sanity.map(ids))
-    for rep in results:
-        print(f"{'PASS' if rep.get('pass') else 'FAIL'}  {rep['model']}  "
-              f"vram={rep.get('vram_gb', '?')}GB")
+    if stage == "sanity":
+        results = list(stage0_sanity.map(ids))  # parallel containers
+        for rep in results:
+            print(f"{'PASS' if rep.get('pass') else 'FAIL'}  {rep['model']}  "
+                  f"vram={rep.get('vram_gb', '?')}GB")
+        out = _HERE / "results" / "stage0_sanity.json"
+        out.write_text(json.dumps(results, indent=2))
+        ok = all(r.get("pass") for r in results)
+        print(f"stage 0 gate: {'PASS' if ok else 'FAIL'} -> {out}")
 
-    out = _HERE / "results" / "stage0_sanity.json"
-    out.write_text(json.dumps(results, indent=2))
-    ok = all(r.get("pass") for r in results)
-    print(f"stage 0 gate: {'PASS' if ok else 'FAIL'} -> {out}")
+    elif stage == "stage1":
+        for result in stage1_saplma.map(ids, kwargs={"max_per_topic": max_per_topic}):
+            short = result["model"].split("/")[-1].lower()
+            out = _HERE / "results" / f"stage1_saplma_{short}_{date.today():%Y%m%d}.json"
+            out.write_text(json.dumps(result, indent=2))
+            print(f"{result['model']}: {result['gate_note']}\n  -> {out}")
+
+    else:
+        raise SystemExit(f"unknown stage: {stage}")
+
     print("reminder: commit the artifact + a the project notebook entry (the project's standing directive §3/§7)")

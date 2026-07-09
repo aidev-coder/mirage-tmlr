@@ -43,13 +43,35 @@ class Substrate:
 
         self.model_id = model_id
         self.tokenizer = AutoTokenizer.from_pretrained(model_id)
-        self.model = AutoModelForCausalLM.from_pretrained(
-            model_id,
-            torch_dtype=getattr(torch, dtype) if dtype != "auto" else "auto",
-            device_map=device_map,
-            output_hidden_states=True,
-        )
+        # transformers renamed torch_dtype -> dtype in v5; requirements pin <5,
+        # but tolerate both so a newer environment degrades gracefully.
+        load_kw = dict(device_map=device_map, output_hidden_states=True)
+        resolved = getattr(torch, dtype) if dtype != "auto" else "auto"
+        try:
+            self.model = AutoModelForCausalLM.from_pretrained(
+                model_id, torch_dtype=resolved, **load_kw)
+        except TypeError:
+            self.model = AutoModelForCausalLM.from_pretrained(
+                model_id, dtype=resolved, **load_kw)
+        self._finish_init(cache_dir)
+
+    @classmethod
+    def from_objects(cls, model, tokenizer, model_id: str,
+                     cache_dir: str | Path | None = None) -> "Substrate":
+        """Wrap an already-constructed (model, tokenizer) pair — used by the
+        plumbing test (random tiny model, no Hub access) and any caller that
+        loads weights its own way. `model_id` labels the activation cache."""
+        self = cls.__new__(cls)
+        self.model_id = model_id
+        self.tokenizer = tokenizer
+        self.model = model
+        self._finish_init(cache_dir)
+        return self
+
+    def _finish_init(self, cache_dir: str | Path | None) -> None:
         self.model.eval()
+        if getattr(self.model.config, "output_hidden_states", False) is not True:
+            self.model.config.output_hidden_states = True
         self.cache_dir = Path(cache_dir or _ROOT / "data" / "activations")
         self.cache_dir.mkdir(parents=True, exist_ok=True)
 
