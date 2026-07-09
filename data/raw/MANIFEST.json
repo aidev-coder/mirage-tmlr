@@ -1,0 +1,134 @@
+{
+  "truthfulqa": {
+    "name": "truthfulqa",
+    "url": "https://raw.githubusercontent.com/sylinrl/TruthfulQA/main/TruthfulQA.csv",
+    "sha256": "b8d8ef1e12f98b4f2a9f47abc9765da0640b182b6c5d9b92f0c1a1f2f1e02e5c",
+    "bytes": 503550,
+    "citation": "Lin et al. (2022), TruthfulQA",
+    "fetched_at": "2026-07-09T17:33:06.107301+00:00",
+    "files": [
+      "TruthfulQA.csv"
+    ],
+    "status": "fetched"
+  },
+  "azaria_mitchell/cities_true_false.csv": {
+    "name": "azaria_mitchell/cities_true_false.csv",
+    "url": "https://raw.githubusercontent.com/balevinstein/Probes/main/datasets/cities_true_false.csv",
+    "sha256": "ef443d6b14f28d2f4bf7802d8b148e10959c8ef91e3a87dc696584334f042c5c",
+    "bytes": 387592,
+    "citation": "Azaria & Mitchell (2023); negation sets from Levinstein & Herrmann (2023). Mirror: github.com/balevinstein/Probes",
+    "fetched_at": "2026-07-09T17:34:23.365961+00:00",
+    "files": [
+      "cities_true_false.csv"
+    ],
+    "status": "fetched"
+  },
+  "azaria_mitchell/companies_true_false.csv": {
+    "name": "azaria_mitchell/companies_true_false.csv",
+    "url": "https://raw.githubusercontent.com/balevinstein/Probes/main/datasets/companies_true_false.csv",
+    "sha256": "75a31139def9838dcaa4e2f1e5f3680f44f09f3c94553f9ad3b3a5a476124c8c",
+    "bytes": 91128,
+    "citation": "Azaria & Mitchell (2023); negation sets from Levinstein & Herrmann (2023). Mirror: github.com/balevinstein/Probes",
+    "fetched_at": "2026-07-09T17:34:24.166291+00:00",
+    "files": [
+      "companies_true_false.csv"
+    ],
+    "status": "fetched"
+  },
+  "azaria_mitchell/animals_true_false.csv": {
+    "name": "azaria_mitchell/animals_true_false.csv",
+    "url": "https://raw.githubusercontent.com/balevinstein/Probes/main/datasets/animals_true_false.csv",
+    "sha256": "5ad071e1ba82665acf92582ccf5d3e21e2f01f6613e674976a46fc2239fec5c8",
+    "bytes": 54154,
+    "citation": "Azaria & Mitchell (2023); negation sets from Levinstein & Herrmann (2023). Mirror: github.com/balevinstein/Probes",
+    "fetched_at": "2026-07-09T17:34:24.595885+00:00",
+    "files": [
+      "animals_true_false.csv"
+    ],
+    "status": "fetched"
+  },
+  "azaria_mitchell/elements_true_false.csv": {
+    "name": "azaria_mitchell/elements_true_false.csv",
+    "url": "https://raw.githubusercontent.com/balevinstein/Probes/main/datasets/elements_true_false.csv",
+    "sha256": "e79588d6cf8d21c79076ae4aba32ea7e7f61b1cb101aeb7a75c9317315fb461b",
+    "bytes": 44555,
+    "citation": "Azaria & Mitchell (2023); negation sets from Levinstein & Herrmann (2023). Mirror: github.com/balevinstein/Probes",
+    "fetched_at": "2026-07-09T17:34:25.075482+00:00",
+    "files": [
+      "elements_true_false.csv"
+    ],
+    "status": "fetched"
+  },
+  "azaria_mitchell/inventions_true_false.csv": {
+    "name": "azaria_mitchell/inventions_true_false.csv",
+    "url": "https://raw.githubusercontent.com/balevinstein/Probes/main/datasets/inventions_true_false.csv",
+    "sha256": "9578ecabdc9c339b12a5ba2079d8eedb19e67b5e9ac07f04f68dce4ed4ea6148",
+    "bytes": 39305,
+    "citation": "Azaria & Mitchell (2023); negation sets from Levinstein & Herrmann (2023). Mirror: github.com/balevinstein/Probes",
+    "fetched_at": "2026-07-09T17:34:25.609035+00:00",
+    "files": [
+      "inventions_true_false.csv"
+    ],
+    "status": "fetched"
+  },
+  "azaria_mitchell/facts_true_false.csv": {
+    "name": "azaria_mitchell/facts_true_false.csv",
+    "url": "https://raw.githubusercontent.com/balevinstein/Probes/main/datasets/facts_true_false.csv",
+    "sha256": "151b6163289460eb8b37f7c6a1998e23aed8e05b5e557bf1a2297079bf0e5af9",
+    "bytes": 36588,
+    "citation": "Azaria & Mitchell (2023); negation sets from Levinstein & Herrmann (2023). Mirror: github.com/balevinstein/Probes",
+    "fetched_at": "2026-07-09T17:34:26.191013+00:00",
+    "files": [
+      "facts_true_false.csv"
+    ],
+    "status": "fetched"
+  },
+  "azaria_mitchell/generated_true_false.csv": {
+    "name": "azaria_mitchell/generated_true_false.csv",
+    "url": "https://raw.githubusercontent.com/balevinstein/Probes/main/datasets/generated_true_false.csv",
+    "sha256": "8a64637fc30ed81171b1c6e5ca0f1e848ed09a0c2651c821f982a146aef0324a",
+    "bytes": 12622,
+    "citation": "Azaria & Mitchell (2023); negation sets from Levinstein & Herrmann (2023). Mirror: github.com/balevinstein/Probes",
+    "fetched_at": "2026-07-09T17:34:26.814177+00:00",
+    "files": [
+      "generated_true_false.csv"
+    ],
+    "status": "fetched"
+  },
+  "azaria_mitchell/capitals_true_false.csv": {
+    "name": "azaria_mitchell/capitals_true_false.csv",
+    "url": "https://raw.githubusercontent.com/balevinstein/Probes/main/datasets/capitals_true_false.csv",
+    "sha256": "2dbca288dbbc9d03342e2d82b660f73983acf5135596352f473086996762f829",
+    "bytes": 51985,
+    "citation": "Azaria & Mitchell (2023); negation sets from Levinstein & Herrmann (2023). Mirror: github.com/balevinstein/Probes",
+    "fetched_at": "2026-07-09T17:34:27.335212+00:00",
+    "files": [
+      "capitals_true_false.csv"
+    ],
+    "status": "fetched"
+  },
+  "azaria_mitchell/neg_companies_true_false.csv": {
+    "name": "azaria_mitchell/neg_companies_true_false.csv",
+    "url": "https://raw.githubusercontent.com/balevinstein/Probes/main/datasets/neg_companies_true_false.csv",
+    "sha256": "0010f21212ac462d4102f6d8ca4e40d70e81cd187ebba2022a88a79d26f925f0",
+    "bytes": 86223,
+    "citation": "Azaria & Mitchell (2023); negation sets from Levinstein & Herrmann (2023). Mirror: github.com/balevinstein/Probes",
+    "fetched_at": "2026-07-09T17:34:27.900235+00:00",
+    "files": [
+      "neg_companies_true_false.csv"
+    ],
+    "status": "fetched"
+  },
+  "azaria_mitchell/neg_facts_true_false.csv": {
+    "name": "azaria_mitchell/neg_facts_true_false.csv",
+    "url": "https://raw.githubusercontent.com/balevinstein/Probes/main/datasets/neg_facts_true_false.csv",
+    "sha256": "690930e17bf310f8988ee9b86ab2624a494792a95fa226d18c200035e076db9a",
+    "bytes": 69181,
+    "citation": "Azaria & Mitchell (2023); negation sets from Levinstein & Herrmann (2023). Mirror: github.com/balevinstein/Probes",
+    "fetched_at": "2026-07-09T17:34:28.610269+00:00",
+    "files": [
+      "neg_facts_true_false.csv"
+    ],
+    "status": "fetched"
+  }
+}

@@ -6,8 +6,12 @@
 !env/**
 !configs/*.yaml
 
-# Large / regenerable artifacts (fetch or build scripts reproduce them)
-data/raw/
+# Large / regenerable artifacts (fetch or build scripts reproduce them).
+# The fetch script and the SHA256 manifest ARE tracked — they are the
+# reproducibility artifact; the data they produce is not.
+data/raw/*
+!data/raw/fetch.py
+!data/raw/MANIFEST.json
 data/activations/
 *.npz
 *.pt
