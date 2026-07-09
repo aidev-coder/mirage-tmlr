@@ -1,0 +1,34 @@
+# Stage 1 probe bank. Faithful reproductions, not strawmen (the project's standing directive §3 Stage 1, §6).
+saplma:
+  # Azaria & Mitchell (2023): feedforward on a hidden layer's last-token state
+  hidden_sizes: [256, 128, 64]
+  activation: relu
+  max_iter: 400
+  early_stopping: true
+  layer_sweep: all          # §4.3: sweep every layer, report the full curve. Never cherry-pick.
+  train_frac: 0.8
+  seed: 20260709
+
+eigenscore:
+  # INSIDE (Chen et al. 2024): covariance eigenvalue consistency over K sampled responses
+  n_samples: 10
+  temperature: 1.0
+  alpha: 1.0e-3             # covariance regularizer
+  embedding: middle_layer_mean   # sentence embedding source; swept alongside §4.3
+
+semantic_entropy:
+  # Farquhar et al. (2024): black-box reference point
+  n_samples: 10
+  temperature: 1.0
+  clusterer: nli            # bidirectional entailment; 'exact' fallback is flagged in output
+  nli_model: microsoft/deberta-large-mnli
+
+training_data:
+  # Standard truthfulness sets for the headline number (the number the field reports)
+  primary: azaria_mitchell_true_false   # cities / companies / facts statement sets
+  secondary: truthfulqa
+  fetch_script: data/raw/fetch.py
+
+bootstrap:
+  n_resamples: 1000         # CIs or it didn't happen (the project's standing directive §1.5)
+  seed: 20260709

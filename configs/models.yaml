@@ -1,0 +1,36 @@
+# Stage 0 substrate models. Cross family x scale, plus base-vs-instruct.
+# VRAM notes filled in at the Stage 0 gate (the project's standing directive §3).
+substrates:
+  - id: meta-llama/Llama-3.1-8B
+    family: llama
+    variant: base
+  - id: meta-llama/Llama-3.1-8B-Instruct
+    family: llama
+    variant: instruct
+  - id: Qwen/Qwen2.5-7B-Instruct
+    family: qwen
+    variant: instruct
+  - id: google/gemma-2-9b-it
+    family: gemma
+    variant: instruct
+  # Scale axis (same family, same data, two sizes)
+  - id: EleutherAI/pythia-1.4b
+    family: pythia
+    variant: base
+  - id: EleutherAI/pythia-6.9b
+    family: pythia
+    variant: base
+
+# Cross-family reference LMs for the primary typicality axis (decisions.md D-002).
+# Items probed on family X are perplexity-scored under reference[X] — never under X itself.
+reference_lms:
+  llama: Qwen/Qwen2.5-7B
+  qwen: meta-llama/Llama-3.1-8B
+  gemma: meta-llama/Llama-3.1-8B
+  pythia: Qwen/Qwen2.5-7B
+
+extraction:
+  dtype: bfloat16
+  device_map: auto
+  token_position: -1        # last token; probes.yaml layer sweep covers depth
+  cache_dir: data/activations

@@ -1,0 +1,13 @@
+# The parent repository's root .gitignore blanket-ignores *.md, env/, *.csv and more.
+# MIRAGE needs its docs and env spec tracked — re-include them here
+# (deeper .gitignore patterns take precedence).
+!*.md
+!env/
+!env/**
+!configs/*.yaml
+
+# Large / regenerable artifacts (fetch or build scripts reproduce them)
+data/raw/
+data/activations/
+*.npz
+*.pt

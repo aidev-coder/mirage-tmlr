@@ -1,0 +1,34 @@
+# Stage 2 — the crossed truth x typicality 2x2 (THE HEART).
+# Generation strategy per decisions.md D-003: symmetric-edit design + natural-error
+# second source. DO NOT build or run probes on a corpus without owner signoff
+# recorded in notes/decisions.md (the project's standing directive §3 Stage 2 gate).
+
+cells:
+  TT: {truth: true,  typicality: typical,  role: diagonal,     example: common facts}
+  TA: {truth: true,  typicality: atypical, role: off_diagonal, example: rare-but-true ("Guyana")}
+  FT: {truth: false, typicality: typical,  role: off_diagonal, example: fluent confident lie}
+  FA: {truth: false, typicality: atypical, role: diagonal,     example: obviously-weird lie}
+
+balance:
+  n_per_cell: 500
+  match_on: [length_tokens, entity_type, domain]
+
+typicality_axes:            # D-002: triangulate; primary decides cell assignment
+  primary: cross_family_reference_ppl
+  secondary: entity_corpus_frequency      # infini-gram counts
+  tertiary: substrate_self_ppl            # reported, flagged circular, never used for assignment
+
+generation:                 # D-003
+  false_typical:
+    - strategy: symmetric_entity_swap     # swap to frequency-matched same-type entity
+    - strategy: natural_confident_errors  # model's own errors, filtered to low reference-ppl
+  true_items_also_edited: true            # edit provenance orthogonal to truth BY CONSTRUCTION
+  edit_rate_per_cell: 0.5                 # half of every cell passes through the edit pipeline
+
+gates:                      # hard gates — corpus_build.py enforces these
+  crossing:
+    min_cliffs_delta: 0.5   # |ppl(atypical) vs ppl(typical)| effect size, per truth value
+    max_p_value: 0.001      # Mann-Whitney U
+  edit_canary:
+    max_auroc: 0.55         # a "was-this-edited" probe must be near chance
+  owner_signoff_required: true
