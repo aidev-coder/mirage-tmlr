@@ -104,6 +104,15 @@ def main() -> None:
         print(f"PASS  layer_sweep over {len(sweep)} layers "
               "(AUROCs meaningless by construction — random weights, random labels)")
 
+        # full sanity_check report must be json-serializable (regression:
+        # np.bool_ leaked into the Stage-0 report and crashed the Modal
+        # entrypoint's json.dumps after an otherwise-passing gate run)
+        import json
+        rep = sub.sanity_check()
+        json.dumps(rep)
+        assert rep["pass"] is True or rep["pass"] is False
+        print(f"PASS  sanity_check json-serializable (pass={rep['pass']})")
+
         # eigenscore consumes per-token states from the same substrate path
         from src.probes.eigenscore import eigenscore
         embs = np.stack([sub.hidden_states(t, position=p)[N_LAYERS // 2]

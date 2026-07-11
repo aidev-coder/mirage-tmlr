@@ -144,12 +144,13 @@ class Substrate:
         d_model = self.model.config.hidden_size
         report = {"model": self.model_id, "n_layers": n_layers, "d_model": d_model, "checks": {}}
 
+        # bool(...) casts matter: numpy bools (np.bool_) crash json.dumps
         hs = [self.hidden_states(s, use_cache=False) for s in self.SANITY_STRINGS]
         report["checks"]["shape"] = all(h.shape == (n_layers + 1, d_model) for h in hs)
-        report["checks"]["finite"] = all(np.isfinite(h).all() for h in hs)
-        report["checks"]["nonconstant_across_layers"] = all(
-            np.std([np.linalg.norm(h[i]) for i in range(h.shape[0])]) > 0 for h in hs)
-        report["checks"]["distinct_inputs_distinct_states"] = (
+        report["checks"]["finite"] = bool(all(np.isfinite(h).all() for h in hs))
+        report["checks"]["nonconstant_across_layers"] = bool(all(
+            np.std([np.linalg.norm(h[i]) for i in range(h.shape[0])]) > 0 for h in hs))
+        report["checks"]["distinct_inputs_distinct_states"] = bool(
             np.linalg.norm(hs[0][-1] - hs[1][-1]) > 1e-3)
         # cache round-trip
         a = self.hidden_states(self.SANITY_STRINGS[0], use_cache=True)
