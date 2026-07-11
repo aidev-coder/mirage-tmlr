@@ -43,13 +43,35 @@ class Substrate:
 
         self.model_id = model_id
         self.tokenizer = AutoTokenizer.from_pretrained(model_id)
-        self.model = AutoModelForCausalLM.from_pretrained(
-            model_id,
-            torch_dtype=getattr(torch, dtype) if dtype != "auto" else "auto",
-            device_map=device_map,
-            output_hidden_states=True,
-        )
+        # transformers renamed torch_dtype -> dtype in v5; requirements pin <5,
+        # but tolerate both so a newer environment degrades gracefully.
+        load_kw = dict(device_map=device_map, output_hidden_states=True)
+        resolved = getattr(torch, dtype) if dtype != "auto" else "auto"
+        try:
+            self.model = AutoModelForCausalLM.from_pretrained(
+                model_id, torch_dtype=resolved, **load_kw)
+        except TypeError:
+            self.model = AutoModelForCausalLM.from_pretrained(
+                model_id, dtype=resolved, **load_kw)
+        self._finish_init(cache_dir)
+
+    @classmethod
+    def from_objects(cls, model, tokenizer, model_id: str,
+                     cache_dir: str | Path | None = None) -> "Substrate":
+        """Wrap an already-constructed (model, tokenizer) pair — used by the
+        plumbing test (random tiny model, no Hub access) and any caller that
+        loads weights its own way. `model_id` labels the activation cache."""
+        self = cls.__new__(cls)
+        self.model_id = model_id
+        self.tokenizer = tokenizer
+        self.model = model
+        self._finish_init(cache_dir)
+        return self
+
+    def _finish_init(self, cache_dir: str | Path | None) -> None:
         self.model.eval()
+        if getattr(self.model.config, "output_hidden_states", False) is not True:
+            self.model.config.output_hidden_states = True
         self.cache_dir = Path(cache_dir or _ROOT / "data" / "activations")
         self.cache_dir.mkdir(parents=True, exist_ok=True)
 
@@ -122,11 +144,12 @@ class Substrate:
         d_model = self.model.config.hidden_size
         report = {"model": self.model_id, "n_layers": n_layers, "d_model": d_model, "checks": {}}
 
+        # bool(...) casts matter: numpy bools (np.bool_) crash json.dumps
         hs = [self.hidden_states(s, use_cache=False) for s in self.SANITY_STRINGS]
         report["checks"]["shape"] = all(h.shape == (n_layers + 1, d_model) for h in hs)
-        report["checks"]["finite"] = all(np.isfinite(h).all() for h in hs)
-        report["checks"]["nonconstant_across_layers"] = all(
-            np.std([np.linalg.norm(h[i]) for i in range(h.shape[0])]) > 0 for h in hs)
+        report["checks"]["finite"] = bool(all(np.isfinite(h).all() for h in hs))
+        report["checks"]["nonconstant_across_layers"] = bool(all(
+            np.std([np.linalg.norm(h[i]) for i in range(h.shape[0])]) > 0 for h in hs))
         report["checks"]["distinct_inputs_distinct_states"] = bool(
             np.linalg.norm(hs[0][-1] - hs[1][-1]) > 1e-3)
         # cache round-trip
@@ -140,7 +163,6 @@ class Substrate:
                 report["vram_gb"] = round(torch.cuda.max_memory_allocated() / 2**30, 2)
         except Exception:
             pass
-        report["checks"] = {k: bool(v) for k, v in report["checks"].items()}
         report["pass"] = all(report["checks"].values())
         return report
 
