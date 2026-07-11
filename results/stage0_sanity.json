@@ -1,0 +1,86 @@
+[
+  {
+    "model": "meta-llama/Llama-3.1-8B",
+    "n_layers": 32,
+    "d_model": 4096,
+    "checks": {
+      "shape": true,
+      "finite": true,
+      "nonconstant_across_layers": true,
+      "distinct_inputs_distinct_states": true,
+      "cache_roundtrip": true
+    },
+    "vram_gb": 14.97,
+    "pass": true
+  },
+  {
+    "model": "meta-llama/Llama-3.1-8B-Instruct",
+    "n_layers": 32,
+    "d_model": 4096,
+    "checks": {
+      "shape": true,
+      "finite": true,
+      "nonconstant_across_layers": true,
+      "distinct_inputs_distinct_states": true,
+      "cache_roundtrip": true
+    },
+    "vram_gb": 14.97,
+    "pass": true
+  },
+  {
+    "model": "Qwen/Qwen2.5-7B-Instruct",
+    "n_layers": 28,
+    "d_model": 3584,
+    "checks": {
+      "shape": true,
+      "finite": true,
+      "nonconstant_across_layers": true,
+      "distinct_inputs_distinct_states": true,
+      "cache_roundtrip": true
+    },
+    "vram_gb": 14.21,
+    "pass": true
+  },
+  {
+    "model": "google/gemma-2-9b-it",
+    "n_layers": 42,
+    "d_model": 3584,
+    "checks": {
+      "shape": true,
+      "finite": true,
+      "nonconstant_across_layers": true,
+      "distinct_inputs_distinct_states": true,
+      "cache_roundtrip": true
+    },
+    "vram_gb": 17.25,
+    "pass": true
+  },
+  {
+    "model": "EleutherAI/pythia-1.4b",
+    "n_layers": 24,
+    "d_model": 2048,
+    "checks": {
+      "shape": true,
+      "finite": true,
+      "nonconstant_across_layers": true,
+      "distinct_inputs_distinct_states": true,
+      "cache_roundtrip": true
+    },
+    "vram_gb": 2.67,
+    "pass": true
+  },
+  {
+    "model": "EleutherAI/pythia-6.9b",
+    "n_layers": 32,
+    "d_model": 4096,
+    "checks": {
+      "shape": true,
+      "finite": true,
+      "nonconstant_across_layers": true,
+      "distinct_inputs_distinct_states": true,
+      "cache_roundtrip": true
+    },
+    "vram_gb": 12.9,
+    "pass": true
+  }
+]
