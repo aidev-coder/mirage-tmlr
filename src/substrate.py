@@ -127,7 +127,7 @@ class Substrate:
         report["checks"]["finite"] = all(np.isfinite(h).all() for h in hs)
         report["checks"]["nonconstant_across_layers"] = all(
             np.std([np.linalg.norm(h[i]) for i in range(h.shape[0])]) > 0 for h in hs)
-        report["checks"]["distinct_inputs_distinct_states"] = (
+        report["checks"]["distinct_inputs_distinct_states"] = bool(
             np.linalg.norm(hs[0][-1] - hs[1][-1]) > 1e-3)
         # cache round-trip
         a = self.hidden_states(self.SANITY_STRINGS[0], use_cache=True)
@@ -140,6 +140,7 @@ class Substrate:
                 report["vram_gb"] = round(torch.cuda.max_memory_allocated() / 2**30, 2)
         except Exception:
             pass
+        report["checks"] = {k: bool(v) for k, v in report["checks"].items()}
         report["pass"] = all(report["checks"].values())
         return report
 
