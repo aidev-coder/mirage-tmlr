@@ -97,7 +97,7 @@ def stage0_sanity(model_id: str) -> dict:
 @app.function(image=image, gpu=GPU, volumes=VOLUMES, secrets=SECRETS,
               timeout=6 * 3600)
 def stage1_saplma(model_id: str, max_per_topic: int = 0,
-                  batch_size: int = 32) -> dict:
+                  batch_size: int = 32, fast: bool = True) -> dict:
     """Stage 1 SAPLMA headline reproduction for one model (the project's standing directive §3 Stage 1).
 
     Requires data/raw/ to be populated locally BEFORE `modal run` (the image
@@ -114,7 +114,7 @@ def stage1_saplma(model_id: str, max_per_topic: int = 0,
     sub = Substrate(model_id, cache_dir="/root/activations")
     result = run(
         sub, max_statements_per_topic=max_per_topic or None,
-        fast=True, device="cuda", batch_size=batch_size,
+        fast=fast, device="cuda", batch_size=batch_size,
         commit_fn=activations.commit,  # durable checkpoints (cut-off safety)
     )
     activations.commit()
@@ -124,7 +124,7 @@ def stage1_saplma(model_id: str, max_per_topic: int = 0,
 
 @app.local_entrypoint()
 def main(stage: str = "sanity", model: str = "", max_per_topic: int = 0,
-         batch_size: int = 32):
+         batch_size: int = 32, fast: bool = True):
     """
     modal run mirage/modal_app.py --stage sanity                     # Stage 0, all models
     modal run mirage/modal_app.py --stage stage1 --model <id>        # Stage 1, one model
@@ -149,11 +149,12 @@ def main(stage: str = "sanity", model: str = "", max_per_topic: int = 0,
         print(f"stage 0 gate: {'PASS' if ok else 'FAIL'} -> {out}")
 
     elif stage == "stage1":
-        kw = {"max_per_topic": max_per_topic, "batch_size": batch_size}
+        kw = {"max_per_topic": max_per_topic, "batch_size": batch_size, "fast": fast}
         for result in stage1_saplma.map(ids, kwargs=kw):
             short = result["model"].split("/")[-1].lower()
             tag = f"_k{max_per_topic}" if max_per_topic else ""
-            out = _HERE / "results" / f"stage1_saplma_{short}{tag}_{date.today():%Y%m%d}.json"
+            impl = "" if result.get("probe_impl") == "torch_gpu" else "_sklearn"
+            out = _HERE / "results" / f"stage1_saplma_{short}{tag}{impl}_{date.today():%Y%m%d}.json"
             out.write_text(json.dumps(result, indent=2, default=_json_default))
             print(f"{result['model']}: {result['gate_note']}\n  -> {out}")
 
