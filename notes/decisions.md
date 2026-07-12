@@ -60,3 +60,31 @@ Every resolved §4 open decision gets an entry: date, decision, reasoning, who d
 - **Reasoning:** Per the project's standing directive §4.3, cherry-picking the best layer is itself the confound
   being hunted. The overlay turns the sweep from a robustness check into evidence.
 - **Decided by:** Owner approved agent recommendation in session (2026-07-09).
+
+## D-005 — Stage-2 infra defaults adopted; C3 confound added; gate held (§4/§7)
+
+- **Date:** 2026-07-12
+- **Decision (agent-adopted defaults, PROVISIONAL — owner may veto):**
+  - **O-1 Wikidata:** frozen dated SPARQL snapshot committed by hash (the doc's
+    recommendation; matches data/raw/MANIFEST pattern). ADOPTED.
+  - **O-3 frequency:** infini-gram API primary with a local Dolma n-gram count
+    fallback; a network check on the Modal box decides at build time. ADOPTED.
+  - **O-2 natural-error source:** RECOMMEND harvesting from a DISJOINT model (not
+    a probed substrate) and reporting swap-generated vs harvested FT separately so
+    neither source is load-bearing alone. NOT adopted — touches the FT cell; owner
+    call. (No GPT-4o; a Modal-hosted disjoint model or Groq is the practical source.)
+  - **C3 (new, from stage2_self_review.md):** add `entity_subword_count` to the
+    cell match keys and a second tokenization/fragmentation canary. Folds into
+    the D-003 control set. Owner signoff item.
+- **Held:** generation functions remain stubbed. Per §3/§7 the corpus is NOT built
+  or probed until (i) owner signoff here, and (ii) a HUMAN interpretability reviewer
+  sees the design + a 50-item sample (O-4). The self-review reduces but does not
+  discharge (ii).
+- **Escalation to owner (the one integrity decision, not execution):** proceed to
+  BUILD on owner signoff with the automated crossing + edit-canary + fragmentation
+  gates as backstops and an external review invited async-but-non-blocking; OR hold
+  the build until a named human reviewer (O-4) responds. Agent recommendation:
+  the former, because the design is strong, the automated gates are hard, and an
+  indefinite hold on an unnamed reviewer stalls the project — but this is the
+  owner's scientific-integrity call by §4/§7, so it is surfaced, not resolved.
+- **Decided by:** agent recommendation; awaiting owner veto/confirm.
