@@ -26,7 +26,10 @@ from pathlib import Path
 import modal
 
 APP_NAME = "mirage"
-GPU = "A10G"
+# Owner authorized a larger GPU for speed (overrides the §5 A10/L4 default).
+# A100-40GB: fits 9B bf16 + batched activations with headroom, cost-sane for a
+# $30 budget. Bump to "H100" for ~2x faster extraction if the budget allows.
+GPU = "A100-40GB"
 _HERE = Path(__file__).resolve().parent
 
 
@@ -93,25 +96,35 @@ def stage0_sanity(model_id: str) -> dict:
 
 @app.function(image=image, gpu=GPU, volumes=VOLUMES, secrets=SECRETS,
               timeout=6 * 3600)
-def stage1_saplma(model_id: str, max_per_topic: int = 0) -> dict:
+def stage1_saplma(model_id: str, max_per_topic: int = 0,
+                  batch_size: int = 32) -> dict:
     """Stage 1 SAPLMA headline reproduction for one model (the project's standing directive §3 Stage 1).
 
     Requires data/raw/ to be populated locally BEFORE `modal run` (the image
     ships the local mirage/ tree, so run `python mirage/data/raw/fetch.py` first).
+
+    Resumable: batched extraction is sharded per topic and the probe sweep is
+    checkpointed per layer, both committed to the activations volume as they go —
+    a container cut-off resumes from the last shard/layer instead of restarting.
     """
     _setup()
     from src.stage1 import run
     from src.substrate import Substrate
 
     sub = Substrate(model_id, cache_dir="/root/activations")
-    result = run(sub, max_statements_per_topic=max_per_topic or None)
+    result = run(
+        sub, max_statements_per_topic=max_per_topic or None,
+        fast=True, device="cuda", batch_size=batch_size,
+        commit_fn=activations.commit,  # durable checkpoints (cut-off safety)
+    )
     activations.commit()
     hf_cache.commit()
     return result
 
 
 @app.local_entrypoint()
-def main(stage: str = "sanity", model: str = "", max_per_topic: int = 0):
+def main(stage: str = "sanity", model: str = "", max_per_topic: int = 0,
+         batch_size: int = 32):
     """
     modal run mirage/modal_app.py --stage sanity                     # Stage 0, all models
     modal run mirage/modal_app.py --stage stage1 --model <id>        # Stage 1, one model
@@ -136,9 +149,11 @@ def main(stage: str = "sanity", model: str = "", max_per_topic: int = 0):
         print(f"stage 0 gate: {'PASS' if ok else 'FAIL'} -> {out}")
 
     elif stage == "stage1":
-        for result in stage1_saplma.map(ids, kwargs={"max_per_topic": max_per_topic}):
+        kw = {"max_per_topic": max_per_topic, "batch_size": batch_size}
+        for result in stage1_saplma.map(ids, kwargs=kw):
             short = result["model"].split("/")[-1].lower()
-            out = _HERE / "results" / f"stage1_saplma_{short}_{date.today():%Y%m%d}.json"
+            tag = f"_k{max_per_topic}" if max_per_topic else ""
+            out = _HERE / "results" / f"stage1_saplma_{short}{tag}_{date.today():%Y%m%d}.json"
             out.write_text(json.dumps(result, indent=2, default=_json_default))
             print(f"{result['model']}: {result['gate_note']}\n  -> {out}")
 

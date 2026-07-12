@@ -103,6 +103,46 @@ class Substrate:
         """[n_texts, n_layers+1, d_model]. Sequential on purpose: cache hits dominate."""
         return np.stack([self.hidden_states(t, position, use_cache) for t in texts])
 
+    def hidden_states_matrix(self, texts: list[str], batch_size: int = 32,
+                             position: int = -1, progress_every: int = 25,
+                             out_dtype=np.float16, tag: str = "") -> np.ndarray:
+        """Batched last-token hidden-state extraction: [n, n_layers+1, d_model].
+
+        GPU-efficient replacement for per-text extraction (20-50x fewer forward
+        passes). `position=-1` gathers each row's LAST NON-PAD token (mask-aware,
+        right-padded) — correct under batching, unlike a naive [:, -1] which would
+        read padding. fp16 output halves the cached activation footprint; the
+        probe standardizes anyway.
+        """
+        import torch
+        tok = self.tokenizer
+        if tok.pad_token is None:
+            tok.pad_token = tok.eos_token
+        tok.padding_side = "right"  # so last real token = attention_mask.sum(1)-1
+
+        rows, n = [], len(texts)
+        n_batches = (n + batch_size - 1) // batch_size
+        for bi in range(n_batches):
+            batch = texts[bi * batch_size:(bi + 1) * batch_size]
+            enc = tok(batch, return_tensors="pt", padding=True, truncation=True,
+                      max_length=128).to(self.model.device)
+            with torch.no_grad():
+                hs = self.model(**enc).hidden_states  # tuple(L+1) of [b, seq, d]
+            if position == -1:
+                last = enc["attention_mask"].sum(dim=1) - 1  # [b]
+                b, d = hs[0].shape[0], hs[0].shape[-1]
+                gi = last.view(b, 1, 1).expand(b, 1, d)
+                picked = torch.stack(
+                    [h.gather(1, gi).squeeze(1) for h in hs], dim=1)  # [b, L+1, d]
+            else:
+                picked = torch.stack([h[:, position, :] for h in hs], dim=1)
+            rows.append(picked.float().cpu().numpy().astype(out_dtype))
+            if progress_every and (bi % progress_every == 0 or bi == n_batches - 1):
+                print(f"    [extract{(' ' + tag) if tag else ''}] "
+                      f"batch {bi + 1}/{n_batches} "
+                      f"({min((bi + 1) * batch_size, n)}/{n} texts)", flush=True)
+        return np.concatenate(rows, axis=0)
+
     def nll(self, text: str) -> float:
         """Mean per-token negative log-likelihood of `text` under this model."""
         import torch
