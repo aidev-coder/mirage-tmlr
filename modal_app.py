@@ -122,6 +122,25 @@ def stage1_saplma(model_id: str, max_per_topic: int = 0,
     return result
 
 
+@app.function(image=image, gpu=GPU, volumes=VOLUMES, secrets=SECRETS,
+              timeout=3 * 3600)
+def stage2_build(reference_model: str, canary_model: str,
+                 edit_rate: float = 0.5) -> dict:
+    """Stage 2 GPU stage: score typicality + run the 3 gates; return scored items
+    + reports. finalize() is run locally by the entrypoint so the corpus lands in
+    the repo (the project's standing directive §3 Stage 2; probes stay HELD per D-006)."""
+    _setup()
+    from src.build_corpus import score_and_gate
+    from src.substrate import Substrate
+
+    ref = Substrate(reference_model, cache_dir="/root/activations")
+    can = Substrate(canary_model, cache_dir="/root/activations")
+    out = score_and_gate(ref, can, edit_rate=edit_rate)
+    activations.commit()
+    hf_cache.commit()
+    return out
+
+
 @app.local_entrypoint()
 def main(stage: str = "sanity", model: str = "", max_per_topic: int = 0,
          batch_size: int = 32, fast: bool = True):
@@ -157,6 +176,29 @@ def main(stage: str = "sanity", model: str = "", max_per_topic: int = 0,
             out = _HERE / "results" / f"stage1_saplma_{short}{tag}{impl}_{date.today():%Y%m%d}.json"
             out.write_text(json.dumps(result, indent=2, default=_json_default))
             print(f"{result['model']}: {result['gate_note']}\n  -> {out}")
+
+    elif stage == "stage2":
+        import sys as _sys
+        _sys.path.insert(0, str(_HERE))
+        from src import corpus_build
+
+        ref_model = model or "Qwen/Qwen2.5-7B-Instruct"   # cross-family reference (D-002)
+        canary_model = "meta-llama/Llama-3.1-8B"           # representative probed substrate
+        res = stage2_build.remote(reference_model=ref_model, canary_model=canary_model)
+        m = res["meta"]
+        print(f"stage2: {m['per_cell_n']}/cell | ref={m['reference_model']} "
+              f"canary={m['canary_model']} @L{m['canary_layer']} | cells={m['raw_counts']}")
+        for g in ("crossing", "edit_canary", "fragmentation_canary"):
+            r = res[g]
+            print(f"  {g}: pass={r.get('pass')} "
+                  f"{('auroc=' + str(r.get('auroc'))) if 'auroc' in r else ''}")
+        try:
+            path = corpus_build.finalize(
+                res["items"], res["crossing"], res["edit_canary"],
+                res["fragmentation_canary"], owner_signoff_decision_id="D-006")
+            print(f"  CORPUS FINALIZED -> {path}  (Stage-3 probes remain HELD, D-006)")
+        except RuntimeError as e:
+            print(f"  NOT finalized (gate/signoff): {e}")
 
     else:
         raise SystemExit(f"unknown stage: {stage}")
