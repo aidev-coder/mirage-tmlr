@@ -65,3 +65,25 @@ if __name__ == "__main__":
     test_truth_labels_correct()
     test_schema_and_entities()
     print("\nALL PASS — Stage-2 generator (symmetric swap, edited ⊥ truth)")
+
+
+def test_fragmentation_canary_mechanics():
+    """C3 canary computes features + trains on real corpus text (tiny tokenizer)."""
+    import random
+    import tempfile
+    import numpy as np
+    sys.path.insert(0, str(Path(__file__).resolve().parent))
+    from test_substrate_plumbing import build_tiny_substrate
+    from src import corpus_build as cb
+    with tempfile.TemporaryDirectory() as tmp:
+        sub = build_tiny_substrate(tmp)
+        items = cg.build_candidate_items(seed=5)
+        random.Random(5).shuffle(items)   # items are true-then-false per topic
+        items = items[:400]
+        feats = cb.fragmentation_features([it["text"] for it in items],
+                                          [it["entity"] for it in items], sub.tokenizer)
+        assert feats.shape == (len(items), 5)
+        res = cb.fragmentation_canary(feats, np.array([it["truth"] for it in items]))
+        assert res["gate"] == "fragmentation_canary" and "auroc" in res and "pass" in res
+        print("PASS  fragmentation canary mechanics:",
+              {k: res[k] for k in ("auroc", "pass")})

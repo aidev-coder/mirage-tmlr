@@ -88,8 +88,8 @@ def edit_canary(hidden_states: np.ndarray, edited: np.ndarray,
 
     hidden_states: [n, d] at the same layer the truth probes use.
     """
-    from ..probes.saplma import SaplmaProbe  # same capacity as the real probe
-    from ..stats import auroc_with_ci
+    from .probes.saplma import SaplmaProbe  # same capacity as the real probe
+    from .stats import auroc_with_ci
 
     edited = np.asarray(edited, dtype=int)
     rng = np.random.default_rng(seed)
@@ -104,19 +104,70 @@ def edit_canary(hidden_states: np.ndarray, edited: np.ndarray,
     return res
 
 
+# ── Gate 2b: tokenization / fragmentation canary (confound C3) ───────────────
+
+def fragmentation_features(texts: list[str], entities: list[str], tokenizer) -> np.ndarray:
+    """Tokenization-only features that track atypicality independent of the
+    perplexity axis (stage2_self_review.md C3): a probe reading these instead of
+    truth is a confound under the confound. Features: entity sub-word count,
+    statement sub-word count, entity chars, sub-words-per-word, final-token-is-
+    continuation-piece."""
+    cont_marks = ("Ġ", "▁", " ")  # GPT-2 'Ġ', sentencepiece '▁', space
+    rows = []
+    for txt, ent in zip(texts, entities):
+        sids = tokenizer(txt)["input_ids"]
+        eids = tokenizer(ent)["input_ids"] if ent else []
+        last_tok = tokenizer.convert_ids_to_tokens(sids[-1]) if sids else ""
+        is_cont = 0 if any(last_tok.startswith(m) for m in cont_marks) else 1
+        rows.append([len(eids), len(sids), len(ent or ""),
+                     len(eids) / max(len((ent or "").split()), 1), is_cont])
+    return np.asarray(rows, dtype=float)
+
+
+def fragmentation_canary(features: np.ndarray, truth: np.ndarray,
+                         seed: int = 20260712) -> dict:
+    """A probe predicting TRUTH from tokenization features ALONE must be ≈ chance.
+    If it isn't, fragmentation leaks truth and the 'typicality-controlled' AUROC
+    is itself confounded (C3). (Fragmentation predicting *typicality* is expected
+    and fine; predicting *truth* is the danger — the 2x2 crosses them, so on a
+    balanced corpus this should be near 0.5.)"""
+    from sklearn.linear_model import LogisticRegression
+    from sklearn.preprocessing import StandardScaler
+
+    from .stats import auroc_with_ci
+
+    truth = np.asarray(truth, dtype=int)
+    rng = np.random.default_rng(seed)
+    idx = rng.permutation(len(truth))
+    cut = int(0.8 * len(idx))
+    tr, te = idx[:cut], idx[cut:]
+    sc = StandardScaler().fit(features[tr])
+    clf = LogisticRegression(max_iter=500, random_state=seed).fit(sc.transform(features[tr]), truth[tr])
+    scores = clf.predict_proba(sc.transform(features[te]))[:, 1]
+    res = auroc_with_ci(truth[te], scores, seed=seed)
+    max_auroc = _cfg()["gates"].get("fragmentation_canary", {}).get("max_auroc", 0.60)
+    res.update({"gate": "fragmentation_canary", "threshold": max_auroc,
+                "pass": res["auroc"] is not None and res["auroc"] <= max_auroc})
+    return res
+
+
 # ── Gate 3: signoff + versioned write ────────────────────────────────────────
 
 def finalize(items: list[dict], crossing_report: dict, canary_report: dict,
+             fragmentation_report: dict | None = None,
              owner_signoff_decision_id: str | None = None) -> Path:
     """Write the hash-versioned corpus. Refuses without passed gates + signoff."""
     if not crossing_report.get("pass"):
         raise RuntimeError("crossing gate FAILED — corpus must not be finalized")
     if not canary_report.get("pass"):
         raise RuntimeError("edit-canary gate FAILED — truth results would be contaminated")
+    if fragmentation_report is not None and not fragmentation_report.get("pass"):
+        raise RuntimeError("fragmentation-canary gate FAILED (C3) — tokenization "
+                           "leaks truth; the typicality-controlled AUROC is confounded")
     if _cfg()["gates"]["owner_signoff_required"] and not owner_signoff_decision_id:
         raise RuntimeError(
             "owner signoff required: record the decision in notes/decisions.md "
-            "and pass its ID (e.g. 'D-005') — do not run probes on an unsigned corpus")
+            "and pass its ID (e.g. 'D-006') — do not run probes on an unsigned corpus")
 
     payload = "\n".join(json.dumps(it, sort_keys=True) for it in items)
     h = hashlib.sha256(payload.encode()).hexdigest()[:12]
@@ -126,6 +177,7 @@ def finalize(items: list[dict], crossing_report: dict, canary_report: dict,
     (out.with_suffix(".report.json")).write_text(json.dumps({
         "hash": h, "n": len(items), "signoff": owner_signoff_decision_id,
         "crossing": crossing_report, "edit_canary": canary_report,
+        "fragmentation_canary": fragmentation_report,
     }, indent=2), encoding="utf-8")
     return out
 

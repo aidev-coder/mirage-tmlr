@@ -31,4 +31,6 @@ gates:                      # hard gates — corpus_build.py enforces these
     max_p_value: 0.001      # Mann-Whitney U
   edit_canary:
     max_auroc: 0.55         # a "was-this-edited" probe must be near chance
+  fragmentation_canary:     # C3 (stage2_self_review.md): truth must NOT be
+    max_auroc: 0.60         # predictable from tokenization features alone
   owner_signoff_required: true
