@@ -88,3 +88,22 @@ Every resolved §4 open decision gets an entry: date, decision, reasoning, who d
   indefinite hold on an unnamed reviewer stalls the project — but this is the
   owner's scientific-integrity call by §4/§7, so it is surfaced, not resolved.
 - **Decided by:** agent recommendation; awaiting owner veto/confirm.
+
+## D-006 — Owner build-signoff for Stage-2 corpus (§3 iii); §7 gap accepted
+
+- **Date:** 2026-07-12
+- **Decision:** Owner ("build" / "Continue" in session, after the conflict was named
+  explicitly) signs off building the Stage-2 corpus on the approved design
+  (D-002/D-003) + adopted defaults (D-005). Generation stubs may be implemented.
+- **§7 external-reviewer gap — ACCEPTED AS RISK by owner:** no human interpretability
+  reviewer is named (O-4). The agent's adversarial self-review (stage2_self_review.md,
+  found confound C3) is an explicit SUBSTITUTE, not a discharge. Mitigation:
+  (a) the corpus is built + gated but marked PROVISIONAL; (b) **Stage-3 probe runs
+  are HELD** until either a human reviewer signs off or the owner explicitly waives
+  it a second time — building is reversible, trusting Stage-3 numbers is not;
+  (c) hard automated gates (crossing, edit-canary, fragmentation-canary C3) must
+  pass or finalize() refuses to write the corpus.
+- **Reasoning:** owner overrode §7 ordering with eyes open after loud escalation
+  (§Role permits in-chat override once the conflict is named). Deepest intent of
+  §7 — don't trust confounded numbers — preserved by holding Stage 3.
+- **Decided by:** owner (session), agent recommended.
