@@ -107,3 +107,20 @@ Every resolved §4 open decision gets an entry: date, decision, reasoning, who d
   (§Role permits in-chat override once the conflict is named). Deepest intent of
   §7 — don't trust confounded numbers — preserved by holding Stage 3.
 - **Decided by:** owner (session), agent recommended.
+
+## D-007 — Typicality assignment axis: perplexity -> entity frequency (§4.1 revisit)
+
+- **Date:** 2026-07-14
+- **Status:** PROVISIONAL (agent recommendation; owner veto/confirm pending).
+- **Trigger (measured):** Stage-2 v1+v2 builds show perplexity encodes truth (LMs
+  score false statements high-ppl), so the FT (false+typical) cell is intrinsically
+  starved when cells are assigned by ppl tercile (FT=72-78 vs FA~960).
+- **Recommendation:** promote the D-002 SECONDARY axis (entity corpus frequency,
+  infini-gram Dolma index) to PRIMARY for 2x2 cell assignment. Perplexity retained
+  as the reported cross-check; the ppl-vs-frequency divergence becomes a finding.
+  Rationale: entity frequency is separable from truth; ppl is not. This makes FT
+  constructable (common-entity falsehoods) and makes the confound a genuine
+  alternative explanation rather than a near-tautology (ppl≈truth).
+- **Supersedes:** D-002's choice of ppl-primary FOR ASSIGNMENT only (triangulation
+  + cross-family reasoning of D-002 otherwise stands).
+- **Decided by:** agent recommendation; awaiting owner nod (surfaced per §4.1/§7).
