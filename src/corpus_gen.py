@@ -75,6 +75,22 @@ def _unedited_false(topic: str) -> list[str]:
     return out
 
 
+def _object_frequency(topic: str) -> dict[str, int]:
+    """Commonness proxy: how many statements each object appears in (self-contained,
+    reproducible, no network). 'United States'/'China' are common; 'Swaziland' rare.
+    Used to make FT (fluent-typical) vs FA (odd-atypical) falsehoods on purpose —
+    D-003's 'frequency-matched swap' spec that v1 under-implemented (it swapped to
+    RANDOM same-type objects, so most lies were odd -> FA, starving FT)."""
+    from collections import Counter
+    rx, _, _ = TEMPLATES[topic]
+    c: Counter = Counter()
+    for r in _rows(topic):
+        m = rx.match(r["statement"].strip())
+        if m:
+            c[m.group(2).strip()] += 1
+    return dict(c)
+
+
 def generate_topic(topic: str, edit_rate: float = 0.5, seed: int = 20260712) -> list[dict]:
     """Balanced candidate items for one structured topic, edited ⊥ truth."""
     if topic not in TEMPLATES:
@@ -116,16 +132,24 @@ def generate_topic(topic: str, edit_rate: float = 0.5, seed: int = 20260712) -> 
     nat_false = _unedited_false(topic)
     n_edit_false = int(round(edit_rate * n_true))
     n_unedit_false = n_true - n_edit_false
-    # truth-breaking swaps: keep subject, assign a WRONG object of the same type
+    # frequency-aware swap (D-003): half the truth-breaking swaps use a COMMON
+    # wrong object (fluent -> low-ppl -> FT), half a RARE one (odd -> high-ppl ->
+    # FA). Deliberate cell coverage, not random (v1's random swap starved FT).
+    freq = _object_frequency(topic)
+    ranked = sorted(obj_pool, key=lambda o: freq.get(o, 0), reverse=True)
+    common = ranked[:max(1, len(ranked) // 3)]      # top-tercile-frequency objects
+    rare = ranked[len(ranked) - max(1, len(ranked) // 3):]
     made = 0
     guard = 0
-    while made < n_edit_false and guard < n_edit_false * 50:
+    while made < n_edit_false and guard < n_edit_false * 80:
         guard += 1
         s = subjects[int(rng.integers(len(subjects)))]
-        o_wrong = obj_pool[int(rng.integers(len(obj_pool)))]
+        pool = common if (made % 2 == 0) else rare   # alternate FT-lean / FA-lean
+        o_wrong = pool[int(rng.integers(len(pool)))]
         if o_wrong in true_obj.get(s, set()):
             continue  # would be true — reject
-        add(tpl.format(s=s, o=o_wrong), False, True, s, "truth_breaking_swap")
+        lean = "FT_lean" if pool is common else "FA_lean"
+        add(tpl.format(s=s, o=o_wrong), False, True, s, f"truth_breaking_swap_{lean}")
         made += 1
     # unedited natural falses (A&M-constructed, not OUR pipeline)
     if nat_false:

@@ -40,7 +40,7 @@ def test_truth_labels_correct():
         if not m:            # unedited natural falses may not re-parse; skip
             continue
         s, o = m.group(1).strip(), m.group(2).strip()
-        if it["provenance"]["strategy"] == "truth_breaking_swap":
+        if it["provenance"]["strategy"].startswith("truth_breaking_swap"):
             assert o not in true_obj.get(s, set()), f"swap not actually false: {it['text']}"
             assert it["truth"] is False
         if it["provenance"]["strategy"] in ("original_true", "truth_preserving_swap"):

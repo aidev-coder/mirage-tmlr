@@ -55,6 +55,34 @@ def _balance(items: list[dict], seed: int):
     return out, {c: len(v) for c, v in by.items()}, n
 
 
+def _match_on_subword(items: list[dict], tokenizer, seed: int) -> list[dict]:
+    """C3 control (stage2_self_review.md): match the entity sub-word-count
+    histogram across cells so a probe can't read fragmentation as a proxy for
+    truth/cell. Subsample each (cell, sub-word-bucket) to the per-bucket minimum
+    across cells."""
+    for it in items:
+        eids = tokenizer(it["entity"])["input_ids"] if it["entity"] else []
+        it["_sw"] = min(len(eids), 6)  # cap tail buckets
+    cells = sorted({it["cell"] for it in items})
+    by = defaultdict(list)
+    for it in items:
+        by[(it["cell"], it["_sw"])].append(it)
+    buckets = sorted({it["_sw"] for it in items})
+    rng = np.random.default_rng(seed)
+    out = []
+    for b in buckets:
+        m = min(len(by[(c, b)]) for c in cells)
+        if m == 0:
+            continue
+        for c in cells:
+            pool = by[(c, b)]
+            for i in rng.choice(len(pool), m, replace=False):
+                out.append(pool[int(i)])
+    for it in out:
+        it.pop("_sw", None)
+    return out
+
+
 def score_and_gate(reference_substrate, canary_substrate, edit_rate: float = 0.5,
                    seed: int = 20260712) -> dict:
     """GPU stage. Returns scored items + all three gate reports (no write)."""
@@ -65,8 +93,12 @@ def score_and_gate(reference_substrate, canary_substrate, edit_rate: float = 0.5
     ppl = reference_perplexity(texts, reference_substrate)
 
     kept = _assign_cells(items, ppl)
-    kept, raw_counts, per_cell_n = _balance(kept, seed)
-    print(f"[stage2] cells (balanced to {per_cell_n}/cell): {raw_counts}", flush=True)
+    raw_counts = {c: sum(1 for it in kept if it["cell"] == c)
+                  for c in ("TT", "TA", "FT", "FA")}
+    kept = _match_on_subword(kept, canary_substrate.tokenizer, seed)  # C3
+    kept, matched_counts, per_cell_n = _balance(kept, seed)
+    print(f"[stage2] cells raw={raw_counts} -> subword-matched+balanced "
+          f"{per_cell_n}/cell {matched_counts}", flush=True)
 
     crossing = corpus_build.verify_crossing(kept)
 
@@ -87,6 +119,7 @@ def score_and_gate(reference_substrate, canary_substrate, edit_rate: float = 0.5
         "meta": {"reference_model": reference_substrate.model_id,
                  "canary_model": canary_substrate.model_id, "canary_layer": L,
                  "per_cell_n": per_cell_n, "raw_counts": raw_counts,
+                 "matched_counts": matched_counts,
                  "edit_rate": edit_rate, "seed": seed},
         "crossing": crossing, "edit_canary": edit_c, "fragmentation_canary": frag_c,
     }
