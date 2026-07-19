@@ -18,23 +18,58 @@ from collections import defaultdict
 
 import numpy as np
 
+from pathlib import Path
+
 from . import corpus_build, corpus_gen
 from .typicality import reference_perplexity
 
 CANARY_LAYER_FRAC = 0.5  # mid-depth layer for the edit/fragmentation canaries
+_ROOT = Path(__file__).resolve().parent.parent
+FREQ_CACHE = _ROOT / "data" / "corpus" / "entity_freq.json"
 
 
-def _assign_cells(items: list[dict], ppl: np.ndarray) -> list[dict]:
-    lo, hi = np.quantile(ppl, [1 / 3, 2 / 3])
+def load_entity_freq() -> dict:
+    import json
+    return json.loads(FREQ_CACHE.read_text(encoding="utf-8"))
+
+
+def _assign_cells(items: list[dict], ppl: np.ndarray, freq_map: dict) -> list[dict]:
+    """D-007: typicality axis = entity frequency (common=typical, rare=atypical),
+    which is separable from truth; perplexity is recorded as the cross-check only
+    (ppl encodes truth — project notebook 2026-07-14). Middle tercile discarded a
+    priori (§1.1)."""
+    def item_logfreq(it):
+        # mean log10-frequency over the statement's entities (subject + object).
+        # object (e.g. country) spreads the axis where obscure subjects collapse
+        # to zero; both together resolve typical vs atypical (D-007).
+        vals = []
+        for e in it.get("entities") or [it["entity"]]:
+            v = (freq_map.get(e) or {}).get("log10")
+            if v is not None:
+                vals.append(float(v))
+        return float(np.mean(vals)) if vals else np.nan
+
+    logf = np.array([item_logfreq(it) for it in items])
+    # RANK terciles (argsort), not value-quantiles: the frequency axis is skewed
+    # with a zero-mass (obscure entities -> count 0), so value-quantiles collapse
+    # (lo==hi). Ranking splits typical/atypical into balanced thirds regardless.
+    idx_finite = np.flatnonzero(np.isfinite(logf))
+    ranked = idx_finite[np.argsort(logf[idx_finite], kind="stable")]  # ascending freq
+    n = len(ranked)
+    t = n // 3
+    atypical_idx = set(ranked[:t].tolist())        # lowest frequency = atypical
+    typical_idx = set(ranked[n - t:].tolist())     # highest frequency = typical
     kept = []
-    for it, p in zip(items, ppl):
-        it["typicality"] = {"reference_ppl": float(p)}
-        if p <= lo:
+    for i, (it, p, f) in enumerate(zip(items, ppl, logf)):
+        if i in typical_idx:
             band = "typical"
-        elif p >= hi:
+        elif i in atypical_idx:
             band = "atypical"
         else:
-            continue  # discard middle tercile (a priori — §1.1)
+            continue  # middle tercile discarded a priori (§1.1)
+        it["typicality"] = {"entity_freq_log10": float(f), "reference_ppl": float(p),
+                            "primary_axis": "entity_frequency_rank",
+                            "ppl_is_crosscheck_only": True}
         it["cell"] = ("TT" if (it["truth"] and band == "typical") else
                       "TA" if it["truth"] else
                       "FT" if band == "typical" else "FA")
@@ -92,7 +127,8 @@ def score_and_gate(reference_substrate, canary_substrate, edit_rate: float = 0.5
           f"({reference_substrate.model_id})", flush=True)
     ppl = reference_perplexity(texts, reference_substrate)
 
-    kept = _assign_cells(items, ppl)
+    freq_map = load_entity_freq()
+    kept = _assign_cells(items, ppl, freq_map)
     raw_counts = {c: sum(1 for it in kept if it["cell"] == c)
                   for c in ("TT", "TA", "FT", "FA")}
     kept = _match_on_subword(kept, canary_substrate.tokenizer, seed)  # C3

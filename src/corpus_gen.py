@@ -110,10 +110,11 @@ def generate_topic(topic: str, edit_rate: float = 0.5, seed: int = 20260712) -> 
 
     items: list[dict] = []
 
-    def add(text, truth, edited, entity, strategy):
+    def add(text, truth, edited, entity, strategy, obj=None):
         items.append({
             "text": text, "truth": bool(truth), "edited": bool(edited),
-            "entity": entity, "domain": topic,
+            "entity": entity, "entities": [e for e in (entity, obj) if e],
+            "domain": topic,
             "provenance": {"source": "azaria_mitchell", "strategy": strategy,
                            "object_type": otype},
         })
@@ -124,9 +125,9 @@ def generate_topic(topic: str, edit_rate: float = 0.5, seed: int = 20260712) -> 
     for i, (s, o) in enumerate(pairs):
         if i in edit_true_idx:
             s2, o2 = pairs[int(rng.integers(len(pairs)))]        # another KB-valid TRUE pair
-            add(tpl.format(s=s2, o=o2), True, True, s2, "truth_preserving_swap")
+            add(tpl.format(s=s2, o=o2), True, True, s2, "truth_preserving_swap", o2)
         else:
-            add(tpl.format(s=s, o=o), True, False, s, "original_true")
+            add(tpl.format(s=s, o=o), True, False, s, "original_true", o)
 
     # ── FALSE cell: match n_true; edit_rate fraction truth-breaking swaps ─────
     nat_false = _unedited_false(topic)
@@ -149,7 +150,7 @@ def generate_topic(topic: str, edit_rate: float = 0.5, seed: int = 20260712) -> 
         if o_wrong in true_obj.get(s, set()):
             continue  # would be true — reject
         lean = "FT_lean" if pool is common else "FA_lean"
-        add(tpl.format(s=s, o=o_wrong), False, True, s, f"truth_breaking_swap_{lean}")
+        add(tpl.format(s=s, o=o_wrong), False, True, s, f"truth_breaking_swap_{lean}", o_wrong)
         made += 1
     # unedited natural falses (A&M-constructed, not OUR pipeline)
     if nat_false:
@@ -158,7 +159,9 @@ def generate_topic(topic: str, edit_rate: float = 0.5, seed: int = 20260712) -> 
             txt = nat_false[j]
             rx = TEMPLATES[topic][0]
             m = rx.match(txt)
-            add(txt, False, False, m.group(1).strip() if m else "", "original_false")
+            subj = m.group(1).strip() if m else ""
+            obj = m.group(2).strip() if m else None
+            add(txt, False, False, subj, "original_false", obj)
 
     return items
 

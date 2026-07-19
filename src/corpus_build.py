@@ -43,36 +43,44 @@ def _cfg() -> dict:
 # ── Gate 1: the axes are actually crossed ────────────────────────────────────
 
 def verify_crossing(items: list[dict]) -> dict:
-    """Hard gate: per truth value, ppl(atypical) >> ppl(typical).
+    """Hard gate on the PRIMARY typicality axis (D-007 = entity frequency): per
+    truth value, typical items must be genuinely more frequent than atypical ones
+    (freq(typical) >> freq(atypical)). Perplexity medians are reported alongside
+    as the cross-check (the ppl-vs-frequency divergence is itself a finding).
 
-    Uses Cliff's delta (effect size) + Mann-Whitney U. Thresholds from
-    configs/corpus.yaml. If this fails, MIRAGE proves nothing — do not proceed.
+    Cliff's delta (effect size) + Mann-Whitney U; thresholds from corpus.yaml.
     """
     from scipy.stats import mannwhitneyu
 
     cfg = _cfg()["gates"]["crossing"]
-    report: dict = {"gate": "crossing", "checks": {}}
+    report: dict = {"gate": "crossing", "axis": "entity_frequency", "checks": {}}
+
+    def freq(cell):
+        return np.array([it["typicality"]["entity_freq_log10"] for it in items
+                         if it["cell"] == cell])
 
     def ppl(cell):
         return np.array([it["typicality"]["reference_ppl"] for it in items
                          if it["cell"] == cell])
 
     for truth_val, typ_cell, atyp_cell in (("true", "TT", "TA"), ("false", "FT", "FA")):
-        lo, hi = ppl(typ_cell), ppl(atyp_cell)
-        if len(lo) < 2 or len(hi) < 2:
+        typ, atyp = freq(typ_cell), freq(atyp_cell)
+        if len(typ) < 2 or len(atyp) < 2:
             report["checks"][truth_val] = {"pass": False, "note": "empty cell"}
             continue
-        # Cliff's delta: P(hi > lo) - P(hi < lo)
-        gt = (hi[:, None] > lo[None, :]).mean()
-        lt = (hi[:, None] < lo[None, :]).mean()
+        # Cliff's delta on frequency: typical should exceed atypical
+        gt = (typ[:, None] > atyp[None, :]).mean()
+        lt = (typ[:, None] < atyp[None, :]).mean()
         delta = float(gt - lt)
-        _, p = mannwhitneyu(hi, lo, alternative="greater")
+        _, p = mannwhitneyu(typ, atyp, alternative="greater")
         report["checks"][truth_val] = {
-            "cells": f"{atyp_cell} vs {typ_cell}",
-            "cliffs_delta": round(delta, 4),
+            "cells": f"{typ_cell} (typical) vs {atyp_cell} (atypical)",
+            "cliffs_delta_freq": round(delta, 4),
             "mannwhitney_p": float(p),
-            "median_ppl_typical": round(float(np.median(lo)), 2),
-            "median_ppl_atypical": round(float(np.median(hi)), 2),
+            "median_log10freq_typical": round(float(np.median(typ)), 3),
+            "median_log10freq_atypical": round(float(np.median(atyp)), 3),
+            "xcheck_median_ppl_typical": round(float(np.median(ppl(typ_cell))), 2),
+            "xcheck_median_ppl_atypical": round(float(np.median(ppl(atyp_cell))), 2),
             "pass": bool(delta >= cfg["min_cliffs_delta"] and p <= cfg["max_p_value"]),
         }
     report["pass"] = all(c.get("pass") for c in report["checks"].values())
