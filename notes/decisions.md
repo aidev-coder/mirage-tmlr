@@ -142,3 +142,9 @@ Every resolved §4 open decision gets an entry: date, decision, reasoning, who d
   equally-publishable outcome; §6 says lead with the audit. The obstacle is more
   novel than the original gap-measurement plan.
 - **Decided by:** owner ("continue"); agent recommended after exhaustive attempts.
+
+## D-010 — CI-based canary gate (owner ratified)
+- Date: 2026-07-19. Owner: "yes, use the CI-gate".
+- Decision: canary gates (edit, fragmentation) pass iff the AUROC bootstrap CI includes 0.50 (not distinguishable from chance), replacing the arbitrary point<=threshold rule. Aligns with 1.5. Symmetric: still fails the uncontrolled fragmentation (CI [0.567,0.681] excludes 0.50).
+- Released corpus = truth-subword-matched (clean on both canaries by CI); the full corpus's uncontrolled fragmentation kept as evidence the control is necessary.
+- Reasoning: point-0.55 tripped on 0.5501 seed-noise though the CI spanned chance; CI-inclusion-of-0.5 is the correct "at chance" criterion. Not result-tuning (1.1) — surfaced and ratified, applied symmetrically.

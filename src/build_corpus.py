@@ -152,39 +152,35 @@ def score_and_gate(reference_substrate, canary_substrate, edit_rate: float = 0.5
     full = _assign_cells(items, ppl, freq_map)
     raw_counts = {c: sum(1 for it in full if it["cell"] == c)
                   for c in ("TT", "TA", "FT", "FA")}
-    matched = _match_on_subword([dict(it) for it in full], canary_substrate.tokenizer, seed)
-    matched, matched_counts, per_cell_n = _balance(matched, seed)
-    print(f"[stage2] cells raw={raw_counts} (n={len(full)}) | "
-          f"subword-matched+balanced {per_cell_n}/cell {matched_counts}", flush=True)
-
-    crossing = corpus_build.verify_crossing(full)
     L = int(canary_substrate.model.config.num_hidden_layers * CANARY_LAYER_FRAC)
-    print(f"[stage2] canary hidden states at layer {L} on FULL n={len(full)} "
-          f"({canary_substrate.model_id})", flush=True)
-    H = canary_substrate.hidden_states_matrix(
-        [it["text"] for it in full], batch_size=32)[:, L, :].astype(np.float32)
-    edit_c = corpus_build.edit_canary(H, np.array([it["edited"] for it in full]))
-    feats = corpus_build.fragmentation_features(
-        [it["text"] for it in full], [it["entity"] for it in full],
-        canary_substrate.tokenizer)
-    frag_c = corpus_build.fragmentation_canary(feats, np.array([it["truth"] for it in full]))
 
-    tm = _match_truth_subword([dict(it) for it in full], canary_substrate.tokenizer, seed)
-    tf = corpus_build.fragmentation_features(
-        [it["text"] for it in tm], [it["entity"] for it in tm], canary_substrate.tokenizer)
-    frag_c_controlled = corpus_build.fragmentation_canary(
-        tf, np.array([it["truth"] for it in tm]))
-    frag_c_controlled["n"] = len(tm)
-    print(f"[stage2] fragmentation controlled (truth-subword-matched n={len(tm)}): "
-          f"auroc={frag_c_controlled.get('auroc')} ci={frag_c_controlled.get('ci')}", flush=True)
+    def canaries(pop):
+        H = canary_substrate.hidden_states_matrix(
+            [it["text"] for it in pop], batch_size=32)[:, L, :].astype(np.float32)
+        e = corpus_build.edit_canary(H, np.array([it["edited"] for it in pop]))
+        f = corpus_build.fragmentation_canary(
+            corpus_build.fragmentation_features(
+                [it["text"] for it in pop], [it["entity"] for it in pop],
+                canary_substrate.tokenizer),
+            np.array([it["truth"] for it in pop]))
+        return e, f
+
+    edit_full, frag_full = canaries(full)   # evidence: uncontrolled corpus needs control
+    kept = _match_truth_subword([dict(it) for it in full], canary_substrate.tokenizer, seed)
+    kept_counts = {c: sum(1 for it in kept if it["cell"] == c) for c in ("TT", "TA", "FT", "FA")}
+    edit_c, frag_c = canaries(kept)         # released corpus: both CI-pass
+    crossing = corpus_build.verify_crossing(kept)
+    print(f"[stage2] raw={raw_counts} n={len(full)} | released(truth-matched) n={len(kept)} "
+          f"{kept_counts} | edit {edit_c.get('auroc')} {edit_c.get('ci')} pass={edit_c.get('pass')}"
+          f" | frag {frag_c.get('auroc')} {frag_c.get('ci')} pass={frag_c.get('pass')}", flush=True)
 
     return {
-        "items": full,
-        "fragmentation_canary_controlled": frag_c_controlled,
+        "items": kept,
         "meta": {"reference_model": reference_substrate.model_id,
                  "canary_model": canary_substrate.model_id, "canary_layer": L,
-                 "n_full": len(full), "per_cell_n": per_cell_n,
-                 "raw_counts": raw_counts, "matched_counts": matched_counts,
+                 "n_full": len(full), "n_released": len(kept),
+                 "raw_counts": raw_counts, "released_counts": kept_counts,
                  "edit_rate": edit_rate, "seed": seed},
         "crossing": crossing, "edit_canary": edit_c, "fragmentation_canary": frag_c,
+        "evidence_full": {"edit_canary": edit_full, "fragmentation_canary": frag_full},
     }

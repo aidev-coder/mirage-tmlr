@@ -199,23 +199,29 @@ def main(stage: str = "sanity", model: str = "", max_per_topic: int = 0,
         canary_model = "meta-llama/Llama-3.1-8B"           # representative probed substrate
         res = stage2_build.remote(reference_model=ref_model, canary_model=canary_model)
         m = res["meta"]
-        print(f"stage2: {m['per_cell_n']}/cell | ref={m['reference_model']} "
-              f"canary={m['canary_model']} @L{m['canary_layer']} | cells={m['raw_counts']}")
+        print(f"stage2: released n={m['n_released']} (full {m['n_full']}) | "
+              f"ref={m['reference_model']} canary={m['canary_model']} @L{m['canary_layer']} | "
+              f"cells raw={m['raw_counts']} released={m['released_counts']}")
         for g in ("crossing", "edit_canary", "fragmentation_canary"):
             r = res[g]
             ci = f" ci={r.get('ci')}" if r.get("ci") else ""
             print(f"  {g}: pass={r.get('pass')} "
                   f"{('auroc=' + str(r.get('auroc'))) if 'auroc' in r else ''}{ci}")
-        fcc = res.get("fragmentation_canary_controlled", {})
-        print(f"  fragmentation_controlled: pass={fcc.get('pass')} "
-              f"auroc={fcc.get('auroc')} ci={fcc.get('ci')} n={fcc.get('n')}")
+        ef = res.get("evidence_full", {})
+        print(f"  [evidence, uncontrolled full] edit={ef.get('edit_canary', {}).get('auroc')} "
+              f"frag={ef.get('fragmentation_canary', {}).get('auroc')} "
+              f"{ef.get('fragmentation_canary', {}).get('ci')}")
         try:
             path = corpus_build.finalize(
                 res["items"], res["crossing"], res["edit_canary"],
-                res["fragmentation_canary"], owner_signoff_decision_id="D-006")
-            print(f"  CORPUS FINALIZED -> {path}  (Stage-3 probes remain HELD, D-006)")
+                res["fragmentation_canary"], owner_signoff_decision_id="D-010")
+            (_HERE / "results" / "stage2_corpus_report.json").write_text(
+                json.dumps({"meta": m, "gates": {k: res[k] for k in
+                            ("crossing", "edit_canary", "fragmentation_canary")},
+                            "evidence_full": ef}, indent=2, default=_json_default))
+            print(f"  CORPUS FINALIZED -> {path}  (CI-gate D-010; Stage 3 next)")
         except RuntimeError as e:
-            print(f"  NOT finalized (gate/signoff): {e}")
+            print(f"  NOT finalized: {e}")
 
     elif stage == "harvest":
         import json as _j

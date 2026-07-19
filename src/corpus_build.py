@@ -40,6 +40,12 @@ def _cfg() -> dict:
         return yaml.safe_load(f)
 
 
+def _ci_includes_half(res: dict) -> bool:
+    ci = res.get("ci") or [None, None]
+    return bool(res.get("auroc") is not None and ci[0] is not None
+                and ci[0] <= 0.5 <= ci[1])
+
+
 # ── Gate 1: the axes are actually crossed ────────────────────────────────────
 
 def verify_crossing(items: list[dict]) -> dict:
@@ -106,9 +112,7 @@ def edit_canary(hidden_states: np.ndarray, edited: np.ndarray,
     tr, te = idx[:cut], idx[cut:]
     probe = SaplmaProbe(seed=seed).fit(hidden_states[tr], edited[tr])
     res = auroc_with_ci(edited[te], probe.score(hidden_states[te]), seed=seed)
-    max_auroc = _cfg()["gates"]["edit_canary"]["max_auroc"]
-    res.update({"gate": "edit_canary", "threshold": max_auroc,
-                "pass": res["auroc"] is not None and res["auroc"] <= max_auroc})
+    res.update({"gate": "edit_canary", "pass": _ci_includes_half(res)})
     return res
 
 
@@ -153,9 +157,7 @@ def fragmentation_canary(features: np.ndarray, truth: np.ndarray,
     clf = LogisticRegression(max_iter=500, random_state=seed).fit(sc.transform(features[tr]), truth[tr])
     scores = clf.predict_proba(sc.transform(features[te]))[:, 1]
     res = auroc_with_ci(truth[te], scores, seed=seed)
-    max_auroc = _cfg()["gates"].get("fragmentation_canary", {}).get("max_auroc", 0.60)
-    res.update({"gate": "fragmentation_canary", "threshold": max_auroc,
-                "pass": res["auroc"] is not None and res["auroc"] <= max_auroc})
+    res.update({"gate": "fragmentation_canary", "pass": _ci_includes_half(res)})
     return res
 
 
