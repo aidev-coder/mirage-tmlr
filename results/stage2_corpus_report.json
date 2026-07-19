@@ -1,0 +1,105 @@
+{
+  "meta": {
+    "reference_model": "Qwen/Qwen2.5-7B-Instruct",
+    "canary_model": "meta-llama/Llama-3.1-8B",
+    "canary_layer": 16,
+    "n_full": 2164,
+    "n_released": 2164,
+    "raw_counts": {
+      "TT": 542,
+      "TA": 948,
+      "FT": 540,
+      "FA": 134
+    },
+    "released_counts": {
+      "TT": 542,
+      "TA": 948,
+      "FT": 540,
+      "FA": 134
+    },
+    "edit_rate": 0.5,
+    "seed": 20260712
+  },
+  "gates": {
+    "crossing": {
+      "gate": "crossing",
+      "axis": "entity_frequency",
+      "checks": {
+        "true": {
+          "cells": "TT (typical) vs TA (atypical)",
+          "cliffs_delta_freq": 0.7749,
+          "mannwhitney_p": 3.62687252054011e-217,
+          "median_log10freq_typical": 2.878,
+          "median_log10freq_atypical": 0.0,
+          "xcheck_median_ppl_typical": 14.9,
+          "xcheck_median_ppl_atypical": 14.6,
+          "pass": true
+        },
+        "false": {
+          "cells": "FT (typical) vs FA (atypical)",
+          "cliffs_delta_freq": 0.5704,
+          "mannwhitney_p": 2.860948410869753e-29,
+          "median_log10freq_typical": 1.86,
+          "median_log10freq_atypical": 0.0,
+          "xcheck_median_ppl_typical": 57.39,
+          "xcheck_median_ppl_atypical": 58.04,
+          "pass": true
+        }
+      },
+      "pass": true
+    },
+    "edit_canary": {
+      "auroc": 0.5501,
+      "ci": [
+        0.4898,
+        0.6017
+      ],
+      "n": 433,
+      "n_boot": 1000,
+      "gate": "edit_canary",
+      "pass": true
+    },
+    "fragmentation_canary": {
+      "auroc": 0.625,
+      "ci": [
+        0.5665,
+        0.6809
+      ],
+      "n": 433,
+      "n_boot": 1000,
+      "gate": "fragmentation_canary",
+      "pass": false
+    }
+  },
+  "evidence_matched": {
+    "n": 1266,
+    "counts": {
+      "TT": 258,
+      "TA": 375,
+      "FT": 503,
+      "FA": 130
+    },
+    "edit_canary": {
+      "auroc": 0.6456,
+      "ci": [
+        0.5839,
+        0.709
+      ],
+      "n": 254,
+      "n_boot": 1000,
+      "gate": "edit_canary",
+      "pass": false
+    },
+    "fragmentation_canary": {
+      "auroc": 0.5496,
+      "ci": [
+        0.479,
+        0.6256
+      ],
+      "n": 254,
+      "n_boot": 1000,
+      "gate": "fragmentation_canary",
+      "pass": true
+    }
+  }
+}
