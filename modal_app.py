@@ -125,7 +125,7 @@ def stage1_saplma(model_id: str, max_per_topic: int = 0,
 @app.function(image=image, gpu=GPU, volumes=VOLUMES, secrets=SECRETS,
               timeout=3 * 3600)
 def stage2_build(reference_model: str, canary_model: str,
-                 edit_rate: float = 0.5) -> dict:
+                 edit_rate: float = 0.5, seed: int = 20260712) -> dict:
     """Stage 2 GPU stage: score typicality + run the 3 gates; return scored items
     + reports. finalize() is run locally by the entrypoint so the corpus lands in
     the repo (the project's standing directive §3 Stage 2; probes stay HELD per D-006)."""
@@ -135,7 +135,7 @@ def stage2_build(reference_model: str, canary_model: str,
 
     ref = Substrate(reference_model, cache_dir="/root/activations")
     can = Substrate(canary_model, cache_dir="/root/activations")
-    out = score_and_gate(ref, can, edit_rate=edit_rate)
+    out = score_and_gate(ref, can, edit_rate=edit_rate, seed=seed)
     activations.commit()
     hf_cache.commit()
     return out
@@ -173,7 +173,7 @@ def harvest_fn(model_id: str, topic: str, max_subjects: int = 400) -> dict:
 
 @app.local_entrypoint()
 def main(stage: str = "sanity", model: str = "", max_per_topic: int = 0,
-         batch_size: int = 32, fast: bool = True, corpus: str = ""):
+         batch_size: int = 32, fast: bool = True, corpus: str = "", seed: int = 0):
     """
     modal run mirage/modal_app.py --stage sanity                     # Stage 0, all models
     modal run mirage/modal_app.py --stage stage1 --model <id>        # Stage 1, one model
@@ -214,7 +214,8 @@ def main(stage: str = "sanity", model: str = "", max_per_topic: int = 0,
 
         ref_model = model or "Qwen/Qwen2.5-7B-Instruct"   # cross-family reference (D-002)
         canary_model = "meta-llama/Llama-3.1-8B"           # representative probed substrate
-        res = stage2_build.remote(reference_model=ref_model, canary_model=canary_model)
+        kw2 = {"seed": seed} if seed else {}
+        res = stage2_build.remote(reference_model=ref_model, canary_model=canary_model, **kw2)
         m = res["meta"]
         print(f"stage2: released n={m['n_released']} (full {m['n_full']}) | "
               f"ref={m['reference_model']} canary={m['canary_model']} @L{m['canary_layer']} | "
