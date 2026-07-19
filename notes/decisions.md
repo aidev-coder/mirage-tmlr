@@ -124,3 +124,21 @@ Every resolved §4 open decision gets an entry: date, decision, reasoning, who d
 - **Supersedes:** D-002's choice of ppl-primary FOR ASSIGNMENT only (triangulation
   + cross-family reasoning of D-002 otherwise stands).
 - **Decided by:** agent recommendation; awaiting owner nod (surfaced per §4.1/§7).
+
+## D-008 / D-009 — Harvest insufficient; REFRAME around construction-impossibility
+
+- **Date:** 2026-07-19
+- **D-008 (harvest) outcome:** natural-error harvest from disjoint Mistral yields
+  2.5% (5/200 cities), obscure-skewed -> cannot populate FT. Combined with the
+  swap edit-signature (v1-v3, ~0.67), both construction paths are exhausted.
+- **D-009 DECISION (owner: "continue", 2026-07-19):** reframe the paper. The
+  finding is that the FT cell (confident fluent in-distribution falsehood) is
+  intrinsically hard to construct cleanly, so internal-state probes are validated
+  only on the diagonal — blind to the confound cell. Retire the Stage-3 AUROC-gap
+  plan (no clean corpus exists to run it on); the three builds + harvest yield ARE
+  the evidence. Constructive half: release the build-attempt harness as a
+  "hardness probe" any future corpus/probe must pass.
+- **Reasoning:** the project's standing directive §0 pre-authorizes "corpus can't be built cleanly" as an
+  equally-publishable outcome; §6 says lead with the audit. The obstacle is more
+  novel than the original gap-measurement plan.
+- **Decided by:** owner ("continue"); agent recommended after exhaustive attempts.
