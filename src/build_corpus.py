@@ -165,22 +165,25 @@ def score_and_gate(reference_substrate, canary_substrate, edit_rate: float = 0.5
             np.array([it["truth"] for it in pop]))
         return e, f
 
-    edit_full, frag_full = canaries(full)   # evidence: uncontrolled corpus needs control
+    edit_c, frag_c = canaries(full)         # D-011: full corpus is the released corpus
+    crossing = corpus_build.verify_crossing(full)
     kept = _match_truth_subword([dict(it) for it in full], canary_substrate.tokenizer, seed)
     kept_counts = {c: sum(1 for it in kept if it["cell"] == c) for c in ("TT", "TA", "FT", "FA")}
-    edit_c, frag_c = canaries(kept)         # released corpus: both CI-pass
-    crossing = corpus_build.verify_crossing(kept)
-    print(f"[stage2] raw={raw_counts} n={len(full)} | released(truth-matched) n={len(kept)} "
-          f"{kept_counts} | edit {edit_c.get('auroc')} {edit_c.get('ci')} pass={edit_c.get('pass')}"
-          f" | frag {frag_c.get('auroc')} {frag_c.get('ci')} pass={frag_c.get('pass')}", flush=True)
+    edit_matched, frag_matched = canaries(kept)   # cross-check: truth-matched subset
+    print(f"[stage2] raw={raw_counts} n={len(full)} (RELEASED, D-011) | "
+          f"edit {edit_c.get('auroc')} {edit_c.get('ci')} pass={edit_c.get('pass')}"
+          f" | frag(covariate) {frag_c.get('auroc')} {frag_c.get('ci')} pass={frag_c.get('pass')} | "
+          f"truth-matched subset n={len(kept)} {kept_counts} "
+          f"edit={edit_matched.get('auroc')} frag={frag_matched.get('auroc')}", flush=True)
 
     return {
-        "items": kept,
+        "items": full,
         "meta": {"reference_model": reference_substrate.model_id,
                  "canary_model": canary_substrate.model_id, "canary_layer": L,
-                 "n_full": len(full), "n_released": len(kept),
-                 "raw_counts": raw_counts, "released_counts": kept_counts,
+                 "n_full": len(full), "n_released": len(full),
+                 "raw_counts": raw_counts, "released_counts": raw_counts,
                  "edit_rate": edit_rate, "seed": seed},
         "crossing": crossing, "edit_canary": edit_c, "fragmentation_canary": frag_c,
-        "evidence_full": {"edit_canary": edit_full, "fragmentation_canary": frag_full},
+        "evidence_matched": {"n": len(kept), "counts": kept_counts,
+                             "edit_canary": edit_matched, "fragmentation_canary": frag_matched},
     }

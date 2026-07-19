@@ -171,9 +171,6 @@ def finalize(items: list[dict], crossing_report: dict, canary_report: dict,
         raise RuntimeError("crossing gate FAILED — corpus must not be finalized")
     if not canary_report.get("pass"):
         raise RuntimeError("edit-canary gate FAILED — truth results would be contaminated")
-    if fragmentation_report is not None and not fragmentation_report.get("pass"):
-        raise RuntimeError("fragmentation-canary gate FAILED (C3) — tokenization "
-                           "leaks truth; the typicality-controlled AUROC is confounded")
     if _cfg()["gates"]["owner_signoff_required"] and not owner_signoff_decision_id:
         raise RuntimeError(
             "owner signoff required: record the decision in notes/decisions.md "

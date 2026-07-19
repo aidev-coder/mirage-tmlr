@@ -207,19 +207,20 @@ def main(stage: str = "sanity", model: str = "", max_per_topic: int = 0,
             ci = f" ci={r.get('ci')}" if r.get("ci") else ""
             print(f"  {g}: pass={r.get('pass')} "
                   f"{('auroc=' + str(r.get('auroc'))) if 'auroc' in r else ''}{ci}")
-        ef = res.get("evidence_full", {})
-        print(f"  [evidence, uncontrolled full] edit={ef.get('edit_canary', {}).get('auroc')} "
-              f"frag={ef.get('fragmentation_canary', {}).get('auroc')} "
-              f"{ef.get('fragmentation_canary', {}).get('ci')}")
+        em = res.get("evidence_matched", {})
+        print(f"  [xcheck, truth-matched subset n={em.get('n')}] "
+              f"edit={em.get('edit_canary', {}).get('auroc')} "
+              f"frag={em.get('fragmentation_canary', {}).get('auroc')} "
+              f"{em.get('fragmentation_canary', {}).get('ci')}")
         try:
             path = corpus_build.finalize(
                 res["items"], res["crossing"], res["edit_canary"],
-                res["fragmentation_canary"], owner_signoff_decision_id="D-010")
+                res["fragmentation_canary"], owner_signoff_decision_id="D-011")
             (_HERE / "results" / "stage2_corpus_report.json").write_text(
                 json.dumps({"meta": m, "gates": {k: res[k] for k in
                             ("crossing", "edit_canary", "fragmentation_canary")},
-                            "evidence_full": ef}, indent=2, default=_json_default))
-            print(f"  CORPUS FINALIZED -> {path}  (CI-gate D-010; Stage 3 next)")
+                            "evidence_matched": em}, indent=2, default=_json_default))
+            print(f"  CORPUS FINALIZED -> {path}  (D-011: full edit-clean corpus; Stage 3 next)")
         except RuntimeError as e:
             print(f"  NOT finalized: {e}")
 

@@ -149,8 +149,9 @@ Every resolved §4 open decision gets an entry: date, decision, reasoning, who d
 - Released corpus = truth-subword-matched (clean on both canaries by CI); the full corpus's uncontrolled fragmentation kept as evidence the control is necessary.
 - Reasoning: point-0.55 tripped on 0.5501 seed-noise though the CI spanned chance; CI-inclusion-of-0.5 is the correct "at chance" criterion. Not result-tuning (1.1) — surfaced and ratified, applied symmetrically.
 
-## D-011 (PROPOSED) — fragmentation is a Stage-3 covariate, not a corpus gate
-- Date: 2026-07-19. Status: proposed, owner nod pending.
+## D-011 — fragmentation is a Stage-3 covariate, not a corpus gate (owner ratified)
+- Date: 2026-07-19. Status: RATIFIED, owner: "yes to D-011".
 - Trigger: truth-subword matching cleans fragmentation (0.55) but induces a spurious edit-canary signal (0.646); the full corpus is edit-clean (0.55) with a real fragmentation confound (0.625).
 - Proposal: finalize the FULL corpus using the edit-canary (generation artifact, 4.2) + crossing as the hard gates; treat fragmentation (a tokenization confound) as a covariate partialled out in the Stage-3b mediation, exactly as typicality is. Rationale: confounds are controlled analytically, not by distorting the corpus; matching introduced its own artifact.
-- Decided by: agent recommendation; awaiting owner.
+- Decided by: owner ("yes to D-011", 2026-07-19); agent recommended.
+- Consequence: score_and_gate returns the full corpus as items (n=2164); finalize gates on edit-canary (CI includes 0.5) + crossing; fragmentation_report kept in the corpus report and partialled out in Stage-3b mediation. Truth-matched subset retained as evidence_matched cross-check.
