@@ -122,7 +122,8 @@ def _match_truth_subword(items: list[dict], tokenizer, seed: int) -> list[dict]:
     from collections import defaultdict
     for it in items:
         eids = tokenizer(it["entity"])["input_ids"] if it["entity"] else []
-        it["_sw"] = min(len(eids), 6)
+        sids = tokenizer(it["text"])["input_ids"]
+        it["_sw"] = (min(len(eids), 6), min(len(sids) // 2, 8))
     by = defaultdict(lambda: {True: [], False: []})
     for it in items:
         by[it["_sw"]][it["truth"]].append(it)
