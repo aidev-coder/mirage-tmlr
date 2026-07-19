@@ -141,6 +141,19 @@ def stage2_build(reference_model: str, canary_model: str,
     return out
 
 
+@app.function(image=image, gpu=GPU, volumes=VOLUMES, secrets=SECRETS,
+              timeout=2 * 3600)
+def harvest_fn(model_id: str, topic: str, max_subjects: int = 400) -> dict:
+    """O-2/D-008 natural-error harvest from a disjoint model (Mistral)."""
+    _setup()
+    from src.harvest import harvest_topic
+    from src.substrate import Substrate
+    sub = Substrate(model_id, cache_dir="/root/activations")
+    out = harvest_topic(sub, topic, max_subjects=max_subjects)
+    hf_cache.commit()
+    return out
+
+
 @app.local_entrypoint()
 def main(stage: str = "sanity", model: str = "", max_per_topic: int = 0,
          batch_size: int = 32, fast: bool = True):
@@ -199,6 +212,19 @@ def main(stage: str = "sanity", model: str = "", max_per_topic: int = 0,
             print(f"  CORPUS FINALIZED -> {path}  (Stage-3 probes remain HELD, D-006)")
         except RuntimeError as e:
             print(f"  NOT finalized (gate/signoff): {e}")
+
+    elif stage == "harvest":
+        import json as _j
+        hm = "mistralai/Mistral-7B-Instruct-v0.2"   # disjoint from all probed substrates
+        topic = model or "cities"
+        res = harvest_fn.remote(model_id=hm, topic=topic,
+                                max_subjects=max_per_topic or 400)
+        print(f"harvest[{topic}] stats: {res['stats']}")
+        for it in res["items"][:8]:
+            print("  FALSE:", it["text"])
+        out = _HERE / "data" / "corpus" / f"harvest_{topic}.json"
+        out.write_text(_j.dumps(res["items"], indent=1))
+        print(f"saved {len(res['items'])} natural-error items -> {out}")
 
     else:
         raise SystemExit(f"unknown stage: {stage}")
