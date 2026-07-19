@@ -1,17 +1,27 @@
 {
   "finding": "The false-typical (FT) cell -- confident, fluent, in-distribution falsehood -- is intrinsically hard to construct cleanly. Neither synthetic swaps nor natural-error harvesting produce it without an artifact or at usable yield.",
   "provenance": "measured",
-  "gate_thresholds": {"edit_canary_max_auroc": 0.55, "fragmentation_canary_max_auroc": 0.60,
-                       "crossing_min_cliffs_delta": 0.5},
+  "gate_thresholds": {
+    "edit_canary_max_auroc": 0.55,
+    "fragmentation_canary_max_auroc": 0.6,
+    "crossing_min_cliffs_delta": 0.5
+  },
   "builds": [
     {
       "version": "v1_perplexity_axis",
       "assignment_axis": "reference_perplexity_tercile",
       "generation": "random same-type entity swaps",
-      "cells_raw": {"TT": 1005, "TA": 117, "FT": 78, "FA": 960},
+      "cells_raw": {
+        "TT": 1005,
+        "TA": 117,
+        "FT": 78,
+        "FA": 960
+      },
       "crossing_pass": true,
-      "edit_canary_auroc": 0.576, "edit_canary_pass": false,
-      "fragmentation_canary_auroc": 0.642, "fragmentation_canary_pass": false,
+      "edit_canary_auroc": 0.576,
+      "edit_canary_pass": false,
+      "fragmentation_canary_auroc": 0.642,
+      "fragmentation_canary_pass": false,
       "finalized": false,
       "lesson": "FT starved (78); FA dominates. Random swaps make odd (high-ppl) lies."
     },
@@ -19,10 +29,17 @@
       "version": "v2_frequency_aware_swaps",
       "assignment_axis": "reference_perplexity_tercile",
       "generation": "frequency-aware swaps (common vs rare object) + C3 subword matching",
-      "cells_raw": {"TT": 1010, "TA": 122, "FT": 72, "FA": 960},
+      "cells_raw": {
+        "TT": 1010,
+        "TA": 122,
+        "FT": 72,
+        "FA": 960
+      },
       "crossing_pass": true,
-      "edit_canary_auroc": 0.558, "edit_canary_pass": false,
-      "fragmentation_canary_auroc": 0.768, "fragmentation_canary_pass": false,
+      "edit_canary_auroc": 0.558,
+      "edit_canary_pass": false,
+      "fragmentation_canary_auroc": 0.768,
+      "fragmentation_canary_pass": false,
       "finalized": false,
       "lesson": "FT still starved: perplexity ENCODES TRUTH, so a low-ppl false item barely exists (the LM scores false statements high-ppl because it knows they are false)."
     },
@@ -30,12 +47,31 @@
       "version": "v3_frequency_axis",
       "assignment_axis": "entity_frequency_rank_tercile (infini-gram Dolma, D-007)",
       "generation": "frequency-aware swaps + C3 subword matching",
-      "cells_raw": {"TT": 542, "TA": 948, "FT": 540, "FA": 134},
+      "cells_raw": {
+        "TT": 542,
+        "TA": 948,
+        "FT": 540,
+        "FA": 134
+      },
       "crossing_pass": true,
-      "edit_canary_auroc": 0.670, "edit_canary_pass": false,
-      "fragmentation_canary_auroc": 0.679, "fragmentation_canary_pass": false,
+      "edit_canary_auroc": 0.67,
+      "edit_canary_pass": null,
+      "fragmentation_canary_auroc": 0.679,
+      "fragmentation_canary_pass": false,
       "finalized": false,
-      "lesson": "Frequency axis SOLVES cell coverage (FT 72->540) -- but swaps leave a PERSISTENT hidden-state edit signature the canary detects (~0.67), even with edited-orthogonal-to-truth held at generation (0.505/0.559)."
+      "lesson": "Frequency axis SOLVES cell coverage (FT 72->540) -- but swaps leave a PERSISTENT hidden-state edit signature the canary detects (~0.67), even with edited-orthogonal-to-truth held at generation (0.505/0.559).",
+      "edit_canary_auroc_n134": 0.67,
+      "edit_canary_auroc_full_n2164": 0.55,
+      "edit_canary_ci_full": [
+        0.49,
+        0.602
+      ],
+      "fragmentation_canary_auroc_full_n2164": 0.625,
+      "fragmentation_canary_ci_full": [
+        0.567,
+        0.681
+      ],
+      "correction": "At full n=2164 the edit-canary CI includes 0.50 -> the 0.67 at 134/cell was small-n noise; swaps do NOT leave a significant edit signature. Fragmentation leak (0.625, CI excludes 0.50) is real but was measured WITHOUT the C3 subword control on the canary set."
     }
   ],
   "harvest": {
@@ -43,12 +79,20 @@
     "model": "mistralai/Mistral-7B-Instruct-v0.2",
     "disjoint_from_probed_substrates": true,
     "topic": "cities",
-    "asked": 200, "valid_object_answers": 105, "genuine_errors": 5, "error_rate": 0.025,
-    "examples": ["Santarem is a city in Portugal.", "Oyster Bay is a city in New Zealand.",
-                 "As Sib is a city in Iraq.", "Al Mubarraz is a city in Oman.",
-                 "Altamira is a city in Mexico."],
+    "asked": 200,
+    "valid_object_answers": 105,
+    "genuine_errors": 5,
+    "error_rate": 0.025,
+    "examples": [
+      "Santarem is a city in Portugal.",
+      "Oyster Bay is a city in New Zealand.",
+      "As Sib is a city in Iraq.",
+      "Al Mubarraz is a city in Oman.",
+      "Altamira is a city in Mexico."
+    ],
     "lesson": "No edit signature (real outputs), but 2.5% yield and obscure-skewed -> FT (common-entity confident error) yield ~= 0. Some errors ambiguous (Santarem is in both Portugal and Brazil)."
   },
   "conclusion": "Across three synthetic builds and a natural-error harvest, the FT cell cannot be populated cleanly and at scale: swaps contaminate hidden states with an edit signature; harvesting yields too few, obscure-skewed errors. This is the MIRAGE thesis in its strongest form -- the one off-diagonal cell that would expose the truth-vs-typicality confound is the cell that is intrinsically hard to construct, which is precisely why internal-state probes are only ever validated on the diagonal.",
-  "stage3_status": "retired under D-009 (no clean corpus exists to run the AUROC-gap tests on)"
+  "stage3_status": "retired under D-009 (no clean corpus exists to run the AUROC-gap tests on)",
+  "conclusion_status": "UNDER REVISION: edit-signature premise retracted (small-n artifact). Buildability re-opened pending a scaled fragmentation-controlled canary."
 }
