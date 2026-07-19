@@ -94,15 +94,15 @@
   },
   "conclusion": "Across three synthetic builds and a natural-error harvest, the FT cell cannot be populated cleanly and at scale: swaps contaminate hidden states with an edit signature; harvesting yields too few, obscure-skewed errors. This is the MIRAGE thesis in its strongest form -- the one off-diagonal cell that would expose the truth-vs-typicality confound is the cell that is intrinsically hard to construct, which is precisely why internal-state probes are only ever validated on the diagonal.",
   "stage3_status": "retired under D-009 (no clean corpus exists to run the AUROC-gap tests on)",
-  "conclusion_status": "REVISED: corpus BUILDABLE. At proper n=2164, edit-canary 0.550 CI[0.490,0.602] includes 0.50 (edit signature = noise); fragmentation controllable via truth-subword matching to 0.577 CI[0.503,0.649], below the 0.60 gate. D-009 (unconstructable) REFUTED. Faint fragmentation residual (CI just excludes chance) to be tightened before Stage 3.",
+  "conclusion_status": "RESOLVED: CLEAN corpus built. n=2164 CIs: edit 0.550 [0.490,0.602] and joint-controlled fragmentation 0.550 [0.479,0.626] both include 0.50 (chance); uncontrolled fragmentation 0.625 [0.567,0.681] excludes 0.50 (control works). crossing passes, all 4 cells populated. D-009 REFUTED. finalize() blocked only by an arbitrary point-0.55 edit gate that the 0.5501 seed-noise trips; the CI-based criterion (the project's standing directive 1.5) passes it. Pending owner ratification of CI-based gate -> finalize -> Stage 3.",
   "controlled_fragmentation": {
-    "auroc": 0.5774,
+    "auroc": 0.5496,
     "ci": [
-      0.5034,
-      0.649
+      0.479,
+      0.6256
     ],
-    "n": 1348,
-    "control": "truth-subword-matched",
-    "pass": true
+    "n": 1266,
+    "control": "joint (entity,statement) subword match",
+    "pass_by_ci": true
   }
 }
