@@ -68,6 +68,25 @@ def _oof_scores(X: np.ndarray, y: np.ndarray, device, n_folds: int, seed: int) -
     return scores
 
 
+def _edit_oof(X: np.ndarray, edited: np.ndarray, device, n_folds: int, seed: int) -> np.ndarray:
+    """Out-of-fold P(edited) from hidden states at one layer — the edit-signature
+    the §4.2 canary flags. Partialled out in Stage-3 so truth results are net of any
+    edit component (extends D-011 from fragmentation to the edit axis; the swap
+    signature is faint but seed-variable, notebook 2026-07-20)."""
+    from .probes.torch_mlp import _pick_device, _train_one
+    dev = _pick_device(device)
+    edited = np.asarray(edited, dtype=np.float32)
+    rng = np.random.default_rng(seed)
+    folds = np.array_split(rng.permutation(len(edited)), n_folds)
+    scores = np.zeros(len(edited), dtype=np.float64)
+    for k in range(n_folds):
+        te = folds[k]
+        tr = np.concatenate([folds[j] for j in range(n_folds) if j != k])
+        scores[te] = _train_one(X[tr].astype(np.float32), edited[tr],
+                                X[te].astype(np.float32), dev, seed=seed)
+    return scores
+
+
 def _fielded_oof_scores(X: np.ndarray, truth: np.ndarray, cells: np.ndarray,
                         device, n_folds: int, seed: int) -> np.ndarray:
     """The field's instrument, scored on the whole corpus: probes are trained ONLY
@@ -138,9 +157,11 @@ def run(substrate, corpus_path: str | Path, detector: str = "saplma",
     cells = np.array([it["cell"] for it in items])
     typicality = np.array([it["typicality"]["entity_freq_log10"] for it in items], dtype=float)
 
+    edited = np.array([bool(it.get("edited")) for it in items])
     H = _extract_or_load(substrate, texts, corpus_hash, batch_size, commit_fn)
     n_layers = H.shape[1]
     frag_oof = _fragmentation_oof(items, truth, substrate.tokenizer, n_folds, seed)
+    edit_oof = _edit_oof(H[:, n_layers // 2, :], edited, device, n_folds, seed)
 
     def factory(_seed=seed):
         from .probes.saplma import SaplmaProbe
@@ -151,7 +172,7 @@ def run(substrate, corpus_path: str | Path, detector: str = "saplma",
         Xl = H[:, L, :]
         oof_all = _oof_scores(Xl, truth, device, n_folds, seed)
         oof_fielded = _fielded_oof_scores(Xl, truth, cells, device, n_folds, seed)
-        cov = {"fragmentation": frag_oof}
+        cov = {"fragmentation": frag_oof, "edit": edit_oof}
         entry = {
             "layer": L,
             "stratified_allcell": stratified_auroc(oof_all, truth, typicality, seed=seed),
@@ -181,7 +202,7 @@ def run(substrate, corpus_path: str | Path, detector: str = "saplma",
         "cell_counts": {c: int((cells == c).sum()) for c in ("TT", "TA", "FT", "FA")},
         "n_folds": n_folds,
         "typicality_axis": "entity_freq_log10",
-        "mediation_covariates": ["typicality", "fragmentation"],
+        "mediation_covariates": ["typicality", "fragmentation", "edit"],
         "headline_layer": headline_layer,
         "per_layer": per_layer,
         "provenance": "measured",

@@ -155,3 +155,10 @@ Every resolved §4 open decision gets an entry: date, decision, reasoning, who d
 - Proposal: finalize the FULL corpus using the edit-canary (generation artifact, 4.2) + crossing as the hard gates; treat fragmentation (a tokenization confound) as a covariate partialled out in the Stage-3b mediation, exactly as typicality is. Rationale: confounds are controlled analytically, not by distorting the corpus; matching introduced its own artifact.
 - Decided by: owner ("yes to D-011", 2026-07-19); agent recommended.
 - Consequence: score_and_gate returns the full corpus as items (n=2164); finalize gates on edit-canary (CI includes 0.5) + crossing; fragmentation_report kept in the corpus report and partialled out in Stage-3b mediation. Truth-matched subset retained as evidence_matched cross-check.
+
+## D-012 — edit signature as a Stage-3 covariate (owner deferred to agent)
+- Date: 2026-07-20. Owner: "as you think appropriate". Agent chose option A.
+- Trigger: second corpus seed (20260801) fails the edit-canary (0.593 CI excludes 0.5) where seed 20260712 passes (0.550). The symmetric-swap edit signature is faint (~0.55-0.59 at n=2164) and seed-variable around the CI-includes-0.5 gate (§4.2).
+- Decision: extend D-011 to the edit axis. Partial out an out-of-fold edit-probe score (P(edited) from hidden states at the mid layer) as a Stage-3 mediation covariate alongside typicality + fragmentation. The off-diagonal collapse is trustworthy only if it survives removing the edit-predictable component. Report the multi-seed canary spread honestly (§1.6).
+- Not chosen (kept open): regenerating a signature-free corpus (B) or larger-n resolution (C) — A subsumes the immediate need without regeneration and directly tests the confound; revisit B if the covariate materially moves truth_beta.
+- Applies to: SAPLMA Stage-3 (hidden-state probe). EigenScore keeps typicality+fragmentation (its own signal is hidden-state-derived; edit-covariate extension deferred unless needed).
