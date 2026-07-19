@@ -259,13 +259,18 @@ def main(stage: str = "sanity", model: str = "", max_per_topic: int = 0,
         print(f"stage3[{res['detector']}] {res['model']} on {corpus_name} n={res['n']} "
               f"{res['cell_counts']}")
         print(f"  headline layer L{hl}:")
-        print(f"    3a stratified gap = {e['stratified'].get('gap')}")
-        print(f"    3b truth_beta {e['mediation']['truth_beta_marginal']} -> "
-              f"{e['mediation']['truth_beta_partialled']} "
-              f"(shrink {e['mediation']['truth_beta_shrinkage']}); "
-              f"frag_beta {e['mediation'].get('fragmentation_beta')}")
+        print(f"    [fielded instrument = the field's recipe, audited by all 3 tests]")
+        print(f"    3a stratified gap = {e['stratified_fielded'].get('gap')}")
+        print(f"    3b truth_beta {e['mediation_fielded']['truth_beta_marginal']} -> "
+              f"{e['mediation_fielded']['truth_beta_partialled']} "
+              f"(shrink {e['mediation_fielded']['truth_beta_shrinkage']}); "
+              f"frag_beta {e['mediation_fielded'].get('fragmentation_beta')}")
         print(f"    3c off-diagonal AUROC = {e['adversarial']['off_diagonal'].get('auroc')} "
               f"{e['adversarial']['off_diagonal'].get('ci')}; gap {e['adversarial']['gap']}")
+        print(f"    per-cell fielded score: {e['fielded_cell_scores']}")
+        print(f"    [recoverability: all-cell probe] truth_beta_partialled = "
+              f"{e['mediation_allcell']['truth_beta_partialled']}, "
+              f"strat_gap = {e['stratified_allcell'].get('gap', {}).get('point')}")
         short = res["model"].split("/")[-1].lower()
         out = _HERE / "results" / f"stage3_{res['detector']}_{short}_{date.today():%Y%m%d}.json"
         out.write_text(json.dumps(res, indent=2, default=_json_default))

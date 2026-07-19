@@ -68,6 +68,44 @@ def _oof_scores(X: np.ndarray, y: np.ndarray, device, n_folds: int, seed: int) -
     return scores
 
 
+def _fielded_oof_scores(X: np.ndarray, truth: np.ndarray, cells: np.ndarray,
+                        device, n_folds: int, seed: int) -> np.ndarray:
+    """The field's instrument, scored on the whole corpus: probes are trained ONLY
+    on the diagonal (TT+FA) — the confounded recipe every benchmark uses. Diagonal
+    items get K-fold cross-fitted scores; off-diagonal items are scored by the mean
+    of the K diagonal-trained probes. This is the instrument 3c indicts, now made
+    available to 3a/3b so all three tests audit the SAME probe."""
+    from .eval.adversarial_split import DIAGONAL
+    from .probes.torch_mlp import _pick_device, _train_one
+    dev = _pick_device(device)
+    diag = np.flatnonzero(np.isin(cells, DIAGONAL))
+    off = np.flatnonzero(~np.isin(cells, DIAGONAL))
+    rng = np.random.default_rng(seed)
+    folds = np.array_split(rng.permutation(diag), n_folds)
+    scores = np.zeros(len(truth), dtype=np.float64)
+    off_acc = np.zeros(len(off), dtype=np.float64)
+    for k in range(n_folds):
+        te = folds[k]
+        tr = np.concatenate([folds[j] for j in range(n_folds) if j != k])
+        ytr = truth[tr].astype(np.float32)
+        scores[te] = _train_one(X[tr].astype(np.float32), ytr, X[te].astype(np.float32), dev, seed=seed)
+        off_acc += _train_one(X[tr].astype(np.float32), ytr, X[off].astype(np.float32), dev, seed=seed)
+    scores[off] = off_acc / n_folds
+    return scores
+
+
+def _cell_score_summary(scores: np.ndarray, cells: np.ndarray) -> dict:
+    out = {}
+    for c in ("TT", "TA", "FT", "FA"):
+        s = scores[cells == c]
+        if len(s):
+            q = np.percentile(s, [10, 50, 90])
+            out[c] = {"n": int(len(s)), "mean": round(float(s.mean()), 4),
+                      "q10": round(float(q[0]), 4), "q50": round(float(q[1]), 4),
+                      "q90": round(float(q[2]), 4)}
+    return out
+
+
 def _fragmentation_oof(items: list[dict], truth: np.ndarray, tokenizer,
                        n_folds: int, seed: int) -> np.ndarray:
     """Out-of-fold P(true) from tokenization features ALONE — the fragmentation
@@ -110,22 +148,28 @@ def run(substrate, corpus_path: str | Path, detector: str = "saplma",
 
     per_layer = []
     for L in range(n_layers):
-        oof = _oof_scores(H[:, L, :], truth, device, n_folds, seed)
+        Xl = H[:, L, :]
+        oof_all = _oof_scores(Xl, truth, device, n_folds, seed)
+        oof_fielded = _fielded_oof_scores(Xl, truth, cells, device, n_folds, seed)
+        cov = {"fragmentation": frag_oof}
         entry = {
             "layer": L,
-            "stratified": stratified_auroc(oof, truth, typicality, seed=seed),
-            "mediation": mediation(oof, truth, typicality,
-                                   covariates={"fragmentation": frag_oof}),
-            "adversarial": adversarial_split(H[:, L, :], truth, cells, factory, seed=seed),
+            "stratified_allcell": stratified_auroc(oof_all, truth, typicality, seed=seed),
+            "mediation_allcell": mediation(oof_all, truth, typicality, covariates=cov),
+            "stratified_fielded": stratified_auroc(oof_fielded, truth, typicality, seed=seed),
+            "mediation_fielded": mediation(oof_fielded, truth, typicality, covariates=cov),
+            "adversarial": adversarial_split(Xl, truth, cells, factory, seed=seed),
+            "fielded_cell_scores": _cell_score_summary(oof_fielded, cells),
         }
         per_layer.append(entry)
         if commit_fn:
             commit_fn()
-        g = entry["stratified"].get("gap", {})
-        print(f"  [L{L}] strat_gap={g.get('point')} {g.get('ci')} "
-              f"truth_beta {entry['mediation']['truth_beta_marginal']}->"
-              f"{entry['mediation']['truth_beta_partialled']} "
-              f"adv_off={entry['adversarial']['off_diagonal'].get('auroc')}", flush=True)
+        gf = entry["stratified_fielded"].get("gap", {})
+        print(f"  [L{L}] fielded: strat_gap={gf.get('point')} {gf.get('ci')} "
+              f"truth_beta {entry['mediation_fielded']['truth_beta_marginal']}->"
+              f"{entry['mediation_fielded']['truth_beta_partialled']} | "
+              f"adv_off={entry['adversarial']['off_diagonal'].get('auroc')} | "
+              f"allcell_truth_beta_partialled={entry['mediation_allcell']['truth_beta_partialled']}", flush=True)
 
     headline_layer = n_layers // 2
     return {
