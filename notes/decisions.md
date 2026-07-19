@@ -148,3 +148,9 @@ Every resolved §4 open decision gets an entry: date, decision, reasoning, who d
 - Decision: canary gates (edit, fragmentation) pass iff the AUROC bootstrap CI includes 0.50 (not distinguishable from chance), replacing the arbitrary point<=threshold rule. Aligns with 1.5. Symmetric: still fails the uncontrolled fragmentation (CI [0.567,0.681] excludes 0.50).
 - Released corpus = truth-subword-matched (clean on both canaries by CI); the full corpus's uncontrolled fragmentation kept as evidence the control is necessary.
 - Reasoning: point-0.55 tripped on 0.5501 seed-noise though the CI spanned chance; CI-inclusion-of-0.5 is the correct "at chance" criterion. Not result-tuning (1.1) — surfaced and ratified, applied symmetrically.
+
+## D-011 (PROPOSED) — fragmentation is a Stage-3 covariate, not a corpus gate
+- Date: 2026-07-19. Status: proposed, owner nod pending.
+- Trigger: truth-subword matching cleans fragmentation (0.55) but induces a spurious edit-canary signal (0.646); the full corpus is edit-clean (0.55) with a real fragmentation confound (0.625).
+- Proposal: finalize the FULL corpus using the edit-canary (generation artifact, 4.2) + crossing as the hard gates; treat fragmentation (a tokenization confound) as a covariate partialled out in the Stage-3b mediation, exactly as typicality is. Rationale: confounds are controlled analytically, not by distorting the corpus; matching introduced its own artifact.
+- Decided by: agent recommendation; awaiting owner.
