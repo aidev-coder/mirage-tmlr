@@ -1,0 +1,82 @@
+[
+ {
+  "text": "Santarem is a city in Portugal.",
+  "truth": false,
+  "edited": false,
+  "entity": "Santarem",
+  "entities": [
+   "Santarem",
+   "Portugal"
+  ],
+  "domain": "cities",
+  "provenance": {
+   "source": "harvest_mistral",
+   "strategy": "natural_confident_error",
+   "verified_against": "azaria_mitchell_kb"
+  }
+ },
+ {
+  "text": "Oyster Bay is a city in New Zealand.",
+  "truth": false,
+  "edited": false,
+  "entity": "Oyster Bay",
+  "entities": [
+   "Oyster Bay",
+   "New Zealand"
+  ],
+  "domain": "cities",
+  "provenance": {
+   "source": "harvest_mistral",
+   "strategy": "natural_confident_error",
+   "verified_against": "azaria_mitchell_kb"
+  }
+ },
+ {
+  "text": "As Sib is a city in Iraq.",
+  "truth": false,
+  "edited": false,
+  "entity": "As Sib",
+  "entities": [
+   "As Sib",
+   "Iraq"
+  ],
+  "domain": "cities",
+  "provenance": {
+   "source": "harvest_mistral",
+   "strategy": "natural_confident_error",
+   "verified_against": "azaria_mitchell_kb"
+  }
+ },
+ {
+  "text": "Al Mubarraz is a city in Oman.",
+  "truth": false,
+  "edited": false,
+  "entity": "Al Mubarraz",
+  "entities": [
+   "Al Mubarraz",
+   "Oman"
+  ],
+  "domain": "cities",
+  "provenance": {
+   "source": "harvest_mistral",
+   "strategy": "natural_confident_error",
+   "verified_against": "azaria_mitchell_kb"
+  }
+ },
+ {
+  "text": "Altamira is a city in Mexico.",
+  "truth": false,
+  "edited": false,
+  "entity": "Altamira",
+  "entities": [
+   "Altamira",
+   "Mexico"
+  ],
+  "domain": "cities",
+  "provenance": {
+   "source": "harvest_mistral",
+   "strategy": "natural_confident_error",
+   "verified_against": "azaria_mitchell_kb"
+  }
+ }
+]
