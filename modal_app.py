@@ -203,8 +203,9 @@ def main(stage: str = "sanity", model: str = "", max_per_topic: int = 0,
               f"canary={m['canary_model']} @L{m['canary_layer']} | cells={m['raw_counts']}")
         for g in ("crossing", "edit_canary", "fragmentation_canary"):
             r = res[g]
+            ci = f" ci={r.get('ci')}" if r.get("ci") else ""
             print(f"  {g}: pass={r.get('pass')} "
-                  f"{('auroc=' + str(r.get('auroc'))) if 'auroc' in r else ''}")
+                  f"{('auroc=' + str(r.get('auroc'))) if 'auroc' in r else ''}{ci}")
         try:
             path = corpus_build.finalize(
                 res["items"], res["crossing"], res["edit_canary"],

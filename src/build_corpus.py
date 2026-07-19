@@ -128,34 +128,32 @@ def score_and_gate(reference_substrate, canary_substrate, edit_rate: float = 0.5
     ppl = reference_perplexity(texts, reference_substrate)
 
     freq_map = load_entity_freq()
-    kept = _assign_cells(items, ppl, freq_map)
-    raw_counts = {c: sum(1 for it in kept if it["cell"] == c)
+    full = _assign_cells(items, ppl, freq_map)
+    raw_counts = {c: sum(1 for it in full if it["cell"] == c)
                   for c in ("TT", "TA", "FT", "FA")}
-    kept = _match_on_subword(kept, canary_substrate.tokenizer, seed)  # C3
-    kept, matched_counts, per_cell_n = _balance(kept, seed)
-    print(f"[stage2] cells raw={raw_counts} -> subword-matched+balanced "
-          f"{per_cell_n}/cell {matched_counts}", flush=True)
+    matched = _match_on_subword([dict(it) for it in full], canary_substrate.tokenizer, seed)
+    matched, matched_counts, per_cell_n = _balance(matched, seed)
+    print(f"[stage2] cells raw={raw_counts} (n={len(full)}) | "
+          f"subword-matched+balanced {per_cell_n}/cell {matched_counts}", flush=True)
 
-    crossing = corpus_build.verify_crossing(kept)
-
+    crossing = corpus_build.verify_crossing(full)
     L = int(canary_substrate.model.config.num_hidden_layers * CANARY_LAYER_FRAC)
-    print(f"[stage2] canary hidden states at layer {L} "
+    print(f"[stage2] canary hidden states at layer {L} on FULL n={len(full)} "
           f"({canary_substrate.model_id})", flush=True)
     H = canary_substrate.hidden_states_matrix(
-        [it["text"] for it in kept], batch_size=32)[:, L, :].astype(np.float32)
-    edit_c = corpus_build.edit_canary(H, np.array([it["edited"] for it in kept]))
+        [it["text"] for it in full], batch_size=32)[:, L, :].astype(np.float32)
+    edit_c = corpus_build.edit_canary(H, np.array([it["edited"] for it in full]))
     feats = corpus_build.fragmentation_features(
-        [it["text"] for it in kept], [it["entity"] for it in kept],
+        [it["text"] for it in full], [it["entity"] for it in full],
         canary_substrate.tokenizer)
-    frag_c = corpus_build.fragmentation_canary(
-        feats, np.array([it["truth"] for it in kept]))
+    frag_c = corpus_build.fragmentation_canary(feats, np.array([it["truth"] for it in full]))
 
     return {
-        "items": kept,
+        "items": full,
         "meta": {"reference_model": reference_substrate.model_id,
                  "canary_model": canary_substrate.model_id, "canary_layer": L,
-                 "per_cell_n": per_cell_n, "raw_counts": raw_counts,
-                 "matched_counts": matched_counts,
+                 "n_full": len(full), "per_cell_n": per_cell_n,
+                 "raw_counts": raw_counts, "matched_counts": matched_counts,
                  "edit_rate": edit_rate, "seed": seed},
         "crossing": crossing, "edit_canary": edit_c, "fragmentation_canary": frag_c,
     }
