@@ -206,6 +206,9 @@ def main(stage: str = "sanity", model: str = "", max_per_topic: int = 0,
             ci = f" ci={r.get('ci')}" if r.get("ci") else ""
             print(f"  {g}: pass={r.get('pass')} "
                   f"{('auroc=' + str(r.get('auroc'))) if 'auroc' in r else ''}{ci}")
+        fcc = res.get("fragmentation_canary_controlled", {})
+        print(f"  fragmentation_controlled: pass={fcc.get('pass')} "
+              f"auroc={fcc.get('auroc')} ci={fcc.get('ci')} n={fcc.get('n')}")
         try:
             path = corpus_build.finalize(
                 res["items"], res["crossing"], res["edit_canary"],

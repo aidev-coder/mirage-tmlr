@@ -118,6 +118,26 @@ def _match_on_subword(items: list[dict], tokenizer, seed: int) -> list[dict]:
     return out
 
 
+def _match_truth_subword(items: list[dict], tokenizer, seed: int) -> list[dict]:
+    from collections import defaultdict
+    for it in items:
+        eids = tokenizer(it["entity"])["input_ids"] if it["entity"] else []
+        it["_sw"] = min(len(eids), 6)
+    by = defaultdict(lambda: {True: [], False: []})
+    for it in items:
+        by[it["_sw"]][it["truth"]].append(it)
+    rng = np.random.default_rng(seed)
+    out = []
+    for d in by.values():
+        m = min(len(d[True]), len(d[False]))
+        for grp in (True, False):
+            for i in rng.choice(len(d[grp]), m, replace=False):
+                out.append(d[grp][int(i)])
+    for it in out:
+        it.pop("_sw", None)
+    return out
+
+
 def score_and_gate(reference_substrate, canary_substrate, edit_rate: float = 0.5,
                    seed: int = 20260712) -> dict:
     """GPU stage. Returns scored items + all three gate reports (no write)."""
@@ -148,8 +168,18 @@ def score_and_gate(reference_substrate, canary_substrate, edit_rate: float = 0.5
         canary_substrate.tokenizer)
     frag_c = corpus_build.fragmentation_canary(feats, np.array([it["truth"] for it in full]))
 
+    tm = _match_truth_subword([dict(it) for it in full], canary_substrate.tokenizer, seed)
+    tf = corpus_build.fragmentation_features(
+        [it["text"] for it in tm], [it["entity"] for it in tm], canary_substrate.tokenizer)
+    frag_c_controlled = corpus_build.fragmentation_canary(
+        tf, np.array([it["truth"] for it in tm]))
+    frag_c_controlled["n"] = len(tm)
+    print(f"[stage2] fragmentation controlled (truth-subword-matched n={len(tm)}): "
+          f"auroc={frag_c_controlled.get('auroc')} ci={frag_c_controlled.get('ci')}", flush=True)
+
     return {
         "items": full,
+        "fragmentation_canary_controlled": frag_c_controlled,
         "meta": {"reference_model": reference_substrate.model_id,
                  "canary_model": canary_substrate.model_id, "canary_layer": L,
                  "n_full": len(full), "per_cell_n": per_cell_n,
