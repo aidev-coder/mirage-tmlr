@@ -143,6 +143,43 @@ class Substrate:
                       f"({min((bi + 1) * batch_size, n)}/{n} texts)", flush=True)
         return np.concatenate(rows, axis=0)
 
+    def eigenscore_matrix(self, texts: list[str], batch_size: int = 16,
+                          alpha: float = 1e-3, progress_every: int = 25) -> np.ndarray:
+        """Per-item EigenScore at every layer: [n, n_layers+1] (INSIDE self variant).
+
+        For each statement, score = mean log-eigenvalue of the covariance of its
+        own real-token hidden states at that layer. Higher = more dispersed token
+        cloud = the hallucination signal (Chen et al. 2024). No sampling: the
+        statement's token spread is the consistency proxy, so this is cheap and
+        applies to a fixed corpus item directly.
+        """
+        import torch
+
+        from .probes.eigenscore import eigenscore
+        tok = self.tokenizer
+        if tok.pad_token is None:
+            tok.pad_token = tok.eos_token
+        tok.padding_side = "right"
+
+        rows, n = [], len(texts)
+        n_batches = (n + batch_size - 1) // batch_size
+        for bi in range(n_batches):
+            batch = texts[bi * batch_size:(bi + 1) * batch_size]
+            enc = tok(batch, return_tensors="pt", padding=True, truncation=True,
+                      max_length=128).to(self.model.device)
+            with torch.no_grad():
+                hs = self.model(**enc).hidden_states  # tuple(L+1) of [b, seq, d]
+            lens = enc["attention_mask"].sum(dim=1).tolist()
+            stacked = torch.stack(hs, dim=1).float().cpu().numpy()  # [b, L+1, seq, d]
+            for r, L_real in enumerate(lens):
+                m = max(int(L_real), 2)
+                rows.append([eigenscore(stacked[r, layer, :m, :], alpha=alpha)
+                             for layer in range(stacked.shape[1])])
+            if progress_every and (bi % progress_every == 0 or bi == n_batches - 1):
+                print(f"    [eigenscore] batch {bi + 1}/{n_batches} "
+                      f"({min((bi + 1) * batch_size, n)}/{n} texts)", flush=True)
+        return np.asarray(rows, dtype=np.float64)
+
     def nll(self, text: str) -> float:
         """Mean per-token negative log-likelihood of `text` under this model."""
         import torch

@@ -151,8 +151,13 @@ def stage3_run(model_id: str, corpus_name: str, detector: str = "saplma") -> dic
     from src.substrate import Substrate
 
     sub = Substrate(model_id, cache_dir="/root/activations")
-    out = run(sub, f"/root/mirage/data/corpus/{corpus_name}", detector=detector,
-              device="cuda", commit_fn=activations.commit)
+    corpus_path = f"/root/mirage/data/corpus/{corpus_name}"
+    if detector == "eigenscore":
+        from src.stage3_eigen import run as run_eigen
+        out = run_eigen(sub, corpus_path, commit_fn=activations.commit)
+    else:
+        out = run(sub, corpus_path, detector=detector, device="cuda",
+                  commit_fn=activations.commit)
     activations.commit()
     hf_cache.commit()
     return out
@@ -173,7 +178,8 @@ def harvest_fn(model_id: str, topic: str, max_subjects: int = 400) -> dict:
 
 @app.local_entrypoint()
 def main(stage: str = "sanity", model: str = "", max_per_topic: int = 0,
-         batch_size: int = 32, fast: bool = True, corpus: str = "", seed: int = 0):
+         batch_size: int = 32, fast: bool = True, corpus: str = "", seed: int = 0,
+         detector: str = "saplma"):
     """
     modal run mirage/modal_app.py --stage sanity                     # Stage 0, all models
     modal run mirage/modal_app.py --stage stage1 --model <id>        # Stage 1, one model
@@ -254,7 +260,8 @@ def main(stage: str = "sanity", model: str = "", max_per_topic: int = 0,
             if not cands:
                 raise SystemExit("no finalized corpus in data/corpus/ — run --stage stage2 first")
             corpus_name = cands[-1].name
-        res = stage3_run.remote(model_id=canary_model, corpus_name=corpus_name)
+        res = stage3_run.remote(model_id=canary_model, corpus_name=corpus_name,
+                                detector=detector)
         hl = res["headline_layer"]
         e = res["per_layer"][hl]
         print(f"stage3[{res['detector']}] {res['model']} on {corpus_name} n={res['n']} "

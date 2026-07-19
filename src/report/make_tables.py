@@ -51,7 +51,8 @@ def _row(art: dict) -> dict:
         "gap": _gap(adv["gap"]),
         "ft_mean": f"{e['fielded_cell_scores'].get('FT', {}).get('mean', float('nan')):.3f}",
         "strat_gap": _gap(e["stratified_fielded"].get("gap")),
-        "recover": f"{e['mediation_allcell']['truth_beta_partialled']:.3f}",
+        "recover": ("n/a" if e["mediation_allcell"].get("truth_beta_partialled") is None
+                    else f"{e['mediation_allcell']['truth_beta_partialled']:.3f}"),
         "artifact": None,
     }
 
