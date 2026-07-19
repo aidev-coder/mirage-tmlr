@@ -142,6 +142,23 @@ def stage2_build(reference_model: str, canary_model: str,
 
 
 @app.function(image=image, gpu=GPU, volumes=VOLUMES, secrets=SECRETS,
+              timeout=4 * 3600)
+def stage3_run(model_id: str, corpus_name: str, detector: str = "saplma") -> dict:
+    """Stage 3: the three decorrelation tests on the finalized corpus (§3 Stage 3).
+    Hidden states cached to the activations volume; full per-layer curves."""
+    _setup()
+    from src.stage3 import run
+    from src.substrate import Substrate
+
+    sub = Substrate(model_id, cache_dir="/root/activations")
+    out = run(sub, f"/root/mirage/data/corpus/{corpus_name}", detector=detector,
+              device="cuda", commit_fn=activations.commit)
+    activations.commit()
+    hf_cache.commit()
+    return out
+
+
+@app.function(image=image, gpu=GPU, volumes=VOLUMES, secrets=SECRETS,
               timeout=2 * 3600)
 def harvest_fn(model_id: str, topic: str, max_subjects: int = 400) -> dict:
     """O-2/D-008 natural-error harvest from a disjoint model (Mistral)."""
@@ -156,7 +173,7 @@ def harvest_fn(model_id: str, topic: str, max_subjects: int = 400) -> dict:
 
 @app.local_entrypoint()
 def main(stage: str = "sanity", model: str = "", max_per_topic: int = 0,
-         batch_size: int = 32, fast: bool = True):
+         batch_size: int = 32, fast: bool = True, corpus: str = ""):
     """
     modal run mirage/modal_app.py --stage sanity                     # Stage 0, all models
     modal run mirage/modal_app.py --stage stage1 --model <id>        # Stage 1, one model
@@ -223,6 +240,36 @@ def main(stage: str = "sanity", model: str = "", max_per_topic: int = 0,
             print(f"  CORPUS FINALIZED -> {path}  (D-011: full edit-clean corpus; Stage 3 next)")
         except RuntimeError as e:
             print(f"  NOT finalized: {e}")
+
+    elif stage == "stage3":
+        from datetime import date
+
+        canary_model = model or "meta-llama/Llama-3.1-8B"
+        corpus_name = corpus
+        if not corpus_name:
+            cdir = _HERE / "data" / "corpus"
+            cands = sorted(cdir.glob("mirage_2x2_v*.jsonl"),
+                           key=lambda p: p.stat().st_mtime)
+            if not cands:
+                raise SystemExit("no finalized corpus in data/corpus/ — run --stage stage2 first")
+            corpus_name = cands[-1].name
+        res = stage3_run.remote(model_id=canary_model, corpus_name=corpus_name)
+        hl = res["headline_layer"]
+        e = res["per_layer"][hl]
+        print(f"stage3[{res['detector']}] {res['model']} on {corpus_name} n={res['n']} "
+              f"{res['cell_counts']}")
+        print(f"  headline layer L{hl}:")
+        print(f"    3a stratified gap = {e['stratified'].get('gap')}")
+        print(f"    3b truth_beta {e['mediation']['truth_beta_marginal']} -> "
+              f"{e['mediation']['truth_beta_partialled']} "
+              f"(shrink {e['mediation']['truth_beta_shrinkage']}); "
+              f"frag_beta {e['mediation'].get('fragmentation_beta')}")
+        print(f"    3c off-diagonal AUROC = {e['adversarial']['off_diagonal'].get('auroc')} "
+              f"{e['adversarial']['off_diagonal'].get('ci')}; gap {e['adversarial']['gap']}")
+        short = res["model"].split("/")[-1].lower()
+        out = _HERE / "results" / f"stage3_{res['detector']}_{short}_{date.today():%Y%m%d}.json"
+        out.write_text(json.dumps(res, indent=2, default=_json_default))
+        print(f"  -> {out}")
 
     elif stage == "harvest":
         import json as _j

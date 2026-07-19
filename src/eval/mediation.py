@@ -21,15 +21,22 @@ def _std(x: np.ndarray) -> np.ndarray:
     return (x - x.mean()) / (sd if sd > 0 else 1.0)
 
 
-def mediation(scores: np.ndarray, truth: np.ndarray, typicality: np.ndarray) -> dict:
-    """Standardized coefficients for score ~ truth (+ typicality), with the
-    truth-coefficient shrinkage ratio as the headline diagnostic."""
+def mediation(scores: np.ndarray, truth: np.ndarray, typicality: np.ndarray,
+              covariates: dict[str, np.ndarray] | None = None) -> dict:
+    """Standardized coefficients for score ~ truth (+ typicality + covariates),
+    with the truth-coefficient shrinkage ratio as the headline diagnostic.
+
+    D-011: fragmentation is partialled out as a covariate alongside typicality,
+    exactly as typicality is — confounds are controlled analytically, never by
+    distorting the corpus. Pass it (and any further confound) via `covariates`."""
     import statsmodels.api as sm
 
     s, y, t = _std(scores), _std(truth), _std(typicality)
+    cov_names = list(covariates or {})
+    cov_cols = [_std(covariates[k]) for k in cov_names]
 
     marginal = sm.OLS(s, sm.add_constant(np.column_stack([y]))).fit()
-    joint = sm.OLS(s, sm.add_constant(np.column_stack([y, t]))).fit()
+    joint = sm.OLS(s, sm.add_constant(np.column_stack([y, t, *cov_cols]))).fit()
 
     b_truth_marginal = float(marginal.params[1])
     b_truth_joint = float(joint.params[1])
@@ -40,7 +47,7 @@ def mediation(scores: np.ndarray, truth: np.ndarray, typicality: np.ndarray) -> 
         return [round(float(lo), 4), round(float(hi), 4)]
 
     shrink = (1.0 - b_truth_joint / b_truth_marginal) if abs(b_truth_marginal) > 1e-9 else None
-    return {
+    out = {
         "n": int(len(s)),
         "truth_beta_marginal": round(b_truth_marginal, 4),
         "truth_beta_marginal_ci": ci(marginal, 1),
@@ -51,5 +58,11 @@ def mediation(scores: np.ndarray, truth: np.ndarray, typicality: np.ndarray) -> 
         "truth_beta_shrinkage": None if shrink is None else round(float(shrink), 4),
         "r2_truth_only": round(float(marginal.rsquared), 4),
         "r2_joint": round(float(joint.rsquared), 4),
+        "covariates": cov_names,
         "assumption": "additive-linear; triangulate with stage 3a",
     }
+    for j, name in enumerate(cov_names):
+        i = 3 + j
+        out[f"{name}_beta"] = round(float(joint.params[i]), 4)
+        out[f"{name}_beta_ci"] = ci(joint, i)
+    return out
