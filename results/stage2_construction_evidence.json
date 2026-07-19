@@ -94,5 +94,15 @@
   },
   "conclusion": "Across three synthetic builds and a natural-error harvest, the FT cell cannot be populated cleanly and at scale: swaps contaminate hidden states with an edit signature; harvesting yields too few, obscure-skewed errors. This is the MIRAGE thesis in its strongest form -- the one off-diagonal cell that would expose the truth-vs-typicality confound is the cell that is intrinsically hard to construct, which is precisely why internal-state probes are only ever validated on the diagonal.",
   "stage3_status": "retired under D-009 (no clean corpus exists to run the AUROC-gap tests on)",
-  "conclusion_status": "UNDER REVISION: edit-signature premise retracted (small-n artifact). Buildability re-opened pending a scaled fragmentation-controlled canary."
+  "conclusion_status": "REVISED: corpus BUILDABLE. At proper n=2164, edit-canary 0.550 CI[0.490,0.602] includes 0.50 (edit signature = noise); fragmentation controllable via truth-subword matching to 0.577 CI[0.503,0.649], below the 0.60 gate. D-009 (unconstructable) REFUTED. Faint fragmentation residual (CI just excludes chance) to be tightened before Stage 3.",
+  "controlled_fragmentation": {
+    "auroc": 0.5774,
+    "ci": [
+      0.5034,
+      0.649
+    ],
+    "n": 1348,
+    "control": "truth-subword-matched",
+    "pass": true
+  }
 }
