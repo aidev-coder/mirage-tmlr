@@ -162,3 +162,10 @@ Every resolved §4 open decision gets an entry: date, decision, reasoning, who d
 - Decision: extend D-011 to the edit axis. Partial out an out-of-fold edit-probe score (P(edited) from hidden states at the mid layer) as a Stage-3 mediation covariate alongside typicality + fragmentation. The off-diagonal collapse is trustworthy only if it survives removing the edit-predictable component. Report the multi-seed canary spread honestly (§1.6).
 - Not chosen (kept open): regenerating a signature-free corpus (B) or larger-n resolution (C) — A subsumes the immediate need without regeneration and directly tests the confound; revisit B if the covariate materially moves truth_beta.
 - Applies to: SAPLMA Stage-3 (hidden-state probe). EigenScore keeps typicality+fragmentation (its own signal is hidden-state-derived; edit-covariate extension deferred unless needed).
+
+## D-013 — scope the strong claim to trained probes (owner ratified)
+- Date: 2026-07-21. Owner: "Scope to trained probes".
+- Trigger: EigenScore self-variant is a weak truth detector on this corpus (diagonal AUROC 0.54-0.62, flat per-cell), so it cannot test the confound and the SAPLMA collapse does not replicate on it (measured, 2026-07-21).
+- Decision: the paper's strong claim is scoped to SAPLMA-style trained linear/MLP internal-state probes (the dominant white-box family). The EigenScore self-variant is reported honestly as an inconclusive secondary (too weak to adjudicate), with the §6 caveat that it is not the strongest INSIDE operationalization. Faithful sampling-based EigenScore and semantic-entropy are left as future work, not blockers.
+- Reasoning: §6 (audit the strongest real version) is satisfied for trained probes and honestly flagged as unmet for eigenscore; overclaiming generalization from a weak variant would repeat the the prior project overreach. The trained-probe result is clean, cross-model consistent, and robust to typicality+fragmentation+edit controls.
+- Decided by: owner ("Scope to trained probes"); agent recommended A.
