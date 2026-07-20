@@ -14,7 +14,8 @@
   "typicality_axis": "entity_freq_log10",
   "mediation_covariates": [
     "typicality",
-    "fragmentation"
+    "fragmentation",
+    "edit"
   ],
   "headline_layer": 14,
   "per_layer": [
@@ -114,27 +115,33 @@
           0.0514,
           0.1354
         ],
-        "truth_beta_partialled": 0.0464,
+        "truth_beta_partialled": 0.0439,
         "truth_beta_partialled_ci": [
-          0.0041,
-          0.0888
+          0.001,
+          0.0868
         ],
-        "typicality_beta": 0.0044,
+        "typicality_beta": 0.0011,
         "typicality_beta_ci": [
-          -0.0384,
-          0.0472
+          -0.0427,
+          0.0448
         ],
-        "truth_beta_shrinkage": 0.5027,
+        "truth_beta_shrinkage": 0.5296,
         "r2_truth_only": 0.0087,
-        "r2_joint": 0.0702,
+        "r2_joint": 0.0704,
         "covariates": [
-          "fragmentation"
+          "fragmentation",
+          "edit"
         ],
         "assumption": "additive-linear; triangulate with stage 3a",
-        "fragmentation_beta": 0.2513,
+        "fragmentation_beta": 0.252,
         "fragmentation_beta_ci": [
-          0.2082,
-          0.2944
+          0.2088,
+          0.2951
+        ],
+        "edit_beta": -0.0151,
+        "edit_beta_ci": [
+          -0.057,
+          0.0269
         ]
       },
       "stratified_fielded": {
@@ -231,27 +238,33 @@
           -0.0445,
           0.0398
         ],
-        "truth_beta_partialled": 0.0231,
+        "truth_beta_partialled": 0.022,
         "truth_beta_partialled_ci": [
-          -0.0205,
-          0.0667
+          -0.0222,
+          0.0662
         ],
-        "typicality_beta": 0.0164,
+        "typicality_beta": 0.015,
         "typicality_beta_ci": [
-          -0.0277,
-          0.0605
+          -0.0301,
+          0.0601
         ],
-        "truth_beta_shrinkage": 10.8091,
+        "truth_beta_shrinkage": 10.3409,
         "r2_truth_only": 0.0,
         "r2_joint": 0.0134,
         "covariates": [
-          "fragmentation"
+          "fragmentation",
+          "edit"
         ],
         "assumption": "additive-linear; triangulate with stage 3a",
-        "fragmentation_beta": -0.1213,
+        "fragmentation_beta": -0.121,
         "fragmentation_beta_ci": [
-          -0.1657,
-          -0.0769
+          -0.1655,
+          -0.0766
+        ],
+        "edit_beta": -0.0066,
+        "edit_beta_ci": [
+          -0.0498,
+          0.0366
         ]
       },
       "adversarial": {
@@ -421,27 +434,33 @@
           0.4082,
           0.4837
         ],
-        "truth_beta_partialled": 0.3567,
+        "truth_beta_partialled": 0.3582,
         "truth_beta_partialled_ci": [
-          0.3211,
-          0.3923
+          0.3221,
+          0.3943
         ],
-        "typicality_beta": -0.0895,
+        "typicality_beta": -0.0876,
         "typicality_beta_ci": [
-          -0.1255,
-          -0.0535
+          -0.1244,
+          -0.0507
         ],
-        "truth_beta_shrinkage": 0.2002,
+        "truth_beta_shrinkage": 0.1969,
         "r2_truth_only": 0.1989,
         "r2_joint": 0.3423,
         "covariates": [
-          "fragmentation"
+          "fragmentation",
+          "edit"
         ],
         "assumption": "additive-linear; triangulate with stage 3a",
-        "fragmentation_beta": 0.4004,
+        "fragmentation_beta": 0.4,
         "fragmentation_beta_ci": [
-          0.3642,
-          0.4367
+          0.3638,
+          0.4363
+        ],
+        "edit_beta": 0.009,
+        "edit_beta_ci": [
+          -0.0263,
+          0.0443
         ]
       },
       "stratified_fielded": {
@@ -538,27 +557,33 @@
           -0.1625,
           -0.0787
         ],
-        "truth_beta_partialled": -0.0039,
+        "truth_beta_partialled": -0.0471,
         "truth_beta_partialled_ci": [
-          -0.0434,
-          0.0355
+          -0.0854,
+          -0.0087
         ],
-        "typicality_beta": 0.3996,
+        "typicality_beta": 0.3428,
         "typicality_beta_ci": [
-          0.3597,
-          0.4394
+          0.3036,
+          0.3819
         ],
-        "truth_beta_shrinkage": 0.9675,
+        "truth_beta_shrinkage": 0.6098,
         "r2_truth_only": 0.0145,
-        "r2_joint": 0.1933,
+        "r2_joint": 0.256,
         "covariates": [
-          "fragmentation"
+          "fragmentation",
+          "edit"
         ],
         "assumption": "additive-linear; triangulate with stage 3a",
-        "fragmentation_beta": -0.299,
+        "fragmentation_beta": -0.2878,
         "fragmentation_beta_ci": [
-          -0.3391,
-          -0.2589
+          -0.3264,
+          -0.2492
+        ],
+        "edit_beta": -0.2583,
+        "edit_beta_ci": [
+          -0.2959,
+          -0.2208
         ]
       },
       "adversarial": {
@@ -728,27 +753,33 @@
           0.4019,
           0.4777
         ],
-        "truth_beta_partialled": 0.3612,
+        "truth_beta_partialled": 0.3575,
         "truth_beta_partialled_ci": [
-          0.3253,
-          0.3972
+          0.3211,
+          0.394
         ],
-        "typicality_beta": -0.0393,
+        "typicality_beta": -0.0441,
         "typicality_beta_ci": [
-          -0.0756,
-          -0.0029
+          -0.0813,
+          -0.0069
         ],
-        "truth_beta_shrinkage": 0.1786,
+        "truth_beta_shrinkage": 0.187,
         "r2_truth_only": 0.1934,
-        "r2_joint": 0.3288,
+        "r2_joint": 0.3292,
         "covariates": [
-          "fragmentation"
+          "fragmentation",
+          "edit"
         ],
         "assumption": "additive-linear; triangulate with stage 3a",
-        "fragmentation_beta": 0.3836,
+        "fragmentation_beta": 0.3846,
         "fragmentation_beta_ci": [
-          0.347,
-          0.4202
+          0.3479,
+          0.4212
+        ],
+        "edit_beta": -0.0221,
+        "edit_beta_ci": [
+          -0.0577,
+          0.0136
         ]
       },
       "stratified_fielded": {
@@ -845,27 +876,33 @@
           -0.1474,
           -0.0635
         ],
-        "truth_beta_partialled": 0.0103,
+        "truth_beta_partialled": -0.0336,
         "truth_beta_partialled_ci": [
-          -0.0292,
-          0.0497
+          -0.072,
+          0.0048
         ],
-        "typicality_beta": 0.4097,
+        "typicality_beta": 0.3519,
         "typicality_beta_ci": [
-          0.3698,
-          0.4496
+          0.3128,
+          0.3911
         ],
-        "truth_beta_shrinkage": 1.0972,
+        "truth_beta_shrinkage": 0.6814,
         "r2_truth_only": 0.0111,
-        "r2_joint": 0.1918,
+        "r2_joint": 0.2566,
         "covariates": [
-          "fragmentation"
+          "fragmentation",
+          "edit"
         ],
         "assumption": "additive-linear; triangulate with stage 3a",
-        "fragmentation_beta": -0.286,
+        "fragmentation_beta": -0.2746,
         "fragmentation_beta_ci": [
-          -0.3262,
-          -0.2459
+          -0.3132,
+          -0.2361
+        ],
+        "edit_beta": -0.2627,
+        "edit_beta_ci": [
+          -0.3002,
+          -0.2252
         ]
       },
       "adversarial": {
@@ -1035,27 +1072,33 @@
           0.4817,
           0.5538
         ],
-        "truth_beta_partialled": 0.4587,
+        "truth_beta_partialled": 0.4553,
         "truth_beta_partialled_ci": [
-          0.423,
-          0.4945
+          0.419,
+          0.4915
         ],
-        "typicality_beta": -0.0455,
+        "typicality_beta": -0.0501,
         "typicality_beta_ci": [
-          -0.0816,
-          -0.0093
+          -0.087,
+          -0.0131
         ],
-        "truth_beta_shrinkage": 0.114,
+        "truth_beta_shrinkage": 0.1207,
         "r2_truth_only": 0.2681,
-        "r2_joint": 0.3366,
+        "r2_joint": 0.337,
         "covariates": [
-          "fragmentation"
+          "fragmentation",
+          "edit"
         ],
         "assumption": "additive-linear; triangulate with stage 3a",
-        "fragmentation_beta": 0.2754,
+        "fragmentation_beta": 0.2763,
         "fragmentation_beta_ci": [
-          0.239,
-          0.3118
+          0.2399,
+          0.3127
+        ],
+        "edit_beta": -0.0208,
+        "edit_beta_ci": [
+          -0.0562,
+          0.0147
         ]
       },
       "stratified_fielded": {
@@ -1152,27 +1195,33 @@
           -0.1389,
           -0.055
         ],
-        "truth_beta_partialled": 0.018,
+        "truth_beta_partialled": -0.0295,
         "truth_beta_partialled_ci": [
-          -0.0216,
-          0.0576
+          -0.0678,
+          0.0088
         ],
-        "typicality_beta": 0.3993,
+        "typicality_beta": 0.3367,
         "typicality_beta_ci": [
-          0.3592,
-          0.4394
+          0.2977,
+          0.3758
         ],
-        "truth_beta_shrinkage": 1.1858,
+        "truth_beta_shrinkage": 0.6957,
         "r2_truth_only": 0.0094,
-        "r2_joint": 0.1848,
+        "r2_joint": 0.2609,
         "covariates": [
-          "fragmentation"
+          "fragmentation",
+          "edit"
         ],
         "assumption": "additive-linear; triangulate with stage 3a",
-        "fragmentation_beta": -0.2901,
+        "fragmentation_beta": -0.2778,
         "fragmentation_beta_ci": [
-          -0.3305,
-          -0.2498
+          -0.3162,
+          -0.2393
+        ],
+        "edit_beta": -0.2845,
+        "edit_beta_ci": [
+          -0.3219,
+          -0.2471
         ]
       },
       "adversarial": {
@@ -1342,27 +1391,33 @@
           0.4956,
           0.567
         ],
-        "truth_beta_partialled": 0.4748,
+        "truth_beta_partialled": 0.4799,
         "truth_beta_partialled_ci": [
-          0.4391,
-          0.5106
+          0.4436,
+          0.5161
         ],
-        "typicality_beta": -0.0673,
+        "typicality_beta": -0.0607,
         "typicality_beta_ci": [
-          -0.1035,
-          -0.0311
+          -0.0977,
+          -0.0237
         ],
-        "truth_beta_shrinkage": 0.1063,
+        "truth_beta_shrinkage": 0.0968,
         "r2_truth_only": 0.2823,
-        "r2_joint": 0.3357,
+        "r2_joint": 0.3366,
         "covariates": [
-          "fragmentation"
+          "fragmentation",
+          "edit"
         ],
         "assumption": "additive-linear; triangulate with stage 3a",
-        "fragmentation_beta": 0.2448,
+        "fragmentation_beta": 0.2435,
         "fragmentation_beta_ci": [
-          0.2083,
-          0.2812
+          0.207,
+          0.2799
+        ],
+        "edit_beta": 0.0301,
+        "edit_beta_ci": [
+          -0.0054,
+          0.0656
         ]
       },
       "stratified_fielded": {
@@ -1459,27 +1514,33 @@
           -0.1226,
           -0.0385
         ],
-        "truth_beta_partialled": 0.0345,
+        "truth_beta_partialled": -0.0131,
         "truth_beta_partialled_ci": [
-          -0.0053,
-          0.0743
+          -0.0515,
+          0.0253
         ],
-        "typicality_beta": 0.3893,
+        "typicality_beta": 0.3265,
         "typicality_beta_ci": [
-          0.3491,
-          0.4295
+          0.2874,
+          0.3657
         ],
-        "truth_beta_shrinkage": 1.4288,
+        "truth_beta_shrinkage": 0.8372,
         "r2_truth_only": 0.0065,
-        "r2_joint": 0.1788,
+        "r2_joint": 0.2553,
         "covariates": [
-          "fragmentation"
+          "fragmentation",
+          "edit"
         ],
         "assumption": "additive-linear; triangulate with stage 3a",
-        "fragmentation_beta": -0.2986,
+        "fragmentation_beta": -0.2862,
         "fragmentation_beta_ci": [
-          -0.3391,
-          -0.2581
+          -0.3248,
+          -0.2476
+        ],
+        "edit_beta": -0.2853,
+        "edit_beta_ci": [
+          -0.3228,
+          -0.2477
         ]
       },
       "adversarial": {
@@ -1649,27 +1710,33 @@
           0.5211,
           0.5912
         ],
-        "truth_beta_partialled": 0.5,
+        "truth_beta_partialled": 0.5089,
         "truth_beta_partialled_ci": [
-          0.4647,
-          0.5353
+          0.4732,
+          0.5446
         ],
-        "typicality_beta": -0.0979,
+        "typicality_beta": -0.0862,
         "typicality_beta_ci": [
-          -0.1336,
-          -0.0622
+          -0.1226,
+          -0.0498
         ],
-        "truth_beta_shrinkage": 0.1011,
+        "truth_beta_shrinkage": 0.0851,
         "r2_truth_only": 0.3094,
-        "r2_joint": 0.3536,
+        "r2_joint": 0.3563,
         "covariates": [
-          "fragmentation"
+          "fragmentation",
+          "edit"
         ],
         "assumption": "additive-linear; triangulate with stage 3a",
-        "fragmentation_beta": 0.2191,
+        "fragmentation_beta": 0.2168,
         "fragmentation_beta_ci": [
-          0.1832,
-          0.255
+          0.1809,
+          0.2527
+        ],
+        "edit_beta": 0.0533,
+        "edit_beta_ci": [
+          0.0184,
+          0.0883
         ]
       },
       "stratified_fielded": {
@@ -1766,27 +1833,33 @@
           -0.0972,
           -0.013
         ],
-        "truth_beta_partialled": 0.0456,
+        "truth_beta_partialled": -0.0106,
         "truth_beta_partialled_ci": [
-          0.0048,
-          0.0864
+          -0.0493,
+          0.0282
         ],
-        "typicality_beta": 0.345,
+        "typicality_beta": 0.2711,
         "typicality_beta_ci": [
-          0.3037,
-          0.3862
+          0.2316,
+          0.3106
         ],
-        "truth_beta_shrinkage": 1.8271,
+        "truth_beta_shrinkage": 0.8082,
         "r2_truth_only": 0.003,
-        "r2_joint": 0.1361,
+        "r2_joint": 0.2423,
         "covariates": [
-          "fragmentation"
+          "fragmentation",
+          "edit"
         ],
         "assumption": "additive-linear; triangulate with stage 3a",
-        "fragmentation_beta": -0.2577,
+        "fragmentation_beta": -0.2431,
         "fragmentation_beta_ci": [
-          -0.2992,
-          -0.2161
+          -0.282,
+          -0.2042
+        ],
+        "edit_beta": -0.3361,
+        "edit_beta_ci": [
+          -0.374,
+          -0.2982
         ]
       },
       "adversarial": {
@@ -1956,27 +2029,33 @@
           0.5347,
           0.6041
         ],
-        "truth_beta_partialled": 0.5042,
+        "truth_beta_partialled": 0.5173,
         "truth_beta_partialled_ci": [
-          0.4702,
-          0.5382
+          0.483,
+          0.5516
         ],
-        "typicality_beta": -0.0675,
+        "typicality_beta": -0.0503,
         "typicality_beta_ci": [
-          -0.1019,
-          -0.0331
+          -0.0853,
+          -0.0152
         ],
-        "truth_beta_shrinkage": 0.1145,
+        "truth_beta_shrinkage": 0.0915,
         "r2_truth_only": 0.3242,
-        "r2_joint": 0.3997,
+        "r2_joint": 0.4055,
         "covariates": [
-          "fragmentation"
+          "fragmentation",
+          "edit"
         ],
         "assumption": "additive-linear; triangulate with stage 3a",
-        "fragmentation_beta": 0.2907,
+        "fragmentation_beta": 0.2873,
         "fragmentation_beta_ci": [
-          0.256,
-          0.3253
+          0.2528,
+          0.3218
+        ],
+        "edit_beta": 0.0784,
+        "edit_beta_ci": [
+          0.0448,
+          0.112
         ]
       },
       "stratified_fielded": {
@@ -2073,27 +2152,33 @@
           -0.0856,
           -0.0013
         ],
-        "truth_beta_partialled": 0.0558,
+        "truth_beta_partialled": -0.0025,
         "truth_beta_partialled_ci": [
-          0.0148,
-          0.0967
+          -0.0412,
+          0.0361
         ],
-        "typicality_beta": 0.3368,
+        "typicality_beta": 0.2601,
         "typicality_beta_ci": [
-          0.2954,
-          0.3782
+          0.2206,
+          0.2995
         ],
-        "truth_beta_shrinkage": 2.2831,
+        "truth_beta_shrinkage": 0.9417,
         "r2_truth_only": 0.0019,
-        "r2_joint": 0.1303,
+        "r2_joint": 0.2449,
         "covariates": [
-          "fragmentation"
+          "fragmentation",
+          "edit"
         ],
         "assumption": "additive-linear; triangulate with stage 3a",
-        "fragmentation_beta": -0.2566,
+        "fragmentation_beta": -0.2415,
         "fragmentation_beta_ci": [
-          -0.2983,
-          -0.215
+          -0.2804,
+          -0.2026
+        ],
+        "edit_beta": -0.3491,
+        "edit_beta_ci": [
+          -0.387,
+          -0.3113
         ]
       },
       "adversarial": {
@@ -2263,27 +2348,33 @@
           0.6306,
           0.6938
         ],
-        "truth_beta_partialled": 0.6214,
+        "truth_beta_partialled": 0.6331,
         "truth_beta_partialled_ci": [
-          0.5892,
-          0.6537
+          0.6005,
+          0.6656
         ],
-        "typicality_beta": -0.0806,
+        "typicality_beta": -0.0653,
         "typicality_beta_ci": [
-          -0.1132,
-          -0.048
+          -0.0985,
+          -0.0321
         ],
-        "truth_beta_shrinkage": 0.0616,
+        "truth_beta_shrinkage": 0.044,
         "r2_truth_only": 0.4385,
-        "r2_joint": 0.4604,
+        "r2_joint": 0.465,
         "covariates": [
-          "fragmentation"
+          "fragmentation",
+          "edit"
         ],
         "assumption": "additive-linear; triangulate with stage 3a",
-        "fragmentation_beta": 0.1513,
+        "fragmentation_beta": 0.1483,
         "fragmentation_beta_ci": [
-          0.1185,
-          0.1841
+          0.1156,
+          0.181
+        ],
+        "edit_beta": 0.0697,
+        "edit_beta_ci": [
+          0.0379,
+          0.1016
         ]
       },
       "stratified_fielded": {
@@ -2380,27 +2471,33 @@
           0.0748,
           0.1586
         ],
-        "truth_beta_partialled": 0.1997,
+        "truth_beta_partialled": 0.1377,
         "truth_beta_partialled_ci": [
-          0.158,
-          0.2414
+          0.0986,
+          0.1768
         ],
-        "typicality_beta": 0.2454,
+        "typicality_beta": 0.1637,
         "typicality_beta_ci": [
-          0.2032,
-          0.2875
+          0.1238,
+          0.2036
         ],
-        "truth_beta_shrinkage": -0.7115,
+        "truth_beta_shrinkage": -0.1799,
         "r2_truth_only": 0.0136,
-        "r2_joint": 0.0979,
+        "r2_joint": 0.2277,
         "covariates": [
-          "fragmentation"
+          "fragmentation",
+          "edit"
         ],
         "assumption": "additive-linear; triangulate with stage 3a",
-        "fragmentation_beta": -0.2437,
+        "fragmentation_beta": -0.2276,
         "fragmentation_beta_ci": [
-          -0.2862,
-          -0.2013
+          -0.2669,
+          -0.1883
+        ],
+        "edit_beta": -0.3716,
+        "edit_beta_ci": [
+          -0.4098,
+          -0.3333
         ]
       },
       "adversarial": {
@@ -2570,27 +2667,33 @@
           0.6525,
           0.7141
         ],
-        "truth_beta_partialled": 0.6517,
+        "truth_beta_partialled": 0.6565,
         "truth_beta_partialled_ci": [
-          0.6201,
-          0.6833
+          0.6244,
+          0.6885
         ],
-        "typicality_beta": -0.0573,
+        "typicality_beta": -0.051,
         "typicality_beta_ci": [
-          -0.0892,
-          -0.0253
+          -0.0837,
+          -0.0183
         ],
-        "truth_beta_shrinkage": 0.0463,
+        "truth_beta_shrinkage": 0.0393,
         "r2_truth_only": 0.4669,
-        "r2_joint": 0.4807,
+        "r2_joint": 0.4814,
         "covariates": [
-          "fragmentation"
+          "fragmentation",
+          "edit"
         ],
         "assumption": "additive-linear; triangulate with stage 3a",
-        "fragmentation_beta": 0.1215,
+        "fragmentation_beta": 0.1203,
         "fragmentation_beta_ci": [
-          0.0893,
-          0.1537
+          0.0881,
+          0.1525
+        ],
+        "edit_beta": 0.0285,
+        "edit_beta_ci": [
+          -0.0028,
+          0.0598
         ]
       },
       "stratified_fielded": {
@@ -2687,27 +2790,33 @@
           0.0771,
           0.1608
         ],
-        "truth_beta_partialled": 0.1926,
+        "truth_beta_partialled": 0.1351,
         "truth_beta_partialled_ci": [
-          0.1505,
-          0.2347
+          0.0951,
+          0.1752
         ],
-        "typicality_beta": 0.187,
+        "typicality_beta": 0.1113,
         "typicality_beta_ci": [
-          0.1444,
-          0.2295
+          0.0704,
+          0.1521
         ],
-        "truth_beta_shrinkage": -0.6192,
+        "truth_beta_shrinkage": -0.136,
         "r2_truth_only": 0.0142,
-        "r2_joint": 0.0802,
+        "r2_joint": 0.1917,
         "covariates": [
-          "fragmentation"
+          "fragmentation",
+          "edit"
         ],
         "assumption": "additive-linear; triangulate with stage 3a",
-        "fragmentation_beta": -0.2406,
+        "fragmentation_beta": -0.2257,
         "fragmentation_beta_ci": [
-          -0.2835,
-          -0.1977
+          -0.2659,
+          -0.1855
+        ],
+        "edit_beta": -0.3443,
+        "edit_beta_ci": [
+          -0.3834,
+          -0.3052
         ]
       },
       "adversarial": {
@@ -2877,27 +2986,33 @@
           0.7034,
           0.7608
         ],
-        "truth_beta_partialled": 0.7111,
+        "truth_beta_partialled": 0.7093,
         "truth_beta_partialled_ci": [
-          0.6814,
-          0.7408
+          0.6792,
+          0.7395
         ],
-        "typicality_beta": -0.0707,
+        "typicality_beta": -0.0731,
         "typicality_beta_ci": [
-          -0.1008,
-          -0.0407
+          -0.1038,
+          -0.0424
         ],
-        "truth_beta_shrinkage": 0.0287,
+        "truth_beta_shrinkage": 0.0311,
         "r2_truth_only": 0.536,
-        "r2_joint": 0.5417,
+        "r2_joint": 0.5418,
         "covariates": [
-          "fragmentation"
+          "fragmentation",
+          "edit"
         ],
         "assumption": "additive-linear; triangulate with stage 3a",
-        "fragmentation_beta": 0.0547,
+        "fragmentation_beta": 0.0552,
         "fragmentation_beta_ci": [
-          0.0245,
-          0.085
+          0.0249,
+          0.0855
+        ],
+        "edit_beta": -0.0106,
+        "edit_beta_ci": [
+          -0.0401,
+          0.0188
         ]
       },
       "stratified_fielded": {
@@ -2994,27 +3109,33 @@
           0.1096,
           0.1929
         ],
-        "truth_beta_partialled": 0.2201,
+        "truth_beta_partialled": 0.1607,
         "truth_beta_partialled_ci": [
-          0.1781,
-          0.2622
+          0.1209,
+          0.2005
         ],
-        "typicality_beta": 0.1687,
+        "typicality_beta": 0.0904,
         "typicality_beta_ci": [
-          0.1261,
-          0.2112
+          0.0498,
+          0.1311
         ],
-        "truth_beta_shrinkage": -0.4555,
+        "truth_beta_shrinkage": -0.0627,
         "r2_truth_only": 0.0229,
-        "r2_joint": 0.081,
+        "r2_joint": 0.2001,
         "covariates": [
-          "fragmentation"
+          "fragmentation",
+          "edit"
         ],
         "assumption": "additive-linear; triangulate with stage 3a",
-        "fragmentation_beta": -0.2299,
+        "fragmentation_beta": -0.2145,
         "fragmentation_beta_ci": [
-          -0.2727,
-          -0.1871
+          -0.2545,
+          -0.1745
+        ],
+        "edit_beta": -0.3558,
+        "edit_beta_ci": [
+          -0.3947,
+          -0.3169
         ]
       },
       "adversarial": {
@@ -3184,27 +3305,33 @@
           0.8036,
           0.851
         ],
-        "truth_beta_partialled": 0.8065,
+        "truth_beta_partialled": 0.7991,
         "truth_beta_partialled_ci": [
-          0.7821,
-          0.831
+          0.7745,
+          0.8238
         ],
-        "typicality_beta": -0.0315,
+        "typicality_beta": -0.0412,
         "typicality_beta_ci": [
-          -0.0561,
-          -0.0068
+          -0.0664,
+          -0.016
         ],
-        "truth_beta_shrinkage": 0.0251,
+        "truth_beta_shrinkage": 0.034,
         "r2_truth_only": 0.6844,
-        "r2_joint": 0.6908,
+        "r2_joint": 0.6927,
         "covariates": [
-          "fragmentation"
+          "fragmentation",
+          "edit"
         ],
         "assumption": "additive-linear; triangulate with stage 3a",
-        "fragmentation_beta": 0.0845,
+        "fragmentation_beta": 0.0864,
         "fragmentation_beta_ci": [
-          0.0596,
-          0.1093
+          0.0616,
+          0.1112
+        ],
+        "edit_beta": -0.0444,
+        "edit_beta_ci": [
+          -0.0685,
+          -0.0202
         ]
       },
       "stratified_fielded": {
@@ -3301,27 +3428,33 @@
           0.3774,
           0.4541
         ],
-        "truth_beta_partialled": 0.4647,
+        "truth_beta_partialled": 0.4084,
         "truth_beta_partialled_ci": [
-          0.4258,
-          0.5036
+          0.3718,
+          0.4451
         ],
-        "typicality_beta": 0.0476,
+        "typicality_beta": -0.0265,
         "typicality_beta_ci": [
-          0.0083,
-          0.0868
+          -0.0639,
+          0.0108
         ],
-        "truth_beta_shrinkage": -0.1177,
+        "truth_beta_shrinkage": 0.0176,
         "r2_truth_only": 0.1729,
-        "r2_joint": 0.2164,
+        "r2_joint": 0.3231,
         "covariates": [
-          "fragmentation"
+          "fragmentation",
+          "edit"
         ],
         "assumption": "additive-linear; triangulate with stage 3a",
-        "fragmentation_beta": -0.2206,
+        "fragmentation_beta": -0.206,
         "fragmentation_beta_ci": [
-          -0.2601,
-          -0.181
+          -0.2428,
+          -0.1692
+        ],
+        "edit_beta": -0.3369,
+        "edit_beta_ci": [
+          -0.3727,
+          -0.3011
         ]
       },
       "adversarial": {
@@ -3491,27 +3624,33 @@
           0.8175,
           0.8632
         ],
-        "truth_beta_partialled": 0.8243,
+        "truth_beta_partialled": 0.8178,
         "truth_beta_partialled_ci": [
-          0.8007,
-          0.8478
+          0.794,
+          0.8417
         ],
-        "typicality_beta": -0.0091,
+        "typicality_beta": -0.0176,
         "typicality_beta_ci": [
-          -0.0329,
-          0.0147
+          -0.0419,
+          0.0068
         ],
-        "truth_beta_shrinkage": 0.0192,
+        "truth_beta_shrinkage": 0.0268,
         "r2_truth_only": 0.7062,
-        "r2_joint": 0.7118,
+        "r2_joint": 0.7132,
         "covariates": [
-          "fragmentation"
+          "fragmentation",
+          "edit"
         ],
         "assumption": "additive-linear; triangulate with stage 3a",
-        "fragmentation_beta": 0.0778,
+        "fragmentation_beta": 0.0795,
         "fragmentation_beta_ci": [
-          0.0538,
-          0.1018
+          0.0555,
+          0.1034
+        ],
+        "edit_beta": -0.0385,
+        "edit_beta_ci": [
+          -0.0618,
+          -0.0152
         ]
       },
       "stratified_fielded": {
@@ -3608,27 +3747,33 @@
           0.4603,
           0.5335
         ],
-        "truth_beta_partialled": 0.5327,
+        "truth_beta_partialled": 0.4816,
         "truth_beta_partialled_ci": [
-          0.4958,
-          0.5696
+          0.4466,
+          0.5166
         ],
-        "typicality_beta": -0.025,
+        "typicality_beta": -0.0923,
         "typicality_beta_ci": [
-          -0.0623,
-          0.0123
+          -0.1281,
+          -0.0566
         ],
-        "truth_beta_shrinkage": -0.0721,
+        "truth_beta_shrinkage": 0.0308,
         "r2_truth_only": 0.2469,
-        "r2_joint": 0.2924,
+        "r2_joint": 0.3805,
         "covariates": [
-          "fragmentation"
+          "fragmentation",
+          "edit"
         ],
         "assumption": "additive-linear; triangulate with stage 3a",
-        "fragmentation_beta": -0.2089,
+        "fragmentation_beta": -0.1956,
         "fragmentation_beta_ci": [
-          -0.2465,
-          -0.1713
+          -0.2308,
+          -0.1604
+        ],
+        "edit_beta": -0.3061,
+        "edit_beta_ci": [
+          -0.3404,
+          -0.2719
         ]
       },
       "adversarial": {
@@ -3798,27 +3943,33 @@
           0.8552,
           0.8959
         ],
-        "truth_beta_partialled": 0.866,
+        "truth_beta_partialled": 0.8594,
         "truth_beta_partialled_ci": [
-          0.8448,
-          0.8871
+          0.838,
+          0.8807
         ],
-        "typicality_beta": -0.0206,
+        "typicality_beta": -0.0293,
         "typicality_beta_ci": [
-          -0.042,
-          0.0008
+          -0.0511,
+          -0.0075
         ],
-        "truth_beta_shrinkage": 0.0109,
+        "truth_beta_shrinkage": 0.0185,
         "r2_truth_only": 0.7666,
-        "r2_joint": 0.7678,
+        "r2_joint": 0.7693,
         "covariates": [
-          "fragmentation"
+          "fragmentation",
+          "edit"
         ],
         "assumption": "additive-linear; triangulate with stage 3a",
-        "fragmentation_beta": 0.0343,
+        "fragmentation_beta": 0.036,
         "fragmentation_beta_ci": [
-          0.0127,
-          0.0558
+          0.0145,
+          0.0575
+        ],
+        "edit_beta": -0.0396,
+        "edit_beta_ci": [
+          -0.0605,
+          -0.0187
         ]
       },
       "stratified_fielded": {
@@ -3915,27 +4066,33 @@
           0.5024,
           0.5735
         ],
-        "truth_beta_partialled": 0.5718,
+        "truth_beta_partialled": 0.5236,
         "truth_beta_partialled_ci": [
-          0.5363,
-          0.6073
+          0.4898,
+          0.5574
         ],
-        "typicality_beta": -0.0522,
+        "typicality_beta": -0.1156,
         "typicality_beta_ci": [
-          -0.0881,
-          -0.0162
+          -0.1501,
+          -0.0811
         ],
-        "truth_beta_shrinkage": -0.063,
+        "truth_beta_shrinkage": 0.0266,
         "r2_truth_only": 0.2894,
-        "r2_joint": 0.3449,
+        "r2_joint": 0.4232,
         "covariates": [
-          "fragmentation"
+          "fragmentation",
+          "edit"
         ],
         "assumption": "additive-linear; triangulate with stage 3a",
-        "fragmentation_beta": -0.2202,
+        "fragmentation_beta": -0.2077,
         "fragmentation_beta_ci": [
-          -0.2564,
-          -0.184
+          -0.2417,
+          -0.1737
+        ],
+        "edit_beta": -0.2886,
+        "edit_beta_ci": [
+          -0.3217,
+          -0.2556
         ]
       },
       "adversarial": {
@@ -4105,27 +4262,33 @@
           0.8808,
           0.9177
         ],
-        "truth_beta_partialled": 0.8915,
+        "truth_beta_partialled": 0.8883,
         "truth_beta_partialled_ci": [
-          0.8724,
-          0.9107
+          0.8689,
+          0.9077
         ],
-        "typicality_beta": -0.0023,
+        "typicality_beta": -0.0065,
         "typicality_beta_ci": [
-          -0.0216,
-          0.017
+          -0.0263,
+          0.0132
         ],
-        "truth_beta_shrinkage": 0.0086,
+        "truth_beta_shrinkage": 0.0122,
         "r2_truth_only": 0.8087,
-        "r2_joint": 0.8102,
+        "r2_joint": 0.8105,
         "covariates": [
-          "fragmentation"
+          "fragmentation",
+          "edit"
         ],
         "assumption": "additive-linear; triangulate with stage 3a",
-        "fragmentation_beta": 0.0391,
+        "fragmentation_beta": 0.04,
         "fragmentation_beta_ci": [
-          0.0197,
-          0.0586
+          0.0205,
+          0.0594
+        ],
+        "edit_beta": -0.0193,
+        "edit_beta_ci": [
+          -0.0382,
+          -0.0003
         ]
       },
       "stratified_fielded": {
@@ -4222,27 +4385,33 @@
           0.5322,
           0.6017
         ],
-        "truth_beta_partialled": 0.5937,
+        "truth_beta_partialled": 0.557,
         "truth_beta_partialled_ci": [
-          0.5591,
-          0.6282
+          0.5233,
+          0.5907
         ],
-        "typicality_beta": -0.0873,
+        "typicality_beta": -0.1356,
         "typicality_beta_ci": [
-          -0.1222,
-          -0.0524
+          -0.17,
+          -0.1012
         ],
-        "truth_beta_shrinkage": -0.0471,
+        "truth_beta_shrinkage": 0.0176,
         "r2_truth_only": 0.3214,
-        "r2_joint": 0.3813,
+        "r2_joint": 0.4267,
         "covariates": [
-          "fragmentation"
+          "fragmentation",
+          "edit"
         ],
         "assumption": "additive-linear; triangulate with stage 3a",
-        "fragmentation_beta": -0.2103,
+        "fragmentation_beta": -0.2008,
         "fragmentation_beta_ci": [
-          -0.2455,
-          -0.1752
+          -0.2347,
+          -0.1669
+        ],
+        "edit_beta": -0.2198,
+        "edit_beta_ci": [
+          -0.2528,
+          -0.1869
         ]
       },
       "adversarial": {
@@ -4412,27 +4581,33 @@
           0.8796,
           0.9167
         ],
-        "truth_beta_partialled": 0.8943,
+        "truth_beta_partialled": 0.8894,
         "truth_beta_partialled_ci": [
-          0.8751,
-          0.9136
+          0.8699,
+          0.909
         ],
-        "typicality_beta": -0.0108,
+        "typicality_beta": -0.0172,
         "typicality_beta_ci": [
-          -0.0303,
-          0.0087
+          -0.0371,
+          0.0027
         ],
-        "truth_beta_shrinkage": 0.0042,
+        "truth_beta_shrinkage": 0.0097,
         "r2_truth_only": 0.8067,
-        "r2_joint": 0.8069,
+        "r2_joint": 0.8077,
         "covariates": [
-          "fragmentation"
+          "fragmentation",
+          "edit"
         ],
         "assumption": "additive-linear; triangulate with stage 3a",
-        "fragmentation_beta": 0.0116,
+        "fragmentation_beta": 0.0128,
         "fragmentation_beta_ci": [
-          -0.0081,
-          0.0312
+          -0.0068,
+          0.0324
+        ],
+        "edit_beta": -0.0294,
+        "edit_beta_ci": [
+          -0.0485,
+          -0.0103
         ]
       },
       "stratified_fielded": {
@@ -4529,27 +4704,33 @@
           0.542,
           0.611
         ],
-        "truth_beta_partialled": 0.6025,
+        "truth_beta_partialled": 0.5687,
         "truth_beta_partialled_ci": [
-          0.5684,
-          0.6367
+          0.5353,
+          0.6022
         ],
-        "typicality_beta": -0.0958,
+        "typicality_beta": -0.1403,
         "typicality_beta_ci": [
-          -0.1303,
-          -0.0613
+          -0.1745,
+          -0.1062
         ],
-        "truth_beta_shrinkage": -0.0452,
+        "truth_beta_shrinkage": 0.0134,
         "r2_truth_only": 0.3323,
-        "r2_joint": 0.3961,
+        "r2_joint": 0.4347,
         "covariates": [
-          "fragmentation"
+          "fragmentation",
+          "edit"
         ],
         "assumption": "additive-linear; triangulate with stage 3a",
-        "fragmentation_beta": -0.2135,
+        "fragmentation_beta": -0.2047,
         "fragmentation_beta_ci": [
-          -0.2482,
-          -0.1788
+          -0.2384,
+          -0.1711
+        ],
+        "edit_beta": -0.2024,
+        "edit_beta_ci": [
+          -0.2352,
+          -0.1697
         ]
       },
       "adversarial": {
@@ -4719,27 +4900,33 @@
           0.8636,
           0.9032
         ],
-        "truth_beta_partialled": 0.8741,
+        "truth_beta_partialled": 0.8683,
         "truth_beta_partialled_ci": [
-          0.8537,
-          0.8946
+          0.8476,
+          0.8891
         ],
-        "typicality_beta": -0.0044,
+        "typicality_beta": -0.0121,
         "typicality_beta_ci": [
-          -0.0251,
-          0.0163
+          -0.0332,
+          0.0091
         ],
-        "truth_beta_shrinkage": 0.0105,
+        "truth_beta_shrinkage": 0.017,
         "r2_truth_only": 0.7804,
-        "r2_joint": 0.7823,
+        "r2_joint": 0.7834,
         "covariates": [
-          "fragmentation"
+          "fragmentation",
+          "edit"
         ],
         "assumption": "additive-linear; triangulate with stage 3a",
-        "fragmentation_beta": 0.0453,
+        "fragmentation_beta": 0.0468,
         "fragmentation_beta_ci": [
-          0.0245,
-          0.0662
+          0.026,
+          0.0676
+        ],
+        "edit_beta": -0.0348,
+        "edit_beta_ci": [
+          -0.055,
+          -0.0145
         ]
       },
       "stratified_fielded": {
@@ -4836,27 +5023,33 @@
           0.5486,
           0.6171
         ],
-        "truth_beta_partialled": 0.6064,
+        "truth_beta_partialled": 0.5752,
         "truth_beta_partialled_ci": [
-          0.5725,
-          0.6403
+          0.5418,
+          0.6086
         ],
-        "typicality_beta": -0.1054,
+        "typicality_beta": -0.1464,
         "typicality_beta_ci": [
-          -0.1397,
-          -0.0712
+          -0.1805,
+          -0.1124
         ],
-        "truth_beta_shrinkage": -0.0404,
+        "truth_beta_shrinkage": 0.013,
         "r2_truth_only": 0.3397,
-        "r2_joint": 0.4039,
+        "r2_joint": 0.4366,
         "covariates": [
-          "fragmentation"
+          "fragmentation",
+          "edit"
         ],
         "assumption": "additive-linear; triangulate with stage 3a",
-        "fragmentation_beta": -0.2079,
+        "fragmentation_beta": -0.1998,
         "fragmentation_beta_ci": [
-          -0.2424,
-          -0.1734
+          -0.2334,
+          -0.1663
+        ],
+        "edit_beta": -0.1865,
+        "edit_beta_ci": [
+          -0.2192,
+          -0.1538
         ]
       },
       "adversarial": {
@@ -5026,27 +5219,33 @@
           0.8716,
           0.9099
         ],
-        "truth_beta_partialled": 0.8809,
+        "truth_beta_partialled": 0.8772,
         "truth_beta_partialled_ci": [
-          0.861,
-          0.9007
+          0.8571,
+          0.8973
         ],
-        "typicality_beta": -0.0009,
+        "typicality_beta": -0.0057,
         "typicality_beta_ci": [
-          -0.0209,
-          0.0192
+          -0.0261,
+          0.0148
         ],
-        "truth_beta_shrinkage": 0.0111,
+        "truth_beta_shrinkage": 0.0152,
         "r2_truth_only": 0.7934,
-        "r2_joint": 0.796,
+        "r2_joint": 0.7964,
         "covariates": [
-          "fragmentation"
+          "fragmentation",
+          "edit"
         ],
         "assumption": "additive-linear; triangulate with stage 3a",
-        "fragmentation_beta": 0.0515,
+        "fragmentation_beta": 0.0525,
         "fragmentation_beta_ci": [
-          0.0314,
-          0.0717
+          0.0323,
+          0.0727
+        ],
+        "edit_beta": -0.0218,
+        "edit_beta_ci": [
+          -0.0414,
+          -0.0021
         ]
       },
       "stratified_fielded": {
@@ -5143,27 +5342,33 @@
           0.5546,
           0.6228
         ],
-        "truth_beta_partialled": 0.6112,
+        "truth_beta_partialled": 0.5805,
         "truth_beta_partialled_ci": [
-          0.5775,
-          0.6449
+          0.5473,
+          0.6137
         ],
-        "typicality_beta": -0.1094,
+        "typicality_beta": -0.1498,
         "typicality_beta_ci": [
-          -0.1435,
-          -0.0754
+          -0.1837,
+          -0.1159
         ],
-        "truth_beta_shrinkage": -0.0382,
+        "truth_beta_shrinkage": 0.0139,
         "r2_truth_only": 0.3466,
-        "r2_joint": 0.411,
+        "r2_joint": 0.4427,
         "covariates": [
-          "fragmentation"
+          "fragmentation",
+          "edit"
         ],
         "assumption": "additive-linear; triangulate with stage 3a",
-        "fragmentation_beta": -0.2055,
+        "fragmentation_beta": -0.1976,
         "fragmentation_beta_ci": [
-          -0.2398,
-          -0.1712
+          -0.231,
+          -0.1642
+        ],
+        "edit_beta": -0.1837,
+        "edit_beta_ci": [
+          -0.2162,
+          -0.1512
         ]
       },
       "adversarial": {
@@ -5333,27 +5538,33 @@
           0.8795,
           0.9166
         ],
-        "truth_beta_partialled": 0.8903,
+        "truth_beta_partialled": 0.8895,
         "truth_beta_partialled_ci": [
-          0.8711,
-          0.9095
+          0.87,
+          0.909
         ],
-        "typicality_beta": 0.0045,
+        "typicality_beta": 0.0034,
         "typicality_beta_ci": [
-          -0.0149,
-          0.0239
+          -0.0165,
+          0.0233
         ],
-        "truth_beta_shrinkage": 0.0086,
+        "truth_beta_shrinkage": 0.0096,
         "r2_truth_only": 0.8065,
         "r2_joint": 0.8086,
         "covariates": [
-          "fragmentation"
+          "fragmentation",
+          "edit"
         ],
         "assumption": "additive-linear; triangulate with stage 3a",
-        "fragmentation_beta": 0.0445,
+        "fragmentation_beta": 0.0447,
         "fragmentation_beta_ci": [
-          0.025,
-          0.0641
+          0.0252,
+          0.0643
+        ],
+        "edit_beta": -0.005,
+        "edit_beta_ci": [
+          -0.024,
+          0.0141
         ]
       },
       "stratified_fielded": {
@@ -5450,27 +5661,33 @@
           0.5741,
           0.6411
         ],
-        "truth_beta_partialled": 0.6275,
+        "truth_beta_partialled": 0.597,
         "truth_beta_partialled_ci": [
-          0.5947,
-          0.6604
+          0.5647,
+          0.6294
         ],
-        "typicality_beta": -0.1267,
+        "typicality_beta": -0.1669,
         "typicality_beta_ci": [
-          -0.16,
-          -0.0935
+          -0.1999,
+          -0.1339
         ],
-        "truth_beta_shrinkage": -0.0327,
+        "truth_beta_shrinkage": 0.0175,
         "r2_truth_only": 0.3692,
-        "r2_joint": 0.4395,
+        "r2_joint": 0.4709,
         "covariates": [
-          "fragmentation"
+          "fragmentation",
+          "edit"
         ],
         "assumption": "additive-linear; triangulate with stage 3a",
-        "fragmentation_beta": -0.2056,
+        "fragmentation_beta": -0.1976,
         "fragmentation_beta_ci": [
-          -0.239,
-          -0.1721
+          -0.2302,
+          -0.1651
+        ],
+        "edit_beta": -0.1827,
+        "edit_beta_ci": [
+          -0.2144,
+          -0.151
         ]
       },
       "adversarial": {
@@ -5640,27 +5857,33 @@
           0.8874,
           0.9232
         ],
-        "truth_beta_partialled": 0.899,
+        "truth_beta_partialled": 0.8981,
         "truth_beta_partialled_ci": [
-          0.8804,
-          0.9176
+          0.8793,
+          0.917
         ],
-        "typicality_beta": -0.0049,
+        "typicality_beta": -0.006,
         "typicality_beta_ci": [
-          -0.0237,
-          0.0139
+          -0.0252,
+          0.0132
         ],
-        "truth_beta_shrinkage": 0.007,
+        "truth_beta_shrinkage": 0.0079,
         "r2_truth_only": 0.8196,
         "r2_joint": 0.8204,
         "covariates": [
-          "fragmentation"
+          "fragmentation",
+          "edit"
         ],
         "assumption": "additive-linear; triangulate with stage 3a",
-        "fragmentation_beta": 0.0295,
+        "fragmentation_beta": 0.0297,
         "fragmentation_beta_ci": [
-          0.0106,
-          0.0484
+          0.0108,
+          0.0487
+        ],
+        "edit_beta": -0.0051,
+        "edit_beta_ci": [
+          -0.0236,
+          0.0133
         ]
       },
       "stratified_fielded": {
@@ -5757,27 +5980,33 @@
           0.5837,
           0.6501
         ],
-        "truth_beta_partialled": 0.6389,
+        "truth_beta_partialled": 0.6108,
         "truth_beta_partialled_ci": [
-          0.6065,
-          0.6713
+          0.5788,
+          0.6428
         ],
-        "typicality_beta": -0.1257,
+        "typicality_beta": -0.1628,
         "typicality_beta_ci": [
-          -0.1585,
-          -0.093
+          -0.1954,
+          -0.1301
         ],
-        "truth_beta_shrinkage": -0.0357,
+        "truth_beta_shrinkage": 0.0099,
         "r2_truth_only": 0.3805,
-        "r2_joint": 0.4554,
+        "r2_joint": 0.4821,
         "covariates": [
-          "fragmentation"
+          "fragmentation",
+          "edit"
         ],
         "assumption": "additive-linear; triangulate with stage 3a",
-        "fragmentation_beta": -0.2161,
+        "fragmentation_beta": -0.2088,
         "fragmentation_beta_ci": [
-          -0.249,
-          -0.1831
+          -0.2409,
+          -0.1766
+        ],
+        "edit_beta": -0.1685,
+        "edit_beta_ci": [
+          -0.1998,
+          -0.1372
         ]
       },
       "adversarial": {
@@ -5947,27 +6176,33 @@
           0.9025,
           0.9357
         ],
-        "truth_beta_partialled": 0.9172,
+        "truth_beta_partialled": 0.9174,
         "truth_beta_partialled_ci": [
           0.8999,
-          0.9344
+          0.9349
         ],
-        "typicality_beta": 0.0075,
+        "typicality_beta": 0.0078,
         "typicality_beta_ci": [
-          -0.01,
-          0.025
+          -0.0101,
+          0.0257
         ],
-        "truth_beta_shrinkage": 0.0021,
+        "truth_beta_shrinkage": 0.0019,
         "r2_truth_only": 0.8447,
         "r2_joint": 0.8451,
         "covariates": [
-          "fragmentation"
+          "fragmentation",
+          "edit"
         ],
         "assumption": "additive-linear; triangulate with stage 3a",
-        "fragmentation_beta": 0.0161,
+        "fragmentation_beta": 0.016,
         "fragmentation_beta_ci": [
-          -0.0015,
+          -0.0016,
           0.0337
+        ],
+        "edit_beta": 0.0013,
+        "edit_beta_ci": [
+          -0.0159,
+          0.0184
         ]
       },
       "stratified_fielded": {
@@ -6064,27 +6299,33 @@
           0.589,
           0.655
         ],
-        "truth_beta_partialled": 0.6423,
+        "truth_beta_partialled": 0.6138,
         "truth_beta_partialled_ci": [
-          0.6101,
-          0.6745
+          0.582,
+          0.6456
         ],
-        "typicality_beta": -0.1323,
+        "typicality_beta": -0.1698,
         "typicality_beta_ci": [
-          -0.1649,
-          -0.0998
+          -0.2023,
+          -0.1374
         ],
-        "truth_beta_shrinkage": -0.0327,
+        "truth_beta_shrinkage": 0.0131,
         "r2_truth_only": 0.3869,
-        "r2_joint": 0.4623,
+        "r2_joint": 0.4897,
         "covariates": [
-          "fragmentation"
+          "fragmentation",
+          "edit"
         ],
         "assumption": "additive-linear; triangulate with stage 3a",
-        "fragmentation_beta": -0.2122,
+        "fragmentation_beta": -0.2048,
         "fragmentation_beta_ci": [
-          -0.245,
-          -0.1794
+          -0.2368,
+          -0.1729
+        ],
+        "edit_beta": -0.1706,
+        "edit_beta_ci": [
+          -0.2017,
+          -0.1395
         ]
       },
       "adversarial": {
@@ -6254,27 +6495,33 @@
           0.8979,
           0.932
         ],
-        "truth_beta_partialled": 0.913,
+        "truth_beta_partialled": 0.9137,
         "truth_beta_partialled_ci": [
-          0.8953,
-          0.9308
+          0.8958,
+          0.9317
         ],
-        "typicality_beta": -0.0012,
+        "typicality_beta": -0.0003,
         "typicality_beta_ci": [
-          -0.0191,
-          0.0167
+          -0.0186,
+          0.018
         ],
-        "truth_beta_shrinkage": 0.0021,
+        "truth_beta_shrinkage": 0.0013,
         "r2_truth_only": 0.8371,
         "r2_joint": 0.8372,
         "covariates": [
-          "fragmentation"
+          "fragmentation",
+          "edit"
         ],
         "assumption": "additive-linear; triangulate with stage 3a",
-        "fragmentation_beta": 0.009,
+        "fragmentation_beta": 0.0088,
         "fragmentation_beta_ci": [
-          -0.009,
-          0.027
+          -0.0092,
+          0.0269
+        ],
+        "edit_beta": 0.0041,
+        "edit_beta_ci": [
+          -0.0134,
+          0.0217
         ]
       },
       "stratified_fielded": {
@@ -6371,27 +6618,33 @@
           0.5903,
           0.6563
         ],
-        "truth_beta_partialled": 0.6436,
+        "truth_beta_partialled": 0.617,
         "truth_beta_partialled_ci": [
-          0.6115,
-          0.6757
+          0.5852,
+          0.6488
         ],
-        "typicality_beta": -0.1341,
+        "typicality_beta": -0.1692,
         "typicality_beta_ci": [
-          -0.1665,
-          -0.1016
+          -0.2016,
+          -0.1367
         ],
-        "truth_beta_shrinkage": -0.0326,
+        "truth_beta_shrinkage": 0.0101,
         "r2_truth_only": 0.3885,
-        "r2_joint": 0.4654,
+        "r2_joint": 0.4893,
         "covariates": [
-          "fragmentation"
+          "fragmentation",
+          "edit"
         ],
         "assumption": "additive-linear; triangulate with stage 3a",
-        "fragmentation_beta": -0.2138,
+        "fragmentation_beta": -0.2068,
         "fragmentation_beta_ci": [
-          -0.2464,
-          -0.1811
+          -0.2388,
+          -0.1749
+        ],
+        "edit_beta": -0.1597,
+        "edit_beta_ci": [
+          -0.1908,
+          -0.1286
         ]
       },
       "adversarial": {
@@ -6561,27 +6814,33 @@
           0.8947,
           0.9293
         ],
-        "truth_beta_partialled": 0.9092,
+        "truth_beta_partialled": 0.9104,
         "truth_beta_partialled_ci": [
-          0.8912,
-          0.9272
+          0.8921,
+          0.9286
         ],
-        "typicality_beta": 0.0014,
+        "typicality_beta": 0.0029,
         "typicality_beta_ci": [
-          -0.0168,
-          0.0195
+          -0.0157,
+          0.0215
         ],
-        "truth_beta_shrinkage": 0.0031,
+        "truth_beta_shrinkage": 0.0018,
         "r2_truth_only": 0.8318,
-        "r2_joint": 0.832,
+        "r2_joint": 0.8321,
         "covariates": [
-          "fragmentation"
+          "fragmentation",
+          "edit"
         ],
         "assumption": "additive-linear; triangulate with stage 3a",
-        "fragmentation_beta": 0.0158,
+        "fragmentation_beta": 0.0155,
         "fragmentation_beta_ci": [
-          -0.0025,
-          0.0341
+          -0.0028,
+          0.0339
+        ],
+        "edit_beta": 0.007,
+        "edit_beta_ci": [
+          -0.0108,
+          0.0248
         ]
       },
       "stratified_fielded": {
@@ -6678,27 +6937,33 @@
           0.588,
           0.6541
         ],
-        "truth_beta_partialled": 0.6423,
+        "truth_beta_partialled": 0.6165,
         "truth_beta_partialled_ci": [
-          0.6102,
-          0.6745
+          0.5846,
+          0.6483
         ],
-        "typicality_beta": -0.1332,
+        "typicality_beta": -0.1673,
         "typicality_beta_ci": [
-          -0.1657,
-          -0.1007
+          -0.1998,
+          -0.1347
         ],
-        "truth_beta_shrinkage": -0.0343,
+        "truth_beta_shrinkage": 0.0074,
         "r2_truth_only": 0.3857,
-        "r2_joint": 0.4643,
+        "r2_joint": 0.4869,
         "covariates": [
-          "fragmentation"
+          "fragmentation",
+          "edit"
         ],
         "assumption": "additive-linear; triangulate with stage 3a",
-        "fragmentation_beta": -0.2181,
+        "fragmentation_beta": -0.2114,
         "fragmentation_beta_ci": [
-          -0.2508,
-          -0.1854
+          -0.2434,
+          -0.1793
+        ],
+        "edit_beta": -0.1549,
+        "edit_beta_ci": [
+          -0.1861,
+          -0.1237
         ]
       },
       "adversarial": {
@@ -6868,27 +7133,33 @@
           0.8829,
           0.9195
         ],
-        "truth_beta_partialled": 0.8979,
+        "truth_beta_partialled": 0.8991,
         "truth_beta_partialled_ci": [
-          0.8788,
-          0.9169
+          0.8798,
+          0.9184
         ],
-        "typicality_beta": -0.0026,
+        "typicality_beta": -0.001,
         "typicality_beta_ci": [
-          -0.0218,
-          0.0166
+          -0.0206,
+          0.0187
         ],
-        "truth_beta_shrinkage": 0.0037,
+        "truth_beta_shrinkage": 0.0023,
         "r2_truth_only": 0.8121,
-        "r2_joint": 0.8123,
+        "r2_joint": 0.8124,
         "covariates": [
-          "fragmentation"
+          "fragmentation",
+          "edit"
         ],
         "assumption": "additive-linear; triangulate with stage 3a",
-        "fragmentation_beta": 0.0155,
+        "fragmentation_beta": 0.0152,
         "fragmentation_beta_ci": [
-          -0.0038,
-          0.0349
+          -0.0042,
+          0.0346
+        ],
+        "edit_beta": 0.0076,
+        "edit_beta_ci": [
+          -0.0113,
+          0.0264
         ]
       },
       "stratified_fielded": {
@@ -6985,27 +7256,33 @@
           0.5814,
           0.6479
         ],
-        "truth_beta_partialled": 0.6365,
+        "truth_beta_partialled": 0.6097,
         "truth_beta_partialled_ci": [
-          0.604,
-          0.6689
+          0.5776,
+          0.6418
         ],
-        "typicality_beta": -0.1293,
+        "typicality_beta": -0.1645,
         "typicality_beta_ci": [
-          -0.1621,
-          -0.0966
+          -0.1973,
+          -0.1318
         ],
-        "truth_beta_shrinkage": -0.0354,
+        "truth_beta_shrinkage": 0.0081,
         "r2_truth_only": 0.3778,
-        "r2_joint": 0.4548,
+        "r2_joint": 0.4789,
         "covariates": [
-          "fragmentation"
+          "fragmentation",
+          "edit"
         ],
         "assumption": "additive-linear; triangulate with stage 3a",
-        "fragmentation_beta": -0.2175,
+        "fragmentation_beta": -0.2106,
         "fragmentation_beta_ci": [
-          -0.2505,
-          -0.1845
+          -0.2429,
+          -0.1783
+        ],
+        "edit_beta": -0.1602,
+        "edit_beta_ci": [
+          -0.1916,
+          -0.1287
         ]
       },
       "adversarial": {
@@ -7175,27 +7452,33 @@
           0.8721,
           0.9104
         ],
-        "truth_beta_partialled": 0.8863,
+        "truth_beta_partialled": 0.8868,
         "truth_beta_partialled_ci": [
-          0.8664,
-          0.9061
+          0.8667,
+          0.907
         ],
-        "typicality_beta": 0.0011,
+        "typicality_beta": 0.0018,
         "typicality_beta_ci": [
-          -0.019,
-          0.0211
+          -0.0187,
+          0.0224
         ],
-        "truth_beta_shrinkage": 0.0056,
+        "truth_beta_shrinkage": 0.0049,
         "r2_truth_only": 0.7943,
         "r2_joint": 0.795,
         "covariates": [
-          "fragmentation"
+          "fragmentation",
+          "edit"
         ],
         "assumption": "additive-linear; triangulate with stage 3a",
-        "fragmentation_beta": 0.0271,
+        "fragmentation_beta": 0.027,
         "fragmentation_beta_ci": [
-          0.0069,
-          0.0474
+          0.0067,
+          0.0472
+        ],
+        "edit_beta": 0.0035,
+        "edit_beta_ci": [
+          -0.0162,
+          0.0232
         ]
       },
       "stratified_fielded": {
@@ -7292,27 +7575,33 @@
           0.5783,
           0.645
         ],
-        "truth_beta_partialled": 0.6322,
+        "truth_beta_partialled": 0.6075,
         "truth_beta_partialled_ci": [
-          0.5997,
-          0.6647
+          0.5752,
+          0.6398
         ],
-        "typicality_beta": -0.1343,
+        "typicality_beta": -0.1668,
         "typicality_beta_ci": [
-          -0.1671,
-          -0.1014
+          -0.1998,
+          -0.1338
         ],
-        "truth_beta_shrinkage": -0.0336,
+        "truth_beta_shrinkage": 0.0068,
         "r2_truth_only": 0.3741,
-        "r2_joint": 0.4516,
+        "r2_joint": 0.4722,
         "covariates": [
-          "fragmentation"
+          "fragmentation",
+          "edit"
         ],
         "assumption": "additive-linear; triangulate with stage 3a",
-        "fragmentation_beta": -0.2149,
+        "fragmentation_beta": -0.2085,
         "fragmentation_beta_ci": [
-          -0.248,
-          -0.1818
+          -0.241,
+          -0.176
+        ],
+        "edit_beta": -0.1479,
+        "edit_beta_ci": [
+          -0.1795,
+          -0.1162
         ]
       },
       "adversarial": {
@@ -7482,27 +7771,33 @@
           0.8642,
           0.9037
         ],
-        "truth_beta_partialled": 0.8737,
+        "truth_beta_partialled": 0.8761,
         "truth_beta_partialled_ci": [
-          0.8533,
-          0.8941
+          0.8554,
+          0.8968
         ],
-        "typicality_beta": -0.0041,
+        "typicality_beta": -0.0009,
         "typicality_beta_ci": [
-          -0.0247,
-          0.0166
+          -0.022,
+          0.0202
         ],
-        "truth_beta_shrinkage": 0.0116,
+        "truth_beta_shrinkage": 0.0089,
         "r2_truth_only": 0.7814,
-        "r2_joint": 0.7838,
+        "r2_joint": 0.784,
         "covariates": [
-          "fragmentation"
+          "fragmentation",
+          "edit"
         ],
         "assumption": "additive-linear; triangulate with stage 3a",
-        "fragmentation_beta": 0.0508,
+        "fragmentation_beta": 0.0502,
         "fragmentation_beta_ci": [
-          0.03,
-          0.0716
+          0.0294,
+          0.071
+        ],
+        "edit_beta": 0.0142,
+        "edit_beta_ci": [
+          -0.006,
+          0.0344
         ]
       },
       "stratified_fielded": {
@@ -7599,27 +7894,33 @@
           0.5716,
           0.6388
         ],
-        "truth_beta_partialled": 0.6257,
+        "truth_beta_partialled": 0.602,
         "truth_beta_partialled_ci": [
-          0.593,
-          0.6584
+          0.5694,
+          0.6346
         ],
-        "typicality_beta": -0.1349,
+        "typicality_beta": -0.1661,
         "typicality_beta_ci": [
-          -0.168,
-          -0.1018
+          -0.1993,
+          -0.1328
         ],
-        "truth_beta_shrinkage": -0.0339,
+        "truth_beta_shrinkage": 0.0052,
         "r2_truth_only": 0.3663,
-        "r2_joint": 0.4442,
+        "r2_joint": 0.4631,
         "covariates": [
-          "fragmentation"
+          "fragmentation",
+          "edit"
         ],
         "assumption": "additive-linear; triangulate with stage 3a",
-        "fragmentation_beta": -0.2153,
+        "fragmentation_beta": -0.2092,
         "fragmentation_beta_ci": [
-          -0.2486,
-          -0.182
+          -0.2419,
+          -0.1764
+        ],
+        "edit_beta": -0.1418,
+        "edit_beta_ci": [
+          -0.1737,
+          -0.1099
         ]
       },
       "adversarial": {
@@ -7789,27 +8090,33 @@
           0.8669,
           0.906
         ],
-        "truth_beta_partialled": 0.8827,
+        "truth_beta_partialled": 0.883,
         "truth_beta_partialled_ci": [
           0.8624,
-          0.903
+          0.9036
         ],
-        "typicality_beta": 0.0009,
+        "typicality_beta": 0.0014,
         "typicality_beta_ci": [
           -0.0196,
-          0.0215
+          0.0224
         ],
-        "truth_beta_shrinkage": 0.0043,
+        "truth_beta_shrinkage": 0.0039,
         "r2_truth_only": 0.7858,
         "r2_joint": 0.7862,
         "covariates": [
-          "fragmentation"
+          "fragmentation",
+          "edit"
         ],
         "assumption": "additive-linear; triangulate with stage 3a",
-        "fragmentation_beta": 0.0207,
+        "fragmentation_beta": 0.0206,
         "fragmentation_beta_ci": [
-          0.0001,
-          0.0414
+          -0.0001,
+          0.0413
+        ],
+        "edit_beta": 0.0022,
+        "edit_beta_ci": [
+          -0.0179,
+          0.0223
         ]
       },
       "stratified_fielded": {
@@ -7906,27 +8213,33 @@
           0.5616,
           0.6294
         ],
-        "truth_beta_partialled": 0.6175,
+        "truth_beta_partialled": 0.5939,
         "truth_beta_partialled_ci": [
-          0.5843,
-          0.6507
+          0.5608,
+          0.627
         ],
-        "typicality_beta": -0.1244,
+        "typicality_beta": -0.1554,
         "typicality_beta_ci": [
-          -0.158,
-          -0.0909
+          -0.1892,
+          -0.1217
         ],
-        "truth_beta_shrinkage": -0.0369,
+        "truth_beta_shrinkage": 0.0026,
         "r2_truth_only": 0.3546,
-        "r2_joint": 0.4284,
+        "r2_joint": 0.4471,
         "covariates": [
-          "fragmentation"
+          "fragmentation",
+          "edit"
         ],
         "assumption": "additive-linear; triangulate with stage 3a",
-        "fragmentation_beta": -0.2148,
+        "fragmentation_beta": -0.2087,
         "fragmentation_beta_ci": [
-          -0.2486,
-          -0.1811
+          -0.242,
+          -0.1755
+        ],
+        "edit_beta": -0.141,
+        "edit_beta_ci": [
+          -0.1734,
+          -0.1086
         ]
       },
       "adversarial": {
@@ -8096,27 +8409,33 @@
           0.8657,
           0.9049
         ],
-        "truth_beta_partialled": 0.8786,
+        "truth_beta_partialled": 0.8791,
         "truth_beta_partialled_ci": [
-          0.8583,
-          0.899
+          0.8585,
+          0.8998
         ],
-        "typicality_beta": -0.0001,
+        "typicality_beta": 0.0005,
         "typicality_beta_ci": [
-          -0.0207,
-          0.0205
+          -0.0205,
+          0.0216
         ],
-        "truth_beta_shrinkage": 0.0075,
+        "truth_beta_shrinkage": 0.007,
         "r2_truth_only": 0.7838,
         "r2_joint": 0.785,
         "covariates": [
-          "fragmentation"
+          "fragmentation",
+          "edit"
         ],
         "assumption": "additive-linear; triangulate with stage 3a",
-        "fragmentation_beta": 0.0351,
+        "fragmentation_beta": 0.035,
         "fragmentation_beta_ci": [
-          0.0144,
-          0.0558
+          0.0142,
+          0.0557
+        ],
+        "edit_beta": 0.0029,
+        "edit_beta_ci": [
+          -0.0173,
+          0.0231
         ]
       },
       "stratified_fielded": {
@@ -8213,27 +8532,33 @@
           0.5576,
           0.6256
         ],
-        "truth_beta_partialled": 0.613,
+        "truth_beta_partialled": 0.5885,
         "truth_beta_partialled_ci": [
-          0.5795,
-          0.6464
+          0.5552,
+          0.6218
         ],
-        "typicality_beta": -0.1204,
+        "typicality_beta": -0.1527,
         "typicality_beta_ci": [
-          -0.1543,
-          -0.0866
+          -0.1867,
+          -0.1187
         ],
-        "truth_beta_shrinkage": -0.0362,
+        "truth_beta_shrinkage": 0.0052,
         "r2_truth_only": 0.35,
-        "r2_joint": 0.4194,
+        "r2_joint": 0.4396,
         "covariates": [
-          "fragmentation"
+          "fragmentation",
+          "edit"
         ],
         "assumption": "additive-linear; triangulate with stage 3a",
-        "fragmentation_beta": -0.2085,
+        "fragmentation_beta": -0.2022,
         "fragmentation_beta_ci": [
-          -0.2426,
-          -0.1745
+          -0.2357,
+          -0.1687
+        ],
+        "edit_beta": -0.1466,
+        "edit_beta_ci": [
+          -0.1792,
+          -0.114
         ]
       },
       "adversarial": {
@@ -8403,27 +8728,33 @@
           0.8614,
           0.9012
         ],
-        "truth_beta_partialled": 0.8742,
+        "truth_beta_partialled": 0.8748,
         "truth_beta_partialled_ci": [
-          0.8535,
-          0.8949
+          0.8538,
+          0.8958
         ],
-        "typicality_beta": -0.0046,
+        "typicality_beta": -0.0037,
         "typicality_beta_ci": [
-          -0.0255,
-          0.0164
+          -0.0251,
+          0.0177
         ],
-        "truth_beta_shrinkage": 0.0081,
+        "truth_beta_shrinkage": 0.0074,
         "r2_truth_only": 0.7767,
         "r2_joint": 0.7778,
         "covariates": [
-          "fragmentation"
+          "fragmentation",
+          "edit"
         ],
         "assumption": "additive-linear; triangulate with stage 3a",
-        "fragmentation_beta": 0.0341,
+        "fragmentation_beta": 0.034,
         "fragmentation_beta_ci": [
-          0.0131,
-          0.0552
+          0.0129,
+          0.055
+        ],
+        "edit_beta": 0.0039,
+        "edit_beta_ci": [
+          -0.0166,
+          0.0244
         ]
       },
       "stratified_fielded": {
@@ -8520,27 +8851,33 @@
           0.549,
           0.6176
         ],
-        "truth_beta_partialled": 0.6059,
+        "truth_beta_partialled": 0.5815,
         "truth_beta_partialled_ci": [
-          0.5721,
-          0.6398
+          0.5477,
+          0.6152
         ],
-        "typicality_beta": -0.1104,
+        "typicality_beta": -0.1426,
         "typicality_beta_ci": [
-          -0.1446,
-          -0.0762
+          -0.177,
+          -0.1082
         ],
-        "truth_beta_shrinkage": -0.0388,
+        "truth_beta_shrinkage": 0.0032,
         "r2_truth_only": 0.3402,
-        "r2_joint": 0.4057,
+        "r2_joint": 0.4259,
         "covariates": [
-          "fragmentation"
+          "fragmentation",
+          "edit"
         ],
         "assumption": "additive-linear; triangulate with stage 3a",
-        "fragmentation_beta": -0.2071,
+        "fragmentation_beta": -0.2008,
         "fragmentation_beta_ci": [
-          -0.2416,
-          -0.1727
+          -0.2347,
+          -0.1669
+        ],
+        "edit_beta": -0.1466,
+        "edit_beta_ci": [
+          -0.1796,
+          -0.1137
         ]
       },
       "adversarial": {
@@ -8710,27 +9047,33 @@
           0.8485,
           0.8902
         ],
-        "truth_beta_partialled": 0.8637,
+        "truth_beta_partialled": 0.866,
         "truth_beta_partialled_ci": [
-          0.842,
-          0.8854
+          0.844,
+          0.8879
         ],
-        "typicality_beta": -0.0109,
+        "typicality_beta": -0.0079,
         "typicality_beta_ci": [
-          -0.0328,
-          0.011
+          -0.0303,
+          0.0145
         ],
-        "truth_beta_shrinkage": 0.0065,
+        "truth_beta_shrinkage": 0.0039,
         "r2_truth_only": 0.7558,
-        "r2_joint": 0.7562,
+        "r2_joint": 0.7564,
         "covariates": [
-          "fragmentation"
+          "fragmentation",
+          "edit"
         ],
         "assumption": "additive-linear; triangulate with stage 3a",
-        "fragmentation_beta": 0.0212,
+        "fragmentation_beta": 0.0206,
         "fragmentation_beta_ci": [
-          -0.0009,
-          0.0433
+          -0.0015,
+          0.0427
+        ],
+        "edit_beta": 0.0135,
+        "edit_beta_ci": [
+          -0.008,
+          0.035
         ]
       },
       "stratified_fielded": {
@@ -8827,27 +9170,33 @@
           0.5447,
           0.6135
         ],
-        "truth_beta_partialled": 0.6039,
+        "truth_beta_partialled": 0.5775,
         "truth_beta_partialled_ci": [
-          0.5699,
-          0.6378
+          0.5438,
+          0.6113
         ],
-        "typicality_beta": -0.1044,
+        "typicality_beta": -0.1392,
         "typicality_beta_ci": [
-          -0.1387,
-          -0.0701
+          -0.1736,
+          -0.1048
         ],
-        "truth_beta_shrinkage": -0.0428,
+        "truth_beta_shrinkage": 0.0028,
         "r2_truth_only": 0.3354,
-        "r2_joint": 0.4019,
+        "r2_joint": 0.4254,
         "covariates": [
-          "fragmentation"
+          "fragmentation",
+          "edit"
         ],
         "assumption": "additive-linear; triangulate with stage 3a",
-        "fragmentation_beta": -0.2137,
+        "fragmentation_beta": -0.2068,
         "fragmentation_beta_ci": [
-          -0.2482,
-          -0.1791
+          -0.2407,
+          -0.1729
+        ],
+        "edit_beta": -0.158,
+        "edit_beta_ci": [
+          -0.191,
+          -0.125
         ]
       },
       "adversarial": {
