@@ -276,9 +276,12 @@ def main(stage: str = "sanity", model: str = "", max_per_topic: int = 0,
         print(f"    3c off-diagonal AUROC = {e['adversarial']['off_diagonal'].get('auroc')} "
               f"{e['adversarial']['off_diagonal'].get('ci')}; gap {e['adversarial']['gap']}")
         print(f"    per-cell fielded score: {e['fielded_cell_scores']}")
-        print(f"    [recoverability: all-cell probe] truth_beta_partialled = "
-              f"{e['mediation_allcell']['truth_beta_partialled']}, "
-              f"strat_gap = {e['stratified_allcell'].get('gap', {}).get('point')}")
+        rec = e.get("mediation_allcell", {}).get("truth_beta_partialled")
+        if rec is not None:
+            print(f"    [recoverability: all-cell probe] truth_beta_partialled = {rec}, "
+                  f"strat_gap = {e.get('stratified_allcell', {}).get('gap', {}).get('point')}")
+        else:
+            print(f"    [unsupervised detector: no all-cell recoverability]")
         short = res["model"].split("/")[-1].lower()
         out = _HERE / "results" / f"stage3_{res['detector']}_{short}_{date.today():%Y%m%d}.json"
         out.write_text(json.dumps(res, indent=2, default=_json_default))
