@@ -167,14 +167,22 @@ def run(substrate, corpus_path: str | Path, detector: str = "saplma",
         from .probes.saplma import SaplmaProbe
         return SaplmaProbe(seed=_seed)
 
+    headline_layer = n_layers // 2
+    fielded_headline = None
     per_layer = []
     for L in range(n_layers):
         Xl = H[:, L, :]
         oof_all = _oof_scores(Xl, truth, device, n_folds, seed)
         oof_fielded = _fielded_oof_scores(Xl, truth, cells, device, n_folds, seed)
+        if L == headline_layer:
+            fielded_headline = oof_fielded
         cov = {"fragmentation": frag_oof, "edit": edit_oof}
+        from .eval.adversarial_split import OFF_DIAGONAL
+        from .stats import auroc_with_ci
+        off_idx = np.flatnonzero(np.isin(cells, OFF_DIAGONAL))
         entry = {
             "layer": L,
+            "allcell_off_diagonal": auroc_with_ci(truth[off_idx], oof_all[off_idx], seed=seed),
             "stratified_allcell": stratified_auroc(oof_all, truth, typicality, seed=seed),
             "mediation_allcell": mediation(oof_all, truth, typicality, covariates=cov),
             "stratified_fielded": stratified_auroc(oof_fielded, truth, typicality, seed=seed),
@@ -192,7 +200,6 @@ def run(substrate, corpus_path: str | Path, detector: str = "saplma",
               f"adv_off={entry['adversarial']['off_diagonal'].get('auroc')} | "
               f"allcell_truth_beta_partialled={entry['mediation_allcell']['truth_beta_partialled']}", flush=True)
 
-    headline_layer = n_layers // 2
     return {
         "detector": detector,
         "model": substrate.model_id,
@@ -204,6 +211,12 @@ def run(substrate, corpus_path: str | Path, detector: str = "saplma",
         "typicality_axis": "entity_freq_log10",
         "mediation_covariates": ["typicality", "fragmentation", "edit"],
         "headline_layer": headline_layer,
+        "fielded_scores_headline": {
+            "layer": headline_layer,
+            "score": [round(float(s), 6) for s in fielded_headline],
+            "cell": cells.tolist(),
+            "truth": [bool(t) for t in truth],
+        },
         "per_layer": per_layer,
         "provenance": "measured",
         "seed": seed,

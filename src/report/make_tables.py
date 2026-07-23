@@ -53,6 +53,7 @@ def _row(art: dict) -> dict:
         "strat_gap": _gap(e["stratified_fielded"].get("gap")),
         "recover": ("n/a" if e["mediation_allcell"].get("truth_beta_partialled") is None
                     else f"{e['mediation_allcell']['truth_beta_partialled']:.3f}"),
+        "recover_auroc": _auroc(e.get("allcell_off_diagonal")),
         "artifact": None,
     }
 
@@ -67,11 +68,13 @@ def diagnosis_table() -> str:
         return "(no stage3 artifacts in results/ yet)"
 
     hdr = ("| Detector | Model | L | In-dist AUROC (3c) | Off-diagonal AUROC (3c) "
-           "| Gap [95% CI] | FT mean P(true) | 3a fielded gap [CI] | Recoverability (all-cell β) |")
-    sep = "|" + "---|" * 9
+           "| Gap [95% CI] | FT mean P(true) | 3a fielded gap [CI] | Recoverable off-diag AUROC "
+           "| Recoverability (all-cell β) |")
+    sep = "|" + "---|" * 10
     lines = [hdr, sep] + [
         f"| {r['detector']} | {r['model']} | {r['layer']} | {r['in_dist']} | {r['off_diag']} "
-        f"| {r['gap']} | {r['ft_mean']} | {r['strat_gap']} | {r['recover']} |" for r in rows]
+        f"| {r['gap']} | {r['ft_mean']} | {r['strat_gap']} | {r['recover_auroc']} | {r['recover']} |"
+        for r in rows]
     lines.append("")
     lines.append("`*` = CI excludes zero. Overlapping CIs are not a difference (the project's standing directive §1.5).")
     lines.append("In-dist = held-out diagonal (the field's reported number). Off-diagonal = honest "
