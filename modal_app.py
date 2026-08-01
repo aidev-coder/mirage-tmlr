@@ -351,8 +351,8 @@ def main(stage: str = "sanity", model: str = "", max_per_topic: int = 0,
         res = intervene_run.remote(model_id=model_id, corpus_name=corpus_name, k=seed or 8)
         print(f"intervene {res['model']} L{res['layer']} k{res['k']}")
         for c, v in res["p_true"].items():
-            print(f"  {c}: baseline {v['baseline']} -> manifold {v['manifold_ablated']} "
-                  f"| random {v['random_ablated']}")
+            print(f"  {c}: probe {v['probe_readout']} vs behavior {v['behavioral_baseline']} "
+                  f"(manifold-ablated {v['manifold_ablated']})")
         short = res["model"].split("/")[-1].lower()
         out = _HERE / "results" / f"intervene_{short}_{date.today():%Y%m%d}.json"
         out.write_text(json.dumps(res, indent=2, default=_json_default))

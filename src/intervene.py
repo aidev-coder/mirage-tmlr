@@ -20,8 +20,10 @@ from pathlib import Path
 
 import numpy as np
 
-from .causal import _standardize, _typicality_subspace
+from .causal import _fit_logreg, _standardize, _typicality_subspace
 from .stage3 import load_corpus
+
+DIAGONAL = ("TT", "FA")
 
 _ROOT = Path(__file__).resolve().parent.parent
 PROMPT = ('Is the following statement true or false?\n'
@@ -122,6 +124,13 @@ def run(substrate, corpus_path: str | Path, k: int = 8, layer: int | None = None
     U_rand, _ = np.linalg.qr(np.random.default_rng(seed).standard_normal((d, k)))
     U_rand = U_rand[:, :k]
 
+    # dissociation check: the fielded probe read on the SAME judgment-prompt
+    # activations, so probe-readout and behavioral output share the input.
+    truth = np.array([bool(it["truth"]) for it in items])
+    diag = np.isin(cells, DIAGONAL)
+    w_field, b_field = _fit_logreg(Z[diag], truth[diag], seed)
+    probe_p = 1.0 / (1.0 + np.exp(-(Z @ w_field + b_field)))
+
     cell_idx = {c: np.flatnonzero(cells == c) for c in ("TT", "TA", "FT", "FA")}
     hook_man = _make_hook(mu, sd, U, z_ref)
     hook_rnd = _make_hook(mu, sd, U_rand, z_ref)
@@ -133,9 +142,11 @@ def run(substrate, corpus_path: str | Path, k: int = 8, layer: int | None = None
         base, n = _cell_p_true(substrate, prompts, idx, true_ids, false_ids, cap=cap, seed=seed)
         man, _ = _cell_p_true(substrate, prompts, idx, true_ids, false_ids, hook_man, L, cap, seed)
         rnd, _ = _cell_p_true(substrate, prompts, idx, true_ids, false_ids, hook_rnd, L, cap, seed)
-        out["p_true"][c] = {"n": n, "baseline": round(base, 4),
-                            "manifold_ablated": round(man, 4), "random_ablated": round(rnd, 4)}
-        print(f"  {c}: baseline P(true)={base:.3f} -> manifold={man:.3f} | random={rnd:.3f}", flush=True)
+        out["p_true"][c] = {"n": n, "behavioral_baseline": round(base, 4),
+                            "manifold_ablated": round(man, 4), "random_ablated": round(rnd, 4),
+                            "probe_readout": round(float(probe_p[idx].mean()), 4)}
+        print(f"  {c}: PROBE P(true)={probe_p[idx].mean():.3f}  vs  BEHAVIOR P(true)={base:.3f} "
+              f"(manifold-ablated {man:.3f})", flush=True)
         if commit_fn:
             commit_fn()
     return out
