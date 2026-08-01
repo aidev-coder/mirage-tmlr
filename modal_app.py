@@ -164,6 +164,22 @@ def stage3_run(model_id: str, corpus_name: str, detector: str = "saplma") -> dic
 
 
 @app.function(image=image, gpu=GPU, volumes=VOLUMES, secrets=SECRETS,
+              timeout=4 * 3600)
+def causal_run(model_id: str, corpus_name: str) -> dict:
+    """Causal mediation: fraction of the truth-probe response routed through the
+    typicality direction, on matched twin pairs. Reuses cached activations."""
+    _setup()
+    from src.causal import run as run_causal
+    from src.substrate import Substrate
+    sub = Substrate(model_id, cache_dir="/root/activations")
+    out = run_causal(sub, f"/root/mirage/data/corpus/{corpus_name}",
+                     commit_fn=activations.commit)
+    activations.commit()
+    hf_cache.commit()
+    return out
+
+
+@app.function(image=image, gpu=GPU, volumes=VOLUMES, secrets=SECRETS,
               timeout=2 * 3600)
 def harvest_fn(model_id: str, topic: str, max_subjects: int = 400) -> dict:
     """O-2/D-008 natural-error harvest from a disjoint model (Mistral)."""
@@ -284,6 +300,28 @@ def main(stage: str = "sanity", model: str = "", max_per_topic: int = 0,
             print(f"    [unsupervised detector: no all-cell recoverability]")
         short = res["model"].split("/")[-1].lower()
         out = _HERE / "results" / f"stage3_{res['detector']}_{short}_{date.today():%Y%m%d}.json"
+        out.write_text(json.dumps(res, indent=2, default=_json_default))
+        print(f"  -> {out}")
+
+    elif stage == "causal":
+        from datetime import date
+        model_id = model or "meta-llama/Llama-3.1-8B"
+        corpus_name = corpus
+        if not corpus_name:
+            cdir = _HERE / "data" / "corpus"
+            cands = sorted(cdir.glob("mirage_2x2_v*.jsonl"), key=lambda p: p.stat().st_mtime)
+            if not cands:
+                raise SystemExit("no finalized corpus — run --stage stage2 first")
+            corpus_name = cands[-1].name
+        res = causal_run.remote(model_id=model_id, corpus_name=corpus_name)
+        hl = res["headline_layer"]; e = res["per_layer"][hl]
+        print(f"causal {res['model']} on {corpus_name} n_pairs={res['n_pairs']} L{hl}")
+        print(f"  fielded fraction_mediated = {e['fielded']['fraction_mediated_median']} "
+              f"(TE {e['fielded']['total_effect_median']}, NIE {e['fielded']['indirect_effect_median']})")
+        print(f"  fair    fraction_mediated = {e['fair']['fraction_mediated_median']} "
+              f"(TE {e['fair']['total_effect_median']}, NIE {e['fair']['indirect_effect_median']})")
+        short = res["model"].split("/")[-1].lower()
+        out = _HERE / "results" / f"causal_{short}_{date.today():%Y%m%d}.json"
         out.write_text(json.dumps(res, indent=2, default=_json_default))
         print(f"  -> {out}")
 
