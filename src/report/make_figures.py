@@ -89,6 +89,43 @@ def fig_cell_scores(out: str | Path | None = None):
     return out
 
 
+def fig_causal_manifold(out: str | Path | None = None):
+    """Fraction of the probe's hallucination (FT) error causally mediated by the
+    frequency manifold vs a random subspace of equal dimension, swept over k, at
+    each model's headline layer."""
+    import matplotlib
+    matplotlib.use("Agg")
+    import matplotlib.pyplot as plt
+
+    arts = [json.loads(Path(f).read_text(encoding="utf-8"))
+            for f in glob.glob(str(RESULTS / "causal_*.json"))]
+    arts = sorted(arts, key=lambda a: a["model"])
+    fig, ax = plt.subplots(figsize=(7, 4.4))
+    for art in arts:
+        e = art["per_layer"][art["headline_layer"]]
+        name = art["model"].split("/")[-1]
+        man = e["ft_error_frac_mediated_by_k"]
+        rnd = e["ft_error_random_subspace_by_k"]
+        ks = sorted(int(k) for k in man)
+        line, = ax.plot(ks, [man[str(k)] if str(k) in man else man[k] for k in ks],
+                        marker="o", markersize=4, label=f"{name} (frequency manifold)")
+        ax.plot(ks, [rnd.get(str(k), rnd.get(k)) for k in ks], ls=":", lw=1,
+                color=line.get_color(), alpha=0.6)
+    ax.axhline(0.0, ls="--", lw=0.8, color="gray")
+    ax.set_xscale("log", base=2)
+    ax.set_xlabel("manifold dimension k")
+    ax.set_ylabel("fraction of FT error causally mediated")
+    ax.set_title("hallucination error lives in a low-rank frequency manifold\n"
+                 "(dotted = random subspace of equal size)")
+    ax.legend(fontsize=8)
+    fig.tight_layout()
+    out = Path(out or RESULTS / "fig_causal_manifold.png")
+    fig.savefig(out, dpi=200)
+    plt.close(fig)
+    return out
+
+
 if __name__ == "__main__":
     print(fig_layer_sweep())
     print(fig_cell_scores())
+    print(fig_causal_manifold())
