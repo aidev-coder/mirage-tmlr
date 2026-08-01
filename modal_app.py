@@ -315,11 +315,10 @@ def main(stage: str = "sanity", model: str = "", max_per_topic: int = 0,
             corpus_name = cands[-1].name
         res = causal_run.remote(model_id=model_id, corpus_name=corpus_name)
         hl = res["headline_layer"]; e = res["per_layer"][hl]
-        print(f"causal {res['model']} on {corpus_name} n_pairs={res['n_pairs']} L{hl}")
-        print(f"  fielded fraction_mediated = {e['fielded']['fraction_mediated_median']} "
-              f"(TE {e['fielded']['total_effect_median']}, NIE {e['fielded']['indirect_effect_median']})")
-        print(f"  fair    fraction_mediated = {e['fair']['fraction_mediated_median']} "
-              f"(TE {e['fair']['total_effect_median']}, NIE {e['fair']['indirect_effect_median']})")
+        print(f"causal {res['model']} L{hl} :: {res['contrast']}")
+        print(f"  FT-error frac_mediated by k: {e['ft_error_frac_mediated_by_k']}")
+        print(f"  random-subspace null   by k: {e['ft_error_random_subspace_by_k']}")
+        print(f"  TT-ctrl  frac_mediated by k: {e['tt_control_frac_mediated_by_k']}")
         short = res["model"].split("/")[-1].lower()
         out = _HERE / "results" / f"causal_{short}_{date.today():%Y%m%d}.json"
         out.write_text(json.dumps(res, indent=2, default=_json_default))

@@ -20,7 +20,6 @@ number across the Pythia sweep.
 from __future__ import annotations
 
 import json
-from collections import defaultdict
 from pathlib import Path
 
 import numpy as np
@@ -32,46 +31,65 @@ DIAGONAL = ("TT", "FA")
 TYPICAL = ("TT", "FT")   # the high-frequency column (the typicality axis, by construction)
 
 
-def _fit_logreg(X: np.ndarray, y: np.ndarray, seed: int = 0):
+def _standardize(X: np.ndarray):
+    """Zero-variance-safe standardization. Everything downstream (probe fit, PLS,
+    mediation) runs in this space so the logit decomposition stays consistent."""
+    mu = X.mean(axis=0)
+    sd = X.std(axis=0)
+    sd = np.where(sd < 1e-8, 1.0, sd)
+    return (X - mu) / sd
+
+
+def _fit_logreg(Z: np.ndarray, y: np.ndarray, seed: int = 0):
+    """Plain logistic probe on already-standardized Z; returns (w, b) in Z-space."""
     from sklearn.linear_model import LogisticRegression
-    from sklearn.preprocessing import StandardScaler
-    sc = StandardScaler().fit(X)
-    clf = LogisticRegression(max_iter=1000, C=1.0, random_state=seed).fit(sc.transform(X), y)
-    # fold the scaler into a single (w, b) acting on raw h
-    w = (clf.coef_[0] / sc.scale_)
-    b = float(clf.intercept_[0] - (clf.coef_[0] * sc.mean_ / sc.scale_).sum())
-    return w.astype(np.float64), b
+    clf = LogisticRegression(max_iter=1000, C=1.0, random_state=seed).fit(Z, y)
+    return clf.coef_[0].astype(np.float64), float(clf.intercept_[0])
 
 
-def _twin_pairs(items: list[dict]) -> list[tuple[int, int]]:
-    by_subj = defaultdict(lambda: {"t": [], "f": []})
-    for i, it in enumerate(items):
-        subj = it["entities"][0] if it.get("entities") else it.get("entity")
-        by_subj[subj]["t" if it["truth"] else "f"].append(i)
-    pairs = []
-    for d in by_subj.values():
-        for ti in d["t"]:
-            for fi in d["f"]:
-                pairs.append((ti, fi))
-    return pairs
+def _typicality_subspace(Z: np.ndarray, freq: np.ndarray, k_max: int, n_bins: int = 20):
+    """Orthonormal basis (d, k_max) for the frequency-driven manifold: the directions
+    along which the MEAN standardized activation moves as entity frequency sweeps.
+    Bin items by frequency, take per-bin means, center, SVD. Well-posed and bounded
+    by n_bins (no PLS degeneracy); the top-k right singular vectors span the manifold
+    of typicality-driven mean variation."""
+    edges = np.quantile(freq, np.linspace(0, 1, n_bins + 1))
+    binid = np.clip(np.digitize(freq, edges[1:-1]), 0, n_bins - 1)
+    means = [Z[binid == b].mean(axis=0) for b in range(n_bins) if (binid == b).sum() > 0]
+    M = np.asarray(means)
+    M = M - M.mean(axis=0)
+    _, _, Vt = np.linalg.svd(M, full_matrices=False)
+    return Vt.T[:, :min(k_max, Vt.shape[0])]
 
 
-def _mediation(w: np.ndarray, b: float, u: np.ndarray,
-               H_true: np.ndarray, H_false: np.ndarray) -> dict:
+def _random_subspace(d: int, k: int, seed: int) -> np.ndarray:
+    """Orthonormal (d, k) Gaussian subspace — the null for the manifold: resetting
+    any k-dim projection moves a logit somewhat, so the frequency manifold only
+    counts if it mediates MORE than this."""
+    Q, _ = np.linalg.qr(np.random.default_rng(seed).standard_normal((d, k)))
+    return Q[:, :k]
+
+
+def _mediation_subspace(w: np.ndarray, b: float, U: np.ndarray,
+                        H_fooled: np.ndarray, H_ref: np.ndarray) -> dict:
+    """Within a truth class, across the typicality SUBSPACE span(U). Counterfactual:
+    reset each fooled item's projection onto span(U) to the reference cell's mean
+    projection ("make it look atypical" along every typicality dimension at once),
+    leaving the orthogonal complement untouched.
+        h_cf = h - U Uᵀ(h - mean_ref)
+    NIE / TE is the fraction of the probe's fooled-vs-reference response gap that is
+    causally carried by the typicality manifold."""
     def f(h):
         return h @ w + b
-    ut, uf = H_true @ u, H_false @ u
-    H_cf = H_true - np.outer(ut, u) + np.outer(uf, u)   # swap only the u-coordinate
-    te = f(H_true) - f(H_false)
-    nie = f(H_true) - f(H_cf)
-    keep = np.abs(te) > 1e-6
-    frac = float(np.median(nie[keep] / te[keep]))
+    mean_ref = H_ref.mean(axis=0)
+    proj = (H_fooled - mean_ref) @ U        # (n, k)
+    H_cf = H_fooled - proj @ U.T
+    te = float(np.median(f(H_fooled)) - np.median(f(H_ref)))
+    nie = float(np.median(f(H_fooled)) - np.median(f(H_cf)))
     return {
-        "total_effect_median": round(float(np.median(te)), 4),
-        "indirect_effect_median": round(float(np.median(nie)), 4),
-        "fraction_mediated_median": round(frac, 4),
-        "fraction_mediated_mean": round(float(np.mean(nie[keep] / te[keep])), 4),
-        "n_pairs": int(len(te)),
+        "total_effect": round(te, 4),
+        "indirect_effect": round(nie, 4),
+        "fraction_mediated": round(nie / te, 4) if abs(te) > 1e-6 else None,
     }
 
 
@@ -82,41 +100,49 @@ def run(substrate, corpus_path: str | Path, batch_size: int = 32,
     texts = [it["text"] for it in items]
     truth = np.array([bool(it["truth"]) for it in items])
     cells = np.array([it["cell"] for it in items])
-    typical = np.isin(cells, TYPICAL)
+    freq = np.array([it["typicality"]["entity_freq_log10"] for it in items], dtype=float)
     diag = np.isin(cells, DIAGONAL)
 
     H = _extract_or_load(substrate, texts, corpus_hash, batch_size, commit_fn)
     n_layers = H.shape[1]
-    pairs = _twin_pairs(items)
-    ti = np.array([p[0] for p in pairs]); fi = np.array([p[1] for p in pairs])
+    ft = cells == "FT"; fa = cells == "FA"; tt = cells == "TT"; ta = cells == "TA"
+    ks = [1, 2, 4, 8, 16]
 
     per_layer = []
     for L in range(n_layers):
-        Xl = H[:, L, :].astype(np.float64)
-        w_fair, b_fair = _fit_logreg(Xl, truth, seed)
-        w_field, b_field = _fit_logreg(Xl[diag], truth[diag], seed)
-        w_typ, _ = _fit_logreg(Xl, typical, seed)
-        u = w_typ / (np.linalg.norm(w_typ) + 1e-12)
-        Ht, Hf = Xl[ti], Xl[fi]
+        Z = _standardize(H[:, L, :].astype(np.float64))
+        w_field, b_field = _fit_logreg(Z[diag], truth[diag], seed)
+        U_full = _typicality_subspace(Z, freq, max(ks))
+        sweep, sweep_ctrl, sweep_rand = {}, {}, {}
+        for k in ks:
+            Uk = U_full[:, :k]
+            sweep[k] = _mediation_subspace(w_field, b_field, Uk, Z[ft], Z[fa])["fraction_mediated"]
+            sweep_ctrl[k] = _mediation_subspace(w_field, b_field, Uk, Z[tt], Z[ta])["fraction_mediated"]
+            rand = [_mediation_subspace(w_field, b_field, _random_subspace(Z.shape[1], k, seed + r),
+                                        Z[ft], Z[fa])["fraction_mediated"] for r in range(5)]
+            rand = [v for v in rand if v is not None]
+            sweep_rand[k] = round(float(np.median(rand)), 4) if rand else None
         per_layer.append({
             "layer": L,
-            "fielded": _mediation(w_field, b_field, u, Ht, Hf),
-            "fair": _mediation(w_fair, b_fair, u, Ht, Hf),
+            "ft_error_frac_mediated_by_k": sweep,          # FT vs FA (the headline)
+            "ft_error_random_subspace_by_k": sweep_rand,   # null: random k-dim subspace
+            "tt_control_frac_mediated_by_k": sweep_ctrl,   # TT vs TA (specificity)
+            "total_effect": _mediation_subspace(w_field, b_field, U_full[:, :1], Z[ft], Z[fa])["total_effect"],
         })
         if commit_fn:
             commit_fn()
         e = per_layer[-1]
-        print(f"  [L{L}] fielded frac_mediated={e['fielded']['fraction_mediated_median']} "
-              f"| fair={e['fair']['fraction_mediated_median']} "
-              f"(TE_field={e['fielded']['total_effect_median']})", flush=True)
+        print(f"  [L{L}] FT-error k1={sweep[1]} k8={sweep[8]} | random k8={sweep_rand[8]} "
+              f"| TT-ctrl k8={sweep_ctrl[8]}", flush=True)
 
     hl = n_layers // 2
     return {
         "model": substrate.model_id,
         "corpus": Path(corpus_path).name,
         "corpus_hash": corpus_hash,
-        "n_pairs": len(pairs),
-        "typicality_direction": "logreg on TT+FT vs TA+FA (frequency column)",
+        "contrast": "within-truth-class across typicality SUBSPACE (FT vs FA; TT vs TA control)",
+        "typicality_subspace": "PLS of residuals onto typical/atypical label, k-swept",
+        "k_values": ks,
         "headline_layer": hl,
         "per_layer": per_layer,
         "provenance": "measured",
