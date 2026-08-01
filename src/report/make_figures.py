@@ -125,7 +125,48 @@ def fig_causal_manifold(out: str | Path | None = None):
     return out
 
 
+def fig_dissociation(out: str | Path | None = None):
+    """Per cell, the fielded probe's readout vs the model's own stated P(true), on
+    the SAME judgment-prompt activations. The FT gap (probe says true, model says
+    false) is the dissociation. Only models that actually perform the judgment task
+    are shown (FA behavioral P(true) < 0.15 excludes base models)."""
+    import matplotlib
+    matplotlib.use("Agg")
+    import matplotlib.pyplot as plt
+    import numpy as np
+
+    arts = [json.loads(Path(f).read_text(encoding="utf-8"))
+            for f in glob.glob(str(RESULTS / "intervene_*.json"))]
+    arts = [a for a in arts if "behavioral_baseline" in a["p_true"]["FA"]
+            and a["p_true"]["FA"]["behavioral_baseline"] < 0.15]
+    arts = sorted(arts, key=lambda a: a["model"])
+    cells = ["TT", "TA", "FT", "FA"]
+    labels = ["true\ncommon", "true\nrare", "false\nfluent", "false\nodd"]
+    fig, axes = plt.subplots(1, len(arts), figsize=(3.6 * len(arts), 3.6), sharey=True)
+    if len(arts) == 1:
+        axes = [axes]
+    x = np.arange(len(cells)); w = 0.38
+    for ax, art in zip(axes, arts):
+        probe = [art["p_true"][c]["probe_readout"] for c in cells]
+        beh = [art["p_true"][c]["behavioral_baseline"] for c in cells]
+        ax.bar(x - w / 2, probe, w, label="probe readout", color="#c44")
+        ax.bar(x + w / 2, beh, w, label="model's answer", color="#48a")
+        ax.axhline(0.5, ls="--", lw=0.8, color="gray")
+        ax.set_xticks(x); ax.set_xticklabels(labels, fontsize=8)
+        ax.set_title(art["model"].split("/")[-1], fontsize=9)
+        ax.set_ylim(0, 1.05)
+    axes[0].set_ylabel("P(true)")
+    axes[0].legend(fontsize=8, loc="upper right")
+    fig.suptitle("the probe is fooled by fluent lies; the model is not", fontsize=11)
+    fig.tight_layout()
+    out = Path(out or RESULTS / "fig_dissociation.png")
+    fig.savefig(out, dpi=200)
+    plt.close(fig)
+    return out
+
+
 if __name__ == "__main__":
     print(fig_layer_sweep())
     print(fig_cell_scores())
     print(fig_causal_manifold())
+    print(fig_dissociation())

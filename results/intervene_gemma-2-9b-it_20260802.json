@@ -1,0 +1,44 @@
+{
+  "model": "google/gemma-2-9b-it",
+  "corpus": "mirage_2x2_v165941295e9a.jsonl",
+  "layer": 21,
+  "k": 8,
+  "n_by_cell": {
+    "TT": 542,
+    "TA": 948,
+    "FT": 540,
+    "FA": 134
+  },
+  "p_true": {
+    "TT": {
+      "n": 200,
+      "behavioral_baseline": 0.8134,
+      "manifold_ablated": 0.7996,
+      "random_ablated": 0.814,
+      "probe_readout": 0.9996
+    },
+    "TA": {
+      "n": 200,
+      "behavioral_baseline": 0.8147,
+      "manifold_ablated": 0.8006,
+      "random_ablated": 0.8151,
+      "probe_readout": 0.9521
+    },
+    "FT": {
+      "n": 200,
+      "behavioral_baseline": 0.0574,
+      "manifold_ablated": 0.0539,
+      "random_ablated": 0.0572,
+      "probe_readout": 0.3695
+    },
+    "FA": {
+      "n": 134,
+      "behavioral_baseline": 0.0081,
+      "manifold_ablated": 0.0064,
+      "random_ablated": 0.0081,
+      "probe_readout": 0.0011
+    }
+  },
+  "provenance": "measured",
+  "seed": 20260719
+}

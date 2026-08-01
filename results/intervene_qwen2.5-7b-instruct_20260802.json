@@ -12,27 +12,31 @@
   "p_true": {
     "TT": {
       "n": 200,
-      "baseline": 0.6829,
+      "behavioral_baseline": 0.6829,
       "manifold_ablated": 0.6826,
-      "random_ablated": 0.683
+      "random_ablated": 0.683,
+      "probe_readout": 0.9996
     },
     "TA": {
       "n": 200,
-      "baseline": 0.7275,
+      "behavioral_baseline": 0.7275,
       "manifold_ablated": 0.7276,
-      "random_ablated": 0.7271
+      "random_ablated": 0.7271,
+      "probe_readout": 0.9114
     },
     "FT": {
       "n": 200,
-      "baseline": 0.0331,
+      "behavioral_baseline": 0.0331,
       "manifold_ablated": 0.0331,
-      "random_ablated": 0.0331
+      "random_ablated": 0.0331,
+      "probe_readout": 0.5822
     },
     "FA": {
       "n": 134,
-      "baseline": 0.0,
+      "behavioral_baseline": 0.0,
       "manifold_ablated": 0.0,
-      "random_ablated": 0.0
+      "random_ablated": 0.0,
+      "probe_readout": 0.001
     }
   },
   "provenance": "measured",
