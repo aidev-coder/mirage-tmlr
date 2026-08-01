@@ -180,6 +180,22 @@ def causal_run(model_id: str, corpus_name: str) -> dict:
 
 
 @app.function(image=image, gpu=GPU, volumes=VOLUMES, secrets=SECRETS,
+              timeout=4 * 3600)
+def intervene_run(model_id: str, corpus_name: str, k: int = 8) -> dict:
+    """Model-level: ablate the frequency manifold from the residual and re-read the
+    model's own stated P(true) per cell. Manifold vs random-subspace null."""
+    _setup()
+    from src.intervene import run as run_intervene
+    from src.substrate import Substrate
+    sub = Substrate(model_id, cache_dir="/root/activations")
+    out = run_intervene(sub, f"/root/mirage/data/corpus/{corpus_name}", k=k,
+                        commit_fn=activations.commit)
+    activations.commit()
+    hf_cache.commit()
+    return out
+
+
+@app.function(image=image, gpu=GPU, volumes=VOLUMES, secrets=SECRETS,
               timeout=2 * 3600)
 def harvest_fn(model_id: str, topic: str, max_subjects: int = 400) -> dict:
     """O-2/D-008 natural-error harvest from a disjoint model (Mistral)."""
@@ -321,6 +337,24 @@ def main(stage: str = "sanity", model: str = "", max_per_topic: int = 0,
         print(f"  TT-ctrl  frac_mediated by k: {e['tt_control_frac_mediated_by_k']}")
         short = res["model"].split("/")[-1].lower()
         out = _HERE / "results" / f"causal_{short}_{date.today():%Y%m%d}.json"
+        out.write_text(json.dumps(res, indent=2, default=_json_default))
+        print(f"  -> {out}")
+
+    elif stage == "intervene":
+        from datetime import date
+        model_id = model or "meta-llama/Llama-3.1-8B"
+        corpus_name = corpus
+        if not corpus_name:
+            cdir = _HERE / "data" / "corpus"
+            cands = sorted(cdir.glob("mirage_2x2_v*.jsonl"), key=lambda p: p.stat().st_mtime)
+            corpus_name = cands[-1].name
+        res = intervene_run.remote(model_id=model_id, corpus_name=corpus_name, k=seed or 8)
+        print(f"intervene {res['model']} L{res['layer']} k{res['k']}")
+        for c, v in res["p_true"].items():
+            print(f"  {c}: baseline {v['baseline']} -> manifold {v['manifold_ablated']} "
+                  f"| random {v['random_ablated']}")
+        short = res["model"].split("/")[-1].lower()
+        out = _HERE / "results" / f"intervene_{short}_{date.today():%Y%m%d}.json"
         out.write_text(json.dumps(res, indent=2, default=_json_default))
         print(f"  -> {out}")
 

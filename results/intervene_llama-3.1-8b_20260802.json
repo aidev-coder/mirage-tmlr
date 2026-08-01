@@ -1,0 +1,40 @@
+{
+  "model": "meta-llama/Llama-3.1-8B",
+  "corpus": "mirage_2x2_v165941295e9a.jsonl",
+  "layer": 16,
+  "k": 8,
+  "n_by_cell": {
+    "TT": 542,
+    "TA": 948,
+    "FT": 540,
+    "FA": 134
+  },
+  "p_true": {
+    "TT": {
+      "n": 200,
+      "baseline": 0.3228,
+      "manifold_ablated": 0.2835,
+      "random_ablated": 0.3208
+    },
+    "TA": {
+      "n": 200,
+      "baseline": 0.3073,
+      "manifold_ablated": 0.2579,
+      "random_ablated": 0.3055
+    },
+    "FT": {
+      "n": 200,
+      "baseline": 0.2941,
+      "manifold_ablated": 0.2911,
+      "random_ablated": 0.2938
+    },
+    "FA": {
+      "n": 134,
+      "baseline": 0.2644,
+      "manifold_ablated": 0.2597,
+      "random_ablated": 0.2629
+    }
+  },
+  "provenance": "measured",
+  "seed": 20260719
+}

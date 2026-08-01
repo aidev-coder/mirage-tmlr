@@ -1,0 +1,40 @@
+{
+  "model": "Qwen/Qwen2.5-7B-Instruct",
+  "corpus": "mirage_2x2_v165941295e9a.jsonl",
+  "layer": 14,
+  "k": 8,
+  "n_by_cell": {
+    "TT": 542,
+    "TA": 948,
+    "FT": 540,
+    "FA": 134
+  },
+  "p_true": {
+    "TT": {
+      "n": 200,
+      "baseline": 0.6829,
+      "manifold_ablated": 0.6826,
+      "random_ablated": 0.683
+    },
+    "TA": {
+      "n": 200,
+      "baseline": 0.7275,
+      "manifold_ablated": 0.7276,
+      "random_ablated": 0.7271
+    },
+    "FT": {
+      "n": 200,
+      "baseline": 0.0331,
+      "manifold_ablated": 0.0331,
+      "random_ablated": 0.0331
+    },
+    "FA": {
+      "n": 134,
+      "baseline": 0.0,
+      "manifold_ablated": 0.0,
+      "random_ablated": 0.0
+    }
+  },
+  "provenance": "measured",
+  "seed": 20260719
+}
