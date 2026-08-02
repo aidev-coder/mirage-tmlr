@@ -149,7 +149,11 @@ def _fragmentation_oof(items: list[dict], truth: np.ndarray, tokenizer,
 
 def run(substrate, corpus_path: str | Path, detector: str = "saplma",
         n_folds: int = 5, batch_size: int = 32, device: str | None = None,
-        seed: int = 20260719, commit_fn=None) -> dict:
+        seed: int = 20260719, commit_fn=None, domain: str | None = None) -> dict:
+    """domain: restrict to one corpus domain. Only 'cities' populates all four
+    cells; inventions/elements have no atypical column, so the pooled off-diagonal
+    mixes a cities-only TA against a multi-domain FT. Running cities-only holds
+    domain fixed and checks the collapse is typicality, not topic."""
     items = load_corpus(corpus_path)
     corpus_hash = Path(corpus_path).stem.split("_v")[-1]
     texts = [it["text"] for it in items]
@@ -159,6 +163,11 @@ def run(substrate, corpus_path: str | Path, detector: str = "saplma",
 
     edited = np.array([bool(it.get("edited")) for it in items])
     H = _extract_or_load(substrate, texts, corpus_hash, batch_size, commit_fn)
+    if domain:   # subset AFTER extraction so the full-corpus activation cache stays valid
+        keep = np.array([it["domain"] == domain for it in items])
+        items = [it for it, k in zip(items, keep) if k]
+        H, truth, cells, typicality, edited = (H[keep], truth[keep], cells[keep],
+                                               typicality[keep], edited[keep])
     n_layers = H.shape[1]
     frag_oof = _fragmentation_oof(items, truth, substrate.tokenizer, n_folds, seed)
     edit_oof = _edit_oof(H[:, n_layers // 2, :], edited, device, n_folds, seed)
@@ -205,6 +214,7 @@ def run(substrate, corpus_path: str | Path, detector: str = "saplma",
         "model": substrate.model_id,
         "corpus": Path(corpus_path).name,
         "corpus_hash": corpus_hash,
+        "domain": domain or "all",
         "n": len(items),
         "cell_counts": {c: int((cells == c).sum()) for c in ("TT", "TA", "FT", "FA")},
         "n_folds": n_folds,

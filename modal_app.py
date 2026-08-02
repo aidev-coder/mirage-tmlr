@@ -143,7 +143,8 @@ def stage2_build(reference_model: str, canary_model: str,
 
 @app.function(image=image, gpu=GPU, volumes=VOLUMES, secrets=SECRETS,
               timeout=4 * 3600)
-def stage3_run(model_id: str, corpus_name: str, detector: str = "saplma") -> dict:
+def stage3_run(model_id: str, corpus_name: str, detector: str = "saplma",
+               domain: str = "") -> dict:
     """Stage 3: the three decorrelation tests on the finalized corpus (§3 Stage 3).
     Hidden states cached to the activations volume; full per-layer curves."""
     _setup()
@@ -157,7 +158,7 @@ def stage3_run(model_id: str, corpus_name: str, detector: str = "saplma") -> dic
         out = run_eigen(sub, corpus_path, commit_fn=activations.commit)
     else:
         out = run(sub, corpus_path, detector=detector, device="cuda",
-                  commit_fn=activations.commit)
+                  commit_fn=activations.commit, domain=domain or None)
     activations.commit()
     hf_cache.commit()
     return out
@@ -227,7 +228,7 @@ def harvest_fn(model_id: str, topic: str, max_subjects: int = 400) -> dict:
 @app.local_entrypoint()
 def main(stage: str = "sanity", model: str = "", max_per_topic: int = 0,
          batch_size: int = 32, fast: bool = True, corpus: str = "", seed: int = 0,
-         detector: str = "saplma"):
+         detector: str = "saplma", domain: str = ""):
     """
     modal run mirage/modal_app.py --stage sanity                     # Stage 0, all models
     modal run mirage/modal_app.py --stage stage1 --model <id>        # Stage 1, one model
@@ -309,7 +310,7 @@ def main(stage: str = "sanity", model: str = "", max_per_topic: int = 0,
                 raise SystemExit("no finalized corpus in data/corpus/ — run --stage stage2 first")
             corpus_name = cands[-1].name
         res = stage3_run.remote(model_id=canary_model, corpus_name=corpus_name,
-                                detector=detector)
+                                detector=detector, domain=domain)
         hl = res["headline_layer"]
         e = res["per_layer"][hl]
         print(f"stage3[{res['detector']}] {res['model']} on {corpus_name} n={res['n']} "
@@ -331,7 +332,8 @@ def main(stage: str = "sanity", model: str = "", max_per_topic: int = 0,
         else:
             print(f"    [unsupervised detector: no all-cell recoverability]")
         short = res["model"].split("/")[-1].lower()
-        out = _HERE / "results" / f"stage3_{res['detector']}_{short}_{date.today():%Y%m%d}.json"
+        dtag = f"_{domain}" if domain else ""
+        out = _HERE / "results" / f"stage3_{res['detector']}_{short}{dtag}_{date.today():%Y%m%d}.json"
         out.write_text(json.dumps(res, indent=2, default=_json_default))
         print(f"  -> {out}")
 
