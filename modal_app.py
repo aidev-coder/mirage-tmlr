@@ -395,6 +395,12 @@ def main(stage: str = "sanity", model: str = "", max_per_topic: int = 0,
               f"{h['probe_mean_p_true_high_freq']} | model {h['behavior_mean_p_true_high_freq']}")
         print(f"  correct      (n={c['n']}): probe {c['probe_mean_p_true']} | "
               f"model {c['behavior_mean_p_true']}")
+        g = res.get("gold_free_dissociation", {})
+        if g:
+            print(f"  [gold-free] model disowns {g['n_model_disowns_own_output']} own outputs "
+                  f"(model {g['behavior_mean_p_true_on_disowned']}) -> probe reads them "
+                  f"{g['probe_mean_p_true_on_disowned']}, calls "
+                  f"{g['probe_calls_disowned_true_frac']} true")
         if "probe_auroc_on_own_generations" in res:
             print(f"  AUROC on own generations: probe "
                   f"{res['probe_auroc_on_own_generations']['auroc']} "

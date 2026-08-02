@@ -224,6 +224,32 @@ def run(substrate, corpus_path: str | Path, max_subjects: int = 400,
         "probe_mean_p_true": round(float(probe_gen[gen_correct].mean()), 4) if gen_correct.any() else None,
         "behavior_mean_p_true": round(float(behav[gen_correct].mean()), 4) if gen_correct.any() else None,
     }
+    # Gold-free dissociation — the headline, and the only measure here immune to
+    # ground-truth error. City names are frequently shared across countries
+    # ("Westminster", "Santa Rosa", "Altamira"), so a generation scored wrong against
+    # our single gold country may be a defensible alternative referent rather than a
+    # hallucination. This measure never consults the gold label: it compares two
+    # readings of the SAME generated statement. Where the model disavows its own
+    # output, we ask what a probe on that model's hidden states says about it.
+    disown = behav < 0.5
+    out["gold_free_dissociation"] = {
+        "n_model_disowns_own_output": int(disown.sum()),
+        "probe_mean_p_true_on_disowned": round(float(probe_gen[disown].mean()), 4) if disown.any() else None,
+        "behavior_mean_p_true_on_disowned": round(float(behav[disown].mean()), 4) if disown.any() else None,
+        "probe_calls_disowned_true_frac": round(float((probe_gen[disown] > 0.5).mean()), 4) if disown.any() else None,
+        "disagree_probe_true_model_false": round(float(((probe_gen > 0.5) & disown).mean()), 4),
+        "disagree_probe_false_model_true": round(float(((probe_gen < 0.5) & ~disown).mean()), 4),
+    }
+    g = out["gold_free_dissociation"]
+    print(f"  [gold-free] model disowns {g['n_model_disowns_own_output']} of its own outputs "
+          f"(P(true)={g['behavior_mean_p_true_on_disowned']}); probe reads them "
+          f"{g['probe_mean_p_true_on_disowned']}, calls "
+          f"{g['probe_calls_disowned_true_frac']} of them true", flush=True)
+
+    out["ambiguity_caveat"] = (
+        "gold labels take one country per city; shared toponyms make the gold-scored "
+        "error rate and AUROC an upper bound on true hallucination. gold_free_dissociation "
+        "does not use gold labels.")
     out["records"] = records
     h, c = out["hallucinations"], out["correct_generations"]
     print(f"  hallucinations n={h['n']}: probe P(true)={h['probe_mean_p_true']} "
