@@ -191,7 +191,11 @@ def run(substrate, corpus_path: str | Path, max_subjects: int = 400,
     for r, p, bv in zip(records, probe_gen, behav):
         r["probe_p_true"] = round(float(p), 4); r["behavior_p_true"] = round(float(bv), 4)
 
-    hi = gen_freq >= np.median(gen_freq)
+    # Frequency split: most subjects sit at exactly 0.0 (the corpus's atypical
+    # marker — median log10 freq is 0.0 for atypical vs 2.88 for typical), so a
+    # median split degenerates to "everything". Split on presence in the frequency
+    # index instead, which is the same typical/atypical line the corpus draws.
+    hi = gen_freq > 0.0
     out = {
         "model": substrate.model_id, "corpus": Path(corpus_path).name, "layer": L,
         "n_generated": len(gen_texts),
@@ -207,15 +211,20 @@ def run(substrate, corpus_path: str | Path, max_subjects: int = 400,
         "probe_mean_p_true": round(float(probe_gen[err].mean()), 4) if err.any() else None,
         "behavior_mean_p_true": round(float(behav[err].mean()), 4) if err.any() else None,
         "n_high_freq": int((err & hi).sum()),
+        "n_low_freq": int((err & ~hi).sum()),
+        "mean_freq_log10": round(float(gen_freq[err].mean()), 3) if err.any() else None,
+        "probe_mean_p_true_low_freq": round(float(probe_gen[err & ~hi].mean()), 4) if (err & ~hi).any() else None,
+        "behavior_mean_p_true_low_freq": round(float(behav[err & ~hi].mean()), 4) if (err & ~hi).any() else None,
         "probe_mean_p_true_high_freq": round(float(probe_gen[err & hi].mean()), 4) if (err & hi).any() else None,
         "behavior_mean_p_true_high_freq": round(float(behav[err & hi].mean()), 4) if (err & hi).any() else None,
     }
     out["correct_generations"] = {
         "n": int(gen_correct.sum()),
+        "mean_freq_log10": round(float(gen_freq[gen_correct].mean()), 3) if gen_correct.any() else None,
         "probe_mean_p_true": round(float(probe_gen[gen_correct].mean()), 4) if gen_correct.any() else None,
         "behavior_mean_p_true": round(float(behav[gen_correct].mean()), 4) if gen_correct.any() else None,
     }
-    out["records"] = records[:200]
+    out["records"] = records
     h, c = out["hallucinations"], out["correct_generations"]
     print(f"  hallucinations n={h['n']}: probe P(true)={h['probe_mean_p_true']} "
           f"behavior={h['behavior_mean_p_true']}", flush=True)
