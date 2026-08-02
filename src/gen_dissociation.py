@@ -33,6 +33,14 @@ from .causal import _fit_logreg, _standardize
 from .stage3 import load_corpus
 
 DIAGONAL = ("TT", "FA")
+# Constrained so the answer is a bare country name. A free completion
+# ("<city> is a city in ___") makes the model answer with containing regions and
+# demonyms ("Shan State of Myanmar", "the Indian state of ..."), and scoring those
+# needs a matcher whose leniency we would end up tuning against the error rate —
+# the exact knob the project's standing directive §1.1 forbids. This keeps the model generating the fact
+# from parametric memory while leaving ground truth unambiguous.
+ASK = ("In which country is {s} located? "
+       "Reply with ONLY the country name and nothing else.")
 COMPLETE = "{s} is a city in"
 JUDGE = ('Is the following statement true or false?\n'
          'Statement: {text}\nAnswer (true or false):')
@@ -52,7 +60,9 @@ def _first_ids(tokenizer, words):
 def _greedy(substrate, prompt: str, max_new_tokens: int = 8) -> str:
     import torch
     tok = substrate.tokenizer
-    enc = tok(prompt, return_tensors="pt").to(substrate.model.device)
+    add_special = not getattr(tok, "chat_template", None)   # template carries its own
+    enc = tok(prompt, return_tensors="pt",
+              add_special_tokens=add_special).to(substrate.model.device)
     with torch.no_grad():
         out = substrate.model.generate(**enc, do_sample=False,
                                        max_new_tokens=max_new_tokens,
@@ -61,24 +71,46 @@ def _greedy(substrate, prompt: str, max_new_tokens: int = 8) -> str:
 
 
 def _clean_object(ans: str) -> str:
-    """First clause of the continuation: stop at sentence/clause boundary."""
+    """First sentence of the continuation. We keep the whole clause rather than the
+    first noun: the model often answers with a containing region ("Shan State of
+    Myanmar", "north central Ukraine"), which names the right country and must count
+    as correct."""
     ans = ans.strip().split("\n")[0]
-    ans = re.split(r"[.,;:!?()]", ans)[0]
-    ans = re.sub(r"^(the|a|an)\s+", "", ans.strip(), flags=re.I)
-    return ans.strip()
+    ans = re.split(r"[.;!?]", ans)[0]
+    return re.sub(r"^(the|a|an)\s+", "", ans.strip(), flags=re.I).strip()
+
+
+ALIASES = {
+    "united states": ["usa", "us", "united states of america", "america"],
+    "united kingdom": ["uk", "england", "scotland", "wales", "great britain", "britain"],
+    "russia": ["russian federation"], "south korea": ["korea", "republic of korea"],
+    "north korea": ["dprk"], "czech republic": ["czechia"], "myanmar": ["burma"],
+    "netherlands": ["holland"], "swaziland": ["eswatini"], "ivory coast": ["cote divoire"],
+    "east timor": ["timorleste"], "cape verde": ["cabo verde"],
+    "democratic republic of the congo": ["drc", "congo kinshasa", "zaire"],
+    "uae": ["united arab emirates"], "vatican city": ["vatican", "holy see"],
+}
 
 
 def _norm(s: str) -> str:
-    s = s.lower().strip()
-    s = re.sub(r"^(the|a|an)\s+", "", s)
-    return re.sub(r"[^a-z ]", "", s).strip()
+    s = re.sub(r"^(the|a|an)\s+", "", s.lower().strip())
+    return re.sub(r"\s+", " ", re.sub(r"[^a-z ]", " ", s)).strip()
 
 
 def _match(generated: str, truth_obj: str) -> bool:
+    """Correct if the continuation NAMES the right country anywhere in it. The model
+    frequently gives a region that contains the country ("Shan State of Myanmar"), so
+    substring containment on word boundaries is the right test, not prefix equality.
+    Prefix matching also produced false positives on truncations ("U" ~ "United
+    States"), which the length guard rules out."""
     g, t = _norm(generated), _norm(truth_obj)
-    if not g:
+    if not g or len(t) < 3:
         return False
-    return g == t or g.startswith(t) or t.startswith(g)
+    cands = [t] + [_norm(a) for a in ALIASES.get(t, [])]
+    for c in cands:
+        if c and re.search(rf"\b{re.escape(c)}\b", g):
+            return True
+    return False
 
 
 def _judge_p_true(substrate, text, true_ids, false_ids):
@@ -119,9 +151,16 @@ def run(substrate, corpus_path: str | Path, max_subjects: int = 400,
     tok = substrate.tokenizer
     true_ids, false_ids = _first_ids(tok, TRUE_WORDS), _first_ids(tok, FALSE_WORDS)
 
+    def _ask(s: str) -> str:
+        q = ASK.format(s=s)
+        if getattr(tok, "chat_template", None):
+            q = tok.apply_chat_template([{"role": "user", "content": q}],
+                                        tokenize=False, add_generation_prompt=True)
+        return q
+
     gen_texts, gen_correct, gen_freq, records = [], [], [], []
     for i, s in enumerate(subjects):
-        obj = _clean_object(_greedy(substrate, COMPLETE.format(s=s)))
+        obj = _clean_object(_greedy(substrate, _ask(s), max_new_tokens=12))
         if not obj:
             continue
         text = f"{s} is a city in {obj}."
