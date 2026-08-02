@@ -58,11 +58,15 @@ def _row(art: dict) -> dict:
     }
 
 
-def diagnosis_table() -> str:
+def diagnosis_table(domain: str | None = None) -> str:
+    """domain: restrict to runs with this domain tag. The pooled corpus confounds
+    domain with truth across cells (2026-08-03), so a pooled table is not a valid
+    headline — pass domain="cities" for the domain-pure result."""
+    from .artifacts import select
     rows = []
-    for f in sorted(RESULTS.glob("stage3_*.json")):
-        r = _row(json.loads(f.read_text(encoding="utf-8")))
-        r["artifact"] = f.name
+    for art in select("stage3_*.json", RESULTS, domain=domain):
+        r = _row(art)
+        r["artifact"] = f"{art.get('model','?')} [{art.get('domain','all')}]"
         rows.append(r)
     if not rows:
         return "(no stage3 artifacts in results/ yet)"
@@ -78,14 +82,21 @@ def diagnosis_table() -> str:
     lines.append("")
     lines.append("`*` = CI excludes zero. Overlapping CIs are not a difference (the project's standing directive §1.5).")
     lines.append("In-dist = held-out diagonal (the field's reported number). Off-diagonal = honest "
-                 "truth detection on TA+FT. FT mean P(true) near/above 0.5 is the mechanism: the "
-                 "field's probe rates confident fluent falsehoods TRUE. Recoverability = truth β "
-                 "under an all-cell (fairly trained) probe, typicality+fragmentation partialled out.")
+                 "truth detection on TA+FT. FT mean P(true) is the fluent-lie cell: BELOW 0.5 means "
+                 "the probe correctly rejects fluent falsehood. Recoverability = truth β under an "
+                 "all-cell (fairly trained) probe, typicality+fragmentation partialled out.")
+    doms = sorted({r["artifact"].split("[")[-1].rstrip("]") for r in rows})
+    lines.append(f"Domain scope: {', '.join(doms)}. A POOLED (all-domain) row is NOT a valid "
+                 "headline for this corpus: domain is confounded with truth across the "
+                 "diagonal/off-diagonal split, which by itself drives the off-diagonal below "
+                 "chance (see notes/weakness_audit.md A1). Use domain=\"cities\".")
     return "\n".join(lines)
 
 
 if __name__ == "__main__":
-    table = diagnosis_table()
+    import sys
+    dom = sys.argv[1] if len(sys.argv) > 1 else None
+    table = diagnosis_table(domain=dom)
     print(table)
     out = RESULTS / "stage4_diagnosis_table.md"
     out.write_text(table + "\n", encoding="utf-8")

@@ -21,18 +21,17 @@ CELL_LABEL = {"TT": "true common", "TA": "true rare",
               "FT": "false fluent", "FA": "false odd"}
 
 
-def _saplma_artifacts() -> list[dict]:
-    arts = [json.loads(Path(f).read_text(encoding="utf-8"))
-            for f in glob.glob(str(RESULTS / "stage3_saplma_*.json"))]
-    return sorted(arts, key=lambda a: a["model"])
+def _saplma_artifacts(domain: str | None = None) -> list[dict]:
+    from .artifacts import select
+    return select("stage3_saplma_*.json", RESULTS, domain=domain)
 
 
-def fig_layer_sweep(out: str | Path | None = None):
+def fig_layer_sweep(out: str | Path | None = None, domain: str | None = None):
     import matplotlib
     matplotlib.use("Agg")
     import matplotlib.pyplot as plt
 
-    arts = _saplma_artifacts()
+    arts = _saplma_artifacts(domain)
     fig, ax = plt.subplots(figsize=(7, 4.2))
     for art in arts:
         L = [e["layer"] for e in art["per_layer"]]
@@ -55,13 +54,13 @@ def fig_layer_sweep(out: str | Path | None = None):
     return out
 
 
-def fig_cell_scores(out: str | Path | None = None):
+def fig_cell_scores(out: str | Path | None = None, domain: str | None = None):
     import matplotlib
     matplotlib.use("Agg")
     import matplotlib.pyplot as plt
     import numpy as np
 
-    arts = _saplma_artifacts()
+    arts = _saplma_artifacts(domain)
     fig, axes = plt.subplots(1, len(arts), figsize=(4.2 * len(arts), 3.4), sharey=True)
     if len(arts) == 1:
         axes = [axes]
@@ -89,7 +88,7 @@ def fig_cell_scores(out: str | Path | None = None):
     return out
 
 
-def fig_causal_manifold(out: str | Path | None = None):
+def fig_causal_manifold(out: str | Path | None = None, domain: str | None = None):
     """Fraction of the probe's hallucination (FT) error causally mediated by the
     frequency manifold vs a random subspace of equal dimension, swept over k, at
     each model's headline layer."""
@@ -97,9 +96,8 @@ def fig_causal_manifold(out: str | Path | None = None):
     matplotlib.use("Agg")
     import matplotlib.pyplot as plt
 
-    arts = [json.loads(Path(f).read_text(encoding="utf-8"))
-            for f in glob.glob(str(RESULTS / "causal_*.json"))]
-    arts = sorted(arts, key=lambda a: a["model"])
+    from .artifacts import select
+    arts = select("causal_*.json", RESULTS, domain=domain)
     fig, ax = plt.subplots(figsize=(7, 4.4))
     for art in arts:
         e = art["per_layer"][art["headline_layer"]]
@@ -125,7 +123,7 @@ def fig_causal_manifold(out: str | Path | None = None):
     return out
 
 
-def fig_dissociation(out: str | Path | None = None):
+def fig_dissociation(out: str | Path | None = None, domain: str | None = None):
     """Per cell, the fielded probe's readout vs the model's own stated P(true), on
     the SAME judgment-prompt activations. The FT gap (probe says true, model says
     false) is the dissociation. Only models that actually perform the judgment task
@@ -135,11 +133,10 @@ def fig_dissociation(out: str | Path | None = None):
     import matplotlib.pyplot as plt
     import numpy as np
 
-    arts = [json.loads(Path(f).read_text(encoding="utf-8"))
-            for f in glob.glob(str(RESULTS / "intervene_*.json"))]
-    arts = [a for a in arts if "behavioral_baseline" in a["p_true"]["FA"]
+    from .artifacts import select
+    arts = [a for a in select("intervene_*.json", RESULTS, domain=domain)
+            if "behavioral_baseline" in a["p_true"]["FA"]
             and a["p_true"]["FA"]["behavioral_baseline"] < 0.15]
-    arts = sorted(arts, key=lambda a: a["model"])
     cells = ["TT", "TA", "FT", "FA"]
     labels = ["true\ncommon", "true\nrare", "false\nfluent", "false\nodd"]
     fig, axes = plt.subplots(1, len(arts), figsize=(3.6 * len(arts), 3.6), sharey=True)
@@ -165,7 +162,7 @@ def fig_dissociation(out: str | Path | None = None):
     return out
 
 
-def fig_generation_dissociation(out: str | Path | None = None):
+def fig_generation_dissociation(out: str | Path | None = None, domain: str | None = None):
     """Generation time, gold free. On statements the model produced and then judged
     false itself, what does a probe on that same model's hidden states say?"""
     import matplotlib
@@ -173,10 +170,9 @@ def fig_generation_dissociation(out: str | Path | None = None):
     import matplotlib.pyplot as plt
     import numpy as np
 
-    arts = [json.loads(Path(f).read_text(encoding="utf-8"))
-            for f in glob.glob(str(RESULTS / "gendis_*.json"))]
-    arts = [a for a in arts if a.get("gold_free_dissociation")]
-    arts = sorted(arts, key=lambda a: a["model"])
+    from .artifacts import select
+    arts = [a for a in select("gendis_*.json", RESULTS, domain=domain)
+            if a.get("gold_free_dissociation")]
     names = [a["model"].split("/")[-1] for a in arts]
     probe = [a["gold_free_dissociation"]["probe_mean_p_true_on_disowned"] for a in arts]
     beh = [a["gold_free_dissociation"]["behavior_mean_p_true_on_disowned"] for a in arts]
