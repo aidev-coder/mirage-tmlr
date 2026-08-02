@@ -1,0 +1,45 @@
+{
+  "model": "meta-llama/Llama-3.1-8B-Instruct",
+  "domain": "cities",
+  "corpus": "mirage_2x2_v165941295e9a.jsonl",
+  "layer": 16,
+  "k": 8,
+  "n_by_cell": {
+    "TT": 366,
+    "TA": 948,
+    "FT": 260,
+    "FA": 134
+  },
+  "p_true": {
+    "TT": {
+      "n": 200,
+      "behavioral_baseline": 0.6506,
+      "manifold_ablated": 0.0076,
+      "random_ablated": 0.651,
+      "probe_readout": 0.9995
+    },
+    "TA": {
+      "n": 200,
+      "behavioral_baseline": 0.7217,
+      "manifold_ablated": 0.0114,
+      "random_ablated": 0.7224,
+      "probe_readout": 0.9361
+    },
+    "FT": {
+      "n": 200,
+      "behavioral_baseline": 0.0023,
+      "manifold_ablated": 0.0006,
+      "random_ablated": 0.0023,
+      "probe_readout": 0.1072
+    },
+    "FA": {
+      "n": 134,
+      "behavioral_baseline": 0.0013,
+      "manifold_ablated": 0.0007,
+      "random_ablated": 0.0013,
+      "probe_readout": 0.0009
+    }
+  },
+  "provenance": "measured",
+  "seed": 20260719
+}

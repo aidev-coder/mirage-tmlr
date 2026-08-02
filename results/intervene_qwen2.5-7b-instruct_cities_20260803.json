@@ -1,0 +1,45 @@
+{
+  "model": "Qwen/Qwen2.5-7B-Instruct",
+  "domain": "cities",
+  "corpus": "mirage_2x2_v165941295e9a.jsonl",
+  "layer": 14,
+  "k": 8,
+  "n_by_cell": {
+    "TT": 366,
+    "TA": 948,
+    "FT": 260,
+    "FA": 134
+  },
+  "p_true": {
+    "TT": {
+      "n": 200,
+      "behavioral_baseline": 0.6548,
+      "manifold_ablated": 0.6539,
+      "random_ablated": 0.6544,
+      "probe_readout": 0.9997
+    },
+    "TA": {
+      "n": 200,
+      "behavioral_baseline": 0.729,
+      "manifold_ablated": 0.7286,
+      "random_ablated": 0.729,
+      "probe_readout": 0.8981
+    },
+    "FT": {
+      "n": 200,
+      "behavioral_baseline": 0.005,
+      "manifold_ablated": 0.005,
+      "random_ablated": 0.005,
+      "probe_readout": 0.2016
+    },
+    "FA": {
+      "n": 134,
+      "behavioral_baseline": 0.0,
+      "manifold_ablated": 0.0,
+      "random_ablated": 0.0,
+      "probe_readout": 0.0007
+    }
+  },
+  "provenance": "measured",
+  "seed": 20260719
+}

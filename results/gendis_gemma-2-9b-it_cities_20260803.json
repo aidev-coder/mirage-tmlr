@@ -1,0 +1,3657 @@
+{
+  "model": "google/gemma-2-9b-it",
+  "domain": "cities",
+  "corpus": "mirage_2x2_v165941295e9a.jsonl",
+  "layer": 21,
+  "n_generated": 400,
+  "natural_error_rate": 0.1,
+  "provenance": "measured",
+  "seed": 20260719,
+  "probe_auroc_on_own_generations": {
+    "auroc": 0.7802,
+    "ci": [
+      0.6957,
+      0.8548
+    ],
+    "n": 400,
+    "n_boot": 1000
+  },
+  "behavior_auroc_on_own_generations": {
+    "auroc": 0.8313,
+    "ci": [
+      0.7592,
+      0.8976
+    ],
+    "n": 400,
+    "n_boot": 1000
+  },
+  "hallucinations": {
+    "n": 40,
+    "probe_mean_p_true": 0.9443,
+    "behavior_mean_p_true": 0.4272,
+    "n_high_freq": 9,
+    "n_low_freq": 31,
+    "mean_freq_log10": 0.631,
+    "probe_mean_p_true_low_freq": 0.9436,
+    "behavior_mean_p_true_low_freq": 0.4508,
+    "probe_mean_p_true_high_freq": 0.9467,
+    "behavior_mean_p_true_high_freq": 0.3461
+  },
+  "correct_generations": {
+    "n": 360,
+    "mean_freq_log10": 1.081,
+    "probe_mean_p_true": 0.9921,
+    "behavior_mean_p_true": 0.893
+  },
+  "gold_free_dissociation": {
+    "n_model_disowns_own_output": 60,
+    "probe_mean_p_true_on_disowned": 0.9203,
+    "behavior_mean_p_true_on_disowned": 0.0855,
+    "probe_calls_disowned_true_frac": 0.9333,
+    "disagree_probe_true_model_false": 0.14,
+    "disagree_probe_false_model_true": 0.0
+  },
+  "ambiguity_caveat": "gold labels take one country per city; shared toponyms make the gold-scored error rate and AUROC an upper bound on true hallucination. gold_free_dissociation does not use gold labels.",
+  "records": [
+    {
+      "subject": "Utsunomiya",
+      "generated": "Japan",
+      "gold": "Japan",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9999
+    },
+    {
+      "subject": "Namur",
+      "generated": "Belgium",
+      "gold": "Belgium",
+      "correct": true,
+      "freq_log10": 3.798,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9998
+    },
+    {
+      "subject": "Mesquite",
+      "generated": "United States",
+      "gold": "United States",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9995,
+      "behavior_p_true": 0.8929
+    },
+    {
+      "subject": "Canton",
+      "generated": "China",
+      "gold": "United States",
+      "correct": false,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9998,
+      "behavior_p_true": 0.5
+    },
+    {
+      "subject": "Yong'an",
+      "generated": "China",
+      "gold": "China",
+      "correct": true,
+      "freq_log10": 4.112,
+      "probe_p_true": 0.9999,
+      "behavior_p_true": 0.9941
+    },
+    {
+      "subject": "Taunggyi",
+      "generated": "Myanmar",
+      "gold": "Myanmar",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9999,
+      "behavior_p_true": 0.9997
+    },
+    {
+      "subject": "Ratlam",
+      "generated": "India",
+      "gold": "India",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9999,
+      "behavior_p_true": 0.9996
+    },
+    {
+      "subject": "Port-Gentil",
+      "generated": "Gabon",
+      "gold": "Gabon",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9998
+    },
+    {
+      "subject": "Flores",
+      "generated": "Indonesia",
+      "gold": "Guatemala",
+      "correct": false,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9192,
+      "behavior_p_true": 0.0159
+    },
+    {
+      "subject": "Trece Martires City",
+      "generated": "Philippines",
+      "gold": "Philippines",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9991,
+      "behavior_p_true": 0.9996
+    },
+    {
+      "subject": "Maceio",
+      "generated": "Brazil",
+      "gold": "Brazil",
+      "correct": true,
+      "freq_log10": 2.122,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9998
+    },
+    {
+      "subject": "Pilibhit",
+      "generated": "India",
+      "gold": "India",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9999,
+      "behavior_p_true": 0.974
+    },
+    {
+      "subject": "Port Moresby",
+      "generated": "Papua New Guinea",
+      "gold": "Papua New Guinea",
+      "correct": true,
+      "freq_log10": 3.951,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9999
+    },
+    {
+      "subject": "Aswan",
+      "generated": "Egypt",
+      "gold": "Egypt",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9999
+    },
+    {
+      "subject": "Huaibei",
+      "generated": "China",
+      "gold": "China",
+      "correct": true,
+      "freq_log10": 4.112,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9999
+    },
+    {
+      "subject": "Fuzhou",
+      "generated": "China",
+      "gold": "China",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9999
+    },
+    {
+      "subject": "Chernihiv",
+      "generated": "Ukraine",
+      "gold": "Ukraine",
+      "correct": true,
+      "freq_log10": 2.52,
+      "probe_p_true": 0.9993,
+      "behavior_p_true": 0.9999
+    },
+    {
+      "subject": "Hindupur",
+      "generated": "India",
+      "gold": "India",
+      "correct": true,
+      "freq_log10": 2.092,
+      "probe_p_true": 0.9999,
+      "behavior_p_true": 0.9988
+    },
+    {
+      "subject": "Pearland",
+      "generated": "United States",
+      "gold": "United States",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9941,
+      "behavior_p_true": 0.9998
+    },
+    {
+      "subject": "Merlo",
+      "generated": "Argentina",
+      "gold": "Argentina",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9205,
+      "behavior_p_true": 0.2452
+    },
+    {
+      "subject": "Tarapoto",
+      "generated": "Peru",
+      "gold": "Peru",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9998
+    },
+    {
+      "subject": "Tayabas",
+      "generated": "Philippines",
+      "gold": "Philippines",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9986,
+      "behavior_p_true": 0.999
+    },
+    {
+      "subject": "Hapur",
+      "generated": "India",
+      "gold": "India",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9999,
+      "behavior_p_true": 0.9998
+    },
+    {
+      "subject": "Andorra la Vella",
+      "generated": "Andorra",
+      "gold": "Andorra",
+      "correct": true,
+      "freq_log10": 3.55,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9997
+    },
+    {
+      "subject": "Phatthaya",
+      "generated": "Thailand",
+      "gold": "Thailand",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9975
+    },
+    {
+      "subject": "Xin'an",
+      "generated": "China",
+      "gold": "China",
+      "correct": true,
+      "freq_log10": 4.112,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9707
+    },
+    {
+      "subject": "Chofugaoka",
+      "generated": "Japan",
+      "gold": "Japan",
+      "correct": true,
+      "freq_log10": 1.353,
+      "probe_p_true": 0.9999,
+      "behavior_p_true": 0.3218
+    },
+    {
+      "subject": "Port Arthur",
+      "generated": "Australia",
+      "gold": "United States",
+      "correct": false,
+      "freq_log10": 0.0,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9924
+    },
+    {
+      "subject": "Tinnevelly",
+      "generated": "India",
+      "gold": "India",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.8668
+    },
+    {
+      "subject": "Machilipatnam",
+      "generated": "India",
+      "gold": "India",
+      "correct": true,
+      "freq_log10": 2.219,
+      "probe_p_true": 0.9999,
+      "behavior_p_true": 0.9997
+    },
+    {
+      "subject": "Wellington",
+      "generated": "New Zealand",
+      "gold": "New Zealand",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9999
+    },
+    {
+      "subject": "Machala",
+      "generated": "Ecuador",
+      "gold": "Ecuador",
+      "correct": true,
+      "freq_log10": 2.133,
+      "probe_p_true": 0.9999,
+      "behavior_p_true": 0.9933
+    },
+    {
+      "subject": "Vantaa",
+      "generated": "Finland",
+      "gold": "Finland",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9995,
+      "behavior_p_true": 0.9999
+    },
+    {
+      "subject": "Formosa",
+      "generated": "Taiwan",
+      "gold": "Argentina",
+      "correct": false,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9999,
+      "behavior_p_true": 0.0331
+    },
+    {
+      "subject": "Carlos Manuel de Cespedes",
+      "generated": "Cuba",
+      "gold": "Cuba",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9959,
+      "behavior_p_true": 0.0059
+    },
+    {
+      "subject": "Gyor",
+      "generated": "Hungary",
+      "gold": "Hungary",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9998
+    },
+    {
+      "subject": "Istanbul",
+      "generated": "Turkey",
+      "gold": "Turkey",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9999
+    },
+    {
+      "subject": "Tourcoing",
+      "generated": "France",
+      "gold": "France",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9998
+    },
+    {
+      "subject": "Veracruz",
+      "generated": "Mexico",
+      "gold": "Mexico",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.0229
+    },
+    {
+      "subject": "San Marino",
+      "generated": "Italy",
+      "gold": "San Marino",
+      "correct": false,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9077,
+      "behavior_p_true": 0.0
+    },
+    {
+      "subject": "Cuddalore",
+      "generated": "India",
+      "gold": "India",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9999,
+      "behavior_p_true": 0.9997
+    },
+    {
+      "subject": "Sete Lagoas",
+      "generated": "Brazil",
+      "gold": "Brazil",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9998,
+      "behavior_p_true": 0.9998
+    },
+    {
+      "subject": "Long Beach",
+      "generated": "United States",
+      "gold": "United States",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9989,
+      "behavior_p_true": 0.9999
+    },
+    {
+      "subject": "Pandi",
+      "generated": "Philippines",
+      "gold": "Philippines",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9938,
+      "behavior_p_true": 0.705
+    },
+    {
+      "subject": "Ho Chi Minh City",
+      "generated": "Vietnam",
+      "gold": "Vietnam",
+      "correct": true,
+      "freq_log10": 3.032,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9999
+    },
+    {
+      "subject": "Gwangju",
+      "generated": "South Korea",
+      "gold": "South Korea",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9999
+    },
+    {
+      "subject": "Qingnian",
+      "generated": "China",
+      "gold": "China",
+      "correct": true,
+      "freq_log10": 4.112,
+      "probe_p_true": 0.9999,
+      "behavior_p_true": 0.0473
+    },
+    {
+      "subject": "Maramag",
+      "generated": "Philippines",
+      "gold": "Philippines",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9981,
+      "behavior_p_true": 0.9941
+    },
+    {
+      "subject": "Darmstadt",
+      "generated": "Germany",
+      "gold": "Germany",
+      "correct": true,
+      "freq_log10": 3.951,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9998
+    },
+    {
+      "subject": "Al Quds",
+      "generated": "Israel",
+      "gold": "West Bank",
+      "correct": false,
+      "freq_log10": 2.299,
+      "probe_p_true": 0.9954,
+      "behavior_p_true": 0.0036
+    },
+    {
+      "subject": "Kindia",
+      "generated": "Guinea",
+      "gold": "Guinea",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9998,
+      "behavior_p_true": 0.9993
+    },
+    {
+      "subject": "Kaiyuan",
+      "generated": "China",
+      "gold": "China",
+      "correct": true,
+      "freq_log10": 3.55,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.8356
+    },
+    {
+      "subject": "Kutaisi",
+      "generated": "Georgia",
+      "gold": "Georgia",
+      "correct": true,
+      "freq_log10": 3.798,
+      "probe_p_true": 0.9985,
+      "behavior_p_true": 0.9999
+    },
+    {
+      "subject": "Guihulngan",
+      "generated": "Philippines",
+      "gold": "Philippines",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9983,
+      "behavior_p_true": 0.9968
+    },
+    {
+      "subject": "As Samawah",
+      "generated": "Iraq",
+      "gold": "Iraq",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9809,
+      "behavior_p_true": 0.9996
+    },
+    {
+      "subject": "Guelph",
+      "generated": "Canada",
+      "gold": "Canada",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9999
+    },
+    {
+      "subject": "Fremont",
+      "generated": "United States",
+      "gold": "United States",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9976,
+      "behavior_p_true": 0.9986
+    },
+    {
+      "subject": "Semarang",
+      "generated": "Indonesia",
+      "gold": "Indonesia",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9999
+    },
+    {
+      "subject": "Xiangyang",
+      "generated": "China",
+      "gold": "China",
+      "correct": true,
+      "freq_log10": 4.112,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9998
+    },
+    {
+      "subject": "Dezhou",
+      "generated": "China",
+      "gold": "China",
+      "correct": true,
+      "freq_log10": 4.112,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9999
+    },
+    {
+      "subject": "Chengjiao",
+      "generated": "China",
+      "gold": "China",
+      "correct": true,
+      "freq_log10": 1.54,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.378
+    },
+    {
+      "subject": "Saint John's",
+      "generated": "Antigua and Barbuda",
+      "gold": "Antigua And Barbuda",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.286,
+      "behavior_p_true": 0.2686
+    },
+    {
+      "subject": "Nakhon Si Thammarat",
+      "generated": "Thailand",
+      "gold": "Thailand",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9998
+    },
+    {
+      "subject": "Kita-ku",
+      "generated": "Japan",
+      "gold": "Japan",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9999,
+      "behavior_p_true": 0.0017
+    },
+    {
+      "subject": "Az Zarqa'",
+      "generated": "Jordan",
+      "gold": "Jordan",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9996
+    },
+    {
+      "subject": "Heroica Matamoros",
+      "generated": "Mexico",
+      "gold": "Mexico",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.8352
+    },
+    {
+      "subject": "Osan",
+      "generated": "South Korea",
+      "gold": "South Korea",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9999,
+      "behavior_p_true": 0.9993
+    },
+    {
+      "subject": "Kot Addu",
+      "generated": "Pakistan",
+      "gold": "Pakistan",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9998,
+      "behavior_p_true": 0.9988
+    },
+    {
+      "subject": "Bazhou",
+      "generated": "China",
+      "gold": "China",
+      "correct": true,
+      "freq_log10": 4.112,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9995
+    },
+    {
+      "subject": "Moers",
+      "generated": "Germany",
+      "gold": "Germany",
+      "correct": true,
+      "freq_log10": 3.951,
+      "probe_p_true": 0.9999,
+      "behavior_p_true": 0.9933
+    },
+    {
+      "subject": "Kafr ash Shaykh",
+      "generated": "Egypt",
+      "gold": "Egypt",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9933
+    },
+    {
+      "subject": "Tampico",
+      "generated": "Mexico",
+      "gold": "Mexico",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9994
+    },
+    {
+      "subject": "Pembroke Pines",
+      "generated": "United States",
+      "gold": "United States",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9983,
+      "behavior_p_true": 0.9998
+    },
+    {
+      "subject": "Caracas",
+      "generated": "Venezuela",
+      "gold": "Venezuela",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9999
+    },
+    {
+      "subject": "Zibo",
+      "generated": "China",
+      "gold": "China",
+      "correct": true,
+      "freq_log10": 4.112,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9999
+    },
+    {
+      "subject": "Camarajibe",
+      "generated": "Brazil",
+      "gold": "Brazil",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9999,
+      "behavior_p_true": 0.9877
+    },
+    {
+      "subject": "Chico",
+      "generated": "United States",
+      "gold": "United States",
+      "correct": true,
+      "freq_log10": 3.147,
+      "probe_p_true": 0.9995,
+      "behavior_p_true": 0.9983
+    },
+    {
+      "subject": "Podolsk",
+      "generated": "Russia",
+      "gold": "Russia",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9993,
+      "behavior_p_true": 0.9998
+    },
+    {
+      "subject": "Jiaozhou",
+      "generated": "China",
+      "gold": "China",
+      "correct": true,
+      "freq_log10": 3.951,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9985
+    },
+    {
+      "subject": "Digos",
+      "generated": "Philippines",
+      "gold": "Philippines",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9997,
+      "behavior_p_true": 0.9959
+    },
+    {
+      "subject": "Kongolo",
+      "generated": "Democratic Republic of the Congo",
+      "gold": "Congo (Kinshasa)",
+      "correct": false,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9984,
+      "behavior_p_true": 0.9951
+    },
+    {
+      "subject": "Saidpur",
+      "generated": "Pakistan",
+      "gold": "Bangladesh",
+      "correct": false,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9128,
+      "behavior_p_true": 0.06
+    },
+    {
+      "subject": "Honolulu",
+      "generated": "United States",
+      "gold": "United States",
+      "correct": true,
+      "freq_log10": 3.254,
+      "probe_p_true": 0.9999,
+      "behavior_p_true": 0.9994
+    },
+    {
+      "subject": "Pouso Alegre",
+      "generated": "Brazil",
+      "gold": "Brazil",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9991,
+      "behavior_p_true": 0.9996
+    },
+    {
+      "subject": "Cidade de Nacala",
+      "generated": "Mozambique",
+      "gold": "Mozambique",
+      "correct": true,
+      "freq_log10": 1.025,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9997
+    },
+    {
+      "subject": "Sunnyvale",
+      "generated": "United States",
+      "gold": "United States",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.999,
+      "behavior_p_true": 0.9999
+    },
+    {
+      "subject": "Rybnik",
+      "generated": "Poland",
+      "gold": "Poland",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9999,
+      "behavior_p_true": 0.9999
+    },
+    {
+      "subject": "Nerima",
+      "generated": "Japan",
+      "gold": "Japan",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9579
+    },
+    {
+      "subject": "Pati",
+      "generated": "India",
+      "gold": "Indonesia",
+      "correct": false,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9998,
+      "behavior_p_true": 0.1828
+    },
+    {
+      "subject": "Barasat",
+      "generated": "India",
+      "gold": "India",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9999,
+      "behavior_p_true": 0.9962
+    },
+    {
+      "subject": "Itapipoca",
+      "generated": "Brazil",
+      "gold": "Brazil",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9989,
+      "behavior_p_true": 0.9996
+    },
+    {
+      "subject": "Dhamar",
+      "generated": "Yemen",
+      "gold": "Yemen",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9989,
+      "behavior_p_true": 0.999
+    },
+    {
+      "subject": "Kocaeli",
+      "generated": "Turkey",
+      "gold": "Turkey",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9997,
+      "behavior_p_true": 0.9999
+    },
+    {
+      "subject": "Milagro",
+      "generated": "Peru",
+      "gold": "Ecuador",
+      "correct": false,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9898,
+      "behavior_p_true": 0.2941
+    },
+    {
+      "subject": "Hpa-An",
+      "generated": "Myanmar",
+      "gold": "Myanmar",
+      "correct": true,
+      "freq_log10": 1.927,
+      "probe_p_true": 0.9998,
+      "behavior_p_true": 0.9992
+    },
+    {
+      "subject": "Harrisburg",
+      "generated": "United States",
+      "gold": "United States",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9979,
+      "behavior_p_true": 0.9997
+    },
+    {
+      "subject": "Salto",
+      "generated": "Uruguay",
+      "gold": "Uruguay",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9547,
+      "behavior_p_true": 0.5321
+    },
+    {
+      "subject": "Altamira",
+      "generated": "Spain",
+      "gold": "Brazil",
+      "correct": false,
+      "freq_log10": 2.558,
+      "probe_p_true": 0.9998,
+      "behavior_p_true": 0.018
+    },
+    {
+      "subject": "Gomez Palacio",
+      "generated": "Mexico",
+      "gold": "Mexico",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9992
+    },
+    {
+      "subject": "Xinpu",
+      "generated": "Taiwan",
+      "gold": "China",
+      "correct": false,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9694,
+      "behavior_p_true": 0.8178
+    },
+    {
+      "subject": "Dourados",
+      "generated": "Brazil",
+      "gold": "Brazil",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9999,
+      "behavior_p_true": 0.9995
+    },
+    {
+      "subject": "Tantoyuca",
+      "generated": "Mexico",
+      "gold": "Mexico",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9998,
+      "behavior_p_true": 0.974
+    },
+    {
+      "subject": "Fort Lauderdale",
+      "generated": "United States",
+      "gold": "United States",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.999,
+      "behavior_p_true": 0.9998
+    },
+    {
+      "subject": "El Cajon",
+      "generated": "United States",
+      "gold": "United States",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9979,
+      "behavior_p_true": 0.9998
+    },
+    {
+      "subject": "Corumba",
+      "generated": "Brazil",
+      "gold": "Brazil",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9995
+    },
+    {
+      "subject": "Changhua",
+      "generated": "Taiwan",
+      "gold": "Taiwan",
+      "correct": true,
+      "freq_log10": 2.384,
+      "probe_p_true": 0.9998,
+      "behavior_p_true": 0.9995
+    },
+    {
+      "subject": "Norfolk",
+      "generated": "England",
+      "gold": "United States",
+      "correct": false,
+      "freq_log10": 0.0,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9821
+    },
+    {
+      "subject": "Kohat",
+      "generated": "Pakistan",
+      "gold": "Pakistan",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9993,
+      "behavior_p_true": 0.9996
+    },
+    {
+      "subject": "Huich'on",
+      "generated": "Mexico",
+      "gold": "North Korea",
+      "correct": false,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9999,
+      "behavior_p_true": 0.0019
+    },
+    {
+      "subject": "Cuauhtemoc",
+      "generated": "Mexico",
+      "gold": "Mexico",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.999
+    },
+    {
+      "subject": "Caerdydd",
+      "generated": "Wales",
+      "gold": "United Kingdom",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9978
+    },
+    {
+      "subject": "Riohacha",
+      "generated": "Colombia",
+      "gold": "Colombia",
+      "correct": true,
+      "freq_log10": 3.505,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9998
+    },
+    {
+      "subject": "Depok",
+      "generated": "Indonesia",
+      "gold": "Indonesia",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9996,
+      "behavior_p_true": 0.9999
+    },
+    {
+      "subject": "Aizuwakamatsu",
+      "generated": "Japan",
+      "gold": "Japan",
+      "correct": true,
+      "freq_log10": 1.944,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9998
+    },
+    {
+      "subject": "Bauchi",
+      "generated": "Nigeria",
+      "gold": "Nigeria",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9999,
+      "behavior_p_true": 0.9988
+    },
+    {
+      "subject": "Thu Dau Mot",
+      "generated": "Vietnam",
+      "gold": "Vietnam",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9999,
+      "behavior_p_true": 0.9995
+    },
+    {
+      "subject": "Tatui",
+      "generated": "Brazil",
+      "gold": "Brazil",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9999,
+      "behavior_p_true": 0.2929
+    },
+    {
+      "subject": "Noumea",
+      "generated": "New Caledonia",
+      "gold": "New Caledonia",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9997
+    },
+    {
+      "subject": "Fengcheng",
+      "generated": "China",
+      "gold": "China",
+      "correct": true,
+      "freq_log10": 4.112,
+      "probe_p_true": 0.9999,
+      "behavior_p_true": 0.9991
+    },
+    {
+      "subject": "Cachoeiro de Itapemirim",
+      "generated": "Brazil",
+      "gold": "Brazil",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9998
+    },
+    {
+      "subject": "Preston",
+      "generated": "England",
+      "gold": "United Kingdom",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.999
+    },
+    {
+      "subject": "Huaiyin",
+      "generated": "China",
+      "gold": "China",
+      "correct": true,
+      "freq_log10": 4.112,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9996
+    },
+    {
+      "subject": "Saint-Pierre",
+      "generated": "France",
+      "gold": "Saint Pierre And Miquelon",
+      "correct": false,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9993,
+      "behavior_p_true": 0.2017
+    },
+    {
+      "subject": "Lima",
+      "generated": "Peru",
+      "gold": "Peru",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9999
+    },
+    {
+      "subject": "Chimalhuacan",
+      "generated": "Mexico",
+      "gold": "Mexico",
+      "correct": true,
+      "freq_log10": 1.52,
+      "probe_p_true": 0.9999,
+      "behavior_p_true": 0.9397
+    },
+    {
+      "subject": "General Trias",
+      "generated": "Philippines",
+      "gold": "Philippines",
+      "correct": true,
+      "freq_log10": 2.017,
+      "probe_p_true": 0.9989,
+      "behavior_p_true": 0.9981
+    },
+    {
+      "subject": "Toluca",
+      "generated": "Mexico",
+      "gold": "Mexico",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9999
+    },
+    {
+      "subject": "Binxian",
+      "generated": "China",
+      "gold": "China",
+      "correct": true,
+      "freq_log10": 4.112,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.593
+    },
+    {
+      "subject": "Merida",
+      "generated": "Mexico",
+      "gold": "Venezuela",
+      "correct": false,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9997,
+      "behavior_p_true": 0.8672
+    },
+    {
+      "subject": "Fayetteville",
+      "generated": "United States",
+      "gold": "United States",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9982,
+      "behavior_p_true": 0.9996
+    },
+    {
+      "subject": "Hisar",
+      "generated": "India",
+      "gold": "India",
+      "correct": true,
+      "freq_log10": 2.607,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9996
+    },
+    {
+      "subject": "Corrientes",
+      "generated": "Argentina",
+      "gold": "Argentina",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9993
+    },
+    {
+      "subject": "Paramaribo",
+      "generated": "Suriname",
+      "gold": "Suriname",
+      "correct": true,
+      "freq_log10": 4.112,
+      "probe_p_true": 0.9998,
+      "behavior_p_true": 0.9999
+    },
+    {
+      "subject": "Barnaul",
+      "generated": "Russia",
+      "gold": "Russia",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9998
+    },
+    {
+      "subject": "Minna",
+      "generated": "Nigeria",
+      "gold": "Nigeria",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9998,
+      "behavior_p_true": 0.018
+    },
+    {
+      "subject": "Lewisville",
+      "generated": "United States",
+      "gold": "United States",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9898,
+      "behavior_p_true": 0.9997
+    },
+    {
+      "subject": "Boaco",
+      "generated": "Nicaragua",
+      "gold": "Nicaragua",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9999,
+      "behavior_p_true": 0.9997
+    },
+    {
+      "subject": "Yuzhno-Sakhalinsk",
+      "generated": "Russia",
+      "gold": "Russia",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9998
+    },
+    {
+      "subject": "San Juan",
+      "generated": "Puerto Rico",
+      "gold": "Argentina",
+      "correct": false,
+      "freq_log10": 0.0,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9999
+    },
+    {
+      "subject": "Shizuishan",
+      "generated": "China",
+      "gold": "China",
+      "correct": true,
+      "freq_log10": 4.112,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9997
+    },
+    {
+      "subject": "Meerut",
+      "generated": "India",
+      "gold": "India",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9999
+    },
+    {
+      "subject": "Pueblo",
+      "generated": "United States",
+      "gold": "United States",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9998,
+      "behavior_p_true": 0.9954
+    },
+    {
+      "subject": "Vatican City",
+      "generated": "Italy",
+      "gold": "Vatican City",
+      "correct": false,
+      "freq_log10": 0.0,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.0002
+    },
+    {
+      "subject": "Firozabad",
+      "generated": "India",
+      "gold": "India",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9998,
+      "behavior_p_true": 0.9996
+    },
+    {
+      "subject": "Al `Aqabah",
+      "generated": "Jordan",
+      "gold": "Jordan",
+      "correct": true,
+      "freq_log10": 1.141,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.1069
+    },
+    {
+      "subject": "Baltimore",
+      "generated": "United States",
+      "gold": "United States",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9997,
+      "behavior_p_true": 0.9999
+    },
+    {
+      "subject": "Bade",
+      "generated": "Germany",
+      "gold": "Taiwan",
+      "correct": false,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9992,
+      "behavior_p_true": 0.0015
+    },
+    {
+      "subject": "Doncaster",
+      "generated": "England",
+      "gold": "United Kingdom",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.5928
+    },
+    {
+      "subject": "Malayer",
+      "generated": "Iran",
+      "gold": "Iran",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9974,
+      "behavior_p_true": 0.9987
+    },
+    {
+      "subject": "Huanren",
+      "generated": "China",
+      "gold": "China",
+      "correct": true,
+      "freq_log10": 4.112,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9975
+    },
+    {
+      "subject": "Karaj",
+      "generated": "Iran",
+      "gold": "Iran",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9993,
+      "behavior_p_true": 0.9998
+    },
+    {
+      "subject": "Al Faw",
+      "generated": "Iraq",
+      "gold": "Iraq",
+      "correct": true,
+      "freq_log10": 1.93,
+      "probe_p_true": 0.9999,
+      "behavior_p_true": 0.9243
+    },
+    {
+      "subject": "Ha'il",
+      "generated": "Saudi Arabia",
+      "gold": "Saudi Arabia",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9998
+    },
+    {
+      "subject": "Asaka",
+      "generated": "Japan",
+      "gold": "Japan",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9998,
+      "behavior_p_true": 0.7985
+    },
+    {
+      "subject": "Uige",
+      "generated": "Angola",
+      "gold": "Angola",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9999,
+      "behavior_p_true": 0.9992
+    },
+    {
+      "subject": "Bogota",
+      "generated": "Colombia",
+      "gold": "Colombia",
+      "correct": true,
+      "freq_log10": 3.505,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9999
+    },
+    {
+      "subject": "Nancy",
+      "generated": "France",
+      "gold": "France",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9955,
+      "behavior_p_true": 0.023
+    },
+    {
+      "subject": "Sfax",
+      "generated": "Tunisia",
+      "gold": "Tunisia",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9999,
+      "behavior_p_true": 0.9999
+    },
+    {
+      "subject": "Salisbury",
+      "generated": "United Kingdom",
+      "gold": "United States",
+      "correct": false,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9989,
+      "behavior_p_true": 0.9992
+    },
+    {
+      "subject": "Dali",
+      "generated": "Spain",
+      "gold": "China",
+      "correct": false,
+      "freq_log10": 0.0,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.999
+    },
+    {
+      "subject": "Kadoma",
+      "generated": "Zimbabwe",
+      "gold": "Japan",
+      "correct": false,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9996,
+      "behavior_p_true": 0.999
+    },
+    {
+      "subject": "Isiro",
+      "generated": "Democratic Republic of the Congo",
+      "gold": "Congo (Kinshasa)",
+      "correct": false,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9977,
+      "behavior_p_true": 0.9998
+    },
+    {
+      "subject": "Dayan",
+      "generated": "Israel",
+      "gold": "China",
+      "correct": false,
+      "freq_log10": 4.112,
+      "probe_p_true": 0.9719,
+      "behavior_p_true": 0.6224
+    },
+    {
+      "subject": "Barcelos",
+      "generated": "Portugal",
+      "gold": "Portugal",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9999,
+      "behavior_p_true": 0.9988
+    },
+    {
+      "subject": "Bridgeport",
+      "generated": "United States",
+      "gold": "United States",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9994,
+      "behavior_p_true": 0.9996
+    },
+    {
+      "subject": "Zhaodong",
+      "generated": "China",
+      "gold": "China",
+      "correct": true,
+      "freq_log10": 4.112,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9877
+    },
+    {
+      "subject": "Tongren",
+      "generated": "China",
+      "gold": "China",
+      "correct": true,
+      "freq_log10": 4.112,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9983
+    },
+    {
+      "subject": "Townsville",
+      "generated": "Australia",
+      "gold": "Australia",
+      "correct": true,
+      "freq_log10": 4.112,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9992
+    },
+    {
+      "subject": "Golmud",
+      "generated": "China",
+      "gold": "China",
+      "correct": true,
+      "freq_log10": 4.112,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9997
+    },
+    {
+      "subject": "Barranca",
+      "generated": "Peru",
+      "gold": "Peru",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9997,
+      "behavior_p_true": 0.9527
+    },
+    {
+      "subject": "East Los Angeles",
+      "generated": "United States",
+      "gold": "United States",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9952,
+      "behavior_p_true": 0.0
+    },
+    {
+      "subject": "Rochdale",
+      "generated": "England",
+      "gold": "United Kingdom",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.5
+    },
+    {
+      "subject": "Lexington",
+      "generated": "United States",
+      "gold": "United States",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9992,
+      "behavior_p_true": 0.9994
+    },
+    {
+      "subject": "Norzagaray",
+      "generated": "Philippines",
+      "gold": "Philippines",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.994,
+      "behavior_p_true": 0.2694
+    },
+    {
+      "subject": "San Felipe",
+      "generated": "Mexico",
+      "gold": "Venezuela",
+      "correct": false,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9998,
+      "behavior_p_true": 0.9962
+    },
+    {
+      "subject": "Bryansk",
+      "generated": "Russia",
+      "gold": "Russia",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9998,
+      "behavior_p_true": 0.9998
+    },
+    {
+      "subject": "Hobart",
+      "generated": "Australia",
+      "gold": "Australia",
+      "correct": true,
+      "freq_log10": 3.182,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9995
+    },
+    {
+      "subject": "Orange",
+      "generated": "France",
+      "gold": "United States",
+      "correct": false,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9218,
+      "behavior_p_true": 0.0005
+    },
+    {
+      "subject": "West Bromwich",
+      "generated": "England",
+      "gold": "United Kingdom",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.0004
+    },
+    {
+      "subject": "Almada",
+      "generated": "Portugal",
+      "gold": "Portugal",
+      "correct": true,
+      "freq_log10": 2.449,
+      "probe_p_true": 0.9999,
+      "behavior_p_true": 0.9983
+    },
+    {
+      "subject": "Belgrade",
+      "generated": "Serbia",
+      "gold": "Serbia",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9999
+    },
+    {
+      "subject": "Fushun",
+      "generated": "China",
+      "gold": "China",
+      "correct": true,
+      "freq_log10": 4.112,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9997
+    },
+    {
+      "subject": "Narashino",
+      "generated": "Japan",
+      "gold": "Japan",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9999,
+      "behavior_p_true": 0.9991
+    },
+    {
+      "subject": "San Martin Texmelucan de Labastida",
+      "generated": "Mexico",
+      "gold": "Mexico",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9991
+    },
+    {
+      "subject": "Kabul",
+      "generated": "Afghanistan",
+      "gold": "Afghanistan",
+      "correct": true,
+      "freq_log10": 3.672,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9999
+    },
+    {
+      "subject": "Jos",
+      "generated": "Nigeria",
+      "gold": "Nigeria",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.8682
+    },
+    {
+      "subject": "Narsingdi",
+      "generated": "Bangladesh",
+      "gold": "Bangladesh",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9935,
+      "behavior_p_true": 0.9951
+    },
+    {
+      "subject": "Rostock",
+      "generated": "Germany",
+      "gold": "Germany",
+      "correct": true,
+      "freq_log10": 3.951,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9999
+    },
+    {
+      "subject": "Monclova",
+      "generated": "Mexico",
+      "gold": "Mexico",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9998,
+      "behavior_p_true": 0.9997
+    },
+    {
+      "subject": "Petrozavodsk",
+      "generated": "Russia",
+      "gold": "Russia",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9998
+    },
+    {
+      "subject": "Nicosia",
+      "generated": "Cyprus",
+      "gold": "Cyprus",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9999
+    },
+    {
+      "subject": "Gweru",
+      "generated": "Zimbabwe",
+      "gold": "Zimbabwe",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9997
+    },
+    {
+      "subject": "Arapongas",
+      "generated": "Brazil",
+      "gold": "Brazil",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9999,
+      "behavior_p_true": 0.9996
+    },
+    {
+      "subject": "Las Tunas",
+      "generated": "Cuba",
+      "gold": "Cuba",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9998,
+      "behavior_p_true": 0.9996
+    },
+    {
+      "subject": "Peshawar",
+      "generated": "Pakistan",
+      "gold": "Pakistan",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9999,
+      "behavior_p_true": 0.9999
+    },
+    {
+      "subject": "Coban",
+      "generated": "Guatemala",
+      "gold": "Guatemala",
+      "correct": true,
+      "freq_log10": 2.35,
+      "probe_p_true": 0.9981,
+      "behavior_p_true": 0.0476
+    },
+    {
+      "subject": "Santa Rosa",
+      "generated": "United States",
+      "gold": "Argentina",
+      "correct": false,
+      "freq_log10": 3.55,
+      "probe_p_true": 0.9986,
+      "behavior_p_true": 0.9998
+    },
+    {
+      "subject": "Chizhou",
+      "generated": "China",
+      "gold": "China",
+      "correct": true,
+      "freq_log10": 6.066,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9998
+    },
+    {
+      "subject": "San Bernardino",
+      "generated": "United States",
+      "gold": "United States",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9911,
+      "behavior_p_true": 0.9998
+    },
+    {
+      "subject": "Yola",
+      "generated": "Nigeria",
+      "gold": "Nigeria",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9999,
+      "behavior_p_true": 0.9707
+    },
+    {
+      "subject": "Iizuka",
+      "generated": "Japan",
+      "gold": "Japan",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9987,
+      "behavior_p_true": 0.989
+    },
+    {
+      "subject": "Kamagaya",
+      "generated": "Japan",
+      "gold": "Japan",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9999,
+      "behavior_p_true": 0.9989
+    },
+    {
+      "subject": "Vila Franca de Xira",
+      "generated": "Portugal",
+      "gold": "Portugal",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9999,
+      "behavior_p_true": 0.998
+    },
+    {
+      "subject": "Puerto Princesa",
+      "generated": "Philippines",
+      "gold": "Philippines",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9996,
+      "behavior_p_true": 0.9997
+    },
+    {
+      "subject": "Choloma",
+      "generated": "Honduras",
+      "gold": "Honduras",
+      "correct": true,
+      "freq_log10": 3.244,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9995
+    },
+    {
+      "subject": "Lashkar Gah",
+      "generated": "Afghanistan",
+      "gold": "Afghanistan",
+      "correct": true,
+      "freq_log10": 3.672,
+      "probe_p_true": 0.9999,
+      "behavior_p_true": 0.9996
+    },
+    {
+      "subject": "Jaragua do Sul",
+      "generated": "Brazil",
+      "gold": "Brazil",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9992,
+      "behavior_p_true": 0.9992
+    },
+    {
+      "subject": "Spokane",
+      "generated": "United States",
+      "gold": "United States",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9995,
+      "behavior_p_true": 0.9998
+    },
+    {
+      "subject": "Ahmadnagar",
+      "generated": "India",
+      "gold": "India",
+      "correct": true,
+      "freq_log10": 2.139,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9996
+    },
+    {
+      "subject": "Talcahuano",
+      "generated": "Chile",
+      "gold": "Chile",
+      "correct": true,
+      "freq_log10": 3.55,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9999
+    },
+    {
+      "subject": "Kampong Cham",
+      "generated": "Cambodia",
+      "gold": "Cambodia",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9997
+    },
+    {
+      "subject": "Pekanbaru",
+      "generated": "Indonesia",
+      "gold": "Indonesia",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9999
+    },
+    {
+      "subject": "Reynosa",
+      "generated": "Mexico",
+      "gold": "Mexico",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9997
+    },
+    {
+      "subject": "Zaanstad",
+      "generated": "Netherlands",
+      "gold": "Netherlands",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9956,
+      "behavior_p_true": 0.9985
+    },
+    {
+      "subject": "Recife",
+      "generated": "Brazil",
+      "gold": "Brazil",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9999
+    },
+    {
+      "subject": "Mbandaka",
+      "generated": "Democratic Republic of the Congo",
+      "gold": "Congo (Kinshasa)",
+      "correct": false,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9999,
+      "behavior_p_true": 0.9999
+    },
+    {
+      "subject": "Giza",
+      "generated": "Egypt",
+      "gold": "Egypt",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9924
+    },
+    {
+      "subject": "Tabriz",
+      "generated": "Iran",
+      "gold": "Iran",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9996,
+      "behavior_p_true": 0.9999
+    },
+    {
+      "subject": "Vitry-sur-Seine",
+      "generated": "France",
+      "gold": "France",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9998
+    },
+    {
+      "subject": "Port-de-Paix",
+      "generated": "Haiti",
+      "gold": "Haiti",
+      "correct": true,
+      "freq_log10": 3.486,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9998
+    },
+    {
+      "subject": "Nanqiaotou",
+      "generated": "China",
+      "gold": "China",
+      "correct": true,
+      "freq_log10": 4.112,
+      "probe_p_true": 0.9997,
+      "behavior_p_true": 0.0012
+    },
+    {
+      "subject": "Talisay",
+      "generated": "Philippines",
+      "gold": "Philippines",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9909,
+      "behavior_p_true": 0.9996
+    },
+    {
+      "subject": "Juazeiro do Norte",
+      "generated": "Brazil",
+      "gold": "Brazil",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9999
+    },
+    {
+      "subject": "Braila",
+      "generated": "Romania",
+      "gold": "Romania",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9997,
+      "behavior_p_true": 0.9998
+    },
+    {
+      "subject": "Zhumadian",
+      "generated": "China",
+      "gold": "China",
+      "correct": true,
+      "freq_log10": 4.112,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9999
+    },
+    {
+      "subject": "San Pedro Sula",
+      "generated": "Honduras",
+      "gold": "Honduras",
+      "correct": true,
+      "freq_log10": 3.244,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9999
+    },
+    {
+      "subject": "Lubuklinggau",
+      "generated": "Indonesia",
+      "gold": "Indonesia",
+      "correct": true,
+      "freq_log10": 1.774,
+      "probe_p_true": 0.9983,
+      "behavior_p_true": 0.9992
+    },
+    {
+      "subject": "Tetouan",
+      "generated": "Morocco",
+      "gold": "Morocco",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9999
+    },
+    {
+      "subject": "Montpellier",
+      "generated": "France",
+      "gold": "France",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9999
+    },
+    {
+      "subject": "Guaruja",
+      "generated": "Brazil",
+      "gold": "Brazil",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9999,
+      "behavior_p_true": 0.9997
+    },
+    {
+      "subject": "Gorzow Wielkopolski",
+      "generated": "Poland",
+      "gold": "Poland",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9999
+    },
+    {
+      "subject": "Hamamatsu",
+      "generated": "Japan",
+      "gold": "Japan",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9998
+    },
+    {
+      "subject": "San Luis Potosi",
+      "generated": "Mexico",
+      "gold": "Mexico",
+      "correct": true,
+      "freq_log10": 4.112,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9998
+    },
+    {
+      "subject": "Angeles City",
+      "generated": "Philippines",
+      "gold": "Philippines",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9974,
+      "behavior_p_true": 0.9997
+    },
+    {
+      "subject": "Sekondi",
+      "generated": "Ghana",
+      "gold": "Ghana",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9997
+    },
+    {
+      "subject": "Salta",
+      "generated": "Argentina",
+      "gold": "Argentina",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9997
+    },
+    {
+      "subject": "Gujrat",
+      "generated": "Pakistan",
+      "gold": "Pakistan",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9992,
+      "behavior_p_true": 0.0676
+    },
+    {
+      "subject": "Kofu",
+      "generated": "Japan",
+      "gold": "Japan",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9998
+    },
+    {
+      "subject": "Tilburg",
+      "generated": "Netherlands",
+      "gold": "Netherlands",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9983,
+      "behavior_p_true": 0.9999
+    },
+    {
+      "subject": "Columbus",
+      "generated": "United States",
+      "gold": "United States",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9994,
+      "behavior_p_true": 0.9972
+    },
+    {
+      "subject": "Lowell",
+      "generated": "United States",
+      "gold": "United States",
+      "correct": true,
+      "freq_log10": 3.225,
+      "probe_p_true": 0.9997,
+      "behavior_p_true": 0.9914
+    },
+    {
+      "subject": "Bharuch",
+      "generated": "India",
+      "gold": "India",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9998
+    },
+    {
+      "subject": "Homyel'",
+      "generated": "Belarus",
+      "gold": "Belarus",
+      "correct": true,
+      "freq_log10": 1.263,
+      "probe_p_true": 0.9999,
+      "behavior_p_true": 0.9933
+    },
+    {
+      "subject": "Dongguan",
+      "generated": "China",
+      "gold": "China",
+      "correct": true,
+      "freq_log10": 4.112,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9999
+    },
+    {
+      "subject": "Monywa",
+      "generated": "Myanmar",
+      "gold": "Myanmar",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9998,
+      "behavior_p_true": 0.9997
+    },
+    {
+      "subject": "Ferrara",
+      "generated": "Italy",
+      "gold": "Italy",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9998
+    },
+    {
+      "subject": "Qingzhen",
+      "generated": "China",
+      "gold": "China",
+      "correct": true,
+      "freq_log10": 4.112,
+      "probe_p_true": 0.9999,
+      "behavior_p_true": 0.9325
+    },
+    {
+      "subject": "Ciudad Guzman",
+      "generated": "Mexico",
+      "gold": "Mexico",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9999,
+      "behavior_p_true": 0.9997
+    },
+    {
+      "subject": "Gaza",
+      "generated": "Palestine",
+      "gold": "Gaza Strip",
+      "correct": false,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9999,
+      "behavior_p_true": 0.0
+    },
+    {
+      "subject": "Kakamigahara",
+      "generated": "Japan",
+      "gold": "Japan",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9999,
+      "behavior_p_true": 0.9996
+    },
+    {
+      "subject": "Itapevi",
+      "generated": "Brazil",
+      "gold": "Brazil",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9984,
+      "behavior_p_true": 0.9996
+    },
+    {
+      "subject": "Osh",
+      "generated": "Kyrgyzstan",
+      "gold": "Kyrgyzstan",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9994,
+      "behavior_p_true": 0.9709
+    },
+    {
+      "subject": "Son Tay",
+      "generated": "Vietnam",
+      "gold": "Vietnam",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9997,
+      "behavior_p_true": 0.0293
+    },
+    {
+      "subject": "Makassar",
+      "generated": "Indonesia",
+      "gold": "Indonesia",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9999
+    },
+    {
+      "subject": "Gangneung",
+      "generated": "South Korea",
+      "gold": "South Korea",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9999,
+      "behavior_p_true": 0.9998
+    },
+    {
+      "subject": "Ayacucho",
+      "generated": "Peru",
+      "gold": "Peru",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9999
+    },
+    {
+      "subject": "Al Kufah",
+      "generated": "Iraq",
+      "gold": "Iraq",
+      "correct": true,
+      "freq_log10": 1.082,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9985
+    },
+    {
+      "subject": "Changbang",
+      "generated": "Bangladesh",
+      "gold": "China",
+      "correct": false,
+      "freq_log10": 1.478,
+      "probe_p_true": 0.5611,
+      "behavior_p_true": 0.033
+    },
+    {
+      "subject": "Bima",
+      "generated": "Indonesia",
+      "gold": "Indonesia",
+      "correct": true,
+      "freq_log10": 3.217,
+      "probe_p_true": 0.9979,
+      "behavior_p_true": 0.5016
+    },
+    {
+      "subject": "Ecatepec",
+      "generated": "Mexico",
+      "gold": "Mexico",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9998
+    },
+    {
+      "subject": "Midsayap",
+      "generated": "Philippines",
+      "gold": "Philippines",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9926,
+      "behavior_p_true": 0.0141
+    },
+    {
+      "subject": "Ebina",
+      "generated": "Japan",
+      "gold": "Japan",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9999,
+      "behavior_p_true": 0.977
+    },
+    {
+      "subject": "Changde",
+      "generated": "China",
+      "gold": "China",
+      "correct": true,
+      "freq_log10": 2.36,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9998
+    },
+    {
+      "subject": "Bernal",
+      "generated": "Mexico",
+      "gold": "Argentina",
+      "correct": false,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.8348,
+      "behavior_p_true": 0.1189
+    },
+    {
+      "subject": "Posadas",
+      "generated": "Argentina",
+      "gold": "Argentina",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9996,
+      "behavior_p_true": 0.7985
+    },
+    {
+      "subject": "Rafsanjan",
+      "generated": "Iran",
+      "gold": "Iran",
+      "correct": true,
+      "freq_log10": 4.112,
+      "probe_p_true": 0.9881,
+      "behavior_p_true": 0.9996
+    },
+    {
+      "subject": "Blackpool",
+      "generated": "England",
+      "gold": "United Kingdom",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.002
+    },
+    {
+      "subject": "Mbabane",
+      "generated": "Eswatini",
+      "gold": "Swaziland",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9992
+    },
+    {
+      "subject": "Barddhaman",
+      "generated": "India",
+      "gold": "India",
+      "correct": true,
+      "freq_log10": 3.505,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9995
+    },
+    {
+      "subject": "San Diego",
+      "generated": "United States",
+      "gold": "United States",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9998,
+      "behavior_p_true": 0.9999
+    },
+    {
+      "subject": "Taguig City",
+      "generated": "Philippines",
+      "gold": "Philippines",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9987,
+      "behavior_p_true": 0.9999
+    },
+    {
+      "subject": "Aden",
+      "generated": "Yemen",
+      "gold": "Yemen",
+      "correct": true,
+      "freq_log10": 3.202,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9954
+    },
+    {
+      "subject": "Zinder",
+      "generated": "Niger",
+      "gold": "Niger",
+      "correct": true,
+      "freq_log10": 3.951,
+      "probe_p_true": 0.9999,
+      "behavior_p_true": 0.0052
+    },
+    {
+      "subject": "Alphen aan den Rijn",
+      "generated": "Netherlands",
+      "gold": "Netherlands",
+      "correct": true,
+      "freq_log10": 2.098,
+      "probe_p_true": 0.9998,
+      "behavior_p_true": 0.9989
+    },
+    {
+      "subject": "Az Zubayr",
+      "generated": "Saudi Arabia",
+      "gold": "Iraq",
+      "correct": false,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9989,
+      "behavior_p_true": 0.9049
+    },
+    {
+      "subject": "Bristol",
+      "generated": "England",
+      "gold": "United Kingdom",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9998
+    },
+    {
+      "subject": "Trenton",
+      "generated": "United States",
+      "gold": "United States",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9992,
+      "behavior_p_true": 0.9997
+    },
+    {
+      "subject": "Wuling",
+      "generated": "China",
+      "gold": "China",
+      "correct": true,
+      "freq_log10": 4.112,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.0067
+    },
+    {
+      "subject": "Geneva",
+      "generated": "Switzerland",
+      "gold": "Switzerland",
+      "correct": true,
+      "freq_log10": 3.477,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9999
+    },
+    {
+      "subject": "Hubli",
+      "generated": "India",
+      "gold": "India",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9999
+    },
+    {
+      "subject": "Bijapur",
+      "generated": "India",
+      "gold": "India",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9999,
+      "behavior_p_true": 0.9968
+    },
+    {
+      "subject": "Morioka",
+      "generated": "Japan",
+      "gold": "Japan",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9999
+    },
+    {
+      "subject": "Karimnagar",
+      "generated": "India",
+      "gold": "India",
+      "correct": true,
+      "freq_log10": 3.55,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9998
+    },
+    {
+      "subject": "Cheltenham",
+      "generated": "England",
+      "gold": "United Kingdom",
+      "correct": true,
+      "freq_log10": 3.165,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9323
+    },
+    {
+      "subject": "Bole",
+      "generated": "Ethiopia",
+      "gold": "China",
+      "correct": false,
+      "freq_log10": 4.112,
+      "probe_p_true": 0.9995,
+      "behavior_p_true": 0.6231
+    },
+    {
+      "subject": "Khabarovsk",
+      "generated": "Russia",
+      "gold": "Russia",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9999
+    },
+    {
+      "subject": "Silay",
+      "generated": "Philippines",
+      "gold": "Philippines",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.993,
+      "behavior_p_true": 0.9991
+    },
+    {
+      "subject": "Paulista",
+      "generated": "Brazil",
+      "gold": "Brazil",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.0676
+    },
+    {
+      "subject": "Zhuhai",
+      "generated": "China",
+      "gold": "China",
+      "correct": true,
+      "freq_log10": 4.112,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9999
+    },
+    {
+      "subject": "Jingping",
+      "generated": "China",
+      "gold": "China",
+      "correct": true,
+      "freq_log10": 4.112,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.2233
+    },
+    {
+      "subject": "Warren",
+      "generated": "United States",
+      "gold": "United States",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9984,
+      "behavior_p_true": 0.9627
+    },
+    {
+      "subject": "Uberaba",
+      "generated": "Brazil",
+      "gold": "Brazil",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9999,
+      "behavior_p_true": 0.9998
+    },
+    {
+      "subject": "Sanhe",
+      "generated": "China",
+      "gold": "China",
+      "correct": true,
+      "freq_log10": 4.112,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9978
+    },
+    {
+      "subject": "Thai Binh",
+      "generated": "Vietnam",
+      "gold": "Vietnam",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9959,
+      "behavior_p_true": 0.9914
+    },
+    {
+      "subject": "Parma",
+      "generated": "Italy",
+      "gold": "Italy",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9999
+    },
+    {
+      "subject": "South Bend",
+      "generated": "United States",
+      "gold": "United States",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9984,
+      "behavior_p_true": 0.9999
+    },
+    {
+      "subject": "Bissau",
+      "generated": "Guinea-Bissau",
+      "gold": "Guinea-Bissau",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9996,
+      "behavior_p_true": 0.9995
+    },
+    {
+      "subject": "Altay",
+      "generated": "Russia",
+      "gold": "China",
+      "correct": false,
+      "freq_log10": 2.488,
+      "probe_p_true": 0.9988,
+      "behavior_p_true": 0.0067
+    },
+    {
+      "subject": "The Valley",
+      "generated": "Anguilla",
+      "gold": "Anguilla",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.0126,
+      "behavior_p_true": 0.0002
+    },
+    {
+      "subject": "Hildesheim",
+      "generated": "Germany",
+      "gold": "Germany",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9999
+    },
+    {
+      "subject": "Thane",
+      "generated": "India",
+      "gold": "India",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9994
+    },
+    {
+      "subject": "Nong'an",
+      "generated": "China",
+      "gold": "China",
+      "correct": true,
+      "freq_log10": 4.112,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.8186
+    },
+    {
+      "subject": "Zhuji",
+      "generated": "China",
+      "gold": "China",
+      "correct": true,
+      "freq_log10": 4.112,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9998
+    },
+    {
+      "subject": "Uberlandia",
+      "generated": "Brazil",
+      "gold": "Brazil",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9998
+    },
+    {
+      "subject": "Scranton",
+      "generated": "United States",
+      "gold": "United States",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9997,
+      "behavior_p_true": 0.9996
+    },
+    {
+      "subject": "Tel Aviv-Yafo",
+      "generated": "Israel",
+      "gold": "Israel",
+      "correct": true,
+      "freq_log10": 4.112,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9999
+    },
+    {
+      "subject": "Amatitlan",
+      "generated": "Guatemala",
+      "gold": "Guatemala",
+      "correct": true,
+      "freq_log10": 5.29,
+      "probe_p_true": 0.9999,
+      "behavior_p_true": 0.9993
+    },
+    {
+      "subject": "Krishnanagar",
+      "generated": "India",
+      "gold": "India",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9999,
+      "behavior_p_true": 0.9988
+    },
+    {
+      "subject": "Chakradharpur",
+      "generated": "India",
+      "gold": "India",
+      "correct": true,
+      "freq_log10": 1.954,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9995
+    },
+    {
+      "subject": "Saskatoon",
+      "generated": "Canada",
+      "gold": "Canada",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9999
+    },
+    {
+      "subject": "Baharampur",
+      "generated": "India",
+      "gold": "India",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9999,
+      "behavior_p_true": 0.9924
+    },
+    {
+      "subject": "Kanasin",
+      "generated": "Canada",
+      "gold": "Mexico",
+      "correct": false,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.8997,
+      "behavior_p_true": 0.0032
+    },
+    {
+      "subject": "Yatou",
+      "generated": "China",
+      "gold": "China",
+      "correct": true,
+      "freq_log10": 4.112,
+      "probe_p_true": 0.9999,
+      "behavior_p_true": 0.0018
+    },
+    {
+      "subject": "Bamako",
+      "generated": "Mali",
+      "gold": "Mali",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9999
+    },
+    {
+      "subject": "Fukui",
+      "generated": "Japan",
+      "gold": "Japan",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9966
+    },
+    {
+      "subject": "Daet",
+      "generated": "Philippines",
+      "gold": "Philippines",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9993,
+      "behavior_p_true": 0.8933
+    },
+    {
+      "subject": "Wuhai",
+      "generated": "China",
+      "gold": "China",
+      "correct": true,
+      "freq_log10": 4.112,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9998
+    },
+    {
+      "subject": "Marseille",
+      "generated": "France",
+      "gold": "France",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9999
+    },
+    {
+      "subject": "San Buenaventura",
+      "generated": "Mexico",
+      "gold": "United States",
+      "correct": false,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9551,
+      "behavior_p_true": 0.0019
+    },
+    {
+      "subject": "Yildirim",
+      "generated": "Turkey",
+      "gold": "Turkey",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9991,
+      "behavior_p_true": 0.989
+    },
+    {
+      "subject": "Huayin",
+      "generated": "China",
+      "gold": "China",
+      "correct": true,
+      "freq_log10": 4.112,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.999
+    },
+    {
+      "subject": "Tarakan",
+      "generated": "Indonesia",
+      "gold": "Indonesia",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9999,
+      "behavior_p_true": 0.9997
+    },
+    {
+      "subject": "Liverpool",
+      "generated": "England",
+      "gold": "United Kingdom",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9999
+    },
+    {
+      "subject": "Valladolid",
+      "generated": "Spain",
+      "gold": "Spain",
+      "correct": true,
+      "freq_log10": 4.112,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9998
+    },
+    {
+      "subject": "Anchorage",
+      "generated": "United States",
+      "gold": "United States",
+      "correct": true,
+      "freq_log10": 3.55,
+      "probe_p_true": 0.9999,
+      "behavior_p_true": 0.9998
+    },
+    {
+      "subject": "Hamilton",
+      "generated": "Canada",
+      "gold": "Canada",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9402
+    },
+    {
+      "subject": "Rajapalaiyam",
+      "generated": "India",
+      "gold": "India",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9914
+    },
+    {
+      "subject": "Nantong",
+      "generated": "China",
+      "gold": "China",
+      "correct": true,
+      "freq_log10": 4.112,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9999
+    },
+    {
+      "subject": "Milwaukee",
+      "generated": "United States",
+      "gold": "United States",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9997,
+      "behavior_p_true": 0.9998
+    },
+    {
+      "subject": "Kidapawan",
+      "generated": "Philippines",
+      "gold": "Philippines",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9986,
+      "behavior_p_true": 0.9984
+    },
+    {
+      "subject": "Manchester",
+      "generated": "England",
+      "gold": "United Kingdom",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9999
+    },
+    {
+      "subject": "Springfield",
+      "generated": "United States",
+      "gold": "United States",
+      "correct": true,
+      "freq_log10": 4.112,
+      "probe_p_true": 0.9973,
+      "behavior_p_true": 0.6232
+    },
+    {
+      "subject": "Umuahia",
+      "generated": "Nigeria",
+      "gold": "Nigeria",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9999
+    },
+    {
+      "subject": "Avondale",
+      "generated": "United States",
+      "gold": "United States",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9959,
+      "behavior_p_true": 0.4078
+    },
+    {
+      "subject": "Mahesana",
+      "generated": "India",
+      "gold": "India",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.999
+    },
+    {
+      "subject": "Kurnool",
+      "generated": "India",
+      "gold": "India",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9999
+    },
+    {
+      "subject": "Bialystok",
+      "generated": "Poland",
+      "gold": "Poland",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9999,
+      "behavior_p_true": 0.999
+    },
+    {
+      "subject": "Quebec City",
+      "generated": "Canada",
+      "gold": "Canada",
+      "correct": true,
+      "freq_log10": 3.55,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9999
+    },
+    {
+      "subject": "Westminster",
+      "generated": "United Kingdom",
+      "gold": "United States",
+      "correct": false,
+      "freq_log10": 3.577,
+      "probe_p_true": 0.9966,
+      "behavior_p_true": 0.7549
+    },
+    {
+      "subject": "Springs",
+      "generated": "South Africa",
+      "gold": "South Africa",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.0853
+    },
+    {
+      "subject": "Rionegro",
+      "generated": "Colombia",
+      "gold": "Colombia",
+      "correct": true,
+      "freq_log10": 3.505,
+      "probe_p_true": 0.9999,
+      "behavior_p_true": 0.9988
+    },
+    {
+      "subject": "El Tigre",
+      "generated": "Venezuela",
+      "gold": "Venezuela",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9999,
+      "behavior_p_true": 0.974
+    },
+    {
+      "subject": "Suohe",
+      "generated": "China",
+      "gold": "China",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.0475
+    },
+    {
+      "subject": "Timon",
+      "generated": "South Africa",
+      "gold": "Brazil",
+      "correct": false,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9503,
+      "behavior_p_true": 0.0059
+    },
+    {
+      "subject": "Qufu",
+      "generated": "China",
+      "gold": "China",
+      "correct": true,
+      "freq_log10": 4.112,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9998
+    },
+    {
+      "subject": "Regensburg",
+      "generated": "Germany",
+      "gold": "Germany",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9999
+    },
+    {
+      "subject": "Naucalpan de Juarez",
+      "generated": "Mexico",
+      "gold": "Mexico",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9997
+    },
+    {
+      "subject": "Solihull",
+      "generated": "England",
+      "gold": "United Kingdom",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.0001
+    },
+    {
+      "subject": "Honcho",
+      "generated": "Japan",
+      "gold": "Japan",
+      "correct": true,
+      "freq_log10": 2.385,
+      "probe_p_true": 0.9981,
+      "behavior_p_true": 0.0001
+    },
+    {
+      "subject": "Gorontalo",
+      "generated": "Indonesia",
+      "gold": "Indonesia",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9989,
+      "behavior_p_true": 0.9798
+    },
+    {
+      "subject": "Usulutan",
+      "generated": "El Salvador",
+      "gold": "El Salvador",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9989,
+      "behavior_p_true": 0.9957
+    },
+    {
+      "subject": "Donetsk",
+      "generated": "Ukraine",
+      "gold": "Ukraine",
+      "correct": true,
+      "freq_log10": 3.798,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9467
+    },
+    {
+      "subject": "Cap-Haitien",
+      "generated": "Haiti",
+      "gold": "Haiti",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9999
+    },
+    {
+      "subject": "Pohang",
+      "generated": "South Korea",
+      "gold": "South Korea",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9998
+    },
+    {
+      "subject": "Wad Medani",
+      "generated": "Sudan",
+      "gold": "Sudan",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9992
+    },
+    {
+      "subject": "Ann Arbor",
+      "generated": "United States",
+      "gold": "United States",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9994,
+      "behavior_p_true": 0.9999
+    },
+    {
+      "subject": "Abu Hulayfah",
+      "generated": "Syria",
+      "gold": "Kuwait",
+      "correct": false,
+      "freq_log10": 1.06,
+      "probe_p_true": 0.9982,
+      "behavior_p_true": 0.0535
+    },
+    {
+      "subject": "Guimba",
+      "generated": "Philippines",
+      "gold": "Philippines",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9982,
+      "behavior_p_true": 0.982
+    },
+    {
+      "subject": "Dijon",
+      "generated": "France",
+      "gold": "France",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9999
+    },
+    {
+      "subject": "Guaymas",
+      "generated": "Mexico",
+      "gold": "Mexico",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9998
+    },
+    {
+      "subject": "Jijel",
+      "generated": "Algeria",
+      "gold": "Algeria",
+      "correct": true,
+      "freq_log10": 3.242,
+      "probe_p_true": 0.9994,
+      "behavior_p_true": 0.9998
+    },
+    {
+      "subject": "Chimoio",
+      "generated": "Mozambique",
+      "gold": "Mozambique",
+      "correct": true,
+      "freq_log10": 2.063,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9998
+    },
+    {
+      "subject": "Tottori",
+      "generated": "Japan",
+      "gold": "Japan",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9992
+    },
+    {
+      "subject": "Raiganj",
+      "generated": "India",
+      "gold": "India",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9999,
+      "behavior_p_true": 0.9972
+    },
+    {
+      "subject": "Xiamen",
+      "generated": "China",
+      "gold": "China",
+      "correct": true,
+      "freq_log10": 4.112,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9999
+    },
+    {
+      "subject": "Melipilla",
+      "generated": "Chile",
+      "gold": "Chile",
+      "correct": true,
+      "freq_log10": 3.55,
+      "probe_p_true": 0.9999,
+      "behavior_p_true": 0.9995
+    },
+    {
+      "subject": "San Carlos City",
+      "generated": "Philippines",
+      "gold": "Philippines",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9965,
+      "behavior_p_true": 0.9991
+    },
+    {
+      "subject": "Kadugli",
+      "generated": "Sudan",
+      "gold": "Sudan",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9996,
+      "behavior_p_true": 0.9964
+    },
+    {
+      "subject": "Shanwei",
+      "generated": "China",
+      "gold": "China",
+      "correct": true,
+      "freq_log10": 4.112,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9998
+    },
+    {
+      "subject": "La Vega",
+      "generated": "Dominican Republic",
+      "gold": "Dominican Republic",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9994,
+      "behavior_p_true": 0.9978
+    },
+    {
+      "subject": "Eau Claire",
+      "generated": "United States",
+      "gold": "United States",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9993,
+      "behavior_p_true": 0.9995
+    },
+    {
+      "subject": "Manta",
+      "generated": "Ecuador",
+      "gold": "Ecuador",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9999,
+      "behavior_p_true": 0.0204
+    },
+    {
+      "subject": "Xigaze",
+      "generated": "China",
+      "gold": "China",
+      "correct": true,
+      "freq_log10": 4.112,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9996
+    },
+    {
+      "subject": "Rufisque",
+      "generated": "Senegal",
+      "gold": "Senegal",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9999,
+      "behavior_p_true": 0.9996
+    },
+    {
+      "subject": "Ouargla",
+      "generated": "Algeria",
+      "gold": "Algeria",
+      "correct": true,
+      "freq_log10": 3.242,
+      "probe_p_true": 0.9997,
+      "behavior_p_true": 0.9998
+    },
+    {
+      "subject": "Taisheng",
+      "generated": "China",
+      "gold": "China",
+      "correct": true,
+      "freq_log10": 4.112,
+      "probe_p_true": 0.9999,
+      "behavior_p_true": 0.7983
+    },
+    {
+      "subject": "Ciudad Hidalgo",
+      "generated": "Mexico",
+      "gold": "Mexico",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9995,
+      "behavior_p_true": 0.9941
+    },
+    {
+      "subject": "Obninsk",
+      "generated": "Russia",
+      "gold": "Russia",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9999,
+      "behavior_p_true": 0.9997
+    },
+    {
+      "subject": "Tunja",
+      "generated": "Colombia",
+      "gold": "Colombia",
+      "correct": true,
+      "freq_log10": 3.505,
+      "probe_p_true": 0.9999,
+      "behavior_p_true": 0.9999
+    },
+    {
+      "subject": "Panama City",
+      "generated": "Panama",
+      "gold": "Panama",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9999,
+      "behavior_p_true": 0.9998
+    },
+    {
+      "subject": "Al Hufuf",
+      "generated": "Saudi Arabia",
+      "gold": "Saudi Arabia",
+      "correct": true,
+      "freq_log10": 1.23,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9992
+    },
+    {
+      "subject": "Colorado Springs",
+      "generated": "United States",
+      "gold": "United States",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9993,
+      "behavior_p_true": 0.9999
+    },
+    {
+      "subject": "Otaru",
+      "generated": "Japan",
+      "gold": "Japan",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9999
+    },
+    {
+      "subject": "As Sib",
+      "generated": "Oman",
+      "gold": "Oman",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.1962,
+      "behavior_p_true": 0.0231
+    },
+    {
+      "subject": "Sao Lourenco da Mata",
+      "generated": "Brazil",
+      "gold": "Brazil",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9933
+    },
+    {
+      "subject": "Eugene",
+      "generated": "United States",
+      "gold": "United States",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9996,
+      "behavior_p_true": 0.997
+    },
+    {
+      "subject": "Naha",
+      "generated": "Japan",
+      "gold": "Japan",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.999
+    },
+    {
+      "subject": "Comodoro Rivadavia",
+      "generated": "Argentina",
+      "gold": "Argentina",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9998
+    },
+    {
+      "subject": "Minatitlan",
+      "generated": "Mexico",
+      "gold": "Mexico",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9999,
+      "behavior_p_true": 0.9996
+    },
+    {
+      "subject": "Oran",
+      "generated": "Algeria",
+      "gold": "Algeria",
+      "correct": true,
+      "freq_log10": 3.242,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9968
+    },
+    {
+      "subject": "Danjiangkou",
+      "generated": "China",
+      "gold": "China",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9933
+    },
+    {
+      "subject": "Uppsala",
+      "generated": "Sweden",
+      "gold": "Sweden",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9999
+    },
+    {
+      "subject": "Charleston",
+      "generated": "United States",
+      "gold": "United States",
+      "correct": true,
+      "freq_log10": 3.417,
+      "probe_p_true": 0.999,
+      "behavior_p_true": 0.9998
+    },
+    {
+      "subject": "Heze",
+      "generated": "China",
+      "gold": "China",
+      "correct": true,
+      "freq_log10": 4.112,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9941
+    },
+    {
+      "subject": "Consolacion",
+      "generated": "Philippines",
+      "gold": "Philippines",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.999,
+      "behavior_p_true": 0.9924
+    },
+    {
+      "subject": "Kupang",
+      "generated": "Indonesia",
+      "gold": "Indonesia",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 1.0,
+      "behavior_p_true": 0.9998
+    },
+    {
+      "subject": "Sizhan",
+      "generated": "China",
+      "gold": "China",
+      "correct": true,
+      "freq_log10": 4.112,
+      "probe_p_true": 0.9999,
+      "behavior_p_true": 0.0421
+    },
+    {
+      "subject": "Santa Cruz",
+      "generated": "Bolivia",
+      "gold": "Philippines",
+      "correct": false,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.0001,
+      "behavior_p_true": 0.0
+    },
+    {
+      "subject": "Mazyr",
+      "generated": "Belarus",
+      "gold": "Belarus",
+      "correct": true,
+      "freq_log10": 0.0,
+      "probe_p_true": 0.9966,
+      "behavior_p_true": 0.9994
+    },
+    {
+      "subject": "Chuo-ku",
+      "generated": "Japan",
+      "gold": "Japan",
+      "correct": true,
+      "freq_log10": 2.248,
+      "probe_p_true": 0.9996,
+      "behavior_p_true": 0.0
+    }
+  ]
+}

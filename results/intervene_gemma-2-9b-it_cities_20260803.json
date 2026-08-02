@@ -1,0 +1,45 @@
+{
+  "model": "google/gemma-2-9b-it",
+  "domain": "cities",
+  "corpus": "mirage_2x2_v165941295e9a.jsonl",
+  "layer": 21,
+  "k": 8,
+  "n_by_cell": {
+    "TT": 366,
+    "TA": 948,
+    "FT": 260,
+    "FA": 134
+  },
+  "p_true": {
+    "TT": {
+      "n": 200,
+      "behavioral_baseline": 0.7801,
+      "manifold_ablated": 0.7512,
+      "random_ablated": 0.7801,
+      "probe_readout": 0.9997
+    },
+    "TA": {
+      "n": 200,
+      "behavioral_baseline": 0.8151,
+      "manifold_ablated": 0.797,
+      "random_ablated": 0.815,
+      "probe_readout": 0.947
+    },
+    "FT": {
+      "n": 200,
+      "behavioral_baseline": 0.0088,
+      "manifold_ablated": 0.0054,
+      "random_ablated": 0.0086,
+      "probe_readout": 0.1066
+    },
+    "FA": {
+      "n": 134,
+      "behavioral_baseline": 0.0081,
+      "manifold_ablated": 0.0063,
+      "random_ablated": 0.0083,
+      "probe_readout": 0.0007
+    }
+  },
+  "provenance": "measured",
+  "seed": 20260719
+}
