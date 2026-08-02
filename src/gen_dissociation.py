@@ -131,10 +131,12 @@ def _judge_p_true(substrate, text, true_ids, false_ids):
 
 
 def run(substrate, corpus_path: str | Path, max_subjects: int = 400,
-        seed: int = 20260719, commit_fn=None) -> dict:
+        seed: int = 20260719, commit_fn=None, domain: str | None = None) -> dict:
     from .stats import auroc_with_ci
 
     items = load_corpus(corpus_path)
+    if domain:   # fielded probe must train on a domain-pure diagonal (2026-08-03)
+        items = [it for it in items if it["domain"] == domain]
     cities = [it for it in items if it["domain"] == "cities"]
 
     # ground truth: subject -> true country, from the corpus's true items
@@ -197,7 +199,8 @@ def run(substrate, corpus_path: str | Path, max_subjects: int = 400,
     # index instead, which is the same typical/atypical line the corpus draws.
     hi = gen_freq > 0.0
     out = {
-        "model": substrate.model_id, "corpus": Path(corpus_path).name, "layer": L,
+        "model": substrate.model_id, "domain": domain or "all",
+        "corpus": Path(corpus_path).name, "layer": L,
         "n_generated": len(gen_texts),
         "natural_error_rate": round(float(1 - gen_correct.mean()), 4),
         "provenance": "measured", "seed": seed,

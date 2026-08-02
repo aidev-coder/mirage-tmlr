@@ -101,8 +101,11 @@ def _cell_p_true(substrate, prompts, idx, true_ids, false_ids, hook=None, layer=
 
 
 def run(substrate, corpus_path: str | Path, k: int = 8, layer: int | None = None,
-        seed: int = 20260719, cap: int = 200, commit_fn=None) -> dict:
+        seed: int = 20260719, cap: int = 200, commit_fn=None,
+        domain: str | None = None) -> dict:
     items = load_corpus(corpus_path)
+    if domain:   # pooled corpus confounds domain with truth across cells (2026-08-03)
+        items = [it for it in items if it["domain"] == domain]
     texts = [it["text"] for it in items]
     cells = np.array([it["cell"] for it in items])
     freq = np.array([it["typicality"]["entity_freq_log10"] for it in items], dtype=float)
@@ -135,7 +138,8 @@ def run(substrate, corpus_path: str | Path, k: int = 8, layer: int | None = None
     hook_man = _make_hook(mu, sd, U, z_ref)
     hook_rnd = _make_hook(mu, sd, U_rand, z_ref)
 
-    out = {"model": substrate.model_id, "corpus": Path(corpus_path).name,
+    out = {"model": substrate.model_id, "domain": domain or "all",
+           "corpus": Path(corpus_path).name,
            "layer": L, "k": k, "n_by_cell": {c: int(len(v)) for c, v in cell_idx.items()},
            "p_true": {}, "provenance": "measured", "seed": seed}
     for c, idx in cell_idx.items():

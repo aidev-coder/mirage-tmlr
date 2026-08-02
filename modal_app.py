@@ -29,7 +29,7 @@ APP_NAME = "mirage"
 # Owner authorized a larger GPU for speed (overrides the §5 A10/L4 default).
 # A100-40GB: fits 9B bf16 + batched activations with headroom, cost-sane for a
 # $30 budget. Bump to "H100" for ~2x faster extraction if the budget allows.
-GPU = "A100-40GB"
+GPU = "H100"
 _HERE = Path(__file__).resolve().parent
 
 
@@ -166,7 +166,7 @@ def stage3_run(model_id: str, corpus_name: str, detector: str = "saplma",
 
 @app.function(image=image, gpu=GPU, volumes=VOLUMES, secrets=SECRETS,
               timeout=4 * 3600)
-def causal_run(model_id: str, corpus_name: str) -> dict:
+def causal_run(model_id: str, corpus_name: str, domain: str = "") -> dict:
     """Causal mediation: fraction of the truth-probe response routed through the
     typicality direction, on matched twin pairs. Reuses cached activations."""
     _setup()
@@ -174,7 +174,7 @@ def causal_run(model_id: str, corpus_name: str) -> dict:
     from src.substrate import Substrate
     sub = Substrate(model_id, cache_dir="/root/activations")
     out = run_causal(sub, f"/root/mirage/data/corpus/{corpus_name}",
-                     commit_fn=activations.commit)
+                     commit_fn=activations.commit, domain=domain or None)
     activations.commit()
     hf_cache.commit()
     return out
@@ -182,7 +182,8 @@ def causal_run(model_id: str, corpus_name: str) -> dict:
 
 @app.function(image=image, gpu=GPU, volumes=VOLUMES, secrets=SECRETS,
               timeout=4 * 3600)
-def intervene_run(model_id: str, corpus_name: str, k: int = 8) -> dict:
+def intervene_run(model_id: str, corpus_name: str, k: int = 8,
+                  domain: str = "") -> dict:
     """Model-level: ablate the frequency manifold from the residual and re-read the
     model's own stated P(true) per cell. Manifold vs random-subspace null."""
     _setup()
@@ -190,7 +191,7 @@ def intervene_run(model_id: str, corpus_name: str, k: int = 8) -> dict:
     from src.substrate import Substrate
     sub = Substrate(model_id, cache_dir="/root/activations")
     out = run_intervene(sub, f"/root/mirage/data/corpus/{corpus_name}", k=k,
-                        commit_fn=activations.commit)
+                        commit_fn=activations.commit, domain=domain or None)
     activations.commit()
     hf_cache.commit()
     return out
@@ -198,7 +199,8 @@ def intervene_run(model_id: str, corpus_name: str, k: int = 8) -> dict:
 
 @app.function(image=image, gpu=GPU, volumes=VOLUMES, secrets=SECRETS,
               timeout=4 * 3600)
-def gendis_run(model_id: str, corpus_name: str, max_subjects: int = 400) -> dict:
+def gendis_run(model_id: str, corpus_name: str, max_subjects: int = 400,
+               domain: str = "") -> dict:
     """Generation-time dissociation: the model writes the statements, then we read
     the fielded probe and the model's own judgment on its natural hallucinations."""
     _setup()
@@ -206,7 +208,8 @@ def gendis_run(model_id: str, corpus_name: str, max_subjects: int = 400) -> dict
     from src.substrate import Substrate
     sub = Substrate(model_id, cache_dir="/root/activations")
     out = run_gd(sub, f"/root/mirage/data/corpus/{corpus_name}",
-                 max_subjects=max_subjects, commit_fn=activations.commit)
+                 max_subjects=max_subjects, commit_fn=activations.commit,
+                 domain=domain or None)
     activations.commit()
     hf_cache.commit()
     return out
@@ -347,14 +350,15 @@ def main(stage: str = "sanity", model: str = "", max_per_topic: int = 0,
             if not cands:
                 raise SystemExit("no finalized corpus — run --stage stage2 first")
             corpus_name = cands[-1].name
-        res = causal_run.remote(model_id=model_id, corpus_name=corpus_name)
+        res = causal_run.remote(model_id=model_id, corpus_name=corpus_name, domain=domain)
         hl = res["headline_layer"]; e = res["per_layer"][hl]
         print(f"causal {res['model']} L{hl} :: {res['contrast']}")
         print(f"  FT-error frac_mediated by k: {e['ft_error_frac_mediated_by_k']}")
         print(f"  random-subspace null   by k: {e['ft_error_random_subspace_by_k']}")
         print(f"  TT-ctrl  frac_mediated by k: {e['tt_control_frac_mediated_by_k']}")
         short = res["model"].split("/")[-1].lower()
-        out = _HERE / "results" / f"causal_{short}_{date.today():%Y%m%d}.json"
+        dtag = f"_{domain}" if domain else ""
+        out = _HERE / "results" / f"causal_{short}{dtag}_{date.today():%Y%m%d}.json"
         out.write_text(json.dumps(res, indent=2, default=_json_default))
         print(f"  -> {out}")
 
@@ -366,13 +370,15 @@ def main(stage: str = "sanity", model: str = "", max_per_topic: int = 0,
             cdir = _HERE / "data" / "corpus"
             cands = sorted(cdir.glob("mirage_2x2_v*.jsonl"), key=lambda p: p.stat().st_mtime)
             corpus_name = cands[-1].name
-        res = intervene_run.remote(model_id=model_id, corpus_name=corpus_name, k=seed or 8)
+        res = intervene_run.remote(model_id=model_id, corpus_name=corpus_name,
+                                   k=seed or 8, domain=domain)
         print(f"intervene {res['model']} L{res['layer']} k{res['k']}")
         for c, v in res["p_true"].items():
             print(f"  {c}: probe {v['probe_readout']} vs behavior {v['behavioral_baseline']} "
                   f"(manifold-ablated {v['manifold_ablated']})")
         short = res["model"].split("/")[-1].lower()
-        out = _HERE / "results" / f"intervene_{short}_{date.today():%Y%m%d}.json"
+        dtag = f"_{domain}" if domain else ""
+        out = _HERE / "results" / f"intervene_{short}{dtag}_{date.today():%Y%m%d}.json"
         out.write_text(json.dumps(res, indent=2, default=_json_default))
         print(f"  -> {out}")
 
@@ -385,7 +391,7 @@ def main(stage: str = "sanity", model: str = "", max_per_topic: int = 0,
             corpus_name = sorted(cdir.glob("mirage_2x2_v*.jsonl"),
                                  key=lambda p: p.stat().st_mtime)[-1].name
         res = gendis_run.remote(model_id=model_id, corpus_name=corpus_name,
-                                max_subjects=max_per_topic or 400)
+                                max_subjects=max_per_topic or 400, domain=domain)
         print(f"gendis {res['model']} L{res['layer']} n={res['n_generated']} "
               f"natural error rate {res['natural_error_rate']}")
         h, c = res["hallucinations"], res["correct_generations"]
@@ -408,7 +414,8 @@ def main(stage: str = "sanity", model: str = "", max_per_topic: int = 0,
                   f"{res['behavior_auroc_on_own_generations']['auroc']} "
                   f"{res['behavior_auroc_on_own_generations']['ci']}")
         short = res["model"].split("/")[-1].lower()
-        out = _HERE / "results" / f"gendis_{short}_{date.today():%Y%m%d}.json"
+        dtag = f"_{domain}" if domain else ""
+        out = _HERE / "results" / f"gendis_{short}{dtag}_{date.today():%Y%m%d}.json"
         out.write_text(json.dumps(res, indent=2, default=_json_default))
         print(f"  -> {out}")
 

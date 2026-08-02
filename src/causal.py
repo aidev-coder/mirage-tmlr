@@ -94,16 +94,23 @@ def _mediation_subspace(w: np.ndarray, b: float, U: np.ndarray,
 
 
 def run(substrate, corpus_path: str | Path, batch_size: int = 32,
-        seed: int = 20260719, commit_fn=None) -> dict:
+        seed: int = 20260719, commit_fn=None, domain: str | None = None) -> dict:
+    """domain: hold topic fixed (subset AFTER extraction, cache stays valid). The
+    pooled corpus confounds domain with truth across cells (2026-08-03 refutation),
+    so any FT-vs-FA contrast on it may measure domain, not typicality."""
     items = load_corpus(corpus_path)
     corpus_hash = Path(corpus_path).stem.split("_v")[-1]
     texts = [it["text"] for it in items]
     truth = np.array([bool(it["truth"]) for it in items])
     cells = np.array([it["cell"] for it in items])
     freq = np.array([it["typicality"]["entity_freq_log10"] for it in items], dtype=float)
-    diag = np.isin(cells, DIAGONAL)
 
     H = _extract_or_load(substrate, texts, corpus_hash, batch_size, commit_fn)
+    if domain:
+        keep = np.array([it["domain"] == domain for it in items])
+        items = [it for it, k in zip(items, keep) if k]
+        H, truth, cells, freq = H[keep], truth[keep], cells[keep], freq[keep]
+    diag = np.isin(cells, DIAGONAL)
     n_layers = H.shape[1]
     ft = cells == "FT"; fa = cells == "FA"; tt = cells == "TT"; ta = cells == "TA"
     ks = [1, 2, 4, 8, 16]
@@ -138,6 +145,7 @@ def run(substrate, corpus_path: str | Path, batch_size: int = 32,
     hl = n_layers // 2
     return {
         "model": substrate.model_id,
+        "domain": domain or "all",
         "corpus": Path(corpus_path).name,
         "corpus_hash": corpus_hash,
         "contrast": "within-truth-class across typicality SUBSPACE (FT vs FA; TT vs TA control)",
