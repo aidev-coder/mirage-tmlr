@@ -196,6 +196,22 @@ def intervene_run(model_id: str, corpus_name: str, k: int = 8) -> dict:
 
 
 @app.function(image=image, gpu=GPU, volumes=VOLUMES, secrets=SECRETS,
+              timeout=4 * 3600)
+def gendis_run(model_id: str, corpus_name: str, max_subjects: int = 400) -> dict:
+    """Generation-time dissociation: the model writes the statements, then we read
+    the fielded probe and the model's own judgment on its natural hallucinations."""
+    _setup()
+    from src.gen_dissociation import run as run_gd
+    from src.substrate import Substrate
+    sub = Substrate(model_id, cache_dir="/root/activations")
+    out = run_gd(sub, f"/root/mirage/data/corpus/{corpus_name}",
+                 max_subjects=max_subjects, commit_fn=activations.commit)
+    activations.commit()
+    hf_cache.commit()
+    return out
+
+
+@app.function(image=image, gpu=GPU, volumes=VOLUMES, secrets=SECRETS,
               timeout=2 * 3600)
 def harvest_fn(model_id: str, topic: str, max_subjects: int = 400) -> dict:
     """O-2/D-008 natural-error harvest from a disjoint model (Mistral)."""
@@ -355,6 +371,36 @@ def main(stage: str = "sanity", model: str = "", max_per_topic: int = 0,
                   f"(manifold-ablated {v['manifold_ablated']})")
         short = res["model"].split("/")[-1].lower()
         out = _HERE / "results" / f"intervene_{short}_{date.today():%Y%m%d}.json"
+        out.write_text(json.dumps(res, indent=2, default=_json_default))
+        print(f"  -> {out}")
+
+    elif stage == "gendis":
+        from datetime import date
+        model_id = model or "Qwen/Qwen2.5-7B-Instruct"
+        corpus_name = corpus
+        if not corpus_name:
+            cdir = _HERE / "data" / "corpus"
+            corpus_name = sorted(cdir.glob("mirage_2x2_v*.jsonl"),
+                                 key=lambda p: p.stat().st_mtime)[-1].name
+        res = gendis_run.remote(model_id=model_id, corpus_name=corpus_name,
+                                max_subjects=max_per_topic or 400)
+        print(f"gendis {res['model']} L{res['layer']} n={res['n_generated']} "
+              f"natural error rate {res['natural_error_rate']}")
+        h, c = res["hallucinations"], res["correct_generations"]
+        print(f"  hallucinated (n={h['n']}): probe {h['probe_mean_p_true']} | "
+              f"model {h['behavior_mean_p_true']}")
+        print(f"    high-freq subset (n={h['n_high_freq']}): probe "
+              f"{h['probe_mean_p_true_high_freq']} | model {h['behavior_mean_p_true_high_freq']}")
+        print(f"  correct      (n={c['n']}): probe {c['probe_mean_p_true']} | "
+              f"model {c['behavior_mean_p_true']}")
+        if "probe_auroc_on_own_generations" in res:
+            print(f"  AUROC on own generations: probe "
+                  f"{res['probe_auroc_on_own_generations']['auroc']} "
+                  f"{res['probe_auroc_on_own_generations']['ci']} | model "
+                  f"{res['behavior_auroc_on_own_generations']['auroc']} "
+                  f"{res['behavior_auroc_on_own_generations']['ci']}")
+        short = res["model"].split("/")[-1].lower()
+        out = _HERE / "results" / f"gendis_{short}_{date.today():%Y%m%d}.json"
         out.write_text(json.dumps(res, indent=2, default=_json_default))
         print(f"  -> {out}")
 
