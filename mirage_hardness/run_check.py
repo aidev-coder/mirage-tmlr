@@ -12,6 +12,14 @@ Four checks (thresholds in ../configs/corpus.yaml):
   2. FT yield         the false-typical cell is actually populated (the cell that
                       exposes the confound). An empty/near-empty FT => the corpus
                       cannot test truth-vs-typicality; everything else is moot.
+  2b. composition     no categorical metadata field (domain, source, template, ...)
+                      that is VISIBLE IN THE TEXT can predict truth off-diagonal
+                      after learning the association on the diagonal. MIRAGE's own
+                      corpus failed this and we did not notice for three weeks: it
+                      put 32% non-cities in diagonal-TRUE and 0% in diagonal-FALSE
+                      while the off-diagonal reversed that, so a topic-reading probe
+                      scored BELOW chance off-diagonal and we read it as a typicality
+                      confound. This check is data-only and takes seconds. Run it.
   3. edit canary      (needs a substrate) a "was-edited" probe on hidden states is
                       near chance; else the false cell carries a generation
                       signature the truth probe can shortcut on.
@@ -54,6 +62,7 @@ def run(items: list[dict], substrate=None, layer: int | None = None) -> dict:
     report = {"n_items": len(items), "checks": {}}
     report["checks"]["crossing"] = corpus_build.verify_crossing(items)
     report["checks"]["ft_yield"] = ft_yield_check(items)
+    report["checks"]["composition"] = corpus_build.composition_canary(items)
 
     if substrate is not None:
         import numpy as np

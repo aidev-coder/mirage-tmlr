@@ -161,6 +161,119 @@ def fragmentation_canary(features: np.ndarray, truth: np.ndarray,
     return res
 
 
+DIAGONAL_CELLS = ("TT", "FA")
+OFF_DIAGONAL_CELLS = ("TA", "FT")
+
+
+def _categorical_fields(items: list[dict], max_card: int = 20) -> dict[str, list]:
+    """Low-cardinality categorical metadata, top level and one level into
+    `provenance`. Free text and per-item identifiers are excluded by the
+    cardinality cap."""
+    skip = {"text", "entity", "entities", "cell", "truth", "typicality"}
+    vals: dict[str, list] = {}
+    for it in items:
+        for k, v in it.items():
+            if k in skip or not isinstance(v, (str, bool)):
+                continue
+            vals.setdefault(k, []).append(v)
+        for k, v in (it.get("provenance") or {}).items():
+            if isinstance(v, (str, bool)):
+                vals.setdefault(f"provenance.{k}", []).append(v)
+    return {k: v for k, v in vals.items()
+            if len(v) == len(items) and 1 < len(set(v)) <= max_card}
+
+
+def _text_visible(items: list[dict], values: np.ndarray, seed: int = 20260712,
+                  threshold: float = 0.65) -> dict:
+    """Is this field recoverable from the statement text alone? Character n-gram
+    classifier, held-out accuracy against the majority-class baseline. A field the
+    probe cannot see in its input cannot be the shortcut it exploits."""
+    from sklearn.feature_extraction.text import TfidfVectorizer
+    from sklearn.linear_model import LogisticRegression
+    from sklearn.model_selection import train_test_split
+
+    y = np.asarray([str(x) for x in values])
+    texts = [it["text"] for it in items]
+    try:
+        tr_x, te_x, tr_y, te_y = train_test_split(
+            texts, y, test_size=0.3, random_state=seed, stratify=y)
+    except ValueError:
+        return {"text_visible": None, "accuracy": None, "note": "too few per class"}
+    vec = TfidfVectorizer(analyzer="char_wb", ngram_range=(2, 4), min_df=2, max_features=20000)
+    Xtr = vec.fit_transform(tr_x)
+    clf = LogisticRegression(max_iter=1000, random_state=seed).fit(Xtr, tr_y)
+    acc = float(clf.score(vec.transform(te_x), te_y))
+    base = float(max(np.mean(te_y == c) for c in set(te_y)))
+    return {"text_visible": bool(acc > max(threshold, base + 0.05)),
+            "accuracy": round(acc, 4), "majority_baseline": round(base, 4)}
+
+
+def composition_canary(items: list[dict], seed: int = 20260712) -> dict:
+    """Can a categorical METADATA field alone predict truth off-diagonal, having
+    learned the association on the diagonal? It must not.
+
+    This is the check MIRAGE failed and did not have (2026-08-03). Our own corpus
+    put 32% non-cities in diagonal-TRUE and 0% in diagonal-FALSE, while the
+    off-diagonal reversed it (0% non-cities in TRUE, 52% in FALSE). A probe could
+    score the entire off-diagonal by topic alone, and below chance at that — which
+    is exactly the "collapse" we mistook for a typicality confound for three weeks.
+
+    Method (no model, no GPU): for each field, learn P(true | value) on the
+    diagonal, score the off-diagonal by that lookup, AUROC against truth. Chance
+    means the field carries no diagonal-to-off-diagonal shortcut. Deviation in
+    EITHER direction fails: below chance is the inverting case, which is worse
+    because it manufactures an apparent collapse."""
+    from .stats import auroc_with_ci
+
+    cells = np.array([it["cell"] for it in items])
+    truth = np.array([bool(it["truth"]) for it in items], dtype=int)
+    diag = np.isin(cells, DIAGONAL_CELLS)
+    off = np.isin(cells, OFF_DIAGONAL_CELLS)
+    out: dict = {"gate": "composition_canary", "fields": {}}
+    if diag.sum() == 0 or off.sum() == 0 or len(set(truth[off])) < 2:
+        out.update({"pass": None, "note": "needs both cells populated and both truth values off-diagonal"})
+        return out
+
+    for name, values in _categorical_fields(items).items():
+        v = np.asarray(values, dtype=object)
+        rate = {}
+        for val in set(v[diag]):
+            m = diag & (v == val)
+            rate[val] = float(truth[m].mean()) if m.sum() else 0.5
+        scores = np.array([rate.get(x, 0.5) for x in v[off]], dtype=float)
+        if len(set(scores)) < 2:
+            continue
+        res = auroc_with_ci(truth[off], scores, seed=seed)
+        # composition table, so a failure is immediately legible
+        table = {}
+        for lab, mask in (("diagonal", diag), ("off_diagonal", off)):
+            table[lab] = {str(val): {
+                "n": int(((v == val) & mask).sum()),
+                "frac_true": round(float(truth[(v == val) & mask].mean()), 3)
+                if ((v == val) & mask).sum() else None}
+                for val in sorted(set(v), key=str)}
+        vis = _text_visible(items, v, seed=seed)
+        res.update({"shortcut_present": not _ci_includes_half(res),
+                    "text_visible": vis["text_visible"],
+                    "text_recoverability_acc": vis["accuracy"],
+                    "composition": table})
+        # A field only threatens the probe if BOTH: it carries a diagonal->off-diagonal
+        # shortcut AND it is recoverable from the input the model actually sees.
+        # `provenance.strategy` names encode truth perfectly but are invisible to the
+        # probe, so gating on them would fail every corpus and train users to ignore
+        # this check.
+        res["pass"] = not (res["shortcut_present"] and vis["text_visible"])
+        out["fields"][name] = res
+
+    failed = [k for k, r in out["fields"].items() if r.get("pass") is False]
+    out["failed_fields"] = failed
+    out["metadata_only_imbalances"] = [
+        k for k, r in out["fields"].items()
+        if r.get("shortcut_present") and not r.get("text_visible")]
+    out["pass"] = not failed
+    return out
+
+
 # ── Gate 3: signoff + versioned write ────────────────────────────────────────
 
 def finalize(items: list[dict], crossing_report: dict, canary_report: dict,
