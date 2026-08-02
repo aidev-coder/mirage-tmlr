@@ -165,8 +165,47 @@ def fig_dissociation(out: str | Path | None = None):
     return out
 
 
+def fig_generation_dissociation(out: str | Path | None = None):
+    """Generation time, gold free. On statements the model produced and then judged
+    false itself, what does a probe on that same model's hidden states say?"""
+    import matplotlib
+    matplotlib.use("Agg")
+    import matplotlib.pyplot as plt
+    import numpy as np
+
+    arts = [json.loads(Path(f).read_text(encoding="utf-8"))
+            for f in glob.glob(str(RESULTS / "gendis_*.json"))]
+    arts = [a for a in arts if a.get("gold_free_dissociation")]
+    arts = sorted(arts, key=lambda a: a["model"])
+    names = [a["model"].split("/")[-1] for a in arts]
+    probe = [a["gold_free_dissociation"]["probe_mean_p_true_on_disowned"] for a in arts]
+    beh = [a["gold_free_dissociation"]["behavior_mean_p_true_on_disowned"] for a in arts]
+    ns = [a["gold_free_dissociation"]["n_model_disowns_own_output"] for a in arts]
+
+    fig, ax = plt.subplots(figsize=(6.8, 4))
+    x = np.arange(len(arts)); w = 0.36
+    ax.bar(x - w / 2, probe, w, label="probe on hidden states", color="#c44")
+    ax.bar(x + w / 2, beh, w, label="the model itself", color="#48a")
+    for i, (p, n) in enumerate(zip(probe, ns)):
+        ax.text(i - w / 2, p - 0.06, f"n={n}", ha="center", fontsize=8, color="white")
+    ax.axhline(0.5, ls="--", lw=0.8, color="gray")
+    ax.set_xticks(x)
+    ax.set_xticklabels(names, fontsize=8, rotation=8)
+    ax.set_ylabel("P(true)")
+    ax.set_ylim(0, 1.18)
+    ax.set_title("statements the model wrote, then called false itself\n"
+                 "(no ground truth used)", fontsize=10)
+    ax.legend(fontsize=8, loc="upper center", ncol=2, frameon=False)
+    fig.tight_layout()
+    out = Path(out or RESULTS / "fig_generation_dissociation.png")
+    fig.savefig(out, dpi=200)
+    plt.close(fig)
+    return out
+
+
 if __name__ == "__main__":
     print(fig_layer_sweep())
     print(fig_cell_scores())
     print(fig_causal_manifold())
     print(fig_dissociation())
+    print(fig_generation_dissociation())
