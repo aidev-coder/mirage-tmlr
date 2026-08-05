@@ -125,7 +125,8 @@ def stage1_saplma(model_id: str, max_per_topic: int = 0,
 @app.function(image=image, gpu=GPU, volumes=VOLUMES, secrets=SECRETS,
               timeout=3 * 3600)
 def stage2_build(reference_model: str, canary_model: str,
-                 edit_rate: float = 0.5, seed: int = 20260712) -> dict:
+                 edit_rate: float = 0.5, seed: int = 20260712,
+                 version: int = 2) -> dict:
     """Stage 2 GPU stage: score typicality + run the 3 gates; return scored items
     + reports. finalize() is run locally by the entrypoint so the corpus lands in
     the repo (the project's standing directive §3 Stage 2; probes stay HELD per D-006)."""
@@ -135,7 +136,11 @@ def stage2_build(reference_model: str, canary_model: str,
 
     ref = Substrate(reference_model, cache_dir="/root/activations")
     can = Substrate(canary_model, cache_dir="/root/activations")
-    out = score_and_gate(ref, can, edit_rate=edit_rate, seed=seed)
+    if version >= 2:
+        from src.build_corpus import score_and_gate_v2
+        out = score_and_gate_v2(ref, can, edit_rate=edit_rate, seed=seed or 20260806)
+    else:
+        out = score_and_gate(ref, can, edit_rate=edit_rate, seed=seed)
     activations.commit()
     hf_cache.commit()
     return out
@@ -273,12 +278,15 @@ def main(stage: str = "sanity", model: str = "", max_per_topic: int = 0,
         ref_model = model or "Qwen/Qwen2.5-7B-Instruct"   # cross-family reference (D-002)
         canary_model = "meta-llama/Llama-3.1-8B"           # representative probed substrate
         kw2 = {"seed": seed} if seed else {}
-        res = stage2_build.remote(reference_model=ref_model, canary_model=canary_model, **kw2)
+        res = stage2_build.remote(reference_model=ref_model, canary_model=canary_model,
+                                  version=2, **kw2)
         m = res["meta"]
         print(f"stage2: released n={m['n_released']} (full {m['n_full']}) | "
               f"ref={m['reference_model']} canary={m['canary_model']} @L{m['canary_layer']} | "
               f"cells raw={m['raw_counts']} released={m['released_counts']}")
-        for g in ("crossing", "edit_canary", "fragmentation_canary"):
+        for g in ("crossing", "edit_canary", "fragmentation_canary", "composition_canary"):
+            if g not in res:
+                continue
             r = res[g]
             ci = f" ci={r.get('ci')}" if r.get("ci") else ""
             print(f"  {g}: pass={r.get('pass')} "
@@ -291,7 +299,8 @@ def main(stage: str = "sanity", model: str = "", max_per_topic: int = 0,
         try:
             path = corpus_build.finalize(
                 res["items"], res["crossing"], res["edit_canary"],
-                res["fragmentation_canary"], owner_signoff_decision_id="D-011")
+                res["fragmentation_canary"], owner_signoff_decision_id="D-015",
+                composition_report=res.get("composition_canary"))
             (_HERE / "results" / "stage2_corpus_report.json").write_text(
                 json.dumps({"meta": m, "gates": {k: res[k] for k in
                             ("crossing", "edit_canary", "fragmentation_canary")},
