@@ -278,12 +278,23 @@ def composition_canary(items: list[dict], seed: int = 20260712) -> dict:
 
 def finalize(items: list[dict], crossing_report: dict, canary_report: dict,
              fragmentation_report: dict | None = None,
-             owner_signoff_decision_id: str | None = None) -> Path:
+             owner_signoff_decision_id: str | None = None,
+             composition_report: dict | None = None) -> Path:
     """Write the hash-versioned corpus. Refuses without passed gates + signoff."""
     if not crossing_report.get("pass"):
         raise RuntimeError("crossing gate FAILED — corpus must not be finalized")
     if not canary_report.get("pass"):
         raise RuntimeError("edit-canary gate FAILED — truth results would be contaminated")
+    # Composition is a HARD gate as of 2026-08-06. v1 finalized without it and
+    # shipped a corpus where `domain` predicted truth off-diagonal at AUROC 0.24,
+    # which by itself produced the "collapse" the paper reported. Passing None is
+    # allowed only to reproduce pre-v2 corpora for the record.
+    if composition_report is not None and not composition_report.get("pass"):
+        raise RuntimeError(
+            "composition gate FAILED on "
+            f"{composition_report.get('failed_fields')} — a text-visible metadata "
+            "field predicts truth off-diagonal after learning it on the diagonal. "
+            "Any probe result on this corpus would measure that shortcut.")
     if _cfg()["gates"]["owner_signoff_required"] and not owner_signoff_decision_id:
         raise RuntimeError(
             "owner signoff required: record the decision in notes/decisions.md "

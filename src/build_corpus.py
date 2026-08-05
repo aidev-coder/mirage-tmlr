@@ -77,6 +77,98 @@ def _assign_cells(items: list[dict], ppl: np.ndarray, freq_map: dict) -> list[di
     return kept
 
 
+def _assign_cells_v2(items: list[dict], ppl: np.ndarray, freq_map: dict,
+                     min_per_cell: int = 20) -> tuple[list[dict], dict]:
+    """v2 (2026-08-06). Two changes, both forced by defects found in v1.
+
+    1. Terciles are ranked WITHIN each domain, not across the pooled corpus. v1
+       ranked globally, so a domain whose entities were systematically rarer than
+       cities landed wholesale in one typicality band. Combined with (2) below
+       that made `domain` predict truth across the diagonal/off-diagonal split
+       (AUROC 0.24) and manufactured the "collapse" we reported for three weeks.
+    2. Entities whose frequency is UNRESOLVED (None) are dropped, not treated as
+       zero. v1's cache recorded failed API calls as count=0, so 91% of entities
+       carried a fake frequency and the typicality axis was really "did the fetch
+       succeed". Anything without a measured count cannot be placed on this axis.
+
+    A domain must populate all four cells with at least `min_per_cell` items or it
+    is excluded entirely — a domain present in only some cells is exactly the leak
+    v1 shipped.
+    """
+    def item_logfreq(it):
+        vals = []
+        for e in it.get("entities") or [it["entity"]]:
+            v = (freq_map.get(e) or {}).get("log10")
+            if v is not None:                      # None = unresolved, never 0
+                vals.append(float(v))
+        return float(np.mean(vals)) if vals else np.nan
+
+    logf = np.array([item_logfreq(it) for it in items])
+    domains = sorted({it.get("domain", "?") for it in items})
+    kept, report = [], {}
+
+    for dom in domains:
+        idx = np.array([i for i, it in enumerate(items)
+                        if it.get("domain", "?") == dom and np.isfinite(logf[i])])
+        n_unresolved = sum(1 for i, it in enumerate(items)
+                           if it.get("domain", "?") == dom and not np.isfinite(logf[i]))
+        if len(idx) < 4 * min_per_cell:
+            report[dom] = {"kept": 0, "reason": "too few entities with measured frequency",
+                           "n_with_freq": int(len(idx)), "n_unresolved": n_unresolved}
+            continue
+        ranked = idx[np.argsort(logf[idx], kind="stable")]
+        t = len(ranked) // 3
+        atypical = set(ranked[:t].tolist())
+        typical = set(ranked[len(ranked) - t:].tolist())
+
+        staged = []
+        for i in list(atypical | typical):
+            it = items[i]
+            band = "typical" if i in typical else "atypical"
+            it["typicality"] = {"entity_freq_log10": float(logf[i]),
+                                "reference_ppl": float(ppl[i]),
+                                "primary_axis": "entity_frequency_rank_within_domain",
+                                "ppl_is_crosscheck_only": True}
+            it["cell"] = ("TT" if (it["truth"] and band == "typical") else
+                          "TA" if it["truth"] else
+                          "FT" if band == "typical" else "FA")
+            staged.append(it)
+
+        by_cell = defaultdict(list)
+        for it in staged:
+            by_cell[it["cell"]].append(it)
+        counts = {c: len(by_cell.get(c, [])) for c in ("TT", "TA", "FT", "FA")}
+        if min(counts.values()) < min_per_cell:
+            report[dom] = {"kept": 0, "reason": "does not populate all four cells",
+                           "cell_counts": counts, "n_unresolved": n_unresolved}
+            continue
+        report[dom] = {"kept": None, "cell_counts": counts, "n_unresolved": n_unresolved}
+        kept.extend(staged)
+
+    return kept, report
+
+
+def _balance_by_domain(items: list[dict], seed: int) -> tuple[list[dict], dict]:
+    """Equal items per (domain, cell), so domain is orthogonal to BOTH truth and
+    typicality by construction rather than by hope. The composition canary should
+    then pass; it is still run as a gate, because a check you rely on must be run
+    even when you believe it cannot fail."""
+    rng = np.random.default_rng(seed)
+    by = defaultdict(list)
+    for it in items:
+        by[(it.get("domain", "?"), it["cell"])].append(it)
+    if not by:
+        return [], {"per_domain_cell": 0}
+    n = min(len(v) for v in by.values())
+    out = []
+    for v in by.values():
+        for i in rng.choice(len(v), n, replace=False):
+            out.append(v[int(i)])
+    doms = sorted({d for d, _ in by})
+    return out, {"per_domain_cell": int(n), "domains": doms,
+                 "total": len(out), "cells_per_domain": 4}
+
+
 def _balance(items: list[dict], seed: int):
     by = defaultdict(list)
     for it in items:
@@ -139,9 +231,72 @@ def _match_truth_subword(items: list[dict], tokenizer, seed: int) -> list[dict]:
     return out
 
 
+def score_and_gate_v2(reference_substrate, canary_substrate, edit_rate: float = 0.5,
+                      seed: int = 20260806, min_per_cell: int = 20) -> dict:
+    """v2 GPU stage (2026-08-06). Per-domain terciles, per-(domain,cell) balancing,
+    and the composition canary promoted to a HARD GATE.
+
+    v1 shipped a corpus where `domain` predicted truth off-diagonal at AUROC 0.24
+    and where 91% of frequencies were unmeasured fetch failures recorded as zero.
+    Both were visible in committed artifacts and neither was gated. Everything here
+    is arranged so those two failures cannot recur silently.
+    """
+    items = corpus_gen.build_candidate_items(edit_rate=edit_rate, seed=seed)
+    texts = [it["text"] for it in items]
+    print(f"[stage2-v2] scoring reference ppl on {len(texts)} items", flush=True)
+    ppl = reference_perplexity(texts, reference_substrate)
+
+    freq_map = load_entity_freq()
+    unresolved = sum(1 for v in freq_map.values()
+                     if not isinstance(v.get("count"), int) or v["count"] < 0)
+    if unresolved:
+        raise RuntimeError(
+            f"entity_freq.json has {unresolved} unresolved entries. Re-run "
+            "data/raw/fetch_entity_freq.py until all resolve; an unresolved "
+            "frequency must never be treated as zero (that defect invalidated v1).")
+
+    staged, domain_report = _assign_cells_v2(items, ppl, freq_map, min_per_cell)
+    full, balance_report = _balance_by_domain(staged, seed)
+    raw_counts = {c: sum(1 for it in full if it["cell"] == c)
+                  for c in ("TT", "TA", "FT", "FA")}
+    L = int(canary_substrate.model.config.num_hidden_layers * CANARY_LAYER_FRAC)
+
+    H = canary_substrate.hidden_states_matrix(
+        [it["text"] for it in full], batch_size=32)[:, L, :].astype(np.float32)
+    edit_c = corpus_build.edit_canary(H, np.array([it["edited"] for it in full]))
+    frag_c = corpus_build.fragmentation_canary(
+        corpus_build.fragmentation_features(
+            [it["text"] for it in full], [it["entity"] for it in full],
+            canary_substrate.tokenizer),
+        np.array([it["truth"] for it in full]))
+    crossing = corpus_build.verify_crossing(full)
+    composition = corpus_build.composition_canary(full)
+
+    print(f"[stage2-v2] n={len(full)} {raw_counts} | balance={balance_report} | "
+          f"crossing pass={crossing.get('pass')} | composition pass={composition.get('pass')} "
+          f"failed={composition.get('failed_fields')} | edit {edit_c.get('auroc')} "
+          f"pass={edit_c.get('pass')} | frag {frag_c.get('auroc')}", flush=True)
+    for dom, rep in domain_report.items():
+        print(f"    domain {dom}: {rep}", flush=True)
+
+    return {
+        "items": full,
+        "meta": {"version": 2, "reference_model": reference_substrate.model_id,
+                 "canary_model": canary_substrate.model_id, "canary_layer": L,
+                 "n_full": len(full), "n_released": len(full),
+                 "raw_counts": raw_counts, "released_counts": raw_counts,
+                 "domain_report": domain_report, "balance": balance_report,
+                 "edit_rate": edit_rate, "seed": seed},
+        "crossing": crossing, "edit_canary": edit_c,
+        "fragmentation_canary": frag_c, "composition_canary": composition,
+    }
+
+
 def score_and_gate(reference_substrate, canary_substrate, edit_rate: float = 0.5,
                    seed: int = 20260712) -> dict:
-    """GPU stage. Returns scored items + all three gate reports (no write)."""
+    """v1 GPU stage. SUPERSEDED — kept only to reproduce the flawed v1 corpus for
+    the record. Its cell assignment ranks frequency globally (leaking domain) and
+    tolerates unresolved frequencies as zero. Use score_and_gate_v2."""
     items = corpus_gen.build_candidate_items(edit_rate=edit_rate, seed=seed)
     texts = [it["text"] for it in items]
     print(f"[stage2] scoring reference ppl on {len(texts)} items "
