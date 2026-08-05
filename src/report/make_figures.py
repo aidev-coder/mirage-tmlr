@@ -1,11 +1,16 @@
 """
 Figures, regenerated from results/stage3_saplma_*.json only (never hand drawn).
 
-fig_layer_sweep: off diagonal AUROC vs layer for each model, with the in
-distribution curve for reference. The persistent gap across depth is the point.
+All figures take `domain=`. Pass domain="cities": the pooled corpus confounds
+domain with truth across the diagonal/off-diagonal split, so pooled panels show an
+artifact, not a confound (notes/weakness_audit.md A1).
 
-fig_cell_scores: distribution of the fielded probe's P(true) per cell at each
-model's headline layer. FT (fluent false) piling up near 1.0 is the mechanism.
+fig_layer_sweep: off diagonal AUROC vs layer, with the in-distribution curve.
+fig_cell_scores: fielded P(true) per cell at the headline layer.
+fig_causal_manifold: mediation of the fluent-lie error by the frequency manifold.
+fig_dissociation: probe readout vs the model's own judgment, per cell.
+fig_generation_dissociation: the surviving result — probe vs model on statements
+the model generated and then disowned.
 """
 
 from __future__ import annotations
@@ -45,7 +50,8 @@ def fig_layer_sweep(out: str | Path | None = None, domain: str | None = None):
     ax.set_ylim(0.0, 1.03)
     ax.set_xlabel("relative depth")
     ax.set_ylabel("AUROC")
-    ax.set_title("off diagonal (solid) vs in distribution (dotted)")
+    ax.set_title("off diagonal (solid) vs in distribution (dotted)\n"
+                 "domain held fixed: no collapse", fontsize=10)
     ax.legend(fontsize=8)
     fig.tight_layout()
     out = Path(out or RESULTS / "fig_layer_sweep.png")
@@ -80,7 +86,7 @@ def fig_cell_scores(out: str | Path | None = None, domain: str | None = None):
         ax.axhline(0.5, ls="--", lw=0.8, color="gray")
         ax.set_title(art["model"].split("/")[-1] + f" (L{fh['layer']})", fontsize=9)
     axes[0].set_ylabel("fielded probe P(true)")
-    fig.suptitle("the field's probe rates fluent falsehoods true", fontsize=10)
+    fig.suptitle("domain-pure: the probe rejects fluent falsehood correctly", fontsize=10)
     fig.tight_layout()
     out = Path(out or RESULTS / "fig_cell_scores.png")
     fig.savefig(out, dpi=200)
@@ -113,8 +119,8 @@ def fig_causal_manifold(out: str | Path | None = None, domain: str | None = None
     ax.set_xscale("log", base=2)
     ax.set_xlabel("manifold dimension k")
     ax.set_ylabel("fraction of FT error causally mediated")
-    ax.set_title("hallucination error lives in a low-rank frequency manifold\n"
-                 "(dotted = random subspace of equal size)")
+    ax.set_title("frequency-manifold mediation of the fluent-lie error\n"
+                 "(dotted = random subspace of equal size)", fontsize=10)
     ax.legend(fontsize=8)
     fig.tight_layout()
     out = Path(out or RESULTS / "fig_causal_manifold.png")
@@ -154,7 +160,7 @@ def fig_dissociation(out: str | Path | None = None, domain: str | None = None):
         ax.set_ylim(0, 1.05)
     axes[0].set_ylabel("P(true)")
     axes[0].legend(fontsize=8, loc="upper right")
-    fig.suptitle("the probe is fooled by fluent lies; the model is not", fontsize=11)
+    fig.suptitle("domain-pure: probe and model agree on authored fluent lies", fontsize=11)
     fig.tight_layout()
     out = Path(out or RESULTS / "fig_dissociation.png")
     fig.savefig(out, dpi=200)
