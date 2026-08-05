@@ -27,7 +27,9 @@ import argparse
 import json
 import random
 import sys
+import threading
 import time
+from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
 import numpy as np
@@ -109,7 +111,8 @@ def verify(cache: dict, n: int = 25, seed: int = 20260806) -> dict:
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--verify", action="store_true", help="sample-check an existing cache")
-    ap.add_argument("--pause", type=float, default=0.3, help="seconds between requests")
+    ap.add_argument("--pause", type=float, default=0.3, help="backoff base on failure")
+    ap.add_argument("--workers", type=int, default=8, help="concurrent requests")
     args = ap.parse_args()
 
     cache = json.loads(OUT.read_text(encoding="utf-8")) if OUT.exists() else {}
@@ -125,20 +128,35 @@ def main() -> None:
             or cache[e]["count"] < 0]
     print(f"{len(ents)} entities, {len(todo)} to (re)fetch", flush=True)
 
-    session = requests.Session()
-    failed = []
-    for i, e in enumerate(todo, 1):
-        c = query_count(e, session, pause=args.pause)
-        if c is None:
-            failed.append(e)
-            cache[e] = {"count": None, "log10": None}
-        else:
-            cache[e] = {"count": c, "log10": float(np.log10(1 + c))}
-        if i % 100 == 0 or i == len(todo):
-            OUT.parent.mkdir(parents=True, exist_ok=True)
-            OUT.write_text(json.dumps(cache, indent=0), encoding="utf-8")
-            print(f"  {i}/{len(todo)} (last: {e}={c}) unresolved so far: {len(failed)}", flush=True)
-        time.sleep(args.pause)
+    # Modest thread pool: the API tolerates concurrency far better than a tight
+    # serial loop, and each worker still backs off on its own failures. Retries
+    # (not speed) are what keep a failure from being written as a zero.
+    lock = threading.Lock()
+    failed: list[str] = []
+    done = 0
+
+    tls = threading.local()          # one Session per worker thread, reused
+
+    def work(entity: str):
+        nonlocal done
+        if not hasattr(tls, "session"):
+            tls.session = requests.Session()
+        c = query_count(entity, tls.session, pause=args.pause)
+        with lock:
+            if c is None:
+                failed.append(entity)
+                cache[entity] = {"count": None, "log10": None}
+            else:
+                cache[entity] = {"count": c, "log10": float(np.log10(1 + c))}
+            done += 1
+            if done % 200 == 0 or done == len(todo):
+                OUT.parent.mkdir(parents=True, exist_ok=True)
+                OUT.write_text(json.dumps(cache, indent=0), encoding="utf-8")
+                print(f"  {done}/{len(todo)} (last: {entity}={c}) "
+                      f"unresolved so far: {len(failed)}", flush=True)
+
+    with ThreadPoolExecutor(max_workers=args.workers) as pool:
+        list(pool.map(work, todo))
 
     OUT.write_text(json.dumps(cache, indent=0), encoding="utf-8")
     print(json.dumps(summarize(cache), indent=2))
