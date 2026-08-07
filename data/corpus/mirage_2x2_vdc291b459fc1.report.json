@@ -1,0 +1,54 @@
+{
+  "hash": "dc291b459fc1",
+  "n": 568,
+  "signoff": "D-015",
+  "crossing": {
+    "gate": "crossing",
+    "axis": "entity_frequency",
+    "checks": {
+      "true": {
+        "cells": "TT (typical) vs TA (atypical)",
+        "cliffs_delta_freq": 0.6131,
+        "mannwhitney_p": 2.1078140913302675e-19,
+        "median_log10freq_typical": 6.231,
+        "median_log10freq_atypical": 3.258,
+        "xcheck_median_ppl_typical": 13.67,
+        "xcheck_median_ppl_atypical": 20.98,
+        "pass": true
+      },
+      "false": {
+        "cells": "FT (typical) vs FA (atypical)",
+        "cliffs_delta_freq": 0.6062,
+        "mannwhitney_p": 5.170243210004698e-19,
+        "median_log10freq_typical": 6.362,
+        "median_log10freq_atypical": 3.022,
+        "xcheck_median_ppl_typical": 52.97,
+        "xcheck_median_ppl_atypical": 82.38,
+        "pass": true
+      }
+    },
+    "pass": true
+  },
+  "edit_canary": {
+    "auroc": 0.4645,
+    "ci": [
+      0.3607,
+      0.5768
+    ],
+    "n": 114,
+    "n_boot": 1000,
+    "gate": "edit_canary",
+    "pass": true
+  },
+  "fragmentation_canary": {
+    "auroc": 0.4915,
+    "ci": [
+      0.3842,
+      0.5968
+    ],
+    "n": 114,
+    "n_boot": 1000,
+    "gate": "fragmentation_canary",
+    "pass": true
+  }
+}
