@@ -112,7 +112,11 @@ def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--verify", action="store_true", help="sample-check an existing cache")
     ap.add_argument("--pause", type=float, default=0.3, help="backoff base on failure")
-    ap.add_argument("--workers", type=int, default=8, help="concurrent requests")
+    # 3 is empirically the ceiling: at 8 workers the API rate-limits and 46% of
+    # requests fail (measured 2026-08-06), which is exactly the condition that
+    # produced the fabricated-zero cache. At 3 the failure rate is 0% and it still
+    # beats serial. Do not raise this to go faster.
+    ap.add_argument("--workers", type=int, default=3, help="concurrent requests (max 3)")
     args = ap.parse_args()
 
     cache = json.loads(OUT.read_text(encoding="utf-8")) if OUT.exists() else {}
