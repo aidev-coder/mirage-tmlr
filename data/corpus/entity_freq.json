@@ -11534,5 +11534,1217 @@
 "\u00c9douard-L\u00e9on Scott de Martinville": {
 "count": 1594,
 "log10": 3.2027606873931997
+},
+"ANZ": {
+"count": 1684463,
+"log10": 6.226461733768658
+},
+"AIA Group": {
+"count": 16885,
+"log10": 4.227526784937202
+},
+"AbbVie (ABBV)": {
+"count": 3233,
+"log10": 3.509740015570382
+},
+"AT&T": {
+"count": 7617258,
+"log10": 6.881798722609073
+},
+"Abbott Laboratories": {
+"count": 227499,
+"log10": 5.356981400993131
+},
+"Accenture": {
+"count": 1386233,
+"log10": 6.141836546531924
+},
+"Agricultural Bank of China": {
+"count": 30749,
+"log10": 4.4878451201114355
+},
+"Airbus Group": {
+"count": 33448,
+"log10": 4.524383138517184
+},
+"Alibaba Group": {
+"count": 326658,
+"log10": 5.514094628227627
+},
+"AXA": {
+"count": 593762,
+"log10": 5.773613131292222
+},
+"Allianz": {
+"count": 1079697,
+"log10": 6.033302296899324
+},
+"Alphabet": {
+"count": 2619925,
+"log10": 6.41828902481382
+},
+"Amazon.com": {
+"count": 4573240,
+"log10": 6.660224088372215
+},
+"America Movil": {
+"count": 42859,
+"log10": 4.63205216670581
+},
+"American Express": {
+"count": 3049007,
+"log10": 6.484158563870562
+},
+"American International Group": {
+"count": 139253,
+"log10": 5.143807678912033
+},
+"Anglo American": {
+"count": 253306,
+"log10": 5.403647191446165
+},
+"Anthem": {
+"count": 2490035,
+"log10": 6.3962056260067115
+},
+"Apple": {
+"count": 96942615,
+"log10": 7.986514734997175
+},
+"BASF": {
+"count": 712211,
+"log10": 5.852609286791027
+},
+"BBVA": {
+"count": 415888,
+"log10": 5.61897743370353
+},
+"BHP Group": {
+"count": 31238,
+"log10": 4.494697123110737
+},
+"BNP Paribas": {
+"count": 681037,
+"log10": 5.833171344996321
+},
+"ArcelorMittal": {
+"count": 248549,
+"log10": 5.395413767475018
+},
+"BP": {
+"count": 11992638,
+"log10": 7.078914760832589
+},
+"Banco Bradesco": {
+"count": 22755,
+"log10": 4.3570959250957335
+},
+"Anheuser-Busch InBev": {
+"count": 97024,
+"log10": 4.986883651412053
+},
+"Bank of China": {
+"count": 605328,
+"log10": 5.781991480518007
+},
+"Bank of America": {
+"count": 2995499,
+"log10": 6.476469323926384
+},
+"Bank of Communications": {
+"count": 26642,
+"log10": 4.425583124780946
+},
+"Bank of Montreal": {
+"count": 181342,
+"log10": 5.258500796089339
+},
+"Bank of Nova Scotia": {
+"count": 96226,
+"log10": 4.983296946318328
+},
+"Barclays": {
+"count": 3003270,
+"log10": 6.477594522506803
+},
+"Bayerische Motoren Werke (BMW)": {
+"count": 693,
+"log10": 2.841359470454855
+},
+"Berkshire Hathaway": {
+"count": 735130,
+"log10": 5.866364737053872
+},
+"BlackRock": {
+"count": 1008480,
+"log10": 6.003667720423959
+},
+"Bristol Myers Squibb": {
+"count": 84345,
+"log10": 4.926064491559185
+},
+"British American Tobacco": {
+"count": 141708,
+"log10": 5.151397433354125
+},
+"Broadcom": {
+"count": 834240,
+"log10": 5.921291530074902
+},
+"Brookfield Asset Management": {
+"count": 66528,
+"log10": 4.823010995597773
+},
+"CITIC": {
+"count": 105720,
+"log10": 5.024161262409237
+},
+"CVS Health": {
+"count": 212607,
+"log10": 5.327579602099263
+},
+"Canadian Imperial Bank of Commerce": {
+"count": 48762,
+"log10": 4.68809041645756
+},
+"Caterpillar": {
+"count": 1400154,
+"log10": 6.146176115620072
+},
+"CNOOC": {
+"count": 121938,
+"log10": 5.086142629128884
+},
+"Charles Schwab Corporation": {
+"count": 18210,
+"log10": 4.260333794370303
+},
+"Capital One": {
+"count": 1362694,
+"log10": 6.134398662408752
+},
+"Charter Communications": {
+"count": 131256,
+"log10": 5.118122473832721
+},
+"Cathay Financial": {
+"count": 5556,
+"log10": 3.744840396785379
+},
+"Chevron": {
+"count": 1989891,
+"log10": 6.298829506019326
+},
+"China Citic Bank": {
+"count": 2760,
+"log10": 3.4410664066392633
+},
+"China Life Insurance": {
+"count": 16932,
+"log10": 4.228733908376136
+},
+"China Merchants Bank": {
+"count": 23723,
+"log10": 4.375187915361297
+},
+"China Mobile": {
+"count": 295621,
+"log10": 5.470736750842795
+},
+"China Construction Bank": {
+"count": 53061,
+"log10": 4.7247836152768095
+},
+"China Shenhua Energy": {
+"count": 4718,
+"log10": 3.6738499773429494
+},
+"China State Construction Engineering": {
+"count": 11456,
+"log10": 4.05907091309298
+},
+"China Telecom": {
+"count": 144425,
+"log10": 5.1596453832619416
+},
+"China Petroleum & Chemical": {
+"count": 13146,
+"log10": 4.11882666293329
+},
+"China Vanke": {
+"count": 11645,
+"log10": 4.066176785772006
+},
+"Chubb": {
+"count": 788589,
+"log10": 5.896851265544261
+},
+"Cigna Corporation": {
+"count": 8868,
+"log10": 3.947874654897698
+},
+"Cisco Systems": {
+"count": 555825,
+"log10": 5.744938858008876
+},
+"Citigroup": {
+"count": 1566456,
+"log10": 6.194918477788401
+},
+"Coca-Cola": {
+"count": 3610431,
+"log10": 6.557559169770297
+},
+"Comcast": {
+"count": 3556942,
+"log10": 6.5510769056738845
+},
+"ConocoPhillips": {
+"count": 318260,
+"log10": 5.502783423030304
+},
+"Costco Wholesale": {
+"count": 104765,
+"log10": 5.020220362722584
+},
+"Commonwealth Bank of Australia": {
+"count": 86826,
+"log10": 4.938654795771571
+},
+"Danaher": {
+"count": 220865,
+"log10": 5.344128865944488
+},
+"Deere & Company": {
+"count": 38855,
+"log10": 4.58945809046498
+},
+"Dell Technologies": {
+"count": 182566,
+"log10": 5.26142227915067
+},
+"Deutsche Telekom": {
+"count": 338875,
+"log10": 5.530040812163875
+},
+"Deutsche Post": {
+"count": 106885,
+"log10": 5.028920824751168
+},
+"Credit Agricole": {
+"count": 89614,
+"log10": 4.952380709126386
+},
+"Drugs & Biotechnology": {
+"count": 81,
+"log10": 1.9138138523837167
+},
+"Dow": {
+"count": 22157803,
+"log10": 7.345526716438137
+},
+"Duke Energy": {
+"count": 449896,
+"log10": 5.653113097215823
+},
+"E.ON": {
+"count": 205282,
+"log10": 5.312352985844598
+},
+"ENGIE": {
+"count": 113120,
+"log10": 5.053543235672788
+},
+"Enel": {
+"count": 317476,
+"log10": 5.501712267785792
+},
+"Enbridge": {
+"count": 513668,
+"log10": 5.710683356779074
+},
+"Eni": {
+"count": 382179,
+"log10": 5.582267956091819
+},
+"Equinor": {
+"count": 182619,
+"log10": 5.2615483384446895
+},
+"Electricite de France": {
+"count": 11989,
+"log10": 4.078819183098848
+},
+"Exxon Mobil": {
+"count": 435472,
+"log10": 5.63896123324835
+},
+"FedEx": {
+"count": 3252529,
+"log10": 6.512221311005913
+},
+"Ford Motor": {
+"count": 1024432,
+"log10": 6.010483559924337
+},
+"Fubon Financial": {
+"count": 4950,
+"log10": 3.6946929263314843
+},
+"General Motors": {
+"count": 2526675,
+"log10": 6.402549555163451
+},
+"Generali Group": {
+"count": 9720,
+"log10": 3.9877109431303057
+},
+"GlaxoSmithKline": {
+"count": 684618,
+"log10": 5.8354489477972615
+},
+"Goldman Sachs Group": {
+"count": 440160,
+"log10": 5.64361155971861
+},
+"HCA Healthcare": {
+"count": 62633,
+"log10": 4.796810147969161
+},
+"HDFC Bank": {
+"count": 313317,
+"log10": 5.4959853456513175
+},
+"Glencore": {
+"count": 347304,
+"log10": 5.5407110357057485
+},
+"HSBC Holdings": {
+"count": 73139,
+"log10": 4.864154956002025
+},
+"Hitachi": {
+"count": 1472556,
+"log10": 6.168072114533065
+},
+"Hon Hai Precision": {
+"count": 30303,
+"log10": 4.481499957323179
+},
+"Honda Motor": {
+"count": 195697,
+"log10": 5.291586387265553
+},
+"Honeywell": {
+"count": 1524238,
+"log10": 6.183053069525324
+},
+"Hong Kong": {
+"count": 28201258,
+"log10": 7.450268497133104
+},
+"Hyundai Motor": {
+"count": 279837,
+"log10": 5.446906688246424
+},
+"IBM": {
+"count": 15444042,
+"log10": 7.188761002135949
+},
+"ING Group": {
+"count": 22853,
+"log10": 4.35896222304459
+},
+"Iberdrola": {
+"count": 147488,
+"log10": 5.168759631043374
+},
+"Industrial Bank": {
+"count": 35536,
+"log10": 4.550680762286439
+},
+"Industrial and Commercial Bank of China": {
+"count": 45173,
+"log10": 4.654888547524308
+},
+"Intel": {
+"count": 26011631,
+"log10": 7.4151676011908565
+},
+"Intesa Sanpaolo": {
+"count": 66568,
+"log10": 4.8232720330258205
+},
+"Itau Unibanco Holding": {
+"count": 12097,
+"log10": 4.082713580171332
+},
+"Itochu": {
+"count": 36930,
+"log10": 4.567391067428992
+},
+"JPMorgan Chase": {
+"count": 1032483,
+"log10": 6.013883330289164
+},
+"Japan Post Holdings": {
+"count": 4857,
+"log10": 3.6864575104691117
+},
+"KDDI": {
+"count": 91770,
+"log10": 4.96270546410181
+},
+"LVMH Moet Hennessy Louis Vuitton": {
+"count": 8782,
+"log10": 3.943642882752129
+},
+"Linde": {
+"count": 891780,
+"log10": 5.9502582151732
+},
+"Lloyds Banking Group": {
+"count": 160911,
+"log10": 5.206588432784257
+},
+"Johnson & Johnson": {
+"count": 1523485,
+"log10": 6.1828384676491535
+},
+"Lockheed Martin": {
+"count": 1233235,
+"log10": 6.091046193943821
+},
+"Lowe's": {
+"count": 684022,
+"log10": 5.835070704944016
+},
+"LukOil": {
+"count": 1299,
+"log10": 3.113943352306837
+},
+"Manulife": {
+"count": 231775,
+"log10": 5.365068463520622
+},
+"Luxembourg": {
+"count": 4381559,
+"log10": 6.641628763191276
+},
+"Medtronic": {
+"count": 811900,
+"log10": 5.9095030763163825
+},
+"Mercedes-Benz Group": {
+"count": 6066,
+"log10": 3.782973994944048
+},
+"Merck & Co.": {
+"count": 73660,
+"log10": 4.867237610412649
+},
+"MetLife": {
+"count": 663086,
+"log10": 5.821570513534677
+},
+"Meta Platforms": {
+"count": 128039,
+"log10": 5.107345665472095
+},
+"Micron Technology": {
+"count": 116626,
+"log10": 5.066799104398854
+},
+"Microsoft": {
+"count": 82091729,
+"log10": 7.914299408078385
+},
+"Mitsubishi UFJ Financial Group": {
+"count": 29034,
+"log10": 4.462921830369343
+},
+"Mitsubishi": {
+"count": 3074065,
+"log10": 6.487713187538516
+},
+"Mitsui": {
+"count": 428917,
+"log10": 5.632374272251294
+},
+"Moller - Maersk": {
+"count": 5633,
+"log10": 3.7508168426497543
+},
+"Mizuho Financial": {
+"count": 22428,
+"log10": 4.350809910936365
+},
+"Morgan Stanley": {
+"count": 2343988,
+"log10": 6.369955569269897
+},
+"Munich Reinsurance": {
+"count": 5946,
+"log10": 3.7742979384992776
+},
+"National Australia Bank": {
+"count": 128223,
+"log10": 5.107969320752606
+},
+"Nestle": {
+"count": 1262034,
+"log10": 6.101071399358266
+},
+"Nippon Telegraph & Telephone": {
+"count": 3343,
+"log10": 3.524266268766979
+},
+"Novartis": {
+"count": 1312164,
+"log10": 6.117988449432874
+},
+"Oracle": {
+"count": 14921981,
+"log10": 7.173826511775722
+},
+"PepsiCo": {
+"count": 883002,
+"log10": 5.945962179094253
+},
+"Petrobras": {
+"count": 389062,
+"log10": 5.5900199312409455
+},
+"PNC Financial Services": {
+"count": 88667,
+"log10": 4.94776691260639
+},
+"PetroChina": {
+"count": 109813,
+"log10": 5.040657711108225
+},
+"Pfizer": {
+"count": 5378651,
+"log10": 6.7306734462396784
+},
+"Ping An Insurance (Group) Company of China": {
+"count": 2186,
+"log10": 3.339848783037637
+},
+"Poly Developments & Holdings Group": {
+"count": 26,
+"log10": 1.4313637641589874
+},
+"Postal Savings Bank of China": {
+"count": 4466,
+"log10": 3.6500159524718385
+},
+"Procter & Gamble": {
+"count": 621648,
+"log10": 5.793545239368955
+},
+"Public Joint Stock Company Gazprom": {
+"count": 479,
+"log10": 2.681241237375587
+},
+"RBC": {
+"count": 2702487,
+"log10": 6.431763774208936
+},
+"Raytheon Technologies": {
+"count": 72045,
+"log10": 4.8576098737530495
+},
+"Reliance Industries": {
+"count": 288867,
+"log10": 5.4606994345643365
+},
+"Rio Tinto": {
+"count": 669080,
+"log10": 5.825478697324781
+},
+"Prudential Financial": {
+"count": 100172,
+"log10": 5.000750680302295
+},
+"Roche Holding": {
+"count": 22712,
+"log10": 4.3562745009039086
+},
+"Rome": {
+"count": 29301569,
+"log10": 7.466890890800165
+},
+"Rosneft": {
+"count": 288505,
+"log10": 5.460154849518771
+},
+"SAP": {
+"count": 11468912,
+"log10": 7.059522258313437
+},
+"SK Hynix": {
+"count": 77327,
+"log10": 4.888336777794805
+},
+"Sanofi": {
+"count": 902487,
+"log10": 5.9554414359866366
+},
+"Saudi Arabian Oil Company (Saudi Aramco)": {
+"count": 1182,
+"log10": 3.0729847446279304
+},
+"Samsung Group": {
+"count": 41130,
+"log10": 4.6141692684491815
+},
+"Sberbank": {
+"count": 200313,
+"log10": 5.3017113033139
+},
+"Shanghai Pudong Development Bank": {
+"count": 7372,
+"log10": 3.8676442339030985
+},
+"Shell": {
+"count": 9135062,
+"log10": 6.960711546812586
+},
+"Siemens": {
+"count": 3220964,
+"log10": 6.507986005667425
+},
+"Santander": {
+"count": 1229419,
+"log10": 6.089700273872676
+},
+"SoftBank": {
+"count": 578591,
+"log10": 5.76237242450748
+},
+"Sony": {
+"count": 25084979,
+"log10": 7.399413759105325
+},
+"State Bank of India": {
+"count": 331622,
+"log10": 5.520644643792246
+},
+"Stellantis": {
+"count": 181565,
+"log10": 5.259034525931552
+},
+"Sumitomo Mitsui Financial": {
+"count": 22323,
+"log10": 4.348772013844623
+},
+"Taiwan Semiconductor Manufacturing Company": {
+"count": 33499,
+"log10": 4.525044807036846
+},
+"Target": {
+"count": 20759594,
+"log10": 7.3172188765858195
+},
+"Telefonica": {
+"count": 263870,
+"log10": 5.421391662929282
+},
+"Tesla": {
+"count": 13484940,
+"log10": 7.129849050645752
+},
+"The aardvark": {
+"count": 2940,
+"log10": 3.468495024507069
+},
+"Tencent Holdings": {
+"count": 87935,
+"log10": 4.944166706707419
+},
+"The Home Depot": {
+"count": 297263,
+"log10": 5.473142317385158
+},
+"The armadillo": {
+"count": 6827,
+"log10": 3.834293512442696
+},
+"The axolotl": {
+"count": 4250,
+"log10": 3.628491104967123
+},
+"The bat": {
+"count": 216638,
+"log10": 5.335736642317623
+},
+"The alpaca": {
+"count": 8806,
+"log10": 3.9448279963432165
+},
+"The beaver": {
+"count": 23668,
+"log10": 4.374179909654638
+},
+"The bee": {
+"count": 92345,
+"log10": 4.965418088562938
+},
+"The bison": {
+"count": 22390,
+"log10": 4.350073489951687
+},
+"The camel": {
+"count": 48346,
+"log10": 4.684369530665809
+},
+"The cassowary": {
+"count": 2546,
+"log10": 3.406028944963615
+},
+"The cat": {
+"count": 883612,
+"log10": 5.946262096727162
+},
+"The cheetah": {
+"count": 29852,
+"log10": 4.474987980958807
+},
+"The chicken": {
+"count": 607548,
+"log10": 5.7835813103714795
+},
+"The chimpanzee": {
+"count": 10043,
+"log10": 4.001906704040885
+},
+"The cow": {
+"count": 298478,
+"log10": 5.474913781009959
+},
+"The crocodile": {
+"count": 36950,
+"log10": 4.5676261961437055
+},
+"The dog": {
+"count": 1571334,
+"log10": 6.196268784111676
+},
+"The deer": {
+"count": 182384,
+"log10": 5.2609891175170365
+},
+"The dolphin": {
+"count": 37402,
+"log10": 4.572906437259139
+},
+"The elephant": {
+"count": 167935,
+"log10": 5.22514380468751
+},
+"The eagle": {
+"count": 119809,
+"log10": 5.078493068166573
+},
+"The flamingo": {
+"count": 9816,
+"log10": 3.9919787909945836
+},
+"The gazelle": {
+"count": 4718,
+"log10": 3.6738499773429494
+},
+"The frog": {
+"count": 91706,
+"log10": 4.962402486655259
+},
+"The gecko": {
+"count": 8067,
+"log10": 3.906765889540728
+},
+"The giant anteater": {
+"count": 1196,
+"log10": 3.0780941504064105
+},
+"The giraffe": {
+"count": 26753,
+"log10": 4.427388722733251
+},
+"The goat": {
+"count": 94236,
+"log10": 4.974221452059072
+},
+"The goldfish": {
+"count": 13161,
+"log10": 4.119321886463977
+},
+"The gorilla": {
+"count": 29794,
+"log10": 4.474143389760806
+},
+"The hamster": {
+"count": 17739,
+"log10": 4.248953615495708
+},
+"The hedgehog": {
+"count": 19241,
+"log10": 4.284250210312084
+},
+"The hippopotamus": {
+"count": 5711,
+"log10": 3.7567881987681178
+},
+"The horse": {
+"count": 594642,
+"log10": 5.774256310835118
+},
+"The hyena": {
+"count": 9749,
+"log10": 3.989004615698537
+},
+"The jellyfish": {
+"count": 16317,
+"log10": 4.212666928793423
+},
+"The kangaroo": {
+"count": 18825,
+"log10": 4.2747580543520085
+},
+"The koala": {
+"count": 11912,
+"log10": 4.076021141783546
+},
+"The leopard": {
+"count": 55586,
+"log10": 4.744973236035268
+},
+"The lion": {
+"count": 261545,
+"log10": 5.41754808245479
+},
+"The llama": {
+"count": 8461,
+"log10": 3.9274730209952757
+},
+"The lobster": {
+"count": 75866,
+"log10": 4.880052911147167
+},
+"The iguana": {
+"count": 5179,
+"log10": 3.714329759745233
+},
+"The manta ray": {
+"count": 2891,
+"log10": 3.461198288622493
+},
+"The mongoose": {
+"count": 6492,
+"log10": 3.812445402872756
+},
+"The moose": {
+"count": 29045,
+"log10": 4.463086333024533
+},
+"The narwhal": {
+"count": 2960,
+"log10": 3.471438407389299
+},
+"The octopus": {
+"count": 50330,
+"log10": 4.70183555925006
+},
+"The ostrich": {
+"count": 18483,
+"log10": 4.266795959846667
+},
+"The otter": {
+"count": 15454,
+"log10": 4.189069009399324
+},
+"The panda": {
+"count": 24819,
+"log10": 4.394801777162711
+},
+"The parrot": {
+"count": 33441,
+"log10": 4.524292242540612
+},
+"The peacock": {
+"count": 36254,
+"log10": 4.559367909463331
+},
+"The penguin": {
+"count": 29063,
+"log10": 4.463355384854658
+},
+"The pigeon": {
+"count": 31579,
+"log10": 4.499412125672276
+},
+"The platypus": {
+"count": 10832,
+"log10": 4.034748743146489
+},
+"The polar bear": {
+"count": 20845,
+"log10": 4.3190227334304145
+},
+"The porcupine": {
+"count": 7994,
+"log10": 3.9028184680822533
+},
+"The rabbit": {
+"count": 141534,
+"log10": 5.1508638492403795
+},
+"The raccoon": {
+"count": 23852,
+"log10": 4.3775430081774
+},
+"The rat": {
+"count": 169756,
+"log10": 5.229827691634091
+},
+"The rhinoceros": {
+"count": 6827,
+"log10": 3.834293512442696
+},
+"The salmon": {
+"count": 133302,
+"log10": 5.124839923373235
+},
+"The sea turtle": {
+"count": 4133,
+"log10": 3.6163704722912695
+},
+"The seagull": {
+"count": 19655,
+"log10": 4.2934951434720245
+},
+"The seahorse": {
+"count": 5433,
+"log10": 3.735119634081872
+},
+"The hummingbird": {
+"count": 29538,
+"log10": 4.470395788815029
+},
+"The shark": {
+"count": 96637,
+"log10": 4.985147933301562
+},
+"The skunk": {
+"count": 15481,
+"log10": 4.189827063120662
+},
+"The slug": {
+"count": 44259,
+"log10": 4.646011409591239
+},
+"The snake": {
+"count": 223609,
+"log10": 5.349491221610217
+},
+"The sparrow": {
+"count": 22400,
+"log10": 4.3502674060479185
+},
+"The squirrel": {
+"count": 95271,
+"log10": 4.978965282251776
+},
+"The swan": {
+"count": 26731,
+"log10": 4.427031452451656
+},
+"The tapir": {
+"count": 2307,
+"log10": 3.363235804483694
+},
+"The tarantula": {
+"count": 6006,
+"log10": 3.7786576319473553
+},
+"The tiger": {
+"count": 131939,
+"log10": 5.120376479744434
+},
+"The tortoise": {
+"count": 31611,
+"log10": 4.499851973267187
+},
+"The tuna": {
+"count": 51984,
+"log10": 4.7158780483080935
+},
+"The vulture": {
+"count": 12371,
+"log10": 4.092439911331141
+},
+"The walrus": {
+"count": 8486,
+"log10": 3.9287542021766533
+},
+"The whale": {
+"count": 82378,
+"log10": 4.915816515744727
+},
+"The wolverine": {
+"count": 5917,
+"log10": 3.7721749608246142
+},
+"The zebra": {
+"count": 28346,
+"log10": 4.45250710370913
+},
+"Thermo Fisher Scientific": {
+"count": 472424,
+"log10": 5.674332871741573
+},
+"Tokio Marine Holdings": {
+"count": 3915,
+"log10": 3.5928426831311002
+},
+"Toronto-Dominion Bank": {
+"count": 59456,
+"log10": 4.774202992384649
+},
+"Total": {
+"count": 25279921,
+"log10": 7.402775729617394
+},
+"Toyota Motor": {
+"count": 346214,
+"log10": 5.539345880050368
+},
+"Truist Financial": {
+"count": 153140,
+"log10": 5.185091478679716
+},
+"U.S. Bancorp": {
+"count": 95610,
+"log10": 4.980507860523808
+},
+"UBS Group": {
+"count": 214276,
+"log10": 5.330975557373371
+},
+"United Parcel Service": {
+"count": 154576,
+"log10": 5.189144874341831
+},
+"UnitedHealth Group": {
+"count": 192576,
+"log10": 5.284604416902984
+},
+"Univlever": {
+"count": 60,
+"log10": 1.7853298350107671
+},
+"VINCI": {
+"count": 90662,
+"log10": 4.957430085579602
+},
+"Vale": {
+"count": 4659974,
+"log10": 6.668383586777732
+},
+"Verizon Communications": {
+"count": 228018,
+"log10": 5.357971036699396
+},
+"Visa": {
+"count": 10725877,
+"log10": 7.030432852833266
+},
+"Volkswagen Group": {
+"count": 267784,
+"log10": 5.427786246314235
+},
+"Walgreens": {
+"count": 1977427,
+"log10": 6.296100679389962
+},
+"Walmart": {
+"count": 11673258,
+"log10": 7.0671921215229725
+},
+"Walt Disney": {
+"count": 4776599,
+"log10": 6.679118874302768
+},
+"Wells Fargo": {
+"count": 2840484,
+"log10": 6.453392500202107
+},
+"Westpac Banking": {
+"count": 44316,
+"log10": 4.646570353535728
+},
+"Zurich Insurance": {
+"count": 54472,
+"log10": 4.736181293899313
+},
+"climbing": {
+"count": 22287361,
+"log10": 7.348058667105495
+},
+"drifting": {
+"count": 3904285,
+"log10": 6.591541623459923
+},
+"flying": {
+"count": 44113177,
+"log10": 7.644568346333079
+},
+"hopping": {
+"count": 4353907,
+"log10": 6.638879247967715
+},
+"knuckle-walking": {
+"count": 7818,
+"log10": 3.893151213129866
+},
+"jumping": {
+"count": 20006789,
+"log10": 7.301177413617806
+},
+"running": {
+"count": 253200970,
+"log10": 8.403465366823728
+},
+"slithering": {
+"count": 304592,
+"log10": 5.4837199183818175
+},
+"sliding": {
+"count": 13089755,
+"log10": 7.1169315511465365
+},
+"swimming/flying": {
+"count": 248,
+"log10": 2.3961993470957363
+},
+"wading": {
+"count": 1599300,
+"log10": 6.203930208797397
+},
+"swimming": {
+"count": 37175650,
+"log10": 7.5702585823919
+},
+"walking": {
+"count": 90251378,
+"log10": 7.955453846450439
+},
+"walking/jumping": {
+"count": 700,
+"log10": 2.8457180179666586
+},
+"walking/swimming": {
+"count": 1055,
+"log10": 3.0236639181977933
 }
 }

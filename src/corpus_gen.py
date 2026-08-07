@@ -43,6 +43,17 @@ TEMPLATES = {
                    "{s} invented {o}.", "invention"),
     "elements":   (re.compile(r"^(.+?) is used in (.+?)\.?$"),
                    "{s} is used in {o}.", "use"),
+    # Added 2026-08-07. The A&M release ships eight topics; v1 used four, which is
+    # why the corpus could only ever support two balanced domains. `companies` is
+    # structurally identical to `cities` (object is a country, so swaps draw from
+    # the same frequency-matched pool); `animals` adds a third object type.
+    # `capitals` is deliberately NOT added: its object takes only two values
+    # ("city"/"country"), so it carries no frequency variation and a swap between
+    # them is trivially detectable. `facts` has no parseable subject-object form.
+    "companies":  (re.compile(r"^(.+?) has headquarters in (.+?)\.?$"),
+                   "{s} has headquarters in {o}.", "country"),
+    "animals":    (re.compile(r"^(.+?) uses (.+?) for locomotion\.?$"),
+                   "{s} uses {o} for locomotion.", "locomotion"),
 }
 
 
