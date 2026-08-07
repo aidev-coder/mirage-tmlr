@@ -168,6 +168,96 @@ def fig_dissociation(out: str | Path | None = None, domain: str | None = None):
     return out
 
 
+def _v3_rows(corpus: str | None = None):
+    from .artifacts import select
+    arts = select("stage3_saplma_*.json", RESULTS, verbose=False)
+    if corpus:
+        arts = [a for a in arts if a.get("corpus") == corpus]
+    rows = []
+    for a in arts:
+        e = a["per_layer"][a["headline_layer"]]
+        adv = e["adversarial"]
+        rows.append({
+            "model": a["model"].split("/")[-1],
+            "in_dist": adv["headline_heldout_diagonal"]["auroc"],
+            "off": adv["off_diagonal"]["auroc"],
+            "off_ci": adv["off_diagonal"]["ci"],
+            "recov": e["mediation_allcell"].get("truth_beta_partialled"),
+        })
+    return sorted(rows, key=lambda r: r["off"])
+
+
+def fig_benchmark_blindness(out: str | Path | None = None, corpus: str | None = None):
+    """The instrument-validity result. Every probe scores ~1.0 by the measure the
+    field reports (held-out diagonal). Their honest off-diagonal scores span 0.11
+    to 0.97. The benchmark cannot tell a frequency readout from a truth probe."""
+    import matplotlib
+    matplotlib.use("Agg")
+    import matplotlib.pyplot as plt
+    import numpy as np
+
+    rows = _v3_rows(corpus)
+    y = np.arange(len(rows))
+    fig, ax = plt.subplots(figsize=(7.6, 4.2))
+    for i, r in enumerate(rows):
+        lo, hi = r["off_ci"]
+        ax.plot([lo, hi], [i, i], color="#c44", lw=2, alpha=.5, solid_capstyle="round")
+    ax.scatter([r["in_dist"] for r in rows], y, s=54, marker="D", color="#48a",
+               zorder=3, label="in-distribution (what the field reports)")
+    ax.scatter([r["off"] for r in rows], y, s=54, color="#c44", zorder=3,
+               label="off-diagonal (honest)")
+    ax.axvline(0.5, ls="--", lw=.8, color="gray")
+    ax.set_yticks(y); ax.set_yticklabels([r["model"] for r in rows], fontsize=8)
+    ax.set_ylim(-0.7, len(rows) - 0.3)
+    ax.set_xlabel("AUROC"); ax.set_xlim(0, 1.05)
+    ax.text(0.512, -0.6, "chance", fontsize=8, color="gray")
+    ax.set_title("every probe looks near-perfect on the benchmark;\n"
+                 "honest truth detection ranges from 0.11 to 0.97", fontsize=10)
+    ax.legend(fontsize=8, loc="upper left", framealpha=.92)
+    fig.tight_layout()
+    out = Path(out or RESULTS / "fig_benchmark_blindness.png")
+    fig.savefig(out, dpi=200); plt.close(fig)
+    return out
+
+
+def fig_recoverability_mechanism(out: str | Path | None = None, corpus: str | None = None):
+    """The mechanism: a probe falls back on typicality exactly to the extent that
+    truth is not linearly available in the representation."""
+    import matplotlib
+    matplotlib.use("Agg")
+    import matplotlib.pyplot as plt
+    import numpy as np
+
+    rows = [r for r in _v3_rows(corpus) if r["recov"] is not None]
+    x = np.array([r["recov"] for r in rows]); y = np.array([r["off"] for r in rows])
+    fig, ax = plt.subplots(figsize=(6.4, 4.4))
+    ax.scatter(x, y, s=60, color="#c44", zorder=3)
+    # alternate label placement: several models sit almost on top of each other
+    # at the high-recoverability end, so a fixed offset collides.
+    for i, r in enumerate(sorted(rows, key=lambda z: (z["recov"], z["off"]))):
+        dx, dy = (6, -2) if i % 2 == 0 else (6, 7)
+        ha = "left"
+        if r["recov"] > 0.92:            # keep the rightmost labels inside the axes
+            dx, ha = -6, "right"
+        ax.annotate(r["model"], (r["recov"], r["off"]), fontsize=7,
+                    xytext=(dx, dy), textcoords="offset points", ha=ha)
+    if len(x) > 2:
+        b, a0 = np.polyfit(x, y, 1)
+        xs = np.linspace(x.min(), x.max(), 50)
+        ax.plot(xs, a0 + b * xs, lw=1, ls="--", color="gray")
+        ax.text(.03, .93, f"r = {np.corrcoef(x, y)[0, 1]:.3f}   (n={len(x)} models)",
+                transform=ax.transAxes, fontsize=9)
+    ax.axhline(0.5, ls=":", lw=.8, color="gray")
+    ax.set_xlabel("truth recoverability  (β with fair training)")
+    ax.set_ylabel("honest off-diagonal AUROC")
+    ax.set_title("the probe substitutes typicality when truth is not available",
+                 fontsize=10)
+    fig.tight_layout()
+    out = Path(out or RESULTS / "fig_recoverability_mechanism.png")
+    fig.savefig(out, dpi=200); plt.close(fig)
+    return out
+
+
 def fig_generation_dissociation(out: str | Path | None = None, domain: str | None = None):
     """Generation time, gold free. On statements the model produced and then judged
     false itself, what does a probe on that same model's hidden states say?"""

@@ -1,9 +1,22 @@
 | Detector | Model | L | In-dist AUROC (3c) | Off-diagonal AUROC (3c) | Gap [95% CI] | FT mean P(true) | 3a fielded gap [CI] | Recoverable off-diag AUROC | Recoverability (all-cell β) |
 |---|---|---|---|---|---|---|---|---|---|
+| saplma | pythia-1.4b | 12 | 0.980 [0.955, 0.998] | 0.130 [0.095, 0.168] | +0.850 [+0.805, +0.892]* | 0.731 | -0.049 [-0.077, -0.025]* | 0.773 [0.725, 0.819] | 0.508 |
+| saplma | pythia-6.9b | 16 | 0.995 [0.984, 1.000] | 0.111 [0.077, 0.147] | +0.884 [+0.847, +0.916]* | 0.743 | -0.044 [-0.072, -0.023]* | 0.821 [0.777, 0.863] | 0.610 |
+| eigenscore | Qwen2.5-7B-Instruct | 14 | 0.580 [0.525, 0.632] | 0.587 [0.557, 0.618] | -0.007 [-0.069, +0.054] | -5.414 | +0.004 [-0.001, +0.009] | — | n/a |
+| saplma | Qwen2.5-7B-Instruct | 14 | 0.998 [0.992, 1.000] | 0.472 [0.426, 0.512] | +0.526 [+0.484, +0.568]* | 0.601 | +0.070 [+0.058, +0.084]* | 0.989 [0.985, 0.993] | 0.889 |
+| saplma | Qwen2.5-7B-Instruct | 14 | 1.000 [1.000, 1.000] | 0.771 [0.718, 0.817] | +0.229 [+0.185, +0.277]* | 0.227 | -0.021 [-0.036, -0.008]* | 0.983 [0.973, 0.991] | 0.877 |
 | saplma | Qwen2.5-7B-Instruct | 14 | 0.993 [0.979, 1.000] | 0.965 [0.954, 0.976] | +0.028 [+0.010, +0.042]* | 0.174 | -0.011 [-0.017, -0.005]* | 0.982 [0.971, 0.990] | 0.876 |
+| eigenscore | gemma-2-9b | 21 | 0.622 [0.573, 0.671] | 0.695 [0.665, 0.724] | -0.073 [-0.130, -0.017]* | -6.770 | -0.008 [-0.014, -0.003]* | — | n/a |
+| saplma | gemma-2-9b | 21 | 1.000 [1.000, 1.000] | 0.484 [0.440, 0.525] | +0.516 [+0.474, +0.557]* | 0.551 | +0.067 [+0.052, +0.080]* | 0.995 [0.992, 0.997] | 0.930 |
+| saplma | gemma-2-9b | 21 | 0.978 [0.944, 0.998] | 0.854 [0.815, 0.889] | +0.123 [+0.076, +0.168]* | 0.136 | -0.014 [-0.023, -0.007]* | 0.987 [0.977, 0.995] | 0.930 |
 | saplma | gemma-2-9b | 21 | 1.000 [1.000, 1.000] | 0.984 [0.978, 0.990] | +0.016 [+0.010, +0.022]* | 0.087 | -0.003 [-0.006, -0.000]* | 0.992 [0.985, 0.997] | 0.928 |
+| saplma | gemma-2-9b-it | 21 | 0.936 [0.851, 0.995] | 0.973 [0.954, 0.988] | -0.036 [-0.118, +0.026] | 0.079 | -0.006 [-0.013, -0.001]* | 0.995 [0.990, 0.998] | 0.932 |
+| eigenscore | Llama-3.1-8B | 16 | 0.544 [0.489, 0.597] | 0.449 [0.417, 0.480] | +0.095 [+0.034, +0.157]* | -1.702 | +0.021 [+0.013, +0.028]* | — | n/a |
+| saplma | Llama-3.1-8B | 16 | 1.000 [0.998, 1.000] | 0.461 [0.417, 0.499] | +0.539 [+0.496, +0.579]* | 0.560 | +0.060 [+0.045, +0.074]* | 0.996 [0.994, 0.998] | 0.918 |
+| saplma | Llama-3.1-8B | 16 | 0.966 [0.913, 0.998] | 0.664 [0.605, 0.714] | +0.302 [+0.234, +0.373]* | 0.302 | -0.050 [-0.069, -0.031]* | 0.971 [0.954, 0.985] | 0.896 |
 | saplma | Llama-3.1-8B | 16 | 0.993 [0.981, 1.000] | 0.974 [0.963, 0.983] | +0.020 [+0.003, +0.033]* | 0.127 | -0.006 [-0.013, +0.001] | 0.982 [0.970, 0.993] | 0.889 |
+| saplma | Llama-3.1-8B-Instruct | 16 | 0.970 [0.932, 0.996] | 0.856 [0.819, 0.888] | +0.114 [+0.063, +0.164]* | 0.150 | -0.015 [-0.023, -0.007]* | 0.987 [0.977, 0.995] | 0.913 |
 
 `*` = CI excludes zero. Overlapping CIs are not a difference (the project's standing directive §1.5).
 In-dist = held-out diagonal (the field's reported number). Off-diagonal = honest truth detection on TA+FT. FT mean P(true) is the fluent-lie cell: BELOW 0.5 means the probe correctly rejects fluent falsehood. Recoverability = truth β under an all-cell (fairly trained) probe, typicality+fragmentation partialled out.
-Domain scope: cities. A POOLED (all-domain) row is NOT a valid headline for this corpus: domain is confounded with truth across the diagonal/off-diagonal split, which by itself drives the off-diagonal below chance (see notes/weakness_audit.md A1). Use domain="cities".
+Domain scope: all, cities. A POOLED (all-domain) row is NOT a valid headline for this corpus: domain is confounded with truth across the diagonal/off-diagonal split, which by itself drives the off-diagonal below chance (see notes/weakness_audit.md A1). Use domain="cities".
