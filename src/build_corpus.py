@@ -247,13 +247,23 @@ def score_and_gate_v2(reference_substrate, canary_substrate, edit_rate: float = 
     ppl = reference_perplexity(texts, reference_substrate)
 
     freq_map = load_entity_freq()
+    n_freq = max(len(freq_map), 1)
     unresolved = sum(1 for v in freq_map.values()
                      if not isinstance(v.get("count"), int) or v["count"] < 0)
-    if unresolved:
+    frac_unresolved = unresolved / n_freq
+    # A handful of entities the API never returns is tolerable — those items are
+    # dropped from the axis rather than guessed at. A large fraction is not: v1's
+    # cache was 91% unresolved-written-as-zero, which turned the typicality axis
+    # into "did the fetch succeed". Refuse above 5% so that failure mode cannot
+    # recur quietly, and report the number either way.
+    print(f"[stage2-v2] frequency cache: {n_freq} entities, {unresolved} unresolved "
+          f"({frac_unresolved:.1%}) — unresolved items are DROPPED, never zeroed",
+          flush=True)
+    if frac_unresolved > 0.05:
         raise RuntimeError(
-            f"entity_freq.json has {unresolved} unresolved entries. Re-run "
-            "data/raw/fetch_entity_freq.py until all resolve; an unresolved "
-            "frequency must never be treated as zero (that defect invalidated v1).")
+            f"entity_freq.json is {frac_unresolved:.1%} unresolved ({unresolved}/"
+            f"{n_freq}). Re-run data/raw/fetch_entity_freq.py to retry them; the "
+            "typicality axis is not trustworthy at this coverage.")
 
     staged, domain_report = _assign_cells_v2(items, ppl, freq_map, min_per_cell)
     full, balance_report = _balance_by_domain(staged, seed)
