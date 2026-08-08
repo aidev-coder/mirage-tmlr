@@ -193,3 +193,13 @@ Every resolved §4 open decision gets an entry: date, decision, reasoning, who d
 - Option (a) DISCLOSE: report n=696 rows / 626 unique statements, add a duplicate check to the finalize() gates so it cannot recur, keep every existing number. Cheapest, no number changes, and the defect is real but demonstrably not load-bearing.
 - Option (b) REBUILD as v4 with deduplication in the generator: cleaner corpus, but a fourth rebuild, every Stage 3+ number recomputed, and n falls below 626 after rebalancing per (domain, cell).
 - Agent recommendation: (a). The defect does not touch any headline claim on measurement, and §1.1 counsels against a rebuild whose main effect would be cosmetic. Escalated rather than resolved because corpus composition is a §4-class decision.
+
+## D-016 — RESOLVED: rebuild as v4, deduplicated, with within-domain balancing
+- Date: 2026-08-09. Owner: "rebuild and dups as well", scope "dedupe only, minimal v4"; balancing rule left to agent ("your call, go for the best").
+- Decision: rebuild rather than disclose. v4 = the same 2x2, deduplicated, no new domains and no multi-clause items (those become auxiliary sets outside the 2x2 so the headline stays comparable).
+- Fix at the source: `corpus_gen.generate_topic` now refuses a statement already emitted for that topic. First occurrence wins, deterministic by seed. Candidate pool 3814 -> 3200 rows, rows == uniques in every domain.
+- Two new hard `finalize()` gates: (i) no duplicate statements; (ii) no domain may exceed 50% of items. Both are the class of check whose absence produced v1 (domain composition) and D-016 (duplicates).
+- Balancing changed from GLOBAL equality per (domain, cell) to WITHIN-domain equality. v3's rule let the smallest domain cap every other one (companies has 133 unique true statements, so every domain got 58). Orthogonality only requires P(true|domain) = P(typical|domain) = 0.5, which within-domain balance already gives; domains need not match each other.
+- Why not uncapped: uncapped puts cities at ~76% of items and adds NOTHING to companies/inventions, which are what actually bound the generality claim. A project whose headline was destroyed once by domain composition should not ship a pooled number that is mostly one topic. Hence the majority rule.
+- Stated plainly and not spun: this does NOT close the small-n limitation. n is bounded by companies and inventions capacity; only new source data moves it.
+- Consequence: every artifact keyed to the v3 hash (18 stage3 runs, the 7-model layer sweep, causal, gendis, intervene, tables, figures) must be regenerated on v4 before any of it is quoted again.

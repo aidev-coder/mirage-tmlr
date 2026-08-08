@@ -157,6 +157,38 @@ def collect_layer_curves(chash: str) -> dict[str, dict[str, list[dict]]]:
     return out
 
 
+def _selection_rules(curve: list[dict], n_layers: int) -> dict:
+    """What the field's ACTUAL layer-selection rules pick, and what they cost.
+
+    An argmax is a strawman nobody uses. These are published practice:
+      earliest_informative  earliest layer within 95% of the max in-distribution
+                            AUROC (a stated criterion in the probing literature)
+      fixed_depth_*         fixed fractional depth; PARALLAX (2026) taps
+                            0.60-0.85*L citing Marks & Tegmark that truth lives in
+                            the upper third
+      our_mid_depth         n_layers // 2, what this project used
+    All select on in-distribution only, never on the off-diagonal being reported.
+    """
+    top = max(r["in_dist"] for r in curve)
+    by_layer = {r["layer"]: r for r in curve}
+    picks = {}
+
+    inf = [r for r in curve if r["in_dist"] >= 0.95 * top]
+    if inf:
+        picks["earliest_informative_95pct"] = min(inf, key=lambda r: r["layer"])
+    for frac in (0.60, 0.70, 0.80, 0.85):
+        L = min(by_layer, key=lambda z: abs(z - frac * (n_layers - 1)))
+        picks[f"fixed_depth_{frac:.2f}"] = by_layer[L]
+    mid = min(by_layer, key=lambda z: abs(z - (n_layers - 1) // 2))
+    picks["our_mid_depth"] = by_layer[mid]
+    best = max(curve, key=lambda r: r["off"])
+
+    return {k: {"layer": v["layer"], "in_dist": v["in_dist"], "off": v["off"],
+                "gap": v["gap"],
+                "off_below_best": round(best["off"] - v["off"], 4)}
+            for k, v in picks.items()}
+
+
 def _ties(curve: list[dict], tol: float) -> dict:
     top = max(r["in_dist"] for r in curve)
     tied = [r for r in curve if r["in_dist"] >= top - tol]
@@ -177,6 +209,7 @@ def summarize_layers(curves: dict[str, dict[str, list[dict]]]) -> list[dict]:
             max_in = max(r["in_dist"] for r in curve)
             rows.append({
                 "model": model.split("/")[-1], "probe": probe, "n_layers": len(curve),
+                "selection_rules": _selection_rules(curve, len(curve)),
                 "benchmark_ties": [_ties(curve, t) for t in TIE_TOLERANCES],
                 "argmax_in_dist_layer": sel["layer"],
                 "at_argmax": {"in_dist": sel["in_dist"], "off": sel["off"],
@@ -332,6 +365,16 @@ def run_layer_report(chash: str) -> Path:
     for r in under:
         print(f"  {r['model']} / {r['probe']}: best in-dist anywhere "
               f"{r['max_in_dist_any_layer']:.3f}")
+
+    print("\nWHAT THE FIELD'S PUBLISHED LAYER-SELECTION RULES ACTUALLY PICK "
+          "(mean honest off-diagonal, and mean shortfall vs the best layer):")
+    rules = sorted({k for r in rows for k in r["selection_rules"]})
+    for rule in rules:
+        offs = [r["selection_rules"][rule]["off"] for r in rows if rule in r["selection_rules"]]
+        short = [r["selection_rules"][rule]["off_below_best"] for r in rows
+                 if rule in r["selection_rules"]]
+        print(f"  {rule:26s} honest {np.mean(offs):.3f}   leaves "
+              f"{np.mean(short):.3f} on the table   (n={len(offs)})")
 
     dead = [r for r in rows if r["no_layer_beats_chance"]]
     print(f"\nno layer beats chance off-diagonal: {len(dead)}")

@@ -405,7 +405,7 @@ def main(stage: str = "sanity", model: str = "", max_per_topic: int = 0,
         try:
             path = corpus_build.finalize(
                 res["items"], res["crossing"], res["edit_canary"],
-                res["fragmentation_canary"], owner_signoff_decision_id="D-015",
+                res["fragmentation_canary"], owner_signoff_decision_id="D-016",
                 composition_report=res.get("composition_canary"))
             (_HERE / "results" / "stage2_corpus_report.json").write_text(
                 json.dumps({"meta": m, "gates": {k: res[k] for k in

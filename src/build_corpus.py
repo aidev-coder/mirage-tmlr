@@ -149,24 +149,40 @@ def _assign_cells_v2(items: list[dict], ppl: np.ndarray, freq_map: dict,
 
 
 def _balance_by_domain(items: list[dict], seed: int) -> tuple[list[dict], dict]:
-    """Equal items per (domain, cell), so domain is orthogonal to BOTH truth and
-    typicality by construction rather than by hope. The composition canary should
-    then pass; it is still run as a gate, because a check you rely on must be run
-    even when you believe it cannot fail."""
+    """Equal items across a domain's OWN four cells, so domain is orthogonal to
+    both truth and typicality by construction rather than by hope.
+
+    v3 took one global minimum across every (domain, cell) pair, which let the
+    smallest domain cap every other one — companies has 133 unique true statements,
+    so every domain got 58. Orthogonality only needs P(true|domain) = P(typical|
+    domain) = 0.5, which within-domain balancing already gives; domains do not have
+    to match each other. Uncapped that would make cities ~76% of the corpus, so no
+    domain is allowed a majority: a project whose headline died once to domain
+    composition should not ship a pooled number that is mostly one topic.
+    """
     rng = np.random.default_rng(seed)
     by = defaultdict(list)
     for it in items:
         by[(it.get("domain", "?"), it["cell"])].append(it)
     if not by:
         return [], {"per_domain_cell": 0}
-    n = min(len(v) for v in by.values())
-    out = []
-    for v in by.values():
-        for i in rng.choice(len(v), n, replace=False):
-            out.append(v[int(i)])
+
     doms = sorted({d for d, _ in by})
-    return out, {"per_domain_cell": int(n), "domains": doms,
-                 "total": len(out), "cells_per_domain": 4}
+    cap = {d: min(len(by[(d, c)]) for c in ("TT", "TA", "FT", "FA")) for d in doms}
+    others = {d: sum(v for k, v in cap.items() if k != d) for d in doms}
+    per = {d: min(cap[d], others[d]) for d in doms}
+
+    out = []
+    for d in doms:
+        for c in ("TT", "TA", "FT", "FA"):
+            v = by[(d, c)]
+            for i in rng.choice(len(v), per[d], replace=False):
+                out.append(v[int(i)])
+    total = 4 * sum(per.values())
+    return out, {"per_domain_cell": per, "capacity_per_domain_cell": cap,
+                 "domains": doms, "total": total, "cells_per_domain": 4,
+                 "max_domain_share": round(max(4 * per[d] / total for d in doms), 4),
+                 "rule": "within-domain balance; no domain may exceed 50% of items"}
 
 
 def _balance(items: list[dict], seed: int):

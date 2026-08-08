@@ -27,6 +27,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+from collections import Counter
 from pathlib import Path
 
 import numpy as np
@@ -300,6 +301,25 @@ def finalize(items: list[dict], crossing_report: dict, canary_report: dict,
             "owner signoff required: record the decision in notes/decisions.md "
             "and pass its ID (e.g. 'D-006') — do not run probes on an unsigned corpus")
 
+    # D-016: v3 shipped 70 duplicate rows, concentrated in the true cells, so its
+    # per-cell balance held in rows but not in statements and 14.5% of edit-canary
+    # rows were label-ambiguous (same string, both edited flags).
+    texts = [it["text"] for it in items]
+    dups = {t for t, n in Counter(texts).items() if n > 1}
+    if dups:
+        raise RuntimeError(
+            f"duplicate gate FAILED — {len(texts) - len(set(texts))} repeated rows "
+            f"across {len(dups)} statements, e.g. {sorted(dups)[:3]}")
+
+    # A pooled headline that is mostly one topic is what v1 shipped. Orthogonality
+    # does not prevent it, so it is gated separately.
+    dom_counts = Counter(it.get("domain", "?") for it in items)
+    top_dom, top_n = dom_counts.most_common(1)[0]
+    if len(dom_counts) > 1 and top_n > len(items) / 2:
+        raise RuntimeError(
+            f"domain-majority gate FAILED — '{top_dom}' is {top_n}/{len(items)} "
+            f"({top_n / len(items):.1%}) of the corpus")
+
     payload = "\n".join(json.dumps(it, sort_keys=True) for it in items)
     h = hashlib.sha256(payload.encode()).hexdigest()[:12]
     out = _ROOT / "data" / "corpus" / f"mirage_2x2_v{h}.jsonl"
@@ -309,6 +329,9 @@ def finalize(items: list[dict], crossing_report: dict, canary_report: dict,
         "hash": h, "n": len(items), "signoff": owner_signoff_decision_id,
         "crossing": crossing_report, "edit_canary": canary_report,
         "fragmentation_canary": fragmentation_report,
+        "composition_canary": composition_report,
+        "duplicates": {"n_rows": len(texts), "n_unique": len(set(texts)), "pass": True},
+        "domain_share": {d: round(c / len(items), 4) for d, c in dom_counts.items()},
     }, indent=2), encoding="utf-8")
     return out
 

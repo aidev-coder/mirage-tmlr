@@ -7,6 +7,50 @@
       "model": "pythia-1.4b",
       "probe": "ccs",
       "n_layers": 25,
+      "selection_rules": {
+        "earliest_informative_95pct": {
+          "layer": 0,
+          "in_dist": 0.5921,
+          "off": 0.431,
+          "gap": 0.1611,
+          "off_below_best": 0.1257
+        },
+        "fixed_depth_0.60": {
+          "layer": 14,
+          "in_dist": 0.4038,
+          "off": 0.5035,
+          "gap": -0.0997,
+          "off_below_best": 0.0532
+        },
+        "fixed_depth_0.70": {
+          "layer": 17,
+          "in_dist": 0.5148,
+          "off": 0.466,
+          "gap": 0.0488,
+          "off_below_best": 0.0907
+        },
+        "fixed_depth_0.80": {
+          "layer": 19,
+          "in_dist": 0.4137,
+          "off": 0.5065,
+          "gap": -0.0929,
+          "off_below_best": 0.0502
+        },
+        "fixed_depth_0.85": {
+          "layer": 20,
+          "in_dist": 0.3964,
+          "off": 0.505,
+          "gap": -0.1086,
+          "off_below_best": 0.0517
+        },
+        "our_mid_depth": {
+          "layer": 12,
+          "in_dist": 0.3446,
+          "off": 0.5298,
+          "gap": -0.1852,
+          "off_below_best": 0.0269
+        }
+      },
       "benchmark_ties": [
         {
           "tolerance": 0.0,
@@ -71,6 +115,50 @@
       "model": "pythia-1.4b",
       "probe": "lr",
       "n_layers": 25,
+      "selection_rules": {
+        "earliest_informative_95pct": {
+          "layer": 3,
+          "in_dist": 0.9309,
+          "off": 0.0558,
+          "gap": 0.8751,
+          "off_below_best": 0.3752
+        },
+        "fixed_depth_0.60": {
+          "layer": 14,
+          "in_dist": 0.9696,
+          "off": 0.1033,
+          "gap": 0.8663,
+          "off_below_best": 0.3277
+        },
+        "fixed_depth_0.70": {
+          "layer": 17,
+          "in_dist": 0.9638,
+          "off": 0.1106,
+          "gap": 0.8532,
+          "off_below_best": 0.3204
+        },
+        "fixed_depth_0.80": {
+          "layer": 19,
+          "in_dist": 0.9515,
+          "off": 0.1079,
+          "gap": 0.8436,
+          "off_below_best": 0.3231
+        },
+        "fixed_depth_0.85": {
+          "layer": 20,
+          "in_dist": 0.9449,
+          "off": 0.1004,
+          "gap": 0.8445,
+          "off_below_best": 0.3306
+        },
+        "our_mid_depth": {
+          "layer": 12,
+          "in_dist": 0.9679,
+          "off": 0.0865,
+          "gap": 0.8815,
+          "off_below_best": 0.3445
+        }
+      },
       "benchmark_ties": [
         {
           "tolerance": 0.0,
@@ -146,6 +234,50 @@
       "model": "pythia-1.4b",
       "probe": "mm",
       "n_layers": 25,
+      "selection_rules": {
+        "earliest_informative_95pct": {
+          "layer": 5,
+          "in_dist": 0.8199,
+          "off": 0.2088,
+          "gap": 0.6111,
+          "off_below_best": 0.2222
+        },
+        "fixed_depth_0.60": {
+          "layer": 14,
+          "in_dist": 0.8351,
+          "off": 0.2563,
+          "gap": 0.5788,
+          "off_below_best": 0.1747
+        },
+        "fixed_depth_0.70": {
+          "layer": 17,
+          "in_dist": 0.7977,
+          "off": 0.2677,
+          "gap": 0.53,
+          "off_below_best": 0.1633
+        },
+        "fixed_depth_0.80": {
+          "layer": 19,
+          "in_dist": 0.7689,
+          "off": 0.2624,
+          "gap": 0.5065,
+          "off_below_best": 0.1686
+        },
+        "fixed_depth_0.85": {
+          "layer": 20,
+          "in_dist": 0.7525,
+          "off": 0.2647,
+          "gap": 0.4878,
+          "off_below_best": 0.1663
+        },
+        "our_mid_depth": {
+          "layer": 12,
+          "in_dist": 0.8022,
+          "off": 0.3148,
+          "gap": 0.4874,
+          "off_below_best": 0.1162
+        }
+      },
       "benchmark_ties": [
         {
           "tolerance": 0.0,
@@ -212,6 +344,50 @@
       "model": "pythia-6.9b",
       "probe": "ccs",
       "n_layers": 33,
+      "selection_rules": {
+        "earliest_informative_95pct": {
+          "layer": 0,
+          "in_dist": 0.5921,
+          "off": 0.431,
+          "gap": 0.1611,
+          "off_below_best": 0.18
+        },
+        "fixed_depth_0.60": {
+          "layer": 19,
+          "in_dist": 0.4071,
+          "off": 0.5884,
+          "gap": -0.1813,
+          "off_below_best": 0.0226
+        },
+        "fixed_depth_0.70": {
+          "layer": 22,
+          "in_dist": 0.3939,
+          "off": 0.5948,
+          "gap": -0.2009,
+          "off_below_best": 0.0162
+        },
+        "fixed_depth_0.80": {
+          "layer": 26,
+          "in_dist": 0.4153,
+          "off": 0.6095,
+          "gap": -0.1942,
+          "off_below_best": 0.0015
+        },
+        "fixed_depth_0.85": {
+          "layer": 27,
+          "in_dist": 0.4293,
+          "off": 0.608,
+          "gap": -0.1787,
+          "off_below_best": 0.003
+        },
+        "our_mid_depth": {
+          "layer": 16,
+          "in_dist": 0.3997,
+          "off": 0.5695,
+          "gap": -0.1699,
+          "off_below_best": 0.0415
+        }
+      },
       "benchmark_ties": [
         {
           "tolerance": 0.0,
@@ -276,6 +452,50 @@
       "model": "pythia-6.9b",
       "probe": "lr",
       "n_layers": 33,
+      "selection_rules": {
+        "earliest_informative_95pct": {
+          "layer": 1,
+          "in_dist": 0.9523,
+          "off": 0.0738,
+          "gap": 0.8785,
+          "off_below_best": 0.3572
+        },
+        "fixed_depth_0.60": {
+          "layer": 19,
+          "in_dist": 0.9984,
+          "off": 0.1178,
+          "gap": 0.8806,
+          "off_below_best": 0.3132
+        },
+        "fixed_depth_0.70": {
+          "layer": 22,
+          "in_dist": 0.9967,
+          "off": 0.1106,
+          "gap": 0.8861,
+          "off_below_best": 0.3204
+        },
+        "fixed_depth_0.80": {
+          "layer": 26,
+          "in_dist": 0.9975,
+          "off": 0.1006,
+          "gap": 0.897,
+          "off_below_best": 0.3304
+        },
+        "fixed_depth_0.85": {
+          "layer": 27,
+          "in_dist": 0.9951,
+          "off": 0.1017,
+          "gap": 0.8934,
+          "off_below_best": 0.3293
+        },
+        "our_mid_depth": {
+          "layer": 16,
+          "in_dist": 1.0,
+          "off": 0.1275,
+          "gap": 0.8725,
+          "off_below_best": 0.3035
+        }
+      },
       "benchmark_ties": [
         {
           "tolerance": 0.0,
@@ -387,6 +607,50 @@
       "model": "pythia-6.9b",
       "probe": "mm",
       "n_layers": 33,
+      "selection_rules": {
+        "earliest_informative_95pct": {
+          "layer": 1,
+          "in_dist": 0.8429,
+          "off": 0.1889,
+          "gap": 0.654,
+          "off_below_best": 0.2421
+        },
+        "fixed_depth_0.60": {
+          "layer": 19,
+          "in_dist": 0.8076,
+          "off": 0.2847,
+          "gap": 0.5229,
+          "off_below_best": 0.1463
+        },
+        "fixed_depth_0.70": {
+          "layer": 22,
+          "in_dist": 0.785,
+          "off": 0.2757,
+          "gap": 0.5092,
+          "off_below_best": 0.1553
+        },
+        "fixed_depth_0.80": {
+          "layer": 26,
+          "in_dist": 0.7812,
+          "off": 0.2764,
+          "gap": 0.5048,
+          "off_below_best": 0.1546
+        },
+        "fixed_depth_0.85": {
+          "layer": 27,
+          "in_dist": 0.771,
+          "off": 0.2649,
+          "gap": 0.5061,
+          "off_below_best": 0.1661
+        },
+        "our_mid_depth": {
+          "layer": 16,
+          "in_dist": 0.808,
+          "off": 0.3026,
+          "gap": 0.5054,
+          "off_below_best": 0.1284
+        }
+      },
       "benchmark_ties": [
         {
           "tolerance": 0.0,
@@ -458,6 +722,50 @@
       "model": "Qwen2.5-7B-Instruct",
       "probe": "ccs",
       "n_layers": 29,
+      "selection_rules": {
+        "earliest_informative_95pct": {
+          "layer": 19,
+          "in_dist": 0.9441,
+          "off": 0.9649,
+          "gap": -0.0208,
+          "off_below_best": 0.0136
+        },
+        "fixed_depth_0.60": {
+          "layer": 17,
+          "in_dist": 0.6571,
+          "off": 0.6754,
+          "gap": -0.0183,
+          "off_below_best": 0.3031
+        },
+        "fixed_depth_0.70": {
+          "layer": 20,
+          "in_dist": 0.9408,
+          "off": 0.964,
+          "gap": -0.0232,
+          "off_below_best": 0.0145
+        },
+        "fixed_depth_0.80": {
+          "layer": 22,
+          "in_dist": 0.8553,
+          "off": 0.8837,
+          "gap": -0.0284,
+          "off_below_best": 0.0948
+        },
+        "fixed_depth_0.85": {
+          "layer": 24,
+          "in_dist": 0.8355,
+          "off": 0.8503,
+          "gap": -0.0148,
+          "off_below_best": 0.1282
+        },
+        "our_mid_depth": {
+          "layer": 14,
+          "in_dist": 0.5033,
+          "off": 0.4928,
+          "gap": 0.0105,
+          "off_below_best": 0.4857
+        }
+      },
       "benchmark_ties": [
         {
           "tolerance": 0.0,
@@ -533,6 +841,50 @@
       "model": "Qwen2.5-7B-Instruct",
       "probe": "lr",
       "n_layers": 29,
+      "selection_rules": {
+        "earliest_informative_95pct": {
+          "layer": 1,
+          "in_dist": 0.9638,
+          "off": 0.0848,
+          "gap": 0.879,
+          "off_below_best": 0.7593
+        },
+        "fixed_depth_0.60": {
+          "layer": 17,
+          "in_dist": 1.0,
+          "off": 0.7976,
+          "gap": 0.2024,
+          "off_below_best": 0.0465
+        },
+        "fixed_depth_0.70": {
+          "layer": 20,
+          "in_dist": 1.0,
+          "off": 0.8369,
+          "gap": 0.1631,
+          "off_below_best": 0.0072
+        },
+        "fixed_depth_0.80": {
+          "layer": 22,
+          "in_dist": 1.0,
+          "off": 0.8422,
+          "gap": 0.1578,
+          "off_below_best": 0.0019
+        },
+        "fixed_depth_0.85": {
+          "layer": 24,
+          "in_dist": 1.0,
+          "off": 0.8409,
+          "gap": 0.1591,
+          "off_below_best": 0.0032
+        },
+        "our_mid_depth": {
+          "layer": 14,
+          "in_dist": 1.0,
+          "off": 0.6569,
+          "gap": 0.3431,
+          "off_below_best": 0.1872
+        }
+      },
       "benchmark_ties": [
         {
           "tolerance": 0.0,
@@ -657,6 +1009,50 @@
       "model": "Qwen2.5-7B-Instruct",
       "probe": "mm",
       "n_layers": 29,
+      "selection_rules": {
+        "earliest_informative_95pct": {
+          "layer": 12,
+          "in_dist": 0.963,
+          "off": 0.4343,
+          "gap": 0.5287,
+          "off_below_best": 0.4934
+        },
+        "fixed_depth_0.60": {
+          "layer": 17,
+          "in_dist": 0.9737,
+          "off": 0.9083,
+          "gap": 0.0654,
+          "off_below_best": 0.0194
+        },
+        "fixed_depth_0.70": {
+          "layer": 20,
+          "in_dist": 0.9145,
+          "off": 0.9093,
+          "gap": 0.0052,
+          "off_below_best": 0.0184
+        },
+        "fixed_depth_0.80": {
+          "layer": 22,
+          "in_dist": 0.8594,
+          "off": 0.9173,
+          "gap": -0.0579,
+          "off_below_best": 0.0104
+        },
+        "fixed_depth_0.85": {
+          "layer": 24,
+          "in_dist": 0.8586,
+          "off": 0.9133,
+          "gap": -0.0548,
+          "off_below_best": 0.0144
+        },
+        "our_mid_depth": {
+          "layer": 14,
+          "in_dist": 0.9712,
+          "off": 0.6957,
+          "gap": 0.2755,
+          "off_below_best": 0.232
+        }
+      },
       "benchmark_ties": [
         {
           "tolerance": 0.0,
@@ -733,6 +1129,50 @@
       "model": "gemma-2-9b",
       "probe": "ccs",
       "n_layers": 43,
+      "selection_rules": {
+        "earliest_informative_95pct": {
+          "layer": 22,
+          "in_dist": 0.8882,
+          "off": 0.7845,
+          "gap": 0.1036,
+          "off_below_best": 0.0
+        },
+        "fixed_depth_0.60": {
+          "layer": 25,
+          "in_dist": 0.3766,
+          "off": 0.6131,
+          "gap": -0.2364,
+          "off_below_best": 0.1714
+        },
+        "fixed_depth_0.70": {
+          "layer": 29,
+          "in_dist": 0.4729,
+          "off": 0.4189,
+          "gap": 0.054,
+          "off_below_best": 0.3656
+        },
+        "fixed_depth_0.80": {
+          "layer": 34,
+          "in_dist": 0.4877,
+          "off": 0.6728,
+          "gap": -0.1852,
+          "off_below_best": 0.1117
+        },
+        "fixed_depth_0.85": {
+          "layer": 36,
+          "in_dist": 0.4712,
+          "off": 0.6301,
+          "gap": -0.1589,
+          "off_below_best": 0.1544
+        },
+        "our_mid_depth": {
+          "layer": 21,
+          "in_dist": 0.7303,
+          "off": 0.5298,
+          "gap": 0.2005,
+          "off_below_best": 0.2547
+        }
+      },
       "benchmark_ties": [
         {
           "tolerance": 0.0,
@@ -797,6 +1237,50 @@
       "model": "gemma-2-9b",
       "probe": "lr",
       "n_layers": 43,
+      "selection_rules": {
+        "earliest_informative_95pct": {
+          "layer": 4,
+          "in_dist": 0.9539,
+          "off": 0.0404,
+          "gap": 0.9135,
+          "off_below_best": 0.8677
+        },
+        "fixed_depth_0.60": {
+          "layer": 25,
+          "in_dist": 1.0,
+          "off": 0.8843,
+          "gap": 0.1157,
+          "off_below_best": 0.0238
+        },
+        "fixed_depth_0.70": {
+          "layer": 29,
+          "in_dist": 1.0,
+          "off": 0.7885,
+          "gap": 0.2115,
+          "off_below_best": 0.1196
+        },
+        "fixed_depth_0.80": {
+          "layer": 34,
+          "in_dist": 0.9975,
+          "off": 0.7668,
+          "gap": 0.2307,
+          "off_below_best": 0.1413
+        },
+        "fixed_depth_0.85": {
+          "layer": 36,
+          "in_dist": 0.9959,
+          "off": 0.696,
+          "gap": 0.2999,
+          "off_below_best": 0.2121
+        },
+        "our_mid_depth": {
+          "layer": 21,
+          "in_dist": 1.0,
+          "off": 0.8797,
+          "gap": 0.1203,
+          "off_below_best": 0.0284
+        }
+      },
       "benchmark_ties": [
         {
           "tolerance": 0.0,
@@ -956,6 +1440,50 @@
       "model": "gemma-2-9b",
       "probe": "mm",
       "n_layers": 43,
+      "selection_rules": {
+        "earliest_informative_95pct": {
+          "layer": 5,
+          "in_dist": 0.8499,
+          "off": 0.1688,
+          "gap": 0.6811,
+          "off_below_best": 0.577
+        },
+        "fixed_depth_0.60": {
+          "layer": 25,
+          "in_dist": 0.7804,
+          "off": 0.6787,
+          "gap": 0.1017,
+          "off_below_best": 0.0671
+        },
+        "fixed_depth_0.70": {
+          "layer": 29,
+          "in_dist": 0.5765,
+          "off": 0.6132,
+          "gap": -0.0367,
+          "off_below_best": 0.1326
+        },
+        "fixed_depth_0.80": {
+          "layer": 34,
+          "in_dist": 0.5362,
+          "off": 0.5599,
+          "gap": -0.0237,
+          "off_below_best": 0.1859
+        },
+        "fixed_depth_0.85": {
+          "layer": 36,
+          "in_dist": 0.5041,
+          "off": 0.5563,
+          "gap": -0.0522,
+          "off_below_best": 0.1895
+        },
+        "our_mid_depth": {
+          "layer": 21,
+          "in_dist": 0.8692,
+          "off": 0.7458,
+          "gap": 0.1235,
+          "off_below_best": 0.0
+        }
+      },
       "benchmark_ties": [
         {
           "tolerance": 0.0,
@@ -1023,6 +1551,50 @@
       "model": "gemma-2-9b-it",
       "probe": "ccs",
       "n_layers": 43,
+      "selection_rules": {
+        "earliest_informative_95pct": {
+          "layer": 20,
+          "in_dist": 0.991,
+          "off": 0.9825,
+          "gap": 0.0085,
+          "off_below_best": 0.0033
+        },
+        "fixed_depth_0.60": {
+          "layer": 25,
+          "in_dist": 1.0,
+          "off": 0.9858,
+          "gap": 0.0142,
+          "off_below_best": 0.0
+        },
+        "fixed_depth_0.70": {
+          "layer": 29,
+          "in_dist": 0.9934,
+          "off": 0.9847,
+          "gap": 0.0087,
+          "off_below_best": 0.0011
+        },
+        "fixed_depth_0.80": {
+          "layer": 34,
+          "in_dist": 0.5826,
+          "off": 0.6888,
+          "gap": -0.1062,
+          "off_below_best": 0.297
+        },
+        "fixed_depth_0.85": {
+          "layer": 36,
+          "in_dist": 0.4256,
+          "off": 0.6902,
+          "gap": -0.2646,
+          "off_below_best": 0.2956
+        },
+        "our_mid_depth": {
+          "layer": 21,
+          "in_dist": 0.9885,
+          "off": 0.9799,
+          "gap": 0.0086,
+          "off_below_best": 0.0059
+        }
+      },
       "benchmark_ties": [
         {
           "tolerance": 0.0,
@@ -1100,6 +1672,50 @@
       "model": "gemma-2-9b-it",
       "probe": "lr",
       "n_layers": 43,
+      "selection_rules": {
+        "earliest_informative_95pct": {
+          "layer": 4,
+          "in_dist": 0.9646,
+          "off": 0.0478,
+          "gap": 0.9168,
+          "off_below_best": 0.8706
+        },
+        "fixed_depth_0.60": {
+          "layer": 25,
+          "in_dist": 1.0,
+          "off": 0.9164,
+          "gap": 0.0836,
+          "off_below_best": 0.002
+        },
+        "fixed_depth_0.70": {
+          "layer": 29,
+          "in_dist": 1.0,
+          "off": 0.8953,
+          "gap": 0.1047,
+          "off_below_best": 0.0231
+        },
+        "fixed_depth_0.80": {
+          "layer": 34,
+          "in_dist": 1.0,
+          "off": 0.9066,
+          "gap": 0.0934,
+          "off_below_best": 0.0118
+        },
+        "fixed_depth_0.85": {
+          "layer": 36,
+          "in_dist": 1.0,
+          "off": 0.9081,
+          "gap": 0.0919,
+          "off_below_best": 0.0103
+        },
+        "our_mid_depth": {
+          "layer": 21,
+          "in_dist": 1.0,
+          "off": 0.9059,
+          "gap": 0.0941,
+          "off_below_best": 0.0125
+        }
+      },
       "benchmark_ties": [
         {
           "tolerance": 0.0,
@@ -1272,6 +1888,50 @@
       "model": "gemma-2-9b-it",
       "probe": "mm",
       "n_layers": 43,
+      "selection_rules": {
+        "earliest_informative_95pct": {
+          "layer": 15,
+          "in_dist": 0.9285,
+          "off": 0.8057,
+          "gap": 0.1228,
+          "off_below_best": 0.1351
+        },
+        "fixed_depth_0.60": {
+          "layer": 25,
+          "in_dist": 0.8947,
+          "off": 0.9156,
+          "gap": -0.0209,
+          "off_below_best": 0.0252
+        },
+        "fixed_depth_0.70": {
+          "layer": 29,
+          "in_dist": 0.8289,
+          "off": 0.9087,
+          "gap": -0.0798,
+          "off_below_best": 0.0321
+        },
+        "fixed_depth_0.80": {
+          "layer": 34,
+          "in_dist": 0.8026,
+          "off": 0.8997,
+          "gap": -0.097,
+          "off_below_best": 0.0411
+        },
+        "fixed_depth_0.85": {
+          "layer": 36,
+          "in_dist": 0.8026,
+          "off": 0.8916,
+          "gap": -0.0889,
+          "off_below_best": 0.0492
+        },
+        "our_mid_depth": {
+          "layer": 21,
+          "in_dist": 0.8947,
+          "off": 0.9273,
+          "gap": -0.0326,
+          "off_below_best": 0.0135
+        }
+      },
       "benchmark_ties": [
         {
           "tolerance": 0.0,
@@ -1338,6 +1998,50 @@
       "model": "Llama-3.1-8B",
       "probe": "ccs",
       "n_layers": 33,
+      "selection_rules": {
+        "earliest_informative_95pct": {
+          "layer": 0,
+          "in_dist": 0.5921,
+          "off": 0.431,
+          "gap": 0.1611,
+          "off_below_best": 0.2642
+        },
+        "fixed_depth_0.60": {
+          "layer": 19,
+          "in_dist": 0.5263,
+          "off": 0.545,
+          "gap": -0.0186,
+          "off_below_best": 0.1502
+        },
+        "fixed_depth_0.70": {
+          "layer": 22,
+          "in_dist": 0.3824,
+          "off": 0.5498,
+          "gap": -0.1674,
+          "off_below_best": 0.1454
+        },
+        "fixed_depth_0.80": {
+          "layer": 26,
+          "in_dist": 0.4441,
+          "off": 0.6183,
+          "gap": -0.1742,
+          "off_below_best": 0.0769
+        },
+        "fixed_depth_0.85": {
+          "layer": 27,
+          "in_dist": 0.3865,
+          "off": 0.5389,
+          "gap": -0.1524,
+          "off_below_best": 0.1563
+        },
+        "our_mid_depth": {
+          "layer": 16,
+          "in_dist": 0.4309,
+          "off": 0.6513,
+          "gap": -0.2204,
+          "off_below_best": 0.0439
+        }
+      },
       "benchmark_ties": [
         {
           "tolerance": 0.0,
@@ -1403,6 +2107,50 @@
       "model": "Llama-3.1-8B",
       "probe": "lr",
       "n_layers": 33,
+      "selection_rules": {
+        "earliest_informative_95pct": {
+          "layer": 2,
+          "in_dist": 0.963,
+          "off": 0.0314,
+          "gap": 0.9315,
+          "off_below_best": 0.7837
+        },
+        "fixed_depth_0.60": {
+          "layer": 19,
+          "in_dist": 1.0,
+          "off": 0.6429,
+          "gap": 0.3571,
+          "off_below_best": 0.1722
+        },
+        "fixed_depth_0.70": {
+          "layer": 22,
+          "in_dist": 1.0,
+          "off": 0.6558,
+          "gap": 0.3442,
+          "off_below_best": 0.1593
+        },
+        "fixed_depth_0.80": {
+          "layer": 26,
+          "in_dist": 1.0,
+          "off": 0.6052,
+          "gap": 0.3948,
+          "off_below_best": 0.2099
+        },
+        "fixed_depth_0.85": {
+          "layer": 27,
+          "in_dist": 0.9992,
+          "off": 0.6069,
+          "gap": 0.3923,
+          "off_below_best": 0.2082
+        },
+        "our_mid_depth": {
+          "layer": 16,
+          "in_dist": 1.0,
+          "off": 0.7212,
+          "gap": 0.2788,
+          "off_below_best": 0.0939
+        }
+      },
       "benchmark_ties": [
         {
           "tolerance": 0.0,
@@ -1541,6 +2289,50 @@
       "model": "Llama-3.1-8B",
       "probe": "mm",
       "n_layers": 33,
+      "selection_rules": {
+        "earliest_informative_95pct": {
+          "layer": 32,
+          "in_dist": 0.8705,
+          "off": 0.2661,
+          "gap": 0.6044,
+          "off_below_best": 0.411
+        },
+        "fixed_depth_0.60": {
+          "layer": 19,
+          "in_dist": 0.5892,
+          "off": 0.5765,
+          "gap": 0.0127,
+          "off_below_best": 0.1006
+        },
+        "fixed_depth_0.70": {
+          "layer": 22,
+          "in_dist": 0.5715,
+          "off": 0.5693,
+          "gap": 0.0023,
+          "off_below_best": 0.1078
+        },
+        "fixed_depth_0.80": {
+          "layer": 26,
+          "in_dist": 0.5567,
+          "off": 0.5518,
+          "gap": 0.005,
+          "off_below_best": 0.1253
+        },
+        "fixed_depth_0.85": {
+          "layer": 27,
+          "in_dist": 0.5535,
+          "off": 0.5522,
+          "gap": 0.0012,
+          "off_below_best": 0.1249
+        },
+        "our_mid_depth": {
+          "layer": 16,
+          "in_dist": 0.6279,
+          "off": 0.6105,
+          "gap": 0.0173,
+          "off_below_best": 0.0666
+        }
+      },
       "benchmark_ties": [
         {
           "tolerance": 0.0,
@@ -1605,6 +2397,50 @@
       "model": "Llama-3.1-8B-Instruct",
       "probe": "ccs",
       "n_layers": 33,
+      "selection_rules": {
+        "earliest_informative_95pct": {
+          "layer": 19,
+          "in_dist": 0.625,
+          "off": 0.6679,
+          "gap": -0.0429,
+          "off_below_best": 0.086
+        },
+        "fixed_depth_0.60": {
+          "layer": 19,
+          "in_dist": 0.625,
+          "off": 0.6679,
+          "gap": -0.0429,
+          "off_below_best": 0.086
+        },
+        "fixed_depth_0.70": {
+          "layer": 22,
+          "in_dist": 0.3059,
+          "off": 0.5389,
+          "gap": -0.233,
+          "off_below_best": 0.215
+        },
+        "fixed_depth_0.80": {
+          "layer": 26,
+          "in_dist": 0.2993,
+          "off": 0.5009,
+          "gap": -0.2015,
+          "off_below_best": 0.253
+        },
+        "fixed_depth_0.85": {
+          "layer": 27,
+          "in_dist": 0.285,
+          "off": 0.5174,
+          "gap": -0.2324,
+          "off_below_best": 0.2365
+        },
+        "our_mid_depth": {
+          "layer": 16,
+          "in_dist": 0.3923,
+          "off": 0.6922,
+          "gap": -0.2999,
+          "off_below_best": 0.0617
+        }
+      },
       "benchmark_ties": [
         {
           "tolerance": 0.0,
@@ -1669,6 +2505,50 @@
       "model": "Llama-3.1-8B-Instruct",
       "probe": "lr",
       "n_layers": 33,
+      "selection_rules": {
+        "earliest_informative_95pct": {
+          "layer": 2,
+          "in_dist": 0.9556,
+          "off": 0.0315,
+          "gap": 0.9241,
+          "off_below_best": 0.8627
+        },
+        "fixed_depth_0.60": {
+          "layer": 19,
+          "in_dist": 1.0,
+          "off": 0.8041,
+          "gap": 0.1959,
+          "off_below_best": 0.0901
+        },
+        "fixed_depth_0.70": {
+          "layer": 22,
+          "in_dist": 1.0,
+          "off": 0.8189,
+          "gap": 0.1811,
+          "off_below_best": 0.0753
+        },
+        "fixed_depth_0.80": {
+          "layer": 26,
+          "in_dist": 1.0,
+          "off": 0.8267,
+          "gap": 0.1733,
+          "off_below_best": 0.0675
+        },
+        "fixed_depth_0.85": {
+          "layer": 27,
+          "in_dist": 1.0,
+          "off": 0.8349,
+          "gap": 0.1651,
+          "off_below_best": 0.0593
+        },
+        "our_mid_depth": {
+          "layer": 16,
+          "in_dist": 1.0,
+          "off": 0.8433,
+          "gap": 0.1567,
+          "off_below_best": 0.0509
+        }
+      },
       "benchmark_ties": [
         {
           "tolerance": 0.0,
@@ -1811,6 +2691,50 @@
       "model": "Llama-3.1-8B-Instruct",
       "probe": "mm",
       "n_layers": 33,
+      "selection_rules": {
+        "earliest_informative_95pct": {
+          "layer": 10,
+          "in_dist": 0.8232,
+          "off": 0.6605,
+          "gap": 0.1627,
+          "off_below_best": 0.1125
+        },
+        "fixed_depth_0.60": {
+          "layer": 19,
+          "in_dist": 0.5781,
+          "off": 0.6533,
+          "gap": -0.0752,
+          "off_below_best": 0.1197
+        },
+        "fixed_depth_0.70": {
+          "layer": 22,
+          "in_dist": 0.5781,
+          "off": 0.6506,
+          "gap": -0.0725,
+          "off_below_best": 0.1224
+        },
+        "fixed_depth_0.80": {
+          "layer": 26,
+          "in_dist": 0.5822,
+          "off": 0.6554,
+          "gap": -0.0732,
+          "off_below_best": 0.1176
+        },
+        "fixed_depth_0.85": {
+          "layer": 27,
+          "in_dist": 0.609,
+          "off": 0.6579,
+          "gap": -0.049,
+          "off_below_best": 0.1151
+        },
+        "our_mid_depth": {
+          "layer": 16,
+          "in_dist": 0.6719,
+          "off": 0.6749,
+          "gap": -0.003,
+          "off_below_best": 0.0981
+        }
+      },
       "benchmark_ties": [
         {
           "tolerance": 0.0,

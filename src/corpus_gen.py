@@ -147,8 +147,15 @@ def generate_topic(topic: str, edit_rate: float = 0.5, seed: int = 20260712) -> 
     obj_pool = sorted(set(objects))
 
     items: list[dict] = []
+    seen: set[str] = set()
 
     def add(text, truth, edited, entity, strategy, obj=None):
+        # D-016: a truth-preserving swap can land on a string already present as an
+        # original, which put 70 duplicate rows in v3 and made 44 statements carry
+        # contradictory `edited` flags. First occurrence wins, deterministic by seed.
+        if text in seen:
+            return
+        seen.add(text)
         items.append({
             "text": text, "truth": bool(truth), "edited": bool(edited),
             "entity": entity, "entities": [e for e in (entity, obj) if e],
