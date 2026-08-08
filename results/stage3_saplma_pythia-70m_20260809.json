@@ -1,0 +1,4419 @@
+{
+  "detector": "saplma",
+  "model": "EleutherAI/pythia-70m",
+  "corpus": "mirage_2x2_v6206fe484650.jsonl",
+  "corpus_hash": "6206fe484650",
+  "domain": "all",
+  "n": 696,
+  "cell_counts": {
+    "TT": 174,
+    "TA": 174,
+    "FT": 174,
+    "FA": 174
+  },
+  "n_folds": 5,
+  "typicality_axis": "entity_freq_log10",
+  "mediation_covariates": [
+    "typicality",
+    "fragmentation",
+    "edit"
+  ],
+  "headline_layer": 3,
+  "fielded_scores_headline": {
+    "layer": 3,
+    "score": [
+      0.25831,
+      0.08792,
+      0.082247,
+      0.298616,
+      0.068638,
+      0.372846,
+      0.115077,
+      0.071149,
+      0.207818,
+      0.146834,
+      0.27687,
+      0.489424,
+      0.347632,
+      0.246525,
+      0.143094,
+      0.114065,
+      0.034209,
+      0.175336,
+      0.197413,
+      0.096234,
+      0.095441,
+      0.12495,
+      0.223891,
+      0.596867,
+      0.406358,
+      0.068461,
+      0.181238,
+      0.843957,
+      0.175336,
+      0.231472,
+      0.713595,
+      0.155034,
+      0.070828,
+      0.111681,
+      0.859223,
+      0.061151,
+      0.072544,
+      0.090223,
+      0.087309,
+      0.068153,
+      0.42657,
+      0.407583,
+      0.054375,
+      0.489424,
+      0.216767,
+      0.532511,
+      0.00058,
+      0.100709,
+      0.126917,
+      0.144607,
+      0.407583,
+      0.072316,
+      0.157703,
+      0.410466,
+      0.155335,
+      0.530718,
+      0.102696,
+      0.068454,
+      0.976619,
+      0.154651,
+      0.999921,
+      0.784585,
+      0.86882,
+      0.71432,
+      0.613899,
+      0.508812,
+      0.944663,
+      0.818491,
+      0.950061,
+      0.954805,
+      0.887036,
+      0.711142,
+      0.99295,
+      0.460019,
+      0.445123,
+      0.951769,
+      0.640325,
+      0.960742,
+      0.852011,
+      0.366106,
+      0.419886,
+      0.676602,
+      0.602013,
+      0.612548,
+      0.938618,
+      0.978825,
+      0.57314,
+      0.373131,
+      0.965571,
+      0.95952,
+      0.989141,
+      0.799116,
+      0.999713,
+      0.887599,
+      0.575213,
+      0.070297,
+      0.830274,
+      0.993387,
+      0.662694,
+      0.954805,
+      0.939025,
+      0.451135,
+      0.432317,
+      0.812661,
+      0.92542,
+      0.462819,
+      0.992473,
+      0.99593,
+      0.719512,
+      0.98377,
+      0.662694,
+      0.337206,
+      0.643317,
+      0.823045,
+      0.910095,
+      0.80351,
+      0.949633,
+      0.548222,
+      0.809579,
+      0.226833,
+      0.341088,
+      0.373432,
+      0.754359,
+      0.447166,
+      0.376041,
+      0.817113,
+      0.408696,
+      0.964333,
+      0.207961,
+      0.825308,
+      0.87719,
+      0.951962,
+      0.396135,
+      0.853775,
+      0.838363,
+      0.314687,
+      0.936634,
+      0.906676,
+      0.925868,
+      0.565315,
+      0.260621,
+      0.887672,
+      0.853639,
+      0.39145,
+      0.775306,
+      0.406527,
+      0.960432,
+      0.922167,
+      0.468009,
+      0.822522,
+      0.792021,
+      0.406356,
+      0.926552,
+      0.93377,
+      0.316782,
+      0.874473,
+      0.388523,
+      0.69125,
+      0.323951,
+      0.483339,
+      0.867505,
+      0.149119,
+      0.647965,
+      0.855601,
+      0.90043,
+      0.420453,
+      0.743343,
+      0.929075,
+      0.061235,
+      0.938417,
+      0.085768,
+      0.735397,
+      0.475936,
+      0.788193,
+      0.214448,
+      0.285509,
+      0.318815,
+      0.021951,
+      0.217682,
+      0.494912,
+      0.629379,
+      0.603873,
+      0.001778,
+      0.744535,
+      0.068393,
+      0.085022,
+      0.548073,
+      0.312774,
+      0.385637,
+      0.309929,
+      0.853492,
+      0.003278,
+      0.407879,
+      0.540732,
+      0.142352,
+      0.034873,
+      0.028759,
+      0.002727,
+      0.489869,
+      0.094571,
+      0.186289,
+      0.066176,
+      0.308983,
+      0.301557,
+      0.001355,
+      0.00305,
+      0.449777,
+      0.396229,
+      0.023881,
+      0.000205,
+      0.01465,
+      0.539202,
+      0.044481,
+      0.024052,
+      0.023011,
+      3.9e-05,
+      0.07966,
+      0.68008,
+      0.293097,
+      0.002625,
+      0.000406,
+      0.003484,
+      0.000156,
+      0.162518,
+      0.023974,
+      0.019987,
+      0.420737,
+      0.352089,
+      0.756689,
+      0.022148,
+      0.523216,
+      0.000327,
+      0.550356,
+      0.849087,
+      0.446861,
+      0.129795,
+      0.886766,
+      0.819711,
+      0.823552,
+      0.938752,
+      0.685964,
+      0.850491,
+      0.451734,
+      0.416149,
+      0.118806,
+      0.713584,
+      0.952856,
+      0.852328,
+      0.866033,
+      0.882794,
+      0.236533,
+      0.561958,
+      0.772699,
+      0.103161,
+      0.836097,
+      0.936242,
+      0.066445,
+      0.648912,
+      0.22182,
+      0.17797,
+      0.08369,
+      0.216569,
+      0.983238,
+      0.287465,
+      0.956916,
+      0.797348,
+      0.452698,
+      0.683048,
+      0.50127,
+      0.107398,
+      0.665929,
+      0.330711,
+      0.133242,
+      0.64969,
+      0.646495,
+      0.252215,
+      0.598815,
+      0.615216,
+      0.385774,
+      0.565516,
+      0.898984,
+      0.785108,
+      0.898611,
+      0.985943,
+      0.220474,
+      0.222732,
+      0.386127,
+      0.069263,
+      0.685871,
+      0.833829,
+      0.194532,
+      0.094761,
+      0.11793,
+      0.00029,
+      0.051195,
+      0.106553,
+      0.162136,
+      0.563034,
+      0.939417,
+      0.06539,
+      0.016126,
+      0.27871,
+      0.979104,
+      0.078494,
+      0.247826,
+      0.022735,
+      0.197348,
+      0.002046,
+      0.151802,
+      0.027847,
+      0.000366,
+      0.040446,
+      0.195354,
+      0.011176,
+      0.039853,
+      0.804036,
+      0.016055,
+      0.648357,
+      0.002302,
+      0.073045,
+      0.056976,
+      0.003243,
+      0.023578,
+      0.0277,
+      0.712383,
+      0.074679,
+      0.151112,
+      0.034255,
+      0.266036,
+      0.59499,
+      0.207478,
+      0.319944,
+      0.020118,
+      0.004343,
+      0.935775,
+      0.085785,
+      0.004821,
+      0.148871,
+      0.000217,
+      0.039351,
+      0.001812,
+      0.244269,
+      0.037144,
+      0.091175,
+      0.00014,
+      0.999778,
+      0.113286,
+      0.029712,
+      0.11723,
+      0.115731,
+      0.11723,
+      0.080298,
+      0.112684,
+      0.145199,
+      0.160062,
+      0.050177,
+      0.064872,
+      0.044866,
+      0.140035,
+      0.058391,
+      0.404414,
+      0.087076,
+      0.064872,
+      0.05858,
+      0.811314,
+      0.417462,
+      0.346384,
+      0.196137,
+      0.05858,
+      0.038089,
+      0.05858,
+      0.043453,
+      0.112684,
+      0.153635,
+      0.134966,
+      0.081732,
+      0.607068,
+      0.369041,
+      0.072986,
+      0.052536,
+      0.070973,
+      0.346384,
+      0.346384,
+      0.080298,
+      0.101163,
+      0.912265,
+      0.080298,
+      0.912265,
+      0.12048,
+      0.440874,
+      0.05858,
+      0.114669,
+      0.059376,
+      0.052536,
+      0.192705,
+      0.404414,
+      0.057972,
+      0.038089,
+      0.148145,
+      0.071605,
+      0.074555,
+      0.051774,
+      0.071605,
+      0.28753,
+      0.114669,
+      0.064872,
+      0.176875,
+      0.720107,
+      0.95918,
+      0.999917,
+      0.999958,
+      0.972367,
+      0.099752,
+      0.999974,
+      0.586898,
+      0.958893,
+      0.934809,
+      0.950705,
+      0.813752,
+      0.985828,
+      0.999145,
+      0.913741,
+      0.775309,
+      0.874678,
+      0.851638,
+      0.667956,
+      0.972762,
+      0.775309,
+      0.898365,
+      0.524468,
+      0.160905,
+      0.975434,
+      0.958873,
+      0.952917,
+      0.90548,
+      0.546333,
+      0.194862,
+      0.525416,
+      0.993111,
+      0.887536,
+      0.759989,
+      0.992223,
+      0.855774,
+      0.725164,
+      0.108431,
+      0.999053,
+      0.999257,
+      0.952653,
+      0.979038,
+      0.903157,
+      0.950288,
+      0.038556,
+      0.108431,
+      0.936193,
+      0.114735,
+      0.979268,
+      0.998012,
+      0.960797,
+      0.886219,
+      0.937488,
+      0.66971,
+      0.900462,
+      0.996394,
+      0.954086,
+      0.019875,
+      0.219709,
+      1e-06,
+      0.061474,
+      8.6e-05,
+      0.695477,
+      0.537881,
+      1e-06,
+      0.000736,
+      0.0,
+      0.150371,
+      0.800062,
+      0.558836,
+      0.0,
+      1e-06,
+      0.635723,
+      0.464568,
+      0.557478,
+      0.000524,
+      4.1e-05,
+      0.864974,
+      0.665856,
+      0.000196,
+      0.754924,
+      0.00011,
+      0.012475,
+      0.0,
+      0.787435,
+      0.360835,
+      0.01206,
+      0.0,
+      0.505957,
+      0.0,
+      0.0,
+      0.355237,
+      0.174972,
+      0.233965,
+      3e-06,
+      0.000631,
+      0.798623,
+      0.388078,
+      0.007302,
+      4e-06,
+      0.000426,
+      0.340916,
+      0.355186,
+      0.539159,
+      0.0,
+      0.320364,
+      0.0,
+      0.706578,
+      0.263948,
+      0.028203,
+      0.996899,
+      0.0,
+      0.006705,
+      0.433765,
+      0.000137,
+      0.888928,
+      0.937244,
+      0.807857,
+      0.999999,
+      0.619143,
+      0.688933,
+      0.948204,
+      0.968781,
+      0.860113,
+      0.982814,
+      0.765553,
+      0.820099,
+      0.892145,
+      0.944201,
+      0.891507,
+      0.888325,
+      0.93126,
+      0.662082,
+      0.571883,
+      0.950308,
+      0.936727,
+      0.950484,
+      0.990099,
+      0.362534,
+      0.326319,
+      0.977581,
+      0.823941,
+      0.665522,
+      0.248741,
+      0.634676,
+      0.787678,
+      0.901723,
+      0.97908,
+      0.639804,
+      0.456333,
+      0.609594,
+      0.973932,
+      0.946214,
+      0.279511,
+      0.925017,
+      0.941164,
+      0.610749,
+      0.999999,
+      0.91467,
+      0.193512,
+      0.952582,
+      0.947554,
+      0.89657,
+      0.316195,
+      0.880664,
+      0.93999,
+      0.977127,
+      0.952549,
+      0.960308,
+      0.795876,
+      0.592273,
+      0.518929,
+      0.930944,
+      0.98757,
+      0.308496,
+      0.993146,
+      0.812241,
+      0.794346,
+      0.610788,
+      0.966767,
+      0.995762,
+      1.0,
+      1e-06,
+      0.002383,
+      0.94123,
+      0.823711,
+      0.993603,
+      0.892474,
+      0.949931,
+      0.984286,
+      0.918012,
+      0.031685,
+      0.096626,
+      1.0,
+      0.906136,
+      0.923921,
+      0.999811,
+      0.765855,
+      0.377229,
+      0.0,
+      0.998413,
+      0.678399,
+      0.982656,
+      0.995762,
+      0.980082,
+      0.998413,
+      0.367493,
+      0.9949,
+      0.351026,
+      0.999614,
+      0.862929,
+      0.976404,
+      0.992928,
+      1.0,
+      0.006919,
+      0.997165,
+      0.822233,
+      0.9996,
+      0.995038,
+      0.990669,
+      0.99185,
+      0.989336,
+      0.91292,
+      0.999412,
+      0.94123,
+      0.972584,
+      1.0,
+      0.002197,
+      0.969516,
+      0.917168,
+      0.98768,
+      0.099887,
+      0.075766,
+      0.495295,
+      0.079175,
+      0.317545,
+      7.8e-05,
+      2.1e-05,
+      0.147248,
+      0.22424,
+      3.4e-05,
+      8.7e-05,
+      0.248588,
+      0.079175,
+      0.124699,
+      0.166385,
+      0.075766,
+      0.000117,
+      0.092496,
+      0.00012,
+      0.000121,
+      0.000905,
+      0.092496,
+      0.092496,
+      1.8e-05,
+      0.0002,
+      0.226133,
+      0.15221,
+      0.080706,
+      1.1e-05,
+      0.147248,
+      0.048493,
+      0.506543,
+      3.4e-05,
+      0.00012,
+      0.092496,
+      1e-05,
+      0.060506,
+      0.048493,
+      0.235148,
+      0.139196,
+      0.087448,
+      1.1e-05,
+      0.144898,
+      0.235148,
+      0.000121,
+      5.6e-05,
+      0.067073,
+      3.1e-05,
+      1e-05,
+      0.495295,
+      0.081112,
+      0.506708,
+      1e-05,
+      0.537862,
+      2.1e-05,
+      0.317348,
+      1.1e-05,
+      0.271423
+    ],
+    "cell": [
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA"
+    ],
+    "truth": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ]
+  },
+  "per_layer": [
+    {
+      "layer": 0,
+      "allcell_off_diagonal": {
+        "auroc": 0.4075,
+        "ci": [
+          0.3519,
+          0.47
+        ],
+        "n": 348,
+        "n_boot": 1000
+      },
+      "stratified_allcell": {
+        "headline_pooled": {
+          "auroc": 0.4255,
+          "ci": [
+            0.3865,
+            0.4672
+          ],
+          "n": 696,
+          "n_boot": 1000
+        },
+        "bands": [
+          {
+            "band": 0,
+            "typicality_range": [
+              1.061925820483543,
+              4.264838933798913
+            ],
+            "n": 174,
+            "n_true": 86,
+            "n_false": 88,
+            "auroc": 0.4181,
+            "ci": [
+              0.3389,
+              0.502
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 1,
+            "typicality_range": [
+              4.264838933798913,
+              5.664744651471001
+            ],
+            "n": 174,
+            "n_true": 86,
+            "n_false": 88,
+            "auroc": 0.4616,
+            "ci": [
+              0.3757,
+              0.548
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 2,
+            "typicality_range": [
+              5.664744651471001,
+              6.76811301402585
+            ],
+            "n": 174,
+            "n_true": 89,
+            "n_false": 85,
+            "auroc": 0.3805,
+            "ci": [
+              0.2964,
+              0.4583
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 3,
+            "typicality_range": [
+              6.76811301402585,
+              8.122590084472067
+            ],
+            "n": 174,
+            "n_true": 87,
+            "n_false": 87,
+            "auroc": 0.4329,
+            "ci": [
+              0.3508,
+              0.5091
+            ],
+            "n_boot": 1000
+          }
+        ],
+        "n_bands_usable": 4,
+        "within_band_auroc_weighted": 0.4233,
+        "gap": {
+          "point": 0.0022,
+          "ci": [
+            -0.0053,
+            0.0109
+          ],
+          "excludes_zero": false
+        }
+      },
+      "mediation_allcell": {
+        "n": 696,
+        "truth_beta_marginal": -0.1316,
+        "truth_beta_marginal_ci": [
+          -0.2055,
+          -0.0577
+        ],
+        "truth_beta_partialled": -0.1361,
+        "truth_beta_partialled_ci": [
+          -0.2098,
+          -0.0623
+        ],
+        "typicality_beta": 0.004,
+        "typicality_beta_ci": [
+          -0.0793,
+          0.0873
+        ],
+        "truth_beta_shrinkage": -0.0338,
+        "r2_truth_only": 0.0173,
+        "r2_joint": 0.0287,
+        "covariates": [
+          "fragmentation",
+          "edit"
+        ],
+        "assumption": "additive-linear; triangulate with stage 3a",
+        "fragmentation_beta": 0.1082,
+        "fragmentation_beta_ci": [
+          0.0263,
+          0.1901
+        ],
+        "edit_beta": -0.0254,
+        "edit_beta_ci": [
+          -0.101,
+          0.0501
+        ]
+      },
+      "stratified_fielded": {
+        "headline_pooled": {
+          "auroc": 0.4468,
+          "ci": [
+            0.4051,
+            0.4854
+          ],
+          "n": 696,
+          "n_boot": 1000
+        },
+        "bands": [
+          {
+            "band": 0,
+            "typicality_range": [
+              1.061925820483543,
+              4.264838933798913
+            ],
+            "n": 174,
+            "n_true": 86,
+            "n_false": 88,
+            "auroc": 0.4969,
+            "ci": [
+              0.4116,
+              0.5836
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 1,
+            "typicality_range": [
+              4.264838933798913,
+              5.664744651471001
+            ],
+            "n": 174,
+            "n_true": 86,
+            "n_false": 88,
+            "auroc": 0.5153,
+            "ci": [
+              0.4322,
+              0.5991
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 2,
+            "typicality_range": [
+              5.664744651471001,
+              6.76811301402585
+            ],
+            "n": 174,
+            "n_true": 89,
+            "n_false": 85,
+            "auroc": 0.4326,
+            "ci": [
+              0.3453,
+              0.517
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 3,
+            "typicality_range": [
+              6.76811301402585,
+              8.122590084472067
+            ],
+            "n": 174,
+            "n_true": 87,
+            "n_false": 87,
+            "auroc": 0.3448,
+            "ci": [
+              0.241,
+              0.4565
+            ],
+            "n_boot": 1000
+          }
+        ],
+        "n_bands_usable": 4,
+        "within_band_auroc_weighted": 0.4474,
+        "gap": {
+          "point": -0.0006,
+          "ci": [
+            -0.0128,
+            0.0152
+          ],
+          "excludes_zero": false
+        }
+      },
+      "mediation_fielded": {
+        "n": 696,
+        "truth_beta_marginal": -0.0055,
+        "truth_beta_marginal_ci": [
+          -0.08,
+          0.069
+        ],
+        "truth_beta_partialled": -0.0116,
+        "truth_beta_partialled_ci": [
+          -0.0729,
+          0.0498
+        ],
+        "typicality_beta": 0.498,
+        "typicality_beta_ci": [
+          0.4287,
+          0.5673
+        ],
+        "truth_beta_shrinkage": -1.1149,
+        "r2_truth_only": 0.0,
+        "r2_joint": 0.3281,
+        "covariates": [
+          "fragmentation",
+          "edit"
+        ],
+        "assumption": "additive-linear; triangulate with stage 3a",
+        "fragmentation_beta": 0.0811,
+        "fragmentation_beta_ci": [
+          0.013,
+          0.1492
+        ],
+        "edit_beta": -0.2437,
+        "edit_beta_ci": [
+          -0.3066,
+          -0.1809
+        ]
+      },
+      "adversarial": {
+        "train_n": 278,
+        "headline_heldout_diagonal": {
+          "auroc": 0.5806,
+          "ci": [
+            0.5192,
+            0.6552
+          ],
+          "n": 70,
+          "n_boot": 1000
+        },
+        "off_diagonal": {
+          "auroc": 0.431,
+          "ci": [
+            0.403,
+            0.4548
+          ],
+          "n": 348,
+          "n_boot": 1000
+        },
+        "gap": {
+          "gap": 0.1496,
+          "ci": [
+            0.0865,
+            0.2232
+          ],
+          "excludes_zero": true,
+          "n_boot": 1000
+        },
+        "off_diagonal_cells": {
+          "TA": {
+            "n": 174,
+            "mean_score": 0.5001
+          },
+          "FT": {
+            "n": 174,
+            "mean_score": 0.5801
+          }
+        }
+      },
+      "fielded_cell_scores": {
+        "TT": {
+          "n": 174,
+          "mean": 0.5349,
+          "q10": 0.5099,
+          "q50": 0.5264,
+          "q90": 0.5674
+        },
+        "TA": {
+          "n": 174,
+          "mean": 0.4641,
+          "q10": 0.0014,
+          "q50": 0.5381,
+          "q90": 0.5381
+        },
+        "FT": {
+          "n": 174,
+          "mean": 0.5381,
+          "q10": 0.5381,
+          "q50": 0.5381,
+          "q90": 0.5381
+        },
+        "FA": {
+          "n": 174,
+          "mean": 0.4639,
+          "q10": 0.0005,
+          "q50": 0.5264,
+          "q90": 0.5674
+        }
+      }
+    },
+    {
+      "layer": 1,
+      "allcell_off_diagonal": {
+        "auroc": 0.4849,
+        "ci": [
+          0.4222,
+          0.5455
+        ],
+        "n": 348,
+        "n_boot": 1000
+      },
+      "stratified_allcell": {
+        "headline_pooled": {
+          "auroc": 0.5414,
+          "ci": [
+            0.4985,
+            0.582
+          ],
+          "n": 696,
+          "n_boot": 1000
+        },
+        "bands": [
+          {
+            "band": 0,
+            "typicality_range": [
+              1.061925820483543,
+              4.264838933798913
+            ],
+            "n": 174,
+            "n_true": 86,
+            "n_false": 88,
+            "auroc": 0.452,
+            "ci": [
+              0.3742,
+              0.5383
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 1,
+            "typicality_range": [
+              4.264838933798913,
+              5.664744651471001
+            ],
+            "n": 174,
+            "n_true": 86,
+            "n_false": 88,
+            "auroc": 0.4456,
+            "ci": [
+              0.3652,
+              0.5255
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 2,
+            "typicality_range": [
+              5.664744651471001,
+              6.76811301402585
+            ],
+            "n": 174,
+            "n_true": 89,
+            "n_false": 85,
+            "auroc": 0.4558,
+            "ci": [
+              0.367,
+              0.5448
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 3,
+            "typicality_range": [
+              6.76811301402585,
+              8.122590084472067
+            ],
+            "n": 174,
+            "n_true": 87,
+            "n_false": 87,
+            "auroc": 0.7829,
+            "ci": [
+              0.7081,
+              0.8438
+            ],
+            "n_boot": 1000
+          }
+        ],
+        "n_bands_usable": 4,
+        "within_band_auroc_weighted": 0.5341,
+        "gap": {
+          "point": 0.0073,
+          "ci": [
+            -0.0033,
+            0.0188
+          ],
+          "excludes_zero": false
+        }
+      },
+      "mediation_allcell": {
+        "n": 696,
+        "truth_beta_marginal": 0.0786,
+        "truth_beta_marginal_ci": [
+          0.0043,
+          0.1529
+        ],
+        "truth_beta_partialled": 0.0694,
+        "truth_beta_partialled_ci": [
+          -0.0036,
+          0.1424
+        ],
+        "typicality_beta": 0.1714,
+        "typicality_beta_ci": [
+          0.0889,
+          0.2539
+        ],
+        "truth_beta_shrinkage": 0.1166,
+        "r2_truth_only": 0.0062,
+        "r2_joint": 0.0477,
+        "covariates": [
+          "fragmentation",
+          "edit"
+        ],
+        "assumption": "additive-linear; triangulate with stage 3a",
+        "fragmentation_beta": 0.1775,
+        "fragmentation_beta_ci": [
+          0.0964,
+          0.2586
+        ],
+        "edit_beta": -0.0696,
+        "edit_beta_ci": [
+          -0.1444,
+          0.0052
+        ]
+      },
+      "stratified_fielded": {
+        "headline_pooled": {
+          "auroc": 0.5286,
+          "ci": [
+            0.4875,
+            0.5707
+          ],
+          "n": 696,
+          "n_boot": 1000
+        },
+        "bands": [
+          {
+            "band": 0,
+            "typicality_range": [
+              1.061925820483543,
+              4.264838933798913
+            ],
+            "n": 174,
+            "n_true": 86,
+            "n_false": 88,
+            "auroc": 0.4786,
+            "ci": [
+              0.3923,
+              0.5612
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 1,
+            "typicality_range": [
+              4.264838933798913,
+              5.664744651471001
+            ],
+            "n": 174,
+            "n_true": 86,
+            "n_false": 88,
+            "auroc": 0.5353,
+            "ci": [
+              0.4462,
+              0.6185
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 2,
+            "typicality_range": [
+              5.664744651471001,
+              6.76811301402585
+            ],
+            "n": 174,
+            "n_true": 89,
+            "n_false": 85,
+            "auroc": 0.4969,
+            "ci": [
+              0.4135,
+              0.578
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 3,
+            "typicality_range": [
+              6.76811301402585,
+              8.122590084472067
+            ],
+            "n": 174,
+            "n_true": 87,
+            "n_false": 87,
+            "auroc": 0.7224,
+            "ci": [
+              0.6478,
+              0.7899
+            ],
+            "n_boot": 1000
+          }
+        ],
+        "n_bands_usable": 4,
+        "within_band_auroc_weighted": 0.5583,
+        "gap": {
+          "point": -0.0297,
+          "ci": [
+            -0.0527,
+            -0.0076
+          ],
+          "excludes_zero": true
+        }
+      },
+      "mediation_fielded": {
+        "n": 696,
+        "truth_beta_marginal": 0.0246,
+        "truth_beta_marginal_ci": [
+          -0.0499,
+          0.0991
+        ],
+        "truth_beta_partialled": 0.0364,
+        "truth_beta_partialled_ci": [
+          -0.0289,
+          0.1016
+        ],
+        "typicality_beta": 0.2206,
+        "typicality_beta_ci": [
+          0.1469,
+          0.2942
+        ],
+        "truth_beta_shrinkage": -0.4775,
+        "r2_truth_only": 0.0006,
+        "r2_joint": 0.2407,
+        "covariates": [
+          "fragmentation",
+          "edit"
+        ],
+        "assumption": "additive-linear; triangulate with stage 3a",
+        "fragmentation_beta": -0.2206,
+        "fragmentation_beta_ci": [
+          -0.293,
+          -0.1483
+        ],
+        "edit_beta": -0.2503,
+        "edit_beta_ci": [
+          -0.3171,
+          -0.1834
+        ]
+      },
+      "adversarial": {
+        "train_n": 278,
+        "headline_heldout_diagonal": {
+          "auroc": 0.957,
+          "ci": [
+            0.9078,
+            0.9902
+          ],
+          "n": 70,
+          "n_boot": 1000
+        },
+        "off_diagonal": {
+          "auroc": 0.0904,
+          "ci": [
+            0.0637,
+            0.1215
+          ],
+          "n": 348,
+          "n_boot": 1000
+        },
+        "gap": {
+          "gap": 0.8666,
+          "ci": [
+            0.8161,
+            0.9082
+          ],
+          "excludes_zero": true,
+          "n_boot": 1000
+        },
+        "off_diagonal_cells": {
+          "TA": {
+            "n": 174,
+            "mean_score": 0.1965
+          },
+          "FT": {
+            "n": 174,
+            "mean_score": 0.7906
+          }
+        }
+      },
+      "fielded_cell_scores": {
+        "TT": {
+          "n": 174,
+          "mean": 0.8016,
+          "q10": 0.3013,
+          "q50": 0.9226,
+          "q90": 0.9962
+        },
+        "TA": {
+          "n": 174,
+          "mean": 0.2095,
+          "q10": 0.0002,
+          "q50": 0.1325,
+          "q90": 0.5147
+        },
+        "FT": {
+          "n": 174,
+          "mean": 0.7281,
+          "q10": 0.2818,
+          "q50": 0.8356,
+          "q90": 0.9792
+        },
+        "FA": {
+          "n": 174,
+          "mean": 0.2463,
+          "q10": 0.0001,
+          "q50": 0.1409,
+          "q90": 0.712
+        }
+      }
+    },
+    {
+      "layer": 2,
+      "allcell_off_diagonal": {
+        "auroc": 0.5659,
+        "ci": [
+          0.5055,
+          0.6205
+        ],
+        "n": 348,
+        "n_boot": 1000
+      },
+      "stratified_allcell": {
+        "headline_pooled": {
+          "auroc": 0.5663,
+          "ci": [
+            0.5236,
+            0.6111
+          ],
+          "n": 696,
+          "n_boot": 1000
+        },
+        "bands": [
+          {
+            "band": 0,
+            "typicality_range": [
+              1.061925820483543,
+              4.264838933798913
+            ],
+            "n": 174,
+            "n_true": 86,
+            "n_false": 88,
+            "auroc": 0.4865,
+            "ci": [
+              0.4023,
+              0.5759
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 1,
+            "typicality_range": [
+              4.264838933798913,
+              5.664744651471001
+            ],
+            "n": 174,
+            "n_true": 86,
+            "n_false": 88,
+            "auroc": 0.4956,
+            "ci": [
+              0.4109,
+              0.5876
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 2,
+            "typicality_range": [
+              5.664744651471001,
+              6.76811301402585
+            ],
+            "n": 174,
+            "n_true": 89,
+            "n_false": 85,
+            "auroc": 0.5165,
+            "ci": [
+              0.4317,
+              0.6028
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 3,
+            "typicality_range": [
+              6.76811301402585,
+              8.122590084472067
+            ],
+            "n": 174,
+            "n_true": 87,
+            "n_false": 87,
+            "auroc": 0.7363,
+            "ci": [
+              0.6539,
+              0.8071
+            ],
+            "n_boot": 1000
+          }
+        ],
+        "n_bands_usable": 4,
+        "within_band_auroc_weighted": 0.5587,
+        "gap": {
+          "point": 0.0076,
+          "ci": [
+            -0.0019,
+            0.0177
+          ],
+          "excludes_zero": false
+        }
+      },
+      "mediation_allcell": {
+        "n": 696,
+        "truth_beta_marginal": 0.1165,
+        "truth_beta_marginal_ci": [
+          0.0425,
+          0.1905
+        ],
+        "truth_beta_partialled": 0.1046,
+        "truth_beta_partialled_ci": [
+          0.0323,
+          0.177
+        ],
+        "typicality_beta": 0.1583,
+        "typicality_beta_ci": [
+          0.0766,
+          0.24
+        ],
+        "truth_beta_shrinkage": 0.1018,
+        "r2_truth_only": 0.0136,
+        "r2_joint": 0.0661,
+        "covariates": [
+          "fragmentation",
+          "edit"
+        ],
+        "assumption": "additive-linear; triangulate with stage 3a",
+        "fragmentation_beta": 0.2364,
+        "fragmentation_beta_ci": [
+          0.1561,
+          0.3167
+        ],
+        "edit_beta": -0.0583,
+        "edit_beta_ci": [
+          -0.1324,
+          0.0158
+        ]
+      },
+      "stratified_fielded": {
+        "headline_pooled": {
+          "auroc": 0.5489,
+          "ci": [
+            0.5066,
+            0.5893
+          ],
+          "n": 696,
+          "n_boot": 1000
+        },
+        "bands": [
+          {
+            "band": 0,
+            "typicality_range": [
+              1.061925820483543,
+              4.264838933798913
+            ],
+            "n": 174,
+            "n_true": 86,
+            "n_false": 88,
+            "auroc": 0.4843,
+            "ci": [
+              0.3998,
+              0.5677
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 1,
+            "typicality_range": [
+              4.264838933798913,
+              5.664744651471001
+            ],
+            "n": 174,
+            "n_true": 86,
+            "n_false": 88,
+            "auroc": 0.5825,
+            "ci": [
+              0.4972,
+              0.6648
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 2,
+            "typicality_range": [
+              5.664744651471001,
+              6.76811301402585
+            ],
+            "n": 174,
+            "n_true": 89,
+            "n_false": 85,
+            "auroc": 0.5346,
+            "ci": [
+              0.4472,
+              0.6147
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 3,
+            "typicality_range": [
+              6.76811301402585,
+              8.122590084472067
+            ],
+            "n": 174,
+            "n_true": 87,
+            "n_false": 87,
+            "auroc": 0.7239,
+            "ci": [
+              0.6435,
+              0.7911
+            ],
+            "n_boot": 1000
+          }
+        ],
+        "n_bands_usable": 4,
+        "within_band_auroc_weighted": 0.5813,
+        "gap": {
+          "point": -0.0324,
+          "ci": [
+            -0.0561,
+            -0.0106
+          ],
+          "excludes_zero": true
+        }
+      },
+      "mediation_fielded": {
+        "n": 696,
+        "truth_beta_marginal": 0.0352,
+        "truth_beta_marginal_ci": [
+          -0.0393,
+          0.1097
+        ],
+        "truth_beta_partialled": 0.0477,
+        "truth_beta_partialled_ci": [
+          -0.0166,
+          0.1119
+        ],
+        "typicality_beta": 0.2345,
+        "typicality_beta_ci": [
+          0.1619,
+          0.307
+        ],
+        "truth_beta_shrinkage": -0.3552,
+        "r2_truth_only": 0.0012,
+        "r2_joint": 0.2628,
+        "covariates": [
+          "fragmentation",
+          "edit"
+        ],
+        "assumption": "additive-linear; triangulate with stage 3a",
+        "fragmentation_beta": -0.2474,
+        "fragmentation_beta_ci": [
+          -0.3187,
+          -0.1761
+        ],
+        "edit_beta": -0.2371,
+        "edit_beta_ci": [
+          -0.3029,
+          -0.1713
+        ]
+      },
+      "adversarial": {
+        "train_n": 278,
+        "headline_heldout_diagonal": {
+          "auroc": 0.9371,
+          "ci": [
+            0.87,
+            0.9836
+          ],
+          "n": 70,
+          "n_boot": 1000
+        },
+        "off_diagonal": {
+          "auroc": 0.1503,
+          "ci": [
+            0.1106,
+            0.1929
+          ],
+          "n": 348,
+          "n_boot": 1000
+        },
+        "gap": {
+          "gap": 0.7869,
+          "ci": [
+            0.7147,
+            0.8452
+          ],
+          "excludes_zero": true,
+          "n_boot": 1000
+        },
+        "off_diagonal_cells": {
+          "TA": {
+            "n": 174,
+            "mean_score": 0.3248
+          },
+          "FT": {
+            "n": 174,
+            "mean_score": 0.5838
+          }
+        }
+      },
+      "fielded_cell_scores": {
+        "TT": {
+          "n": 174,
+          "mean": 0.7902,
+          "q10": 0.2925,
+          "q50": 0.9172,
+          "q90": 0.9996
+        },
+        "TA": {
+          "n": 174,
+          "mean": 0.1886,
+          "q10": 0.0119,
+          "q50": 0.1197,
+          "q90": 0.5414
+        },
+        "FT": {
+          "n": 174,
+          "mean": 0.7087,
+          "q10": 0.2193,
+          "q50": 0.8373,
+          "q90": 0.9599
+        },
+        "FA": {
+          "n": 174,
+          "mean": 0.2165,
+          "q10": 0.0001,
+          "q50": 0.08,
+          "q90": 0.6666
+        }
+      }
+    },
+    {
+      "layer": 3,
+      "allcell_off_diagonal": {
+        "auroc": 0.5648,
+        "ci": [
+          0.5045,
+          0.6262
+        ],
+        "n": 348,
+        "n_boot": 1000
+      },
+      "stratified_allcell": {
+        "headline_pooled": {
+          "auroc": 0.5975,
+          "ci": [
+            0.5541,
+            0.6399
+          ],
+          "n": 696,
+          "n_boot": 1000
+        },
+        "bands": [
+          {
+            "band": 0,
+            "typicality_range": [
+              1.061925820483543,
+              4.264838933798913
+            ],
+            "n": 174,
+            "n_true": 86,
+            "n_false": 88,
+            "auroc": 0.4874,
+            "ci": [
+              0.4081,
+              0.5789
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 1,
+            "typicality_range": [
+              4.264838933798913,
+              5.664744651471001
+            ],
+            "n": 174,
+            "n_true": 86,
+            "n_false": 88,
+            "auroc": 0.5155,
+            "ci": [
+              0.4298,
+              0.5948
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 2,
+            "typicality_range": [
+              5.664744651471001,
+              6.76811301402585
+            ],
+            "n": 174,
+            "n_true": 89,
+            "n_false": 85,
+            "auroc": 0.6005,
+            "ci": [
+              0.5166,
+              0.6919
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 3,
+            "typicality_range": [
+              6.76811301402585,
+              8.122590084472067
+            ],
+            "n": 174,
+            "n_true": 87,
+            "n_false": 87,
+            "auroc": 0.7739,
+            "ci": [
+              0.6997,
+              0.844
+            ],
+            "n_boot": 1000
+          }
+        ],
+        "n_bands_usable": 4,
+        "within_band_auroc_weighted": 0.5943,
+        "gap": {
+          "point": 0.0032,
+          "ci": [
+            -0.0056,
+            0.0127
+          ],
+          "excludes_zero": false
+        }
+      },
+      "mediation_allcell": {
+        "n": 696,
+        "truth_beta_marginal": 0.1487,
+        "truth_beta_marginal_ci": [
+          0.0749,
+          0.2224
+        ],
+        "truth_beta_partialled": 0.1403,
+        "truth_beta_partialled_ci": [
+          0.0699,
+          0.2107
+        ],
+        "typicality_beta": 0.1841,
+        "typicality_beta_ci": [
+          0.1046,
+          0.2636
+        ],
+        "truth_beta_shrinkage": 0.056,
+        "r2_truth_only": 0.0221,
+        "r2_joint": 0.1149,
+        "covariates": [
+          "fragmentation",
+          "edit"
+        ],
+        "assumption": "additive-linear; triangulate with stage 3a",
+        "fragmentation_beta": 0.214,
+        "fragmentation_beta_ci": [
+          0.1358,
+          0.2921
+        ],
+        "edit_beta": -0.2032,
+        "edit_beta_ci": [
+          -0.2753,
+          -0.1311
+        ]
+      },
+      "stratified_fielded": {
+        "headline_pooled": {
+          "auroc": 0.541,
+          "ci": [
+            0.4963,
+            0.5827
+          ],
+          "n": 696,
+          "n_boot": 1000
+        },
+        "bands": [
+          {
+            "band": 0,
+            "typicality_range": [
+              1.061925820483543,
+              4.264838933798913
+            ],
+            "n": 174,
+            "n_true": 86,
+            "n_false": 88,
+            "auroc": 0.4371,
+            "ci": [
+              0.3535,
+              0.5202
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 1,
+            "typicality_range": [
+              4.264838933798913,
+              5.664744651471001
+            ],
+            "n": 174,
+            "n_true": 86,
+            "n_false": 88,
+            "auroc": 0.5707,
+            "ci": [
+              0.4799,
+              0.6511
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 2,
+            "typicality_range": [
+              5.664744651471001,
+              6.76811301402585
+            ],
+            "n": 174,
+            "n_true": 89,
+            "n_false": 85,
+            "auroc": 0.5471,
+            "ci": [
+              0.4581,
+              0.6293
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 3,
+            "typicality_range": [
+              6.76811301402585,
+              8.122590084472067
+            ],
+            "n": 174,
+            "n_true": 87,
+            "n_false": 87,
+            "auroc": 0.7171,
+            "ci": [
+              0.645,
+              0.7915
+            ],
+            "n_boot": 1000
+          }
+        ],
+        "n_bands_usable": 4,
+        "within_band_auroc_weighted": 0.568,
+        "gap": {
+          "point": -0.027,
+          "ci": [
+            -0.0505,
+            -0.0046
+          ],
+          "excludes_zero": true
+        }
+      },
+      "mediation_fielded": {
+        "n": 696,
+        "truth_beta_marginal": 0.0397,
+        "truth_beta_marginal_ci": [
+          -0.0348,
+          0.1142
+        ],
+        "truth_beta_partialled": 0.0522,
+        "truth_beta_partialled_ci": [
+          -0.0125,
+          0.1168
+        ],
+        "typicality_beta": 0.2268,
+        "typicality_beta_ci": [
+          0.1538,
+          0.2998
+        ],
+        "truth_beta_shrinkage": -0.3137,
+        "r2_truth_only": 0.0016,
+        "r2_joint": 0.2537,
+        "covariates": [
+          "fragmentation",
+          "edit"
+        ],
+        "assumption": "additive-linear; triangulate with stage 3a",
+        "fragmentation_beta": -0.2455,
+        "fragmentation_beta_ci": [
+          -0.3172,
+          -0.1737
+        ],
+        "edit_beta": -0.234,
+        "edit_beta_ci": [
+          -0.3002,
+          -0.1677
+        ]
+      },
+      "adversarial": {
+        "train_n": 278,
+        "headline_heldout_diagonal": {
+          "auroc": 0.9586,
+          "ci": [
+            0.9075,
+            0.9934
+          ],
+          "n": 70,
+          "n_boot": 1000
+        },
+        "off_diagonal": {
+          "auroc": 0.0911,
+          "ci": [
+            0.063,
+            0.1215
+          ],
+          "n": 348,
+          "n_boot": 1000
+        },
+        "gap": {
+          "gap": 0.8675,
+          "ci": [
+            0.8147,
+            0.9134
+          ],
+          "excludes_zero": true,
+          "n_boot": 1000
+        },
+        "off_diagonal_cells": {
+          "TA": {
+            "n": 174,
+            "mean_score": 0.1368
+          },
+          "FT": {
+            "n": 174,
+            "mean_score": 0.6669
+          }
+        }
+      },
+      "fielded_cell_scores": {
+        "TT": {
+          "n": 174,
+          "mean": 0.7717,
+          "q10": 0.3171,
+          "q50": 0.9115,
+          "q90": 0.9983
+        },
+        "TA": {
+          "n": 174,
+          "mean": 0.1783,
+          "q10": 0.0001,
+          "q50": 0.1072,
+          "q90": 0.4366
+        },
+        "FT": {
+          "n": 174,
+          "mean": 0.6641,
+          "q10": 0.224,
+          "q50": 0.774,
+          "q90": 0.9524
+        },
+        "FA": {
+          "n": 174,
+          "mean": 0.2272,
+          "q10": 0.0001,
+          "q50": 0.0854,
+          "q90": 0.6758
+        }
+      }
+    },
+    {
+      "layer": 4,
+      "allcell_off_diagonal": {
+        "auroc": 0.5295,
+        "ci": [
+          0.4698,
+          0.5919
+        ],
+        "n": 348,
+        "n_boot": 1000
+      },
+      "stratified_allcell": {
+        "headline_pooled": {
+          "auroc": 0.4994,
+          "ci": [
+            0.4573,
+            0.5437
+          ],
+          "n": 696,
+          "n_boot": 1000
+        },
+        "bands": [
+          {
+            "band": 0,
+            "typicality_range": [
+              1.061925820483543,
+              4.264838933798913
+            ],
+            "n": 174,
+            "n_true": 86,
+            "n_false": 88,
+            "auroc": 0.4376,
+            "ci": [
+              0.355,
+              0.524
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 1,
+            "typicality_range": [
+              4.264838933798913,
+              5.664744651471001
+            ],
+            "n": 174,
+            "n_true": 86,
+            "n_false": 88,
+            "auroc": 0.4466,
+            "ci": [
+              0.365,
+              0.5327
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 2,
+            "typicality_range": [
+              5.664744651471001,
+              6.76811301402585
+            ],
+            "n": 174,
+            "n_true": 89,
+            "n_false": 85,
+            "auroc": 0.4727,
+            "ci": [
+              0.3872,
+              0.5572
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 3,
+            "typicality_range": [
+              6.76811301402585,
+              8.122590084472067
+            ],
+            "n": 174,
+            "n_true": 87,
+            "n_false": 87,
+            "auroc": 0.6331,
+            "ci": [
+              0.5548,
+              0.7113
+            ],
+            "n_boot": 1000
+          }
+        ],
+        "n_bands_usable": 4,
+        "within_band_auroc_weighted": 0.4975,
+        "gap": {
+          "point": 0.0019,
+          "ci": [
+            -0.0089,
+            0.0139
+          ],
+          "excludes_zero": false
+        }
+      },
+      "mediation_allcell": {
+        "n": 696,
+        "truth_beta_marginal": 0.0287,
+        "truth_beta_marginal_ci": [
+          -0.0458,
+          0.1032
+        ],
+        "truth_beta_partialled": 0.0212,
+        "truth_beta_partialled_ci": [
+          -0.0527,
+          0.0952
+        ],
+        "typicality_beta": 0.0143,
+        "typicality_beta_ci": [
+          -0.0692,
+          0.0978
+        ],
+        "truth_beta_shrinkage": 0.2601,
+        "r2_truth_only": 0.0008,
+        "r2_joint": 0.0237,
+        "covariates": [
+          "fragmentation",
+          "edit"
+        ],
+        "assumption": "additive-linear; triangulate with stage 3a",
+        "fragmentation_beta": 0.1556,
+        "fragmentation_beta_ci": [
+          0.0735,
+          0.2377
+        ],
+        "edit_beta": 0.0104,
+        "edit_beta_ci": [
+          -0.0653,
+          0.0862
+        ]
+      },
+      "stratified_fielded": {
+        "headline_pooled": {
+          "auroc": 0.5104,
+          "ci": [
+            0.4696,
+            0.5541
+          ],
+          "n": 696,
+          "n_boot": 1000
+        },
+        "bands": [
+          {
+            "band": 0,
+            "typicality_range": [
+              1.061925820483543,
+              4.264838933798913
+            ],
+            "n": 174,
+            "n_true": 86,
+            "n_false": 88,
+            "auroc": 0.4226,
+            "ci": [
+              0.3386,
+              0.5039
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 1,
+            "typicality_range": [
+              4.264838933798913,
+              5.664744651471001
+            ],
+            "n": 174,
+            "n_true": 86,
+            "n_false": 88,
+            "auroc": 0.4896,
+            "ci": [
+              0.3983,
+              0.5711
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 2,
+            "typicality_range": [
+              5.664744651471001,
+              6.76811301402585
+            ],
+            "n": 174,
+            "n_true": 89,
+            "n_false": 85,
+            "auroc": 0.4738,
+            "ci": [
+              0.3898,
+              0.5579
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 3,
+            "typicality_range": [
+              6.76811301402585,
+              8.122590084472067
+            ],
+            "n": 174,
+            "n_true": 87,
+            "n_false": 87,
+            "auroc": 0.7239,
+            "ci": [
+              0.6511,
+              0.7998
+            ],
+            "n_boot": 1000
+          }
+        ],
+        "n_bands_usable": 4,
+        "within_band_auroc_weighted": 0.5275,
+        "gap": {
+          "point": -0.0171,
+          "ci": [
+            -0.0369,
+            0.001
+          ],
+          "excludes_zero": false
+        }
+      },
+      "mediation_fielded": {
+        "n": 696,
+        "truth_beta_marginal": 0.0202,
+        "truth_beta_marginal_ci": [
+          -0.0543,
+          0.0947
+        ],
+        "truth_beta_partialled": 0.0323,
+        "truth_beta_partialled_ci": [
+          -0.0345,
+          0.0991
+        ],
+        "typicality_beta": 0.1974,
+        "typicality_beta_ci": [
+          0.1219,
+          0.2728
+        ],
+        "truth_beta_shrinkage": -0.5944,
+        "r2_truth_only": 0.0004,
+        "r2_joint": 0.2034,
+        "covariates": [
+          "fragmentation",
+          "edit"
+        ],
+        "assumption": "additive-linear; triangulate with stage 3a",
+        "fragmentation_beta": -0.2516,
+        "fragmentation_beta_ci": [
+          -0.3258,
+          -0.1775
+        ],
+        "edit_beta": -0.1771,
+        "edit_beta_ci": [
+          -0.2455,
+          -0.1086
+        ]
+      },
+      "adversarial": {
+        "train_n": 278,
+        "headline_heldout_diagonal": {
+          "auroc": 0.8834,
+          "ci": [
+            0.7951,
+            0.9529
+          ],
+          "n": 70,
+          "n_boot": 1000
+        },
+        "off_diagonal": {
+          "auroc": 0.1373,
+          "ci": [
+            0.1017,
+            0.1744
+          ],
+          "n": 348,
+          "n_boot": 1000
+        },
+        "gap": {
+          "gap": 0.7461,
+          "ci": [
+            0.6598,
+            0.8247
+          ],
+          "excludes_zero": true,
+          "n_boot": 1000
+        },
+        "off_diagonal_cells": {
+          "TA": {
+            "n": 174,
+            "mean_score": 0.2467
+          },
+          "FT": {
+            "n": 174,
+            "mean_score": 0.6389
+          }
+        }
+      },
+      "fielded_cell_scores": {
+        "TT": {
+          "n": 174,
+          "mean": 0.6877,
+          "q10": 0.179,
+          "q50": 0.7819,
+          "q90": 0.9791
+        },
+        "TA": {
+          "n": 174,
+          "mean": 0.2628,
+          "q10": 0.0134,
+          "q50": 0.2071,
+          "q90": 0.5093
+        },
+        "FT": {
+          "n": 174,
+          "mean": 0.5983,
+          "q10": 0.2514,
+          "q50": 0.6103,
+          "q90": 0.9047
+        },
+        "FA": {
+          "n": 174,
+          "mean": 0.3271,
+          "q10": 0.0032,
+          "q50": 0.2684,
+          "q90": 0.7589
+        }
+      }
+    },
+    {
+      "layer": 5,
+      "allcell_off_diagonal": {
+        "auroc": 0.551,
+        "ci": [
+          0.4895,
+          0.6114
+        ],
+        "n": 348,
+        "n_boot": 1000
+      },
+      "stratified_allcell": {
+        "headline_pooled": {
+          "auroc": 0.5248,
+          "ci": [
+            0.4794,
+            0.5659
+          ],
+          "n": 696,
+          "n_boot": 1000
+        },
+        "bands": [
+          {
+            "band": 0,
+            "typicality_range": [
+              1.061925820483543,
+              4.264838933798913
+            ],
+            "n": 174,
+            "n_true": 86,
+            "n_false": 88,
+            "auroc": 0.4347,
+            "ci": [
+              0.3489,
+              0.523
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 1,
+            "typicality_range": [
+              4.264838933798913,
+              5.664744651471001
+            ],
+            "n": 174,
+            "n_true": 86,
+            "n_false": 88,
+            "auroc": 0.4481,
+            "ci": [
+              0.364,
+              0.5274
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 2,
+            "typicality_range": [
+              5.664744651471001,
+              6.76811301402585
+            ],
+            "n": 174,
+            "n_true": 89,
+            "n_false": 85,
+            "auroc": 0.5428,
+            "ci": [
+              0.4544,
+              0.6258
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 3,
+            "typicality_range": [
+              6.76811301402585,
+              8.122590084472067
+            ],
+            "n": 174,
+            "n_true": 87,
+            "n_false": 87,
+            "auroc": 0.6544,
+            "ci": [
+              0.5786,
+              0.7317
+            ],
+            "n_boot": 1000
+          }
+        ],
+        "n_bands_usable": 4,
+        "within_band_auroc_weighted": 0.52,
+        "gap": {
+          "point": 0.0048,
+          "ci": [
+            -0.0065,
+            0.013
+          ],
+          "excludes_zero": false
+        }
+      },
+      "mediation_allcell": {
+        "n": 696,
+        "truth_beta_marginal": 0.0716,
+        "truth_beta_marginal_ci": [
+          -0.0028,
+          0.1459
+        ],
+        "truth_beta_partialled": 0.0685,
+        "truth_beta_partialled_ci": [
+          -0.0059,
+          0.1429
+        ],
+        "typicality_beta": 0.0207,
+        "typicality_beta_ci": [
+          -0.0634,
+          0.1048
+        ],
+        "truth_beta_shrinkage": 0.043,
+        "r2_truth_only": 0.0051,
+        "r2_joint": 0.0108,
+        "covariates": [
+          "fragmentation",
+          "edit"
+        ],
+        "assumption": "additive-linear; triangulate with stage 3a",
+        "fragmentation_beta": 0.0761,
+        "fragmentation_beta_ci": [
+          -0.0065,
+          0.1587
+        ],
+        "edit_beta": -0.0334,
+        "edit_beta_ci": [
+          -0.1096,
+          0.0429
+        ]
+      },
+      "stratified_fielded": {
+        "headline_pooled": {
+          "auroc": 0.5183,
+          "ci": [
+            0.4758,
+            0.5611
+          ],
+          "n": 696,
+          "n_boot": 1000
+        },
+        "bands": [
+          {
+            "band": 0,
+            "typicality_range": [
+              1.061925820483543,
+              4.264838933798913
+            ],
+            "n": 174,
+            "n_true": 86,
+            "n_false": 88,
+            "auroc": 0.4589,
+            "ci": [
+              0.3718,
+              0.5439
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 1,
+            "typicality_range": [
+              4.264838933798913,
+              5.664744651471001
+            ],
+            "n": 174,
+            "n_true": 86,
+            "n_false": 88,
+            "auroc": 0.4951,
+            "ci": [
+              0.4073,
+              0.5771
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 2,
+            "typicality_range": [
+              5.664744651471001,
+              6.76811301402585
+            ],
+            "n": 174,
+            "n_true": 89,
+            "n_false": 85,
+            "auroc": 0.5261,
+            "ci": [
+              0.4383,
+              0.6116
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 3,
+            "typicality_range": [
+              6.76811301402585,
+              8.122590084472067
+            ],
+            "n": 174,
+            "n_true": 87,
+            "n_false": 87,
+            "auroc": 0.67,
+            "ci": [
+              0.5886,
+              0.7551
+            ],
+            "n_boot": 1000
+          }
+        ],
+        "n_bands_usable": 4,
+        "within_band_auroc_weighted": 0.5375,
+        "gap": {
+          "point": -0.0192,
+          "ci": [
+            -0.0398,
+            0.0025
+          ],
+          "excludes_zero": false
+        }
+      },
+      "mediation_fielded": {
+        "n": 696,
+        "truth_beta_marginal": 0.0338,
+        "truth_beta_marginal_ci": [
+          -0.0407,
+          0.1083
+        ],
+        "truth_beta_partialled": 0.0442,
+        "truth_beta_partialled_ci": [
+          -0.0225,
+          0.1109
+        ],
+        "typicality_beta": 0.2287,
+        "typicality_beta_ci": [
+          0.1534,
+          0.304
+        ],
+        "truth_beta_shrinkage": -0.3074,
+        "r2_truth_only": 0.0011,
+        "r2_joint": 0.206,
+        "covariates": [
+          "fragmentation",
+          "edit"
+        ],
+        "assumption": "additive-linear; triangulate with stage 3a",
+        "fragmentation_beta": -0.2302,
+        "fragmentation_beta_ci": [
+          -0.3043,
+          -0.1562
+        ],
+        "edit_beta": -0.1664,
+        "edit_beta_ci": [
+          -0.2347,
+          -0.0981
+        ]
+      },
+      "adversarial": {
+        "train_n": 278,
+        "headline_heldout_diagonal": {
+          "auroc": 0.9247,
+          "ci": [
+            0.8603,
+            0.9745
+          ],
+          "n": 70,
+          "n_boot": 1000
+        },
+        "off_diagonal": {
+          "auroc": 0.1786,
+          "ci": [
+            0.141,
+            0.221
+          ],
+          "n": 348,
+          "n_boot": 1000
+        },
+        "gap": {
+          "gap": 0.7462,
+          "ci": [
+            0.6634,
+            0.8131
+          ],
+          "excludes_zero": true,
+          "n_boot": 1000
+        },
+        "off_diagonal_cells": {
+          "TA": {
+            "n": 174,
+            "mean_score": 0.3868
+          },
+          "FT": {
+            "n": 174,
+            "mean_score": 0.6029
+          }
+        }
+      },
+      "fielded_cell_scores": {
+        "TT": {
+          "n": 174,
+          "mean": 0.6954,
+          "q10": 0.2399,
+          "q50": 0.8167,
+          "q90": 0.971
+        },
+        "TA": {
+          "n": 174,
+          "mean": 0.2805,
+          "q10": 0.0163,
+          "q50": 0.1999,
+          "q90": 0.6449
+        },
+        "FT": {
+          "n": 174,
+          "mean": 0.6149,
+          "q10": 0.2363,
+          "q50": 0.6318,
+          "q90": 0.9331
+        },
+        "FA": {
+          "n": 174,
+          "mean": 0.3189,
+          "q10": 0.0172,
+          "q50": 0.2247,
+          "q90": 0.7267
+        }
+      }
+    },
+    {
+      "layer": 6,
+      "allcell_off_diagonal": {
+        "auroc": 0.5398,
+        "ci": [
+          0.4772,
+          0.5983
+        ],
+        "n": 348,
+        "n_boot": 1000
+      },
+      "stratified_allcell": {
+        "headline_pooled": {
+          "auroc": 0.54,
+          "ci": [
+            0.492,
+            0.5805
+          ],
+          "n": 696,
+          "n_boot": 1000
+        },
+        "bands": [
+          {
+            "band": 0,
+            "typicality_range": [
+              1.061925820483543,
+              4.264838933798913
+            ],
+            "n": 174,
+            "n_true": 86,
+            "n_false": 88,
+            "auroc": 0.4737,
+            "ci": [
+              0.3921,
+              0.5557
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 1,
+            "typicality_range": [
+              4.264838933798913,
+              5.664744651471001
+            ],
+            "n": 174,
+            "n_true": 86,
+            "n_false": 88,
+            "auroc": 0.4873,
+            "ci": [
+              0.3989,
+              0.57
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 2,
+            "typicality_range": [
+              5.664744651471001,
+              6.76811301402585
+            ],
+            "n": 174,
+            "n_true": 89,
+            "n_false": 85,
+            "auroc": 0.4781,
+            "ci": [
+              0.3965,
+              0.5653
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 3,
+            "typicality_range": [
+              6.76811301402585,
+              8.122590084472067
+            ],
+            "n": 174,
+            "n_true": 87,
+            "n_false": 87,
+            "auroc": 0.7128,
+            "ci": [
+              0.6316,
+              0.7816
+            ],
+            "n_boot": 1000
+          }
+        ],
+        "n_bands_usable": 4,
+        "within_band_auroc_weighted": 0.538,
+        "gap": {
+          "point": 0.002,
+          "ci": [
+            -0.0065,
+            0.0099
+          ],
+          "excludes_zero": false
+        }
+      },
+      "mediation_allcell": {
+        "n": 696,
+        "truth_beta_marginal": 0.0814,
+        "truth_beta_marginal_ci": [
+          0.0072,
+          0.1557
+        ],
+        "truth_beta_partialled": 0.0756,
+        "truth_beta_partialled_ci": [
+          0.0015,
+          0.1498
+        ],
+        "typicality_beta": 0.1081,
+        "typicality_beta_ci": [
+          0.0243,
+          0.1918
+        ],
+        "truth_beta_shrinkage": 0.0712,
+        "r2_truth_only": 0.0066,
+        "r2_joint": 0.0182,
+        "covariates": [
+          "fragmentation",
+          "edit"
+        ],
+        "assumption": "additive-linear; triangulate with stage 3a",
+        "fragmentation_beta": 0.0929,
+        "fragmentation_beta_ci": [
+          0.0106,
+          0.1752
+        ],
+        "edit_beta": 0.0004,
+        "edit_beta_ci": [
+          -0.0756,
+          0.0763
+        ]
+      },
+      "stratified_fielded": {
+        "headline_pooled": {
+          "auroc": 0.5478,
+          "ci": [
+            0.5059,
+            0.5901
+          ],
+          "n": 696,
+          "n_boot": 1000
+        },
+        "bands": [
+          {
+            "band": 0,
+            "typicality_range": [
+              1.061925820483543,
+              4.264838933798913
+            ],
+            "n": 174,
+            "n_true": 86,
+            "n_false": 88,
+            "auroc": 0.4823,
+            "ci": [
+              0.3959,
+              0.57
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 1,
+            "typicality_range": [
+              4.264838933798913,
+              5.664744651471001
+            ],
+            "n": 174,
+            "n_true": 86,
+            "n_false": 88,
+            "auroc": 0.4959,
+            "ci": [
+              0.4053,
+              0.5735
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 2,
+            "typicality_range": [
+              5.664744651471001,
+              6.76811301402585
+            ],
+            "n": 174,
+            "n_true": 89,
+            "n_false": 85,
+            "auroc": 0.5442,
+            "ci": [
+              0.4585,
+              0.6245
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 3,
+            "typicality_range": [
+              6.76811301402585,
+              8.122590084472067
+            ],
+            "n": 174,
+            "n_true": 87,
+            "n_false": 87,
+            "auroc": 0.7532,
+            "ci": [
+              0.6798,
+              0.8241
+            ],
+            "n_boot": 1000
+          }
+        ],
+        "n_bands_usable": 4,
+        "within_band_auroc_weighted": 0.5689,
+        "gap": {
+          "point": -0.0211,
+          "ci": [
+            -0.041,
+            -0.0009
+          ],
+          "excludes_zero": true
+        }
+      },
+      "mediation_fielded": {
+        "n": 696,
+        "truth_beta_marginal": 0.0837,
+        "truth_beta_marginal_ci": [
+          0.0095,
+          0.158
+        ],
+        "truth_beta_partialled": 0.0913,
+        "truth_beta_partialled_ci": [
+          0.0231,
+          0.1595
+        ],
+        "typicality_beta": 0.228,
+        "typicality_beta_ci": [
+          0.151,
+          0.3049
+        ],
+        "truth_beta_shrinkage": -0.0907,
+        "r2_truth_only": 0.007,
+        "r2_joint": 0.1703,
+        "covariates": [
+          "fragmentation",
+          "edit"
+        ],
+        "assumption": "additive-linear; triangulate with stage 3a",
+        "fragmentation_beta": -0.1714,
+        "fragmentation_beta_ci": [
+          -0.2471,
+          -0.0957
+        ],
+        "edit_beta": -0.1591,
+        "edit_beta_ci": [
+          -0.229,
+          -0.0893
+        ]
+      },
+      "adversarial": {
+        "train_n": 278,
+        "headline_heldout_diagonal": {
+          "auroc": 0.8685,
+          "ci": [
+            0.7738,
+            0.941
+          ],
+          "n": 70,
+          "n_boot": 1000
+        },
+        "off_diagonal": {
+          "auroc": 0.2208,
+          "ci": [
+            0.1748,
+            0.2716
+          ],
+          "n": 348,
+          "n_boot": 1000
+        },
+        "gap": {
+          "gap": 0.6477,
+          "ci": [
+            0.5474,
+            0.7347
+          ],
+          "excludes_zero": true,
+          "n_boot": 1000
+        },
+        "off_diagonal_cells": {
+          "TA": {
+            "n": 174,
+            "mean_score": 0.3497
+          },
+          "FT": {
+            "n": 174,
+            "mean_score": 0.5536
+          }
+        }
+      },
+      "fielded_cell_scores": {
+        "TT": {
+          "n": 174,
+          "mean": 0.7335,
+          "q10": 0.2505,
+          "q50": 0.8524,
+          "q90": 0.9874
+        },
+        "TA": {
+          "n": 174,
+          "mean": 0.3058,
+          "q10": 0.0428,
+          "q50": 0.2225,
+          "q90": 0.6801
+        },
+        "FT": {
+          "n": 174,
+          "mean": 0.6023,
+          "q10": 0.2457,
+          "q50": 0.6098,
+          "q90": 0.9295
+        },
+        "FA": {
+          "n": 174,
+          "mean": 0.3313,
+          "q10": 0.0325,
+          "q50": 0.2478,
+          "q90": 0.7755
+        }
+      }
+    }
+  ],
+  "provenance": "measured",
+  "seed": 20260719
+}
