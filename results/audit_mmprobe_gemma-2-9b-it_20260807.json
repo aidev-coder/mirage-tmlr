@@ -1,0 +1,76 @@
+{
+  "headline_auroc": {
+    "auroc": 0.8947,
+    "ci": [
+      0.8286,
+      0.9559
+    ],
+    "n": 70,
+    "n_boot": 1000
+  },
+  "controlled_auroc": {
+    "auroc": 0.9273,
+    "ci": [
+      0.9,
+      0.9541
+    ],
+    "n": 348,
+    "n_boot": 1000
+  },
+  "gap": {
+    "gap": -0.0326,
+    "ci": [
+      -0.1047,
+      0.0368
+    ],
+    "excludes_zero": false,
+    "n_boot": 1000
+  },
+  "per_cell_mean_p_true": {
+    "TT": 0.9885,
+    "TA": 0.9599,
+    "FT": 0.0863,
+    "FA": 0.1207
+  },
+  "stratified_gap": {
+    "point": -0.0003,
+    "ci": [
+      -0.0029,
+      0.0026
+    ],
+    "excludes_zero": false
+  },
+  "mediation": {
+    "n": 696,
+    "truth_beta_marginal": 0.8735,
+    "truth_beta_marginal_ci": [
+      0.8372,
+      0.9098
+    ],
+    "truth_beta_partialled": 0.873,
+    "truth_beta_partialled_ci": [
+      0.8368,
+      0.9092
+    ],
+    "typicality_beta": 0.034,
+    "typicality_beta_ci": [
+      -0.0022,
+      0.0702
+    ],
+    "truth_beta_shrinkage": 0.0006,
+    "r2_truth_only": 0.763,
+    "r2_joint": 0.7642,
+    "covariates": [],
+    "assumption": "additive-linear; triangulate with stage 3a"
+  },
+  "n": 696,
+  "cell_counts": {
+    "TT": 174,
+    "TA": 174,
+    "FT": 174,
+    "FA": 174
+  },
+  "probe": "mirage_hardness.probes_external.geometry_of_truth_mmprobe:GeometryOfTruthMMProbe",
+  "corpus": "mirage_2x2_v6206fe484650.jsonl",
+  "verdict": "NOT DISTINGUISHABLE FROM UNCONFOUNDED on this corpus (gap CI includes zero)"
+}

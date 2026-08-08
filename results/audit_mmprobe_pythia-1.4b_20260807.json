@@ -1,0 +1,76 @@
+{
+  "headline_auroc": {
+    "auroc": 0.8022,
+    "ci": [
+      0.6978,
+      0.8975
+    ],
+    "n": 70,
+    "n_boot": 1000
+  },
+  "controlled_auroc": {
+    "auroc": 0.3148,
+    "ci": [
+      0.2652,
+      0.3708
+    ],
+    "n": 348,
+    "n_boot": 1000
+  },
+  "gap": {
+    "gap": 0.4874,
+    "ci": [
+      0.373,
+      0.5927
+    ],
+    "excludes_zero": true,
+    "n_boot": 1000
+  },
+  "per_cell_mean_p_true": {
+    "TT": 0.8124,
+    "TA": 0.0863,
+    "FT": 0.507,
+    "FA": 0.1128
+  },
+  "stratified_gap": {
+    "point": -0.0152,
+    "ci": [
+      -0.037,
+      0.0015
+    ],
+    "excludes_zero": false
+  },
+  "mediation": {
+    "n": 696,
+    "truth_beta_marginal": 0.1446,
+    "truth_beta_marginal_ci": [
+      0.0709,
+      0.2183
+    ],
+    "truth_beta_partialled": 0.1404,
+    "truth_beta_partialled_ci": [
+      0.0698,
+      0.211
+    ],
+    "typicality_beta": 0.2883,
+    "typicality_beta_ci": [
+      0.2177,
+      0.3589
+    ],
+    "truth_beta_shrinkage": 0.0293,
+    "r2_truth_only": 0.0209,
+    "r2_joint": 0.104,
+    "covariates": [],
+    "assumption": "additive-linear; triangulate with stage 3a"
+  },
+  "n": 696,
+  "cell_counts": {
+    "TT": 174,
+    "TA": 174,
+    "FT": 174,
+    "FA": 174
+  },
+  "probe": "mirage_hardness.probes_external.geometry_of_truth_mmprobe:GeometryOfTruthMMProbe",
+  "corpus": "mirage_2x2_v6206fe484650.jsonl",
+  "verdict": "CONFOUNDED \u2014 headline AUROC is inflated relative to honest off-diagonal detection (gap CI excludes zero)"
+}
