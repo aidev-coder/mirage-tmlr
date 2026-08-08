@@ -18,11 +18,20 @@ This script breaks that circularity two ways:
      on all four cells instead of the diagonal — so the relation can be stated
      entirely within the external architecture.
 
+--layers reads the Modal `extlayers` artifacts instead and reports what the
+benchmark can say about LAYER choice. The headline quantity there is the tie
+spread: among layers the benchmark scores identically, how far apart is honest
+detection? That needs no selection rule, so it is immune to argmax noise — which
+matters because in-distribution saturates at 1.000 on many layers at once, and an
+argmax over ties would be this script's tie-breaking rather than a finding.
+
 Usage:
     python -m src.report.external_probe_sweep \
         --probe mirage_hardness.probes_external.geometry_of_truth_mmprobe:GeometryOfTruthMMProbe \
         --corpus data/corpus/mirage_2x2_v6206fe484650.jsonl \
         --acts-dir data/activations/local --tag mmprobe
+
+    python -m src.report.external_probe_sweep --layers --corpus-hash 6206fe484650
 """
 from __future__ import annotations
 
@@ -125,15 +134,259 @@ def run(probe_spec: str, corpus_path: Path, acts_dir: Path, seed: int = 0,
     return rows
 
 
+IN_DIST_FLOOR = 0.70
+TIE_TOLERANCES = (0.0, 0.01, 0.02)
+
+
+def _probe_short(spec: str) -> str:
+    return (spec.split(":")[-1].replace("GeometryOfTruth", "")
+            .replace("ProbeAdapter", "").replace("Probe", "").lower() or spec)
+
+
+def collect_layer_curves(chash: str) -> dict[str, dict[str, list[dict]]]:
+    newest: dict[str, Path] = {}
+    for p in sorted((_ROOT / "results").glob(f"extlayers_*_{chash}_*.json")):
+        newest[json.loads(p.read_text(encoding="utf-8"))["model"]] = p
+    out: dict[str, dict[str, list[dict]]] = {}
+    for model, p in newest.items():
+        by_probe: dict[str, list[dict]] = {}
+        for r in json.loads(p.read_text(encoding="utf-8"))["rows"]:
+            if "error" not in r:
+                by_probe.setdefault(_probe_short(r["probe"]), []).append(r)
+        out[model] = {k: sorted(v, key=lambda r: r["layer"]) for k, v in by_probe.items()}
+    return out
+
+
+def _ties(curve: list[dict], tol: float) -> dict:
+    top = max(r["in_dist"] for r in curve)
+    tied = [r for r in curve if r["in_dist"] >= top - tol]
+    offs = [r["off"] for r in tied]
+    return {"tolerance": tol, "top_in_dist": round(top, 4), "n_tied_layers": len(tied),
+            "layers": [r["layer"] for r in tied],
+            "honest_off_min": round(min(offs), 4), "honest_off_max": round(max(offs), 4),
+            "honest_off_spread": round(max(offs) - min(offs), 4)}
+
+
+def summarize_layers(curves: dict[str, dict[str, list[dict]]]) -> list[dict]:
+    rows = []
+    for model, probes in sorted(curves.items()):
+        for probe, curve in sorted(probes.items()):
+            sel = max(curve, key=lambda r: r["in_dist"])
+            best = max(curve, key=lambda r: r["off"])
+            worst = min(curve, key=lambda r: r["off"])
+            max_in = max(r["in_dist"] for r in curve)
+            rows.append({
+                "model": model.split("/")[-1], "probe": probe, "n_layers": len(curve),
+                "benchmark_ties": [_ties(curve, t) for t in TIE_TOLERANCES],
+                "argmax_in_dist_layer": sel["layer"],
+                "at_argmax": {"in_dist": sel["in_dist"], "off": sel["off"],
+                              "gap": sel["gap"], "gap_ci": sel["gap_ci"]},
+                "honest_best_layer": best["layer"],
+                "at_honest_best": {"in_dist": best["in_dist"], "off": best["off"],
+                                   "gap": best["gap"]},
+                # meaningless unless a better-than-chance layer actually existed
+                "off_forgone_by_argmax": (round(best["off"] - sel["off"], 4)
+                                          if best["off"] > 0.5 else None),
+                "no_layer_beats_chance": bool(best["off"] <= 0.5),
+                "off_range_across_layers": [round(worst["off"], 4), round(best["off"], 4)],
+                "max_in_dist_any_layer": round(max_in, 4),
+                "clears_in_dist_floor_somewhere": bool(max_in >= IN_DIST_FLOOR),
+            })
+    return rows
+
+
+def _headline_layers(corpus_name: str) -> dict[str, int]:
+    out = {}
+    for p in (_ROOT / "results").glob("stage3_saplma_*.json"):
+        a = json.loads(p.read_text(encoding="utf-8"))
+        if a.get("corpus") == corpus_name:
+            out[a["model"]] = a["headline_layer"]
+    return out
+
+
+def at_two_layers(curves: dict[str, dict[str, list[dict]]], corpus_name: str) -> list[dict]:
+    """Each probe read at OUR SAPLMA headline layer and at the layer the BENCHMARK
+    selects for it. Selection uses in-distribution only, never the off-diagonal
+    score being reported.
+
+    Where several layers tie at the top in-distribution score the argmax is a
+    tie-break, not a selection, and taking the first one systematically picks the
+    lowest layer index — which for LRProbe means early layers whose honest score is
+    far worse, manufacturing a gap the benchmark never chose. So the reported value
+    is the MEDIAN across tied layers, which is what a practitioner picking any of
+    the equally-best layers gets in expectation, plus the spread.
+    """
+    heads = _headline_layers(corpus_name)
+    rows = []
+    for model, probes in sorted(curves.items()):
+        hl = heads.get(model)
+        for probe, curve in sorted(probes.items()):
+            top = max(r["in_dist"] for r in curve)
+            tied = [r for r in curve if r["in_dist"] >= top]
+            offs = sorted(r["off"] for r in tied)
+            gaps = sorted(r["gap"] for r in tied)
+            mid = tied[min(range(len(tied)),
+                           key=lambda i: abs(tied[i]["off"] - float(np.median(offs))))]
+            ours = next((r for r in curve if r["layer"] == hl), None)
+            rows.append({
+                "model": model.split("/")[-1], "probe": probe,
+                "our_headline_layer": hl,
+                "at_our_layer": None if ours is None else {
+                    "layer": ours["layer"], "in_dist": ours["in_dist"],
+                    "off": ours["off"], "gap": ours["gap"], "gap_ci": ours["gap_ci"],
+                    "gap_excludes_zero": ours["gap_excludes_zero"]},
+                "benchmark_selected": {
+                    "top_in_dist": round(top, 4), "n_tied_layers": len(tied),
+                    "layers": [r["layer"] for r in tied],
+                    "median_off": round(float(np.median(offs)), 4),
+                    "median_gap": round(float(np.median(gaps)), 4),
+                    "off_spread": round(offs[-1] - offs[0], 4),
+                    "representative_layer": mid["layer"],
+                    "gap_ci_at_representative": mid["gap_ci"],
+                    "layer_is_determined": len(tied) == 1},
+                "own_layer_clears_floor": bool(top >= IN_DIST_FLOOR),
+            })
+    return rows
+
+
+def _our_recoverability_map(corpus_name: str) -> dict[str, float]:
+    out = {}
+    for p in (_ROOT / "results").glob("stage3_saplma_*.json"):
+        a = json.loads(p.read_text(encoding="utf-8"))
+        if a.get("corpus") == corpus_name:
+            e = a["per_layer"][a["headline_layer"]]
+            b = e["mediation_allcell"].get("truth_beta_partialled")
+            if b is not None:
+                out[a["model"].split("/")[-1]] = b
+    return out
+
+
+def mechanism_by_probe(two: list[dict], corpus_name: str) -> dict:
+    """Does recoverability still predict honest performance when each probe is read
+    at the layer the benchmark selects for it rather than at ours? Reported over all
+    models and over adequately powered ones only, both directions shown."""
+    rec = _our_recoverability_map(corpus_name)
+    out: dict = {}
+    for probe in sorted({r["probe"] for r in two}):
+        for label, get_off in (
+                ("our_headline_layer",
+                 lambda r: r["at_our_layer"]["off"] if r["at_our_layer"] else None),
+                ("benchmark_selected_layer",
+                 lambda r: r["benchmark_selected"]["median_off"])):
+            for powered_only in (False, True):
+                pairs = [(rec[r["model"]], get_off(r)) for r in two
+                         if r["probe"] == probe and r["model"] in rec
+                         and get_off(r) is not None
+                         and (r["own_layer_clears_floor"] or not powered_only)]
+                if len(pairs) > 2:
+                    x = np.array([p[0] for p in pairs]); y = np.array([p[1] for p in pairs])
+                    key = label + ("_powered_only" if powered_only else "")
+                    out.setdefault(probe, {})[key] = _r_with_ci(x, y)
+    return out
+
+
+def _r_with_ci(x: np.ndarray, y: np.ndarray, n_boot: int = 2000, seed: int = 0) -> dict:
+    """At n=7 a correlation of 0.7 is not distinguishable from zero (§1.5)."""
+    r = float(np.corrcoef(x, y)[0, 1])
+    rng = np.random.default_rng(seed)
+    draws = []
+    for _ in range(n_boot):
+        idx = rng.integers(0, len(x), len(x))
+        if len(set(x[idx])) > 1 and len(set(y[idx])) > 1:
+            draws.append(float(np.corrcoef(x[idx], y[idx])[0, 1]))
+    lo, hi = np.percentile(draws, [2.5, 97.5])
+    return {"r": round(r, 4), "n": int(len(x)),
+            "ci": [round(float(lo), 4), round(float(hi), 4)],
+            "excludes_zero": bool(lo > 0 or hi < 0)}
+
+
+def run_layer_report(chash: str) -> Path:
+    curves = collect_layer_curves(chash)
+    if not curves:
+        raise SystemExit(f"no extlayers_*_{chash}_*.json in results/")
+    rows = summarize_layers(curves)
+    corpus_name = f"mirage_2x2_v{chash}.jsonl"
+    two = at_two_layers(curves, corpus_name)
+    mech = mechanism_by_probe(two, corpus_name)
+
+    print("LAYERS THE BENCHMARK SCORES EQUALLY, AND HOW FAR APART THEY HONESTLY ARE")
+    print(f"{'model':22s} {'probe':6s} {'topInD':>7s} {'#tied':>6s} "
+          f"{'honest off range':>19s} {'spread':>8s}")
+    for r in rows:
+        t = r["benchmark_ties"][0]
+        print(f"{r['model']:22s} {r['probe']:6s} {t['top_in_dist']:7.4f} "
+              f"{t['n_tied_layers']:6d} {t['honest_off_min']:9.3f} -"
+              f"{t['honest_off_max']:8.3f} {t['honest_off_spread']:8.3f}")
+
+    print("\nallowing layers within 0.01 in-distribution of the top:")
+    for r in sorted(rows, key=lambda z: -z["benchmark_ties"][1]["honest_off_spread"])[:6]:
+        t = r["benchmark_ties"][1]
+        print(f"  {r['model']:22s} {r['probe']:6s} {t['n_tied_layers']:3d} layers "
+              f"L{min(t['layers'])}-{max(t['layers'])}  honest off "
+              f"{t['honest_off_min']:.3f}-{t['honest_off_max']:.3f}  "
+              f"spread {t['honest_off_spread']:.3f}")
+
+    under = [r for r in rows if not r["clears_in_dist_floor_somewhere"]]
+    print(f"\nbelow the {IN_DIST_FLOOR} in-distribution floor at EVERY layer "
+          f"(genuinely underpowered, not a layer-choice artifact): {len(under)}")
+    for r in under:
+        print(f"  {r['model']} / {r['probe']}: best in-dist anywhere "
+              f"{r['max_in_dist_any_layer']:.3f}")
+
+    dead = [r for r in rows if r["no_layer_beats_chance"]]
+    print(f"\nno layer beats chance off-diagonal: {len(dead)}")
+    for r in dead:
+        print(f"  {r['model']:22s} {r['probe']:6s} best off "
+              f"{r['at_honest_best']['off']:.3f} at L{r['honest_best_layer']}")
+
+    print("\nEACH PROBE AT OUR HEADLINE LAYER vs WHERE THE BENCHMARK SELECTS")
+    print(f"{'model':22s} {'probe':6s} {'ourL':>5s} {'inD':>6s} {'off':>6s} {'gap':>7s}"
+          f"   {'topInD':>7s} {'#tied':>5s} {'medOff':>7s} {'medGap':>7s} {'spread':>7s}")
+    for r in two:
+        a, b = r["at_our_layer"], r["benchmark_selected"]
+        flag = "" if r["own_layer_clears_floor"] else "  *underpowered"
+        left = (f"{a['layer']:5d} {a['in_dist']:6.3f} {a['off']:6.3f} {a['gap']:+7.3f}"
+                if a else f"{'-':>5s} {'-':>6s} {'-':>6s} {'-':>7s}")
+        print(f"{r['model']:22s} {r['probe']:6s} {left}   {b['top_in_dist']:7.4f} "
+              f"{b['n_tied_layers']:5d} {b['median_off']:7.3f} {b['median_gap']:+7.3f} "
+              f"{b['off_spread']:7.3f}{flag}")
+
+    print("\ncorrelation(our recoverability, each probe's honest off-diagonal):")
+    for probe, d in sorted(mech.items()):
+        for k, v in sorted(d.items()):
+            print(f"  {probe:6s} {k:38s} r={v['r']:+.3f} "
+                  f"[{v['ci'][0]:+.3f}, {v['ci'][1]:+.3f}] n={v['n']}"
+                  f"{'' if v['excludes_zero'] else '   NOT distinguishable from 0'}")
+
+    dest = _ROOT / "results" / f"extlayers_summary_{chash}.json"
+    dest.write_text(json.dumps(
+        {"corpus_hash": chash, "in_dist_floor": IN_DIST_FLOOR,
+         "provenance": "measured", "summary": rows,
+         "at_two_layers": two, "mechanism_by_probe": mech, "curves": curves},
+        indent=2), encoding="utf-8")
+    print(f"\n-> {dest}")
+    return dest
+
+
 def main() -> None:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--probe", required=True)
-    ap.add_argument("--corpus", required=True)
+    ap.add_argument("--layers", action="store_true")
+    ap.add_argument("--corpus-hash", default="")
+    ap.add_argument("--probe")
+    ap.add_argument("--corpus")
     ap.add_argument("--acts-dir", default="data/activations/local")
     ap.add_argument("--tag", default="external")
     ap.add_argument("--seed", type=int, default=0)
     ap.add_argument("--n-folds", type=int, default=5)
     args = ap.parse_args()
+
+    if args.layers:
+        if not args.corpus_hash:
+            raise SystemExit("--layers needs --corpus-hash")
+        run_layer_report(args.corpus_hash)
+        return
+    if not (args.probe and args.corpus):
+        raise SystemExit("--probe and --corpus are required without --layers")
 
     rows = run(args.probe, Path(args.corpus), Path(args.acts_dir), args.seed, args.n_folds)
     if not rows:

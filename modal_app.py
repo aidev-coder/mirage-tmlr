@@ -202,6 +202,75 @@ def dump_layer_activations(model_id: str, corpus_name: str, layer: int | None = 
 
 @app.function(image=image, gpu=GPU, volumes=VOLUMES, secrets=SECRETS,
               timeout=4 * 3600)
+def external_layer_sweep(model_id: str, corpus_name: str, probe_specs: list[str],
+                         seed: int = 0) -> dict:
+    """Audit external probes at every layer, per the project's standing directive §4.3, rather than at the
+    single mid-depth layer our own SAPLMA sweep picks."""
+    _setup()
+    import importlib
+
+    import numpy as np
+
+    from src.corpus_gen import negate_all
+    from src.eval.adversarial_split import adversarial_split
+    from src.stage3 import load_corpus
+    from src.substrate import Substrate
+
+    def _load(spec: str):
+        mod, _, attr = spec.partition(":")
+        return getattr(importlib.import_module(mod), attr)
+
+    factories = {spec: _load(spec) for spec in probe_specs}
+    needs_neg = any(getattr(f, "paired", False) for f in factories.values())
+
+    items = load_corpus(f"/root/mirage/data/corpus/{corpus_name}")
+    texts = [it["text"] for it in items]
+    truth = np.array([bool(it["truth"]) for it in items])
+    cells = np.array([it["cell"] for it in items])
+
+    sub = Substrate(model_id, cache_dir="/root/activations")
+    H = sub.hidden_states_matrix(texts, batch_size=32)          # [n, L+1, d]
+    H_neg = sub.hidden_states_matrix(negate_all(texts), batch_size=32) if needs_neg else None
+    n_layers = H.shape[1]
+
+    rows = []
+    for L in range(n_layers):
+        X = H[:, L, :].astype(np.float64)
+        Xn = H_neg[:, L, :].astype(np.float64) if H_neg is not None else None
+        for spec, factory in factories.items():
+            if getattr(factory, "paired", False):
+                from mirage_hardness.probes_external.ccs import stack
+                Xin = stack(X, Xn)
+            else:
+                Xin = X
+            try:
+                adv = adversarial_split(Xin, truth, cells,
+                                        lambda: factory(seed=seed), seed=seed)
+            except Exception as exc:
+                rows.append({"probe": spec, "layer": L, "error": repr(exc)})
+                continue
+            rows.append({
+                "probe": spec, "layer": L,
+                "in_dist": adv["headline_heldout_diagonal"]["auroc"],
+                "off": adv["off_diagonal"]["auroc"],
+                "off_ci": adv["off_diagonal"]["ci"],
+                "gap": adv["gap"]["gap"], "gap_ci": adv["gap"]["ci"],
+                "gap_excludes_zero": adv["gap"].get("excludes_zero"),
+            })
+        print(f"  L{L:<3d} " + "  ".join(
+            f"{r['probe'].split(':')[-1]}: in {r.get('in_dist', float('nan')):.3f} "
+            f"off {r.get('off', float('nan')):.3f}"
+            for r in rows[-len(factories):] if "error" not in r), flush=True)
+
+    activations.commit()
+    hf_cache.commit()
+    return {"model": model_id, "corpus": corpus_name, "n_layers": n_layers,
+            "seed": seed, "negated_pass": bool(needs_neg), "rows": rows,
+            "provenance": "measured"}
+
+
+@app.function(image=image, gpu=GPU, volumes=VOLUMES, secrets=SECRETS,
+              timeout=4 * 3600)
 def causal_run(model_id: str, corpus_name: str, domain: str = "") -> dict:
     """Causal mediation: fraction of the truth-probe response routed through the
     typicality direction, on matched twin pairs. Reuses cached activations."""
@@ -397,6 +466,40 @@ def main(stage: str = "sanity", model: str = "", max_per_topic: int = 0,
         out.write_bytes(res["npy_bytes"])
         print(f"dumpacts {model_id} corpus={corpus_name} layer={res['layer']}/{res['n_layers']} "
               f"shape={res['shape']} -> {out}")
+
+    elif stage == "extlayers":
+        from datetime import date
+        corpus_name = corpus
+        if not corpus_name:
+            cdir = _HERE / "data" / "corpus"
+            corpus_name = sorted(cdir.glob("mirage_2x2_v*.jsonl"),
+                                 key=lambda p: p.stat().st_mtime)[-1].name
+        specs = [s for s in (detector.split(",") if detector != "saplma" else []) if s] or [
+            "mirage_hardness.probes_external.geometry_of_truth_mmprobe:GeometryOfTruthMMProbe",
+            "mirage_hardness.probes_external.geometry_of_truth_lrprobe:GeometryOfTruthLRProbe",
+            "mirage_hardness.probes_external.ccs:CCSProbeAdapter",
+        ]
+        chash = Path(corpus_name).stem.split("_v")[-1]
+        # models.yaml omits gemma-2-9b base, so read the model set off Stage 3 instead.
+        sweep_ids = [model] if model else sorted({
+            json.loads(p.read_text(encoding="utf-8"))["model"]
+            for p in (_HERE / "results").glob("stage3_saplma_*.json")
+            if json.loads(p.read_text(encoding="utf-8")).get("corpus") == corpus_name})
+        print(f"extlayers over {len(sweep_ids)} models: {', '.join(sweep_ids)}")
+        kw = {"corpus_name": corpus_name, "probe_specs": specs, "seed": seed}
+        for res in external_layer_sweep.map(sweep_ids, kwargs=kw, order_outputs=False):
+            short = res["model"].split("/")[-1].lower()
+            out = _HERE / "results" / f"extlayers_{short}_{chash}_{date.today():%Y%m%d}.json"
+            # Re-running one probe must not drop the others already in today's file.
+            if out.exists():
+                prior = json.loads(out.read_text(encoding="utf-8"))
+                fresh = {r["probe"] for r in res["rows"]}
+                kept = [r for r in prior.get("rows", []) if r["probe"] not in fresh]
+                res["rows"] = kept + res["rows"]
+                res["probes"] = sorted({r["probe"] for r in res["rows"]})
+            out.write_text(json.dumps(res, indent=2, default=_json_default))
+            print(f"{res['model']}: {res['n_layers']} layers, "
+                  f"{len({r['probe'] for r in res['rows']})} probes -> {out}")
 
     elif stage == "causal":
         from datetime import date
