@@ -87,3 +87,32 @@ def test_fragmentation_canary_mechanics():
         assert res["gate"] == "fragmentation_canary" and "auroc" in res and "pass" in res
         print("PASS  fragmentation canary mechanics:",
               {k: res[k] for k in ("auroc", "pass")})
+
+
+def test_negation_templates():
+    assert cg.negate("Monywa is a city in Myanmar.") == "Monywa is not a city in Myanmar."
+    assert (cg.negate("Anthem has headquarters in France.")
+            == "Anthem does not have headquarters in France.")
+    assert (cg.negate("Godfrey Hounsfield invented the electromagnetism discovery.")
+            == "Godfrey Hounsfield did not invent the electromagnetism discovery.")
+
+
+def test_negation_covers_every_template():
+    assert set(cg.NEGATED_TEMPLATES) == set(cg.TEMPLATES)
+
+
+def test_negation_rejects_unrecognised_statement():
+    import pytest
+    with pytest.raises(ValueError):
+        cg.negate("The sky is blue")
+
+
+def test_negation_is_total_over_every_built_corpus():
+    import json
+    for path in sorted((Path(__file__).resolve().parent.parent
+                        / "data" / "corpus").glob("mirage_2x2_v*.jsonl")):
+        texts = [json.loads(l)["text"]
+                 for l in path.read_text(encoding="utf-8").splitlines() if l.strip()]
+        out = cg.negate_all(texts)
+        assert len(out) == len(texts)
+        assert all(o != t for o, t in zip(out, texts)), path.name

@@ -56,6 +56,33 @@ TEMPLATES = {
                    "{s} uses {o} for locomotion.", "locomotion"),
 }
 
+# Negated rebuild per topic, reusing TEMPLATES' regexes so the two cannot drift.
+NEGATED_TEMPLATES = {
+    "cities":     "{s} is not a city in {o}.",
+    "generated":  "{s} is not located in {o}.",
+    "inventions": "{s} did not invent {o}.",
+    "elements":   "{s} is not used in {o}.",
+    "companies":  "{s} does not have headquarters in {o}.",
+    "animals":    "{s} does not use {o} for locomotion.",
+}
+
+
+def negate(text: str) -> str:
+    for topic, (rx, _, _) in TEMPLATES.items():
+        m = rx.match(text)
+        if m:
+            return NEGATED_TEMPLATES[topic].format(s=m.group(1), o=m.group(2))
+    raise ValueError(f"no negation rule matches: {text!r}")
+
+
+def negate_all(texts: list[str]) -> list[str]:
+    # A silently un-negated item hands CCS an identical pair, which satisfies its
+    # consistency loss trivially and is invisible in the output AUROC.
+    out = [negate(t) for t in texts]
+    if len(set(out)) != len(set(texts)):
+        raise ValueError("negation collapsed distinct statements onto each other")
+    return out
+
 
 def _rows(topic: str) -> list[dict]:
     path = AM_DIR / f"{topic}_true_false.csv"
