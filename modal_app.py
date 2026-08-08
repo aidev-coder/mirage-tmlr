@@ -429,8 +429,13 @@ def main(stage: str = "sanity", model: str = "", max_per_topic: int = 0,
             corpus_name = cands[-1].name
         if "," in model:
             kw3 = {"corpus_name": corpus_name, "detector": detector, "domain": domain}
+            # one gated/unavailable model must not discard the whole batch
             for r in stage3_run.map([m.strip() for m in model.split(",") if m.strip()],
-                                    kwargs=kw3, order_outputs=False):
+                                    kwargs=kw3, order_outputs=False,
+                                    return_exceptions=True):
+                if isinstance(r, Exception):
+                    print(f"SKIPPED (failed): {type(r).__name__}: {str(r)[:200]}")
+                    continue
                 sh = r["model"].split("/")[-1].lower()
                 dt = f"_{domain}" if domain else ""
                 o = _HERE / "results" / f"stage3_{r['detector']}_{sh}{dt}_{date.today():%Y%m%d}.json"

@@ -1,15 +1,49 @@
 {
   "corpus": "mirage_2x2_v6206fe484650.jsonl",
   "provenance": "measured",
-  "n_models": 13,
+  "n_models": 18,
   "correlation": {
-    "r": 0.8794,
-    "n": 13,
+    "r": 0.8557,
+    "n": 18,
     "ci": [
-      0.7486,
-      0.9722
+      0.779,
+      0.9335
     ],
     "excludes_zero": true
+  },
+  "shape": {
+    "n": 18,
+    "linear": {
+      "ss": 0.5046,
+      "k": 2,
+      "aic": -60.34
+    },
+    "step": {
+      "ss": 0.2358,
+      "k": 3,
+      "aic": -72.03
+    },
+    "hinge": {
+      "ss": 0.0789,
+      "k": 3,
+      "aic": -91.74,
+      "knee": 0.69,
+      "floor": 0.1164,
+      "slope": 3.2263,
+      "knee_ci": [
+        0.59,
+        0.765
+      ],
+      "floor_ci": [
+        0.0813,
+        0.1388
+      ],
+      "slope_ci": [
+        2.0955,
+        4.9294
+      ]
+    },
+    "preferred": "hinge"
   },
   "rows": [
     {
@@ -97,6 +131,18 @@
       "recoverability": 0.6104
     },
     {
+      "model": "Qwen2.5-0.5B",
+      "layer": 12,
+      "in_dist": 0.9909,
+      "off": 0.1453,
+      "off_ci": [
+        0.1077,
+        0.1845
+      ],
+      "gap": 0.8456,
+      "recoverability": 0.6254
+    },
+    {
       "model": "pythia-12b",
       "layer": 18,
       "in_dist": 0.9967,
@@ -107,6 +153,54 @@
       ],
       "gap": 0.8014,
       "recoverability": 0.636
+    },
+    {
+      "model": "Qwen2.5-1.5B",
+      "layer": 14,
+      "in_dist": 1.0,
+      "off": 0.4604,
+      "off_ci": [
+        0.4009,
+        0.5222
+      ],
+      "gap": 0.5396,
+      "recoverability": 0.8132
+    },
+    {
+      "model": "gemma-2-2b",
+      "layer": 13,
+      "in_dist": 0.9992,
+      "off": 0.6941,
+      "off_ci": [
+        0.6338,
+        0.7495
+      ],
+      "gap": 0.3051,
+      "recoverability": 0.8313
+    },
+    {
+      "model": "Qwen2.5-3B",
+      "layer": 18,
+      "in_dist": 1.0,
+      "off": 0.4985,
+      "off_ci": [
+        0.4393,
+        0.5613
+      ],
+      "gap": 0.5015,
+      "recoverability": 0.8515
+    },
+    {
+      "model": "Qwen2.5-7B",
+      "layer": 14,
+      "in_dist": 0.9959,
+      "off": 0.728,
+      "off_ci": [
+        0.673,
+        0.7772
+      ],
+      "gap": 0.2678,
+      "recoverability": 0.8566
     },
     {
       "model": "Qwen2.5-7B-Instruct",

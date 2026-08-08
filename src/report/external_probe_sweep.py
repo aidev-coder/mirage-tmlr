@@ -368,6 +368,63 @@ def run_layer_report(chash: str) -> Path:
     return dest
 
 
+def _hinge(x: np.ndarray, y: np.ndarray) -> tuple[float, float, np.ndarray]:
+    best = None
+    for c in np.arange(0.05, 0.95, 0.005):
+        h = np.maximum(0.0, x - c)
+        if h.std() < 1e-9:
+            continue
+        A = np.column_stack([np.ones_like(x), h])
+        coef, *_ = np.linalg.lstsq(A, y, rcond=None)
+        ss = float(((y - A @ coef) ** 2).sum())
+        if best is None or ss < best[0]:
+            best = (ss, float(c), coef)
+    return best
+
+
+def _fit_shape(x: np.ndarray, y: np.ndarray, n_boot: int = 2000, seed: int = 0) -> dict:
+    """A correlation assumes a line. It is not one: below a recoverability knee the
+    probe is a pure frequency readout and additional recoverability buys nothing,
+    so a hinge y = floor + slope*max(0, x - knee) is the right shape. Reported with
+    AIC against the line and a step, and with the knee bootstrapped."""
+    n = len(x)
+    lin = np.polyfit(x, y, 1)
+    ss_lin = float(((y - np.polyval(lin, x)) ** 2).sum())
+    ss_step = None
+    for c in np.unique(x):
+        lo, hi = y[x < c], y[x >= c]
+        if len(lo) < 2 or len(hi) < 2:
+            continue
+        s = float(((lo - lo.mean()) ** 2).sum() + ((hi - hi.mean()) ** 2).sum())
+        ss_step = s if ss_step is None or s < ss_step else ss_step
+    ss_hin, knee, coef = _hinge(x, y)
+
+    def aic(ss, k):
+        return round(float(n * np.log(ss / n) + 2 * k), 2)
+
+    rng = np.random.default_rng(seed)
+    knees, floors, slopes = [], [], []
+    for _ in range(n_boot):
+        idx = rng.integers(0, n, n)
+        if len(set(x[idx].tolist())) < 4:
+            continue
+        b = _hinge(x[idx], y[idx])
+        if b:
+            knees.append(b[1]); floors.append(b[2][0]); slopes.append(b[2][1])
+
+    def ci(v):
+        return [round(float(np.percentile(v, 2.5)), 4), round(float(np.percentile(v, 97.5)), 4)]
+
+    return {"n": n,
+            "linear": {"ss": round(ss_lin, 4), "k": 2, "aic": aic(ss_lin, 2)},
+            "step": {"ss": round(ss_step, 4), "k": 3, "aic": aic(ss_step, 3)},
+            "hinge": {"ss": round(ss_hin, 4), "k": 3, "aic": aic(ss_hin, 3),
+                      "knee": round(knee, 4), "floor": round(float(coef[0]), 4),
+                      "slope": round(float(coef[1]), 4),
+                      "knee_ci": ci(knees), "floor_ci": ci(floors), "slope_ci": ci(slopes)},
+            "preferred": "hinge" if aic(ss_hin, 3) < min(aic(ss_lin, 2), aic(ss_step, 3)) else "linear"}
+
+
 def run_mechanism_report(corpus_name: str) -> Path:
     """The recoverability -> honest-performance relation for OUR probe, over every
     model with a Stage 3 artifact on this corpus. The draft quotes r = 0.964 at
@@ -396,6 +453,7 @@ def run_mechanism_report(corpus_name: str) -> Path:
     x = np.array([r["recoverability"] for r in rows])
     y = np.array([r["off"] for r in rows])
     stat = _r_with_ci(x, y)
+    shape = _fit_shape(x, y)
 
     print(f"{'model':24s} {'L':>4s} {'in-dist':>8s} {'honest off':>11s} {'gap':>8s} "
           f"{'recoverability':>15s}")
@@ -409,10 +467,23 @@ def run_mechanism_report(corpus_name: str) -> Path:
           f"{max(r['in_dist'] for r in rows):.3f}; honest range "
           f"{min(r['off'] for r in rows):.3f}-{max(r['off'] for r in rows):.3f}")
 
+    h = shape["hinge"]
+    print(f"\nshape: AIC linear {shape['linear']['aic']}, step {shape['step']['aic']}, "
+          f"hinge {h['aic']}  -> {shape['preferred']}")
+    print(f"  honest_off = {h['floor']:.3f} + {h['slope']:.2f} * max(0, recoverability "
+          f"- {h['knee']:.3f})")
+    print(f"  knee {h['knee']:.3f} {h['knee_ci']}   floor {h['floor']:.3f} {h['floor_ci']}"
+          f"   slope {h['slope']:.2f} {h['slope_ci']}")
+    below = [r for r in rows if r["recoverability"] < h["knee"]]
+    print(f"  below the knee ({len(below)} models): honest "
+          f"{min(r['off'] for r in below):.3f}-{max(r['off'] for r in below):.3f} across "
+          f"recoverability {min(r['recoverability'] for r in below):.3f}-"
+          f"{max(r['recoverability'] for r in below):.3f} — more recoverability buys nothing")
+
     dest = _ROOT / "results" / f"mechanism_saplma_{corpus_name.split('_v')[-1].split('.')[0]}.json"
     dest.write_text(json.dumps({"corpus": corpus_name, "provenance": "measured",
                                 "n_models": len(rows), "correlation": stat,
-                                "rows": rows}, indent=2), encoding="utf-8")
+                                "shape": shape, "rows": rows}, indent=2), encoding="utf-8")
     print(f"-> {dest}")
     return dest
 
