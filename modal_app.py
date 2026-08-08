@@ -438,7 +438,8 @@ def main(stage: str = "sanity", model: str = "", max_per_topic: int = 0,
                     continue
                 sh = r["model"].split("/")[-1].lower()
                 dt = f"_{domain}" if domain else ""
-                o = _HERE / "results" / f"stage3_{r['detector']}_{sh}{dt}_{date.today():%Y%m%d}.json"
+                ch = Path(corpus_name).stem.split("_v")[-1]
+                o = _HERE / "results" / f"stage3_{r['detector']}_{sh}{dt}_{ch}_{date.today():%Y%m%d}.json"
                 o.write_text(json.dumps(r, indent=2, default=_json_default))
                 el = r["per_layer"][r["headline_layer"]]
                 print(f"{r['model']}: L{r['headline_layer']} off-diag "
@@ -470,7 +471,10 @@ def main(stage: str = "sanity", model: str = "", max_per_topic: int = 0,
             print(f"    [unsupervised detector: no all-cell recoverability]")
         short = res["model"].split("/")[-1].lower()
         dtag = f"_{domain}" if domain else ""
-        out = _HERE / "results" / f"stage3_{res['detector']}_{short}{dtag}_{date.today():%Y%m%d}.json"
+        # corpus hash in the name: a date alone let a rebuild silently overwrite the
+        # previous corpus's artifact for the same model (weakness audit D2)
+        chash3 = Path(corpus_name).stem.split("_v")[-1]
+        out = _HERE / "results" / f"stage3_{res['detector']}_{short}{dtag}_{chash3}_{date.today():%Y%m%d}.json"
         out.write_text(json.dumps(res, indent=2, default=_json_default))
         print(f"  -> {out}")
 

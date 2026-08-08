@@ -118,8 +118,10 @@ def run(probe_spec: str, corpus_path: Path, acts_dir: Path, seed: int = 0,
         per_cell = {c: round(float((s[cells == c] > 0.5).mean()), 4)
                     for c in ("TT", "TA", "FT", "FA")}
 
+        stab = fit_stability(X, truth, cells, factory, seed=seed)
         rows.append({
             "model": model, "layer": layer,
+            "fit_stability": stab,
             "in_dist": adv["headline_heldout_diagonal"]["auroc"],
             "off": adv["off_diagonal"]["auroc"], "off_ci": adv["off_diagonal"]["ci"],
             "gap": adv["gap"]["gap"], "gap_ci": adv["gap"]["ci"],
@@ -130,6 +132,8 @@ def run(probe_spec: str, corpus_path: Path, acts_dir: Path, seed: int = 0,
         })
         print(f"  {model:24s} L{layer:<3d} in-dist {adv['headline_heldout_diagonal']['auroc']:.3f} "
               f"off {adv['off_diagonal']['auroc']:.3f} gap {adv['gap']['gap']:+.3f} "
+              f"eval-CI [{adv['gap']['ci'][0]:+.3f}, {adv['gap']['ci'][1]:+.3f}] "
+              f"refit-range [{stab['gap_range'][0]:+.3f}, {stab['gap_range'][1]:+.3f}] "
               f"| fair-trained off {fair_off['auroc']:.3f}", flush=True)
     return rows
 
@@ -316,6 +320,37 @@ def mechanism_by_probe(two: list[dict], corpus_name: str) -> dict:
                     key = label + ("_powered_only" if powered_only else "")
                     out.setdefault(probe, {})[key] = _r_with_ci(x, y)
     return out
+
+
+def fit_stability(X: np.ndarray, truth: np.ndarray, cells: np.ndarray, factory,
+                  n_resample: int = 60, drop_frac: float = 0.10, seed: int = 0) -> dict:
+    """How much does the gap move when the probe is refitted on a different sample?
+
+    The bootstrap CI this project reports resamples the EVAL scores with the fitted
+    probe held fixed, so it cannot see instability in the fit itself. MMProbe's gap
+    on pythia-1.4b travels across [+0.045, +0.586] under random removal of 10% of
+    rows — an interval its reported [0.373, 0.593] gives no hint of. Unregularised
+    mean-difference directions are the worst case, since a handful of points move
+    the class means outright.
+    """
+    rng = np.random.default_rng(seed)
+    n = len(truth)
+    keep_n = int(round(n * (1 - drop_frac)))
+    gaps, offs = [], []
+    for _ in range(n_resample):
+        idx = np.sort(rng.choice(n, keep_n, replace=False))
+        a = adversarial_split(X[idx], truth[idx], cells[idx],
+                              lambda: factory(seed=seed), n_boot=1, seed=seed)
+        gaps.append(a["gap"]["gap"])
+        offs.append(a["off_diagonal"]["auroc"])
+    gaps, offs = np.array(gaps), np.array(offs)
+    return {"n_resample": n_resample, "drop_frac": drop_frac,
+            "gap_median": round(float(np.median(gaps)), 4),
+            "gap_range": [round(float(np.percentile(gaps, 2.5)), 4),
+                          round(float(np.percentile(gaps, 97.5)), 4)],
+            "gap_sd": round(float(gaps.std()), 4),
+            "off_range": [round(float(np.percentile(offs, 2.5)), 4),
+                          round(float(np.percentile(offs, 97.5)), 4)]}
 
 
 def _r_with_ci(x: np.ndarray, y: np.ndarray, n_boot: int = 2000, seed: int = 0) -> dict:
