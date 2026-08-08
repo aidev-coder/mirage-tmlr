@@ -170,6 +170,37 @@ def stage3_run(model_id: str, corpus_name: str, detector: str = "saplma",
 
 
 @app.function(image=image, gpu=GPU, volumes=VOLUMES, secrets=SECRETS,
+              timeout=2 * 3600)
+def dump_layer_activations(model_id: str, corpus_name: str, layer: int | None = None) -> dict:
+    """Extract ONE layer's hidden states for the full corpus and return them as
+    npy bytes, for auditing EXTERNAL probes locally with mirage_hardness/
+    audit_probe.py (which needs a local .npy, not the Modal activations volume).
+    Returns only the headline layer (default: mid-depth), a [n, d] float32 array —
+    small enough to transfer directly, unlike the full [n, n_layers, d] stack."""
+    _setup()
+    import io
+
+    import numpy as np
+
+    from src.stage3 import load_corpus
+    from src.substrate import Substrate
+
+    sub = Substrate(model_id, cache_dir="/root/activations")
+    items = load_corpus(f"/root/mirage/data/corpus/{corpus_name}")
+    texts = [it["text"] for it in items]
+    H = sub.hidden_states_matrix(texts, batch_size=32)  # [n, n_layers+1, d]
+    n_layers = H.shape[1]
+    L = layer if layer is not None else n_layers // 2
+    Xl = H[:, L, :].astype(np.float32)
+    buf = io.BytesIO()
+    np.save(buf, Xl)
+    activations.commit()
+    hf_cache.commit()
+    return {"layer": L, "n_layers": n_layers, "shape": list(Xl.shape),
+            "npy_bytes": buf.getvalue()}
+
+
+@app.function(image=image, gpu=GPU, volumes=VOLUMES, secrets=SECRETS,
               timeout=4 * 3600)
 def causal_run(model_id: str, corpus_name: str, domain: str = "") -> dict:
     """Causal mediation: fraction of the truth-probe response routed through the
@@ -348,6 +379,24 @@ def main(stage: str = "sanity", model: str = "", max_per_topic: int = 0,
         out = _HERE / "results" / f"stage3_{res['detector']}_{short}{dtag}_{date.today():%Y%m%d}.json"
         out.write_text(json.dumps(res, indent=2, default=_json_default))
         print(f"  -> {out}")
+
+    elif stage == "dumpacts":
+        model_id = model or "meta-llama/Llama-3.1-8B"
+        corpus_name = corpus
+        if not corpus_name:
+            cdir = _HERE / "data" / "corpus"
+            corpus_name = sorted(cdir.glob("mirage_2x2_v*.jsonl"),
+                                 key=lambda p: p.stat().st_mtime)[-1].name
+        res = dump_layer_activations.remote(model_id=model_id, corpus_name=corpus_name,
+                                            layer=seed or None)
+        out_dir = _HERE / "data" / "activations" / "local"
+        out_dir.mkdir(parents=True, exist_ok=True)
+        short = model_id.split("/")[-1].lower()
+        chash = Path(corpus_name).stem.split("_v")[-1]
+        out = out_dir / f"{short}_{chash}_L{res['layer']}.npy"
+        out.write_bytes(res["npy_bytes"])
+        print(f"dumpacts {model_id} corpus={corpus_name} layer={res['layer']}/{res['n_layers']} "
+              f"shape={res['shape']} -> {out}")
 
     elif stage == "causal":
         from datetime import date
