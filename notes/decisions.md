@@ -185,3 +185,11 @@ Every resolved §4 open decision gets an entry: date, decision, reasoning, who d
 - Axes verified crossed within domain: cities TT/FT median log10 freq 6.73/6.74 (typical) vs TA/FA 5.28/5.30 (atypical); inventions 4.40/4.38 vs 2.32/2.15. Perplexity tracks truth (TT 13.7, TA 21.0, FT 53.0, FA 82.4), which is why it is the cross-check and not the axis (D-007).
 - Cost accepted: n falls 2164 -> 568. Balanced composition on measured frequencies is worth the sample-size loss; the v1 n was inflated by items placed on a fabricated axis.
 - Supersedes: the v1 corpus (mirage_2x2_v165941295e9a) and every Stage 3+ result computed on it.
+
+## D-016 — corpus v3 textual duplicates: disclose or rebuild (OWNER DECISION, OPEN)
+- Date: 2026-08-08. Status: OPEN, surfaced to owner, agent recommends (a).
+- Trigger: 70 of 696 rows in `mirage_2x2_v6206fe484650.jsonl` are exact textual duplicates, produced by `truth_preserving_swap` not deduplicating against the existing item pool. They are asymmetric by truth: TT +33, TA +35, FA +2, FT 0. Unique statements per cell are 141/139/174/172, so the finalize() balance gate passed on ROW counts while the true cells are ~20% repeats.
+- Measured impact: no duplicate spans two cells, carries conflicting truth labels, or crosses the diagonal/off-diagonal boundary, so there is no train-on-test leakage. Edit canary recomputed on unique texts only: 0.5312 [0.432, 0.622] as shipped -> 0.5165 [0.421, 0.621] deduplicated, PASS either way, so §4.2 holds despite 14.5% of canary rows being label-ambiguous (identical string appearing once edited and once not). SAPLMA and LRProbe gaps move <= 0.07 under deduplication.
+- Option (a) DISCLOSE: report n=696 rows / 626 unique statements, add a duplicate check to the finalize() gates so it cannot recur, keep every existing number. Cheapest, no number changes, and the defect is real but demonstrably not load-bearing.
+- Option (b) REBUILD as v4 with deduplication in the generator: cleaner corpus, but a fourth rebuild, every Stage 3+ number recomputed, and n falls below 626 after rebalancing per (domain, cell).
+- Agent recommendation: (a). The defect does not touch any headline claim on measurement, and §1.1 counsels against a rebuild whose main effect would be cosmetic. Escalated rather than resolved because corpus composition is a §4-class decision.
