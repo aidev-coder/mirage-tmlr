@@ -227,6 +227,8 @@ def external_layer_sweep(model_id: str, corpus_name: str, probe_specs: list[str]
     texts = [it["text"] for it in items]
     truth = np.array([bool(it["truth"]) for it in items])
     cells = np.array([it["cell"] for it in items])
+    domains = np.array([it.get("domain", "") for it in items])
+    n_topics = len(set(domains.tolist()))
 
     sub = Substrate(model_id, cache_dir="/root/activations")
     H = sub.hidden_states_matrix(texts, batch_size=32)          # [n, L+1, d]
@@ -238,14 +240,18 @@ def external_layer_sweep(model_id: str, corpus_name: str, probe_specs: list[str]
         X = H[:, L, :].astype(np.float64)
         Xn = H_neg[:, L, :].astype(np.float64) if H_neg is not None else None
         for spec, factory in factories.items():
-            if getattr(factory, "paired", False):
+            make = (lambda f=factory: f(seed=seed))
+            if getattr(factory, "needs_topics", False):
+                from mirage_hardness.probes_external.ttpd import stack as ttpd_stack
+                Xin = ttpd_stack(X, Xn, domains)
+                make = (lambda f=factory: f(seed=seed, n_topics=n_topics))
+            elif getattr(factory, "paired", False):
                 from mirage_hardness.probes_external.ccs import stack
                 Xin = stack(X, Xn)
             else:
                 Xin = X
             try:
-                adv = adversarial_split(Xin, truth, cells,
-                                        lambda: factory(seed=seed), seed=seed)
+                adv = adversarial_split(Xin, truth, cells, make, seed=seed)
             except Exception as exc:
                 rows.append({"probe": spec, "layer": L, "error": repr(exc)})
                 continue
@@ -421,6 +427,20 @@ def main(stage: str = "sanity", model: str = "", max_per_topic: int = 0,
             if not cands:
                 raise SystemExit("no finalized corpus in data/corpus/ — run --stage stage2 first")
             corpus_name = cands[-1].name
+        if "," in model:
+            kw3 = {"corpus_name": corpus_name, "detector": detector, "domain": domain}
+            for r in stage3_run.map([m.strip() for m in model.split(",") if m.strip()],
+                                    kwargs=kw3, order_outputs=False):
+                sh = r["model"].split("/")[-1].lower()
+                dt = f"_{domain}" if domain else ""
+                o = _HERE / "results" / f"stage3_{r['detector']}_{sh}{dt}_{date.today():%Y%m%d}.json"
+                o.write_text(json.dumps(r, indent=2, default=_json_default))
+                el = r["per_layer"][r["headline_layer"]]
+                print(f"{r['model']}: L{r['headline_layer']} off-diag "
+                      f"{el['adversarial']['off_diagonal'].get('auroc')} "
+                      f"recoverability {el.get('mediation_allcell', {}).get('truth_beta_partialled')}"
+                      f" -> {o}")
+            return
         res = stage3_run.remote(model_id=canary_model, corpus_name=corpus_name,
                                 detector=detector, domain=domain)
         hl = res["headline_layer"]

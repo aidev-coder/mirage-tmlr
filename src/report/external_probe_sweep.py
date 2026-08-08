@@ -368,8 +368,58 @@ def run_layer_report(chash: str) -> Path:
     return dest
 
 
+def run_mechanism_report(corpus_name: str) -> Path:
+    """The recoverability -> honest-performance relation for OUR probe, over every
+    model with a Stage 3 artifact on this corpus. The draft quotes r = 0.964 at
+    n = 7 with no interval; at that n almost nothing is distinguishable from zero,
+    so the Pythia ladder is here to make the estimate mean something."""
+    rows = []
+    seen: dict[str, Path] = {}
+    for p in sorted((_ROOT / "results").glob("stage3_saplma_*.json")):
+        a = json.loads(p.read_text(encoding="utf-8"))
+        if a.get("corpus") != corpus_name or "_cities_" in p.name:
+            continue
+        seen[a["model"]] = p
+    for model, p in seen.items():
+        a = json.loads(p.read_text(encoding="utf-8"))
+        e = a["per_layer"][a["headline_layer"]]
+        rec = e.get("mediation_allcell", {}).get("truth_beta_partialled")
+        adv = e["adversarial"]
+        if rec is None:
+            continue
+        rows.append({"model": model.split("/")[-1], "layer": a["headline_layer"],
+                     "in_dist": adv["headline_heldout_diagonal"]["auroc"],
+                     "off": adv["off_diagonal"]["auroc"],
+                     "off_ci": adv["off_diagonal"]["ci"],
+                     "gap": adv["gap"]["gap"], "recoverability": rec})
+    rows.sort(key=lambda r: r["recoverability"])
+    x = np.array([r["recoverability"] for r in rows])
+    y = np.array([r["off"] for r in rows])
+    stat = _r_with_ci(x, y)
+
+    print(f"{'model':24s} {'L':>4s} {'in-dist':>8s} {'honest off':>11s} {'gap':>8s} "
+          f"{'recoverability':>15s}")
+    for r in rows:
+        print(f"{r['model']:24s} {r['layer']:4d} {r['in_dist']:8.3f} {r['off']:11.3f} "
+              f"{r['gap']:+8.3f} {r['recoverability']:15.3f}")
+    print(f"\ncorrelation(recoverability, honest off-diagonal) = {stat['r']:+.4f} "
+          f"[{stat['ci'][0]:+.3f}, {stat['ci'][1]:+.3f}]  n={stat['n']}"
+          f"{'' if stat['excludes_zero'] else '   NOT distinguishable from 0'}")
+    print(f"in-distribution range {min(r['in_dist'] for r in rows):.3f}-"
+          f"{max(r['in_dist'] for r in rows):.3f}; honest range "
+          f"{min(r['off'] for r in rows):.3f}-{max(r['off'] for r in rows):.3f}")
+
+    dest = _ROOT / "results" / f"mechanism_saplma_{corpus_name.split('_v')[-1].split('.')[0]}.json"
+    dest.write_text(json.dumps({"corpus": corpus_name, "provenance": "measured",
+                                "n_models": len(rows), "correlation": stat,
+                                "rows": rows}, indent=2), encoding="utf-8")
+    print(f"-> {dest}")
+    return dest
+
+
 def main() -> None:
     ap = argparse.ArgumentParser()
+    ap.add_argument("--mechanism", action="store_true")
     ap.add_argument("--layers", action="store_true")
     ap.add_argument("--corpus-hash", default="")
     ap.add_argument("--probe")
@@ -380,6 +430,11 @@ def main() -> None:
     ap.add_argument("--n-folds", type=int, default=5)
     args = ap.parse_args()
 
+    if args.mechanism:
+        if not args.corpus_hash:
+            raise SystemExit("--mechanism needs --corpus-hash")
+        run_mechanism_report(f"mirage_2x2_v{args.corpus_hash}.jsonl")
+        return
     if args.layers:
         if not args.corpus_hash:
             raise SystemExit("--layers needs --corpus-hash")

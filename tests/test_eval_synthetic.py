@@ -258,3 +258,43 @@ def test_ccs_adapter_rejects_a_bare_matrix():
         CCSProbeAdapter(seed=0, epochs=10).fit(pos, y)
     with pytest.raises(ValueError):
         stack(pos, neg[:5])
+
+
+def _ttpd_world(n=600, d=48, seed=0):
+    """Activations built to TTPD's own model: a = mu_topic + tau*t_G + tau*p*t_P."""
+    import numpy as np
+    rng = np.random.default_rng(seed)
+    y = rng.integers(0, 2, n).astype(bool)
+    topics = rng.integers(0, 3, n)
+    t_g, t_p = np.zeros(d), np.zeros(d)
+    t_g[0], t_p[1] = 4.0, 3.0
+    mus = rng.normal(scale=2.0, size=(3, d))
+    tau = np.where(y, 1.0, -1.0)[:, None]
+    noise_p = rng.normal(size=(n, d))
+    noise_n = rng.normal(size=(n, d))
+    pos = mus[topics] + tau * t_g + tau * (+1) * t_p + noise_p
+    neg = mus[topics] + (-tau) * t_g + (-tau) * (-1) * t_p + noise_n
+    return pos, neg, y, topics
+
+
+def test_ttpd_recovers_truth_and_the_two_directions():
+    import numpy as np
+    from mirage_hardness.probes_external.ttpd import TTPDProbe, stack
+    from src.stats import auroc_with_ci
+
+    pos, neg, y, topics = _ttpd_world()
+    X = stack(pos, neg, topics)
+    p = TTPDProbe(seed=0, n_topics=3).fit(X, y)
+    assert auroc_with_ci(y, p.score(X), n_boot=200)["auroc"] > 0.95
+    # the fitted directions must align with the planted ones, not with each other
+    assert abs(p._t_g[0]) > 3 * np.abs(np.delete(p._t_g, 0)).max()
+    assert abs(p._t_p[1]) > 3 * np.abs(np.delete(p._t_p, 1)).max()
+
+
+def test_ttpd_rejects_a_bad_layout():
+    import pytest
+    from mirage_hardness.probes_external.ttpd import TTPDProbe
+
+    pos, _, y, _ = _ttpd_world(d=48)
+    with pytest.raises(ValueError):
+        TTPDProbe(seed=0, n_topics=3).fit(pos, y)
