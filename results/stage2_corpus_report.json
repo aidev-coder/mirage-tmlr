@@ -4,89 +4,95 @@
     "reference_model": "Qwen/Qwen2.5-7B-Instruct",
     "canary_model": "meta-llama/Llama-3.1-8B",
     "canary_layer": 16,
-    "n_full": 696,
-    "n_released": 696,
+    "n_full": 720,
+    "n_released": 720,
     "raw_counts": {
-      "TT": 174,
-      "TA": 174,
-      "FT": 174,
-      "FA": 174
+      "TT": 180,
+      "TA": 180,
+      "FT": 180,
+      "FA": 180
     },
     "released_counts": {
-      "TT": 174,
-      "TA": 174,
-      "FT": 174,
-      "FA": 174
+      "TT": 180,
+      "TA": 180,
+      "FT": 180,
+      "FA": 180
     },
     "domain_report": {
       "animals": {
         "kept": 0,
         "reason": "does not populate all four cells",
         "cell_counts": {
-          "TT": 36,
-          "TA": 16,
-          "FT": 20,
-          "FA": 40
+          "TT": 28,
+          "TA": 9,
+          "FT": 19,
+          "FA": 38
         },
         "n_unresolved": 0
       },
       "cities": {
         "kept": null,
         "cell_counts": {
-          "TT": 497,
-          "TA": 376,
-          "FT": 379,
-          "FA": 500
+          "TT": 350,
+          "TA": 252,
+          "FT": 389,
+          "FA": 487
         },
         "n_unresolved": 0
       },
       "companies": {
         "kept": null,
         "cell_counts": {
-          "TT": 75,
-          "TA": 59,
+          "TT": 51,
+          "TA": 41,
           "FT": 58,
-          "FA": 74
+          "FA": 68
         },
         "n_unresolved": 0
       },
       "elements": {
         "kept": 0,
-        "reason": "does not populate all four cells",
-        "cell_counts": {
-          "TT": 14,
-          "TA": 13,
-          "FT": 16,
-          "FA": 17
-        },
+        "reason": "too few entities with measured frequency",
+        "n_with_freq": 76,
         "n_unresolved": 0
       },
       "generated": {
         "kept": 0,
         "reason": "too few entities with measured frequency",
-        "n_with_freq": 62,
+        "n_with_freq": 48,
         "n_unresolved": 0
       },
       "inventions": {
         "kept": null,
         "cell_counts": {
-          "TT": 83,
-          "TA": 73,
-          "FT": 71,
-          "FA": 81
+          "TT": 56,
+          "TA": 49,
+          "FT": 73,
+          "FA": 80
         },
         "n_unresolved": 0
       }
     },
     "balance": {
-      "per_domain_cell": 58,
+      "per_domain_cell": {
+        "cities": 90,
+        "companies": 41,
+        "inventions": 49
+      },
+      "capacity_per_domain_cell": {
+        "cities": 252,
+        "companies": 41,
+        "inventions": 49
+      },
       "domains": [
         "cities",
         "companies",
         "inventions"
       ],
-      "total": 696,
-      "cells_per_domain": 4
+      "total": 720,
+      "cells_per_domain": 4,
+      "max_domain_share": 0.5,
+      "rule": "within-domain balance; no domain may exceed 50% of items"
     },
     "edit_rate": 0.5,
     "seed": 20260712
@@ -98,45 +104,45 @@
       "checks": {
         "true": {
           "cells": "TT (typical) vs TA (atypical)",
-          "cliffs_delta_freq": 0.6233,
-          "mannwhitney_p": 4.3509584073998704e-24,
-          "median_log10freq_typical": 6.771,
-          "median_log10freq_atypical": 5.261,
-          "xcheck_median_ppl_typical": 18.0,
-          "xcheck_median_ppl_atypical": 26.55,
+          "cliffs_delta_freq": 0.6659,
+          "mannwhitney_p": 4.3484659218822775e-28,
+          "median_log10freq_typical": 6.754,
+          "median_log10freq_atypical": 5.313,
+          "xcheck_median_ppl_typical": 17.59,
+          "xcheck_median_ppl_atypical": 22.16,
           "pass": true
         },
         "false": {
           "cells": "FT (typical) vs FA (atypical)",
-          "cliffs_delta_freq": 0.626,
-          "mannwhitney_p": 2.791490076888603e-24,
-          "median_log10freq_typical": 6.782,
-          "median_log10freq_atypical": 5.203,
-          "xcheck_median_ppl_typical": 83.53,
-          "xcheck_median_ppl_atypical": 86.09,
+          "cliffs_delta_freq": 0.6706,
+          "mannwhitney_p": 1.8360922106003118e-28,
+          "median_log10freq_typical": 6.731,
+          "median_log10freq_atypical": 5.146,
+          "xcheck_median_ppl_typical": 64.04,
+          "xcheck_median_ppl_atypical": 79.07,
           "pass": true
         }
       },
       "pass": true
     },
     "edit_canary": {
-      "auroc": 0.5312,
+      "auroc": 0.5756,
       "ci": [
-        0.4319,
-        0.6218
+        0.4829,
+        0.6778
       ],
-      "n": 140,
+      "n": 144,
       "n_boot": 1000,
       "gate": "edit_canary",
       "pass": true
     },
     "fragmentation_canary": {
-      "auroc": 0.4782,
+      "auroc": 0.4889,
       "ci": [
-        0.3808,
-        0.571
+        0.3923,
+        0.5901
       ],
-      "n": 140,
+      "n": 144,
       "n_boot": 1000,
       "gate": "fragmentation_canary",
       "pass": true
