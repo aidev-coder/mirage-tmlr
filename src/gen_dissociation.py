@@ -260,3 +260,117 @@ def run(substrate, corpus_path: str | Path, max_subjects: int = 400,
     print(f"  correct       n={c['n']}: probe P(true)={c['probe_mean_p_true']} "
           f"behavior={c['behavior_mean_p_true']}", flush=True)
     return out
+
+
+def _sample(substrate, prompt: str, k: int, temperature: float, seed: int,
+            max_new_tokens: int = 12) -> list[str]:
+    import torch
+    tok = substrate.tokenizer
+    add_special = not getattr(tok, "chat_template", None)
+    enc = tok(prompt, return_tensors="pt",
+              add_special_tokens=add_special).to(substrate.model.device)
+    torch.manual_seed(seed)
+    with torch.no_grad():
+        out = substrate.model.generate(**enc, do_sample=True, temperature=temperature,
+                                       top_p=1.0, num_return_sequences=k,
+                                       max_new_tokens=max_new_tokens,
+                                       pad_token_id=tok.eos_token_id)
+    cut = enc["input_ids"].shape[1]
+    return [tok.decode(o[cut:], skip_special_tokens=True) for o in out]
+
+
+def run_semantic_entropy(substrate, corpus_path: str | Path, k: int = 10,
+                         temperature: float = 1.0, max_subjects: int = 200,
+                         seed: int = 20260809, commit_fn=None,
+                         nli_model: str = "microsoft/deberta-large-mnli") -> dict:
+    """Semantic entropy (Farquhar et al. 2024) — the sampling-based black-box
+    detector Stage 1 promised and never delivered.
+
+    It answers a question no probe result can: the confound we measure is a property
+    of LINEAR READOUTS of hidden states. A detector that never looks at the residual
+    stream, and instead samples the model K times and measures semantic dispersion,
+    is the honest test of whether the rare-entity penalty is about probes or about
+    the model. So the reported quantity is not only SE's detection AUROC but its
+    relationship to entity frequency among statements that are all TRUE — exactly
+    the contrast that exposes the probes.
+
+    Answers are embedded in the statement template before clustering, because
+    entailment models are unreliable on bare fragments.
+    """
+    from .probes.semantic_entropy import NliClusterer, semantic_entropy
+    from .stats import auroc_with_ci
+
+    items = load_corpus(corpus_path)
+    cities = [it for it in items if it["domain"] == "cities"]
+    truth_map, freq_map = {}, {}
+    for it in cities:
+        if it["truth"]:
+            truth_map[it["entities"][0]] = it["entities"][1]
+        freq_map[it["entities"][0]] = it["typicality"]["entity_freq_log10"]
+    subjects = sorted(truth_map)
+    rng = np.random.default_rng(seed)
+    if len(subjects) > max_subjects:
+        subjects = list(rng.choice(subjects, max_subjects, replace=False))
+
+    tok = substrate.tokenizer
+
+    def _ask(s: str) -> str:
+        q = ASK.format(s=s)
+        if getattr(tok, "chat_template", None):
+            q = tok.apply_chat_template([{"role": "user", "content": q}],
+                                        tokenize=False, add_generation_prompt=True)
+        return q
+
+    clusterer = NliClusterer(nli_model, device=0)
+    rows = []
+    for i, s in enumerate(subjects):
+        raw = _sample(substrate, _ask(s), k, temperature, seed + i)
+        answers = [_clean_object(r) for r in raw]
+        answers = [a for a in answers if a]
+        if len(answers) < 2:
+            continue
+        se = semantic_entropy([f"{s} is a city in {a}." for a in answers], clusterer)
+        greedy = _clean_object(_greedy(substrate, _ask(s), max_new_tokens=12))
+        rows.append({"subject": s, "greedy": greedy,
+                     "correct": bool(_match(greedy, truth_map[s])),
+                     "semantic_entropy": se["semantic_entropy"],
+                     "n_clusters": se["n_clusters"], "n_samples": se["n_samples"],
+                     "freq_log10": round(float(freq_map[s]), 3),
+                     "clusterer": se["clusterer"]})
+        if commit_fn and i % 25 == 0:
+            commit_fn()
+        if i % 25 == 0:
+            print(f"    [se] {i}/{len(subjects)}", flush=True)
+
+    ent = np.array([r["semantic_entropy"] for r in rows])
+    correct = np.array([r["correct"] for r in rows])
+    freq = np.array([r["freq_log10"] for r in rows])
+
+    out = {"detector": "semantic_entropy", "model": substrate.model_id,
+           "corpus": Path(corpus_path).name, "k": k, "temperature": temperature,
+           "nli_model": nli_model, "n": len(rows),
+           "clusterer": rows[0]["clusterer"] if rows else None,
+           "error_rate": float(1 - correct.mean()) if len(rows) else None,
+           "provenance": "measured", "records": rows}
+
+    # does SE detect the model's own errors at all
+    if correct.any() and (~correct).any():
+        out["detects_errors_auroc"] = auroc_with_ci(~correct, ent, seed=seed)
+
+    # THE question: among statements the model got RIGHT, does SE rise on rare
+    # entities? That is the probes' failure mode, asked of a black-box detector.
+    ok = correct
+    if ok.sum() > 10:
+        med = float(np.median(freq[ok]))
+        rare, common = ent[ok][freq[ok] < med], ent[ok][freq[ok] >= med]
+        out["entropy_on_correct_by_frequency"] = {
+            "median_log10_freq": round(med, 3),
+            "rare_mean_entropy": round(float(rare.mean()), 4), "n_rare": int(len(rare)),
+            "common_mean_entropy": round(float(common.mean()), 4),
+            "n_common": int(len(common)),
+            "rare_minus_common": round(float(rare.mean() - common.mean()), 4),
+            "separates_rare_from_common_auroc": auroc_with_ci(
+                (freq[ok] < med), ent[ok], seed=seed),
+        }
+    out["corr_entropy_frequency"] = round(float(np.corrcoef(ent, freq)[0, 1]), 4)
+    return out

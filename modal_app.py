@@ -202,6 +202,24 @@ def dump_layer_activations(model_id: str, corpus_name: str, layer: int | None = 
 
 @app.function(image=image, gpu=GPU, volumes=VOLUMES, secrets=SECRETS,
               timeout=4 * 3600)
+def semantic_entropy_run(model_id: str, corpus_name: str, k: int = 10,
+                         max_subjects: int = 200) -> dict:
+    """Stage 1's third detector, finally run: sampling-based semantic entropy."""
+    _setup()
+    from src.gen_dissociation import run_semantic_entropy
+    from src.substrate import Substrate
+
+    sub = Substrate(model_id, cache_dir="/root/activations")
+    out = run_semantic_entropy(sub, f"/root/mirage/data/corpus/{corpus_name}",
+                               k=k, max_subjects=max_subjects,
+                               commit_fn=activations.commit)
+    activations.commit()
+    hf_cache.commit()
+    return out
+
+
+@app.function(image=image, gpu=GPU, volumes=VOLUMES, secrets=SECRETS,
+              timeout=4 * 3600)
 def external_layer_sweep(model_id: str, corpus_name: str, probe_specs: list[str],
                          seed: int = 0) -> dict:
     """Audit external probes at every layer, per the project's standing directive §4.3, rather than at the
@@ -495,6 +513,32 @@ def main(stage: str = "sanity", model: str = "", max_per_topic: int = 0,
         out.write_bytes(res["npy_bytes"])
         print(f"dumpacts {model_id} corpus={corpus_name} layer={res['layer']}/{res['n_layers']} "
               f"shape={res['shape']} -> {out}")
+
+    elif stage == "semantic":
+        from datetime import date
+        corpus_name = corpus
+        if not corpus_name:
+            cdir = _HERE / "data" / "corpus"
+            corpus_name = sorted(cdir.glob("mirage_2x2_v*.jsonl"),
+                                 key=lambda p: p.stat().st_mtime)[-1].name
+        chs = Path(corpus_name).stem.split("_v")[-1]
+        ids_se = [m.strip() for m in model.split(",") if m.strip()] or [
+            "Qwen/Qwen2.5-7B-Instruct", "meta-llama/Llama-3.1-8B-Instruct",
+            "google/gemma-2-9b-it"]
+        kw = {"corpus_name": corpus_name, "k": 10, "max_subjects": 200}
+        for r in semantic_entropy_run.map(ids_se, kwargs=kw, order_outputs=False,
+                                          return_exceptions=True):
+            if isinstance(r, Exception):
+                print(f"SKIPPED (failed): {type(r).__name__}: {str(r)[:200]}")
+                continue
+            sh = r["model"].split("/")[-1].lower()
+            o = _HERE / "results" / f"semantic_entropy_{sh}_{chs}_{date.today():%Y%m%d}.json"
+            o.write_text(json.dumps(r, indent=2, default=_json_default))
+            fb = r.get("entropy_on_correct_by_frequency", {})
+            print(f"{r['model']}: n={r['n']} err={r['error_rate']:.3f} "
+                  f"detects-errors {r.get('detects_errors_auroc', {}).get('auroc')} | "
+                  f"rare-vs-common entropy {fb.get('rare_minus_common')} "
+                  f"(AUROC {fb.get('separates_rare_from_common_auroc', {}).get('auroc')}) -> {o}")
 
     elif stage == "extlayers":
         from datetime import date
