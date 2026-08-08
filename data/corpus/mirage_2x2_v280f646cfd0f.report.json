@@ -1,0 +1,168 @@
+{
+  "hash": "280f646cfd0f",
+  "n": 720,
+  "signoff": "D-016",
+  "crossing": {
+    "gate": "crossing",
+    "axis": "entity_frequency",
+    "checks": {
+      "true": {
+        "cells": "TT (typical) vs TA (atypical)",
+        "cliffs_delta_freq": 0.6659,
+        "mannwhitney_p": 4.3484659218822775e-28,
+        "median_log10freq_typical": 6.754,
+        "median_log10freq_atypical": 5.313,
+        "xcheck_median_ppl_typical": 17.59,
+        "xcheck_median_ppl_atypical": 22.16,
+        "pass": true
+      },
+      "false": {
+        "cells": "FT (typical) vs FA (atypical)",
+        "cliffs_delta_freq": 0.6706,
+        "mannwhitney_p": 1.8360922106003118e-28,
+        "median_log10freq_typical": 6.731,
+        "median_log10freq_atypical": 5.146,
+        "xcheck_median_ppl_typical": 64.04,
+        "xcheck_median_ppl_atypical": 79.07,
+        "pass": true
+      }
+    },
+    "pass": true
+  },
+  "edit_canary": {
+    "auroc": 0.5756,
+    "ci": [
+      0.4829,
+      0.6778
+    ],
+    "n": 144,
+    "n_boot": 1000,
+    "gate": "edit_canary",
+    "pass": true
+  },
+  "fragmentation_canary": {
+    "auroc": 0.4889,
+    "ci": [
+      0.3923,
+      0.5901
+    ],
+    "n": 144,
+    "n_boot": 1000,
+    "gate": "fragmentation_canary",
+    "pass": true
+  },
+  "composition_canary": {
+    "gate": "composition_canary",
+    "fields": {
+      "edited": {
+        "auroc": 0.5028,
+        "ci": [
+          0.4525,
+          0.5537
+        ],
+        "n": 360,
+        "n_boot": 1000,
+        "shortcut_present": false,
+        "text_visible": false,
+        "text_recoverability_acc": 0.6019,
+        "composition": {
+          "diagonal": {
+            "False": {
+              "n": 180,
+              "frac_true": 0.578
+            },
+            "True": {
+              "n": 180,
+              "frac_true": 0.422
+            }
+          },
+          "off_diagonal": {
+            "False": {
+              "n": 209,
+              "frac_true": 0.502
+            },
+            "True": {
+              "n": 151,
+              "frac_true": 0.497
+            }
+          }
+        },
+        "pass": true
+      },
+      "provenance.strategy": {
+        "auroc": 1.0,
+        "ci": [
+          1.0,
+          1.0
+        ],
+        "n": 360,
+        "n_boot": 1000,
+        "shortcut_present": true,
+        "text_visible": false,
+        "text_recoverability_acc": 0.3148,
+        "composition": {
+          "diagonal": {
+            "original_false": {
+              "n": 76,
+              "frac_true": 0.0
+            },
+            "original_true": {
+              "n": 104,
+              "frac_true": 1.0
+            },
+            "truth_breaking_swap_FA_lean": {
+              "n": 56,
+              "frac_true": 0.0
+            },
+            "truth_breaking_swap_FT_lean": {
+              "n": 48,
+              "frac_true": 0.0
+            },
+            "truth_preserving_swap": {
+              "n": 76,
+              "frac_true": 1.0
+            }
+          },
+          "off_diagonal": {
+            "original_false": {
+              "n": 104,
+              "frac_true": 0.0
+            },
+            "original_true": {
+              "n": 105,
+              "frac_true": 1.0
+            },
+            "truth_breaking_swap_FA_lean": {
+              "n": 29,
+              "frac_true": 0.0
+            },
+            "truth_breaking_swap_FT_lean": {
+              "n": 47,
+              "frac_true": 0.0
+            },
+            "truth_preserving_swap": {
+              "n": 75,
+              "frac_true": 1.0
+            }
+          }
+        },
+        "pass": true
+      }
+    },
+    "failed_fields": [],
+    "metadata_only_imbalances": [
+      "provenance.strategy"
+    ],
+    "pass": true
+  },
+  "duplicates": {
+    "n_rows": 720,
+    "n_unique": 720,
+    "pass": true
+  },
+  "domain_share": {
+    "cities": 0.5,
+    "companies": 0.2278,
+    "inventions": 0.2722
+  }
+}
