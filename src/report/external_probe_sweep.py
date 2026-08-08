@@ -129,15 +129,35 @@ def main() -> None:
            "n_models": len(rows), "rows": rows, "provenance": "measured",
            "seed": args.seed}
 
+    # A gap is only interpretable if the probe has in-distribution signal to lose.
+    # This is the D-013 lesson: a detector that cannot read truth on the diagonal
+    # either cannot exhibit a confound, and its gap of ~0 means "nothing to lose",
+    # not "unconfounded". Report the full set as the headline and the adequately
+    # powered subset as a sensitivity check — both, whichever direction they move.
+    IN_DIST_FLOOR = 0.70
+    strong = [r for r in rows if r["in_dist"] >= IN_DIST_FLOOR]
+    out["in_dist_floor"] = IN_DIST_FLOOR
+    out["underpowered_models"] = [
+        {"model": r["model"], "in_dist": r["in_dist"], "gap": r["gap"]}
+        for r in rows if r["in_dist"] < IN_DIST_FLOOR]
+
     for key, label in (("our_recoverability_truth_beta", "our all-cell probe (representation property)"),
                        ("external_own_recoverability_off_auroc", "the external probe's own fair training")):
         pairs = [(r[key], r["off"]) for r in rows if r.get(key) is not None]
         if len(pairs) > 2:
             x = np.array([p[0] for p in pairs]); y = np.array([p[1] for p in pairs])
-            r = float(np.corrcoef(x, y)[0, 1])
-            out[f"correlation_{key}"] = {"r": round(r, 4), "n": len(pairs), "measured_by": label}
+            r_all = float(np.corrcoef(x, y)[0, 1])
+            entry = {"r": round(r_all, 4), "n": len(pairs), "measured_by": label}
+            sp = [(z[key], z["off"]) for z in strong if z.get(key) is not None]
+            if len(sp) > 2:
+                xs = np.array([p[0] for p in sp]); ys = np.array([p[1] for p in sp])
+                entry["r_adequately_powered_only"] = round(float(np.corrcoef(xs, ys)[0, 1]), 4)
+                entry["n_adequately_powered"] = len(sp)
+            out[f"correlation_{key}"] = entry
+            extra = (f"; excluding {len(pairs) - len(sp)} model(s) with in-dist < {IN_DIST_FLOOR}: "
+                     f"{entry['r_adequately_powered_only']:.3f} (n={len(sp)})") if len(sp) > 2 else ""
             print(f"\ncorrelation(recoverability [{label}], honest off-diagonal) "
-                  f"= {r:.3f}  (n={len(pairs)} models)")
+                  f"= {r_all:.3f}  (n={len(pairs)} models){extra}")
 
     dest = _ROOT / "results" / f"external_sweep_{args.tag}_{Path(args.corpus).stem.split('_v')[-1]}.json"
     dest.write_text(json.dumps(out, indent=2), encoding="utf-8")

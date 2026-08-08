@@ -1,0 +1,204 @@
+{
+  "probe": "mirage_hardness.probes_external.geometry_of_truth_mmprobe:GeometryOfTruthMMProbe",
+  "corpus": "mirage_2x2_v6206fe484650.jsonl",
+  "n_models": 7,
+  "rows": [
+    {
+      "model": "gemma-2-9b-it",
+      "layer": 21,
+      "in_dist": 0.8947,
+      "off": 0.9273,
+      "off_ci": [
+        0.9,
+        0.9541
+      ],
+      "gap": -0.0326,
+      "gap_ci": [
+        -0.1047,
+        0.0368
+      ],
+      "gap_excludes_zero": false,
+      "external_own_recoverability_off_auroc": 0.939,
+      "our_recoverability_truth_beta": 0.9318,
+      "per_cell_frac_called_true": {
+        "TT": 0.9885,
+        "TA": 0.9598,
+        "FT": 0.0862,
+        "FA": 0.1207
+      }
+    },
+    {
+      "model": "gemma-2-9b",
+      "layer": 21,
+      "in_dist": 0.8692,
+      "off": 0.7458,
+      "off_ci": [
+        0.6982,
+        0.7912
+      ],
+      "gap": 0.1235,
+      "gap_ci": [
+        0.0279,
+        0.2064
+      ],
+      "gap_excludes_zero": true,
+      "external_own_recoverability_off_auroc": 0.8956,
+      "our_recoverability_truth_beta": 0.93,
+      "per_cell_frac_called_true": {
+        "TT": 0.9943,
+        "TA": 0.7759,
+        "FT": 0.1724,
+        "FA": 0.1034
+      }
+    },
+    {
+      "model": "llama-3.1-8b-instruct",
+      "layer": 16,
+      "in_dist": 0.6719,
+      "off": 0.6749,
+      "off_ci": [
+        0.6271,
+        0.7238
+      ],
+      "gap": -0.003,
+      "gap_ci": [
+        -0.1315,
+        0.1111
+      ],
+      "gap_excludes_zero": false,
+      "external_own_recoverability_off_auroc": 0.8236,
+      "our_recoverability_truth_beta": 0.9135,
+      "per_cell_frac_called_true": {
+        "TT": 0.977,
+        "TA": 0.7471,
+        "FT": 0.3333,
+        "FA": 0.2184
+      }
+    },
+    {
+      "model": "llama-3.1-8b",
+      "layer": 16,
+      "in_dist": 0.6279,
+      "off": 0.6105,
+      "off_ci": [
+        0.5608,
+        0.6612
+      ],
+      "gap": 0.0173,
+      "gap_ci": [
+        -0.1193,
+        0.145
+      ],
+      "gap_excludes_zero": false,
+      "external_own_recoverability_off_auroc": 0.7891,
+      "our_recoverability_truth_beta": 0.8959,
+      "per_cell_frac_called_true": {
+        "TT": 0.9598,
+        "TA": 0.6379,
+        "FT": 0.4023,
+        "FA": 0.1609
+      }
+    },
+    {
+      "model": "pythia-1.4b",
+      "layer": 12,
+      "in_dist": 0.8022,
+      "off": 0.3148,
+      "off_ci": [
+        0.2652,
+        0.3708
+      ],
+      "gap": 0.4874,
+      "gap_ci": [
+        0.373,
+        0.5927
+      ],
+      "gap_excludes_zero": true,
+      "external_own_recoverability_off_auroc": 0.6631,
+      "our_recoverability_truth_beta": 0.5084,
+      "per_cell_frac_called_true": {
+        "TT": 0.8103,
+        "TA": 0.0862,
+        "FT": 0.5115,
+        "FA": 0.1149
+      }
+    },
+    {
+      "model": "pythia-6.9b",
+      "layer": 16,
+      "in_dist": 0.808,
+      "off": 0.3026,
+      "off_ci": [
+        0.258,
+        0.355
+      ],
+      "gap": 0.5054,
+      "gap_ci": [
+        0.3934,
+        0.6049
+      ],
+      "gap_excludes_zero": true,
+      "external_own_recoverability_off_auroc": 0.6586,
+      "our_recoverability_truth_beta": 0.6104,
+      "per_cell_frac_called_true": {
+        "TT": 0.8793,
+        "TA": 0.092,
+        "FT": 0.5632,
+        "FA": 0.0862
+      }
+    },
+    {
+      "model": "qwen2.5-7b-instruct",
+      "layer": 14,
+      "in_dist": 0.9712,
+      "off": 0.6957,
+      "off_ci": [
+        0.6412,
+        0.745
+      ],
+      "gap": 0.2755,
+      "gap_ci": [
+        0.2071,
+        0.3384
+      ],
+      "gap_excludes_zero": true,
+      "external_own_recoverability_off_auroc": 0.9495,
+      "our_recoverability_truth_beta": 0.8766,
+      "per_cell_frac_called_true": {
+        "TT": 0.9598,
+        "TA": 0.4368,
+        "FT": 0.1437,
+        "FA": 0.0517
+      }
+    }
+  ],
+  "provenance": "measured",
+  "seed": 0,
+  "in_dist_floor": 0.7,
+  "underpowered_models": [
+    {
+      "model": "llama-3.1-8b-instruct",
+      "in_dist": 0.6719,
+      "gap": -0.003
+    },
+    {
+      "model": "llama-3.1-8b",
+      "in_dist": 0.6279,
+      "gap": 0.0173
+    }
+  ],
+  "correlation_our_recoverability_truth_beta": {
+    "r": 0.9121,
+    "n": 7,
+    "measured_by": "our all-cell probe (representation property)",
+    "r_adequately_powered_only": 0.9495,
+    "n_adequately_powered": 5
+  },
+  "correlation_external_own_recoverability_off_auroc": {
+    "r": 0.9355,
+    "n": 7,
+    "measured_by": "the external probe's own fair training",
+    "r_adequately_powered_only": 0.9471,
+    "n_adequately_powered": 5
+  }
+}
