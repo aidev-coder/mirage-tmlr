@@ -187,3 +187,74 @@ def test_eval_stack_synthetic():
 
 if __name__ == "__main__":
     main()
+
+
+def _ccs_world(n=400, d=64, seed=0, rogue=False, negation_offset=0.0):
+    import numpy as np
+    rng = np.random.default_rng(seed)
+    y = rng.integers(0, 2, n).astype(bool)
+    direction = np.zeros(d)
+    direction[0] = 1.0
+    shared = rng.normal(size=(n, d))
+    signal = np.where(y, 1.0, -1.0)[:, None] * direction * 3.0
+    pos, neg = shared + signal, shared - signal
+    if negation_offset:
+        # the constant "contains not" direction; per-side scaling must remove it
+        bump = np.zeros(d)
+        bump[3] = negation_offset
+        neg = neg + bump
+    if rogue:
+        pos[:, 7] += 300.0
+        neg[:, 7] += 300.0
+    return pos, neg, y
+
+
+def test_ccs_adapter_is_invariant_to_a_constant_negation_offset():
+    """Burns et al. z-score x+ and x- separately so the constant "contains not"
+    direction cannot be read. Under per-side scaling a constant added to the
+    negation side cancels exactly; under shared scaling it perturbs the positive
+    side's normalization and the scores move. This pins the normalization itself,
+    not a downstream AUROC that stays high either way."""
+    import numpy as np
+    import pytest
+    pytest.importorskip("torch")
+    from mirage_hardness.probes_external.ccs import CCSProbeAdapter, stack
+
+    pos, neg, y = _ccs_world()
+    plain = CCSProbeAdapter(seed=0, epochs=200).fit(stack(pos, neg), y).score(stack(pos, neg))
+    bumped = np.zeros(pos.shape[1])
+    bumped[3] = 50.0
+    X2 = stack(pos, neg + bumped)
+    shifted = CCSProbeAdapter(seed=0, epochs=200).fit(X2, y).score(X2)
+    np.testing.assert_allclose(plain, shifted, rtol=1e-5, atol=1e-6)
+
+
+def test_ccs_adapter_reads_truth_without_labels():
+    import numpy as np
+    import pytest
+    pytest.importorskip("torch")
+    from mirage_hardness.probes_external.ccs import CCSProbeAdapter, stack
+    from src.stats import auroc_with_ci
+
+    for rogue in (False, True):
+        pos, neg, y = _ccs_world(rogue=rogue)
+        X = stack(pos, neg)
+        s = CCSProbeAdapter(seed=0, epochs=400).fit(X, y).score(X)
+        assert auroc_with_ci(y, s, n_boot=200)["auroc"] > 0.9, rogue
+        assert 0.0 < float(s.min()) and float(s.max()) < 1.0, "scores saturated"
+
+    a = CCSProbeAdapter(seed=0, epochs=200).fit(X, y).score(X)
+    b = CCSProbeAdapter(seed=0, epochs=200).fit(X, y).score(X)
+    np.testing.assert_allclose(a, b)
+
+
+def test_ccs_adapter_rejects_a_bare_matrix():
+    import pytest
+    pytest.importorskip("torch")
+    from mirage_hardness.probes_external.ccs import CCSProbeAdapter, stack
+
+    pos, neg, y = _ccs_world(d=63)
+    with pytest.raises(ValueError):
+        CCSProbeAdapter(seed=0, epochs=10).fit(pos, y)
+    with pytest.raises(ValueError):
+        stack(pos, neg[:5])
