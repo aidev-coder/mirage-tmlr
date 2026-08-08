@@ -62,7 +62,8 @@ def _our_recoverability(model: str, corpus_name: str) -> float | None:
     return None
 
 
-def run(probe_spec: str, corpus_path: Path, acts_dir: Path, seed: int = 0) -> list[dict]:
+def run(probe_spec: str, corpus_path: Path, acts_dir: Path, seed: int = 0,
+        n_folds: int = 5) -> list[dict]:
     factory = _load_probe(probe_spec)
     items = _corpus(corpus_path)
     truth = np.array([bool(it["truth"]) for it in items])
@@ -85,10 +86,22 @@ def run(probe_spec: str, corpus_path: Path, acts_dir: Path, seed: int = 0) -> li
         # the field's recipe: train on the diagonal, evaluate honestly off-diagonal
         adv = adversarial_split(X, truth, cells, lambda: factory(seed=seed), seed=seed)
 
-        # the same external probe trained fairly on all four cells — its OWN
-        # recoverability, stated entirely within this architecture
-        fair = factory(seed=seed).fit(X, truth)
-        fair_off = auroc_with_ci(truth[off_idx], np.asarray(fair.score(X))[off_idx], seed=seed)
+        # The same external probe trained fairly on all four cells — its OWN
+        # recoverability, stated entirely within this architecture.
+        # CROSS-FITTED (2026-08-07 fix): fitting and scoring the same rows is
+        # train-set-optimistic, and with d >> n a gradient-trained linear probe
+        # memorizes outright — LRProbe returned exactly 1.000 on all seven models,
+        # zero variance, which made the correlation undefined and would have been
+        # reported as perfect recoverability. K-fold, matching stage3._oof_scores.
+        fair_scores = np.zeros(len(truth), dtype=np.float64)
+        rng = np.random.default_rng(seed)
+        folds = np.array_split(rng.permutation(len(truth)), n_folds)
+        for k in range(n_folds):
+            te = folds[k]
+            tr = np.concatenate([folds[j] for j in range(n_folds) if j != k])
+            fitted = factory(seed=seed).fit(X[tr], truth[tr])
+            fair_scores[te] = np.asarray(fitted.score(X[te]))
+        fair_off = auroc_with_ci(truth[off_idx], fair_scores[off_idx], seed=seed)
 
         # per-cell readout of the fielded probe
         fielded = factory(seed=seed).fit(X[diag_idx], truth[diag_idx])
@@ -119,15 +132,17 @@ def main() -> None:
     ap.add_argument("--acts-dir", default="data/activations/local")
     ap.add_argument("--tag", default="external")
     ap.add_argument("--seed", type=int, default=0)
+    ap.add_argument("--n-folds", type=int, default=5)
     args = ap.parse_args()
 
-    rows = run(args.probe, Path(args.corpus), Path(args.acts_dir), args.seed)
+    rows = run(args.probe, Path(args.corpus), Path(args.acts_dir), args.seed, args.n_folds)
     if not rows:
         raise SystemExit("no activation files matched the corpus")
 
     out = {"probe": args.probe, "corpus": Path(args.corpus).name,
            "n_models": len(rows), "rows": rows, "provenance": "measured",
-           "seed": args.seed}
+           "seed": args.seed, "n_folds": args.n_folds,
+           "recoverability_cross_fitted": True}
 
     # A gap is only interpretable if the probe has in-distribution signal to lose.
     # This is the D-013 lesson: a detector that cannot read truth on the diagonal

@@ -18,7 +18,7 @@
         0.0368
       ],
       "gap_excludes_zero": false,
-      "external_own_recoverability_off_auroc": 0.939,
+      "external_own_recoverability_off_auroc": 0.9443,
       "our_recoverability_truth_beta": 0.9318,
       "per_cell_frac_called_true": {
         "TT": 0.9885,
@@ -42,7 +42,7 @@
         0.2064
       ],
       "gap_excludes_zero": true,
-      "external_own_recoverability_off_auroc": 0.8956,
+      "external_own_recoverability_off_auroc": 0.9002,
       "our_recoverability_truth_beta": 0.93,
       "per_cell_frac_called_true": {
         "TT": 0.9943,
@@ -66,7 +66,7 @@
         0.1111
       ],
       "gap_excludes_zero": false,
-      "external_own_recoverability_off_auroc": 0.8236,
+      "external_own_recoverability_off_auroc": 0.8313,
       "our_recoverability_truth_beta": 0.9135,
       "per_cell_frac_called_true": {
         "TT": 0.977,
@@ -90,7 +90,7 @@
         0.145
       ],
       "gap_excludes_zero": false,
-      "external_own_recoverability_off_auroc": 0.7891,
+      "external_own_recoverability_off_auroc": 0.8032,
       "our_recoverability_truth_beta": 0.8959,
       "per_cell_frac_called_true": {
         "TT": 0.9598,
@@ -114,7 +114,7 @@
         0.5927
       ],
       "gap_excludes_zero": true,
-      "external_own_recoverability_off_auroc": 0.6631,
+      "external_own_recoverability_off_auroc": 0.5642,
       "our_recoverability_truth_beta": 0.5084,
       "per_cell_frac_called_true": {
         "TT": 0.8103,
@@ -138,7 +138,7 @@
         0.6049
       ],
       "gap_excludes_zero": true,
-      "external_own_recoverability_off_auroc": 0.6586,
+      "external_own_recoverability_off_auroc": 0.5627,
       "our_recoverability_truth_beta": 0.6104,
       "per_cell_frac_called_true": {
         "TT": 0.8793,
@@ -162,7 +162,7 @@
         0.3384
       ],
       "gap_excludes_zero": true,
-      "external_own_recoverability_off_auroc": 0.9495,
+      "external_own_recoverability_off_auroc": 0.9332,
       "our_recoverability_truth_beta": 0.8766,
       "per_cell_frac_called_true": {
         "TT": 0.9598,
@@ -174,6 +174,8 @@
   ],
   "provenance": "measured",
   "seed": 0,
+  "n_folds": 5,
+  "recoverability_cross_fitted": true,
   "in_dist_floor": 0.7,
   "underpowered_models": [
     {
@@ -195,10 +197,10 @@
     "n_adequately_powered": 5
   },
   "correlation_external_own_recoverability_off_auroc": {
-    "r": 0.9355,
+    "r": 0.9607,
     "n": 7,
     "measured_by": "the external probe's own fair training",
-    "r_adequately_powered_only": 0.9471,
+    "r_adequately_powered_only": 0.9607,
     "n_adequately_powered": 5
   }
 }
