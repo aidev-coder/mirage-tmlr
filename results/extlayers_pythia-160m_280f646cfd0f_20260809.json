@@ -1,0 +1,842 @@
+{
+  "model": "EleutherAI/pythia-160m",
+  "corpus": "mirage_2x2_v280f646cfd0f.jsonl",
+  "n_layers": 13,
+  "seed": 0,
+  "negated_pass": true,
+  "rows": [
+    {
+      "probe": "mirage_hardness.probes_external.geometry_of_truth_mmprobe:GeometryOfTruthMMProbe",
+      "layer": 0,
+      "in_dist": 0.6129,
+      "off": 0.4417,
+      "off_ci": [
+        0.4153,
+        0.4629
+      ],
+      "gap": 0.1712,
+      "gap_ci": [
+        0.0989,
+        0.2509
+      ],
+      "gap_excludes_zero": true
+    },
+    {
+      "probe": "mirage_hardness.probes_external.geometry_of_truth_lrprobe:GeometryOfTruthLRProbe",
+      "layer": 0,
+      "in_dist": 0.6129,
+      "off": 0.4417,
+      "off_ci": [
+        0.4153,
+        0.4629
+      ],
+      "gap": 0.1712,
+      "gap_ci": [
+        0.0989,
+        0.2509
+      ],
+      "gap_excludes_zero": true
+    },
+    {
+      "probe": "mirage_hardness.probes_external.ccs:CCSProbeAdapter",
+      "layer": 0,
+      "in_dist": 0.6129,
+      "off": 0.4417,
+      "off_ci": [
+        0.4153,
+        0.4629
+      ],
+      "gap": 0.1712,
+      "gap_ci": [
+        0.0989,
+        0.2509
+      ],
+      "gap_excludes_zero": true
+    },
+    {
+      "probe": "mirage_hardness.probes_external.ttpd:TTPDProbe",
+      "layer": 0,
+      "in_dist": 0.5,
+      "off": 0.5,
+      "off_ci": [
+        0.5,
+        0.5
+      ],
+      "gap": 0.0,
+      "gap_ci": [
+        0.0,
+        0.0
+      ],
+      "gap_excludes_zero": false
+    },
+    {
+      "probe": "mirage_hardness.probes_external.geometry_of_truth_mmprobe:GeometryOfTruthMMProbe",
+      "layer": 1,
+      "in_dist": 0.7518,
+      "off": 0.2589,
+      "off_ci": [
+        0.2185,
+        0.2976
+      ],
+      "gap": 0.4929,
+      "gap_ci": [
+        0.3836,
+        0.6039
+      ],
+      "gap_excludes_zero": true
+    },
+    {
+      "probe": "mirage_hardness.probes_external.geometry_of_truth_lrprobe:GeometryOfTruthLRProbe",
+      "layer": 1,
+      "in_dist": 0.8875,
+      "off": 0.1362,
+      "off_ci": [
+        0.1027,
+        0.1765
+      ],
+      "gap": 0.7513,
+      "gap_ci": [
+        0.6615,
+        0.838
+      ],
+      "gap_excludes_zero": true
+    },
+    {
+      "probe": "mirage_hardness.probes_external.ccs:CCSProbeAdapter",
+      "layer": 1,
+      "in_dist": 0.4611,
+      "off": 0.5338,
+      "off_ci": [
+        0.4713,
+        0.5906
+      ],
+      "gap": -0.0727,
+      "gap_ci": [
+        -0.2091,
+        0.0723
+      ],
+      "gap_excludes_zero": false
+    },
+    {
+      "probe": "mirage_hardness.probes_external.ttpd:TTPDProbe",
+      "layer": 1,
+      "in_dist": 0.598,
+      "off": 0.4,
+      "off_ci": [
+        0.3414,
+        0.4549
+      ],
+      "gap": 0.1979,
+      "gap_ci": [
+        0.0491,
+        0.3394
+      ],
+      "gap_excludes_zero": true
+    },
+    {
+      "probe": "mirage_hardness.probes_external.geometry_of_truth_mmprobe:GeometryOfTruthMMProbe",
+      "layer": 2,
+      "in_dist": 0.6247,
+      "off": 0.4197,
+      "off_ci": [
+        0.3887,
+        0.4481
+      ],
+      "gap": 0.205,
+      "gap_ci": [
+        0.111,
+        0.3094
+      ],
+      "gap_excludes_zero": true
+    },
+    {
+      "probe": "mirage_hardness.probes_external.geometry_of_truth_lrprobe:GeometryOfTruthLRProbe",
+      "layer": 2,
+      "in_dist": 0.8647,
+      "off": 0.1006,
+      "off_ci": [
+        0.073,
+        0.132
+      ],
+      "gap": 0.7641,
+      "gap_ci": [
+        0.6744,
+        0.8533
+      ],
+      "gap_excludes_zero": true
+    },
+    {
+      "probe": "mirage_hardness.probes_external.ccs:CCSProbeAdapter",
+      "layer": 2,
+      "in_dist": 0.4453,
+      "off": 0.5406,
+      "off_ci": [
+        0.4793,
+        0.6057
+      ],
+      "gap": -0.0953,
+      "gap_ci": [
+        -0.2449,
+        0.0447
+      ],
+      "gap_excludes_zero": false
+    },
+    {
+      "probe": "mirage_hardness.probes_external.ttpd:TTPDProbe",
+      "layer": 2,
+      "in_dist": 0.6522,
+      "off": 0.3891,
+      "off_ci": [
+        0.3342,
+        0.4505
+      ],
+      "gap": 0.2632,
+      "gap_ci": [
+        0.1237,
+        0.3999
+      ],
+      "gap_excludes_zero": true
+    },
+    {
+      "probe": "mirage_hardness.probes_external.geometry_of_truth_mmprobe:GeometryOfTruthMMProbe",
+      "layer": 3,
+      "in_dist": 0.5885,
+      "off": 0.45,
+      "off_ci": [
+        0.4227,
+        0.4743
+      ],
+      "gap": 0.1385,
+      "gap_ci": [
+        0.0601,
+        0.234
+      ],
+      "gap_excludes_zero": true
+    },
+    {
+      "probe": "mirage_hardness.probes_external.geometry_of_truth_lrprobe:GeometryOfTruthLRProbe",
+      "layer": 3,
+      "in_dist": 0.856,
+      "off": 0.0981,
+      "off_ci": [
+        0.0698,
+        0.1304
+      ],
+      "gap": 0.7579,
+      "gap_ci": [
+        0.6666,
+        0.8448
+      ],
+      "gap_excludes_zero": true
+    },
+    {
+      "probe": "mirage_hardness.probes_external.ccs:CCSProbeAdapter",
+      "layer": 3,
+      "in_dist": 0.4241,
+      "off": 0.5021,
+      "off_ci": [
+        0.4424,
+        0.5673
+      ],
+      "gap": -0.078,
+      "gap_ci": [
+        -0.23,
+        0.0669
+      ],
+      "gap_excludes_zero": false
+    },
+    {
+      "probe": "mirage_hardness.probes_external.ttpd:TTPDProbe",
+      "layer": 3,
+      "in_dist": 0.6577,
+      "off": 0.3823,
+      "off_ci": [
+        0.3247,
+        0.4443
+      ],
+      "gap": 0.2754,
+      "gap_ci": [
+        0.1244,
+        0.4121
+      ],
+      "gap_excludes_zero": true
+    },
+    {
+      "probe": "mirage_hardness.probes_external.geometry_of_truth_mmprobe:GeometryOfTruthMMProbe",
+      "layer": 4,
+      "in_dist": 0.5885,
+      "off": 0.45,
+      "off_ci": [
+        0.4227,
+        0.4743
+      ],
+      "gap": 0.1385,
+      "gap_ci": [
+        0.0601,
+        0.234
+      ],
+      "gap_excludes_zero": true
+    },
+    {
+      "probe": "mirage_hardness.probes_external.geometry_of_truth_lrprobe:GeometryOfTruthLRProbe",
+      "layer": 4,
+      "in_dist": 0.8482,
+      "off": 0.1239,
+      "off_ci": [
+        0.09,
+        0.1616
+      ],
+      "gap": 0.7243,
+      "gap_ci": [
+        0.6078,
+        0.8215
+      ],
+      "gap_excludes_zero": true
+    },
+    {
+      "probe": "mirage_hardness.probes_external.ccs:CCSProbeAdapter",
+      "layer": 4,
+      "in_dist": 0.5563,
+      "off": 0.4717,
+      "off_ci": [
+        0.4103,
+        0.5306
+      ],
+      "gap": 0.0846,
+      "gap_ci": [
+        -0.0578,
+        0.2418
+      ],
+      "gap_excludes_zero": false
+    },
+    {
+      "probe": "mirage_hardness.probes_external.ttpd:TTPDProbe",
+      "layer": 4,
+      "in_dist": 0.6404,
+      "off": 0.4029,
+      "off_ci": [
+        0.3431,
+        0.4667
+      ],
+      "gap": 0.2375,
+      "gap_ci": [
+        0.0984,
+        0.3797
+      ],
+      "gap_excludes_zero": true
+    },
+    {
+      "probe": "mirage_hardness.probes_external.geometry_of_truth_mmprobe:GeometryOfTruthMMProbe",
+      "layer": 5,
+      "in_dist": 0.5885,
+      "off": 0.45,
+      "off_ci": [
+        0.4227,
+        0.4743
+      ],
+      "gap": 0.1385,
+      "gap_ci": [
+        0.0601,
+        0.234
+      ],
+      "gap_excludes_zero": true
+    },
+    {
+      "probe": "mirage_hardness.probes_external.geometry_of_truth_lrprobe:GeometryOfTruthLRProbe",
+      "layer": 5,
+      "in_dist": 0.8379,
+      "off": 0.1159,
+      "off_ci": [
+        0.0841,
+        0.1531
+      ],
+      "gap": 0.722,
+      "gap_ci": [
+        0.6136,
+        0.8179
+      ],
+      "gap_excludes_zero": true
+    },
+    {
+      "probe": "mirage_hardness.probes_external.ccs:CCSProbeAdapter",
+      "layer": 5,
+      "in_dist": 0.5838,
+      "off": 0.4243,
+      "off_ci": [
+        0.3619,
+        0.4785
+      ],
+      "gap": 0.1595,
+      "gap_ci": [
+        0.0149,
+        0.3091
+      ],
+      "gap_excludes_zero": true
+    },
+    {
+      "probe": "mirage_hardness.probes_external.ttpd:TTPDProbe",
+      "layer": 5,
+      "in_dist": 0.6546,
+      "off": 0.3707,
+      "off_ci": [
+        0.3102,
+        0.4324
+      ],
+      "gap": 0.2839,
+      "gap_ci": [
+        0.1351,
+        0.4266
+      ],
+      "gap_excludes_zero": true
+    },
+    {
+      "probe": "mirage_hardness.probes_external.geometry_of_truth_mmprobe:GeometryOfTruthMMProbe",
+      "layer": 6,
+      "in_dist": 0.5885,
+      "off": 0.45,
+      "off_ci": [
+        0.4227,
+        0.4743
+      ],
+      "gap": 0.1385,
+      "gap_ci": [
+        0.0601,
+        0.234
+      ],
+      "gap_excludes_zero": true
+    },
+    {
+      "probe": "mirage_hardness.probes_external.geometry_of_truth_lrprobe:GeometryOfTruthLRProbe",
+      "layer": 6,
+      "in_dist": 0.9001,
+      "off": 0.1103,
+      "off_ci": [
+        0.0789,
+        0.1459
+      ],
+      "gap": 0.7897,
+      "gap_ci": [
+        0.7017,
+        0.8609
+      ],
+      "gap_excludes_zero": true
+    },
+    {
+      "probe": "mirage_hardness.probes_external.ccs:CCSProbeAdapter",
+      "layer": 6,
+      "in_dist": 0.5106,
+      "off": 0.4591,
+      "off_ci": [
+        0.3976,
+        0.517
+      ],
+      "gap": 0.0515,
+      "gap_ci": [
+        -0.0994,
+        0.2124
+      ],
+      "gap_excludes_zero": false
+    },
+    {
+      "probe": "mirage_hardness.probes_external.ttpd:TTPDProbe",
+      "layer": 6,
+      "in_dist": 0.6483,
+      "off": 0.3657,
+      "off_ci": [
+        0.306,
+        0.427
+      ],
+      "gap": 0.2826,
+      "gap_ci": [
+        0.1293,
+        0.4183
+      ],
+      "gap_excludes_zero": true
+    },
+    {
+      "probe": "mirage_hardness.probes_external.geometry_of_truth_mmprobe:GeometryOfTruthMMProbe",
+      "layer": 7,
+      "in_dist": 0.5885,
+      "off": 0.45,
+      "off_ci": [
+        0.4227,
+        0.4743
+      ],
+      "gap": 0.1385,
+      "gap_ci": [
+        0.0601,
+        0.234
+      ],
+      "gap_excludes_zero": true
+    },
+    {
+      "probe": "mirage_hardness.probes_external.geometry_of_truth_lrprobe:GeometryOfTruthLRProbe",
+      "layer": 7,
+      "in_dist": 0.8961,
+      "off": 0.0955,
+      "off_ci": [
+        0.0666,
+        0.1253
+      ],
+      "gap": 0.8007,
+      "gap_ci": [
+        0.7168,
+        0.8728
+      ],
+      "gap_excludes_zero": true
+    },
+    {
+      "probe": "mirage_hardness.probes_external.ccs:CCSProbeAdapter",
+      "layer": 7,
+      "in_dist": 0.5421,
+      "off": 0.4509,
+      "off_ci": [
+        0.3851,
+        0.5043
+      ],
+      "gap": 0.0912,
+      "gap_ci": [
+        -0.061,
+        0.2442
+      ],
+      "gap_excludes_zero": false
+    },
+    {
+      "probe": "mirage_hardness.probes_external.ttpd:TTPDProbe",
+      "layer": 7,
+      "in_dist": 0.6145,
+      "off": 0.3679,
+      "off_ci": [
+        0.3054,
+        0.4293
+      ],
+      "gap": 0.2466,
+      "gap_ci": [
+        0.0956,
+        0.3809
+      ],
+      "gap_excludes_zero": true
+    },
+    {
+      "probe": "mirage_hardness.probes_external.geometry_of_truth_mmprobe:GeometryOfTruthMMProbe",
+      "layer": 8,
+      "in_dist": 0.5885,
+      "off": 0.45,
+      "off_ci": [
+        0.4227,
+        0.4743
+      ],
+      "gap": 0.1385,
+      "gap_ci": [
+        0.0601,
+        0.234
+      ],
+      "gap_excludes_zero": true
+    },
+    {
+      "probe": "mirage_hardness.probes_external.geometry_of_truth_lrprobe:GeometryOfTruthLRProbe",
+      "layer": 8,
+      "in_dist": 0.8993,
+      "off": 0.0829,
+      "off_ci": [
+        0.057,
+        0.1124
+      ],
+      "gap": 0.8164,
+      "gap_ci": [
+        0.7247,
+        0.8907
+      ],
+      "gap_excludes_zero": true
+    },
+    {
+      "probe": "mirage_hardness.probes_external.ccs:CCSProbeAdapter",
+      "layer": 8,
+      "in_dist": 0.513,
+      "off": 0.4764,
+      "off_ci": [
+        0.4111,
+        0.5324
+      ],
+      "gap": 0.0366,
+      "gap_ci": [
+        -0.1115,
+        0.1921
+      ],
+      "gap_excludes_zero": false
+    },
+    {
+      "probe": "mirage_hardness.probes_external.ttpd:TTPDProbe",
+      "layer": 8,
+      "in_dist": 0.6656,
+      "off": 0.3581,
+      "off_ci": [
+        0.2987,
+        0.4192
+      ],
+      "gap": 0.3075,
+      "gap_ci": [
+        0.1568,
+        0.4346
+      ],
+      "gap_excludes_zero": true
+    },
+    {
+      "probe": "mirage_hardness.probes_external.geometry_of_truth_mmprobe:GeometryOfTruthMMProbe",
+      "layer": 9,
+      "in_dist": 0.5885,
+      "off": 0.45,
+      "off_ci": [
+        0.4227,
+        0.4743
+      ],
+      "gap": 0.1385,
+      "gap_ci": [
+        0.0601,
+        0.234
+      ],
+      "gap_excludes_zero": true
+    },
+    {
+      "probe": "mirage_hardness.probes_external.geometry_of_truth_lrprobe:GeometryOfTruthLRProbe",
+      "layer": 9,
+      "in_dist": 0.8914,
+      "off": 0.1076,
+      "off_ci": [
+        0.0759,
+        0.1458
+      ],
+      "gap": 0.7839,
+      "gap_ci": [
+        0.6984,
+        0.8585
+      ],
+      "gap_excludes_zero": true
+    },
+    {
+      "probe": "mirage_hardness.probes_external.ccs:CCSProbeAdapter",
+      "layer": 9,
+      "in_dist": 0.4957,
+      "off": 0.5558,
+      "off_ci": [
+        0.4919,
+        0.61
+      ],
+      "gap": -0.0601,
+      "gap_ci": [
+        -0.2091,
+        0.0877
+      ],
+      "gap_excludes_zero": false
+    },
+    {
+      "probe": "mirage_hardness.probes_external.ttpd:TTPDProbe",
+      "layer": 9,
+      "in_dist": 0.6247,
+      "off": 0.3608,
+      "off_ci": [
+        0.3075,
+        0.4157
+      ],
+      "gap": 0.2639,
+      "gap_ci": [
+        0.1183,
+        0.3917
+      ],
+      "gap_excludes_zero": true
+    },
+    {
+      "probe": "mirage_hardness.probes_external.geometry_of_truth_mmprobe:GeometryOfTruthMMProbe",
+      "layer": 10,
+      "in_dist": 0.5885,
+      "off": 0.4473,
+      "off_ci": [
+        0.4183,
+        0.4717
+      ],
+      "gap": 0.1412,
+      "gap_ci": [
+        0.0637,
+        0.2366
+      ],
+      "gap_excludes_zero": true
+    },
+    {
+      "probe": "mirage_hardness.probes_external.geometry_of_truth_lrprobe:GeometryOfTruthLRProbe",
+      "layer": 10,
+      "in_dist": 0.9142,
+      "off": 0.1131,
+      "off_ci": [
+        0.0809,
+        0.1492
+      ],
+      "gap": 0.8011,
+      "gap_ci": [
+        0.7217,
+        0.8666
+      ],
+      "gap_excludes_zero": true
+    },
+    {
+      "probe": "mirage_hardness.probes_external.ccs:CCSProbeAdapter",
+      "layer": 10,
+      "in_dist": 0.4949,
+      "off": 0.5185,
+      "off_ci": [
+        0.4532,
+        0.5756
+      ],
+      "gap": -0.0236,
+      "gap_ci": [
+        -0.1727,
+        0.1401
+      ],
+      "gap_excludes_zero": false
+    },
+    {
+      "probe": "mirage_hardness.probes_external.ttpd:TTPDProbe",
+      "layer": 10,
+      "in_dist": 0.6546,
+      "off": 0.3441,
+      "off_ci": [
+        0.2905,
+        0.4021
+      ],
+      "gap": 0.3105,
+      "gap_ci": [
+        0.1554,
+        0.4416
+      ],
+      "gap_excludes_zero": true
+    },
+    {
+      "probe": "mirage_hardness.probes_external.geometry_of_truth_mmprobe:GeometryOfTruthMMProbe",
+      "layer": 11,
+      "in_dist": 0.6255,
+      "off": 0.4253,
+      "off_ci": [
+        0.3932,
+        0.4547
+      ],
+      "gap": 0.2002,
+      "gap_ci": [
+        0.109,
+        0.296
+      ],
+      "gap_excludes_zero": true
+    },
+    {
+      "probe": "mirage_hardness.probes_external.geometry_of_truth_lrprobe:GeometryOfTruthLRProbe",
+      "layer": 11,
+      "in_dist": 0.8922,
+      "off": 0.1318,
+      "off_ci": [
+        0.0965,
+        0.1707
+      ],
+      "gap": 0.7604,
+      "gap_ci": [
+        0.6634,
+        0.8409
+      ],
+      "gap_excludes_zero": true
+    },
+    {
+      "probe": "mirage_hardness.probes_external.ccs:CCSProbeAdapter",
+      "layer": 11,
+      "in_dist": 0.701,
+      "off": 0.4148,
+      "off_ci": [
+        0.3561,
+        0.4812
+      ],
+      "gap": 0.2862,
+      "gap_ci": [
+        0.1412,
+        0.4059
+      ],
+      "gap_excludes_zero": true
+    },
+    {
+      "probe": "mirage_hardness.probes_external.ttpd:TTPDProbe",
+      "layer": 11,
+      "in_dist": 0.6987,
+      "off": 0.3658,
+      "off_ci": [
+        0.3104,
+        0.4244
+      ],
+      "gap": 0.3328,
+      "gap_ci": [
+        0.188,
+        0.4567
+      ],
+      "gap_excludes_zero": true
+    },
+    {
+      "probe": "mirage_hardness.probes_external.geometry_of_truth_mmprobe:GeometryOfTruthMMProbe",
+      "layer": 12,
+      "in_dist": 0.8387,
+      "off": 0.2133,
+      "off_ci": [
+        0.1692,
+        0.264
+      ],
+      "gap": 0.6254,
+      "gap_ci": [
+        0.5178,
+        0.7209
+      ],
+      "gap_excludes_zero": true
+    },
+    {
+      "probe": "mirage_hardness.probes_external.geometry_of_truth_lrprobe:GeometryOfTruthLRProbe",
+      "layer": 12,
+      "in_dist": 0.8938,
+      "off": 0.1471,
+      "off_ci": [
+        0.1094,
+        0.1875
+      ],
+      "gap": 0.7467,
+      "gap_ci": [
+        0.6585,
+        0.8201
+      ],
+      "gap_excludes_zero": true
+    },
+    {
+      "probe": "mirage_hardness.probes_external.ccs:CCSProbeAdapter",
+      "layer": 12,
+      "in_dist": 0.3619,
+      "off": 0.5215,
+      "off_ci": [
+        0.4557,
+        0.5784
+      ],
+      "gap": -0.1596,
+      "gap_ci": [
+        -0.2945,
+        -0.0154
+      ],
+      "gap_excludes_zero": true
+    },
+    {
+      "probe": "mirage_hardness.probes_external.ttpd:TTPDProbe",
+      "layer": 12,
+      "in_dist": 0.8348,
+      "off": 0.2968,
+      "off_ci": [
+        0.247,
+        0.3549
+      ],
+      "gap": 0.538,
+      "gap_ci": [
+        0.4159,
+        0.6432
+      ],
+      "gap_excludes_zero": true
+    }
+  ],
+  "provenance": "measured"
+}
