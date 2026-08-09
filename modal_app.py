@@ -554,13 +554,17 @@ def main(stage: str = "sanity", model: str = "", max_per_topic: int = 0,
         ]
         chash = Path(corpus_name).stem.split("_v")[-1]
         # models.yaml omits gemma-2-9b base, so read the model set off Stage 3 instead.
-        sweep_ids = [model] if model else sorted({
+        sweep_ids = [m.strip() for m in model.split(",") if m.strip()] or sorted({
             json.loads(p.read_text(encoding="utf-8"))["model"]
             for p in (_HERE / "results").glob("stage3_saplma_*.json")
             if json.loads(p.read_text(encoding="utf-8")).get("corpus") == corpus_name})
         print(f"extlayers over {len(sweep_ids)} models: {', '.join(sweep_ids)}")
         kw = {"corpus_name": corpus_name, "probe_specs": specs, "seed": seed}
-        for res in external_layer_sweep.map(sweep_ids, kwargs=kw, order_outputs=False):
+        for res in external_layer_sweep.map(sweep_ids, kwargs=kw, order_outputs=False,
+                                            return_exceptions=True):
+            if isinstance(res, Exception):
+                print(f"SKIPPED (failed): {type(res).__name__}: {str(res)[:200]}")
+                continue
             short = res["model"].split("/")[-1].lower()
             out = _HERE / "results" / f"extlayers_{short}_{chash}_{date.today():%Y%m%d}.json"
             # Re-running one probe must not drop the others already in today's file.
