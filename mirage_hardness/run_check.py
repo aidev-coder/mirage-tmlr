@@ -63,6 +63,11 @@ def run(items: list[dict], substrate=None, layer: int | None = None) -> dict:
     report["checks"]["crossing"] = corpus_build.verify_crossing(items)
     report["checks"]["ft_yield"] = ft_yield_check(items)
     report["checks"]["composition"] = corpus_build.composition_canary(items)
+    # Both added 2026-08-09. The released tool has to catch what our own corpora
+    # got wrong, or it fails the way it failed before v2: D-016 (duplicates) and
+    # the v1 domain artifact are exactly the two defects a user would inherit.
+    report["checks"]["duplicates"] = corpus_build.duplicate_check(items)
+    report["checks"]["domain_share"] = corpus_build.domain_share_check(items)
 
     if substrate is not None:
         import numpy as np

@@ -65,3 +65,37 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+
+
+def test_duplicate_and_domain_share_gates_catch_our_own_retracted_corpora():
+    """The released auditor must flag the defects WE shipped, or it repeats the
+    v1 failure: a tool that cannot catch its author's mistakes catches nobody's.
+    v1 (165941295e9a) carried the domain artifact; v3 (6206fe484650) carried the
+    D-016 duplicates; v4 (280f646cfd0f) is clean on both."""
+    import json
+    import sys
+    from pathlib import Path
+
+    root = Path(__file__).resolve().parent.parent
+    sys.path.insert(0, str(root))
+    from src import corpus_build as cb
+
+    def load(h):
+        p = root / "data" / "corpus" / f"mirage_2x2_v{h}.jsonl"
+        if not p.exists():
+            return None
+        return [json.loads(x) for x in p.read_text(encoding="utf-8").splitlines() if x.strip()]
+
+    v3, v4 = load("6206fe484650"), load("280f646cfd0f")
+    if v3:
+        assert not cb.duplicate_check(v3)["pass"], "v3 duplicates must be caught"
+    if v4:
+        assert cb.duplicate_check(v4)["pass"]
+        assert cb.domain_share_check(v4)["pass"]
+        assert cb.domain_share_check(v4)["largest_share"] <= 0.5
+
+    lopsided = [{"text": f"s{i}", "domain": "cities", "truth": i % 2 == 0,
+                 "cell": "TT"} for i in range(80)]
+    lopsided += [{"text": f"t{i}", "domain": "other", "truth": i % 2 == 0,
+                  "cell": "TT"} for i in range(20)]
+    assert not cb.domain_share_check(lopsided)["pass"]

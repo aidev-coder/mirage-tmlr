@@ -277,6 +277,40 @@ def composition_canary(items: list[dict], seed: int = 20260712) -> dict:
 
 # ── Gate 3: signoff + versioned write ────────────────────────────────────────
 
+def duplicate_check(items: list[dict]) -> dict:
+    """No statement may appear twice (D-016).
+
+    v3 shipped 70 repeated rows concentrated in the two TRUE cells, so its per-cell
+    balance held in rows but not in statements, and 44 statements carried
+    contradictory `edited` flags — 14.5% of edit-canary rows were unlearnable by
+    construction, which biases that canary toward passing.
+    """
+    texts = [it["text"] for it in items]
+    counts = Counter(texts)
+    dups = sorted(t for t, n in counts.items() if n > 1)
+    return {"gate": "duplicates", "n_rows": len(texts), "n_unique": len(counts),
+            "n_repeated_rows": len(texts) - len(counts),
+            "n_duplicated_statements": len(dups), "examples": dups[:3],
+            "pass": not dups}
+
+
+def domain_share_check(items: list[dict], max_share: float = 0.5) -> dict:
+    """No single domain may be a majority of the corpus.
+
+    Orthogonality does not prevent this: a corpus can have P(true|domain)=0.5
+    everywhere and still be 76% one topic, which makes a pooled headline a
+    single-domain result in all but name. v1's failure was domain composition, so
+    volume dominance is gated separately from correlation.
+    """
+    counts = Counter(it.get("domain", "?") for it in items)
+    top, n = counts.most_common(1)[0] if counts else ("?", 0)
+    share = n / len(items) if items else 0.0
+    return {"gate": "domain_share", "max_share": max_share,
+            "shares": {d: round(c / len(items), 4) for d, c in counts.items()},
+            "largest_domain": top, "largest_share": round(share, 4),
+            "pass": bool(len(counts) <= 1 or share <= max_share)}
+
+
 def finalize(items: list[dict], crossing_report: dict, canary_report: dict,
              fragmentation_report: dict | None = None,
              owner_signoff_decision_id: str | None = None,
@@ -301,25 +335,20 @@ def finalize(items: list[dict], crossing_report: dict, canary_report: dict,
             "owner signoff required: record the decision in notes/decisions.md "
             "and pass its ID (e.g. 'D-006') — do not run probes on an unsigned corpus")
 
-    # D-016: v3 shipped 70 duplicate rows, concentrated in the true cells, so its
-    # per-cell balance held in rows but not in statements and 14.5% of edit-canary
-    # rows were label-ambiguous (same string, both edited flags).
+    dup = duplicate_check(items)
+    if not dup["pass"]:
+        raise RuntimeError(
+            f"duplicate gate FAILED — {dup['n_repeated_rows']} repeated rows across "
+            f"{dup['n_duplicated_statements']} statements, e.g. {dup['examples']}")
+
+    dom = domain_share_check(items)
+    if not dom["pass"]:
+        raise RuntimeError(
+            f"domain-majority gate FAILED — '{dom['largest_domain']}' is "
+            f"{dom['largest_share']:.1%} of the corpus")
+
     texts = [it["text"] for it in items]
-    dups = {t for t, n in Counter(texts).items() if n > 1}
-    if dups:
-        raise RuntimeError(
-            f"duplicate gate FAILED — {len(texts) - len(set(texts))} repeated rows "
-            f"across {len(dups)} statements, e.g. {sorted(dups)[:3]}")
-
-    # A pooled headline that is mostly one topic is what v1 shipped. Orthogonality
-    # does not prevent it, so it is gated separately.
     dom_counts = Counter(it.get("domain", "?") for it in items)
-    top_dom, top_n = dom_counts.most_common(1)[0]
-    if len(dom_counts) > 1 and top_n > len(items) / 2:
-        raise RuntimeError(
-            f"domain-majority gate FAILED — '{top_dom}' is {top_n}/{len(items)} "
-            f"({top_n / len(items):.1%}) of the corpus")
-
     payload = "\n".join(json.dumps(it, sort_keys=True) for it in items)
     h = hashlib.sha256(payload.encode()).hexdigest()[:12]
     out = _ROOT / "data" / "corpus" / f"mirage_2x2_v{h}.jsonl"
