@@ -311,6 +311,30 @@ def domain_share_check(items: list[dict], max_share: float = 0.5) -> dict:
             "pass": bool(len(counts) <= 1 or share <= max_share)}
 
 
+def edit_balance_check(items: list[dict], max_gap: float = 0.02) -> dict:
+    """P(edited) must be equal across all four cells (§4.2).
+
+    The edit CANARY asks whether provenance is readable from hidden states. This
+    asks the prior question: whether provenance is correlated with truth at all.
+    v3 and v4 both failed it — FA came out 0.578 edited against ~0.42 elsewhere,
+    putting an edit shortcut on the training diagonal that disappears off it, worth
+    up to +0.075 of apparent gap before any probe reads anything.
+    """
+    per_cell, per_truth = {}, {}
+    for cell in ("TT", "TA", "FT", "FA"):
+        sub = [i for i in items if i["cell"] == cell]
+        per_cell[cell] = round(sum(bool(i["edited"]) for i in sub) / max(len(sub), 1), 4)
+    for lab, want in (("true", True), ("false", False)):
+        sub = [i for i in items if bool(i["truth"]) is want]
+        per_truth[lab] = round(sum(bool(i["edited"]) for i in sub) / max(len(sub), 1), 4)
+    spread = max(per_cell.values()) - min(per_cell.values()) if per_cell else 0.0
+    return {"gate": "edit_balance", "p_edited_per_cell": per_cell,
+            "p_edited_per_truth": per_truth, "max_gap": max_gap,
+            "cell_spread": round(spread, 4),
+            "truth_gap": round(abs(per_truth["true"] - per_truth["false"]), 4),
+            "pass": bool(spread <= max_gap)}
+
+
 def finalize(items: list[dict], crossing_report: dict, canary_report: dict,
              fragmentation_report: dict | None = None,
              owner_signoff_decision_id: str | None = None,
@@ -347,6 +371,13 @@ def finalize(items: list[dict], crossing_report: dict, canary_report: dict,
             f"domain-majority gate FAILED — '{dom['largest_domain']}' is "
             f"{dom['largest_share']:.1%} of the corpus")
 
+    eb = edit_balance_check(items)
+    if not eb["pass"]:
+        raise RuntimeError(
+            f"edit-balance gate FAILED — P(edited) per cell {eb['p_edited_per_cell']}, "
+            f"spread {eb['cell_spread']} > {eb['max_gap']}; edit provenance would be "
+            "a diagonal-only shortcut")
+
     texts = [it["text"] for it in items]
     dom_counts = Counter(it.get("domain", "?") for it in items)
     payload = "\n".join(json.dumps(it, sort_keys=True) for it in items)
@@ -359,6 +390,8 @@ def finalize(items: list[dict], crossing_report: dict, canary_report: dict,
         "crossing": crossing_report, "edit_canary": canary_report,
         "fragmentation_canary": fragmentation_report,
         "composition_canary": composition_report,
+        "edit_balance": eb,
+        "domain_share_gate": dom,
         "duplicates": {"n_rows": len(texts), "n_unique": len(set(texts)), "pass": True},
         "domain_share": {d: round(c / len(items), 4) for d, c in dom_counts.items()},
     }, indent=2), encoding="utf-8")

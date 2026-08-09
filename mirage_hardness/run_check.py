@@ -68,6 +68,7 @@ def run(items: list[dict], substrate=None, layer: int | None = None) -> dict:
     # the v1 domain artifact are exactly the two defects a user would inherit.
     report["checks"]["duplicates"] = corpus_build.duplicate_check(items)
     report["checks"]["domain_share"] = corpus_build.domain_share_check(items)
+    report["checks"]["edit_balance"] = corpus_build.edit_balance_check(items)
 
     if substrate is not None:
         import numpy as np

@@ -167,22 +167,36 @@ def _balance_by_domain(items: list[dict], seed: int) -> tuple[list[dict], dict]:
     if not by:
         return [], {"per_domain_cell": 0}
 
+    cells4 = ("TT", "TA", "FT", "FA")
     doms = sorted({d for d, _ in by})
-    cap = {d: min(len(by[(d, c)]) for c in ("TT", "TA", "FT", "FA")) for d in doms}
+
+    # `edited` is drawn 50/50 INSIDE every cell, so edit provenance is orthogonal
+    # to truth AND to typicality by construction. Without this the swap generator
+    # leaves FA edit-heavy (0.578 vs ~0.42 elsewhere), which puts an edit shortcut
+    # on the training diagonal that vanishes off it — the same signature as the
+    # confound being measured, worth up to +0.075 of gap on its own (§4.2, D-012).
+    def halves(d, c):
+        v = by[(d, c)]
+        return ([x for x in v if x["edited"]], [x for x in v if not x["edited"]])
+
+    cap = {d: min(min(len(e), len(u)) for e, u in (halves(d, c) for c in cells4))
+           for d in doms}
     others = {d: sum(v for k, v in cap.items() if k != d) for d in doms}
-    per = {d: min(cap[d], others[d]) for d in doms}
+    per = {d: min(cap[d], others[d]) for d in doms}          # per half-cell
 
     out = []
     for d in doms:
-        for c in ("TT", "TA", "FT", "FA"):
-            v = by[(d, c)]
-            for i in rng.choice(len(v), per[d], replace=False):
-                out.append(v[int(i)])
-    total = 4 * sum(per.values())
-    return out, {"per_domain_cell": per, "capacity_per_domain_cell": cap,
+        for c in cells4:
+            for half in halves(d, c):
+                for i in rng.choice(len(half), per[d], replace=False):
+                    out.append(half[int(i)])
+    total = 8 * sum(per.values())
+    return out, {"per_domain_half_cell": per, "capacity_per_domain_half_cell": cap,
                  "domains": doms, "total": total, "cells_per_domain": 4,
-                 "max_domain_share": round(max(4 * per[d] / total for d in doms), 4),
-                 "rule": "within-domain balance; no domain may exceed 50% of items"}
+                 "per_domain_cell": {d: 2 * per[d] for d in doms},
+                 "max_domain_share": round(max(8 * per[d] / total for d in doms), 4),
+                 "rule": "within-domain balance, edited 50/50 within every cell; "
+                         "no domain may exceed 50% of items"}
 
 
 def _balance(items: list[dict], seed: int):

@@ -4,19 +4,19 @@
     "reference_model": "Qwen/Qwen2.5-7B-Instruct",
     "canary_model": "meta-llama/Llama-3.1-8B",
     "canary_layer": 16,
-    "n_full": 720,
-    "n_released": 720,
+    "n_full": 608,
+    "n_released": 608,
     "raw_counts": {
-      "TT": 180,
-      "TA": 180,
-      "FT": 180,
-      "FA": 180
+      "TT": 152,
+      "TA": 152,
+      "FT": 152,
+      "FA": 152
     },
     "released_counts": {
-      "TT": 180,
-      "TA": 180,
-      "FT": 180,
-      "FA": 180
+      "TT": 152,
+      "TA": 152,
+      "FT": 152,
+      "FA": 152
     },
     "domain_report": {
       "animals": {
@@ -74,25 +74,30 @@
       }
     },
     "balance": {
-      "per_domain_cell": {
-        "cities": 90,
-        "companies": 41,
-        "inventions": 49
+      "per_domain_half_cell": {
+        "cities": 38,
+        "companies": 20,
+        "inventions": 18
       },
-      "capacity_per_domain_cell": {
-        "cities": 252,
-        "companies": 41,
-        "inventions": 49
+      "capacity_per_domain_half_cell": {
+        "cities": 104,
+        "companies": 20,
+        "inventions": 18
       },
       "domains": [
         "cities",
         "companies",
         "inventions"
       ],
-      "total": 720,
+      "total": 608,
       "cells_per_domain": 4,
+      "per_domain_cell": {
+        "cities": 76,
+        "companies": 40,
+        "inventions": 36
+      },
       "max_domain_share": 0.5,
-      "rule": "within-domain balance; no domain may exceed 50% of items"
+      "rule": "within-domain balance, edited 50/50 within every cell; no domain may exceed 50% of items"
     },
     "edit_rate": 0.5,
     "seed": 20260712
@@ -104,45 +109,45 @@
       "checks": {
         "true": {
           "cells": "TT (typical) vs TA (atypical)",
-          "cliffs_delta_freq": 0.6659,
-          "mannwhitney_p": 4.3484659218822775e-28,
-          "median_log10freq_typical": 6.754,
-          "median_log10freq_atypical": 5.313,
-          "xcheck_median_ppl_typical": 17.59,
-          "xcheck_median_ppl_atypical": 22.16,
+          "cliffs_delta_freq": 0.6834,
+          "mannwhitney_p": 3.450398216362027e-25,
+          "median_log10freq_typical": 6.696,
+          "median_log10freq_atypical": 5.368,
+          "xcheck_median_ppl_typical": 17.24,
+          "xcheck_median_ppl_atypical": 21.83,
           "pass": true
         },
         "false": {
           "cells": "FT (typical) vs FA (atypical)",
-          "cliffs_delta_freq": 0.6706,
-          "mannwhitney_p": 1.8360922106003118e-28,
-          "median_log10freq_typical": 6.731,
-          "median_log10freq_atypical": 5.146,
-          "xcheck_median_ppl_typical": 64.04,
-          "xcheck_median_ppl_atypical": 79.07,
+          "cliffs_delta_freq": 0.6965,
+          "mannwhitney_p": 4.36246983946404e-26,
+          "median_log10freq_typical": 6.739,
+          "median_log10freq_atypical": 5.266,
+          "xcheck_median_ppl_typical": 69.01,
+          "xcheck_median_ppl_atypical": 85.0,
           "pass": true
         }
       },
       "pass": true
     },
     "edit_canary": {
-      "auroc": 0.5756,
+      "auroc": 0.4813,
       "ci": [
-        0.4829,
-        0.6778
+        0.3726,
+        0.5803
       ],
-      "n": 144,
+      "n": 122,
       "n_boot": 1000,
       "gate": "edit_canary",
       "pass": true
     },
     "fragmentation_canary": {
-      "auroc": 0.4889,
+      "auroc": 0.4167,
       "ci": [
-        0.3923,
-        0.5901
+        0.3177,
+        0.5057
       ],
-      "n": 144,
+      "n": 122,
       "n_boot": 1000,
       "gate": "fragmentation_canary",
       "pass": true
