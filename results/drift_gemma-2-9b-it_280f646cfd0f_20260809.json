@@ -1,0 +1,77 @@
+{
+  "model": "google/gemma-2-9b-it",
+  "corpus": "mirage_2x2_v280f646cfd0f.jsonl",
+  "n_layers": 43,
+  "tap_fractions": [
+    0.6,
+    0.7,
+    0.8,
+    0.85
+  ],
+  "tap_layers": [
+    25,
+    29,
+    34,
+    36
+  ],
+  "pooling": "mean_over_tokens",
+  "provenance": "measured",
+  "probes": {
+    "drift": {
+      "in_dist": 0.9937,
+      "off": 0.3217,
+      "off_ci": [
+        0.2669,
+        0.3813
+      ],
+      "gap": 0.672,
+      "gap_ci": [
+        0.6133,
+        0.7287
+      ],
+      "gap_excludes_zero": true,
+      "fit_stability": {
+        "n_resample": 30,
+        "drop_frac": 0.1,
+        "gap_median": 0.6717,
+        "gap_range": [
+          0.6516,
+          0.7165
+        ],
+        "gap_sd": 0.0204,
+        "off_range": [
+          0.2746,
+          0.3438
+        ]
+      }
+    },
+    "drift_concat": {
+      "in_dist": 0.9976,
+      "off": 0.4736,
+      "off_ci": [
+        0.4153,
+        0.5358
+      ],
+      "gap": 0.5241,
+      "gap_ci": [
+        0.4631,
+        0.5853
+      ],
+      "gap_excludes_zero": true,
+      "fit_stability": {
+        "n_resample": 30,
+        "drop_frac": 0.1,
+        "gap_median": 0.5259,
+        "gap_range": [
+          0.48,
+          0.5815
+        ],
+        "gap_sd": 0.0273,
+        "off_range": [
+          0.4131,
+          0.519
+        ]
+      }
+    }
+  }
+}

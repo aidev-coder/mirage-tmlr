@@ -1,0 +1,77 @@
+{
+  "model": "meta-llama/Llama-3.1-8B",
+  "corpus": "mirage_2x2_v280f646cfd0f.jsonl",
+  "n_layers": 33,
+  "tap_fractions": [
+    0.6,
+    0.7,
+    0.8,
+    0.85
+  ],
+  "tap_layers": [
+    19,
+    22,
+    26,
+    27
+  ],
+  "pooling": "mean_over_tokens",
+  "provenance": "measured",
+  "probes": {
+    "drift": {
+      "in_dist": 0.9583,
+      "off": 0.0749,
+      "off_ci": [
+        0.05,
+        0.1044
+      ],
+      "gap": 0.8834,
+      "gap_ci": [
+        0.8291,
+        0.9292
+      ],
+      "gap_excludes_zero": true,
+      "fit_stability": {
+        "n_resample": 30,
+        "drop_frac": 0.1,
+        "gap_median": 0.8829,
+        "gap_range": [
+          0.8444,
+          0.9141
+        ],
+        "gap_sd": 0.0195,
+        "off_range": [
+          0.0619,
+          0.0911
+        ]
+      }
+    },
+    "drift_concat": {
+      "in_dist": 0.9819,
+      "off": 0.053,
+      "off_ci": [
+        0.0325,
+        0.0756
+      ],
+      "gap": 0.9289,
+      "gap_ci": [
+        0.894,
+        0.9593
+      ],
+      "gap_excludes_zero": true,
+      "fit_stability": {
+        "n_resample": 30,
+        "drop_frac": 0.1,
+        "gap_median": 0.9269,
+        "gap_range": [
+          0.8992,
+          0.9447
+        ],
+        "gap_sd": 0.0121,
+        "off_range": [
+          0.0453,
+          0.0665
+        ]
+      }
+    }
+  }
+}

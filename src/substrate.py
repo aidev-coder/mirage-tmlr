@@ -104,7 +104,7 @@ class Substrate:
         return np.stack([self.hidden_states(t, position, use_cache) for t in texts])
 
     def hidden_states_matrix(self, texts: list[str], batch_size: int = 32,
-                             position: int = -1, progress_every: int = 25,
+                             position: int | None = -1, progress_every: int = 25,
                              out_dtype=np.float16, tag: str = "") -> np.ndarray:
         """Batched last-token hidden-state extraction: [n, n_layers+1, d_model].
 
@@ -128,7 +128,13 @@ class Substrate:
                       max_length=128).to(self.model.device)
             with torch.no_grad():
                 hs = self.model(**enc).hidden_states  # tuple(L+1) of [b, seq, d]
-            if position == -1:
+            if position is None:
+                # mean-pool over real tokens; DRIFT (PARALLAX 2026) is defined on
+                # mean-pooled states, so a last-token variant would not be its method
+                m = enc["attention_mask"].unsqueeze(-1).float()
+                picked = torch.stack(
+                    [(h * m).sum(1) / m.sum(1).clamp(min=1) for h in hs], dim=1)
+            elif position == -1:
                 last = enc["attention_mask"].sum(dim=1) - 1  # [b]
                 b, d = hs[0].shape[0], hs[0].shape[-1]
                 gi = last.view(b, 1, 1).expand(b, 1, d)

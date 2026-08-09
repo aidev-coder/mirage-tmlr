@@ -202,6 +202,53 @@ def dump_layer_activations(model_id: str, corpus_name: str, layer: int | None = 
 
 @app.function(image=image, gpu=GPU, volumes=VOLUMES, secrets=SECRETS,
               timeout=4 * 3600)
+def drift_run(model_id: str, corpus_name: str, seed: int = 0) -> dict:
+    """DRIFT: the first audited probe that is neither single-layer nor single-token.
+    One mean-pooled forward pass, four upper-depth taps, inter-layer difference
+    features. Runs DRIFT and PARALLAX's own DRIFT-concat ablation together."""
+    _setup()
+    import numpy as np
+
+    from mirage_hardness.probes_external.drift import (TAP_FRACTIONS, DriftConcatProbe,
+                                                       DriftProbe, stack)
+    from src.eval.adversarial_split import adversarial_split
+    from src.report.external_probe_sweep import fit_stability
+    from src.stage3 import load_corpus
+    from src.substrate import Substrate
+
+    sub = Substrate(model_id, cache_dir="/root/activations")
+    items = load_corpus(f"/root/mirage/data/corpus/{corpus_name}")
+    truth = np.array([bool(it["truth"]) for it in items])
+    cells = np.array([it["cell"] for it in items])
+    H = sub.hidden_states_matrix([it["text"] for it in items], batch_size=32,
+                                 position=None)          # mean-pooled, per DRIFT
+    n_layers = H.shape[1]
+    taps = [int(round(f * (n_layers - 1))) for f in TAP_FRACTIONS]
+    X = stack([H[:, L, :].astype(np.float64) for L in taps])
+
+    out = {"model": model_id, "corpus": corpus_name, "n_layers": n_layers,
+           "tap_fractions": list(TAP_FRACTIONS), "tap_layers": taps,
+           "pooling": "mean_over_tokens", "provenance": "measured", "probes": {}}
+    for name, factory in (("drift", DriftProbe), ("drift_concat", DriftConcatProbe)):
+        adv = adversarial_split(X, truth, cells, lambda f=factory: f(seed=seed), seed=seed)
+        out["probes"][name] = {
+            "in_dist": adv["headline_heldout_diagonal"]["auroc"],
+            "off": adv["off_diagonal"]["auroc"], "off_ci": adv["off_diagonal"]["ci"],
+            "gap": adv["gap"]["gap"], "gap_ci": adv["gap"]["ci"],
+            "gap_excludes_zero": adv["gap"].get("excludes_zero"),
+            "fit_stability": fit_stability(X, truth, cells, factory,
+                                           n_resample=30, seed=seed),
+        }
+        print(f"  {name:13s} in-dist {adv['headline_heldout_diagonal']['auroc']:.3f} "
+              f"off {adv['off_diagonal']['auroc']:.3f} "
+              f"gap {adv['gap']['gap']:+.3f}", flush=True)
+    activations.commit()
+    hf_cache.commit()
+    return out
+
+
+@app.function(image=image, gpu=GPU, volumes=VOLUMES, secrets=SECRETS,
+              timeout=4 * 3600)
 def semantic_entropy_run(model_id: str, corpus_name: str, k: int = 10,
                          max_subjects: int = 200) -> dict:
     """Stage 1's third detector, finally run: sampling-based semantic entropy."""
@@ -513,6 +560,35 @@ def main(stage: str = "sanity", model: str = "", max_per_topic: int = 0,
         out.write_bytes(res["npy_bytes"])
         print(f"dumpacts {model_id} corpus={corpus_name} layer={res['layer']}/{res['n_layers']} "
               f"shape={res['shape']} -> {out}")
+
+    elif stage == "drift":
+        from datetime import date
+        corpus_name = corpus
+        if not corpus_name:
+            cdir = _HERE / "data" / "corpus"
+            corpus_name = sorted(cdir.glob("mirage_2x2_v*.jsonl"),
+                                 key=lambda p: p.stat().st_mtime)[-1].name
+        chd = Path(corpus_name).stem.split("_v")[-1]
+        # eight models spanning the whole recoverability range, not all 18: DRIFT
+        # only needs enough spread to test whether the relation survives a
+        # multi-layer multi-token probe, and the budget is capped
+        ids_d = [m.strip() for m in model.split(",") if m.strip()] or [
+            "EleutherAI/pythia-160m", "EleutherAI/pythia-1.4b", "EleutherAI/pythia-12b",
+            "Qwen/Qwen2.5-0.5B", "Qwen/Qwen2.5-1.5B", "Qwen/Qwen2.5-7B-Instruct",
+            "meta-llama/Llama-3.1-8B", "google/gemma-2-9b-it"]
+        kw = {"corpus_name": corpus_name, "seed": seed}
+        for r in drift_run.map(ids_d, kwargs=kw, order_outputs=False,
+                               return_exceptions=True):
+            if isinstance(r, Exception):
+                print(f"SKIPPED (failed): {type(r).__name__}: {str(r)[:200]}")
+                continue
+            sh = r["model"].split("/")[-1].lower()
+            o = _HERE / "results" / f"drift_{sh}_{chd}_{date.today():%Y%m%d}.json"
+            o.write_text(json.dumps(r, indent=2, default=_json_default))
+            d_, c_ = r["probes"]["drift"], r["probes"]["drift_concat"]
+            print(f"{r['model']}: taps {r['tap_layers']} | drift in-dist {d_['in_dist']:.3f} "
+                  f"off {d_['off']:.3f} gap {d_['gap']:+.3f} | concat off {c_['off']:.3f} "
+                  f"gap {c_['gap']:+.3f} -> {o}")
 
     elif stage == "semantic":
         from datetime import date

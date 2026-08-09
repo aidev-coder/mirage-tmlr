@@ -1,0 +1,77 @@
+{
+  "model": "EleutherAI/pythia-160m",
+  "corpus": "mirage_2x2_v280f646cfd0f.jsonl",
+  "n_layers": 13,
+  "tap_fractions": [
+    0.6,
+    0.7,
+    0.8,
+    0.85
+  ],
+  "tap_layers": [
+    7,
+    8,
+    10,
+    10
+  ],
+  "pooling": "mean_over_tokens",
+  "provenance": "measured",
+  "probes": {
+    "drift": {
+      "in_dist": 0.9308,
+      "off": 0.0639,
+      "off_ci": [
+        0.0425,
+        0.09
+      ],
+      "gap": 0.8668,
+      "gap_ci": [
+        0.8013,
+        0.9198
+      ],
+      "gap_excludes_zero": true,
+      "fit_stability": {
+        "n_resample": 30,
+        "drop_frac": 0.1,
+        "gap_median": 0.8446,
+        "gap_range": [
+          0.7757,
+          0.903
+        ],
+        "gap_sd": 0.0376,
+        "off_range": [
+          0.0551,
+          0.0806
+        ]
+      }
+    },
+    "drift_concat": {
+      "in_dist": 0.9347,
+      "off": 0.0639,
+      "off_ci": [
+        0.0425,
+        0.0896
+      ],
+      "gap": 0.8708,
+      "gap_ci": [
+        0.8066,
+        0.9225
+      ],
+      "gap_excludes_zero": true,
+      "fit_stability": {
+        "n_resample": 30,
+        "drop_frac": 0.1,
+        "gap_median": 0.8609,
+        "gap_range": [
+          0.778,
+          0.9152
+        ],
+        "gap_sd": 0.0374,
+        "off_range": [
+          0.0505,
+          0.0789
+        ]
+      }
+    }
+  }
+}

@@ -298,3 +298,56 @@ def test_ttpd_rejects_a_bad_layout():
     pos, _, y, _ = _ttpd_world(d=48)
     with pytest.raises(ValueError):
         TTPDProbe(seed=0, n_topics=3).fit(pos, y)
+
+
+def _drift_world(n=400, d=48, seed=0, signal_in_change=True):
+    """Four depth taps. When signal_in_change, truth lives ONLY in how the state
+    moves between taps, not in any tap's absolute position — the regime DRIFT
+    claims to read and a single-layer probe cannot."""
+    import numpy as np
+    rng = np.random.default_rng(seed)
+    y = rng.integers(0, 2, n).astype(bool)
+    base = rng.normal(size=(n, d)) * 2.0
+    direction = np.zeros(d)
+    direction[0] = 1.0
+    taps = []
+    for i in range(4):
+        if signal_in_change:
+            h = base + (i * 1.5) * np.where(y, 1.0, -1.0)[:, None] * direction
+        else:
+            h = base + 3.0 * np.where(y, 1.0, -1.0)[:, None] * direction
+        taps.append(h + rng.normal(size=(n, d)) * 0.3)
+    return taps, y
+
+
+def test_drift_reads_a_signal_carried_only_by_depth_change():
+    from mirage_hardness.probes_external.drift import DriftProbe, stack
+    from src.stats import auroc_with_ci
+
+    taps, y = _drift_world(signal_in_change=True)
+    X = stack(taps)
+    s = DriftProbe(seed=0).fit(X, y).score(X)
+    assert auroc_with_ci(y, s, n_boot=200)["auroc"] > 0.9
+
+
+def test_drift_concat_ablation_differs_from_drift():
+    """The ablation must actually be a different estimator, or it tests nothing."""
+    import numpy as np
+    from mirage_hardness.probes_external.drift import (DriftConcatProbe, DriftProbe,
+                                                       stack)
+
+    taps, y = _drift_world()
+    X = stack(taps)
+    a = DriftProbe(seed=0).fit(X, y).score(X)
+    b = DriftConcatProbe(seed=0).fit(X, y).score(X)
+    assert not np.allclose(a, b)
+
+
+def test_drift_rejects_a_bad_tap_count():
+    import pytest
+    from mirage_hardness.probes_external.drift import DriftProbe
+
+    taps, y = _drift_world(d=48)
+    bad = taps[0][:, :47]
+    with pytest.raises(ValueError):
+        DriftProbe(seed=0, n_taps=4).fit(bad, y)
