@@ -211,8 +211,13 @@ def fig_benchmark_blindness(out: str | Path | None = None, corpus: str | None = 
     ax.set_ylim(-0.7, len(rows) - 0.3)
     ax.set_xlabel("AUROC"); ax.set_xlim(0, 1.05)
     ax.text(0.512, -0.6, "chance", fontsize=8, color="gray")
-    ax.set_title("every probe looks near-perfect on the benchmark;\n"
-                 "honest truth detection ranges from 0.11 to 0.97", fontsize=10)
+    # ranges read from the data, never hardcoded: the previous title still claimed
+    # 0.11 to 0.97 from a retracted corpus while plotting different numbers
+    ind = [r["in_dist"] for r in rows]
+    off = [r["off"] for r in rows]
+    ax.set_title(f"the benchmark reports {min(ind):.2f} to {max(ind):.2f} for every probe;\n"
+                 f"honest truth detection ranges from {min(off):.2f} to {max(off):.2f}"
+                 f"   (n={len(rows)} models)", fontsize=10)
     ax.legend(fontsize=8, loc="upper left", framealpha=.92)
     fig.tight_layout()
     out = Path(out or RESULTS / "fig_benchmark_blindness.png")
@@ -221,8 +226,13 @@ def fig_benchmark_blindness(out: str | Path | None = None, corpus: str | None = 
 
 
 def fig_recoverability_mechanism(out: str | Path | None = None, corpus: str | None = None):
-    """The mechanism: a probe falls back on typicality exactly to the extent that
-    truth is not linearly available in the representation."""
+    """The mechanism: below a recoverability knee the probe is pinned near a floor
+    and extra recoverability buys nothing; above it, honest performance climbs.
+
+    Draws the HINGE, not a regression line. The earlier version fitted a straight
+    line, which model comparison rejects (AIC hinge -90.1 vs linear -60.7 on the
+    released corpus), and the line visually implies the proportional story the data
+    contradicts."""
     import matplotlib
     matplotlib.use("Agg")
     import matplotlib.pyplot as plt
@@ -232,26 +242,54 @@ def fig_recoverability_mechanism(out: str | Path | None = None, corpus: str | No
     x = np.array([r["recov"] for r in rows]); y = np.array([r["off"] for r in rows])
     fig, ax = plt.subplots(figsize=(6.4, 4.4))
     ax.scatter(x, y, s=60, color="#c44", zorder=3)
-    # alternate label placement: several models sit almost on top of each other
-    # at the high-recoverability end, so a fixed offset collides.
-    for i, r in enumerate(sorted(rows, key=lambda z: (z["recov"], z["off"]))):
-        dx, dy = (6, -2) if i % 2 == 0 else (6, 7)
-        ha = "left"
-        if r["recov"] > 0.92:            # keep the rightmost labels inside the axes
-            dx, ha = -6, "right"
-        ax.annotate(r["model"], (r["recov"], r["off"]), fontsize=7,
-                    xytext=(dx, dy), textcoords="offset points", ha=ha)
+    # Above the knee the models bunch into a narrow band of recoverability, so
+    # right-hand labels overlap each other and run off the axis. Label that cluster
+    # leftwards and stagger it vertically; label the sparse flat regime rightwards.
+    ax.set_xlim(x.min() - 0.10, x.max() + 0.10)
+    dense = sorted([r for r in rows if r["recov"] > 0.75], key=lambda z: z["off"])
+    sparse = sorted([r for r in rows if r["recov"] <= 0.75], key=lambda z: z["off"])
+    # Above the knee the models bunch into a narrow band, so labels are stacked at
+    # evenly spaced heights in a column to the left with a thin leader to each
+    # point. Offsetting them without leaders detaches the name from its dot, which
+    # is worse than the overlap it fixes.
+    if dense:
+        lo, hi = min(r["off"] for r in dense), max(r["off"] for r in dense)
+        span = max(hi - lo, 0.35)
+        mid = (hi + lo) / 2
+        ys = np.linspace(mid - span / 2, mid + span / 2, len(dense))
+        lx = min(r["recov"] for r in dense) - 0.055
+        for r, ly in zip(dense, ys):
+            ax.annotate(r["model"], (r["recov"], r["off"]), xytext=(lx, ly),
+                        textcoords="data", fontsize=7, ha="right", va="center",
+                        zorder=4,
+                        arrowprops=dict(arrowstyle="-", lw=.5, color="#999",
+                                        shrinkA=2, shrinkB=4))
+    # four phases here too: several of the flat-regime models sit within 0.01 of
+    # each other in both coordinates, so a two-phase alternation still collides
+    for i, r in enumerate(sparse):
+        dy = (-11, 11, -23, 23)[i % 4]
+        ax.annotate(r["model"], (r["recov"], r["off"]), fontsize=7, ha="left",
+                    va="center", xytext=(8, dy), textcoords="offset points", zorder=4)
+    ax.set_ylim(y.min() - 0.09, y.max() + 0.06)
     if len(x) > 2:
-        b, a0 = np.polyfit(x, y, 1)
-        xs = np.linspace(x.min(), x.max(), 50)
-        ax.plot(xs, a0 + b * xs, lw=1, ls="--", color="gray")
-        ax.text(.03, .93, f"r = {np.corrcoef(x, y)[0, 1]:.3f}   (n={len(x)} models)",
-                transform=ax.transAxes, fontsize=9)
+        from .external_probe_sweep import _fit_shape
+        shape = _fit_shape(x, y, n_boot=400)
+        h = shape["hinge"]
+        xs = np.linspace(x.min(), x.max(), 200)
+        ax.plot(xs, h["floor"] + h["slope"] * np.maximum(0.0, xs - h["knee"]),
+                lw=1.6, color="#333", zorder=2)
+        ax.axvline(h["knee"], ls="--", lw=.9, color="#48a")
+        ax.axvspan(h["knee_ci"][0], h["knee_ci"][1], color="#48a", alpha=.10, lw=0)
+        ax.annotate(f"knee {h['knee']:.2f}", (h["knee"], y.min()), fontsize=8,
+                    color="#48a", xytext=(5, 4), textcoords="offset points")
+        ax.text(.03, .93,
+                f"r = {np.corrcoef(x, y)[0, 1]:.3f}   (n={len(x)} models)\n"
+                f"hinge AIC {h['aic']:.0f}  vs linear {shape['linear']['aic']:.0f}",
+                transform=ax.transAxes, fontsize=8.5, va="top")
     ax.axhline(0.5, ls=":", lw=.8, color="gray")
     ax.set_xlabel("truth recoverability  (β with fair training)")
     ax.set_ylabel("honest off-diagonal AUROC")
-    ax.set_title("the probe substitutes typicality when truth is not available",
-                 fontsize=10)
+    ax.set_title("below the knee, more recoverable truth buys nothing", fontsize=10)
     fig.tight_layout()
     out = Path(out or RESULTS / "fig_recoverability_mechanism.png")
     fig.savefig(out, dpi=200); plt.close(fig)

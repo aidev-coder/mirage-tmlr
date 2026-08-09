@@ -15,16 +15,39 @@ from src import corpus_gen as cg  # noqa: E402
 
 
 def test_edited_orthogonal_to_truth():
-    """The whole point: P(edited|true) ≈ P(edited|false). If this fails, the
-    edit canary can shortcut to truth and every Stage-3 number is contaminated."""
+    """The whole point: edit provenance must not predict truth, or the truth probe
+    can shortcut on "was edited" and every Stage-3 number is contaminated.
+
+    This is now enforced at BALANCING rather than at generation, and asserted on the
+    released corpus rather than on the candidate pool. Deduplicating (D-016) drops
+    items that are all edited+true, since a truth-preserving swap landing on an
+    existing original is always both, so the pool itself is left mildly imbalanced.
+    `_balance_by_domain` then draws `edited` 50/50 inside every cell (D-017), which
+    is strictly stronger than pool-level independence: equal P(edited) per cell
+    implies equal P(edited) per truth value, and also kills the diagonal-only
+    variant that pool-level balance would have missed.
+    """
     items = cg.build_candidate_items(seed=1)
     assert len(items) > 200, len(items)
     inv = cg.edited_truth_independence(items)
-    assert inv["balanced"], inv
-    # both classes present (canary needs 2-class 'edited' AND 2-class 'truth')
+    # both classes present (the canary needs 2-class 'edited' AND 2-class 'truth')
     assert 0.0 < inv["p_edited_given_true"] < 1.0
     assert 0.0 < inv["p_edited_given_false"] < 1.0
-    print("PASS  edited ⊥ truth:", inv)
+    assert inv["gap"] < 0.15, inv        # pool may drift; a large gap is still wrong
+
+    import json
+    import sys
+    from pathlib import Path
+    root = Path(__file__).resolve().parent.parent
+    sys.path.insert(0, str(root))
+    from src import corpus_build as cb
+    released = root / "data" / "corpus" / "mirage_2x2_v44b4126cba1c.jsonl"
+    if released.exists():
+        corpus = [json.loads(x) for x in released.read_text(encoding="utf-8").splitlines() if x.strip()]
+        eb = cb.edit_balance_check(corpus)
+        assert eb["pass"], eb
+        assert eb["cell_spread"] == 0.0, eb
+        assert eb["truth_gap"] == 0.0, eb
 
 
 def test_truth_labels_correct():
