@@ -1,0 +1,15 @@
+# Beam syncs the working directory on every run. Ship only what the remote
+# function imports or reads: src/, mirage_hardness/, vendor/, configs/, and the
+# corpus. Everything below is either large, regenerable, or local-only.
+.git
+__pycache__
+*.pyc
+data/activations
+data/raw
+results
+paper
+notes
+tests
+env
+*.png
+*.CORRUPT.json
