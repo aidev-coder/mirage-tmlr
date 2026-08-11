@@ -21,15 +21,16 @@ the owner, not a reason to silently shard.
 from __future__ import annotations
 
 import json
+import os
 from pathlib import Path
 
 import modal
 
 APP_NAME = "mirage"
-# Owner authorized a larger GPU for speed (overrides the §5 A10/L4 default).
-# A100-40GB: fits 9B bf16 + batched activations with headroom, cost-sane for a
-# $30 budget. Bump to "H100" for ~2x faster extraction if the budget allows.
-GPU = "H100"
+# H100 is an owner-authorized upgrade over the §5 A10/L4 target, purely for speed,
+# and it is gated behind a paid plan on some workspaces. Override with MIRAGE_GPU
+# when that gate bites; every model here fits 24GB in bf16 (largest is 9B, ~18GB).
+GPU = os.environ.get("MIRAGE_GPU", "H100")
 _HERE = Path(__file__).resolve().parent
 
 
