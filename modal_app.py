@@ -103,8 +103,30 @@ def _setup():
     sys.path.insert(0, "/root/mirage")
 
 
+def _timed(fn):
+    """Record wall-clock seconds and the GPU tier into every artifact.
+
+    The paper reports a compute budget and we could not measure the historical one:
+    nothing logged runtime, and three of the Modal workspaces used along the way
+    were rotated after their credits ran out, so the billing record is gone. Every
+    run from here is measurable.
+    """
+    import functools
+    import time
+
+    @functools.wraps(fn)
+    def wrapper(*a, **kw):
+        t0 = time.time()
+        out = fn(*a, **kw)
+        if isinstance(out, dict):
+            out["compute"] = {"gpu": GPU, "wall_seconds": round(time.time() - t0, 1)}
+        return out
+    return wrapper
+
+
 @app.function(image=image, gpu=GPU, volumes=VOLUMES, secrets=SECRETS,
               timeout=3600)
+@_timed
 def stage0_sanity(model_id: str) -> dict:
     """Stage 0 gate for one model (the project's standing directive §3 Stage 0)."""
     _setup()
@@ -119,6 +141,7 @@ def stage0_sanity(model_id: str) -> dict:
 
 @app.function(image=image, gpu=GPU, volumes=VOLUMES, secrets=SECRETS,
               timeout=6 * 3600)
+@_timed
 def stage1_saplma(model_id: str, max_per_topic: int = 0,
                   batch_size: int = 32, fast: bool = True) -> dict:
     """Stage 1 SAPLMA headline reproduction for one model (the project's standing directive §3 Stage 1).
@@ -147,6 +170,7 @@ def stage1_saplma(model_id: str, max_per_topic: int = 0,
 
 @app.function(image=image, gpu=GPU, volumes=VOLUMES, secrets=SECRETS,
               timeout=3 * 3600)
+@_timed
 def stage2_build(reference_model: str, canary_model: str,
                  edit_rate: float = 0.5, seed: int = 20260712,
                  version: int = 2) -> dict:
@@ -171,6 +195,7 @@ def stage2_build(reference_model: str, canary_model: str,
 
 @app.function(image=image, gpu=GPU, volumes=VOLUMES, secrets=SECRETS,
               timeout=4 * 3600)
+@_timed
 def stage3_run(model_id: str, corpus_name: str, detector: str = "saplma",
                domain: str = "") -> dict:
     """Stage 3: the three decorrelation tests on the finalized corpus (§3 Stage 3).
@@ -194,6 +219,7 @@ def stage3_run(model_id: str, corpus_name: str, detector: str = "saplma",
 
 @app.function(image=image, gpu=GPU, volumes=VOLUMES, secrets=SECRETS,
               timeout=2 * 3600)
+@_timed
 def dump_layer_activations(model_id: str, corpus_name: str, layer: int | None = None) -> dict:
     """Extract ONE layer's hidden states for the full corpus and return them as
     npy bytes, for auditing EXTERNAL probes locally with mirage_hardness/
@@ -225,6 +251,7 @@ def dump_layer_activations(model_id: str, corpus_name: str, layer: int | None = 
 
 @app.function(image=image, gpu=GPU, volumes=VOLUMES, secrets=SECRETS,
               timeout=4 * 3600)
+@_timed
 def drift_run(model_id: str, corpus_name: str, seed: int = 0) -> dict:
     """DRIFT: the first audited probe that is neither single-layer nor single-token.
     One mean-pooled forward pass, four upper-depth taps, inter-layer difference
@@ -272,6 +299,7 @@ def drift_run(model_id: str, corpus_name: str, seed: int = 0) -> dict:
 
 @app.function(image=image, gpu=GPU, volumes=VOLUMES, secrets=SECRETS,
               timeout=4 * 3600)
+@_timed
 def semantic_entropy_run(model_id: str, corpus_name: str, k: int = 10,
                          max_subjects: int = 200) -> dict:
     """Stage 1's third detector, finally run: sampling-based semantic entropy."""
@@ -290,6 +318,7 @@ def semantic_entropy_run(model_id: str, corpus_name: str, k: int = 10,
 
 @app.function(image=image, gpu=GPU, volumes=VOLUMES, secrets=SECRETS,
               timeout=4 * 3600)
+@_timed
 def external_layer_sweep(model_id: str, corpus_name: str, probe_specs: list[str],
                          seed: int = 0) -> dict:
     """Audit external probes at every layer, per the project's standing directive §4.3, rather than at the
@@ -365,6 +394,7 @@ def external_layer_sweep(model_id: str, corpus_name: str, probe_specs: list[str]
 
 @app.function(image=image, gpu=GPU, volumes=VOLUMES, secrets=SECRETS,
               timeout=4 * 3600)
+@_timed
 def causal_run(model_id: str, corpus_name: str, domain: str = "") -> dict:
     """Causal mediation: fraction of the truth-probe response routed through the
     typicality direction, on matched twin pairs. Reuses cached activations."""
@@ -381,6 +411,7 @@ def causal_run(model_id: str, corpus_name: str, domain: str = "") -> dict:
 
 @app.function(image=image, gpu=GPU, volumes=VOLUMES, secrets=SECRETS,
               timeout=4 * 3600)
+@_timed
 def intervene_run(model_id: str, corpus_name: str, k: int = 8,
                   domain: str = "") -> dict:
     """Model-level: ablate the frequency manifold from the residual and re-read the
@@ -398,6 +429,7 @@ def intervene_run(model_id: str, corpus_name: str, k: int = 8,
 
 @app.function(image=image, gpu=GPU, volumes=VOLUMES, secrets=SECRETS,
               timeout=4 * 3600)
+@_timed
 def gendis_run(model_id: str, corpus_name: str, max_subjects: int = 400,
                domain: str = "") -> dict:
     """Generation-time dissociation: the model writes the statements, then we read
