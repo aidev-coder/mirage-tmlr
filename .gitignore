@@ -2,6 +2,8 @@
 # MIRAGE needs its docs and env spec tracked — re-include them here
 # (deeper .gitignore patterns take precedence).
 !*.md
+# paper figures are deliverables; the root .gitignore blanket-ignores *.pdf
+!paper/*.pdf
 !env/
 !env/**
 !configs/*.yaml

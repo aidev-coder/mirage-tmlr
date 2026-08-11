@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>MIRAGE corpus design</title>
+<meta name="hz:slide-selector" content=".slide" />
+<meta name="hz:canvas-width" content="1920" />
+<meta name="hz:canvas-height" content="1080" />
+<link rel="stylesheet" href="https://use.typekit.net/hdz6ovt.css">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { display: flex; justify-content: center; align-items: center; min-height: 100vh; background: #eceff3; }
+/* print-only: keeps the PDF one page at the exact canvas size, no effect on screen or on the Express import */
+@page { size: 1920px 1080px; margin: 0; }
+@media print { body { display: block; background: #ffffff; min-height: 0; } }
+
+.slide {
+  position: relative; width: 1920px; height: 1080px;
+  background: #ffffff; overflow: hidden;
+  font-family: "acumin-pro", sans-serif;
+}
+
+.title { position: absolute; left: 120px; top: 74px; width: 1300px;
+  font-family: "acumin-pro", sans-serif; font-weight: 700; font-size: 54px;
+  color: #14181d; letter-spacing: -0.4px; }
+.subtitle { position: absolute; left: 120px; top: 146px; width: 1320px;
+  font-family: "acumin-pro", sans-serif; font-weight: 400; font-size: 25px;
+  color: #5b6470; line-height: 1.45; }
+
+.axis-y { position: absolute; left: 96px; top: 300px;
+  font-family: "acumin-pro", sans-serif; font-weight: 700; font-size: 22px;
+  color: #8a93a0; letter-spacing: 2.4px;
+  transform: rotate(-90deg); transform-origin: left top; }
+.axis-x { position: absolute; left: 300px; top: 962px; width: 900px; text-align: center;
+  font-family: "acumin-pro", sans-serif; font-weight: 700; font-size: 22px;
+  color: #8a93a0; letter-spacing: 2.4px; }
+
+.colhead { position: absolute; top: 246px; width: 440px; text-align: center;
+  font-family: "acumin-pro", sans-serif; font-weight: 700; font-size: 27px; color: #14181d; }
+.colhead span { display: block; font-weight: 400; font-size: 20px; color: #6b7480; margin-top: 5px; }
+.rowhead { position: absolute; left: 152px; width: 148px; text-align: right;
+  font-family: "acumin-pro", sans-serif; font-weight: 700; font-size: 27px; color: #14181d; }
+.rowhead span { display: block; font-weight: 400; font-size: 20px; color: #6b7480; margin-top: 5px; }
+
+.cell { position: absolute; width: 440px; height: 268px; border-radius: 14px; padding: 26px 30px; }
+.diag { background: #eef1f6; border: 2px solid #c7d0dc; }
+.off  { background: #fdf1ec; border: 2px solid #e8a184; }
+
+.code { font-family: "acumin-pro", sans-serif; font-weight: 700; font-size: 40px;
+  color: #14181d; letter-spacing: 0.5px; }
+.desc { font-family: "acumin-pro", sans-serif; font-weight: 400; font-size: 21px;
+  color: #46505d; line-height: 1.4; margin-top: 10px; }
+.eg   { font-family: "acumin-pro", sans-serif; font-weight: 400; font-size: 19px;
+  color: #78828f; line-height: 1.35; margin-top: 14px; font-style: italic; }
+.n    { position: absolute; right: 28px; top: 26px;
+  font-family: "acumin-pro", sans-serif; font-weight: 700; font-size: 19px; color: #98a2ae; }
+
+.legend { position: absolute; left: 1330px; top: 300px; width: 500px; }
+.legend-item { position: relative; margin-bottom: 38px; padding-left: 30px; }
+.swatch { position: absolute; left: 0; top: 5px; width: 16px; height: 16px; border-radius: 4px; }
+.legend-h { font-family: "acumin-pro", sans-serif; font-weight: 700; font-size: 23px; color: #14181d; }
+.legend-p { font-family: "acumin-pro", sans-serif; font-weight: 400; font-size: 20px;
+  color: #5b6470; line-height: 1.5; margin-top: 7px; }
+
+.rule { position: absolute; left: 1330px; top: 636px; width: 468px; height: 2px; background: #dde3ea; }
+.finding { position: absolute; left: 1330px; top: 674px; width: 490px; }
+.finding-h { font-family: "acumin-pro", sans-serif; font-weight: 700; font-size: 22px;
+  color: #14181d; letter-spacing: 0.2px; }
+.finding-p { font-family: "acumin-pro", sans-serif; font-weight: 400; font-size: 20px;
+  color: #5b6470; line-height: 1.5; margin-top: 9px; }
+.num { font-family: "acumin-pro", sans-serif; font-weight: 700; color: #c2562b; }
+
+.foot { position: absolute; left: 120px; top: 1006px; width: 1700px;
+  font-family: "acumin-pro", sans-serif; font-weight: 400; font-size: 18px; color: #98a2ae; }
+</style>
+</head>
+<body>
+<div class="slide" data-canvas-width="1920" data-canvas-height="1080">
+
+  <div class="title">Standard benchmarks live on the diagonal</div>
+  <div class="subtitle">Truth and entity frequency agree there, so a probe reading only &ldquo;common means true&rdquo;
+    scores the same as one reading truth. The off&nbsp;diagonal is where they disagree, and the only place the
+    question can be asked.</div>
+
+  <div class="axis-y" style="top: 700px;">TRUTH</div>
+  <div class="axis-x">ENTITY FREQUENCY</div>
+
+  <div class="colhead" style="left: 320px;">Common<span>high pretraining frequency</span></div>
+  <div class="colhead" style="left: 792px;">Rare<span>low pretraining frequency</span></div>
+
+  <div class="rowhead" style="top: 400px;">True<span>the statement holds</span></div>
+  <div class="rowhead" style="top: 700px;">False<span>the statement does not</span></div>
+
+  <div class="cell diag" style="left: 320px; top: 336px;">
+    <div class="n">n = 152</div>
+    <div class="code">TT</div>
+    <div class="desc">True and ordinary sounding.</div>
+    <div class="eg">&ldquo;Paris is a city in France.&rdquo;</div>
+  </div>
+
+  <div class="cell off" style="left: 792px; top: 336px;">
+    <div class="n">n = 152</div>
+    <div class="code">TA</div>
+    <div class="desc">True, but about a rare entity.</div>
+    <div class="eg">&ldquo;Catape is a city in Angola.&rdquo;</div>
+  </div>
+
+  <div class="cell off" style="left: 320px; top: 636px;">
+    <div class="n">n = 152</div>
+    <div class="code">FT</div>
+    <div class="desc">False, yet fluent and ordinary.</div>
+    <div class="eg">&ldquo;Monywa is a city in Brazil.&rdquo;</div>
+  </div>
+
+  <div class="cell diag" style="left: 792px; top: 636px;">
+    <div class="n">n = 152</div>
+    <div class="code">FA</div>
+    <div class="desc">False and obviously odd.</div>
+    <div class="eg">&ldquo;Catape is a city in Tuvalu.&rdquo;</div>
+  </div>
+
+  <div class="legend">
+    <div class="legend-item">
+      <div class="swatch" style="background: #c7d0dc;"></div>
+      <div class="legend-h">Diagonal &mdash; where probes are trained</div>
+      <div class="legend-p">What the field builds and reports on. Truth and frequency are
+        perfectly correlated here, so both strategies look identical.</div>
+    </div>
+    <div class="legend-item">
+      <div class="swatch" style="background: #e8a184;"></div>
+      <div class="legend-h">Off diagonal &mdash; where they are tested</div>
+      <div class="legend-p">Frequency now points the wrong way. A probe reading truth survives;
+        one reading frequency inverts.</div>
+    </div>
+  </div>
+
+  <div class="rule"></div>
+  <div class="finding">
+    <div class="finding-h">What 18 models show</div>
+    <div class="finding-p">In distribution, every probe scores between
+      <span class="num">0.76</span> and <span class="num">1.00</span>. Read honestly on the off diagonal,
+      the same probes span <span class="num">0.08</span> to <span class="num">0.89</span>.</div>
+  </div>
+
+  <div class="foot">Corpus v44b4126cba1c &middot; n = 608 statements &middot; 152 per cell &middot;
+    three domains &middot; balanced within domain, with edit provenance drawn 50/50 inside every cell</div>
+
+</div>
+</body>
+</html>
