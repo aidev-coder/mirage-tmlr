@@ -1,0 +1,164 @@
+{
+  "hash": "d279c2cae5f4",
+  "n": 140,
+  "signoff": "D-017",
+  "crossing": {
+    "gate": "crossing",
+    "axis": "entity_frequency",
+    "checks": {
+      "true": {
+        "cells": "TT (typical) vs TA (atypical)",
+        "cliffs_delta_freq": 1.0,
+        "mannwhitney_p": 3.2727502944570765e-13,
+        "median_log10freq_typical": 7.17,
+        "median_log10freq_atypical": 5.756,
+        "xcheck_median_ppl_typical": 12.6,
+        "xcheck_median_ppl_atypical": 12.1,
+        "pass": true
+      },
+      "false": {
+        "cells": "FT (typical) vs FA (atypical)",
+        "cliffs_delta_freq": 1.0,
+        "mannwhitney_p": 3.2727502944570765e-13,
+        "median_log10freq_typical": 7.12,
+        "median_log10freq_atypical": 5.423,
+        "xcheck_median_ppl_typical": 26.59,
+        "xcheck_median_ppl_atypical": 42.47,
+        "pass": true
+      }
+    },
+    "pass": true
+  },
+  "edit_canary": {
+    "gate": "edit_canary",
+    "pass": true,
+    "not_applicable": "falsehoods are harvested model errors, not edits; no statement in this corpus was edited"
+  },
+  "fragmentation_canary": {
+    "auroc": 0.6361,
+    "ci": [
+      0.3972,
+      0.8664
+    ],
+    "n": 28,
+    "n_boot": 1000,
+    "gate": "fragmentation_canary",
+    "pass": true
+  },
+  "composition_canary": {
+    "gate": "composition_canary",
+    "fields": {
+      "provenance.source": {
+        "auroc": 1.0,
+        "ci": [
+          1.0,
+          1.0
+        ],
+        "n": 70,
+        "n_boot": 1000,
+        "shortcut_present": true,
+        "text_visible": false,
+        "text_recoverability_acc": 0.619,
+        "composition": {
+          "diagonal": {
+            "harvest_Qwen2.5-1.5B-Instruct": {
+              "n": 35,
+              "frac_true": 0.0
+            },
+            "wikidata": {
+              "n": 35,
+              "frac_true": 1.0
+            }
+          },
+          "off_diagonal": {
+            "harvest_Qwen2.5-1.5B-Instruct": {
+              "n": 35,
+              "frac_true": 0.0
+            },
+            "wikidata": {
+              "n": 35,
+              "frac_true": 1.0
+            }
+          }
+        },
+        "pass": true
+      },
+      "provenance.strategy": {
+        "auroc": 1.0,
+        "ci": [
+          1.0,
+          1.0
+        ],
+        "n": 70,
+        "n_boot": 1000,
+        "shortcut_present": true,
+        "text_visible": false,
+        "text_recoverability_acc": 0.5476,
+        "composition": {
+          "diagonal": {
+            "gazetteer_true": {
+              "n": 35,
+              "frac_true": 1.0
+            },
+            "natural_confident_error": {
+              "n": 35,
+              "frac_true": 0.0
+            }
+          },
+          "off_diagonal": {
+            "gazetteer_true": {
+              "n": 35,
+              "frac_true": 1.0
+            },
+            "natural_confident_error": {
+              "n": 35,
+              "frac_true": 0.0
+            }
+          }
+        },
+        "pass": true
+      }
+    },
+    "failed_fields": [],
+    "metadata_only_imbalances": [
+      "provenance.source",
+      "provenance.strategy"
+    ],
+    "pass": true
+  },
+  "edit_balance": {
+    "gate": "edit_balance",
+    "p_edited_per_cell": {
+      "TT": 0.0,
+      "TA": 0.0,
+      "FT": 0.0,
+      "FA": 0.0
+    },
+    "p_edited_per_truth": {
+      "true": 0.0,
+      "false": 0.0
+    },
+    "max_gap": 0.02,
+    "cell_spread": 0.0,
+    "truth_gap": 0.0,
+    "pass": true
+  },
+  "domain_share_gate": {
+    "gate": "domain_share",
+    "max_share": 0.5,
+    "shares": {
+      "cities": 1.0
+    },
+    "largest_domain": "cities",
+    "largest_share": 1.0,
+    "pass": true
+  },
+  "duplicates": {
+    "n_rows": 140,
+    "n_unique": 140,
+    "pass": true
+  },
+  "domain_share": {
+    "cities": 1.0
+  }
+}

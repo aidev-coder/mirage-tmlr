@@ -176,28 +176,50 @@ def _balance_by_domain(items: list[dict], seed: int) -> tuple[list[dict], dict]:
     # leaves FA edit-heavy (0.578 vs ~0.42 elsewhere), which puts an edit shortcut
     # on the training diagonal that vanishes off it — the same signature as the
     # confound being measured, worth up to +0.075 of gap on its own (§4.2, D-012).
+    # Both constraints below are vacuous in some corpora and must not zero the
+    # build out when they are. A harvested-error corpus has ONE domain (so "no
+    # domain may exceed half" is unsatisfiable by definition and also meaningless,
+    # since a constant cannot confound anything) and NO edited items (so an edit
+    # split is undefined, and edit provenance is likewise constant). Applying
+    # either blindly produced per-cell counts of zero and a division by zero.
+    split_on_edit = len({bool(it["edited"]) for it in items}) > 1
+
     def halves(d, c):
         v = by[(d, c)]
+        if not split_on_edit:
+            return (v,)
         return ([x for x in v if x["edited"]], [x for x in v if not x["edited"]])
 
-    cap = {d: min(min(len(e), len(u)) for e, u in (halves(d, c) for c in cells4))
-           for d in doms}
-    others = {d: sum(v for k, v in cap.items() if k != d) for d in doms}
-    per = {d: min(cap[d], others[d]) for d in doms}          # per half-cell
+    n_parts = 2 if split_on_edit else 1
+    cap = {d: min(min(len(p) for p in halves(d, c)) for c in cells4) for d in doms}
+    if len(doms) > 1:
+        others = {d: sum(v for k, v in cap.items() if k != d) for d in doms}
+        per = {d: min(cap[d], others[d]) for d in doms}
+    else:
+        per = dict(cap)          # single domain: majority rule cannot apply
 
     out = []
     for d in doms:
         for c in cells4:
-            for half in halves(d, c):
-                for i in rng.choice(len(half), per[d], replace=False):
-                    out.append(half[int(i)])
-    total = 8 * sum(per.values())
-    return out, {"per_domain_half_cell": per, "capacity_per_domain_half_cell": cap,
+            for part in halves(d, c):
+                for i in rng.choice(len(part), per[d], replace=False):
+                    out.append(part[int(i)])
+    total = 4 * n_parts * sum(per.values())
+    if total == 0:
+        raise RuntimeError(
+            f"balancing produced an empty corpus; per-domain capacity {cap}. "
+            "Some cell has no items to draw from.")
+    return out, {"per_domain_part": per, "capacity_per_domain_part": cap,
                  "domains": doms, "total": total, "cells_per_domain": 4,
-                 "per_domain_cell": {d: 2 * per[d] for d in doms},
-                 "max_domain_share": round(max(8 * per[d] / total for d in doms), 4),
-                 "rule": "within-domain balance, edited 50/50 within every cell; "
-                         "no domain may exceed 50% of items"}
+                 "split_on_edit": split_on_edit,
+                 "per_domain_cell": {d: n_parts * per[d] for d in doms},
+                 "max_domain_share": round(
+                     max(4 * n_parts * per[d] / total for d in doms), 4),
+                 "rule": ("within-domain balance"
+                          + (", edited 50/50 within every cell" if split_on_edit
+                             else ", no edit split (no item was edited)")
+                          + ("; no domain may exceed 50% of items" if len(doms) > 1
+                             else "; single domain"))}
 
 
 def _balance(items: list[dict], seed: int):
@@ -333,7 +355,7 @@ def score_and_gate_v2(reference_substrate, canary_substrate, edit_rate: float = 
     }
 
 
-def score_and_gate_harvested(reference_substrate, canary_substrate, topic: str = "cities",
+def score_and_gate_harvested(reference_substrate, canary_substrate, topic: str = "wikidata",
                              seed: int = 20260812, min_per_cell: int = 20) -> dict:
     """Build the 2x2 from HARVESTED MODEL ERRORS instead of authored entity swaps.
 
@@ -358,13 +380,19 @@ def score_and_gate_harvested(reference_substrate, canary_substrate, topic: str =
     from . import harvest as hv
 
     freq_map = load_entity_freq()
-    n_freq = max(len(freq_map), 1)
-    unresolved = sum(1 for v in freq_map.values()
-                     if not isinstance(v.get("count"), int) or v["count"] < 0)
-    if unresolved / n_freq > 0.05:
-        raise RuntimeError(f"entity_freq.json is {unresolved / n_freq:.1%} unresolved")
+
+    def _resolved(e):
+        v = freq_map.get(e) or {}
+        return isinstance(v.get("count"), int) and v["count"] >= 0
+
+    cache_unres = sum(1 for v in freq_map.values()
+                      if not isinstance(v.get("count"), int) or v["count"] < 0)
+    print(f"[harvested] frequency cache: {len(freq_map)} entities, {cache_unres} "
+          f"unresolved ({cache_unres / max(len(freq_map), 1):.1%})", flush=True)
 
     false_items = hv.load_harvested(topic)
+    for _it in false_items:
+        _it["domain"] = "cities"
     if len(false_items) < 4 * min_per_cell:
         raise RuntimeError(
             f"only {len(false_items)} harvested errors for '{topic}'; need at least "
@@ -377,20 +405,61 @@ def score_and_gate_harvested(reference_substrate, canary_substrate, topic: str =
     gold_path = _ROOT / "data" / "corpus" / "wikidata_gold_cities.json"
     gold = {k: sorted(v) for k, v in json.loads(
         gold_path.read_text(encoding="utf-8")).items()}
+
+    # ONE canonical surface form per country on both sides. The gazetteer says
+    # "People's Republic of China" and models say "China", so before this the word
+    # "China" appeared only in false statements and predicted falsehood perfectly.
+    # The composition gate caught it. Answers that canonicalize to nothing are not
+    # countries at all ("Arizona", truncated generations) and are dropped.
+    canon = hv.canonical_country_map(gold)
+    kept_false = []
+    for it in false_items:
+        c = hv.canonicalize(it["entities"][1], canon)
+        if c is None:
+            continue
+        it["entities"] = [it["entities"][0], c]
+        it["text"] = f"{it['entities'][0]} is a city in {c}."
+        kept_false.append(it)
+    print(f"[harvested] {len(false_items)} errors -> {len(kept_false)} after "
+          f"canonicalizing the named country", flush=True)
+    false_items = kept_false
+
     wrong_subjects = {it["entities"][0] for it in false_items}
     true_items = []
     for s, countries in gold.items():
-        if s in wrong_subjects or len(countries) != 1:
+        c = hv.canonicalize(countries[0], canon) if len(countries) == 1 else None
+        if s in wrong_subjects or c is None:
             continue   # a subject cannot supply both a truth and an error, and an
                        # ambiguous name has no single true completion
         true_items.append({
-            "text": f"{s} is a city in {countries[0]}.", "truth": True,
-            "edited": False, "entity": s, "entities": [s, countries[0]],
-            "domain": topic,
+            "text": f"{s} is a city in {c}.", "truth": True,
+            "edited": False, "entity": s, "entities": [s, c],
+            "domain": "cities",
             "provenance": {"source": "wikidata", "strategy": "gazetteer_true",
                            "object_type": "country"}})
 
-    items = true_items + false_items
+    # Gate on the entities the corpus ACTUALLY USES, not on the whole cache.
+    # v1's failure was that 91% of USED entities carried fabricated zeros, which is
+    # what makes an axis meaningless. A cache holding extra unresolved entries that
+    # no item references is not that failure, and gating on it produced a false
+    # refusal here. Items with an unresolved entity are dropped outright.
+    items = [it for it in (true_items + false_items)
+             if all(_resolved(e) for e in it["entities"])]
+    dropped = (len(true_items) + len(false_items)) - len(items)
+    used = {e for it in items for e in it["entities"]}
+    used_unres = sum(1 for e in used if not _resolved(e))
+    print(f"[harvested] dropped {dropped} items with an unresolved entity; "
+          f"{len(used)} entities in use, {used_unres} unresolved", flush=True)
+    if used_unres / max(len(used), 1) > 0.05:
+        raise RuntimeError(
+            f"{used_unres}/{len(used)} entities used by the corpus have no measured "
+            "frequency; the typicality axis is not trustworthy at this coverage")
+    n_true_used = sum(1 for it in items if it["truth"])
+    n_false_used = len(items) - n_true_used
+    if n_false_used < 4 * min_per_cell:
+        raise RuntimeError(
+            f"only {n_false_used} harvested errors survive frequency resolution; "
+            f"need {4 * min_per_cell}. Fetch more entity frequencies.")
     texts = [it["text"] for it in items]
     print(f"[harvested] {len(true_items)} true + {len(false_items)} model errors "
           f"= {len(items)} candidates", flush=True)
@@ -424,9 +493,10 @@ def score_and_gate_harvested(reference_substrate, canary_substrate, topic: str =
         "meta": {"version": "harvested", "topic": topic,
                  "reference_model": reference_substrate.model_id,
                  "canary_model": canary_substrate.model_id, "canary_layer": L,
-                 "n_true_candidates": len(true_items),
+                 "n_full": len(full), "n_true_candidates": len(true_items),
                  "n_harvested_errors": len(false_items),
                  "n_released": len(full), "raw_counts": raw_counts,
+                 "released_counts": raw_counts,
                  "domain_report": domain_report, "balance": balance_report,
                  "seed": seed},
         "crossing": crossing, "edit_canary": edit_c,

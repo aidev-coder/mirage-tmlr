@@ -78,5 +78,373 @@
    "strategy": "natural_confident_error",
    "verified_against": "azaria_mitchell_kb"
   }
+ },
+ {
+  "text": "Jamestown is a city in United States.",
+  "truth": false,
+  "edited": false,
+  "entity": "Jamestown",
+  "entities": [
+   "Jamestown",
+   "United States"
+  ],
+  "domain": "cities",
+  "provenance": {
+   "source": "harvest_mistral",
+   "strategy": "natural_confident_error",
+   "verified_against": "azaria_mitchell_kb"
+  }
+ },
+ {
+  "text": "La Florida is a city in Argentina.",
+  "truth": false,
+  "edited": false,
+  "entity": "La Florida",
+  "entities": [
+   "La Florida",
+   "Argentina"
+  ],
+  "domain": "cities",
+  "provenance": {
+   "source": "harvest_mistral",
+   "strategy": "natural_confident_error",
+   "verified_against": "azaria_mitchell_kb"
+  }
+ },
+ {
+  "text": "Barcelona is a city in Spain.",
+  "truth": false,
+  "edited": false,
+  "entity": "Barcelona",
+  "entities": [
+   "Barcelona",
+   "Spain"
+  ],
+  "domain": "cities",
+  "provenance": {
+   "source": "harvest_mistral",
+   "strategy": "natural_confident_error",
+   "verified_against": "azaria_mitchell_kb"
+  }
+ },
+ {
+  "text": "Granada is a city in Spain.",
+  "truth": false,
+  "edited": false,
+  "entity": "Granada",
+  "entities": [
+   "Granada",
+   "Spain"
+  ],
+  "domain": "cities",
+  "provenance": {
+   "source": "harvest_mistral",
+   "strategy": "natural_confident_error",
+   "verified_against": "azaria_mitchell_kb"
+  }
+ },
+ {
+  "text": "Xinpu is a city in Taiwan.",
+  "truth": false,
+  "edited": false,
+  "entity": "Xinpu",
+  "entities": [
+   "Xinpu",
+   "Taiwan"
+  ],
+  "domain": "cities",
+  "provenance": {
+   "source": "harvest_mistral",
+   "strategy": "natural_confident_error",
+   "verified_against": "azaria_mitchell_kb"
+  }
+ },
+ {
+  "text": "Dimitrovgrad is a city in Bulgaria.",
+  "truth": false,
+  "edited": false,
+  "entity": "Dimitrovgrad",
+  "entities": [
+   "Dimitrovgrad",
+   "Bulgaria"
+  ],
+  "domain": "cities",
+  "provenance": {
+   "source": "harvest_mistral",
+   "strategy": "natural_confident_error",
+   "verified_against": "azaria_mitchell_kb"
+  }
+ },
+ {
+  "text": "Baia Farta is a city in Romania.",
+  "truth": false,
+  "edited": false,
+  "entity": "Baia Farta",
+  "entities": [
+   "Baia Farta",
+   "Romania"
+  ],
+  "domain": "cities",
+  "provenance": {
+   "source": "harvest_mistral",
+   "strategy": "natural_confident_error",
+   "verified_against": "azaria_mitchell_kb"
+  }
+ },
+ {
+  "text": "Arapongas is a city in Argentina.",
+  "truth": false,
+  "edited": false,
+  "entity": "Arapongas",
+  "entities": [
+   "Arapongas",
+   "Argentina"
+  ],
+  "domain": "cities",
+  "provenance": {
+   "source": "harvest_mistral",
+   "strategy": "natural_confident_error",
+   "verified_against": "azaria_mitchell_kb"
+  }
+ },
+ {
+  "text": "Vila Teixeira da Silva is a city in Brazil.",
+  "truth": false,
+  "edited": false,
+  "entity": "Vila Teixeira da Silva",
+  "entities": [
+   "Vila Teixeira da Silva",
+   "Brazil"
+  ],
+  "domain": "cities",
+  "provenance": {
+   "source": "harvest_mistral",
+   "strategy": "natural_confident_error",
+   "verified_against": "azaria_mitchell_kb"
+  }
+ },
+ {
+  "text": "Sunch'on is a city in South Korea.",
+  "truth": false,
+  "edited": false,
+  "entity": "Sunch'on",
+  "entities": [
+   "Sunch'on",
+   "South Korea"
+  ],
+  "domain": "cities",
+  "provenance": {
+   "source": "harvest_mistral",
+   "strategy": "natural_confident_error",
+   "verified_against": "azaria_mitchell_kb"
+  }
+ },
+ {
+  "text": "Al Manaqil is a city in Saudi Arabia.",
+  "truth": false,
+  "edited": false,
+  "entity": "Al Manaqil",
+  "entities": [
+   "Al Manaqil",
+   "Saudi Arabia"
+  ],
+  "domain": "cities",
+  "provenance": {
+   "source": "harvest_mistral",
+   "strategy": "natural_confident_error",
+   "verified_against": "azaria_mitchell_kb"
+  }
+ },
+ {
+  "text": "Huich'on is a city in South Korea.",
+  "truth": false,
+  "edited": false,
+  "entity": "Huich'on",
+  "entities": [
+   "Huich'on",
+   "South Korea"
+  ],
+  "domain": "cities",
+  "provenance": {
+   "source": "harvest_mistral",
+   "strategy": "natural_confident_error",
+   "verified_against": "azaria_mitchell_kb"
+  }
+ },
+ {
+  "text": "Shubra al Khaymah is a city in United Arab Emirates.",
+  "truth": false,
+  "edited": false,
+  "entity": "Shubra al Khaymah",
+  "entities": [
+   "Shubra al Khaymah",
+   "United Arab Emirates"
+  ],
+  "domain": "cities",
+  "provenance": {
+   "source": "harvest_mistral",
+   "strategy": "natural_confident_error",
+   "verified_against": "azaria_mitchell_kb"
+  }
+ },
+ {
+  "text": "San Lorenzo is a city in Argentina.",
+  "truth": false,
+  "edited": false,
+  "entity": "San Lorenzo",
+  "entities": [
+   "San Lorenzo",
+   "Argentina"
+  ],
+  "domain": "cities",
+  "provenance": {
+   "source": "harvest_mistral",
+   "strategy": "natural_confident_error",
+   "verified_against": "azaria_mitchell_kb"
+  }
+ },
+ {
+  "text": "Tizi Ouzou is a city in Morocco.",
+  "truth": false,
+  "edited": false,
+  "entity": "Tizi Ouzou",
+  "entities": [
+   "Tizi Ouzou",
+   "Morocco"
+  ],
+  "domain": "cities",
+  "provenance": {
+   "source": "harvest_mistral",
+   "strategy": "natural_confident_error",
+   "verified_against": "azaria_mitchell_kb"
+  }
+ },
+ {
+  "text": "Norfolk is a city in United Kingdom.",
+  "truth": false,
+  "edited": false,
+  "entity": "Norfolk",
+  "entities": [
+   "Norfolk",
+   "United Kingdom"
+  ],
+  "domain": "cities",
+  "provenance": {
+   "source": "harvest_mistral",
+   "strategy": "natural_confident_error",
+   "verified_against": "azaria_mitchell_kb"
+  }
+ },
+ {
+  "text": "The Valley is a city in Israel.",
+  "truth": false,
+  "edited": false,
+  "entity": "The Valley",
+  "entities": [
+   "The Valley",
+   "Israel"
+  ],
+  "domain": "cities",
+  "provenance": {
+   "source": "harvest_mistral",
+   "strategy": "natural_confident_error",
+   "verified_against": "azaria_mitchell_kb"
+  }
+ },
+ {
+  "text": "San Luis is a city in Argentina.",
+  "truth": false,
+  "edited": false,
+  "entity": "San Luis",
+  "entities": [
+   "San Luis",
+   "Argentina"
+  ],
+  "domain": "cities",
+  "provenance": {
+   "source": "harvest_mistral",
+   "strategy": "natural_confident_error",
+   "verified_against": "azaria_mitchell_kb"
+  }
+ },
+ {
+  "text": "Islamabad is a city in Pakistan.",
+  "truth": false,
+  "edited": false,
+  "entity": "Islamabad",
+  "entities": [
+   "Islamabad",
+   "Pakistan"
+  ],
+  "domain": "cities",
+  "provenance": {
+   "source": "harvest_mistral",
+   "strategy": "natural_confident_error",
+   "verified_against": "azaria_mitchell_kb"
+  }
+ },
+ {
+  "text": "Ferraz de Vasconcelos is a city in Mexico.",
+  "truth": false,
+  "edited": false,
+  "entity": "Ferraz de Vasconcelos",
+  "entities": [
+   "Ferraz de Vasconcelos",
+   "Mexico"
+  ],
+  "domain": "cities",
+  "provenance": {
+   "source": "harvest_mistral",
+   "strategy": "natural_confident_error",
+   "verified_against": "azaria_mitchell_kb"
+  }
+ },
+ {
+  "text": "Maipu is a city in Argentina.",
+  "truth": false,
+  "edited": false,
+  "entity": "Maipu",
+  "entities": [
+   "Maipu",
+   "Argentina"
+  ],
+  "domain": "cities",
+  "provenance": {
+   "source": "harvest_mistral",
+   "strategy": "natural_confident_error",
+   "verified_against": "azaria_mitchell_kb"
+  }
+ },
+ {
+  "text": "Santiago is a city in Chile.",
+  "truth": false,
+  "edited": false,
+  "entity": "Santiago",
+  "entities": [
+   "Santiago",
+   "Chile"
+  ],
+  "domain": "cities",
+  "provenance": {
+   "source": "harvest_mistral",
+   "strategy": "natural_confident_error",
+   "verified_against": "azaria_mitchell_kb"
+  }
+ },
+ {
+  "text": "Valencia is a city in Spain.",
+  "truth": false,
+  "edited": false,
+  "entity": "Valencia",
+  "entities": [
+   "Valencia",
+   "Spain"
+  ],
+  "domain": "cities",
+  "provenance": {
+   "source": "harvest_mistral",
+   "strategy": "natural_confident_error",
+   "verified_against": "azaria_mitchell_kb"
+  }
  }
 ]

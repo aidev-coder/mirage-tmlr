@@ -1,105 +1,57 @@
 {
   "meta": {
-    "version": 2,
+    "version": "harvested",
+    "topic": "wikidata",
     "reference_model": "Qwen/Qwen2.5-7B-Instruct",
     "canary_model": "meta-llama/Llama-3.1-8B",
     "canary_layer": 16,
-    "n_full": 608,
-    "n_released": 608,
+    "n_full": 140,
+    "n_true_candidates": 3258,
+    "n_harvested_errors": 713,
+    "n_released": 140,
     "raw_counts": {
-      "TT": 152,
-      "TA": 152,
-      "FT": 152,
-      "FA": 152
+      "TT": 35,
+      "TA": 35,
+      "FT": 35,
+      "FA": 35
     },
     "released_counts": {
-      "TT": 152,
-      "TA": 152,
-      "FT": 152,
-      "FA": 152
+      "TT": 35,
+      "TA": 35,
+      "FT": 35,
+      "FA": 35
     },
     "domain_report": {
-      "animals": {
-        "kept": 0,
-        "reason": "does not populate all four cells",
-        "cell_counts": {
-          "TT": 28,
-          "TA": 9,
-          "FT": 19,
-          "FA": 38
-        },
-        "n_unresolved": 0
-      },
       "cities": {
         "kept": null,
         "cell_counts": {
-          "TT": 350,
-          "TA": 252,
-          "FT": 389,
-          "FA": 487
-        },
-        "n_unresolved": 0
-      },
-      "companies": {
-        "kept": null,
-        "cell_counts": {
-          "TT": 51,
-          "TA": 41,
-          "FT": 58,
-          "FA": 68
-        },
-        "n_unresolved": 0
-      },
-      "elements": {
-        "kept": 0,
-        "reason": "too few entities with measured frequency",
-        "n_with_freq": 76,
-        "n_unresolved": 0
-      },
-      "generated": {
-        "kept": 0,
-        "reason": "too few entities with measured frequency",
-        "n_with_freq": 48,
-        "n_unresolved": 0
-      },
-      "inventions": {
-        "kept": null,
-        "cell_counts": {
-          "TT": 56,
-          "TA": 49,
-          "FT": 73,
-          "FA": 80
+          "TT": 298,
+          "TA": 250,
+          "FT": 35,
+          "FA": 83
         },
         "n_unresolved": 0
       }
     },
     "balance": {
-      "per_domain_half_cell": {
-        "cities": 38,
-        "companies": 20,
-        "inventions": 18
+      "per_domain_part": {
+        "cities": 35
       },
-      "capacity_per_domain_half_cell": {
-        "cities": 104,
-        "companies": 20,
-        "inventions": 18
+      "capacity_per_domain_part": {
+        "cities": 35
       },
       "domains": [
-        "cities",
-        "companies",
-        "inventions"
+        "cities"
       ],
-      "total": 608,
+      "total": 140,
       "cells_per_domain": 4,
+      "split_on_edit": false,
       "per_domain_cell": {
-        "cities": 76,
-        "companies": 40,
-        "inventions": 36
+        "cities": 35
       },
-      "max_domain_share": 0.5,
-      "rule": "within-domain balance, edited 50/50 within every cell; no domain may exceed 50% of items"
+      "max_domain_share": 1.0,
+      "rule": "within-domain balance, no edit split (no item was edited); single domain"
     },
-    "edit_rate": 0.5,
     "seed": 20260712
   },
   "gates": {
@@ -109,45 +61,39 @@
       "checks": {
         "true": {
           "cells": "TT (typical) vs TA (atypical)",
-          "cliffs_delta_freq": 0.6834,
-          "mannwhitney_p": 3.450398216362027e-25,
-          "median_log10freq_typical": 6.696,
-          "median_log10freq_atypical": 5.368,
-          "xcheck_median_ppl_typical": 17.24,
-          "xcheck_median_ppl_atypical": 21.83,
+          "cliffs_delta_freq": 1.0,
+          "mannwhitney_p": 3.2727502944570765e-13,
+          "median_log10freq_typical": 7.17,
+          "median_log10freq_atypical": 5.756,
+          "xcheck_median_ppl_typical": 12.6,
+          "xcheck_median_ppl_atypical": 12.1,
           "pass": true
         },
         "false": {
           "cells": "FT (typical) vs FA (atypical)",
-          "cliffs_delta_freq": 0.6965,
-          "mannwhitney_p": 4.36246983946404e-26,
-          "median_log10freq_typical": 6.739,
-          "median_log10freq_atypical": 5.266,
-          "xcheck_median_ppl_typical": 69.01,
-          "xcheck_median_ppl_atypical": 85.0,
+          "cliffs_delta_freq": 1.0,
+          "mannwhitney_p": 3.2727502944570765e-13,
+          "median_log10freq_typical": 7.12,
+          "median_log10freq_atypical": 5.423,
+          "xcheck_median_ppl_typical": 26.59,
+          "xcheck_median_ppl_atypical": 42.47,
           "pass": true
         }
       },
       "pass": true
     },
     "edit_canary": {
-      "auroc": 0.4813,
-      "ci": [
-        0.3726,
-        0.5803
-      ],
-      "n": 122,
-      "n_boot": 1000,
       "gate": "edit_canary",
-      "pass": true
+      "pass": true,
+      "not_applicable": "falsehoods are harvested model errors, not edits; no statement in this corpus was edited"
     },
     "fragmentation_canary": {
-      "auroc": 0.4167,
+      "auroc": 0.6361,
       "ci": [
-        0.3177,
-        0.5057
+        0.3972,
+        0.8664
       ],
-      "n": 122,
+      "n": 28,
       "n_boot": 1000,
       "gate": "fragmentation_canary",
       "pass": true

@@ -12746,5 +12746,4805 @@
 "walking/swimming": {
 "count": 1055,
 "log10": 3.0236639181977933
+},
+"6th of October City": {
+"count": 8810,
+"log10": 3.945025201242463
+},
+"Aalst": {
+"count": 63882,
+"log10": 4.805385302783493
+},
+"10th of Ramadan City": {
+"count": 2331,
+"log10": 3.3677285460869766
+},
+"Aba": {
+"count": 457138,
+"log10": 5.660048273930499
+},
+"Abakan": {
+"count": 32190,
+"log10": 4.507734468072263
+},
+"Abancay": {
+"count": 8223,
+"log10": 3.9150831016512004
+},
+"Abbottabad": {
+"count": 183795,
+"log10": 5.264336055489533
+},
+"Abengourou": {
+"count": 3251,
+"log10": 3.5121505369220305
+},
+"Abeokuta": {
+"count": 249696,
+"log10": 5.397413324524866
+},
+"Aberdeen": {
+"count": 4381412,
+"log10": 6.641614192499606
+},
+"Abidjan": {
+"count": 348873,
+"log10": 5.542668604652246
+},
+"Abiko": {
+"count": 14732,
+"log10": 4.168291188851266
+},
+"Abilene": {
+"count": 913985,
+"log10": 5.960939543469813
+},
+"Abnub": {
+"count": 317,
+"log10": 2.5024271199844326
+},
+"Aboisso": {
+"count": 2248,
+"log10": 3.351989455435632
+},
+"Abu Kabir": {
+"count": 4006,
+"log10": 3.6028193424326997
+},
+"Ab\u00e9ch\u00e9": {
+"count": 3327,
+"log10": 3.5221833176186865
+},
+"Acajutla": {
+"count": 5037,
+"log10": 3.702258163162094
+},
+"Acapulco de Ju\u00e1rez": {
+"count": 1312,
+"log10": 3.118264726089479
+},
+"Acarigua": {
+"count": 3276,
+"log10": 3.515476441382376
+},
+"Accra": {
+"count": 1771585,
+"log10": 6.2483622396039324
+},
+"Achaemenid Empire": {
+"count": 37956,
+"log10": 4.579291879863468
+},
+"Adama": {
+"count": 425588,
+"log10": 5.62899039442553
+},
+"Addis Ababa": {
+"count": 1142508,
+"log10": 6.057859629866564
+},
+"Adiak\u00e9": {
+"count": 277,
+"log10": 2.444044795918076
+},
+"Adigrat": {
+"count": 12359,
+"log10": 4.092018470752797
+},
+"Adlersky City District": {
+"count": 138,
+"log10": 2.143014800254095
+},
+"Ado Ekiti": {
+"count": 51051,
+"log10": 4.708012760564943
+},
+"Adrar": {
+"count": 17854,
+"log10": 4.2517598545288005
+},
+"Ad\u0131yaman": {
+"count": 15039,
+"log10": 4.177247836255623
+},
+"Adzop\u00e9": {
+"count": 661,
+"log10": 2.8208579894397
+},
+"Afak": {
+"count": 5449,
+"log10": 3.7363965022766426
+},
+"Aflao": {
+"count": 14780,
+"log10": 4.169703816994572
+},
+"Afula": {
+"count": 29562,
+"log10": 4.470748503380986
+},
+"Afyonkarahisar": {
+"count": 16456,
+"log10": 4.216350669139196
+},
+"Agadir": {
+"count": 193641,
+"log10": 5.286999559532156
+},
+"Agboville": {
+"count": 2330,
+"log10": 3.3675422735205767
+},
+"Agia Paraskevi": {
+"count": 16905,
+"log10": 4.228040864639632
+},
+"Agra": {
+"count": 1553844,
+"log10": 6.191407694643765
+},
+"Agrigento": {
+"count": 97360,
+"log10": 4.988385025906597
+},
+"Agrinio": {
+"count": 9163,
+"log10": 3.96208508051736
+},
+"Agua Prieta": {
+"count": 17837,
+"log10": 4.251346159588581
+},
+"Aguadilla": {
+"count": 46256,
+"log10": 4.665177463158032
+},
+"Agualva-Cac\u00e9m": {
+"count": 509,
+"log10": 2.7075701760979363
+},
+"Aguascalientes City": {
+"count": 513,
+"log10": 2.710963118995276
+},
+"Ahlen": {
+"count": 27682,
+"log10": 4.442213152722819
+},
+"Ain Aouda": {
+"count": 196,
+"log10": 2.294466226161593
+},
+"Ahmedpur East": {
+"count": 1196,
+"log10": 3.0780941504064105
+},
+"Airdrie": {
+"count": 327742,
+"log10": 5.515533424713492
+},
+"Aizawl": {
+"count": 128045,
+"log10": 5.107366016189369
+},
+"Ajaccio": {
+"count": 120565,
+"log10": 5.081224852628175
+},
+"Ajloun": {
+"count": 21928,
+"log10": 4.341018827556043
+},
+"Ajman": {
+"count": 250159,
+"log10": 5.398217868234877
+},
+"Ajmer": {
+"count": 339974,
+"log10": 5.531446982450388
+},
+"Akashi": {
+"count": 127103,
+"log10": 5.104159218143249
+},
+"Akhisar": {
+"count": 17218,
+"log10": 4.236007926032121
+},
+"Akhmim": {
+"count": 8478,
+"log10": 3.928344635264862
+},
+"Akron": {
+"count": 2383974,
+"log10": 6.377301696781715
+},
+"Aksaray": {
+"count": 32245,
+"log10": 4.5084758496482324
+},
+"Aksu": {
+"count": 78309,
+"log10": 4.893817223967463
+},
+"Aktau": {
+"count": 45325,
+"log10": 4.656347394448541
+},
+"Aktobe": {
+"count": 41534,
+"log10": 4.6184142148012555
+},
+"Ak\u00e7akale": {
+"count": 2895,
+"log10": 3.461798557525109
+},
+"Al Ain": {
+"count": 256297,
+"log10": 5.408745217216812
+},
+"Al Bahah": {
+"count": 2763,
+"log10": 3.441538038702161
+},
+"Al Bayda": {
+"count": 5123,
+"log10": 3.7096091210726487
+},
+"Al Hamool": {
+"count": 6,
+"log10": 0.8450980400142568
+},
+"Al Diwaniyah": {
+"count": 682,
+"log10": 2.8344207036815328
+},
+"Al Hoceima": {
+"count": 13968,
+"log10": 4.145165317350655
+},
+"Al Qadarif": {
+"count": 886,
+"log10": 2.9479236198317262
+},
+"Al Wakrah": {
+"count": 22016,
+"log10": 4.342758142419291
+},
+"Al-Fashir": {
+"count": 1022,
+"log10": 3.00987563371216
+},
+"Al-Hajar al-Aswad": {
+"count": 407,
+"log10": 2.61066016308988
+},
+"Al-Hay": {
+"count": 52036,
+"log10": 4.716312250975609
+},
+"Al-Karmah": {
+"count": 241,
+"log10": 2.383815365980431
+},
+"Al-Muharraq": {
+"count": 1433,
+"log10": 3.1565491513317814
+},
+"Al-Rastan": {
+"count": 969,
+"log10": 2.9867717342662448
+},
+"Al-Safira": {
+"count": 668,
+"log10": 2.8254261177678233
+},
+"Al-Tall": {
+"count": 423,
+"log10": 2.6273658565927325
+},
+"Al-Zulfi": {
+"count": 725,
+"log10": 2.8609366207000937
+},
+"Alafaya": {
+"count": 22487,
+"log10": 4.3519508325993845
+},
+"Alameda": {
+"count": 1699955,
+"log10": 6.230437680669744
+},
+"Alaminos": {
+"count": 22868,
+"log10": 4.359247174489695
+},
+"Albuquerque": {
+"count": 3183520,
+"log10": 6.502907719019725
+},
+"Alchevsk": {
+"count": 7872,
+"log10": 3.8961402514420196
+},
+"Aleppo": {
+"count": 1392644,
+"log10": 6.143840424256146
+},
+"Alessandria": {
+"count": 68661,
+"log10": 4.836716449487539
+},
+"Alexandroupolis": {
+"count": 27799,
+"log10": 4.444044795918076
+},
+"Alexandrov": {
+"count": 245718,
+"log10": 5.3904387392074895
+},
+"Ali Sabieh": {
+"count": 2039,
+"log10": 3.3096301674258988
+},
+"Alhambra": {
+"count": 736080,
+"log10": 5.866925607703584
+},
+"Alicante": {
+"count": 882502,
+"log10": 5.94571619041253
+},
+"Aligarh": {
+"count": 321963,
+"log10": 5.5078073143188195
+},
+"Aliso Viejo": {
+"count": 97666,
+"log10": 4.989747847865644
+},
+"Allegheny": {
+"count": 1359515,
+"log10": 6.133384323119415
+},
+"Allentown": {
+"count": 927058,
+"log10": 5.967107374445524
+},
+"Almaty": {
+"count": 563343,
+"log10": 5.750773673143626
+},
+"Almere": {
+"count": 123323,
+"log10": 5.091047602575349
+},
+"Alytus": {
+"count": 18171,
+"log10": 4.259402728142589
+},
+"Amagasaki": {
+"count": 17772,
+"log10": 4.249760740887979
+},
+"Amarah": {
+"count": 18182,
+"log10": 4.2596655387296725
+},
+"Amarillo": {
+"count": 1206200,
+"log10": 6.081419684186585
+},
+"Amasya": {
+"count": 27239,
+"log10": 4.435207103240748
+},
+"Ambala": {
+"count": 192177,
+"log10": 5.283703669360279
+},
+"Ambato": {
+"count": 20942,
+"log10": 4.321038892726055
+},
+"Ambikapur": {
+"count": 18107,
+"log10": 4.257870485823215
+},
+"Ames": {
+"count": 2217551,
+"log10": 6.3458738125165155
+},
+"Amphawa": {
+"count": 17904,
+"log10": 4.252974325347922
+},
+"Amritsar": {
+"count": 775965,
+"log10": 5.889842692474843
+},
+"Amroha": {
+"count": 24151,
+"log10": 4.382953100015041
+},
+"Amsterdam": {
+"count": 12551857,
+"log10": 7.098708017404465
+},
+"Anaco": {
+"count": 4555,
+"log10": 3.6585837154070626
+},
+"Ananthapuram": {
+"count": 6646,
+"log10": 3.822625678774141
+},
+"Ancient Egypt": {
+"count": 1040800,
+"log10": 6.0173677008232005
+},
+"Ancient Rome": {
+"count": 334163,
+"log10": 5.523959660867103
+},
+"Andahuaylas": {
+"count": 7110,
+"log10": 3.8519306786402674
+},
+"Ancona": {
+"count": 268529,
+"log10": 5.428992811848027
+},
+"Anderson": {
+"count": 25254466,
+"log10": 7.402338207083113
+},
+"Andong": {
+"count": 46581,
+"log10": 4.668218131049608
+},
+"Andria": {
+"count": 107777,
+"log10": 5.032530120278537
+},
+"Angers": {
+"count": 286770,
+"log10": 5.457535230758763
+},
+"Ani": {
+"count": 1054981,
+"log10": 6.023245049806827
+},
+"Ankang": {
+"count": 20761,
+"log10": 4.31726918670662
+},
+"Ankara": {
+"count": 2225772,
+"log10": 6.347480869848461
+},
+"Ankeny": {
+"count": 234833,
+"log10": 5.370760975639454
+},
+"Annaba": {
+"count": 24936,
+"log10": 4.396844205284743
+},
+"Anqing": {
+"count": 28946,
+"log10": 4.461603561121925
+},
+"Ansan": {
+"count": 42322,
+"log10": 4.626576444406813
+},
+"Anshun": {
+"count": 16694,
+"log10": 4.222586423390389
+},
+"Antibes": {
+"count": 186678,
+"log10": 5.271095465795478
+},
+"Antalya": {
+"count": 683488,
+"log10": 5.834731529470421
+},
+"Antigua Guatemala": {
+"count": 38435,
+"log10": 4.584738184711447
+},
+"Antioch": {
+"count": 1504145,
+"log10": 6.177289993115302
+},
+"Antratsyt": {
+"count": 1480,
+"log10": 3.1705550585212086
+},
+"Antwerp": {
+"count": 1856790,
+"log10": 6.268763022396262
+},
+"Anuradhapura": {
+"count": 148797,
+"log10": 5.172597093879207
+},
+"Anyang": {
+"count": 104857,
+"log10": 5.020601569978437
+},
+"Anzhero-Sudzhensk": {
+"count": 1084,
+"log10": 3.0354297381845483
+},
+"Aomori": {
+"count": 162196,
+"log10": 5.210042817227205
+},
+"Apeldoorn": {
+"count": 81852,
+"log10": 4.913034601396944
+},
+"Apex": {
+"count": 3395654,
+"log10": 6.5309235593082295
+},
+"Apopka": {
+"count": 182510,
+"log10": 5.261289044657343
+},
+"Apple Valley": {
+"count": 271899,
+"log10": 5.4344092075875
+},
+"Appleton": {
+"count": 1364144,
+"log10": 6.134860535535238
+},
+"Aqaba": {
+"count": 260347,
+"log10": 5.415554245763199
+},
+"Aranjuez": {
+"count": 63771,
+"log10": 4.804630037425446
+},
+"Arauca": {
+"count": 24767,
+"log10": 4.393890939002799
+},
+"Arba Minch": {
+"count": 25551,
+"log10": 4.407424898794408
+},
+"Aregu\u00e1": {
+"count": 713,
+"log10": 2.8536982117761744
+},
+"Arcadia": {
+"count": 1507374,
+"log10": 6.178221308168037
+},
+"Areka": {
+"count": 2939,
+"log10": 3.4683473304121573
+},
+"Arif Wala": {
+"count": 283,
+"log10": 2.4533183400470375
+},
+"Arezzo": {
+"count": 196218,
+"log10": 5.292741058067579
+},
+"Ariha": {
+"count": 16621,
+"log10": 4.220683277974345
+},
+"Arish": {
+"count": 91770,
+"log10": 4.96270546410181
+},
+"Arizona": {
+"count": 32121267,
+"log10": 7.50679268089474
+},
+"Arkadag": {
+"count": 2817,
+"log10": 3.4499409887733377
+},
+"Arnsberg": {
+"count": 27814,
+"log10": 4.444279064276847
+},
+"Arrah": {
+"count": 24690,
+"log10": 4.392538679469689
+},
+"Arrecife": {
+"count": 50250,
+"log10": 4.701144708682787
+},
+"Artemisa": {
+"count": 18429,
+"log10": 4.265525335219074
+},
+"Arvada": {
+"count": 291188,
+"log10": 5.4641749649763955
+},
+"Arys": {
+"count": 17131,
+"log10": 4.233808065724531
+},
+"Asaba": {
+"count": 183791,
+"log10": 5.2643266037232745
+},
+"Asan": {
+"count": 205532,
+"log10": 5.312881561332789
+},
+"Aschaffenburg": {
+"count": 54571,
+"log10": 4.73696987045984
+},
+"Asheville": {
+"count": 2412302,
+"log10": 6.382431856935502
+},
+"Ashkelon": {
+"count": 155039,
+"log10": 5.19044375970669
+},
+"Assela": {
+"count": 2334,
+"log10": 3.368286884902131
+},
+"Assen": {
+"count": 218443,
+"log10": 5.339340120445553
+},
+"Astana": {
+"count": 719995,
+"log10": 5.857330083677445
+},
+"Astara": {
+"count": 27964,
+"log10": 4.446614823664267
+},
+"Asti": {
+"count": 141770,
+"log10": 5.15158740272274
+},
+"Asunci\u00f3n": {
+"count": 110549,
+"log10": 5.043558746914733
+},
+"Asyut": {
+"count": 27891,
+"log10": 4.445479656532881
+},
+"Atbarah": {
+"count": 837,
+"log10": 2.9232440186302764
+},
+"Atfih": {
+"count": 777,
+"log10": 2.890979596989689
+},
+"Atlanta": {
+"count": 26220996,
+"log10": 7.41864920083105
+},
+"Atsugi": {
+"count": 38512,
+"log10": 4.585607349645838
+},
+"Attock": {
+"count": 58765,
+"log10": 4.769126130785045
+},
+"Atyrau": {
+"count": 67034,
+"log10": 4.826301613716041
+},
+"Augusta": {
+"count": null,
+"log10": null
+},
+"Auburn": {
+"count": null,
+"log10": null
+},
+"Aurangabad": {
+"count": null,
+"log10": null
+},
+"Avellaneda": {
+"count": null,
+"log10": null
+},
+"Avignon": {
+"count": null,
+"log10": null
+},
+"Austin": {
+"count": null,
+"log10": null
+},
+"Avil\u00e9s": {
+"count": null,
+"log10": null
+},
+"Awka": {
+"count": null,
+"log10": null
+},
+"Ayd\u0131n": {
+"count": null,
+"log10": null
+},
+"Ayodhya": {
+"count": null,
+"log10": null
+},
+"A\u00efn Be\u00efda": {
+"count": null,
+"log10": null
+},
+"Ayutthaya Kingdom": {
+"count": null,
+"log10": null
+},
+"A\u011fr\u0131": {
+"count": null,
+"log10": null
+},
+"Babahoyo": {
+"count": null,
+"log10": null
+},
+"Baalbek": {
+"count": null,
+"log10": null
+},
+"Babati": {
+"count": null,
+"log10": null
+},
+"Babbila": {
+"count": null,
+"log10": null
+},
+"Babylon": {
+"count": null,
+"log10": null
+},
+"Bad Homburg vor der H\u00f6he": {
+"count": null,
+"log10": null
+},
+"Babylonia": {
+"count": null,
+"log10": null
+},
+"Bad Salzuflen": {
+"count": null,
+"log10": null
+},
+"Badajoz": {
+"count": null,
+"log10": null
+},
+"Badajoz city": {
+"count": null,
+"log10": null
+},
+"Baden-Baden": {
+"count": null,
+"log10": null
+},
+"Badin": {
+"count": null,
+"log10": null
+},
+"Bafia": {
+"count": null,
+"log10": null
+},
+"Bafoussam": {
+"count": null,
+"log10": null
+},
+"Baghlan": {
+"count": null,
+"log10": null
+},
+"Bag\u00e9": {
+"count": null,
+"log10": null
+},
+"Bahamas": {
+"count": null,
+"log10": null
+},
+"Bahawalpur": {
+"count": null,
+"log10": null
+},
+"Bahir Dar": {
+"count": null,
+"log10": null
+},
+"Bahraich": {
+"count": null,
+"log10": null
+},
+"Baia Mare": {
+"count": null,
+"log10": null
+},
+"Baiji": {
+"count": null,
+"log10": null
+},
+"Bailundo": {
+"count": null,
+"log10": null
+},
+"Bais": {
+"count": null,
+"log10": null
+},
+"Baise": {
+"count": null,
+"log10": null
+},
+"Baiyin": {
+"count": null,
+"log10": null
+},
+"Bakhmut": {
+"count": null,
+"log10": null
+},
+"Balad": {
+"count": null,
+"log10": null
+},
+"Baku": {
+"count": null,
+"log10": null
+},
+"Balanga": {
+"count": null,
+"log10": null
+},
+"Baliwag": {
+"count": null,
+"log10": null
+},
+"Baldwin Park": {
+"count": null,
+"log10": null
+},
+"Balkanabat": {
+"count": null,
+"log10": null
+},
+"Balkhash": {
+"count": null,
+"log10": null
+},
+"Ballarat": {
+"count": null,
+"log10": null
+},
+"Ballary": {
+"count": null,
+"log10": null
+},
+"Baltim": {
+"count": null,
+"log10": null
+},
+"Balykchy": {
+"count": null,
+"log10": null
+},
+"Bal\u0131kesir": {
+"count": null,
+"log10": null
+},
+"Bamban": {
+"count": null,
+"log10": null
+},
+"Bamberg": {
+"count": null,
+"log10": null
+},
+"Bamenda": {
+"count": null,
+"log10": null
+},
+"Ban Suan": {
+"count": null,
+"log10": null
+},
+"Banda del R\u00edo Sal\u00ed": {
+"count": null,
+"log10": null
+},
+"Band\u0131rma": {
+"count": null,
+"log10": null
+},
+"Banes": {
+"count": null,
+"log10": null
+},
+"Bang Bua Thong": {
+"count": null,
+"log10": null
+},
+"Bangkok": {
+"count": null,
+"log10": null
+},
+"Bangor": {
+"count": null,
+"log10": null
+},
+"Bangui": {
+"count": null,
+"log10": null
+},
+"Bani Walid": {
+"count": null,
+"log10": null
+},
+"Banja Luka": {
+"count": null,
+"log10": null
+},
+"Bannu": {
+"count": null,
+"log10": null
+},
+"Bansk\u00e1 Bystrica": {
+"count": null,
+"log10": null
+},
+"Baoding": {
+"count": null,
+"log10": null
+},
+"Baoji": {
+"count": null,
+"log10": null
+},
+"Baotou": {
+"count": null,
+"log10": null
+},
+"Baqubah": {
+"count": null,
+"log10": null
+},
+"Barakaldo": {
+"count": null,
+"log10": null
+},
+"Baramulla": {
+"count": null,
+"log10": null
+},
+"Barbacena": {
+"count": null,
+"log10": null
+},
+"Bareq": {
+"count": null,
+"log10": null
+},
+"Bargny": {
+"count": null,
+"log10": null
+},
+"Bari": {
+"count": null,
+"log10": null
+},
+"Bariadi": {
+"count": null,
+"log10": null
+},
+"Barkol Kazakh Autonomous County": {
+"count": null,
+"log10": null
+},
+"Barletta": {
+"count": null,
+"log10": null
+},
+"Barmer": {
+"count": null,
+"log10": null
+},
+"Barquisimeto": {
+"count": null,
+"log10": null
+},
+"Barranqueras": {
+"count": null,
+"log10": null
+},
+"Bartlett": {
+"count": null,
+"log10": null
+},
+"Bart\u0131n": {
+"count": null,
+"log10": null
+},
+"Basyoun": {
+"count": null,
+"log10": null
+},
+"Bat Yam": {
+"count": null,
+"log10": null
+},
+"Bata": {
+"count": null,
+"log10": null
+},
+"Batac": {
+"count": null,
+"log10": null
+},
+"Batala": {
+"count": null,
+"log10": null
+},
+"Batangas City": {
+"count": null,
+"log10": null
+},
+"Bath": {
+"count": null,
+"log10": null
+},
+"Bathinda": {
+"count": null,
+"log10": null
+},
+"Batman": {
+"count": null,
+"log10": null
+},
+"Batna": {
+"count": null,
+"log10": null
+},
+"Battle Creek": {
+"count": null,
+"log10": null
+},
+"Batumi": {
+"count": null,
+"log10": null
+},
+"Baturaja": {
+"count": null,
+"log10": null
+},
+"Baure": {
+"count": null,
+"log10": null
+},
+"Bawku": {
+"count": null,
+"log10": null
+},
+"Bayamo": {
+"count": null,
+"log10": null
+},
+"Bayannur": {
+"count": null,
+"log10": null
+},
+"Bayawan": {
+"count": null,
+"log10": null
+},
+"Baybay": {
+"count": null,
+"log10": null
+},
+"Bayonne": {
+"count": null,
+"log10": null
+},
+"Bayreuth": {
+"count": null,
+"log10": null
+},
+"Baytown": {
+"count": null,
+"log10": null
+},
+"Bayugan": {
+"count": null,
+"log10": null
+},
+"Bazhong": {
+"count": null,
+"log10": null
+},
+"Ba\u00eda Farta": {
+"count": null,
+"log10": null
+},
+"Ba\u00fdramaly": {
+"count": null,
+"log10": null
+},
+"Beaverton": {
+"count": null,
+"log10": null
+},
+"Beed": {
+"count": null,
+"log10": null
+},
+"Beawar": {
+"count": null,
+"log10": null
+},
+"Beersheba": {
+"count": null,
+"log10": null
+},
+"Beira": {
+"count": null,
+"log10": null
+},
+"Beit Hanoun": {
+"count": null,
+"log10": null
+},
+"Beit Lahia": {
+"count": null,
+"log10": null
+},
+"Beit Shemesh": {
+"count": null,
+"log10": null
+},
+"Beitar Illit": {
+"count": null,
+"log10": null
+},
+"Bekobod": {
+"count": null,
+"log10": null
+},
+"Belbis": {
+"count": null,
+"log10": null
+},
+"Belfast": {
+"count": null,
+"log10": null
+},
+"Belize": {
+"count": null,
+"log10": null
+},
+"Belize City": {
+"count": null,
+"log10": null
+},
+"Bellad\u00e8re": {
+"count": null,
+"log10": null
+},
+"Belleville": {
+"count": null,
+"log10": null
+},
+"Bellevue": {
+"count": null,
+"log10": null
+},
+"Bellflower": {
+"count": null,
+"log10": null
+},
+"Belo Horizonte": {
+"count": null,
+"log10": null
+},
+"Belovo": {
+"count": null,
+"log10": null
+},
+"Bel\u00e9m": {
+"count": null,
+"log10": null
+},
+"Ben Guerir": {
+"count": null,
+"log10": null
+},
+"Bend": {
+"count": null,
+"log10": null
+},
+"Bender": {
+"count": null,
+"log10": null
+},
+"Bendigo": {
+"count": null,
+"log10": null
+},
+"Bengaluru": {
+"count": null,
+"log10": null
+},
+"Benghazi": {
+"count": null,
+"log10": null
+},
+"Bengkalis City": {
+"count": null,
+"log10": null
+},
+"Benha": {
+"count": null,
+"log10": null
+},
+"Beni Ansar": {
+"count": null,
+"log10": null
+},
+"Beni Mazar": {
+"count": null,
+"log10": null
+},
+"Beni Suef": {
+"count": null,
+"log10": null
+},
+"Benidorm": {
+"count": null,
+"log10": null
+},
+"Benin City": {
+"count": null,
+"log10": null
+},
+"Benslimane": {
+"count": null,
+"log10": null
+},
+"Bentonville": {
+"count": null,
+"log10": null
+},
+"Benxi": {
+"count": null,
+"log10": null
+},
+"Berbera": {
+"count": null,
+"log10": null
+},
+"Berb\u00e9rati": {
+"count": null,
+"log10": null
+},
+"Berdiansk": {
+"count": null,
+"log10": null
+},
+"Berdychiv": {
+"count": null,
+"log10": null
+},
+"Bergamo": {
+"count": null,
+"log10": null
+},
+"Bergen": {
+"count": null,
+"log10": null
+},
+"Bergen op Zoom": {
+"count": null,
+"log10": null
+},
+"Bergheim": {
+"count": null,
+"log10": null
+},
+"Berisso": {
+"count": null,
+"log10": null
+},
+"Berkeley": {
+"count": null,
+"log10": null
+},
+"Bern": {
+"count": null,
+"log10": null
+},
+"Berrechid": {
+"count": null,
+"log10": null
+},
+"Bertoua": {
+"count": null,
+"log10": null
+},
+"Berwyn": {
+"count": null,
+"log10": null
+},
+"Bethlehem": {
+"count": null,
+"log10": null
+},
+"Beykoz": {
+"count": null,
+"log10": null
+},
+"Be\u015fikta\u015f": {
+"count": null,
+"log10": null
+},
+"Bhagalpur": {
+"count": null,
+"log10": null
+},
+"Bhakkar": {
+"count": null,
+"log10": null
+},
+"Bhaktapur": {
+"count": null,
+"log10": null
+},
+"Bhalwal": {
+"count": null,
+"log10": null
+},
+"Bhawana": {
+"count": null,
+"log10": null
+},
+"Bhawanipatna": {
+"count": null,
+"log10": null
+},
+"Bhilai": {
+"count": null,
+"log10": null
+},
+"Bhimdatta": {
+"count": null,
+"log10": null
+},
+"Bhiwandi": {
+"count": null,
+"log10": null
+},
+"Bhopal": {
+"count": null,
+"log10": null
+},
+"Bhubaneswar": {
+"count": null,
+"log10": null
+},
+"Biankouma": {
+"count": null,
+"log10": null
+},
+"Bia\u0142a Podlaska": {
+"count": null,
+"log10": null
+},
+"Bia\u0142ystok": {
+"count": null,
+"log10": null
+},
+"Biba": {
+"count": null,
+"log10": null
+},
+"Biba is not a real city and does not": {
+"count": null,
+"log10": null
+},
+"Bidar": {
+"count": null,
+"log10": null
+},
+"Bielsko-Bia\u0142a": {
+"count": null,
+"log10": null
+},
+"Biha\u0107": {
+"count": null,
+"log10": null
+},
+"Bijie": {
+"count": null,
+"log10": null
+},
+"Bikaner": {
+"count": null,
+"log10": null
+},
+"Bila Tserkva": {
+"count": null,
+"log10": null
+},
+"Bilaspur": {
+"count": null,
+"log10": null
+},
+"Bilecik": {
+"count": null,
+"log10": null
+},
+"Bilhorod-Dnistrovskyi": {
+"count": null,
+"log10": null
+},
+"Billings": {
+"count": null,
+"log10": null
+},
+"Bingerville": {
+"count": null,
+"log10": null
+},
+"Bing\u00f6l": {
+"count": null,
+"log10": null
+},
+"Binhai New Area": {
+"count": null,
+"log10": null
+},
+"Binzhou": {
+"count": null,
+"log10": null
+},
+"Birgunj": {
+"count": null,
+"log10": null
+},
+"Birnin Kebbi": {
+"count": null,
+"log10": null
+},
+"Bishnupur": {
+"count": null,
+"log10": null
+},
+"Bishoftu": {
+"count": null,
+"log10": null
+},
+"Bislig": {
+"count": null,
+"log10": null
+},
+"Bismarck": {
+"count": null,
+"log10": null
+},
+"Bitola": {
+"count": null,
+"log10": null
+},
+"Bizerte": {
+"count": null,
+"log10": null
+},
+"Bi\u00f1an": {
+"count": null,
+"log10": null
+},
+"Blaine": {
+"count": null,
+"log10": null
+},
+"Blantyre": {
+"count": null,
+"log10": null
+},
+"Blida": {
+"count": null,
+"log10": null
+},
+"Bloemfontein": {
+"count": null,
+"log10": null
+},
+"Blol\u00e9quin": {
+"count": null,
+"log10": null
+},
+"Blora": {
+"count": null,
+"log10": null
+},
+"Blue Springs": {
+"count": null,
+"log10": null
+},
+"Bnei Brak": {
+"count": null,
+"log10": null
+},
+"Bo": {
+"count": null,
+"log10": null
+},
+"Bobo-Dioulasso": {
+"count": null,
+"log10": null
+},
+"Boca Raton": {
+"count": null,
+"log10": null
+},
+"Bocholt": {
+"count": null,
+"log10": null
+},
+"Bochum": {
+"count": null,
+"log10": null
+},
+"Bocon\u00f3": {
+"count": null,
+"log10": null
+},
+"Boditi": {
+"count": null,
+"log10": null
+},
+"Bogo": {
+"count": null,
+"log10": null
+},
+"Bogot\u00e1": {
+"count": null,
+"log10": null
+},
+"Bogura": {
+"count": null,
+"log10": null
+},
+"Boise": {
+"count": null,
+"log10": null
+},
+"Bokhtar": {
+"count": null,
+"log10": null
+},
+"Bolgatanga": {
+"count": null,
+"log10": null
+},
+"Bolu": {
+"count": null,
+"log10": null
+},
+"Bondoukou": {
+"count": null,
+"log10": null
+},
+"Bondowoso": {
+"count": null,
+"log10": null
+},
+"Bongouanou": {
+"count": null,
+"log10": null
+},
+"Bonita Springs": {
+"count": null,
+"log10": null
+},
+"Bonon": {
+"count": null,
+"log10": null
+},
+"Bonoua": {
+"count": null,
+"log10": null
+},
+"Bor": {
+"count": null,
+"log10": null
+},
+"Bor is located in Russia": {
+"count": null,
+"log10": null
+},
+"Borama": {
+"count": null,
+"log10": null
+},
+"Bordeaux M\u00e9tropole": {
+"count": null,
+"log10": null
+},
+"Bordj Bou Arreridj": {
+"count": null,
+"log10": null
+},
+"Borongan": {
+"count": null,
+"log10": null
+},
+"Boryspil": {
+"count": null,
+"log10": null
+},
+"Bor\u00e5s": {
+"count": null,
+"log10": null
+},
+"Bossier City": {
+"count": null,
+"log10": null
+},
+"Bottrop": {
+"count": null,
+"log10": null
+},
+"Bouafl\u00e9": {
+"count": null,
+"log10": null
+},
+"Boujdour": {
+"count": null,
+"log10": null
+},
+"Boulder": {
+"count": null,
+"log10": null
+},
+"Bouna": {
+"count": null,
+"log10": null
+},
+"Boundiali": {
+"count": null,
+"log10": null
+},
+"Bowie": {
+"count": null,
+"log10": null
+},
+"Bowling Green": {
+"count": null,
+"log10": null
+},
+"Boynton Beach": {
+"count": null,
+"log10": null
+},
+"Bozeman": {
+"count": null,
+"log10": null
+},
+"Bradenton": {
+"count": null,
+"log10": null
+},
+"Braga": {
+"count": null,
+"log10": null
+},
+"Brahmanbaria": {
+"count": null,
+"log10": null
+},
+"Brampton": {
+"count": null,
+"log10": null
+},
+"Brandenburg an der Havel": {
+"count": null,
+"log10": null
+},
+"Brantford": {
+"count": null,
+"log10": null
+},
+"Bras\u00edlia": {
+"count": null,
+"log10": null
+},
+"Brazzaville": {
+"count": null,
+"log10": null
+},
+"Bra\u0219ov": {
+"count": null,
+"log10": null
+},
+"Brebes": {
+"count": null,
+"log10": null
+},
+"Bremen": {
+"count": null,
+"log10": null
+},
+"Brentwood": {
+"count": null,
+"log10": null
+},
+"Brighton and Hove": {
+"count": null,
+"log10": null
+},
+"Brisbane": {
+"count": null,
+"log10": null
+},
+"British Raj": {
+"count": null,
+"log10": null
+},
+"British rule in Myanmar": {
+"count": null,
+"log10": null
+},
+"Brockton": {
+"count": null,
+"log10": null
+},
+"Brooklyn Park": {
+"count": null,
+"log10": null
+},
+"Broomfield": {
+"count": null,
+"log10": null
+},
+"Brovary": {
+"count": null,
+"log10": null
+},
+"Bruges": {
+"count": null,
+"log10": null
+},
+"Brunswick": {
+"count": null,
+"log10": null
+},
+"Bryan": {
+"count": null,
+"log10": null
+},
+"Bucak": {
+"count": null,
+"log10": null
+},
+"Bucheon": {
+"count": null,
+"log10": null
+},
+"Buena Park": {
+"count": null,
+"log10": null
+},
+"Buenos Aires": {
+"count": null,
+"log10": null
+},
+"Buffalo": {
+"count": null,
+"log10": null
+},
+"Buffalo City Metropolitan Municipality": {
+"count": null,
+"log10": null
+},
+"Buin": {
+"count": null,
+"log10": null
+},
+"Bujumbura": {
+"count": null,
+"log10": null
+},
+"Bukhara": {
+"count": null,
+"log10": null
+},
+"Bukoba": {
+"count": null,
+"log10": null
+},
+"Bunbury": {
+"count": null,
+"log10": null
+},
+"Bundaberg": {
+"count": null,
+"log10": null
+},
+"Bundi": {
+"count": null,
+"log10": null
+},
+"Bundi is located in India": {
+"count": null,
+"log10": null
+},
+"Bungoma": {
+"count": null,
+"log10": null
+},
+"Burao": {
+"count": null,
+"log10": null
+},
+"Burbank": {
+"count": null,
+"log10": null
+},
+"Burdur": {
+"count": null,
+"log10": null
+},
+"Burewala": {
+"count": null,
+"log10": null
+},
+"Burkina Faso": {
+"count": null,
+"log10": null
+},
+"Burnaby": {
+"count": null,
+"log10": null
+},
+"Burnsville": {
+"count": null,
+"log10": null
+},
+"Burzaco": {
+"count": null,
+"log10": null
+},
+"Busan": {
+"count": null,
+"log10": null
+},
+"Byzantine Empire": {
+"count": null,
+"log10": null
+},
+"B\u00e9char": {
+"count": null,
+"log10": null
+},
+"B\u00e9ja\u00efa": {
+"count": null,
+"log10": null
+},
+"B\u00e9oumi": {
+"count": null,
+"log10": null
+},
+"B\u00e9k\u00e9scsaba": {
+"count": null,
+"log10": null
+},
+"B\u00e9ziers": {
+"count": null,
+"log10": null
+},
+"B\u00f6blingen": {
+"count": null,
+"log10": null
+},
+"Cabadbaran": {
+"count": null,
+"log10": null
+},
+"Cabanatuan": {
+"count": null,
+"log10": null
+},
+"Cabimas": {
+"count": null,
+"log10": null
+},
+"Cabo San Lucas": {
+"count": null,
+"log10": null
+},
+"Cabudare": {
+"count": null,
+"log10": null
+},
+"Cabuyao": {
+"count": null,
+"log10": null
+},
+"Caguas": {
+"count": null,
+"log10": null
+},
+"Cairns": {
+"count": null,
+"log10": null
+},
+"Cajamarca": {
+"count": null,
+"log10": null
+},
+"Calabar": {
+"count": null,
+"log10": null
+},
+"Calabozo": {
+"count": null,
+"log10": null
+},
+"Calaca": {
+"count": null,
+"log10": null
+},
+"Calais": {
+"count": null,
+"log10": null
+},
+"Calamba": {
+"count": null,
+"log10": null
+},
+"Calapan": {
+"count": null,
+"log10": null
+},
+"Calbayog": {
+"count": null,
+"log10": null
+},
+"Caldwell": {
+"count": null,
+"log10": null
+},
+"Caleta Olivia": {
+"count": null,
+"log10": null
+},
+"California": {
+"count": null,
+"log10": null
+},
+"Caloocan": {
+"count": null,
+"log10": null
+},
+"Camarillo": {
+"count": null,
+"log10": null
+},
+"Camden": {
+"count": null,
+"log10": null
+},
+"Campana": {
+"count": null,
+"log10": null
+},
+"Candon": {
+"count": null,
+"log10": null
+},
+"Cangzhou": {
+"count": null,
+"log10": null
+},
+"Canlaon": {
+"count": null,
+"log10": null
+},
+"Cannes": {
+"count": null,
+"log10": null
+},
+"Cantaura": {
+"count": null,
+"log10": null
+},
+"Canterbury": {
+"count": null,
+"log10": null
+},
+"Canton of Basel-Stadt": {
+"count": null,
+"log10": null
+},
+"Caotun Township": {
+"count": null,
+"log10": null
+},
+"Cap-Ha\u00eftien": {
+"count": null,
+"log10": null
+},
+"Cape Verde": {
+"count": null,
+"log10": null
+},
+"Caranavi": {
+"count": null,
+"log10": null
+},
+"Cardiff": {
+"count": null,
+"log10": null
+},
+"Caripito": {
+"count": null,
+"log10": null
+},
+"Carlisle": {
+"count": null,
+"log10": null
+},
+"Carlos Manuel de C\u00e9spedes": {
+"count": null,
+"log10": null
+},
+"Carlos Paz": {
+"count": null,
+"log10": null
+},
+"Carlsbad": {
+"count": null,
+"log10": null
+},
+"Carmona": {
+"count": null,
+"log10": null
+},
+"Carora": {
+"count": null,
+"log10": null
+},
+"Carrara": {
+"count": null,
+"log10": null
+},
+"Carrefour": {
+"count": null,
+"log10": null
+},
+"Carson": {
+"count": null,
+"log10": null
+},
+"Carson City": {
+"count": null,
+"log10": null
+},
+"Cary": {
+"count": null,
+"log10": null
+},
+"Car\u00fapano": {
+"count": null,
+"log10": null
+},
+"Casa Grande": {
+"count": null,
+"log10": null
+},
+"Casablanca": {
+"count": null,
+"log10": null
+},
+"Caserta": {
+"count": null,
+"log10": null
+},
+"Casper": {
+"count": null,
+"log10": null
+},
+"Castellammare di Stabia": {
+"count": null,
+"log10": null
+},
+"Castell\u00f3n de la Plana": {
+"count": null,
+"log10": null
+},
+"Castrop-Rauxel": {
+"count": null,
+"log10": null
+},
+"Catanzaro": {
+"count": null,
+"log10": null
+},
+"Cathedral City": {
+"count": null,
+"log10": null
+},
+"Cauayan": {
+"count": null,
+"log10": null
+},
+"Cayenne": {
+"count": null,
+"log10": null
+},
+"Cazenga": {
+"count": null,
+"log10": null
+},
+"Cazin": {
+"count": null,
+"log10": null
+},
+"Cedar Rapids": {
+"count": null,
+"log10": null
+},
+"Celle": {
+"count": null,
+"log10": null
+},
+"Central Cikarang": {
+"count": null,
+"log10": null
+},
+"Cerro de Pasco": {
+"count": null,
+"log10": null
+},
+"Cesena": {
+"count": null,
+"log10": null
+},
+"Ceuta": {
+"count": null,
+"log10": null
+},
+"Ceyhan": {
+"count": null,
+"log10": null
+},
+"Ceylanp\u0131nar district": {
+"count": null,
+"log10": null
+},
+"Chakwal": {
+"count": null,
+"log10": null
+},
+"Chalandri": {
+"count": null,
+"log10": null
+},
+"Chalk\u00edda": {
+"count": null,
+"log10": null
+},
+"Chamb\u00e9ry": {
+"count": null,
+"log10": null
+},
+"Chamdo": {
+"count": null,
+"log10": null
+},
+"Champaign": {
+"count": null,
+"log10": null
+},
+"Chandigarh": {
+"count": null,
+"log10": null
+},
+"Chandler": {
+"count": null,
+"log10": null
+},
+"Changchun": {
+"count": null,
+"log10": null
+},
+"Changhua City": {
+"count": null,
+"log10": null
+},
+"Changsha": {
+"count": null,
+"log10": null
+},
+"Changwon": {
+"count": null,
+"log10": null
+},
+"Changzhou": {
+"count": null,
+"log10": null
+},
+"Chania": {
+"count": null,
+"log10": null
+},
+"Chaojhou Township": {
+"count": null,
+"log10": null
+},
+"Chaophraya Surasak": {
+"count": null,
+"log10": null
+},
+"Chaoyang": {
+"count": null,
+"log10": null
+},
+"Chaozhou": {
+"count": null,
+"log10": null
+},
+"Chapel Hill": {
+"count": null,
+"log10": null
+},
+"Charallave": {
+"count": null,
+"log10": null
+},
+"Charlotte": {
+"count": null,
+"log10": null
+},
+"Charsadda": {
+"count": null,
+"log10": null
+},
+"Chatham-Kent": {
+"count": null,
+"log10": null
+},
+"Chattanooga": {
+"count": null,
+"log10": null
+},
+"Chelghoum La\u00efd": {
+"count": null,
+"log10": null
+},
+"Chelyabinsk": {
+"count": null,
+"log10": null
+},
+"Chengde": {
+"count": null,
+"log10": null
+},
+"Chengdu": {
+"count": null,
+"log10": null
+},
+"Chennai": {
+"count": null,
+"log10": null
+},
+"Cheonan": {
+"count": null,
+"log10": null
+},
+"Cheongju": {
+"count": null,
+"log10": null
+},
+"Cherkasy": {
+"count": null,
+"log10": null
+},
+"Chesapeake": {
+"count": null,
+"log10": null
+},
+"Chester": {
+"count": null,
+"log10": null
+},
+"Chetumal": {
+"count": null,
+"log10": null
+},
+"Cheyenne": {
+"count": null,
+"log10": null
+},
+"Che\u0142m": {
+"count": null,
+"log10": null
+},
+"Chiang Rai": {
+"count": null,
+"log10": null
+},
+"Chiayi City": {
+"count": null,
+"log10": null
+},
+"Chiba": {
+"count": null,
+"log10": null
+},
+"Chibuto": {
+"count": null,
+"log10": null
+},
+"Chicago": {
+"count": null,
+"log10": null
+},
+"Chifeng": {
+"count": null,
+"log10": null
+},
+"Chiguayante": {
+"count": null,
+"log10": null
+},
+"Chihuahua City": {
+"count": null,
+"log10": null
+},
+"Chilecito": {
+"count": null,
+"log10": null
+},
+"Chililabombwe": {
+"count": null,
+"log10": null
+},
+"Chilliwack": {
+"count": null,
+"log10": null
+},
+"Chilpancingo de los Bravo": {
+"count": null,
+"log10": null
+},
+"Chimbote": {
+"count": null,
+"log10": null
+},
+"Chincha Alta": {
+"count": null,
+"log10": null
+},
+"Chinhoyi": {
+"count": null,
+"log10": null
+},
+"Chingola": {
+"count": null,
+"log10": null
+},
+"Chino": {
+"count": null,
+"log10": null
+},
+"Chino Hills": {
+"count": null,
+"log10": null
+},
+"Chios": {
+"count": null,
+"log10": null
+},
+"Chipata (Fort Jameson)": {
+"count": null,
+"log10": null
+},
+"Chirchiq": {
+"count": null,
+"log10": null
+},
+"Chittagong": {
+"count": null,
+"log10": null
+},
+"Chivilcoy": {
+"count": null,
+"log10": null
+},
+"Chi\u0219in\u0103u": {
+"count": null,
+"log10": null
+},
+"Chlef": {
+"count": null,
+"log10": null
+},
+"Chokwe": {
+"count": null,
+"log10": null
+},
+"Cholet": {
+"count": null,
+"log10": null
+},
+"Chone": {
+"count": null,
+"log10": null
+},
+"Chongqing": {
+"count": null,
+"log10": null
+},
+"Chongzuo": {
+"count": null,
+"log10": null
+},
+"Chornomorsk": {
+"count": null,
+"log10": null
+},
+"Chorz\u00f3w": {
+"count": null,
+"log10": null
+},
+"Chota": {
+"count": null,
+"log10": null
+},
+"Chowk Azam": {
+"count": null,
+"log10": null
+},
+"Chowmuhani": {
+"count": null,
+"log10": null
+},
+"Christchurch": {
+"count": null,
+"log10": null
+},
+"Chuadanga": {
+"count": null,
+"log10": null
+},
+"Chulucanas": {
+"count": null,
+"log10": null
+},
+"Chuncheon": {
+"count": null,
+"log10": null
+},
+"Chungju": {
+"count": null,
+"log10": null
+},
+"Chunian": {
+"count": null,
+"log10": null
+},
+"Chuzhou": {
+"count": null,
+"log10": null
+},
+"Chystiakove": {
+"count": null,
+"log10": null
+},
+"Cianjur": {
+"count": null,
+"log10": null
+},
+"Cibinong": {
+"count": null,
+"log10": null
+},
+"Ciego de \u00c1vila": {
+"count": null,
+"log10": null
+},
+"Cienfuegos": {
+"count": null,
+"log10": null
+},
+"Cipolletti": {
+"count": null,
+"log10": null
+},
+"Citrus Heights": {
+"count": null,
+"log10": null
+},
+"City of Ekurhuleni Metropolitan Municipality": {
+"count": null,
+"log10": null
+},
+"City of Cape Town": {
+"count": null,
+"log10": null
+},
+"City of Johannesburg Metropolitan Municipality": {
+"count": null,
+"log10": null
+},
+"City of Tshwane Metropolitan Municipality": {
+"count": null,
+"log10": null
+},
+"City of Valencia": {
+"count": null,
+"log10": null
+},
+"City of Westminster": {
+"count": null,
+"log10": null
+},
+"Ciudad Acu\u00f1a": {
+"count": null,
+"log10": null
+},
+"Ciudad Bol\u00edvar": {
+"count": null,
+"log10": null
+},
+"Ciudad Ju\u00e1rez": {
+"count": null,
+"log10": null
+},
+"Ciudad Ojeda": {
+"count": null,
+"log10": null
+},
+"Ciudad del Carmen": {
+"count": null,
+"log10": null
+},
+"Ciudad del Este": {
+"count": null,
+"log10": null
+},
+"Cizre": {
+"count": null,
+"log10": null
+},
+"Clarksville": {
+"count": null,
+"log10": null
+},
+"Clearwater": {
+"count": null,
+"log10": null
+},
+"Clifton": {
+"count": null,
+"log10": null
+},
+"Clorinda": {
+"count": null,
+"log10": null
+},
+"Clovis": {
+"count": null,
+"log10": null
+},
+"Cobija": {
+"count": null,
+"log10": null
+},
+"Coca": {
+"count": null,
+"log10": null
+},
+"Cochabamba": {
+"count": null,
+"log10": null
+},
+"Coeur d'Alene": {
+"count": null,
+"log10": null
+},
+"Colchester": {
+"count": null,
+"log10": null
+},
+"Colima": {
+"count": null,
+"log10": null
+},
+"Colina": {
+"count": null,
+"log10": null
+},
+"College Station": {
+"count": null,
+"log10": null
+},
+"Cologne": {
+"count": null,
+"log10": null
+},
+"Colombes": {
+"count": null,
+"log10": null
+},
+"Colton": {
+"count": null,
+"log10": null
+},
+"Columbia": {
+"count": null,
+"log10": null
+},
+"Col\u00f3n": {
+"count": null,
+"log10": null
+},
+"Como": {
+"count": null,
+"log10": null
+},
+"Comoros": {
+"count": null,
+"log10": null
+},
+"Compton": {
+"count": null,
+"log10": null
+},
+"Conakry": {
+"count": null,
+"log10": null
+},
+"Concepci\u00f3n del Uruguay": {
+"count": null,
+"log10": null
+},
+"Concord": {
+"count": null,
+"log10": null
+},
+"Congo (Democratic Republic of the Congo)": {
+"count": null,
+"log10": null
+},
+"Conroe": {
+"count": null,
+"log10": null
+},
+"Constance": {
+"count": null,
+"log10": null
+},
+"Constan\u021ba": {
+"count": null,
+"log10": null
+},
+"Conway": {
+"count": null,
+"log10": null
+},
+"Copenhagen": {
+"count": null,
+"log10": null
+},
+"Coral Springs": {
+"count": null,
+"log10": null
+},
+"Cork": {
+"count": null,
+"log10": null
+},
+"Corona": {
+"count": null,
+"log10": null
+},
+"Coronel": {
+"count": null,
+"log10": null
+},
+"Corumb\u00e1": {
+"count": null,
+"log10": null
+},
+"Corvallis": {
+"count": null,
+"log10": null
+},
+"Coslada": {
+"count": null,
+"log10": null
+},
+"Costa Mesa": {
+"count": null,
+"log10": null
+},
+"Costa Rica": {
+"count": null,
+"log10": null
+},
+"Cotabato City": {
+"count": null,
+"log10": null
+},
+"Cotonou": {
+"count": null,
+"log10": null
+},
+"Cottbus": {
+"count": null,
+"log10": null
+},
+"Cotu\u00ed": {
+"count": null,
+"log10": null
+},
+"Council Bluffs": {
+"count": null,
+"log10": null
+},
+"Coventry": {
+"count": null,
+"log10": null
+},
+"Covina": {
+"count": null,
+"log10": null
+},
+"Cox's Bazar": {
+"count": null,
+"log10": null
+},
+"Craiova": {
+"count": null,
+"log10": null
+},
+"Cranston": {
+"count": null,
+"log10": null
+},
+"Cremona": {
+"count": null,
+"log10": null
+},
+"Croatia": {
+"count": null,
+"log10": null
+},
+"Crotone": {
+"count": null,
+"log10": null
+},
+"Cruzeiro do Sul": {
+"count": null,
+"log10": null
+},
+"Cr\u00e9teil": {
+"count": null,
+"log10": null
+},
+"Ctesiphon": {
+"count": null,
+"log10": null
+},
+"Cuauht\u00e9moc": {
+"count": null,
+"log10": null
+},
+"Cuenca": {
+"count": null,
+"log10": null
+},
+"Culiac\u00e1n": {
+"count": null,
+"log10": null
+},
+"Cuman\u00e1": {
+"count": null,
+"log10": null
+},
+"Cumilla": {
+"count": null,
+"log10": null
+},
+"Cuneo": {
+"count": null,
+"log10": null
+},
+"Cupertino": {
+"count": null,
+"log10": null
+},
+"Cusco": {
+"count": null,
+"log10": null
+},
+"Cuttack": {
+"count": null,
+"log10": null
+},
+"Cuyahoga Falls": {
+"count": null,
+"log10": null
+},
+"Cypress": {
+"count": null,
+"log10": null
+},
+"Czech Republic": {
+"count": null,
+"log10": null
+},
+"Cz\u0119stochowa": {
+"count": null,
+"log10": null
+},
+"C\u00e1ceres": {
+"count": null,
+"log10": null
+},
+"C\u00e1rdenas": {
+"count": null,
+"log10": null
+},
+"C\u00f3rdoba": {
+"count": null,
+"log10": null
+},
+"C\u00faa": {
+"count": null,
+"log10": null
+},
+"C\u00facuta": {
+"count": null,
+"log10": null
+},
+"C\u0103l\u0103ra\u0219i": {
+"count": null,
+"log10": null
+},
+"C\u1ea7n Th\u01a1": {
+"count": null,
+"log10": null
+},
+"Da Nang": {
+"count": null,
+"log10": null
+},
+"Dabola": {
+"count": null,
+"log10": null
+},
+"Dabou": {
+"count": null,
+"log10": null
+},
+"Dadu": {
+"count": null,
+"log10": null
+},
+"Daegu": {
+"count": null,
+"log10": null
+},
+"Daejeon": {
+"count": null,
+"log10": null
+},
+"Dairut": {
+"count": null,
+"log10": null
+},
+"Dajab\u00f3n": {
+"count": null,
+"log10": null
+},
+"Dakhla": {
+"count": null,
+"log10": null
+},
+"Daleu": {
+"count": null,
+"log10": null
+},
+"Dalian": {
+"count": null,
+"log10": null
+},
+"Dallas": {
+"count": null,
+"log10": null
+},
+"Daly City": {
+"count": null,
+"log10": null
+},
+"Damaturu": {
+"count": null,
+"log10": null
+},
+"Dangjin": {
+"count": null,
+"log10": null
+},
+"Dania": {
+"count": null,
+"log10": null
+},
+"Danzhou": {
+"count": null,
+"log10": null
+},
+"Daoukro": {
+"count": null,
+"log10": null
+},
+"Dapitan": {
+"count": null,
+"log10": null
+},
+"Daqing": {
+"count": null,
+"log10": null
+},
+"Dar El Salam": {
+"count": null,
+"log10": null
+},
+"Daraa": {
+"count": null,
+"log10": null
+},
+"Darayya": {
+"count": null,
+"log10": null
+},
+"Darkhan": {
+"count": null,
+"log10": null
+},
+"Dartmouth": {
+"count": null,
+"log10": null
+},
+"Daska": {
+"count": null,
+"log10": null
+},
+"Dasmari\u00f1as": {
+"count": null,
+"log10": null
+},
+"Datong": {
+"count": null,
+"log10": null
+},
+"Daule": {
+"count": null,
+"log10": null
+},
+"Daura": {
+"count": null,
+"log10": null
+},
+"Davao City": {
+"count": null,
+"log10": null
+},
+"Davenport": {
+"count": null,
+"log10": null
+},
+"David": {
+"count": null,
+"log10": null
+},
+"Davis": {
+"count": null,
+"log10": null
+},
+"Dawei": {
+"count": null,
+"log10": null
+},
+"Daytona Beach": {
+"count": null,
+"log10": null
+},
+"Dazhou": {
+"count": null,
+"log10": null
+},
+"Da\u015foguz": {
+"count": null,
+"log10": null
+},
+"Dearborn": {
+"count": null,
+"log10": null
+},
+"Decatur": {
+"count": null,
+"log10": null
+},
+"Deerfield Beach": {
+"count": null,
+"log10": null
+},
+"Dehradun": {
+"count": null,
+"log10": null
+},
+"Deir ez-Zor": {
+"count": null,
+"log10": null
+},
+"Delano": {
+"count": null,
+"log10": null
+},
+"Delmas": {
+"count": null,
+"log10": null
+},
+"Delmenhorst": {
+"count": null,
+"log10": null
+},
+"Delray Beach": {
+"count": null,
+"log10": null
+},
+"Delta": {
+"count": null,
+"log10": null
+},
+"Democratic Republic of the Congo": {
+"count": null,
+"log10": null
+},
+"Denizli": {
+"count": null,
+"log10": null
+},
+"Deoghar": {
+"count": null,
+"log10": null
+},
+"Dera Allah Yar": {
+"count": null,
+"log10": null
+},
+"Dera Ghazi Khan": {
+"count": null,
+"log10": null
+},
+"Derby": {
+"count": null,
+"log10": null
+},
+"Derik district": {
+"count": null,
+"log10": null
+},
+"Derry": {
+"count": null,
+"log10": null
+},
+"Des Moines": {
+"count": null,
+"log10": null
+},
+"Des Plaines": {
+"count": null,
+"log10": null
+},
+"Desouk": {
+"count": null,
+"log10": null
+},
+"Dessau-Ro\u00dflau": {
+"count": null,
+"log10": null
+},
+"Dessie": {
+"count": null,
+"log10": null
+},
+"Detmold": {
+"count": null,
+"log10": null
+},
+"Detroit": {
+"count": null,
+"log10": null
+},
+"Deyang": {
+"count": null,
+"log10": null
+},
+"Dhaka": {
+"count": null,
+"log10": null
+},
+"Dharashiv": {
+"count": null,
+"log10": null
+},
+"Dhenkanal": {
+"count": null,
+"log10": null
+},
+"Dholka": {
+"count": null,
+"log10": null
+},
+"Dhule": {
+"count": null,
+"log10": null
+},
+"Diamond Bar": {
+"count": null,
+"log10": null
+},
+"Dianra": {
+"count": null,
+"log10": null
+},
+"Dibrugarh": {
+"count": null,
+"log10": null
+},
+"Dijkot": {
+"count": null,
+"log10": null
+},
+"Dila": {
+"count": null,
+"log10": null
+},
+"Dili": {
+"count": null,
+"log10": null
+},
+"Dimbokro": {
+"count": null,
+"log10": null
+},
+"Dinajpur": {
+"count": null,
+"log10": null
+},
+"Dingxi": {
+"count": null,
+"log10": null
+},
+"Dinslaken": {
+"count": null,
+"log10": null
+},
+"Diourbel": {
+"count": null,
+"log10": null
+},
+"Dipalpur": {
+"count": null,
+"log10": null
+},
+"Dipolog": {
+"count": null,
+"log10": null
+},
+"Diyarbak\u0131r": {
+"count": null,
+"log10": null
+},
+"Djelfa": {
+"count": null,
+"log10": null
+},
+"Djibouti": {
+"count": null,
+"log10": null
+},
+"Djibouti is in the country of": {
+"count": null,
+"log10": null
+},
+"Doboj": {
+"count": null,
+"log10": null
+},
+"Dobrich": {
+"count": null,
+"log10": null
+},
+"Dogbo-Tota": {
+"count": null,
+"log10": null
+},
+"Doha": {
+"count": null,
+"log10": null
+},
+"Dolisie": {
+"count": null,
+"log10": null
+},
+"Dome": {
+"count": null,
+"log10": null
+},
+"Dongducheon": {
+"count": null,
+"log10": null
+},
+"Donghae City": {
+"count": null,
+"log10": null
+},
+"Dongying": {
+"count": null,
+"log10": null
+},
+"Dordrecht": {
+"count": null,
+"log10": null
+},
+"Dormagen": {
+"count": null,
+"log10": null
+},
+"Dorsten": {
+"count": null,
+"log10": null
+},
+"Dothan": {
+"count": null,
+"log10": null
+},
+"Douliou City": {
+"count": null,
+"log10": null
+},
+"Douma": {
+"count": null,
+"log10": null
+},
+"Dovzhansk": {
+"count": null,
+"log10": null
+},
+"Downey": {
+"count": null,
+"log10": null
+},
+"Do\u011fubayaz\u0131t": {
+"count": null,
+"log10": null
+},
+"Draper": {
+"count": null,
+"log10": null
+},
+"Dresden": {
+"count": null,
+"log10": null
+},
+"Drobeta-Turnu Severin": {
+"count": null,
+"log10": null
+},
+"Drohobych": {
+"count": null,
+"log10": null
+},
+"Druzhkivka": {
+"count": null,
+"log10": null
+},
+"Dschang": {
+"count": null,
+"log10": null
+},
+"Dubai": {
+"count": null,
+"log10": null
+},
+"Dublin City": {
+"count": null,
+"log10": null
+},
+"Dubuque": {
+"count": null,
+"log10": null
+},
+"Duchy of Warsaw": {
+"count": null,
+"log10": null
+},
+"Duhok": {
+"count": null,
+"log10": null
+},
+"Duisburg": {
+"count": null,
+"log10": null
+},
+"Duluth": {
+"count": null,
+"log10": null
+},
+"Dundee": {
+"count": null,
+"log10": null
+},
+"Dundo": {
+"count": null,
+"log10": null
+},
+"Dunedin": {
+"count": null,
+"log10": null
+},
+"Dunfermline": {
+"count": null,
+"log10": null
+},
+"Durban": {
+"count": null,
+"log10": null
+},
+"Durg": {
+"count": null,
+"log10": null
+},
+"Durr\u00ebs": {
+"count": null,
+"log10": null
+},
+"Dur\u00e1n": {
+"count": null,
+"log10": null
+},
+"Dushanbe": {
+"count": null,
+"log10": null
+},
+"Du\u00e9kou\u00e9": {
+"count": null,
+"log10": null
+},
+"D\u00e9dougou": {
+"count": null,
+"log10": null
+},
+"D\u00fcren": {
+"count": null,
+"log10": null
+},
+"D\u00fcsseldorf": {
+"count": null,
+"log10": null
+},
+"D\u00fczce": {
+"count": null,
+"log10": null
+},
+"D\u0105browa G\u00f3rnicza": {
+"count": null,
+"log10": null
+},
+"Eagan": {
+"count": null,
+"log10": null
+},
+"East Berlin": {
+"count": null,
+"log10": null
+},
+"East Orange": {
+"count": null,
+"log10": null
+},
+"Eastvale": {
+"count": null,
+"log10": null
+},
+"Ebolowa": {
+"count": null,
+"log10": null
+},
+"Ede": {
+"count": null,
+"log10": null
+},
+"Edessa": {
+"count": null,
+"log10": null
+},
+"Edfu": {
+"count": null,
+"log10": null
+},
+"Edinburgh": {
+"count": null,
+"log10": null
+},
+"Edirne": {
+"count": null,
+"log10": null
+},
+"Edmond": {
+"count": null,
+"log10": null
+},
+"Ed\u00e9a": {
+"count": null,
+"log10": null
+},
+"Eilat": {
+"count": null,
+"log10": null
+},
+"Ejido": {
+"count": null,
+"log10": null
+},
+"Ekibastuz": {
+"count": null,
+"log10": null
+},
+"El Alto": {
+"count": null,
+"log10": null
+},
+"El Jadida": {
+"count": null,
+"log10": null
+},
+"El Mahalla El Kubra": {
+"count": null,
+"log10": null
+},
+"El Manaqil": {
+"count": null,
+"log10": null
+},
+"El Paso": {
+"count": null,
+"log10": null
+},
+"El Paso\u2013Ju\u00e1rez": {
+"count": null,
+"log10": null
+},
+"El Quseyya": {
+"count": null,
+"log10": null
+},
+"El Saff": {
+"count": null,
+"log10": null
+},
+"El Salvador is located in Central America": {
+"count": null,
+"log10": null
+},
+"El Torno": {
+"count": null,
+"log10": null
+},
+"El-Kharga Town": {
+"count": null,
+"log10": null
+},
+"Elaz\u0131\u011f": {
+"count": null,
+"log10": null
+},
+"Elbasan": {
+"count": null,
+"log10": null
+},
+"Elbl\u0105g": {
+"count": null,
+"log10": null
+},
+"Elgin": {
+"count": null,
+"log10": null
+},
+"Elis": {
+"count": null,
+"log10": null
+},
+"Elizabeth": {
+"count": null,
+"log10": null
+},
+"Elk Grove": {
+"count": null,
+"log10": null
+},
+"Eluru": {
+"count": null,
+"log10": null
+},
+"Elyria": {
+"count": null,
+"log10": null
+},
+"Encarnaci\u00f3n": {
+"count": null,
+"log10": null
+},
+"Enerhodar": {
+"count": null,
+"log10": null
+},
+"England": {
+"count": null,
+"log10": null
+},
+"Entebbe": {
+"count": null,
+"log10": null
+},
+"Erbil": {
+"count": null,
+"log10": null
+},
+"Erenhot": {
+"count": null,
+"log10": null
+},
+"Erftstadt": {
+"count": null,
+"log10": null
+},
+"Ergani": {
+"count": null,
+"log10": null
+},
+"Erie": {
+"count": null,
+"log10": null
+},
+"Erlangen": {
+"count": null,
+"log10": null
+},
+"Errachidia": {
+"count": null,
+"log10": null
+},
+"Erzurum": {
+"count": null,
+"log10": null
+},
+"Erzincan": {
+"count": null,
+"log10": null
+},
+"Esbjerg": {
+"count": null,
+"log10": null
+},
+"Escalante": {
+"count": null,
+"log10": null
+},
+"Eschweiler": {
+"count": null,
+"log10": null
+},
+"Escondido": {
+"count": null,
+"log10": null
+},
+"Eski\u015fehir": {
+"count": null,
+"log10": null
+},
+"Esna": {
+"count": null,
+"log10": null
+},
+"Espoo": {
+"count": null,
+"log10": null
+},
+"Esquipulas": {
+"count": null,
+"log10": null
+},
+"Essaouira": {
+"count": null,
+"log10": null
+},
+"Essen": {
+"count": null,
+"log10": null
+},
+"Esslingen am Neckar": {
+"count": null,
+"log10": null
+},
+"Estonia": {
+"count": null,
+"log10": null
+},
+"Eswatini": {
+"count": null,
+"log10": null
+},
+"Euless": {
+"count": null,
+"log10": null
+},
+"Euskirchen": {
+"count": null,
+"log10": null
+},
+"Evanston": {
+"count": null,
+"log10": null
+},
+"Everett": {
+"count": null,
+"log10": null
+},
+"Exeter": {
+"count": null,
+"log10": null
+},
+"Ezbet El Borg": {
+"count": null,
+"log10": null
+},
+"Ezhou": {
+"count": null,
+"log10": null
+},
+"Fada N\u2019Gourma": {
+"count": null,
+"log10": null
+},
+"Faenza": {
+"count": null,
+"log10": null
+},
+"Fairfield": {
+"count": null,
+"log10": null
+},
+"Faisalabad": {
+"count": null,
+"log10": null
+},
+"Faiyum": {
+"count": null,
+"log10": null
+},
+"Fall River": {
+"count": null,
+"log10": null
+},
+"Faizabad": {
+"count": null,
+"log10": null
+},
+"Fallujah": {
+"count": null,
+"log10": null
+},
+"Farah": {
+"count": null,
+"log10": null
+},
+"Faridpur": {
+"count": null,
+"log10": null
+},
+"Farooqabad": {
+"count": null,
+"log10": null
+},
+"Farrukhabad": {
+"count": null,
+"log10": null
+},
+"Federal Way": {
+"count": null,
+"log10": null
+},
+"Fergana": {
+"count": null,
+"log10": null
+},
+"Ferizaj": {
+"count": null,
+"log10": null
+},
+"Feodosiia": {
+"count": null,
+"log10": null
+},
+"Ferkess\u00e9dougou": {
+"count": null,
+"log10": null
+},
+"Fez": {
+"count": null,
+"log10": null
+},
+"Fier": {
+"count": null,
+"log10": null
+},
+"Fiji": {
+"count": null,
+"log10": null
+},
+"Flagstaff": {
+"count": null,
+"log10": null
+},
+"Fkih Ben Saleh": {
+"count": null,
+"log10": null
+},
+"Flensburg": {
+"count": null,
+"log10": null
+},
+"Flint": {
+"count": null,
+"log10": null
+},
+"Florence": {
+"count": null,
+"log10": null
+},
+"Florida": {
+"count": null,
+"log10": null
+},
+"Florissant": {
+"count": null,
+"log10": null
+},
+"Folsom": {
+"count": null,
+"log10": null
+},
+"Fontana": {
+"count": null,
+"log10": null
+},
+"Forl\u00ec": {
+"count": null,
+"log10": null
+},
+"Fort Collins": {
+"count": null,
+"log10": null
+},
+"Fort Myers": {
+"count": null,
+"log10": null
+},
+"Fort Portal": {
+"count": null,
+"log10": null
+},
+"Fort Worth": {
+"count": null,
+"log10": null
+},
+"Fort-de-France": {
+"count": null,
+"log10": null
+},
+"Fortaleza": {
+"count": null,
+"log10": null
+},
+"Foshan": {
+"count": null,
+"log10": null
+},
+"Fountain Valley": {
+"count": null,
+"log10": null
+},
+"Foz do Igua\u00e7u": {
+"count": null,
+"log10": null
+},
+"Franceville": {
+"count": null,
+"log10": null
+},
+"Frechen": {
+"count": null,
+"log10": null
+},
+"Frankfurt (Oder)": {
+"count": null,
+"log10": null
+},
+"Free Territory of Trieste": {
+"count": null,
+"log10": null
+},
+"Freetown": {
+"count": null,
+"log10": null
+},
+"French Guiana": {
+"count": null,
+"log10": null
+},
+"Fresnillo": {
+"count": null,
+"log10": null
+},
+"Fresno": {
+"count": null,
+"log10": null
+},
+"Friedrichshafen": {
+"count": null,
+"log10": null
+},
+"Frisco": {
+"count": null,
+"log10": null
+},
+"Fr\u00fddek-M\u00edstek": {
+"count": null,
+"log10": null
+},
+"Fujairah": {
+"count": null,
+"log10": null
+},
+"Fuji": {
+"count": null,
+"log10": null
+},
+"Fulda": {
+"count": null,
+"log10": null
+},
+"Fullerton": {
+"count": null,
+"log10": null
+},
+"Funabashi": {
+"count": null,
+"log10": null
+},
+"Fuxin": {
+"count": null,
+"log10": null
+},
+"Fuyang": {
+"count": null,
+"log10": null
+},
+"F\u00fcrth": {
+"count": null,
+"log10": null
+},
+"Gabala": {
+"count": null,
+"log10": null
+},
+"Gabiadji": {
+"count": null,
+"log10": null
+},
+"Gaborone": {
+"count": null,
+"log10": null
+},
+"Gaibandha": {
+"count": null,
+"log10": null
+},
+"Gainesville": {
+"count": null,
+"log10": null
+},
+"Gaithersburg": {
+"count": null,
+"log10": null
+},
+"Gala\u021bi": {
+"count": null,
+"log10": null
+},
+"Galle": {
+"count": null,
+"log10": null
+},
+"Galveston": {
+"count": null,
+"log10": null
+},
+"Galway": {
+"count": null,
+"log10": null
+},
+"Gambela": {
+"count": null,
+"log10": null
+},
+"Gampaha": {
+"count": null,
+"log10": null
+},
+"Gandhinagar": {
+"count": null,
+"log10": null
+},
+"Gangtok": {
+"count": null,
+"log10": null
+},
+"Ganzhou": {
+"count": null,
+"log10": null
+},
+"Gapan": {
+"count": null,
+"log10": null
+},
+"Gardena": {
+"count": null,
+"log10": null
+},
+"Garden Grove": {
+"count": null,
+"log10": null
+},
+"Garissa": {
+"count": null,
+"log10": null
+},
+"Garland": {
+"count": null,
+"log10": null
+},
+"Gardez": {
+"count": null,
+"log10": null
+},
+"Garoua": {
+"count": null,
+"log10": null
+},
+"Gastonia": {
+"count": null,
+"log10": null
+},
+"Gary": {
+"count": null,
+"log10": null
+},
+"Gatchina": {
+"count": null,
+"log10": null
+},
+"Gaza City": {
+"count": null,
+"log10": null
+},
+"Gaya": {
+"count": null,
+"log10": null
+},
+"Gazipur": {
+"count": null,
+"log10": null
+},
+"Gaziantep": {
+"count": null,
+"log10": null
+},
+"Gda\u0144sk": {
+"count": null,
+"log10": null
+},
+"Geita": {
+"count": null,
+"log10": null
+},
+"Geelong": {
+"count": null,
+"log10": null
+},
+"Gela": {
+"count": null,
+"log10": null
+},
+"Gemlik": {
+"count": null,
+"log10": null
+},
+"General Santos": {
+"count": null,
+"log10": null
+},
+"Geoje": {
+"count": null,
+"log10": null
+},
+"Gera": {
+"count": null,
+"log10": null
+},
+"Ghardaia": {
+"count": null,
+"log10": null
+},
+"German Democratic Republic": {
+"count": null,
+"log10": null
+},
+"Ghaziabad": {
+"count": null,
+"log10": null
+},
+"Ghazipur": {
+"count": null,
+"log10": null
+},
+"Ghazni": {
+"count": null,
+"log10": null
+},
+"Ghent": {
+"count": null,
+"log10": null
+},
+"Ghotki": {
+"count": null,
+"log10": null
+},
+"Ghoriwala": {
+"count": null,
+"log10": null
+},
+"Gibara": {
+"count": null,
+"log10": null
+},
+"Gifu": {
+"count": null,
+"log10": null
+},
+"Giessen": {
+"count": null,
+"log10": null
+},
+"Gilgit": {
+"count": null,
+"log10": null
+},
+"Gimcheon": {
+"count": null,
+"log10": null
+},
+"Gimhae": {
+"count": null,
+"log10": null
+},
+"Gimje": {
+"count": null,
+"log10": null
+},
+"Gimpo": {
+"count": null,
+"log10": null
+},
+"Gingoog": {
+"count": null,
+"log10": null
+},
+"Giresun": {
+"count": null,
+"log10": null
+},
+"Girga": {
+"count": null,
+"log10": null
+},
+"Gisenyi": {
+"count": null,
+"log10": null
+},
+"Gitega": {
+"count": null,
+"log10": null
+},
+"Giurgiu": {
+"count": null,
+"log10": null
+},
+"Givatayim": {
+"count": null,
+"log10": null
+},
+"Gjilan": {
+"count": null,
+"log10": null
+},
+"Gladbeck": {
+"count": null,
+"log10": null
+},
+"Glendale": {
+"count": null,
+"log10": null
+},
+"Glendora": {
+"count": null,
+"log10": null
+},
+"Glew, Buenos Aires": {
+"count": null,
+"log10": null
+},
+"Gliwice": {
+"count": null,
+"log10": null
+},
+"Gloucester": {
+"count": null,
+"log10": null
+},
+"Glyfada": {
+"count": null,
+"log10": null
+},
+"Gniezno": {
+"count": null,
+"log10": null
+},
+"Godavarikhani": {
+"count": null,
+"log10": null
+},
+"Goi\u00e2nia": {
+"count": null,
+"log10": null
+},
+"Goma": {
+"count": null,
+"log10": null
+},
+"Gona\u00efves": {
+"count": null,
+"log10": null
+},
+"Gondar": {
+"count": null,
+"log10": null
+},
+"Gongju": {
+"count": null,
+"log10": null
+},
+"Goodyear": {
+"count": null,
+"log10": null
+},
+"Gopalganj": {
+"count": null,
+"log10": null
+},
+"Gorakhpur": {
+"count": null,
+"log10": null
+},
+"Gorz\u00f3w Wielkopolski": {
+"count": null,
+"log10": null
+},
+"Goslar": {
+"count": null,
+"log10": null
+},
+"Goya": {
+"count": null,
+"log10": null
+},
+"Gqeberha": {
+"count": null,
+"log10": null
+},
+"Grand Forks": {
+"count": null,
+"log10": null
+},
+"Grand Island": {
+"count": null,
+"log10": null
+},
+"Grand Prairie": {
+"count": null,
+"log10": null
+},
+"Grand Rapids": {
+"count": null,
+"log10": null
+},
+"Grand-Bassam": {
+"count": null,
+"log10": null
+},
+"Grand-Lahou": {
+"count": null,
+"log10": null
+},
+"Grande Prairie": {
+"count": null,
+"log10": null
+},
+"Grapevine": {
+"count": null,
+"log10": null
+},
+"Great Falls": {
+"count": null,
+"log10": null
+},
+"Greater Buenos Aires": {
+"count": null,
+"log10": null
+},
+"Greater Mexico City": {
+"count": null,
+"log10": null
+},
+"Greater Noida": {
+"count": null,
+"log10": null
+},
+"Greater Rio de Janeiro": {
+"count": null,
+"log10": null
+},
+"Greater Sudbury": {
+"count": null,
+"log10": null
+},
+"Greensboro": {
+"count": null,
+"log10": null
+},
+"Greifswald": {
+"count": null,
+"log10": null
+},
+"Gresham": {
+"count": null,
+"log10": null
+},
+"Grevenbroich": {
+"count": null,
+"log10": null
+},
+"Gronau": {
+"count": null,
+"log10": null
+},
+"Groningen": {
+"count": null,
+"log10": null
+},
+"Grudzi\u0105dz": {
+"count": null,
+"log10": null
+},
+"Guacara": {
+"count": null,
+"log10": null
+},
+"Guadalajara": {
+"count": null,
+"log10": null
+},
+"Gualeguaych\u00fa": {
+"count": null,
+"log10": null
+},
+"Guanajuato": {
+"count": null,
+"log10": null
+},
+"Guanare": {
+"count": null,
+"log10": null
+},
+"Guang'an": {
+"count": null,
+"log10": null
+},
+"Guangyuan": {
+"count": null,
+"log10": null
+},
+"Guant\u00e1namo": {
+"count": null,
+"log10": null
+},
+"Guarenas": {
+"count": null,
+"log10": null
+},
+"Guasdualito": {
+"count": null,
+"log10": null
+},
+"Guatemala City": {
+"count": null,
+"log10": null
+},
+"Guelmim": {
+"count": null,
+"log10": null
+},
+"Guercif": {
+"count": null,
+"log10": null
+},
+"Guiglo": {
+"count": null,
+"log10": null
+},
+"Gujar Khan": {
+"count": null,
+"log10": null
+},
+"Gujranwala": {
+"count": null,
+"log10": null
+},
+"Gulariya": {
+"count": null,
+"log10": null
+},
+"Gulistan, Balochistan": {
+"count": null,
+"log10": null
+},
+"Guliston": {
+"count": null,
+"log10": null
+},
+"Gulu City": {
+"count": null,
+"log10": null
+},
+"Gumi": {
+"count": null,
+"log10": null
+},
+"Gumla": {
+"count": null,
+"log10": null
+},
+"Gummersbach": {
+"count": null,
+"log10": null
+},
+"Gunpo": {
+"count": null,
+"log10": null
+},
+"Gunsan": {
+"count": null,
+"log10": null
+},
+"Gunungsitoli": {
+"count": null,
+"log10": null
+},
+"Gurgaon": {
+"count": null,
+"log10": null
+},
+"Guri": {
+"count": null,
+"log10": null
+},
+"Guyana": {
+"count": null,
+"log10": null
+},
+"Gu\u00e9ck\u00e9dougou": {
+"count": null,
+"log10": null
+},
+"Gwacheon": {
+"count": null,
+"log10": null
+},
+"Gwadar": {
+"count": null,
+"log10": null
+},
+"Gwalior": {
+"count": null,
+"log10": null
+},
+"Gwangmyeong": {
+"count": null,
+"log10": null
+},
+"Gyeongju": {
+"count": null,
+"log10": null
+},
+"Gyumri": {
+"count": null,
+"log10": null
+},
+"Gyzylarbat": {
+"count": null,
+"log10": null
+},
+"Gy\u0151r": {
+"count": null,
+"log10": null
+},
+"G\u00f6lc\u00fck": {
+"count": null,
+"log10": null
+},
+"G\u00f6ppingen": {
+"count": null,
+"log10": null
+},
+"G\u00f6rlitz": {
+"count": null,
+"log10": null
+},
+"G\u00f6ttingen": {
+"count": null,
+"log10": null
+},
+"G\u00fcig\u00fce": {
+"count": null,
+"log10": null
+},
+"G\u00fcines": {
+"count": null,
+"log10": null
+},
+"G\u00fcm\u00fc\u015fhane": {
+"count": null,
+"log10": null
+},
+"G\u00fctersloh": {
+"count": null,
+"log10": null
+},
+"Haarlem": {
+"count": null,
+"log10": null
+},
+"Hachi\u014dji-shi": {
+"count": null,
+"log10": null
+},
+"Hacienda Heights": {
+"count": null,
+"log10": null
+},
+"Hadejia": {
+"count": null,
+"log10": null
+},
+"Hadera": {
+"count": null,
+"log10": null
+},
+"Hafizabad": {
+"count": null,
+"log10": null
+},
+"Hagen": {
+"count": null,
+"log10": null
+},
+"Haidong": {
+"count": null,
+"log10": null
+},
+"Haifa": {
+"count": null,
+"log10": null
+},
+"Haikou": {
+"count": null,
+"log10": null
+},
+"Hakk\u00e2ri": {
+"count": null,
+"log10": null
+},
+"Hakodate": {
+"count": null,
+"log10": null
+},
+"Halabja": {
+"count": null,
+"log10": null
+},
+"Halle (Saale)": {
+"count": null,
+"log10": null
+},
+"Halmstad": {
+"count": null,
+"log10": null
+},
+"Hama": {
+"count": null,
+"log10": null
+},
+"Hamad Town": {
+"count": null,
+"log10": null
+},
+"Hamelin": {
+"count": null,
+"log10": null
+},
+"Hami": {
+"count": null,
+"log10": null
+},
+"Hammond": {
+"count": null,
+"log10": null
+},
+"Hanam": {
+"count": null,
+"log10": null
+},
+"Hanau": {
+"count": null,
+"log10": null
+},
+"Handan": {
+"count": null,
+"log10": null
+},
+"Hanford": {
+"count": null,
+"log10": null
+},
+"Hangzhou": {
+"count": null,
+"log10": null
+},
+"Hanoi": {
+"count": null,
+"log10": null
+},
+"Hanover": {
+"count": null,
+"log10": null
+},
+"Hanzhong": {
+"count": null,
+"log10": null
+},
+"Harar": {
+"count": null,
+"log10": null
+},
+"Harardhere": {
+"count": null,
+"log10": null
+},
+"Harare": {
+"count": null,
+"log10": null
+},
+"Harrisonburg": {
+"count": null,
+"log10": null
+},
+"Hartford": {
+"count": null,
+"log10": null
+},
+"Hasakah": {
+"count": null,
+"log10": null
+},
+"Hasan Abdal": {
+"count": null,
+"log10": null
+},
+"Hashtpar": {
+"count": null,
+"log10": null
+},
+"Hasilpur": {
+"count": null,
+"log10": null
+},
+"Haskovo": {
+"count": null,
+"log10": null
+},
+"Hassa": {
+"count": null,
+"log10": null
+},
+"Hasselt": {
+"count": null,
+"log10": null
+},
+"Hattingen": {
+"count": null,
+"log10": null
+},
+"Havana": {
+"count": null,
+"log10": null
+},
+"Haverhill": {
+"count": null,
+"log10": null
+},
+"Hav\u00ed\u0159ov": {
+"count": null,
+"log10": null
+},
+"Hawaasa": {
+"count": null,
+"log10": null
+},
+"Hawthorne": {
+"count": null,
+"log10": null
+},
+"Hazaribagh": {
+"count": null,
+"log10": null
+},
+"Hebi": {
+"count": null,
+"log10": null
+},
+"Hebron": {
+"count": null,
+"log10": null
+},
+"Hechi": {
+"count": null,
+"log10": null
+},
+"Hefei": {
+"count": null,
+"log10": null
+},
+"Hegang": {
+"count": null,
+"log10": null
+},
+"Heihe": {
+"count": null,
+"log10": null
+},
+"Helmond": {
+"count": null,
+"log10": null
+},
+"Helsingborg": {
+"count": null,
+"log10": null
+},
+"Helwan": {
+"count": null,
+"log10": null
+},
+"Hemei Township": {
+"count": null,
+"log10": null
+},
+"Henderson": {
+"count": null,
+"log10": null
+},
+"Hendersonville": {
+"count": null,
+"log10": null
+},
+"Hengelo": {
+"count": null,
+"log10": null
+},
+"Hengyang": {
+"count": null,
+"log10": null
+},
+"Heraklion": {
+"count": null,
+"log10": null
+},
+"Herat": {
+"count": null,
+"log10": null
+},
+"Hereford": {
+"count": null,
+"log10": null
 }
 }

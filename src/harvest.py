@@ -331,3 +331,29 @@ def harvest_wikidata(substrate, max_subjects: int = 3000, batch_size: int = 32,
                       "n_unparsed": unparsed,
                       "error_rate": round(len(errors) / max(n, 1), 4),
                       "gold": "wikidata_multivalued", "model": substrate.model_id}}
+
+
+def canonical_country_map(gold: dict) -> dict:
+    """Surface form -> one canonical country name, shared by truths and errors.
+
+    Without this the corpus leaks truth through vocabulary. The gazetteer labels
+    China "People's Republic of China" while a model answers "China", so every
+    true China statement and every China error were written differently and the
+    single token "China" predicted falsehood perfectly. The composition gate
+    caught it; this removes the cause. The canonical form is the SHORT one a model
+    would naturally produce, so truths are not phrased unnaturally either.
+    """
+    canon = {}
+    for group_canon, alts in _COUNTRY_ALIASES.items():
+        for name in {group_canon} | set(alts):
+            canon[_norm_country(name)] = group_canon.title()
+    for names in gold.values():
+        for n in names:
+            k = _norm_country(n)
+            canon.setdefault(k, n)
+    return canon
+
+
+def canonicalize(name: str, canon: dict) -> str | None:
+    """Canonical country name, or None if this is not a country we recognise."""
+    return canon.get(_norm_country(name))
