@@ -69,7 +69,29 @@ hf_cache = modal.Volume.from_name("mirage-hf-cache", create_if_missing=True)
 activations = modal.Volume.from_name("mirage-activations", create_if_missing=True)
 
 VOLUMES = {"/root/hf-cache": hf_cache, "/root/activations": activations}
-SECRETS = [modal.Secret.from_name("huggingface")]
+
+
+def _hf_secret():
+    """Resolve the HF token secret under whichever name this workspace used.
+
+    Every gated model load needs it, and the project has now been rebuilt in four
+    Modal workspaces as credits ran out; each was created by hand, so the name has
+    varied. Failing the whole app on a naming difference is not worth it.
+    """
+    tried = []
+    for name in ("huggingface", "huggingface-secret", "hf", "hf-token"):
+        try:
+            s = modal.Secret.from_name(name)
+            s.hydrate()
+            return [s]
+        except Exception:
+            tried.append(name)
+    raise RuntimeError(
+        f"no HF token secret found under any of {tried}; create one with "
+        "`modal secret create huggingface HF_TOKEN=...` (gated Llama/Gemma need it)")
+
+
+SECRETS = _hf_secret()
 
 
 def _setup():
