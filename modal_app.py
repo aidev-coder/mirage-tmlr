@@ -183,7 +183,10 @@ def stage2_build(reference_model: str, canary_model: str,
 
     ref = Substrate(reference_model, cache_dir="/root/activations")
     can = Substrate(canary_model, cache_dir="/root/activations")
-    if version >= 2:
+    if version == 3:
+        from src.build_corpus import score_and_gate_harvested
+        out = score_and_gate_harvested(ref, can, seed=seed or 20260812)
+    elif version >= 2:
         from src.build_corpus import score_and_gate_v2
         out = score_and_gate_v2(ref, can, edit_rate=edit_rate, seed=seed or 20260806)
     else:
@@ -449,12 +452,20 @@ def gendis_run(model_id: str, corpus_name: str, max_subjects: int = 400,
 @app.function(image=image, gpu=GPU, volumes=VOLUMES, secrets=SECRETS,
               timeout=2 * 3600)
 def harvest_fn(model_id: str, topic: str, max_subjects: int = 400) -> dict:
-    """O-2/D-008 natural-error harvest from a disjoint model (Mistral)."""
+    """O-2/D-008 natural-error harvest from a disjoint model.
+
+    topic="wikidata" uses the Wikidata-sourced multi-valued gold instead of the
+    A&M knowledge base, which is too small (1298 subjects) and too incomplete to
+    adjudicate ambiguous toponyms."""
     _setup()
-    from src.harvest import harvest_topic
+    from src.harvest import harvest_topic, harvest_wikidata
     from src.substrate import Substrate
     sub = Substrate(model_id, cache_dir="/root/activations")
-    out = harvest_topic(sub, topic, max_subjects=max_subjects)
+    if topic == "wikidata":
+        out = harvest_wikidata(sub, max_subjects=max_subjects,
+                               commit_fn=activations.commit)
+    else:
+        out = harvest_topic(sub, topic, max_subjects=max_subjects)
     hf_cache.commit()
     return out
 
@@ -505,7 +516,7 @@ def main(stage: str = "sanity", model: str = "", max_per_topic: int = 0,
         canary_model = "meta-llama/Llama-3.1-8B"           # representative probed substrate
         kw2 = {"seed": seed} if seed else {}
         res = stage2_build.remote(reference_model=ref_model, canary_model=canary_model,
-                                  version=2, **kw2)
+                                  version=3 if detector == "harvested" else 2, **kw2)
         m = res["meta"]
         print(f"stage2: released n={m['n_released']} (full {m['n_full']}) | "
               f"ref={m['reference_model']} canary={m['canary_model']} @L{m['canary_layer']} | "
@@ -790,7 +801,7 @@ def main(stage: str = "sanity", model: str = "", max_per_topic: int = 0,
 
     elif stage == "harvest":
         import json as _j
-        hm = "mistralai/Mistral-7B-Instruct-v0.2"   # disjoint from all probed substrates
+        hm = corpus or "mistralai/Mistral-7B-Instruct-v0.2"   # disjoint from probed substrates
         topic = model or "cities"
         res = harvest_fn.remote(model_id=hm, topic=topic,
                                 max_subjects=max_per_topic or 400)

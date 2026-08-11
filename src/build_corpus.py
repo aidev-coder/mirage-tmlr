@@ -14,6 +14,7 @@ representative probed substrate (per-substrate re-check happens at Stage 3).
 """
 from __future__ import annotations
 
+import json
 from collections import defaultdict
 
 import numpy as np
@@ -327,6 +328,107 @@ def score_and_gate_v2(reference_substrate, canary_substrate, edit_rate: float = 
                  "raw_counts": raw_counts, "released_counts": raw_counts,
                  "domain_report": domain_report, "balance": balance_report,
                  "edit_rate": edit_rate, "seed": seed},
+        "crossing": crossing, "edit_canary": edit_c,
+        "fragmentation_canary": frag_c, "composition_canary": composition,
+    }
+
+
+def score_and_gate_harvested(reference_substrate, canary_substrate, topic: str = "cities",
+                             seed: int = 20260812, min_per_cell: int = 20) -> dict:
+    """Build the 2x2 from HARVESTED MODEL ERRORS instead of authored entity swaps.
+
+    Every corpus before this one had its falsehoods written by us, which is the
+    limitation the paper flags hardest: the confound is measured on data we
+    constructed, and two of our five corpora manufactured the effect we were
+    hunting. Here the false cells are statements a disjoint model actually produced
+    when asked a factual question and got it wrong, verified against the same
+    knowledge base. Nothing about the falsehood is our choice except which errors
+    to keep.
+
+    Consequences, both deliberate:
+      - There is no edit provenance, so `edited` is False throughout and the edit
+        canary and edit-balance gate do not apply. That is not a relaxed gate: the
+        confound they exist to catch cannot exist here, because no statement was
+        edited by anyone.
+      - The false cells are not free to be balanced arbitrarily. Model errors
+        concentrate on rare entities, so the false-typical cell is supply limited
+        by the model's actual behaviour. If it cannot be filled, that is a finding
+        about natural error distribution and the build says so rather than padding.
+    """
+    from . import harvest as hv
+
+    freq_map = load_entity_freq()
+    n_freq = max(len(freq_map), 1)
+    unresolved = sum(1 for v in freq_map.values()
+                     if not isinstance(v.get("count"), int) or v["count"] < 0)
+    if unresolved / n_freq > 0.05:
+        raise RuntimeError(f"entity_freq.json is {unresolved / n_freq:.1%} unresolved")
+
+    false_items = hv.load_harvested(topic)
+    if len(false_items) < 4 * min_per_cell:
+        raise RuntimeError(
+            f"only {len(false_items)} harvested errors for '{topic}'; need at least "
+            f"{4 * min_per_cell}. Harvest more subjects before building.")
+
+    # Truths come from the SAME gazetteer that adjudicated the errors, so both
+    # halves are drawn from one distribution. Sourcing truths from the A&M KB
+    # instead would reintroduce a provenance difference between the true and false
+    # cells, which is the class of shortcut that produced the v1 domain artifact.
+    gold_path = _ROOT / "data" / "corpus" / "wikidata_gold_cities.json"
+    gold = {k: sorted(v) for k, v in json.loads(
+        gold_path.read_text(encoding="utf-8")).items()}
+    wrong_subjects = {it["entities"][0] for it in false_items}
+    true_items = []
+    for s, countries in gold.items():
+        if s in wrong_subjects or len(countries) != 1:
+            continue   # a subject cannot supply both a truth and an error, and an
+                       # ambiguous name has no single true completion
+        true_items.append({
+            "text": f"{s} is a city in {countries[0]}.", "truth": True,
+            "edited": False, "entity": s, "entities": [s, countries[0]],
+            "domain": topic,
+            "provenance": {"source": "wikidata", "strategy": "gazetteer_true",
+                           "object_type": "country"}})
+
+    items = true_items + false_items
+    texts = [it["text"] for it in items]
+    print(f"[harvested] {len(true_items)} true + {len(false_items)} model errors "
+          f"= {len(items)} candidates", flush=True)
+    ppl = reference_perplexity(texts, reference_substrate)
+
+    staged, domain_report = _assign_cells_v2(items, ppl, freq_map, min_per_cell)
+    full, balance_report = _balance_by_domain(staged, seed)
+    raw_counts = {c: sum(1 for it in full if it["cell"] == c)
+                  for c in ("TT", "TA", "FT", "FA")}
+
+    L = int(canary_substrate.model.config.num_hidden_layers * CANARY_LAYER_FRAC)
+    frag_c = corpus_build.fragmentation_canary(
+        corpus_build.fragmentation_features(
+            [it["text"] for it in full], [it["entity"] for it in full],
+            canary_substrate.tokenizer),
+        np.array([it["truth"] for it in full]))
+    crossing = corpus_build.verify_crossing(full)
+    composition = corpus_build.composition_canary(full)
+    edit_c = {"gate": "edit_canary", "pass": True,
+              "not_applicable": "falsehoods are harvested model errors, not edits; "
+                                "no statement in this corpus was edited"}
+
+    print(f"[harvested] n={len(full)} {raw_counts} | balance={balance_report} | "
+          f"crossing pass={crossing.get('pass')} | composition pass={composition.get('pass')} "
+          f"failed={composition.get('failed_fields')} | frag {frag_c.get('auroc')}", flush=True)
+    for dom, rep in domain_report.items():
+        print(f"    domain {dom}: {rep}", flush=True)
+
+    return {
+        "items": full,
+        "meta": {"version": "harvested", "topic": topic,
+                 "reference_model": reference_substrate.model_id,
+                 "canary_model": canary_substrate.model_id, "canary_layer": L,
+                 "n_true_candidates": len(true_items),
+                 "n_harvested_errors": len(false_items),
+                 "n_released": len(full), "raw_counts": raw_counts,
+                 "domain_report": domain_report, "balance": balance_report,
+                 "seed": seed},
         "crossing": crossing, "edit_canary": edit_c,
         "fragmentation_canary": frag_c, "composition_canary": composition,
     }

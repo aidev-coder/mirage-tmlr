@@ -47,6 +47,23 @@ OUT = _ROOT / "data" / "corpus" / "entity_freq.json"
 
 def all_entities() -> list[str]:
     ents = set()
+    # Wikidata-sourced city pool and the harvested-error answers, when present.
+    # The harvested corpus draws its subjects from Wikidata rather than the A&M
+    # knowledge base, so those entities need frequencies too or they drop off the
+    # typicality axis entirely.
+    import json as _json
+    for name in ("wikidata_gold_cities.json", "harvest_wikidata.json"):
+        p = _ROOT / "data" / "corpus" / name
+        if not p.exists():
+            continue
+        blob = _json.loads(p.read_text(encoding="utf-8"))
+        if isinstance(blob, dict):
+            for k, v in blob.items():
+                ents.add(k)
+                ents.update(v)
+        else:
+            for it in blob:
+                ents.update(it.get("entities", []))
     for t in cg.TEMPLATES:
         for s, o in cg._parse_true_pairs(t):
             ents.add(s)

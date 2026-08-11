@@ -1,0 +1,12243 @@
+{
+"Pskov": [
+"Russia"
+],
+"M\u00fcnster": [
+"Germany"
+],
+"Brunswick": [
+"Germany"
+],
+"Halle (Saale)": [
+"Germany"
+],
+"L\u00fcbeck": [
+"Germany"
+],
+"Hagen": [
+"Germany"
+],
+"Hamm": [
+"Germany"
+],
+"Osnabr\u00fcck": [
+"Germany"
+],
+"Solingen": [
+"Germany"
+],
+"Neuss": [
+"Germany"
+],
+"Paderborn": [
+"Germany"
+],
+"G\u00f6ttingen": [
+"Germany"
+],
+"Recklinghausen": [
+"Germany"
+],
+"Hildesheim": [
+"Germany"
+],
+"Ratingen": [
+"Germany"
+],
+"L\u00fcnen": [
+"Germany"
+],
+"Minden": [
+"Germany"
+],
+"Dorsten": [
+"Germany"
+],
+"Rheine": [
+"Germany"
+],
+"L\u00fcdenscheid": [
+"Germany"
+],
+"Goslar": [
+"Germany"
+],
+"Arnsberg": [
+"Germany"
+],
+"Bocholt": [
+"Germany"
+],
+"L\u00fcneburg": [
+"Germany"
+],
+"Brandenburg an der Havel": [
+"Germany"
+],
+"Dinslaken": [
+"Germany"
+],
+"Lippstadt": [
+"Germany"
+],
+"Unna": [
+"Germany"
+],
+"Herford": [
+"Germany"
+],
+"Wesel": [
+"Germany"
+],
+"Frankfurt (Oder)": [
+"Germany"
+],
+"Hamelin": [
+"Germany"
+],
+"Stralsund": [
+"Germany"
+],
+"Hattingen": [
+"Germany"
+],
+"Menden (Sauerland)": [
+"Germany"
+],
+"Greifswald": [
+"Germany"
+],
+"Roermond": [
+"Netherlands"
+],
+"Tartu": [
+"Estonia"
+],
+"Bremen": [
+"Germany"
+],
+"Toru\u0144": [
+"Poland"
+],
+"Koszalin": [
+"Poland"
+],
+"New York City": [
+"United States"
+],
+"Washington, D.C.": [
+"United States"
+],
+"Berlin": [
+"Germany"
+],
+"Bern": [
+"Switzerland"
+],
+"London": [
+"Canada",
+"United Kingdom"
+],
+"Alexandria": [
+"Egypt",
+"United States"
+],
+"Toronto": [
+"Canada"
+],
+"S\u00e3o Paulo": [
+"Brazil"
+],
+"Vilnius": [
+"Lithuania"
+],
+"Brussels": [
+"Belgium"
+],
+"Tashkent": [
+"Uzbekistan"
+],
+"Warsaw": [
+"Poland"
+],
+"Modena": [
+"Italy"
+],
+"Singapore": [
+"Singapore"
+],
+"Cambridge": [
+"Canada",
+"United Kingdom",
+"United States"
+],
+"Gdynia": [
+"Poland"
+],
+"Szczecin": [
+"Poland"
+],
+"Ljubljana": [
+"Slovenia"
+],
+"Milan": [
+"Italy"
+],
+"Trieste": [
+"Italy"
+],
+"\u0141\u00f3d\u017a": [
+"Poland"
+],
+"Bonn": [
+"Germany"
+],
+"Katowice": [
+"Poland"
+],
+"Rzesz\u00f3w": [
+"Poland"
+],
+"Dubai": [
+"United Arab Emirates"
+],
+"Ludwigsburg": [
+"Germany"
+],
+"Bergamo": [
+"Italy"
+],
+"Venice": [
+"Italy"
+],
+"Sharm el-Sheikh": [
+"Egypt"
+],
+"Amsterdam": [
+"Netherlands"
+],
+"Groningen": [
+"Netherlands"
+],
+"Bia\u0142ystok": [
+"Poland"
+],
+"Assen": [
+"Netherlands"
+],
+"Nowy S\u0105cz": [
+"Poland"
+],
+"Abakan": [
+"Russia"
+],
+"Chelyabinsk": [
+"Russia"
+],
+"Beijing": [
+"People's Republic of China"
+],
+"Vladivostok": [
+"Russia"
+],
+"New Delhi": [
+"India"
+],
+"Tbilisi": [
+"Georgia"
+],
+"Salerno": [
+"Italy"
+],
+"Jamnagar": [
+"India"
+],
+"Mumbai": [
+"India"
+],
+"Jerusalem": [
+"Israel",
+"Palestine"
+],
+"Como": [
+"Italy"
+],
+"Arnhem": [
+"Netherlands"
+],
+"Tolyatti": [
+"Russia"
+],
+"Bengaluru": [
+"India"
+],
+"Islamabad": [
+"Pakistan"
+],
+"Buenos Aires": [
+"Argentina"
+],
+"Mexico City": [
+"Mexico"
+],
+"Barcelona": [
+"Spain"
+],
+"Nagpur": [
+"India"
+],
+"Abidjan": [
+"Ivory Coast"
+],
+"Abu Dhabi": [
+"United Arab Emirates"
+],
+"Baghdad": [
+"Iraq"
+],
+"Caracas": [
+"Venezuela"
+],
+"Pune": [
+"India"
+],
+"Guatemala City": [
+"Guatemala"
+],
+"Havana": [
+"Cuba"
+],
+"Osijek": [
+"Croatia"
+],
+"Schwerin": [
+"Germany"
+],
+"Magdeburg": [
+"Germany"
+],
+"Innsbruck": [
+"Austria"
+],
+"Copenhagen": [
+"Denmark"
+],
+"Stockholm": [
+"Sweden"
+],
+"Helsinki": [
+"Finland"
+],
+"Reykjav\u00edk": [
+"Iceland"
+],
+"Bratislava": [
+"Slovakia"
+],
+"Kochi": [
+"India"
+],
+"Luxembourg": [
+"Luxembourg"
+],
+"Phnom Penh": [
+"Cambodia"
+],
+"Ho Chi Minh City": [
+"Vietnam"
+],
+"Bangkok": [
+"Ayutthaya Kingdom",
+"Konbaung dynasty",
+"Rattanakosin Kingdom",
+"Thailand",
+"Thonburi Kingdom"
+],
+"Kuala Lumpur": [
+"Malaysia"
+],
+"Taipei": [
+"Taiwan"
+],
+"Caserta": [
+"Italy"
+],
+"Juba": [
+"South Sudan"
+],
+"Dar es Salaam": [
+"Tanzania"
+],
+"Khartoum": [
+"Sudan"
+],
+"Verona": [
+"Italy"
+],
+"Leipzig": [
+"Germany"
+],
+"Edmonton": [
+"Canada"
+],
+"Regina": [
+"Canada"
+],
+"Lund": [
+"Sweden"
+],
+"Hangzhou": [
+"People's Republic of China"
+],
+"Xi'an": [
+"People's Republic of China"
+],
+"Lhasa": [
+"People's Republic of China"
+],
+"Shenyang": [
+"People's Republic of China"
+],
+"Wuhan": [
+"People's Republic of China"
+],
+"Shenzhen": [
+"People's Republic of China"
+],
+"Guangzhou": [
+"People's Republic of China"
+],
+"Nanjing": [
+"People's Republic of China"
+],
+"\u00dcr\u00fcmqi": [
+"People's Republic of China"
+],
+"Jieyang": [
+"People's Republic of China"
+],
+"Jixi": [
+"People's Republic of China"
+],
+"Zunyi": [
+"People's Republic of China"
+],
+"Jinzhou": [
+"People's Republic of China"
+],
+"Jiamusi": [
+"People's Republic of China"
+],
+"Zigong": [
+"People's Republic of China"
+],
+"Chengdu": [
+"People's Republic of China"
+],
+"Zhengzhou": [
+"People's Republic of China"
+],
+"Jingdezhen": [
+"People's Republic of China"
+],
+"Foshan": [
+"People's Republic of China"
+],
+"Fuxin": [
+"People's Republic of China"
+],
+"Maoming": [
+"People's Republic of China"
+],
+"Liuzhou": [
+"People's Republic of China"
+],
+"Suzhou": [
+"People's Republic of China"
+],
+"Wenzhou": [
+"People's Republic of China"
+],
+"Wuxi": [
+"People's Republic of China"
+],
+"Huzhou": [
+"People's Republic of China"
+],
+"Shaoxing": [
+"People's Republic of China"
+],
+"Ningbo": [
+"People's Republic of China"
+],
+"Xuzhou": [
+"People's Republic of China"
+],
+"Lianyungang": [
+"People's Republic of China"
+],
+"Suqian": [
+"People's Republic of China"
+],
+"Huai'an": [
+"People's Republic of China"
+],
+"Yancheng": [
+"People's Republic of China"
+],
+"Yangzhou": [
+"People's Republic of China"
+],
+"Taizhou": [
+"People's Republic of China"
+],
+"Nantong": [
+"People's Republic of China"
+],
+"Zhenjiang": [
+"People's Republic of China"
+],
+"Changzhou": [
+"People's Republic of China"
+],
+"Jiaxing": [
+"People's Republic of China"
+],
+"Jinhua": [
+"People's Republic of China"
+],
+"Lishui": [
+"People's Republic of China"
+],
+"Zhoushan": [
+"People's Republic of China"
+],
+"Shijiazhuang": [
+"People's Republic of China"
+],
+"Tangshan": [
+"People's Republic of China"
+],
+"Handan": [
+"People's Republic of China"
+],
+"Xingtai": [
+"People's Republic of China"
+],
+"Baoding": [
+"People's Republic of China"
+],
+"Zhangjiakou": [
+"People's Republic of China"
+],
+"Chengde": [
+"People's Republic of China"
+],
+"Cangzhou": [
+"People's Republic of China"
+],
+"Langfang": [
+"People's Republic of China"
+],
+"Hengshui": [
+"People's Republic of China"
+],
+"Zhuhai": [
+"People's Republic of China"
+],
+"Shantou": [
+"People's Republic of China"
+],
+"Shaoguan": [
+"People's Republic of China"
+],
+"Jiangmen": [
+"People's Republic of China"
+],
+"Zhanjiang": [
+"People's Republic of China"
+],
+"Zhaoqing": [
+"People's Republic of China"
+],
+"Huizhou": [
+"People's Republic of China"
+],
+"Meizhou": [
+"People's Republic of China"
+],
+"Shanwei": [
+"People's Republic of China"
+],
+"Heyuan": [
+"People's Republic of China"
+],
+"Yangjiang": [
+"People's Republic of China"
+],
+"Dongguan": [
+"People's Republic of China"
+],
+"Zhongshan": [
+"People's Republic of China"
+],
+"Chaozhou": [
+"People's Republic of China"
+],
+"Yunfu": [
+"People's Republic of China"
+],
+"Fuzhou": [
+"People's Republic of China"
+],
+"Nanping": [
+"People's Republic of China"
+],
+"Putian": [
+"People's Republic of China"
+],
+"Sanming": [
+"People's Republic of China"
+],
+"Leeds": [
+"United Kingdom"
+],
+"Cannes": [
+"France"
+],
+"Ajaccio": [
+"France"
+],
+"Hobart": [
+"Australia"
+],
+"Mazatl\u00e1n": [
+"Mexico"
+],
+"La Romana": [
+"Dominican Republic"
+],
+"Bursa": [
+"Turkey"
+],
+"Sokhumi": [
+"Georgia",
+"Republic of Abkhazia"
+],
+"Benghazi": [
+"Libya"
+],
+"Tampere": [
+"Finland"
+],
+"Breda": [
+"Netherlands"
+],
+"Honiara": [
+"Solomon Islands"
+],
+"Itanagar": [
+"India"
+],
+"Aleppo": [
+"Syria"
+],
+"Bydgoszcz": [
+"Poland"
+],
+"Nottingham": [
+"United Kingdom"
+],
+"Ulsan": [
+"South Korea"
+],
+"Nizamabad": [
+"India"
+],
+"Thanjavur": [
+"India"
+],
+"Haifa": [
+"Israel"
+],
+"Beersheba": [
+"Israel"
+],
+"Ansan": [
+"South Korea"
+],
+"Anyang": [
+"People's Republic of China",
+"South Korea"
+],
+"Sheffield": [
+"United Kingdom"
+],
+"York": [
+"United Kingdom"
+],
+"Makeni": [
+"Sierra Leone"
+],
+"Santiago de los Caballeros": [
+"Dominican Republic"
+],
+"Belo Horizonte": [
+"Brazil"
+],
+"Agra": [
+"India"
+],
+"Harbin": [
+"People's Republic of China"
+],
+"Donetsk": [
+"Ukraine"
+],
+"Plymouth": [
+"United Kingdom"
+],
+"Edirne": [
+"Turkey"
+],
+"Chandigarh": [
+"India"
+],
+"Plze\u0148": [
+"Czech Republic"
+],
+"Fortaleza": [
+"Brazil"
+],
+"Derby": [
+"United Kingdom"
+],
+"Guayaquil": [
+"Ecuador"
+],
+"Cotonou": [
+"Benin"
+],
+"Leiden": [
+"Netherlands"
+],
+"Vaughan": [
+"Canada"
+],
+"Markham": [
+"Canada"
+],
+"Brampton": [
+"Canada"
+],
+"Paran\u00e1": [
+"Argentina"
+],
+"Formosa": [
+"Argentina"
+],
+"San Salvador de Jujuy": [
+"Argentina"
+],
+"San Luis": [
+"Argentina"
+],
+"Ushuaia": [
+"Argentina"
+],
+"Cayenne": [
+"France"
+],
+"Trabzon": [
+"Turkey"
+],
+"Herat": [
+"Afghanistan"
+],
+"Kandahar": [
+"Afghanistan"
+],
+"Annaba": [
+"Algeria"
+],
+"Cr\u00e9teil": [
+"France"
+],
+"Espoo": [
+"Finland"
+],
+"Oulu": [
+"Finland"
+],
+"Encarnaci\u00f3n": [
+"Paraguay"
+],
+"Orsk": [
+"Russia"
+],
+"Hassan": [
+"India"
+],
+"Palo Alto": [
+"United States"
+],
+"Dovzhansk": [
+"Ukraine"
+],
+"Antratsyt": [
+"Ukraine"
+],
+"Khrustalnyi": [
+"Ukraine"
+],
+"Samar": [
+"Ukraine"
+],
+"Bilhorod-Dnistrovskyi": [
+"Ukraine"
+],
+"Bakhmut": [
+"Ukraine"
+],
+"Kadiivka": [
+"Ukraine"
+],
+"Odesa": [
+"Ukraine"
+],
+"Kyiv": [
+"Ukraine"
+],
+"Bogot\u00e1": [
+"Colombia"
+],
+"Sevastopol": [
+"Russia",
+"Ukraine"
+],
+"Belfast": [
+"United Kingdom"
+],
+"Cardiff": [
+"United Kingdom"
+],
+"Georgetown": [
+"Guyana"
+],
+"Sarajevo": [
+"Bosnia and Herzegovina"
+],
+"Hetauda": [
+"Nepal"
+],
+"Darwin": [
+"Australia"
+],
+"Tianjin": [
+"People's Republic of China"
+],
+"Lahore": [
+"Pakistan"
+],
+"Rajkot": [
+"India"
+],
+"Junagadh": [
+"India"
+],
+"Vadodara": [
+"India"
+],
+"Gandhinagar": [
+"India"
+],
+"Alicante": [
+"Spain"
+],
+"Tychy": [
+"Poland"
+],
+"Villarreal": [
+"Spain"
+],
+"Bruges": [
+"Belgium"
+],
+"Hualp\u00e9n": [
+"Chile"
+],
+"Savona": [
+"Italy"
+],
+"Piacenza": [
+"Italy"
+],
+"Reggio Emilia": [
+"Italy"
+],
+"Ferrara": [
+"Italy"
+],
+"Ravenna": [
+"Italy"
+],
+"Forl\u00ec": [
+"Italy"
+],
+"Rimini": [
+"Italy"
+],
+"Carrara": [
+"Italy"
+],
+"Lucca": [
+"Italy"
+],
+"Pisa": [
+"Greece",
+"Italy"
+],
+"Prato": [
+"Italy"
+],
+"Lecce": [
+"Italy"
+],
+"Latina": [
+"Italy"
+],
+"Foggia": [
+"Italy"
+],
+"Barletta": [
+"Italy"
+],
+"Andria": [
+"Italy"
+],
+"Taranto": [
+"Italy"
+],
+"Sassari": [
+"Italy"
+],
+"Le Tampon": [
+"France"
+],
+"Messina": [
+"Italy"
+],
+"Syracuse": [
+"Italy",
+"United States"
+],
+"Agrigento": [
+"Italy"
+],
+"Terrassa": [
+"Spain"
+],
+"Huechuraba": [
+"Chile"
+],
+"Castell\u00f3n de la Plana": [
+"Spain"
+],
+"Badajoz": [
+"Spain"
+],
+"Segovia": [
+"Spain"
+],
+"\u00c1vila": [
+"Spain"
+],
+"Maldonado": [
+"Uruguay"
+],
+"Nanaimo": [
+"Canada"
+],
+"Busan": [
+"South Korea"
+],
+"Krymsk": [
+"Russia"
+],
+"Ballarat": [
+"Australia"
+],
+"Pyongyang": [
+"North Korea"
+],
+"Simferopol": [
+"Russia",
+"Ukraine"
+],
+"Lysychansk": [
+"Ukraine"
+],
+"Berdiansk": [
+"Ukraine"
+],
+"Bila Tserkva": [
+"Ukraine"
+],
+"Yevpatoriya": [
+"Russia",
+"Ukraine"
+],
+"Sloviansk": [
+"Ukraine"
+],
+"Kramatorsk": [
+"Ukraine"
+],
+"Lviv": [
+"Ukraine"
+],
+"Mariupol": [
+"Ukraine"
+],
+"Mykolaiv": [
+"Ukraine"
+],
+"Kharkiv": [
+"Ukraine"
+],
+"Myrnohrad": [
+"Soviet Union",
+"Ukraine"
+],
+"Irpin": [
+"Ukraine"
+],
+"Yalta": [
+"Russia",
+"Ukraine"
+],
+"Luhansk": [
+"Ukraine"
+],
+"Eilat": [
+"Israel"
+],
+"Kalush": [
+"Ukraine"
+],
+"Vienna": [
+"Austria"
+],
+"Santiago": [
+"Chile",
+"Philippines"
+],
+"Sydney": [
+"Australia"
+],
+"Tehran": [
+"Iran"
+],
+"Jakarta": [
+"Indonesia"
+],
+"Hong Kong": [
+"People's Republic of China"
+],
+"Shanghai": [
+"People's Republic of China"
+],
+"Guadalajara": [
+"Mexico"
+],
+"Graz": [
+"Austria"
+],
+"Manchester": [
+"United Kingdom",
+"United States"
+],
+"Molfetta": [
+"Italy"
+],
+"San Pedro de la Paz": [
+"Chile"
+],
+"Tirana": [
+"Albania"
+],
+"Daejeon": [
+"South Korea"
+],
+"Daegu": [
+"South Korea"
+],
+"Incheon": [
+"South Korea"
+],
+"Silkeborg": [
+"Denmark"
+],
+"Chi\u0219in\u0103u": [
+"Moldova"
+],
+"Bath": [
+"United Kingdom"
+],
+"San Rafael": [
+"Argentina",
+"United States"
+],
+"Swansea": [
+"United Kingdom"
+],
+"Bristol": [
+"United Kingdom",
+"United States"
+],
+"Ulaanbaatar": [
+"Mongolia"
+],
+"Edinburgh": [
+"United Kingdom"
+],
+"M\u00e9rida": [
+"Mexico",
+"Venezuela"
+],
+"Podgorica": [
+"Montenegro"
+],
+"Liverpool": [
+"United Kingdom"
+],
+"Pristina": [
+"Kosovo",
+"Serbia"
+],
+"Da Nang": [
+"Vietnam"
+],
+"Uppsala": [
+"Sweden"
+],
+"Leeuwarden": [
+"Netherlands"
+],
+"Ko\u0161ice": [
+"Slovakia"
+],
+"Batumi": [
+"Georgia"
+],
+"\u017dilina": [
+"Slovakia"
+],
+"Trondheim": [
+"Norway"
+],
+"Bor\u00e5s": [
+"Sweden"
+],
+"Pre\u0161ov": [
+"Slovakia"
+],
+"Nabatieh": [
+"Lebanon"
+],
+"Jounieh": [
+"Lebanon"
+],
+"Trnava": [
+"Slovakia"
+],
+"Esbjerg": [
+"Denmark"
+],
+"Nitra": [
+"Slovakia"
+],
+"Hakodate": [
+"Japan"
+],
+"Dordrecht": [
+"Netherlands"
+],
+"Zoetermeer": [
+"Netherlands"
+],
+"Halmstad": [
+"Sweden"
+],
+"Roskilde": [
+"Denmark"
+],
+"Zahl\u00e9": [
+"Lebanon"
+],
+"Bergen": [
+"Norway"
+],
+"Ciudad Bol\u00edvar": [
+"Venezuela"
+],
+"Martin": [
+"Slovakia"
+],
+"Johannesburg": [
+"South Africa"
+],
+"Salzburg": [
+"Austria"
+],
+"Auckland": [
+"New Zealand"
+],
+"Gwangju": [
+"South Korea"
+],
+"Linz": [
+"Austria"
+],
+"Klagenfurt am W\u00f6rthersee": [
+"Austria"
+],
+"Isfahan": [
+"Iran"
+],
+"Floridablanca": [
+"Philippines"
+],
+"Porac": [
+"Philippines"
+],
+"Bamban": [
+"Philippines"
+],
+"Capas": [
+"Philippines"
+],
+"Xiamen": [
+"People's Republic of China"
+],
+"Dalian": [
+"People's Republic of China"
+],
+"St. P\u00f6lten": [
+"Austria"
+],
+"Changchun": [
+"People's Republic of China"
+],
+"Kryvyi Rih": [
+"Ukraine"
+],
+"Jinan": [
+"People's Republic of China"
+],
+"Wels": [
+"Austria"
+],
+"Kumamoto": [
+"Japan"
+],
+"Yokosuka": [
+"Japan"
+],
+"Kure": [
+"Japan"
+],
+"Padua": [
+"Italy"
+],
+"Hamburg": [
+"Germany"
+],
+"Ottawa": [
+"Canada"
+],
+"Birmingham": [
+"United Kingdom",
+"United States"
+],
+"Mogadishu": [
+"Somalia"
+],
+"Nassau": [
+"The Bahamas"
+],
+"Sanaa": [
+"Yemen"
+],
+"Naples": [
+"Italy"
+],
+"Palermo": [
+"Italy"
+],
+"Parma": [
+"Italy",
+"United States"
+],
+"Pescara": [
+"Italy"
+],
+"Siena": [
+"Italy"
+],
+"Udine": [
+"Italy"
+],
+"Bras\u00edlia": [
+"Brazil"
+],
+"Lima": [
+"Peru"
+],
+"Sucre": [
+"Bolivia"
+],
+"Asunci\u00f3n": [
+"Paraguay"
+],
+"W\u00fcrzburg": [
+"Germany"
+],
+"Paramaribo": [
+"Suriname"
+],
+"Ulm": [
+"Germany"
+],
+"Kathmandu": [
+"Nepal"
+],
+"San Jos\u00e9": [
+"Costa Rica"
+],
+"Canberra": [
+"Australia"
+],
+"Trier": [
+"Germany"
+],
+"Melbourne": [
+"Australia"
+],
+"Perth": [
+"Australia"
+],
+"Cottbus": [
+"Germany"
+],
+"Panama City": [
+"Panama"
+],
+"Zadar": [
+"Croatia"
+],
+"Ancona": [
+"Italy"
+],
+"Perugia": [
+"Italy"
+],
+"L'Aquila": [
+"Italy"
+],
+"Bari": [
+"Italy"
+],
+"Addis Ababa": [
+"Ethiopia"
+],
+"Zwickau": [
+"Germany"
+],
+"Abuja": [
+"Nigeria"
+],
+"Moroni": [
+"Comoros"
+],
+"Plauen": [
+"Germany"
+],
+"G\u00f6rlitz": [
+"Germany"
+],
+"Neu-Ulm": [
+"Germany"
+],
+"Babylon": [
+"Achaemenid Empire",
+"Ancient Rome",
+"Babylonia",
+"Iraq",
+"Macedonia",
+"Neo-Assyrian Empire",
+"Neo-Babylonian Empire",
+"Parthian Empire",
+"Rashidun Caliphate",
+"Sasanian Empire",
+"Seleucid Empire"
+],
+"Cremona": [
+"Italy"
+],
+"Ostrava": [
+"Czech Republic"
+],
+"Canton of Basel-Stadt": [
+"Switzerland"
+],
+"Tenochtitlan": [
+"Mexico"
+],
+"Macau": [
+"People's Republic of China"
+],
+"Brno": [
+"Czech Republic"
+],
+"\u010cesk\u00e9 Bud\u011bjovice": [
+"Czech Republic"
+],
+"Pardubice": [
+"Czech Republic"
+],
+"Fr\u00fddek-M\u00edstek": [
+"Czech Republic"
+],
+"Olomouc": [
+"Czech Republic"
+],
+"Tyre": [
+"Lebanon"
+],
+"Teplice": [
+"Czech Republic"
+],
+"Liberec": [
+"Czech Republic"
+],
+"Most": [
+"Czech Republic"
+],
+"Kladno": [
+"Czech Republic"
+],
+"Opava": [
+"Czech Republic"
+],
+"\u00dast\u00ed nad Labem": [
+"Czech Republic"
+],
+"Zl\u00edn": [
+"Czech Republic"
+],
+"Hradec Kr\u00e1lov\u00e9": [
+"Czech Republic"
+],
+"Jihlava": [
+"Czech Republic"
+],
+"Hav\u00ed\u0159ov": [
+"Czech Republic"
+],
+"Hsinchu City": [
+"Taiwan"
+],
+"Chiayi City": [
+"Taiwan"
+],
+"Keelung": [
+"Taiwan"
+],
+"Free Territory of Trieste": [
+"Italy"
+],
+"Budapest": [
+"Hungary"
+],
+"Zhubei City": [
+"Taiwan"
+],
+"Szombathely": [
+"Hungary"
+],
+"P\u00e9cs": [
+"Hungary"
+],
+"Zalaegerszeg": [
+"Hungary"
+],
+"Konya": [
+"Turkey"
+],
+"Varanasi": [
+"India"
+],
+"Christchurch": [
+"New Zealand"
+],
+"Patna": [
+"India"
+],
+"Fez": [
+"Morocco"
+],
+"Bhopal": [
+"India"
+],
+"Monterrey": [
+"Mexico"
+],
+"Acapulco de Ju\u00e1rez": [
+"Mexico"
+],
+"Szeged": [
+"Hungary"
+],
+"Fort-de-France": [
+"France"
+],
+"Giza": [
+"Egypt"
+],
+"La Rochelle": [
+"France"
+],
+"Olsztyn": [
+"Poland"
+],
+"Van": [
+"Turkey"
+],
+"Leicester": [
+"United Kingdom"
+],
+"Almere": [
+"Netherlands"
+],
+"Goi\u00e2nia": [
+"Brazil"
+],
+"Durr\u00ebs": [
+"Albania"
+],
+"Mosul": [
+"Iraq"
+],
+"Diyarbak\u0131r": [
+"Turkey"
+],
+"Shimla": [
+"India"
+],
+"Opole": [
+"Poland"
+],
+"Rawalpindi": [
+"Pakistan"
+],
+"Gaziantep": [
+"Turkey"
+],
+"Ibb": [
+"Yemen"
+],
+"Cluj-Napoca": [
+"Romania"
+],
+"Newport": [
+"United Kingdom"
+],
+"Lobamba": [
+"Eswatini"
+],
+"Kielce": [
+"Poland"
+],
+"Bytom": [
+"Poland"
+],
+"Miskolc": [
+"Hungary"
+],
+"Rovaniemi": [
+"Finland"
+],
+"Zabrze": [
+"Poland"
+],
+"Chorz\u00f3w": [
+"Poland"
+],
+"Elbl\u0105g": [
+"Poland"
+],
+"P\u0142ock": [
+"Poland"
+],
+"Gorz\u00f3w Wielkopolski": [
+"Poland"
+],
+"Radom": [
+"Poland"
+],
+"Callao": [
+"Peru"
+],
+"S\u0142upsk": [
+"Poland"
+],
+"Sosnowiec": [
+"Poland"
+],
+"Gliwice": [
+"Poland"
+],
+"Tartagal": [
+"Argentina"
+],
+"Stargard": [
+"Poland"
+],
+"Legnica": [
+"Poland"
+],
+"Bielsko-Bia\u0142a": [
+"Poland"
+],
+"Rybnik": [
+"Poland"
+],
+"Jastrz\u0119bie-Zdr\u00f3j": [
+"Poland"
+],
+"Sivas": [
+"Turkey"
+],
+"Kunduz": [
+"Afghanistan"
+],
+"Belize City": [
+"Belize"
+],
+"D\u0105browa G\u00f3rnicza": [
+"Poland"
+],
+"Ruda \u015al\u0105ska": [
+"Poland"
+],
+"Nampo": [
+"North Korea"
+],
+"Matola": [
+"Mozambique"
+],
+"Mwanza": [
+"Tanzania"
+],
+"Wa\u0142brzych": [
+"Poland"
+],
+"Peja": [
+"Kosovo",
+"Serbia"
+],
+"Jamshoro": [
+"Pakistan"
+],
+"Chatham-Kent": [
+"Canada"
+],
+"Elbasan": [
+"Albania"
+],
+"Artemisa": [
+"Cuba"
+],
+"Taoyuan": [
+"Taiwan"
+],
+"Sumbawanga": [
+"Tanzania"
+],
+"Bayamo": [
+"Cuba"
+],
+"Manzanillo": [
+"Cuba"
+],
+"Ciego de \u00c1vila": [
+"Cuba"
+],
+"Changhua City": [
+"Taiwan"
+],
+"Douliou City": [
+"Taiwan"
+],
+"Yilan City": [
+"Taiwan"
+],
+"Magong City": [
+"Taiwan"
+],
+"Miaoli City": [
+"Taiwan"
+],
+"Edessa": [
+"Turkey"
+],
+"Kaunas": [
+"Lithuania"
+],
+"Cairo": [
+"Egypt"
+],
+"Paris": [
+"France"
+],
+"Rome": [
+"Italy"
+],
+"Montreal": [
+"Canada"
+],
+"Cologne": [
+"Germany"
+],
+"Sofia": [
+"Bulgaria"
+],
+"Saint Petersburg": [
+"Russia"
+],
+"Chicago": [
+"United States"
+],
+"Kolkata": [
+"India"
+],
+"Delhi": [
+"India"
+],
+"Dhaka": [
+"Bangladesh"
+],
+"Manila": [
+"Philippines"
+],
+"Tokyo": [
+"Japan"
+],
+"La Paz": [
+"Bolivia"
+],
+"Athens": [
+"Greece",
+"United States"
+],
+"Munich": [
+"Germany"
+],
+"Potenza": [
+"Italy"
+],
+"Rabat": [
+"Morocco"
+],
+"Algiers": [
+"Algeria"
+],
+"Tripoli": [
+"Italian Libya",
+"Italian Tripolitania",
+"Lebanon",
+"Libya"
+],
+"Djibouti": [
+"Djibouti"
+],
+"Ankara": [
+"Turkey"
+],
+"Asmara": [
+"Eritrea"
+],
+"Buin": [
+"Chile"
+],
+"N'Djamena": [
+"Chad"
+],
+"Niamey": [
+"Niger"
+],
+"Nouakchott": [
+"Mauritania"
+],
+"Bamako": [
+"Mali"
+],
+"Belgrade": [
+"Serbia"
+],
+"La Calera": [
+"Chile"
+],
+"Conakry": [
+"Guinea"
+],
+"Bissau": [
+"Guinea-Bissau"
+],
+"Monrovia": [
+"Liberia"
+],
+"Praia": [
+"Cape Verde"
+],
+"Maykop": [
+"Russia"
+],
+"Accra": [
+"Ghana"
+],
+"Chiguayante": [
+"Chile"
+],
+"Damascus": [
+"Syria"
+],
+"G\u00fctersloh": [
+"Germany"
+],
+"Freetown": [
+"Sierra Leone"
+],
+"Esslingen am Neckar": [
+"Germany"
+],
+"Lom\u00e9": [
+"Togo"
+],
+"Porto-Novo": [
+"Benin"
+],
+"Amman": [
+"Jordan"
+],
+"Yaound\u00e9": [
+"Cameroon"
+],
+"Malabo": [
+"Equatorial Guinea"
+],
+"Libreville": [
+"Gabon"
+],
+"Bangui": [
+"Central African Republic"
+],
+"Colina": [
+"Chile"
+],
+"Brazzaville": [
+"Republic of the Congo"
+],
+"Bujumbura": [
+"Burundi"
+],
+"Coronel": [
+"Chile"
+],
+"Lilongwe": [
+"Malawi"
+],
+"Lusaka": [
+"Zambia"
+],
+"Manama": [
+"Bahrain"
+],
+"Catanzaro": [
+"Italy"
+],
+"Maputo": [
+"Mozambique"
+],
+"Kampala": [
+"Uganda"
+],
+"Luanda": [
+"Angola"
+],
+"Mbabane": [
+"Eswatini"
+],
+"Maseru": [
+"Lesotho"
+],
+"Gaborone": [
+"Botswana"
+],
+"Harare": [
+"Zimbabwe"
+],
+"Detmold": [
+"Germany"
+],
+"Norderstedt": [
+"Germany"
+],
+"Port Louis": [
+"Mauritius"
+],
+"S\u00e3o Tom\u00e9": [
+"S\u00e3o Tom\u00e9 and Pr\u00edncipe"
+],
+"Santiago de Cuba": [
+"Cuba"
+],
+"Yurimaguas": [
+"Peru"
+],
+"Mu\u015f": [
+"Turkey"
+],
+"Jhelum": [
+"Pakistan"
+],
+"Lubango": [
+"Angola"
+],
+"Erzurum": [
+"Turkey"
+],
+"Grudzi\u0105dz": [
+"Kingdom of Poland",
+"Poland"
+],
+"Dundee": [
+"United Kingdom"
+],
+"Tijuana": [
+"Mexico"
+],
+"Vaasa": [
+"Finland"
+],
+"Gqeberha": [
+"South Africa"
+],
+"Vinto": [
+"Bolivia"
+],
+"Tangier": [
+"Morocco"
+],
+"Wolverhampton": [
+"United Kingdom"
+],
+"St. Catharines": [
+"Canada"
+],
+"Antibes": [
+"France"
+],
+"Kars": [
+"Turkey"
+],
+"Vantaa": [
+"Finland"
+],
+"Kingston upon Hull": [
+"Kingdom of England",
+"United Kingdom"
+],
+"Carrollton": [
+"United States"
+],
+"Galway": [
+"Ireland"
+],
+"\u0130zmit": [
+"Turkey"
+],
+"Norwich": [
+"United Kingdom"
+],
+"Sz\u00e9kesfeh\u00e9rv\u00e1r": [
+"Hungary"
+],
+"Mazar-i-Sharif": [
+"Afghanistan"
+],
+"Luxor": [
+"Egypt"
+],
+"Banja Luka": [
+"Bosnia and Herzegovina"
+],
+"South Tarawa": [
+"Kiribati"
+],
+"Misrata": [
+"Libya"
+],
+"\u015e\u0131rnak": [
+"Turkey"
+],
+"Shkod\u00ebr": [
+"Albania"
+],
+"Aden": [
+"Yemen"
+],
+"Oran": [
+"Algeria"
+],
+"Kulob": [
+"Tajikistan"
+],
+"Saint-Marc": [
+"Haiti"
+],
+"Pau": [
+"France"
+],
+"Willemstad": [
+"Cura\u00e7ao"
+],
+"Erbil": [
+"Iraq"
+],
+"Dunedin": [
+"New Zealand"
+],
+"Hamilton": [
+"Canada",
+"New Zealand",
+"United States"
+],
+"\u015eanl\u0131urfa": [
+"Turkey"
+],
+"Patras": [
+"Greece"
+],
+"Limerick": [
+"Ireland"
+],
+"Tarsus": [
+"Turkey"
+],
+"Mersin": [
+"Turkey"
+],
+"Gy\u0151r": [
+"Hungary"
+],
+"Port Said": [
+"Egypt"
+],
+"Suez": [
+"Egypt"
+],
+"Jyv\u00e4skyl\u00e4": [
+"Finland"
+],
+"Exeter": [
+"United Kingdom"
+],
+"Kahramanmara\u015f": [
+"Turkey"
+],
+"\u0160iauliai": [
+"Lithuania"
+],
+"Stoke-on-Trent": [
+"United Kingdom"
+],
+"Santa Elena": [
+"Ecuador"
+],
+"Veszpr\u00e9m": [
+"Hungary"
+],
+"Ny\u00edregyh\u00e1za": [
+"Hungary"
+],
+"Kecskem\u00e9t": [
+"Hungary"
+],
+"B\u00e9k\u00e9scsaba": [
+"Hungary"
+],
+"Szolnok": [
+"Hungary"
+],
+"Kaposv\u00e1r": [
+"Hungary"
+],
+"Maastricht": [
+"Netherlands"
+],
+"Calais": [
+"France"
+],
+"Zhangzhou": [
+"People's Republic of China"
+],
+"Longyan": [
+"People's Republic of China"
+],
+"Ningde": [
+"People's Republic of China"
+],
+"Xining": [
+"People's Republic of China"
+],
+"Huangshi": [
+"People's Republic of China"
+],
+"Shiyan": [
+"People's Republic of China"
+],
+"Jingzhou": [
+"People's Republic of China"
+],
+"Yichang": [
+"People's Republic of China"
+],
+"Xiangyang": [
+"People's Republic of China"
+],
+"Ezhou": [
+"People's Republic of China"
+],
+"Torrent": [
+"Spain"
+],
+"Chystiakove": [
+"Soviet Union",
+"Ukraine"
+],
+"Kuopio": [
+"Finland"
+],
+"Prayagraj": [
+"India"
+],
+"Oskemen": [
+"Kazakhstan"
+],
+"Tiruvannamalai": [
+"India"
+],
+"Kongoussi": [
+"Burkina Faso"
+],
+"Charallave": [
+"Venezuela"
+],
+"Sidon": [
+"Lebanon"
+],
+"Derry": [
+"United Kingdom"
+],
+"Thrissur": [
+"India"
+],
+"Coslada": [
+"Spain"
+],
+"Chamb\u00e9ry": [
+"France"
+],
+"Tikrit": [
+"Iraq"
+],
+"Modi'in-Maccabim-Re'ut": [
+"Israel"
+],
+"Malatya": [
+"Turkey"
+],
+"Afyonkarahisar": [
+"Turkey"
+],
+"Gitega": [
+"Burundi"
+],
+"Rahat": [
+"Israel"
+],
+"Thiruvananthapuram": [
+"India"
+],
+"Nahariya": [
+"Israel"
+],
+"Zakho": [
+"Iraq"
+],
+"Kalamata": [
+"Greece"
+],
+"San Crist\u00f3bal": [
+"Venezuela"
+],
+"Modi'in Illit": [
+"Israeli-occupied territories",
+"Palestine"
+],
+"Ness Ziona": [
+"Israel"
+],
+"Najaf": [
+"Iraq"
+],
+"Ad\u0131yaman": [
+"Turkey"
+],
+"Rosh HaAyin": [
+"Israel"
+],
+"Hebron": [
+"Palestine"
+],
+"Umm al-Fahm": [
+"Israel"
+],
+"Eski\u015fehir": [
+"Turkey"
+],
+"Moa": [
+"Cuba"
+],
+"Doboj": [
+"Bosnia and Herzegovina"
+],
+"Chester": [
+"United Kingdom"
+],
+"Mbombela": [
+"South Africa"
+],
+"Abbottabad": [
+"Pakistan"
+],
+"Ayd\u0131n": [
+"Turkey"
+],
+"Gloucester": [
+"United Kingdom"
+],
+"Nanterre": [
+"France"
+],
+"Agadir": [
+"Morocco"
+],
+"Amasya": [
+"Turkey"
+],
+"Chiba": [
+"Japan"
+],
+"Santa Cruz de la Sierra": [
+"Bolivia"
+],
+"Mogoditshane": [
+"Botswana"
+],
+"Molepolole": [
+"Botswana"
+],
+"Pattaya": [
+"Thailand"
+],
+"Shizuoka": [
+"Japan"
+],
+"Niigata": [
+"Japan"
+],
+"Hamamatsu": [
+"Japan"
+],
+"Kitaky\u016bsh\u016b": [
+"Japan"
+],
+"Sakai": [
+"Japan"
+],
+"Okayama": [
+"Japan"
+],
+"Sagamihara": [
+"Japan"
+],
+"Alphen aan den Rijn": [
+"Netherlands"
+],
+"Biskra": [
+"Algeria"
+],
+"Hualien City": [
+"Taiwan"
+],
+"Yuanlin City": [
+"Taiwan"
+],
+"Pingtung City": [
+"Taiwan"
+],
+"Taitung City": [
+"Taiwan"
+],
+"Toufen City": [
+"Taiwan"
+],
+"Nantou City": [
+"Taiwan"
+],
+"Pozna\u0144": [
+"Poland"
+],
+"Zwolle": [
+"Netherlands"
+],
+"Iserlohn": [
+"Germany"
+],
+"Ahlen": [
+"Germany"
+],
+"Dortmund": [
+"Germany"
+],
+"Kiel": [
+"Germany"
+],
+"Erfurt": [
+"Germany"
+],
+"Tallinn": [
+"Estonia"
+],
+"Riga": [
+"Latvia"
+],
+"Gda\u0144sk": [
+"Poland"
+],
+"Essen": [
+"Germany"
+],
+"Duisburg": [
+"Germany"
+],
+"Bochum": [
+"Germany"
+],
+"Bielefeld": [
+"Germany"
+],
+"Yokohama": [
+"Japan"
+],
+"Gela": [
+"Italy"
+],
+"Rhodes": [
+"Greece"
+],
+"Osh": [
+"Kyrgyzstan"
+],
+"Gaza City": [
+"Palestine"
+],
+"Salford": [
+"United Kingdom"
+],
+"Medell\u00edn": [
+"Colombia"
+],
+"Carlos Paz": [
+"Argentina"
+],
+"Kayseri": [
+"Turkey"
+],
+"Recife": [
+"Brazil"
+],
+"Stamford": [
+"United States"
+],
+"Newton": [
+"United States"
+],
+"Rochester": [
+"United States"
+],
+"Imola": [
+"Italy"
+],
+"Mississauga": [
+"Canada"
+],
+"Pe\u00f1aflor": [
+"Chile"
+],
+"Cali": [
+"Colombia"
+],
+"Pereira": [
+"Colombia"
+],
+"Gniezno": [
+"Poland"
+],
+"Puente Alto": [
+"Chile"
+],
+"Concordia": [
+"Argentina"
+],
+"Gualeguaych\u00fa": [
+"Argentina"
+],
+"Ksar el-Kebir": [
+"Morocco"
+],
+"Kalisz": [
+"Poland"
+],
+"Konin": [
+"Duchy of Warsaw",
+"Kingdom of Poland",
+"Poland"
+],
+"Leszno": [
+"Poland"
+],
+"Faenza": [
+"Italy"
+],
+"Richmond Hill": [
+"Canada"
+],
+"Saitama": [
+"Japan"
+],
+"Feodosiia": [
+"Ukraine"
+],
+"Chios": [
+"Greece"
+],
+"Kawasaki": [
+"Japan"
+],
+"Larissa": [
+"Greece"
+],
+"Otsu": [
+"Japan"
+],
+"Bellevue": [
+"United States"
+],
+"Elis": [
+"Greece"
+],
+"Okazaki": [
+"Japan"
+],
+"New Taipei City": [
+"Taiwan"
+],
+"Fujisawa": [
+"Japan"
+],
+"encampment of Al Marj": [
+"Libya"
+],
+"Matsubara": [
+"Japan"
+],
+"Rubizhne": [
+"Ukraine"
+],
+"Pokrovsk": [
+"Ukraine"
+],
+"Temirtau": [
+"Kazakhstan"
+],
+"Khartsyzk": [
+"Russian Empire",
+"Soviet Union",
+"Ukraine"
+],
+"Pervomaisk": [
+"Ukraine"
+],
+"Istanbul": [
+"Turkey"
+],
+"Moscow": [
+"Russia"
+],
+"Hyderabad": [
+"India",
+"Pakistan"
+],
+"Kinshasa": [
+"Democratic Republic of the Congo"
+],
+"Karachi": [
+"Pakistan"
+],
+"Lagos": [
+"Nigeria"
+],
+"Rio de Janeiro": [
+"Brazil"
+],
+"Seoul": [
+"South Korea"
+],
+"Chongqing": [
+"People's Republic of China"
+],
+"Nagoya": [
+"Japan"
+],
+"Metro Manila": [
+"Philippines"
+],
+"Osaka": [
+"Japan"
+],
+"Greater Mexico City": [
+"Mexico"
+],
+"New York metropolitan area": [
+"United States"
+],
+"Greater Buenos Aires": [
+"Argentina"
+],
+"Greater Rio de Janeiro": [
+"Brazil"
+],
+"Muara Enim": [
+"Indonesia"
+],
+"Sekayu": [
+"Indonesia"
+],
+"Baturaja": [
+"Indonesia"
+],
+"Banyuwangi": [
+"Indonesia"
+],
+"Bondowoso": [
+"Indonesia"
+],
+"Kepanjen": [
+"Indonesia"
+],
+"Gunungsitoli": [
+"Indonesia"
+],
+"Tual": [
+"Indonesia"
+],
+"Soreang": [
+"Indonesia"
+],
+"Central Cikarang": [
+"Indonesia"
+],
+"Cibinong": [
+"Indonesia"
+],
+"Cianjur": [
+"Indonesia"
+],
+"Purwokerto": [
+"Indonesia"
+],
+"Sintang": [
+"Indonesia"
+],
+"Indramayu": [
+"Indonesia"
+],
+"Manokwari": [
+"Indonesia"
+],
+"Meulaboh": [
+"Indonesia"
+],
+"Mamuju": [
+"Indonesia"
+],
+"Purwakarta": [
+"Indonesia"
+],
+"Talang Ubi": [
+"Indonesia"
+],
+"Ngamprah": [
+"Indonesia"
+],
+"Bengkalis City": [
+"Indonesia"
+],
+"Ketapang": [
+"Indonesia"
+],
+"Blora": [
+"Indonesia"
+],
+"Saumlaki": [
+"Indonesia"
+],
+"Tigaraksa": [
+"Indonesia"
+],
+"Brebes": [
+"Indonesia"
+],
+"Kebumen": [
+"Indonesia"
+],
+"Arica": [
+"Chile"
+],
+"Malm\u00f6": [
+"Sweden"
+],
+"Sidoarjo": [
+"Indonesia"
+],
+"Kupang": [
+"Indonesia"
+],
+"Kota Semarang": [
+"Indonesia"
+],
+"Chornomorsk": [
+"Ukraine"
+],
+"Villach": [
+"Austria"
+],
+"Pekalongan": [
+"Indonesia"
+],
+"Kota Probolinggo": [
+"Indonesia"
+],
+"Palu": [
+"Indonesia"
+],
+"Kota Pasuruan": [
+"Indonesia"
+],
+"Kota Mojokerto": [
+"Indonesia"
+],
+"Kota Madiun": [
+"Indonesia"
+],
+"Kota Magelang": [
+"Indonesia"
+],
+"Kota Malang": [
+"Indonesia"
+],
+"Sangatta": [
+"Indonesia"
+],
+"T\u00f8nsberg": [
+"Norway"
+],
+"Windhoek": [
+"Namibia"
+],
+"Tatab\u00e1nya": [
+"Hungary"
+],
+"\u00c9rd": [
+"Hungary"
+],
+"Haarlem": [
+"Netherlands"
+],
+"Purmerend": [
+"Netherlands"
+],
+"Hengelo": [
+"Netherlands"
+],
+"Mysore": [
+"India"
+],
+"T\u00e9bessa": [
+"Algeria"
+],
+"Yenakiieve": [
+"Russian Empire",
+"Soviet Union",
+"Ukraine"
+],
+"Shorouk city": [
+"Egypt"
+],
+"\u00c1vila City": [
+"Spain"
+],
+"Jingmen": [
+"People's Republic of China"
+],
+"Xiaogan": [
+"People's Republic of China"
+],
+"Huanggang": [
+"People's Republic of China"
+],
+"Xianning": [
+"People's Republic of China"
+],
+"Suizhou": [
+"People's Republic of China"
+],
+"Taiyuan": [
+"People's Republic of China"
+],
+"Datong": [
+"People's Republic of China"
+],
+"Yangquan": [
+"People's Republic of China"
+],
+"Changzhi": [
+"People's Republic of China"
+],
+"Jincheng": [
+"People's Republic of China"
+],
+"Shuozhou": [
+"People's Republic of China"
+],
+"Jinzhong": [
+"People's Republic of China"
+],
+"Yuncheng": [
+"People's Republic of China"
+],
+"Xinzhou": [
+"People's Republic of China"
+],
+"Linfen": [
+"People's Republic of China"
+],
+"L\u00fcliang": [
+"People's Republic of China"
+],
+"Anshan": [
+"People's Republic of China"
+],
+"Fushun": [
+"People's Republic of China"
+],
+"Benxi": [
+"People's Republic of China"
+],
+"Dandong": [
+"People's Republic of China"
+],
+"Yingkou": [
+"People's Republic of China"
+],
+"Liaoyang": [
+"People's Republic of China"
+],
+"Panjin": [
+"People's Republic of China"
+],
+"Tieling": [
+"People's Republic of China"
+],
+"Chaoyang": [
+"People's Republic of China"
+],
+"Huludao": [
+"People's Republic of China"
+],
+"Jilin City": [
+"People's Republic of China"
+],
+"Siping": [
+"People's Republic of China"
+],
+"Liaoyuan": [
+"People's Republic of China"
+],
+"Tonghua": [
+"People's Republic of China"
+],
+"Baishan": [
+"People's Republic of China"
+],
+"Songyuan": [
+"People's Republic of China"
+],
+"Baicheng": [
+"People's Republic of China"
+],
+"Chuzhou": [
+"People's Republic of China"
+],
+"Weinan": [
+"People's Republic of China"
+],
+"Hengyang": [
+"People's Republic of China",
+"Qing dynasty"
+],
+"Zaozhuang": [
+"People's Republic of China"
+],
+"Yueyang": [
+"People's Republic of China"
+],
+"Dezhou": [
+"People's Republic of China"
+],
+"Nanchang": [
+"People's Republic of China"
+],
+"Changsha": [
+"People's Republic of China"
+],
+"Bazhong": [
+"People's Republic of China"
+],
+"Nanning": [
+"People's Republic of China"
+],
+"Huangshan": [
+"People's Republic of China"
+],
+"Kunming": [
+"People's Republic of China"
+],
+"Lanzhou": [
+"People's Republic of China"
+],
+"Hefei": [
+"People's Republic of China"
+],
+"Dingxi": [
+"People's Republic of China"
+],
+"Luoyang": [
+"People's Republic of China"
+],
+"Guilin": [
+"People's Republic of China"
+],
+"Haikou": [
+"People's Republic of China"
+],
+"Guiyang": [
+"People's Republic of China"
+],
+"Shaoyang": [
+"People's Republic of China"
+],
+"Zhangjiajie": [
+"People's Republic of China"
+],
+"Zhangye": [
+"People's Republic of China"
+],
+"Zhaotong": [
+"People's Republic of China"
+],
+"Zhongwei": [
+"People's Republic of China"
+],
+"Frankfurt": [
+"Germany"
+],
+"Madrid": [
+"Spain"
+],
+"Krasnodar": [
+"Russia"
+],
+"Neubrandenburg": [
+"Germany"
+],
+"Li\u00e8ge": [
+"Belgium"
+],
+"Offenburg": [
+"Germany"
+],
+"Fujairah": [
+"United Arab Emirates"
+],
+"Glasgow": [
+"United Kingdom"
+],
+"Bad Salzuflen": [
+"Germany"
+],
+"Pulheim": [
+"Germany"
+],
+"Nordhorn": [
+"Germany"
+],
+"Arusha": [
+"Tanzania"
+],
+"Farrukhabad": [
+"India"
+],
+"Surat": [
+"India"
+],
+"Barquisimeto": [
+"Venezuela"
+],
+"Col\u00f3n": [
+"Cuba"
+],
+"Sagua La Grande": [
+"Cuba"
+],
+"Adelaide": [
+"Australia"
+],
+"Makhachkala": [
+"Russia"
+],
+"Stellenbosch": [
+"South Africa"
+],
+"Durban": [
+"South Africa"
+],
+"Treviso": [
+"Italy"
+],
+"Anuradhapura": [
+"Sri Lanka"
+],
+"Bukhara": [
+"Uzbekistan"
+],
+"Kabul": [
+"Afghanistan"
+],
+"Cuneo": [
+"Italy"
+],
+"Novara": [
+"Italy"
+],
+"Kemerovo": [
+"Russia"
+],
+"Alessandria": [
+"Italy"
+],
+"Asti": [
+"Italy"
+],
+"Sein\u00e4joki": [
+"Finland"
+],
+"Coventry": [
+"United Kingdom"
+],
+"St Albans": [
+"United Kingdom"
+],
+"Monza": [
+"Italy"
+],
+"Varese": [
+"Italy"
+],
+"Avignon": [
+"France"
+],
+"Antalya": [
+"Turkey"
+],
+"Vicenza": [
+"Italy"
+],
+"Irkutsk": [
+"Russia"
+],
+"Poitiers": [
+"France"
+],
+"Lalitpur": [
+"Nepal"
+],
+"Cesena": [
+"Italy"
+],
+"Crotone": [
+"Italy"
+],
+"Castellammare di Stabia": [
+"Italy"
+],
+"L\u00f6rrach": [
+"Germany"
+],
+"Lugano": [
+"Switzerland"
+],
+"Gatchina": [
+"Russia"
+],
+"Casablanca": [
+"Morocco"
+],
+"Terni": [
+"Italy"
+],
+"Palma": [
+"Spain"
+],
+"M\u00e1laga": [
+"Spain"
+],
+"Cancun": [
+"Mexico"
+],
+"Thimphu": [
+"Bhutan"
+],
+"Mal\u00e9": [
+"Maldives"
+],
+"Dushanbe": [
+"Tajikistan"
+],
+"Erode": [
+"India"
+],
+"Helmond": [
+"Netherlands"
+],
+"Salem": [
+"India",
+"United States"
+],
+"Coimbatore": [
+"India"
+],
+"Amritsar": [
+"India"
+],
+"East Berlin": [
+"German Democratic Republic"
+],
+"Zapopan": [
+"Mexico"
+],
+"Tlaquepaque": [
+"Mexico"
+],
+"Visakhapatnam": [
+"India"
+],
+"Ludhiana": [
+"India"
+],
+"Bordeaux M\u00e9tropole": [
+"France"
+],
+"Tonal\u00e1": [
+"Mexico"
+],
+"Katowice urban area": [
+"Poland"
+],
+"Metropolis of Lyon": [
+"France"
+],
+"Madrid city": [
+"Spain"
+],
+"Vejle": [
+"Denmark"
+],
+"Kolding": [
+"Denmark"
+],
+"K\u00f6rfez": [
+"Turkey"
+],
+"G\u00f6lc\u00fck": [
+"Turkey"
+],
+"Randers": [
+"Denmark"
+],
+"Al Bahah": [
+"Saudi Arabia"
+],
+"Thatta": [
+"Pakistan"
+],
+"Herning": [
+"Denmark"
+],
+"Jizan": [
+"Saudi Arabia"
+],
+"Kozhikode": [
+"India"
+],
+"Lahti": [
+"Finland"
+],
+"Canterbury": [
+"United Kingdom"
+],
+"Aswan": [
+"Egypt"
+],
+"Asyut": [
+"Egypt"
+],
+"Lim\u00f3n": [
+"Costa Rica"
+],
+"Kadapa": [
+"India"
+],
+"Jalna": [
+"India"
+],
+"Jalgaon": [
+"India"
+],
+"El Alto": [
+"Bolivia"
+],
+"Shibin Al Kawm": [
+"Egypt"
+],
+"Jerash": [
+"Jordan"
+],
+"Ar Ramtha": [
+"Jordan"
+],
+"Hrazdan": [
+"Armenia"
+],
+"Invercargill": [
+"New Zealand"
+],
+"Jalandhar": [
+"India"
+],
+"Vinh": [
+"Vietnam"
+],
+"Tel Aviv": [
+"Israel"
+],
+"Sanremo": [
+"Italy"
+],
+"Roubaix": [
+"France"
+],
+"Sarnia": [
+"Canada"
+],
+"Thunder Bay": [
+"Canada"
+],
+"Brantford": [
+"Canada"
+],
+"Barrie": [
+"Canada"
+],
+"Oxford": [
+"United Kingdom"
+],
+"Burlington": [
+"Canada",
+"United States"
+],
+"Belleville": [
+"Canada"
+],
+"Rotterdam": [
+"Netherlands"
+],
+"Kingston": [
+"Canada",
+"Jamaica"
+],
+"Santo Domingo": [
+"Dominican Republic"
+],
+"Brisbane": [
+"Australia"
+],
+"Trinidad": [
+"Bolivia"
+],
+"Cobija": [
+"Bolivia"
+],
+"Tarija": [
+"Bolivia"
+],
+"Potos\u00ed": [
+"Bolivia"
+],
+"Kuwait City": [
+"Kuwait"
+],
+"Oruro": [
+"Bolivia"
+],
+"Colombo": [
+"Sri Lanka"
+],
+"Almaty": [
+"Kazakhstan"
+],
+"Al Bayda": [
+"Libya"
+],
+"Bridgetown": [
+"Barbados"
+],
+"Calgary": [
+"Canada"
+],
+"Hu\u1ebf": [
+"Vietnam"
+],
+"Aberdeen": [
+"United Kingdom"
+],
+"The Hague": [
+"Netherlands"
+],
+"Cork": [
+"Ireland"
+],
+"Munger": [
+"India"
+],
+"Lublin": [
+"Poland"
+],
+"Naypyidaw": [
+"Myanmar"
+],
+"Bloemfontein": [
+"South Africa"
+],
+"Yangon": [
+"British rule in Myanmar",
+"Myanmar"
+],
+"Angers": [
+"France"
+],
+"Turku": [
+"Finland"
+],
+"Adana": [
+"Turkey"
+],
+"Suva": [
+"Fiji"
+],
+"Nasiriyah": [
+"Iraq"
+],
+"Debrecen": [
+"Hungary"
+],
+"Izmail": [
+"Ukraine"
+],
+"Kherson": [
+"Ukraine"
+],
+"Sheptytskyi": [
+"Ukraine"
+],
+"Kerch": [
+"Russia",
+"Ukraine"
+],
+"Makiivka": [
+"Ukraine"
+],
+"Horlivka": [
+"Ukraine"
+],
+"Druzhkivka": [
+"Soviet Union",
+"Ukraine"
+],
+"Boryspil": [
+"Ukraine"
+],
+"Alchevsk": [
+"Ukraine"
+],
+"Konotop": [
+"Ukraine"
+],
+"Hanoi": [
+"Vietnam"
+],
+"D\u00fcren": [
+"Germany"
+],
+"Bergisch Gladbach": [
+"Germany"
+],
+"Moers": [
+"Germany"
+],
+"Siegen": [
+"Germany"
+],
+"Witten": [
+"Germany"
+],
+"Marl": [
+"Germany"
+],
+"Velbert": [
+"Germany"
+],
+"Castrop-Rauxel": [
+"Germany"
+],
+"Troisdorf": [
+"Germany"
+],
+"Viersen": [
+"Germany"
+],
+"Gladbeck": [
+"Germany"
+],
+"Celle": [
+"Germany"
+],
+"Kerpen": [
+"Germany"
+],
+"Grevenbroich": [
+"Germany"
+],
+"Dormagen": [
+"Germany"
+],
+"Herten": [
+"Germany"
+],
+"Bergheim": [
+"Germany"
+],
+"Lingen": [
+"Germany"
+],
+"Fukuoka": [
+"Japan"
+],
+"\u0110\u1ed3ng Nai": [
+"Vietnam"
+],
+"Kyoto": [
+"Japan"
+],
+"Hiroshima": [
+"Japan"
+],
+"Sapporo": [
+"Japan"
+],
+"Sendai": [
+"Japan"
+],
+"Kobe": [
+"Japan"
+],
+"Haiphong": [
+"Vietnam"
+],
+"Aregu\u00e1": [
+"Paraguay"
+],
+"Erzincan": [
+"Turkey"
+],
+"Sandakan": [
+"Malaysia"
+],
+"Kota Kinabalu": [
+"Malaysia"
+],
+"Kom Ombo": [
+"Egypt"
+],
+"Zabid": [
+"Yemen"
+],
+"Zacatecas": [
+"Mexico"
+],
+"Zacatecoluca": [
+"El Salvador"
+],
+"Gold Coast": [
+"Australia"
+],
+"Zagazig": [
+"Egypt"
+],
+"C\u1ea7n Th\u01a1": [
+"Vietnam"
+],
+"eThekwini Metropolitan Municipality": [
+"South Africa"
+],
+"City of Ekurhuleni Metropolitan Municipality": [
+"South Africa"
+],
+"Buffalo City Metropolitan Municipality": [
+"South Africa"
+],
+"City of Tshwane Metropolitan Municipality": [
+"South Africa"
+],
+"Mangaung Metropolitan Municipality": [
+"South Africa"
+],
+"City of Cape Town": [
+"South Africa"
+],
+"\u0130zmir": [
+"Turkey"
+],
+"Konya Province": [
+"Turkey"
+],
+"Kocaeli Province": [
+"Turkey"
+],
+"Manisa": [
+"Turkey"
+],
+"Samsun": [
+"Turkey"
+],
+"Denizli": [
+"Turkey"
+],
+"Ordu": [
+"Turkey"
+],
+"Mardin": [
+"Turkey"
+],
+"Ni\u011fde": [
+"Turkey"
+],
+"Irbid": [
+"Jordan"
+],
+"Karakol": [
+"Kyrgyzstan"
+],
+"Jaramana": [
+"Syria"
+],
+"Aktau": [
+"Kazakhstan"
+],
+"Gyumri": [
+"Armenia"
+],
+"A\u011fr\u0131": [
+"Turkey"
+],
+"\u00c7anakkale": [
+"Turkey"
+],
+"Bal\u0131kesir": [
+"Turkey"
+],
+"Karbala": [
+"Iraq"
+],
+"Jodhpur": [
+"India"
+],
+"Latakia": [
+"Syria"
+],
+"Volos": [
+"Greece"
+],
+"Ajmer": [
+"India"
+],
+"Prizren": [
+"Kosovo",
+"Serbia"
+],
+"Ujjain": [
+"India"
+],
+"Chalk\u00edda": [
+"Greece"
+],
+"Kitchener": [
+"Canada"
+],
+"Meerut": [
+"India"
+],
+"Aurangabad": [
+"India"
+],
+"Bikaner": [
+"India"
+],
+"Nik\u0161i\u0107": [
+"Montenegro"
+],
+"Aguascalientes City": [
+"Mexico"
+],
+"Jabalpur": [
+"India"
+],
+"Bolu": [
+"Turkey"
+],
+"Rishon LeZion": [
+"Israel"
+],
+"Giresun": [
+"Turkey"
+],
+"Rize": [
+"Turkey"
+],
+"Aligarh": [
+"India"
+],
+"H\u00e4meenlinna": [
+"Finland"
+],
+"Aba": [
+"Nigeria"
+],
+"Ziguinchor": [
+"Senegal"
+],
+"Kandy": [
+"Sri Lanka"
+],
+"Faiyum": [
+"Egypt"
+],
+"Umuahia": [
+"Nigeria"
+],
+"Phra Nakhon Si Ayutthaya": [
+"Thailand"
+],
+"Napier": [
+"New Zealand"
+],
+"Srivijayapuram": [
+"British Raj",
+"India"
+],
+"Southend-on-Sea": [
+"United Kingdom"
+],
+"Milton Keynes": [
+"United Kingdom"
+],
+"Toyama": [
+"Japan"
+],
+"San Luis Potos\u00ed": [
+"Mexico"
+],
+"Isparta": [
+"Turkey"
+],
+"Maracaibo": [
+"Venezuela"
+],
+"Ashdod": [
+"Israel"
+],
+"Bhubaneswar": [
+"India"
+],
+"Rafah": [
+"Palestine"
+],
+"Kutaisi": [
+"Georgia"
+],
+"Peterborough": [
+"Canada",
+"United Kingdom"
+],
+"Katni": [
+"India"
+],
+"\u02bfAmr\u0101n": [
+"Yemen"
+],
+"Santiago de Quer\u00e9taro": [
+"Mexico"
+],
+"Veracruz": [
+"Mexico"
+],
+"Kirkuk": [
+"Iraq"
+],
+"Hama": [
+"Syria"
+],
+"Ghazni": [
+"Afghanistan"
+],
+"Faisalabad": [
+"Pakistan"
+],
+"Colombes": [
+"France"
+],
+"B\u00e9ziers": [
+"France"
+],
+"Elaz\u0131\u011f": [
+"Turkey"
+],
+"Villa Canales": [
+"Guatemala"
+],
+"\u0130skenderun": [
+"Turkey"
+],
+"Tuzla": [
+"Bosnia and Herzegovina"
+],
+"Obninsk": [
+"Russia"
+],
+"Gabala": [
+"Syria"
+],
+"Derik district": [
+"Turkey"
+],
+"Toamasina": [
+"Madagascar"
+],
+"Mitrovica": [
+"Kosovo",
+"Serbia"
+],
+"Meknes": [
+"Morocco"
+],
+"Baalbek": [
+"Lebanon"
+],
+"Tucupita": [
+"Venezuela"
+],
+"City of Westminster": [
+"United Kingdom"
+],
+"Lincoln": [
+"United Kingdom",
+"United States"
+],
+"Ile Ife": [
+"Nigeria"
+],
+"Pori": [
+"Finland"
+],
+"Jaffa": [
+"Israel"
+],
+"Aqaba": [
+"Jordan"
+],
+"Molenbeek-Saint-Jean": [
+"Belgium"
+],
+"Omdurman": [
+"Sudan"
+],
+"Osmaniye": [
+"Turkey"
+],
+"Lappeenranta": [
+"Finland"
+],
+"Naha": [
+"Japan"
+],
+"Zhumadian": [
+"People's Republic of China"
+],
+"Zhuzhou": [
+"People's Republic of China"
+],
+"Zibo": [
+"People's Republic of China"
+],
+"Lijiang": [
+"People's Republic of China"
+],
+"Ziyang": [
+"People's Republic of China"
+],
+"Kaifeng": [
+"People's Republic of China"
+],
+"Beihai": [
+"People's Republic of China"
+],
+"Yantai": [
+"People's Republic of China"
+],
+"Yinchuan": [
+"People's Republic of China"
+],
+"Xiangtan": [
+"People's Republic of China"
+],
+"Jiujiang": [
+"People's Republic of China"
+],
+"Mudanjiang": [
+"People's Republic of China"
+],
+"Tai'an": [
+"People's Republic of China"
+],
+"Weifang": [
+"People's Republic of China"
+],
+"Wuwei": [
+"People's Republic of China"
+],
+"Yongzhou": [
+"People's Republic of China"
+],
+"Daqing": [
+"People's Republic of China"
+],
+"Sanya": [
+"People's Republic of China"
+],
+"Heze": [
+"People's Republic of China"
+],
+"Shuangyashan": [
+"People's Republic of China"
+],
+"Yichun": [
+"People's Republic of China"
+],
+"Hegang": [
+"People's Republic of China"
+],
+"Heihe": [
+"People's Republic of China"
+],
+"Suihua": [
+"People's Republic of China"
+],
+"Wuhu": [
+"People's Republic of China"
+],
+"Bengbu": [
+"People's Republic of China"
+],
+"Huainan": [
+"People's Republic of China"
+],
+"Ma'anshan": [
+"People's Republic of China"
+],
+"Huaibei": [
+"People's Republic of China"
+],
+"Tongling": [
+"People's Republic of China"
+],
+"Anqing": [
+"People's Republic of China"
+],
+"Lutsk": [
+"Ukraine"
+],
+"Kovel": [
+"Ukraine"
+],
+"Lu'an": [
+"People's Republic of China"
+],
+"Bozhou": [
+"People's Republic of China"
+],
+"Chizhou": [
+"People's Republic of China"
+],
+"Xuancheng": [
+"People's Republic of China"
+],
+"Pingxiang": [
+"People's Republic of China"
+],
+"Xinyu": [
+"People's Republic of China"
+],
+"Yingtan": [
+"People's Republic of China"
+],
+"Ganzhou": [
+"People's Republic of China"
+],
+"Ji'an": [
+"People's Republic of China"
+],
+"Shangrao": [
+"People's Republic of China"
+],
+"Dongying": [
+"People's Republic of China"
+],
+"Jining": [
+"People's Republic of China"
+],
+"Weihai": [
+"People's Republic of China"
+],
+"Rizhao": [
+"People's Republic of China"
+],
+"Linyi": [
+"People's Republic of China"
+],
+"Liaocheng": [
+"People's Republic of China"
+],
+"Binzhou": [
+"People's Republic of China"
+],
+"Pingdingshan": [
+"People's Republic of China"
+],
+"Hebi": [
+"People's Republic of China"
+],
+"Xinxiang": [
+"People's Republic of China"
+],
+"Jiaozuo": [
+"People's Republic of China"
+],
+"Puyang": [
+"People's Republic of China"
+],
+"Xuchang": [
+"People's Republic of China"
+],
+"Luohe": [
+"People's Republic of China"
+],
+"Sanmenxia": [
+"People's Republic of China"
+],
+"Nanyang": [
+"People's Republic of China"
+],
+"Shangqiu": [
+"People's Republic of China",
+"Song"
+],
+"Xinyang": [
+"People's Republic of China"
+],
+"Changde": [
+"People's Republic of China"
+],
+"Yiyang": [
+"People's Republic of China"
+],
+"Chenzhou": [
+"People's Republic of China"
+],
+"Huaihua": [
+"People's Republic of China"
+],
+"Loudi": [
+"People's Republic of China"
+],
+"Panzhihua": [
+"People's Republic of China"
+],
+"Luzhou": [
+"People's Republic of China"
+],
+"Deyang": [
+"People's Republic of China"
+],
+"Mianyang": [
+"People's Republic of China"
+],
+"Guangyuan": [
+"People's Republic of China"
+],
+"Suining": [
+"People's Republic of China"
+],
+"Neijiang": [
+"People's Republic of China"
+],
+"Leshan": [
+"People's Republic of China"
+],
+"Nanchong": [
+"People's Republic of China"
+],
+"Meishan": [
+"People's Republic of China"
+],
+"Yibin": [
+"People's Republic of China"
+],
+"Guang'an": [
+"People's Republic of China"
+],
+"Dazhou": [
+"People's Republic of China"
+],
+"Ya'an": [
+"People's Republic of China"
+],
+"Liupanshui": [
+"People's Republic of China"
+],
+"Anshun": [
+"People's Republic of China"
+],
+"Tongren": [
+"People's Republic of China"
+],
+"Bijie": [
+"People's Republic of China"
+],
+"Yuxi": [
+"People's Republic of China"
+],
+"Baoshan": [
+"People's Republic of China"
+],
+"Pu'er City": [
+"People's Republic of China"
+],
+"Lincang": [
+"People's Republic of China"
+],
+"Colchester": [
+"United Kingdom"
+],
+"Nouadhibou": [
+"Mauritania"
+],
+"Cholet": [
+"France"
+],
+"Siirt": [
+"Turkey"
+],
+"Tlemcen": [
+"Algeria"
+],
+"Guant\u00e1namo": [
+"Cuba"
+],
+"T\u00e9touan": [
+"Morocco"
+],
+"Baia Mare": [
+"Romania"
+],
+"Ceyhan": [
+"Turkey"
+],
+"Bundaberg": [
+"Australia"
+],
+"Multan": [
+"Pakistan"
+],
+"Mandalay": [
+"Myanmar"
+],
+"Ayodhya": [
+"India"
+],
+"Gangtok": [
+"India"
+],
+"Kufa": [
+"Iraq"
+],
+"Joensuu": [
+"Finland"
+],
+"Hurghada": [
+"Egypt"
+],
+"Constantine": [
+"Algeria"
+],
+"Kavala": [
+"Greece"
+],
+"Wollongong": [
+"Australia"
+],
+"Zonguldak": [
+"Turkey"
+],
+"Sunderland": [
+"United Kingdom"
+],
+"Blantyre": [
+"Malawi"
+],
+"K\u00fctahya": [
+"Turkey"
+],
+"Le\u00f3n de Los Aldama": [
+"Mexico"
+],
+"Cairns": [
+"Australia"
+],
+"Yan'an": [
+"People's Republic of China"
+],
+"Hanzhong": [
+"People's Republic of China"
+],
+"Yulin": [
+"People's Republic of China"
+],
+"Ankang": [
+"People's Republic of China"
+],
+"Shangluo": [
+"People's Republic of China"
+],
+"Longnan": [
+"People's Republic of China"
+],
+"Jiayuguan City": [
+"People's Republic of China"
+],
+"Jinchang": [
+"People's Republic of China"
+],
+"Baiyin": [
+"People's Republic of China"
+],
+"Tianshui": [
+"People's Republic of China"
+],
+"Jiuquan": [
+"People's Republic of China"
+],
+"Pingliang": [
+"People's Republic of China"
+],
+"Hohhot": [
+"People's Republic of China"
+],
+"Baotou": [
+"People's Republic of China"
+],
+"Wuhai": [
+"People's Republic of China"
+],
+"Chifeng": [
+"People's Republic of China"
+],
+"Tongliao": [
+"People's Republic of China"
+],
+"Ordos City": [
+"People's Republic of China"
+],
+"Hulunbuir": [
+"People's Republic of China"
+],
+"Bayannur": [
+"People's Republic of China"
+],
+"Ulanqab": [
+"People's Republic of China"
+],
+"Wuzhou": [
+"People's Republic of China"
+],
+"Fangchenggang": [
+"People's Republic of China"
+],
+"Guigang": [
+"People's Republic of China"
+],
+"Baise": [
+"People's Republic of China"
+],
+"Hezhou": [
+"People's Republic of China"
+],
+"Hechi": [
+"People's Republic of China"
+],
+"Laibin": [
+"People's Republic of China"
+],
+"Chongzuo": [
+"People's Republic of China"
+],
+"Shizuishan": [
+"People's Republic of China"
+],
+"Wuzhong": [
+"People's Republic of China"
+],
+"Guyuan": [
+"People's Republic of China"
+],
+"Karamay": [
+"People's Republic of China"
+],
+"Lhoka": [
+"People's Republic of China"
+],
+"Turpan": [
+"People's Republic of China"
+],
+"Beit Hanoun": [
+"Palestine"
+],
+"Yuma": [
+"United States"
+],
+"Oradea": [
+"Romania"
+],
+"Narva": [
+"Estonia"
+],
+"Clorinda": [
+"Argentina"
+],
+"Bag\u00e9": [
+"Brazil"
+],
+"Hunchun": [
+"People's Republic of China"
+],
+"Brest": [
+"Belarus"
+],
+"Sinuiju": [
+"North Korea"
+],
+"Uzhhorod": [
+"Ukraine"
+],
+"Ruse": [
+"Bulgaria"
+],
+"Gala\u021bi": [
+"Romania"
+],
+"Porto Velho": [
+"Brazil"
+],
+"Ciudad Acu\u00f1a": [
+"Mexico"
+],
+"Huambo": [
+"Angola"
+],
+"Cuttack": [
+"India"
+],
+"Rehovot": [
+"Israel"
+],
+"Trikala": [
+"Greece"
+],
+"Lod": [
+"Israel"
+],
+"Thane": [
+"India"
+],
+"Shillong": [
+"India"
+],
+"Tiruchirappalli": [
+"India"
+],
+"Tauranga": [
+"New Zealand"
+],
+"Chilpancingo de los Bravo": [
+"Mexico"
+],
+"Tepic": [
+"Mexico"
+],
+"K\u0131r\u015fehir": [
+"Turkey"
+],
+"Bilecik": [
+"Turkey"
+],
+"Imphal": [
+"India"
+],
+"Patiala": [
+"India"
+],
+"Kaduna": [
+"Nigeria"
+],
+"Komotini": [
+"Greece"
+],
+"Bing\u00f6l": [
+"Turkey"
+],
+"Przemy\u015bl": [
+"Poland"
+],
+"Monastir": [
+"Tunisia"
+],
+"Bat Yam": [
+"Israel"
+],
+"Rotorua": [
+"New Zealand"
+],
+"Toluca de Lerdo": [
+"Mexico"
+],
+"East London": [
+"South Africa"
+],
+"Akhisar": [
+"Turkey"
+],
+"\u00c7ank\u0131r\u0131": [
+"Turkey"
+],
+"Vlaardingen": [
+"Netherlands"
+],
+"Ambato": [
+"Ecuador"
+],
+"Yozgat": [
+"Turkey"
+],
+"Xanthi": [
+"Greece"
+],
+"Katerini": [
+"Greece"
+],
+"Chelmsford": [
+"United Kingdom"
+],
+"Beira": [
+"Mozambique"
+],
+"Santa Clara": [
+"Cuba",
+"United States"
+],
+"Culiac\u00e1n": [
+"Mexico"
+],
+"Bart\u0131n": [
+"Turkey"
+],
+"Burdur": [
+"Turkey"
+],
+"Tainan": [
+"Taiwan"
+],
+"Bansk\u00e1 Bystrica": [
+"Slovakia"
+],
+"Tren\u010d\u00edn": [
+"Slovakia"
+],
+"Zamo\u015b\u0107": [
+"Poland"
+],
+"Zarafshon": [
+"Uzbekistan"
+],
+"Zaraza": [
+"Venezuela"
+],
+"Jelenia G\u00f3ra": [
+"Poland"
+],
+"Cuauht\u00e9moc": [
+"Mexico"
+],
+"Zaria": [
+"Nigeria"
+],
+"Zarqa": [
+"Jordan"
+],
+"Esmeraldas": [
+"Ecuador"
+],
+"Hod HaSharon": [
+"Israel"
+],
+"Kiryat Gat": [
+"Israel"
+],
+"Givatayim": [
+"Israel"
+],
+"Kfar Saba": [
+"Israel"
+],
+"Beit Shemesh": [
+"Israel"
+],
+"Afula": [
+"Israel"
+],
+"Bnei Brak": [
+"Israel"
+],
+"Herzliya": [
+"Israel"
+],
+"Kiryat Motzkin": [
+"Israel"
+],
+"Beitar Illit": [
+"West Bank"
+],
+"Kiryat Ata": [
+"Israel"
+],
+"Duhok": [
+"Iraq"
+],
+"Tanga": [
+"Tanzania"
+],
+"Singida": [
+"Tanzania"
+],
+"Car\u00fapano": [
+"Venezuela"
+],
+"Kastamonu": [
+"Turkey"
+],
+"Tetovo": [
+"North Macedonia"
+],
+"Prilep": [
+"North Macedonia"
+],
+"Bitola": [
+"North Macedonia"
+],
+"Garoua": [
+"Cameroon"
+],
+"Piotrk\u00f3w Trybunalski": [
+"Poland"
+],
+"Jaworzno": [
+"Poland"
+],
+"Gwalior": [
+"India"
+],
+"Siemianowice \u015al\u0105skie": [
+"Poland"
+],
+"Piekary \u015al\u0105skie": [
+"Poland"
+],
+"Vlor\u00eb": [
+"Albania"
+],
+"Batman": [
+"Turkey"
+],
+"Heraklion": [
+"Greece"
+],
+"Nelson Mandela Bay Metropolitan Municipality": [
+"South Africa"
+],
+"City of Johannesburg Metropolitan Municipality": [
+"South Africa"
+],
+"Detroit": [
+"United States"
+],
+"Kagoshima": [
+"Japan"
+],
+"San Diego": [
+"United States",
+"Venezuela"
+],
+"El Paso": [
+"United States"
+],
+"Laredo": [
+"United States"
+],
+"Akita": [
+"Japan"
+],
+"Vancouver": [
+"Canada",
+"United States"
+],
+"Helsingborg": [
+"Sweden"
+],
+"Kasugai": [
+"Japan"
+],
+"Akashi": [
+"Japan"
+],
+"Yokkaichi": [
+"Japan"
+],
+"Ciudad Ju\u00e1rez": [
+"Mexico"
+],
+"Najran": [
+"Saudi Arabia"
+],
+"M\u00f3ng C\u00e1i": [
+"Vietnam"
+],
+"L\u00e0o Cai": [
+"Vietnam"
+],
+"Buffalo": [
+"United States"
+],
+"Kumagaya": [
+"Japan"
+],
+"Posadas": [
+"Argentina"
+],
+"Gifu": [
+"Japan"
+],
+"Brownsville": [
+"United States"
+],
+"Puerto Iguaz\u00fa": [
+"Argentina"
+],
+"Nagano": [
+"Japan"
+],
+"Aomori": [
+"Japan"
+],
+"Fukushima": [
+"Japan"
+],
+"Tokorozawa": [
+"Japan"
+],
+"Nara": [
+"Japan"
+],
+"Kanazawa": [
+"Japan"
+],
+"Hachinohe": [
+"Japan"
+],
+"\u014cita-shi": [
+"Japan"
+],
+"Matsuyama": [
+"Japan"
+],
+"Morioka": [
+"Japan"
+],
+"K\u014dchi-shi": [
+"Japan"
+],
+"Utsunomiya": [
+"Japan"
+],
+"Takamatsu": [
+"Japan"
+],
+"Tottori": [
+"Japan"
+],
+"Asahikawa": [
+"Japan"
+],
+"Wakayama": [
+"Japan"
+],
+"Toyota": [
+"Japan"
+],
+"Maebashi": [
+"Japan"
+],
+"Fukui": [
+"Japan"
+],
+"Kofu": [
+"Japan"
+],
+"Shimonoseki": [
+"Japan"
+],
+"Mito": [
+"Japan"
+],
+"Miyazaki": [
+"Japan"
+],
+"Zinder": [
+"Niger"
+],
+"Zinjibar": [
+"Yemen"
+],
+"Biha\u0107": [
+"Bosnia and Herzegovina"
+],
+"Schiedam": [
+"Netherlands"
+],
+"Hereford": [
+"United Kingdom"
+],
+"Cajamarca": [
+"Peru"
+],
+"Yamagata": [
+"Japan"
+],
+"Tamanrasset": [
+"Algeria"
+],
+"Lancaster": [
+"United Kingdom",
+"United States"
+],
+"Yalova": [
+"Turkey"
+],
+"Abeokuta": [
+"Nigeria"
+],
+"Nelson": [
+"New Zealand"
+],
+"Nev\u015fehir": [
+"Turkey"
+],
+"Kilis": [
+"Turkey"
+],
+"D\u00fczce": [
+"Turkey"
+],
+"K\u0131r\u0131kkale": [
+"Turkey"
+],
+"Hakk\u00e2ri": [
+"Turkey"
+],
+"\u00c7orum": [
+"Turkey"
+],
+"K\u0131rklareli": [
+"Turkey"
+],
+"Serres": [
+"Greece"
+],
+"Ghaziabad": [
+"India"
+],
+"Tourcoing": [
+"France"
+],
+"Windsor": [
+"Canada"
+],
+"Ciudad del Este": [
+"Paraguay"
+],
+"Drobeta-Turnu Severin": [
+"Romania"
+],
+"Troitsk": [
+"Russia"
+],
+"Mexicali": [
+"Mexico"
+],
+"Foz do Igua\u00e7u": [
+"Brazil"
+],
+"Giurgiu": [
+"Romania"
+],
+"Goma": [
+"Democratic Republic of the Congo"
+],
+"Oshawa": [
+"Canada"
+],
+"Dunfermline": [
+"United Kingdom"
+],
+"Ku\u015fadas\u0131": [
+"Turkey"
+],
+"Entebbe": [
+"Uganda"
+],
+"Palmerston North": [
+"New Zealand"
+],
+"Kanchipuram": [
+"India"
+],
+"C\u0103l\u0103ra\u0219i": [
+"Romania"
+],
+"Antigua Guatemala": [
+"Guatemala"
+],
+"New Plymouth": [
+"New Zealand"
+],
+"Akola": [
+"India"
+],
+"Bareilly": [
+"India"
+],
+"Tirunelveli": [
+"India"
+],
+"Nablus": [
+"Palestine"
+],
+"Benguela": [
+"Angola"
+],
+"G\u00fcm\u00fc\u015fhane": [
+"Turkey"
+],
+"Kisumu": [
+"Kenya"
+],
+"Band\u0131rma": [
+"Turkey"
+],
+"\u00c7orlu": [
+"Turkey"
+],
+"Leticia": [
+"Colombia"
+],
+"Machala": [
+"Ecuador"
+],
+"Abancay": [
+"Peru"
+],
+"Jaffna": [
+"Sri Lanka"
+],
+"\u0141om\u017ca": [
+"Poland"
+],
+"Wakefield": [
+"United Kingdom"
+],
+"Cap-Ha\u00eftien": [
+"Haiti"
+],
+"C\u00facuta": [
+"Colombia"
+],
+"Kabwe": [
+"Zambia"
+],
+"Mu\u011fla": [
+"Turkey"
+],
+"Essaouira": [
+"Morocco"
+],
+"Blida": [
+"Algeria"
+],
+"Tamale": [
+"Ghana"
+],
+"Taybad": [
+"Iran"
+],
+"Pucallpa": [
+"Peru"
+],
+"Ismailia": [
+"Egypt"
+],
+"Soweto": [
+"South Africa"
+],
+"Gondar": [
+"Ethiopia"
+],
+"Nadiad": [
+"India"
+],
+"Zomba": [
+"Malawi"
+],
+"El Jadida": [
+"Morocco"
+],
+"Ndola": [
+"Zambia"
+],
+"Malakal": [
+"South Sudan"
+],
+"Mouscron": [
+"Belgium"
+],
+"Walvis Bay": [
+"Namibia"
+],
+"Ramla": [
+"Israel"
+],
+"Rason": [
+"North Korea"
+],
+"Mo\u00e7\u00e2medes": [
+"Angola"
+],
+"Comodoro Rivadavia": [
+"Argentina"
+],
+"Bukavu": [
+"Democratic Republic of the Congo"
+],
+"Ibagu\u00e9": [
+"Colombia"
+],
+"Mansoura": [
+"Egypt"
+],
+"Bobo-Dioulasso": [
+"Burkina Faso"
+],
+"Lobito": [
+"Angola"
+],
+"Pointe-Noire": [
+"Republic of the Congo"
+],
+"Piura": [
+"Peru"
+],
+"Mombasa": [
+"Kenya"
+],
+"Az Zubayr": [
+"Iraq"
+],
+"Madurai": [
+"India"
+],
+"Al Ain": [
+"United Arab Emirates"
+],
+"Corumb\u00e1": [
+"Brazil"
+],
+"Tacna": [
+"Peru"
+],
+"Niagara Falls": [
+"Canada"
+],
+"Saint-Laurent-du-Maroni": [
+"France"
+],
+"Prague": [
+"Czech Republic"
+],
+"Long Beach": [
+"United States"
+],
+"Burbank": [
+"United States"
+],
+"Fresno": [
+"United States"
+],
+"Santa Monica": [
+"United States"
+],
+"Lucknow": [
+"India"
+],
+"Irvine": [
+"United States"
+],
+"Fremont": [
+"United States"
+],
+"Stockton": [
+"United States"
+],
+"Riverside": [
+"United States"
+],
+"Santa Ana": [
+"United States"
+],
+"Anaheim": [
+"United States"
+],
+"Bakersfield": [
+"United States"
+],
+"Chula Vista": [
+"United States"
+],
+"Napa": [
+"United States"
+],
+"Jaipur": [
+"India"
+],
+"Livermore": [
+"United States"
+],
+"Santa Cruz": [
+"United States"
+],
+"San Mateo": [
+"United States"
+],
+"Srinagar": [
+"India"
+],
+"Ranchi": [
+"India"
+],
+"Cupertino": [
+"United States"
+],
+"Dehradun": [
+"India"
+],
+"Verviers": [
+"Belgium"
+],
+"Modesto": [
+"United States"
+],
+"Vallejo": [
+"United States"
+],
+"Roeselare": [
+"Belgium"
+],
+"La Louvi\u00e8re": [
+"Belgium"
+],
+"Santa Rosa": [
+"Philippines",
+"United States"
+],
+"Newport Beach": [
+"United States"
+],
+"Pittsburg": [
+"United States"
+],
+"Clovis": [
+"United States"
+],
+"Fairfield": [
+"United States"
+],
+"Daly City": [
+"United States"
+],
+"National City": [
+"United States"
+],
+"Berkeley": [
+"United States"
+],
+"Pasadena": [
+"United States"
+],
+"Glendale": [
+"United States"
+],
+"San Bernardino": [
+"United States"
+],
+"Khiva": [
+"Uzbekistan"
+],
+"Pavlodar": [
+"Kazakhstan"
+],
+"Fergana": [
+"Uzbekistan"
+],
+"Aranjuez": [
+"Spain"
+],
+"Mountain View": [
+"United States"
+],
+"Atyrau": [
+"Kazakhstan"
+],
+"Oral": [
+"Kazakhstan"
+],
+"Da\u015foguz": [
+"Turkmenistan"
+],
+"Alcobendas": [
+"Spain"
+],
+"Manas": [
+"Kyrgyzstan"
+],
+"Barakaldo": [
+"Spain"
+],
+"Benidorm": [
+"Spain"
+],
+"Salinas": [
+"United States"
+],
+"Ontario": [
+"United States"
+],
+"Downey": [
+"United States"
+],
+"Torrance": [
+"United States"
+],
+"Andahuaylas": [
+"Peru"
+],
+"Nukus": [
+"Uzbekistan"
+],
+"Ventura": [
+"United States"
+],
+"Concord": [
+"United States"
+],
+"Kokshetau": [
+"Kazakhstan",
+"Russian Empire",
+"Soviet Union"
+],
+"Alameda": [
+"United States"
+],
+"Hayward": [
+"United States"
+],
+"Santa Clarita": [
+"United States"
+],
+"Orange": [
+"United States"
+],
+"Walnut Creek": [
+"United States"
+],
+"Bel\u00e9m": [
+"Brazil"
+],
+"City of Valencia": [
+"Spain"
+],
+"Ghent": [
+"Belgium"
+],
+"Antwerp": [
+"Belgium"
+],
+"Kortrijk": [
+"Belgium"
+],
+"Ostend": [
+"Belgium"
+],
+"Melitopol": [
+"Ukraine"
+],
+"Kolomyia": [
+"Ukraine"
+],
+"Mukachevo": [
+"Ukraine"
+],
+"Zviahel": [
+"Polish\u2013Lithuanian Commonwealth",
+"Russian Empire",
+"Soviet Union",
+"Ukraine"
+],
+"Zhytomyr": [
+"Ukraine"
+],
+"Khmelnytskyi": [
+"Ukraine"
+],
+"Kamyanske": [
+"Ukraine"
+],
+"Kremenchuk": [
+"Ukraine"
+],
+"Ivano-Frankivsk": [
+"Ukraine"
+],
+"Oleksandriia": [
+"Ukraine"
+],
+"Rivne": [
+"Ukraine"
+],
+"Ternopil": [
+"Ukraine"
+],
+"Poltava": [
+"Ukraine"
+],
+"Sumy": [
+"Ukraine"
+],
+"Nikopol": [
+"Ukraine"
+],
+"Chernihiv": [
+"Ukraine"
+],
+"Cherkasy": [
+"Ukraine"
+],
+"Vinnytsia": [
+"Ukraine"
+],
+"Chernivtsi": [
+"Ukraine"
+],
+"Zaporizhzhia": [
+"Ukraine"
+],
+"Kropyvnytskyi": [
+"Ukraine"
+],
+"Berdychiv": [
+"Ukraine"
+],
+"Drohobych": [
+"Ukraine"
+],
+"Korosten": [
+"Ukraine"
+],
+"Stryi": [
+"Ukraine"
+],
+"Kamianets-Podilskyi": [
+"Ukraine"
+],
+"Uman": [
+"Ukraine"
+],
+"Smila": [
+"Ukraine"
+],
+"Pavlohrad": [
+"Ukraine"
+],
+"Kut": [
+"Iraq"
+],
+"Damanhur": [
+"Egypt"
+],
+"Kafr el-Sheikh": [
+"Egypt"
+],
+"Kota": [
+"India"
+],
+"Moradabad": [
+"India"
+],
+"Mekele": [
+"Ethiopia"
+],
+"Moundou": [
+"Chad"
+],
+"S\u00e9gou": [
+"Mali"
+],
+"Maracay": [
+"Venezuela"
+],
+"Mbeya": [
+"Tanzania"
+],
+"6th of October City": [
+"Egypt"
+],
+"Abu Kabir": [
+"Egypt"
+],
+"Kafr el-Dawwar": [
+"Egypt"
+],
+"Benha": [
+"Egypt"
+],
+"Mit Ghamr": [
+"Egypt"
+],
+"Sarh": [
+"Chad"
+],
+"10th of Ramadan City": [
+"Egypt"
+],
+"Acarigua": [
+"Venezuela"
+],
+"Phagwara": [
+"India"
+],
+"Batna": [
+"Algeria"
+],
+"Launceston": [
+"Australia"
+],
+"Akhmim": [
+"Egypt"
+],
+"\u0130neg\u00f6l": [
+"Turkey"
+],
+"Dakhla": [
+"Morocco",
+"Western Sahara"
+],
+"Adama": [
+"Ethiopia"
+],
+"Adigrat": [
+"Ethiopia"
+],
+"Ado Ekiti": [
+"Nigeria"
+],
+"Amarah": [
+"Iraq"
+],
+"Samborond\u00f3n": [
+"Ecuador"
+],
+"Raipur": [
+"India"
+],
+"Khujand": [
+"Tajikistan"
+],
+"Rundu": [
+"Namibia"
+],
+"S\u00e3o Gabriel da Cachoeira": [
+"Brazil"
+],
+"Isfara": [
+"Tajikistan"
+],
+"Kouss\u00e9ri": [
+"Cameroon"
+],
+"Manpo": [
+"North Korea"
+],
+"Onsong County": [
+"North Korea"
+],
+"Reynosa": [
+"Mexico"
+],
+"Heroica Matamoros": [
+"Mexico"
+],
+"Savannakhet": [
+"Laos"
+],
+"Tulc\u00e1n": [
+"Ecuador"
+],
+"Heilbronn": [
+"Germany"
+],
+"Stuttgart": [
+"Germany"
+],
+"Karlsruhe": [
+"Germany"
+],
+"Mannheim": [
+"Germany"
+],
+"Freiburg im Breisgau": [
+"Germany"
+],
+"Heidelberg": [
+"Germany"
+],
+"Pforzheim": [
+"Germany"
+],
+"Hanau": [
+"Germany"
+],
+"Marburg": [
+"Germany"
+],
+"Giessen": [
+"Germany"
+],
+"Fulda": [
+"Germany"
+],
+"R\u00fcsselsheim am Main": [
+"Germany"
+],
+"Baden-Baden": [
+"Germany"
+],
+"Bad Homburg vor der H\u00f6he": [
+"Germany"
+],
+"Wetzlar": [
+"Germany"
+],
+"Baltimore": [
+"United States"
+],
+"Yongin": [
+"South Korea"
+],
+"Suwon": [
+"South Korea"
+],
+"Trenton": [
+"United States"
+],
+"Newark": [
+"United States"
+],
+"Jersey City": [
+"United States"
+],
+"St. Louis": [
+"United States"
+],
+"Carson City": [
+"United States"
+],
+"Goyang": [
+"South Korea"
+],
+"Hwaseong": [
+"South Korea"
+],
+"Richmond": [
+"Canada",
+"United States"
+],
+"Chesapeake": [
+"United States"
+],
+"Virginia Beach": [
+"United States"
+],
+"Elizabeth": [
+"United States"
+],
+"New Brunswick": [
+"United States"
+],
+"Camden": [
+"United States"
+],
+"Paterson": [
+"United States"
+],
+"Hoboken": [
+"United States"
+],
+"Vineland": [
+"United States"
+],
+"Passaic": [
+"United States"
+],
+"Nakhchivan": [
+"Azerbaijan"
+],
+"Erdenet": [
+"Mongolia"
+],
+"Zaltan": [
+"Libya"
+],
+"Geelong": [
+"Australia"
+],
+"Puno": [
+"Peru"
+],
+"Kohima": [
+"India"
+],
+"Che\u0142m": [
+"Poland"
+],
+"Darkhan": [
+"Mongolia"
+],
+"Suwa\u0142ki": [
+"Poland"
+],
+"Solapur": [
+"India"
+],
+"Daraa": [
+"Syria"
+],
+"Arish": [
+"Egypt"
+],
+"Gurgaon": [
+"India"
+],
+"Deir ez-Zor": [
+"Syria"
+],
+"Edfu": [
+"Egypt"
+],
+"Nakuru": [
+"Kenya"
+],
+"Kitwe": [
+"Zambia"
+],
+"Bhilai": [
+"India"
+],
+"Ab\u00e9ch\u00e9": [
+"Chad"
+],
+"Saharanpur": [
+"India"
+],
+"Jaisalmer": [
+"India"
+],
+"Jhansi": [
+"India"
+],
+"Morogoro": [
+"Tanzania"
+],
+"Gujranwala": [
+"Pakistan"
+],
+"Khulna": [
+"Bangladesh"
+],
+"Rosetta": [
+"Egypt"
+],
+"Hillah": [
+"Iraq"
+],
+"Abiko": [
+"Japan"
+],
+"Pinar del R\u00edo": [
+"Cuba"
+],
+"Holguin": [
+"Cuba"
+],
+"Bani Walid": [
+"Libya"
+],
+"Kigoma": [
+"Tanzania"
+],
+"Phrae": [
+"Thailand"
+],
+"Clifton": [
+"United States"
+],
+"Newport News": [
+"United States"
+],
+"Hampton": [
+"United States"
+],
+"Suffolk": [
+"United States"
+],
+"Portsmouth": [
+"United Kingdom",
+"United States"
+],
+"Neyagawa": [
+"Japan"
+],
+"Atsugi": [
+"Japan"
+],
+"Yao": [
+"Japan"
+],
+"Roanoke": [
+"United States"
+],
+"Hiratsuka": [
+"Japan"
+],
+"Ibaraki": [
+"Japan"
+],
+"Harrisonburg": [
+"United States"
+],
+"Nagaoka": [
+"Japan"
+],
+"Plainfield": [
+"United States"
+],
+"J\u014detsu-shi": [
+"Japan"
+],
+"Union City": [
+"United States"
+],
+"Chigasaki": [
+"Japan"
+],
+"S\u014dka-shi": [
+"Japan"
+],
+"Kishiwada": [
+"Japan"
+],
+"Kakogawa": [
+"Japan"
+],
+"Bayonne": [
+"United States"
+],
+"Takarazuka": [
+"Japan"
+],
+"Lynchburg": [
+"United States"
+],
+"Lisbon": [
+"Portugal"
+],
+"Potsdam": [
+"Germany"
+],
+"Hanover": [
+"Germany"
+],
+"D\u00fcsseldorf": [
+"Germany"
+],
+"Saarbr\u00fccken": [
+"Germany"
+],
+"Milwaukee": [
+"United States"
+],
+"Racine": [
+"United States"
+],
+"Madison": [
+"United States"
+],
+"Waukesha": [
+"United States"
+],
+"Appleton": [
+"United States"
+],
+"Eau Claire": [
+"United States"
+],
+"Janesville": [
+"United States"
+],
+"West Allis": [
+"United States"
+],
+"Kenosha": [
+"United States"
+],
+"Victorville": [
+"United States"
+],
+"Visalia": [
+"United States"
+],
+"Merced": [
+"United States"
+],
+"Redwood City": [
+"United States"
+],
+"San Marcos": [
+"United States"
+],
+"Arcadia": [
+"United States"
+],
+"Shahrisabz": [
+"Uzbekistan"
+],
+"Ouahigouya": [
+"Burkina Faso"
+],
+"Jizzakh": [
+"Soviet Union",
+"Uzbekistan"
+],
+"M\u00f6r\u00f6n": [
+"Mongolia"
+],
+"Taza": [
+"Morocco"
+],
+"Warri": [
+"Nigeria"
+],
+"Al-Safira": [
+"Syria"
+],
+"Patan": [
+"India"
+],
+"Gwadar": [
+"Pakistan"
+],
+"Malegaon": [
+"India"
+],
+"Cabudare": [
+"Venezuela"
+],
+"Bucak": [
+"Turkey"
+],
+"Gulu City": [
+"Uganda"
+],
+"Leme": [
+"Brazil"
+],
+"Grand-Bassam": [
+"Ivory Coast"
+],
+"Antsirabe": [
+"Madagascar"
+],
+"Owerri": [
+"Nigeria"
+],
+"Ichalkaranji": [
+"India"
+],
+"Udupi": [
+"India"
+],
+"Amroha": [
+"India"
+],
+"Sassandra": [
+"Ivory Coast"
+],
+"Ilorin": [
+"Nigeria"
+],
+"Kosti": [
+"Sudan"
+],
+"Arrah": [
+"India"
+],
+"La Victoria": [
+"Venezuela"
+],
+"Farah": [
+"Afghanistan"
+],
+"Temperley": [
+"Argentina"
+],
+"Harardhere": [
+"Somalia"
+],
+"Sinop": [
+"Turkey"
+],
+"Boujdour": [
+"Morocco",
+"Western Sahara"
+],
+"Gusau": [
+"Nigeria"
+],
+"Temsia": [
+"Morocco"
+],
+"Kasama": [
+"Zambia"
+],
+"Masvingo": [
+"Zimbabwe"
+],
+"Ouazzane": [
+"Morocco"
+],
+"San Ramon": [
+"United States"
+],
+"Tulare": [
+"United States"
+],
+"Inglewood": [
+"United States"
+],
+"Santa Maria": [
+"United States"
+],
+"Cypress": [
+"United States"
+],
+"Petaluma": [
+"United States"
+],
+"Alhambra": [
+"United States"
+],
+"Gilroy": [
+"United States"
+],
+"Buena Park": [
+"United States"
+],
+"Whittier": [
+"United States"
+],
+"Bellad\u00e8re": [
+"Haiti"
+],
+"Kurmuk": [
+"Sudan"
+],
+"Malanville": [
+"Benin"
+],
+"San Antonio del T\u00e1chira": [
+"Venezuela"
+],
+"Basel": [
+"Switzerland"
+],
+"Aachen": [
+"Germany"
+],
+"Zagreb": [
+"Croatia"
+],
+"Rijeka": [
+"Croatia"
+],
+"Split": [
+"Croatia"
+],
+"Constance": [
+"Germany"
+],
+"Rosenheim": [
+"Germany"
+],
+"Passau": [
+"Germany"
+],
+"Pula": [
+"Croatia"
+],
+"Slavonski Brod": [
+"Croatia"
+],
+"Mary": [
+"Turkmenistan"
+],
+"Melilla": [
+"Spain"
+],
+"Strasbourg": [
+"France"
+],
+"Biratnagar": [
+"Nepal"
+],
+"Birgunj": [
+"Nepal"
+],
+"Tulcea": [
+"Romania"
+],
+"Ashgabat": [
+"Turkmenistan"
+],
+"Anzhero-Sudzhensk": [
+"Russia"
+],
+"Belovo": [
+"Russia"
+],
+"Dobrich": [
+"Bulgaria"
+],
+"Haskovo": [
+"Bulgaria"
+],
+"Yambol": [
+"Bulgaria"
+],
+"U\u015fak": [
+"Turkey"
+],
+"Hermosillo": [
+"Mexico"
+],
+"Damietta": [
+"Egypt"
+],
+"Bizerte": [
+"Tunisia"
+],
+"Karab\u00fck": [
+"Turkey"
+],
+"Cienfuegos": [
+"Cuba"
+],
+"Townsville": [
+"Australia"
+],
+"Luang Prabang": [
+"Laos"
+],
+"Harar": [
+"Ethiopia"
+],
+"Horsens": [
+"Denmark"
+],
+"Mikkeli": [
+"Finland"
+],
+"Petah Tikva": [
+"Israel",
+"Mandatory Palestine",
+"Occupied Enemy Territory Administration",
+"Ottoman Empire"
+],
+"Alexandroupolis": [
+"Greece"
+],
+"Fier": [
+"Albania"
+],
+"Fallujah": [
+"Iraq"
+],
+"Sulaymaniyah": [
+"Iraq"
+],
+"Berbera": [
+"Somalia",
+"Somaliland"
+],
+"Kotka": [
+"Finland"
+],
+"Bender": [
+"Moldova"
+],
+"Holon": [
+"Israel",
+"Mandatory Palestine"
+],
+"Netanya": [
+"Israel"
+],
+"Aizawl": [
+"India"
+],
+"Bergen op Zoom": [
+"Netherlands"
+],
+"Ramat Gan": [
+"Israel"
+],
+"Carlisle": [
+"United Kingdom"
+],
+"Sabratha": [
+"Libya"
+],
+"Ramadi": [
+"Iraq"
+],
+"Bulawayo": [
+"Zimbabwe"
+],
+"Iquitos": [
+"Peru"
+],
+"Dire Dawa": [
+"Ethiopia"
+],
+"Oujda": [
+"Morocco"
+],
+"Rueil-Malmaison": [
+"France"
+],
+"Balkanabat": [
+"Turkmenistan"
+],
+"Adrar": [
+"Algeria"
+],
+"Inowroc\u0142aw": [
+"Poland"
+],
+"Philadelphia": [
+"United States"
+],
+"Chennai": [
+"India"
+],
+"Florence": [
+"Italy"
+],
+"Indianapolis": [
+"United States"
+],
+"Manhattan": [
+"United States"
+],
+"Aalst": [
+"Belgium"
+],
+"Sint-Niklaas": [
+"Belgium"
+],
+"Arezzo": [
+"Italy"
+],
+"Denver": [
+"United States"
+],
+"Jacksonville": [
+"United States"
+],
+"Honolulu": [
+"United States"
+],
+"The Bronx": [
+"United States"
+],
+"Staten Island": [
+"United States"
+],
+"Nashville": [
+"United States"
+],
+"Baton Rouge": [
+"United States"
+],
+"New Orleans": [
+"United States"
+],
+"Anchorage": [
+"United States"
+],
+"Louisville": [
+"United States"
+],
+"Lexington": [
+"United States"
+],
+"Chiang Mai": [
+"Thailand"
+],
+"Hasselt": [
+"Belgium"
+],
+"Mons": [
+"Belgium"
+],
+"Leuven": [
+"Belgium"
+],
+"Lafayette": [
+"United States"
+],
+"Ubon Ratchathani": [
+"Thailand"
+],
+"Namur": [
+"Belgium"
+],
+"Mechelen": [
+"Belgium"
+],
+"Tournai": [
+"Belgium"
+],
+"Augusta": [
+"United States"
+],
+"Seraing": [
+"Belgium"
+],
+"Macon": [
+"United States"
+],
+"Columbus": [
+"United States"
+],
+"Nekemte": [
+"Ethiopia"
+],
+"Chittagong": [
+"Bangladesh"
+],
+"Valledupar": [
+"Colombia"
+],
+"Samundri": [
+"Pakistan"
+],
+"Sheikh Othman": [
+"Yemen"
+],
+"San Nicol\u00e1s de los Arroyos": [
+"Argentina"
+],
+"Janakpurdham": [
+"Nepal"
+],
+"Saidu Sharif": [
+"Pakistan"
+],
+"Latacunga": [
+"Ecuador"
+],
+"Puerto La Cruz": [
+"Venezuela"
+],
+"Kadoma": [
+"Zimbabwe"
+],
+"Kansas City": [
+"United States"
+],
+"Broomfield": [
+"United States"
+],
+"Nakhon Pathom": [
+"Thailand"
+],
+"Nakhon Ratchasima": [
+"Thailand"
+],
+"Hat Yai": [
+"Thailand"
+],
+"Hua Hin": [
+"Thailand"
+],
+"Mactan": [
+"Philippines"
+],
+"Nonthaburi": [
+"Thailand"
+],
+"Songkhla": [
+"Thailand"
+],
+"Udon Thani": [
+"Thailand"
+],
+"Surat Thani": [
+"Thailand"
+],
+"Phuket": [
+"Thailand"
+],
+"Chiang Rai": [
+"Thailand"
+],
+"Phitsanulok": [
+"Thailand"
+],
+"Khon Kaen": [
+"Thailand"
+],
+"Perth Amboy": [
+"United States"
+],
+"East Orange": [
+"United States"
+],
+"Nakhon Si Thammarat": [
+"Thailand"
+],
+"Nakhon Sawan": [
+"Thailand"
+],
+"Lampang": [
+"Thailand"
+],
+"Sakon Nakhon": [
+"Thailand"
+],
+"Trang": [
+"Thailand"
+],
+"Rayong": [
+"Thailand"
+],
+"Laem Chabang": [
+"Thailand"
+],
+"Yala": [
+"Thailand"
+],
+"Samut Sakhon": [
+"Thailand"
+],
+"Pak Kret": [
+"Thailand"
+],
+"Chaophraya Surasak": [
+"Thailand"
+],
+"Om Noi": [
+"Thailand"
+],
+"Ko Samui": [
+"Thailand"
+],
+"Ban Suan": [
+"Thailand"
+],
+"Samut Prakan": [
+"Thailand"
+],
+"Rangsit": [
+"Thailand"
+],
+"Bang Bua Thong": [
+"Thailand"
+],
+"Pudong": [
+"People's Republic of China"
+],
+"Velika Gorica": [
+"Croatia"
+],
+"T\u00fcrkmenabat": [
+"Turkmenistan"
+],
+"T\u00fcrkmenba\u015fy": [
+"Turkmenistan"
+],
+"Kam\u00ebz": [
+"Albania"
+],
+"Binhai New Area": [
+"People's Republic of China"
+],
+"Ba\u00fdramaly": [
+"Turkmenistan"
+],
+"Catanduva": [
+"Brazil"
+],
+"Haidong": [
+"People's Republic of China"
+],
+"Hami": [
+"People's Republic of China"
+],
+"Chamdo": [
+"People's Republic of China"
+],
+"Nagqu": [
+"People's Republic of China"
+],
+"Nyingchi": [
+"People's Republic of China"
+],
+"Danzhou": [
+"People's Republic of China"
+],
+"Gyzylarbat": [
+"Turkmenistan"
+],
+"Shigatse": [
+"People's Republic of China"
+],
+"Tejen": [
+"Turkmenistan"
+],
+"Avil\u00e9s": [
+"Spain"
+],
+"Arkadag": [
+"Turkmenistan"
+],
+"Alexandrov": [
+"Russia"
+],
+"Murom": [
+"Russia"
+],
+"Changwon": [
+"South Korea"
+],
+"Taichung": [
+"Taiwan"
+],
+"Ruhengeri": [
+"Rwanda"
+],
+"Dolisie": [
+"Republic of the Congo"
+],
+"Sambhal": [
+"India"
+],
+"Saint-Pierre": [
+"France"
+],
+"Wa": [
+"Ghana"
+],
+"Gaya": [
+"India"
+],
+"Jammu": [
+"India"
+],
+"Munshiganj": [
+"Bangladesh"
+],
+"Bunbury": [
+"Australia"
+],
+"Moga": [
+"India"
+],
+"Siddipet": [
+"India"
+],
+"Chiclayo": [
+"Peru"
+],
+"Margilan": [
+"Uzbekistan"
+],
+"Krati\u00e9": [
+"Cambodia"
+],
+"Karaman": [
+"Turkey"
+],
+"Amravati": [
+"India"
+],
+"Shobra Elkhema": [
+"Egypt"
+],
+"Al Hudaydah": [
+"Yemen"
+],
+"Belgaum": [
+"India"
+],
+"G\u00fcines": [
+"Cuba"
+],
+"Al-Muharraq": [
+"Bahrain"
+],
+"Kismayo": [
+"Somalia"
+],
+"Baqubah": [
+"Iraq"
+],
+"Moshi": [
+"Tanzania"
+],
+"Tanta": [
+"Egypt"
+],
+"\u00c7ald\u0131ran": [
+"Turkey"
+],
+"Matanzas": [
+"Cuba"
+],
+"\u00c7erkezk\u00f6y": [
+"Turkey"
+],
+"\u00c7\u0131nar": [
+"Turkey"
+],
+"Saint-Louis": [
+"Senegal"
+],
+"Babati": [
+"Tanzania"
+],
+"Noida": [
+"India"
+],
+"David": [
+"Panama"
+],
+"Cuddalore": [
+"India"
+],
+"Yavatmal": [
+"India"
+],
+"Gibara": [
+"Cuba"
+],
+"Raqqa": [
+"Syria"
+],
+"San Crist\u00f3bal Verapaz": [
+"Guatemala"
+],
+"Moyobamba": [
+"Peru"
+],
+"Dschang": [
+"Cameroon"
+],
+"Sharjah": [
+"United Arab Emirates"
+],
+"Pisco": [
+"Peru"
+],
+"\u00cdcolo e Bengo": [
+"Angola"
+],
+"Vellore": [
+"India"
+],
+"Muzaffargarh": [
+"Pakistan"
+],
+"Kakamega": [
+"Kenya"
+],
+"Ra'anana": [
+"Israel"
+],
+"Khan Yunis": [
+"Palestine"
+],
+"Khartoum North": [
+"Sudan"
+],
+"Minya": [
+"Egypt"
+],
+"Al Hoceima": [
+"Morocco"
+],
+"Mukalla": [
+"Yemen"
+],
+"El Quseyya": [
+"Egypt"
+],
+"al-Bab": [
+"Syria"
+],
+"Al Wakrah": [
+"Qatar"
+],
+"Nuevo Laredo": [
+"Mexico"
+],
+"Salto": [
+"Uruguay"
+],
+"\u0130slahiye": [
+"Turkey"
+],
+"Aflao": [
+"Ghana"
+],
+"P\u0101ks\u0113": [
+"Laos"
+],
+"S\u00e3o Borja": [
+"Brazil"
+],
+"Agua Prieta": [
+"Mexico"
+],
+"Ak\u00e7akale": [
+"Turkey"
+],
+"Chetumal": [
+"Mexico"
+],
+"Sault Ste. Marie": [
+"Canada"
+],
+"Taraz": [
+"Kazakhstan"
+],
+"Hyesan": [
+"North Korea"
+],
+"Termez": [
+"Uzbekistan"
+],
+"Sri Ganganagar": [
+"India"
+],
+"Taldyqor\u011fan": [
+"Kazakhstan"
+],
+"Namangan": [
+"Uzbekistan"
+],
+"Torrelavega": [
+"Spain"
+],
+"Masan": [
+"South Korea"
+],
+"Mindelo": [
+"Cape Verde"
+],
+"Manzini": [
+"Eswatini"
+],
+"Wrexham": [
+"United Kingdom"
+],
+"Ekibastuz": [
+"Kazakhstan"
+],
+"Dartmouth": [
+"Canada"
+],
+"Bendigo": [
+"Australia"
+],
+"Pemba": [
+"Mozambique"
+],
+"Fort Portal": [
+"Uganda"
+],
+"Arua": [
+"Uganda"
+],
+"M'banza-Kongo": [
+"Angola"
+],
+"Jinja": [
+"Uganda"
+],
+"Port-Gentil": [
+"Gabon"
+],
+"Rishikesh": [
+"India"
+],
+"Mzuzu": [
+"Malawi"
+],
+"Guelph": [
+"Canada"
+],
+"Ayacucho": [
+"Peru"
+],
+"Hu\u00e1nuco": [
+"Peru"
+],
+"Idlib": [
+"Syria"
+],
+"Spotsylvania County": [
+"United States"
+],
+"Rijswijk": [
+"Netherlands"
+],
+"Odienn\u00e9": [
+"Ivory Coast"
+],
+"Ciudad Guayana": [
+"Venezuela"
+],
+"Sullana": [
+"Peru"
+],
+"Margao": [
+"India"
+],
+"Chimbote": [
+"Peru"
+],
+"Veraval": [
+"India"
+],
+"Mocuba": [
+"Mozambique"
+],
+"Aboisso": [
+"Ivory Coast"
+],
+"Kitale": [
+"Kenya"
+],
+"Sahiwal": [
+"Pakistan"
+],
+"Maxixe": [
+"Mozambique"
+],
+"T\u00f4lanaro": [
+"Madagascar"
+],
+"Caguas": [
+"United States"
+],
+"Bamenda": [
+"Cameroon"
+],
+"Ajman": [
+"United Arab Emirates"
+],
+"Nea Ionia": [
+"Greece"
+],
+"Bishnupur": [
+"India",
+"Mallabhum"
+],
+"Keren": [
+"Eritrea"
+],
+"Beni Ansar": [
+"Morocco"
+],
+"Puerto Maldonado": [
+"Peru"
+],
+"Angren": [
+"Uzbekistan"
+],
+"Berb\u00e9rati": [
+"Central African Republic"
+],
+"Bordj Bou Arreridj": [
+"Algeria"
+],
+"Mascara": [
+"Algeria"
+],
+"Manfalut": [
+"Egypt"
+],
+"Tiaret": [
+"Algeria"
+],
+"Lukang Township": [
+"Taiwan"
+],
+"Luodong Township": [
+"Taiwan"
+],
+"Puli Township": [
+"Taiwan"
+],
+"Jhushan Township": [
+"Taiwan"
+],
+"Caotun Township": [
+"Taiwan"
+],
+"Chaojhou Township": [
+"Taiwan"
+],
+"Huwei Township": [
+"Taiwan"
+],
+"Hemei Township": [
+"Taiwan"
+],
+"Zhunan Township": [
+"Taiwan"
+],
+"Zhudong Township": [
+"Taiwan"
+],
+"Xihu Township": [
+"Taiwan"
+],
+"Kuala Terengganu": [
+"Malaysia"
+],
+"Klang": [
+"Malaysia"
+],
+"Tecate": [
+"Mexico"
+],
+"Suifenhe": [
+"People's Republic of China"
+],
+"Nepalgunj": [
+"Nepal"
+],
+"Daura": [
+"Nigeria"
+],
+"Ruili": [
+"People's Republic of China"
+],
+"Dhangadhi": [
+"Nepal"
+],
+"Bhimdatta": [
+"Nepal"
+],
+"Mechinagar Municipality": [
+"Nepal"
+],
+"San Pedro": [
+"Argentina"
+],
+"Valencia": [
+"Philippines",
+"Venezuela"
+],
+"Cuenca": [
+"Ecuador"
+],
+"San Crist\u00f3bal de La Laguna": [
+"Spain"
+],
+"Palpal\u00e1": [
+"Argentina"
+],
+"Goya": [
+"Argentina"
+],
+"Newcastle": [
+"Australia"
+],
+"Satna": [
+"India"
+],
+"Doncaster": [
+"United Kingdom"
+],
+"Kakinada": [
+"India"
+],
+"Swakopmund": [
+"Namibia"
+],
+"B\u00e9ja\u00efa": [
+"Algeria"
+],
+"Ashkelon": [
+"Israel"
+],
+"Malacca": [
+"Malaysia"
+],
+"George Town": [
+"Malaysia"
+],
+"San Francisco de Campeche": [
+"Mexico"
+],
+"Chihuahua City": [
+"Mexico"
+],
+"Guanajuato": [
+"Mexico"
+],
+"Colima": [
+"Mexico"
+],
+"Latur": [
+"India"
+],
+"Brandon": [
+"Canada"
+],
+"Nellore": [
+"India"
+],
+"Navi Mumbai": [
+"India"
+],
+"Semey": [
+"Kazakhstan"
+],
+"Nasser": [
+"Egypt"
+],
+"Kanpur": [
+"India"
+],
+"Hasan Abdal": [
+"Pakistan"
+],
+"Vitry-sur-Seine": [
+"France"
+],
+"Salamiyah": [
+"Syria"
+],
+"Legan\u00e9s": [
+"Spain"
+],
+"Constan\u021ba": [
+"Romania"
+],
+"Southampton": [
+"United Kingdom"
+],
+"Zhoukou": [
+"People's Republic of China"
+],
+"Kostiantynivka": [
+"Ukraine"
+],
+"La Vega": [
+"Dominican Republic"
+],
+"Sopron": [
+"Hungary"
+],
+"Fuyang": [
+"People's Republic of China"
+],
+"Xianyang": [
+"People's Republic of China"
+],
+"Tongchuan": [
+"People's Republic of China"
+],
+"Baoji": [
+"People's Republic of China"
+],
+"Tekirda\u011f": [
+"Turkey"
+],
+"Aksaray": [
+"Turkey"
+],
+"Kumasi": [
+"Ghana"
+],
+"Tobruk": [
+"Libya"
+],
+"Chania": [
+"Greece"
+],
+"Rustavi": [
+"Georgia"
+],
+"Kano": [
+"Nigeria"
+],
+"Cochabamba": [
+"Bolivia"
+],
+"Ioannina": [
+"Greece"
+],
+"Ibadan": [
+"Nigeria"
+],
+"Jalalabad": [
+"Afghanistan"
+],
+"Tokat": [
+"Byzantine Empire",
+"Turkey"
+],
+"Zenica": [
+"Bosnia and Herzegovina"
+],
+"Preston": [
+"United Kingdom"
+],
+"Matsue": [
+"Japan"
+],
+"Hachi\u014dji-shi": [
+"Japan"
+],
+"Himeji": [
+"Japan"
+],
+"Amagasaki": [
+"Japan"
+],
+"Matsumoto": [
+"Japan"
+],
+"Numazu": [
+"Japan"
+],
+"Nishinomiya": [
+"Japan"
+],
+"Higashi\u014dsaka-shi": [
+"Japan"
+],
+"K\u014driyama": [
+"Japan"
+],
+"Odawara": [
+"Japan"
+],
+"Ichinomiya": [
+"Japan"
+],
+"Hirakata": [
+"Japan"
+],
+"Funabashi": [
+"Japan"
+],
+"Tsukuba": [
+"Japan"
+],
+"Iwaki": [
+"Japan"
+],
+"Kawagoe": [
+"Japan"
+],
+"Kashiwa": [
+"Japan"
+],
+"Kurume": [
+"Japan"
+],
+"Sasebo": [
+"Japan"
+],
+"Isesaki": [
+"Japan"
+],
+"Fuji": [
+"Japan"
+],
+"Takatsuki": [
+"Japan"
+],
+"Toyohashi": [
+"Japan"
+],
+"Takasaki": [
+"Japan"
+],
+"Kasukabe": [
+"Japan"
+],
+"\u014cta-shi": [
+"Japan"
+],
+"Yamato": [
+"Japan"
+],
+"Kawaguchi": [
+"Japan"
+],
+"Toyonaka": [
+"Japan"
+],
+"Kurashiki": [
+"Japan"
+],
+"Koshigaya": [
+"Japan"
+],
+"Suita": [
+"Japan"
+],
+"Fukuyama": [
+"Japan"
+],
+"Zaragoza": [
+"Kingdom of Aragon",
+"Kingdom of Leon",
+"Spain"
+],
+"Enerhodar": [
+"Ukraine"
+],
+"Uzunk\u00f6pr\u00fc": [
+"Turkey"
+],
+"Brovary": [
+"Ukraine"
+],
+"Lozova": [
+"Ukraine"
+],
+"Nizhyn": [
+"Ukraine"
+],
+"Waqooyi-Bari": [
+"Somalia"
+],
+"Braga": [
+"Portugal"
+],
+"Tczew": [
+"Poland"
+],
+"St. Albert": [
+"Canada"
+],
+"Dublin City": [
+"Ireland"
+],
+"Utrecht": [
+"Netherlands"
+],
+"Muar": [
+"Malaysia"
+],
+"Greater Sudbury": [
+"Canada"
+],
+"Kawartha Lakes": [
+"Canada"
+],
+"Yangiyo\u2018l": [
+"Uzbekistan"
+],
+"Jimma": [
+"Ethiopia"
+],
+"Pickering": [
+"Canada"
+],
+"Torre\u00f3n": [
+"Mexico"
+],
+"\u015awidnica": [
+"Poland"
+],
+"Sohag": [
+"Egypt"
+],
+"Tete": [
+"Mozambique"
+],
+"Mpanda": [
+"Tanzania"
+],
+"\u017bory": [
+"Poland"
+],
+"Belbis": [
+"Egypt"
+],
+"Mallawi": [
+"Egypt"
+],
+"Agia Paraskevi": [
+"Greece"
+],
+"Marsa Matruh": [
+"Egypt"
+],
+"Beni Suef": [
+"Egypt"
+],
+"Desouk": [
+"Egypt"
+],
+"Agrinio": [
+"Greece"
+],
+"Aguadilla": [
+"United States"
+],
+"Kwekwe": [
+"Zimbabwe"
+],
+"Gweru": [
+"Zimbabwe"
+],
+"Mutare": [
+"Zimbabwe"
+],
+"Douma": [
+"Syria"
+],
+"Kattakurgan": [
+"Uzbekistan"
+],
+"Akure": [
+"Nigeria"
+],
+"Welland": [
+"Canada"
+],
+"Ballary": [
+"India"
+],
+"Barkol Kazakh Autonomous County": [
+"People's Republic of China"
+],
+"Bawku": [
+"Ghana"
+],
+"Cizre": [
+"Turkey"
+],
+"Gisenyi": [
+"Rwanda"
+],
+"Musoma": [
+"Tanzania"
+],
+"Pedro Juan Caballero": [
+"Paraguay"
+],
+"Do\u011fubayaz\u0131t": [
+"Turkey"
+],
+"Tokmok": [
+"Kyrgyzstan"
+],
+"Tlokweng": [
+"Botswana"
+],
+"Rosso": [
+"Mauritania"
+],
+"Manzhouli": [
+"People's Republic of China"
+],
+"Borama": [
+"Somalia",
+"Somaliland"
+],
+"Santana do Livramento": [
+"Brazil"
+],
+"Ceylanp\u0131nar district": [
+"Turkey"
+],
+"Villa del Rosario": [
+"Colombia"
+],
+"Ponta Por\u00e3": [
+"Brazil"
+],
+"Cruzeiro do Sul": [
+"Brazil"
+],
+"Reyhanl\u0131": [
+"Turkey"
+],
+"C\u00e1ceres": [
+"Brazil"
+],
+"Heroica Nogales": [
+"Mexico"
+],
+"Yacuiba": [
+"Bolivia"
+],
+"San Luis R\u00edo Colorado": [
+"Mexico"
+],
+"Pryluky": [
+"Ukraine"
+],
+"Shostka": [
+"Ukraine"
+],
+"Erenhot": [
+"People's Republic of China"
+],
+"Ipiales": [
+"Colombia"
+],
+"Petr\u017ealka": [
+"Kingdom of Hungary",
+"Slovakia"
+],
+"Ceuta": [
+"Spain"
+],
+"Albany": [
+"United States"
+],
+"Yonkers": [
+"United States"
+],
+"Schenectady": [
+"United States"
+],
+"White Plains": [
+"United States"
+],
+"Troy": [
+"United States"
+],
+"Carlos Manuel de C\u00e9spedes": [
+"Cuba"
+],
+"Punta Alta": [
+"Argentina"
+],
+"Potchefstroom": [
+"South Africa"
+],
+"K\u0119dzierzyn-Ko\u017ale": [
+"Poland"
+],
+"Halabja": [
+"Iraq"
+],
+"Rockhampton": [
+"Australia"
+],
+"Hervey Bay": [
+"Australia"
+],
+"Larache": [
+"Morocco"
+],
+"Gilgit": [
+"Pakistan"
+],
+"Guliston": [
+"Uzbekistan"
+],
+"San-P\u00e9dro": [
+"Ivory Coast"
+],
+"Lae": [
+"Papua New Guinea"
+],
+"Ho": [
+"Ghana"
+],
+"Las Piedras": [
+"Uruguay"
+],
+"Luena": [
+"Angola"
+],
+"Narmadapuram": [
+"India"
+],
+"Malanje": [
+"Angola"
+],
+"Tenkodogo": [
+"Burkina Faso"
+],
+"Aksu": [
+"Kazakhstan"
+],
+"Ghardaia": [
+"Algeria"
+],
+"Esna": [
+"Egypt"
+],
+"Araure": [
+"Venezuela"
+],
+"Arba Minch": [
+"Ethiopia"
+],
+"Ocotl\u00e1n": [
+"Mexico"
+],
+"Tire": [
+"Turkey"
+],
+"Layyah": [
+"Pakistan"
+],
+"Punta de Mata": [
+"Venezuela"
+],
+"Kenema": [
+"Sierra Leone"
+],
+"Ondjiva": [
+"Angola"
+],
+"Mufulira": [
+"Zambia"
+],
+"Montego Bay": [
+"Jamaica"
+],
+"Chimoio": [
+"Mozambique"
+],
+"Bahraich": [
+"India"
+],
+"B\u00e9char": [
+"Algeria"
+],
+"Waterloo": [
+"Canada",
+"United States"
+],
+"Banfora": [
+"Burkina Faso"
+],
+"Ejido": [
+"Venezuela"
+],
+"Khyrdalan": [
+"Azerbaijan"
+],
+"Tabora": [
+"Tanzania"
+],
+"Florida": [
+"Cuba"
+],
+"Sialkot": [
+"Pakistan"
+],
+"Portmore": [
+"Jamaica"
+],
+"Mongu": [
+"Zambia"
+],
+"Bhiwandi": [
+"India"
+],
+"Rivera": [
+"Uruguay"
+],
+"Mtwara": [
+"Tanzania"
+],
+"Mohammedia": [
+"Morocco"
+],
+"Arrecife": [
+"Spain"
+],
+"Bokhtar": [
+"Tajikistan"
+],
+"Yenegoa": [
+"Nigeria"
+],
+"L\u00e9o": [
+"Burkina Faso"
+],
+"Sandvika": [
+"Norway"
+],
+"Mount Vernon": [
+"United States"
+],
+"Redondo Beach": [
+"United States"
+],
+"San Leandro": [
+"United States"
+],
+"Placentia": [
+"United States"
+],
+"Watsonville": [
+"United States"
+],
+"Santee": [
+"United States"
+],
+"Vista": [
+"United States"
+],
+"Porterville": [
+"United States"
+],
+"Oshkosh": [
+"United States"
+],
+"La Crosse": [
+"United States"
+],
+"Folsom": [
+"United States"
+],
+"Utica": [
+"United States"
+],
+"Eastvale": [
+"United States"
+],
+"Esquipulas": [
+"Guatemala"
+],
+"Huaquillas": [
+"Ecuador"
+],
+"Ramgarh Upazila": [
+"Bangladesh"
+],
+"Sipilou": [
+"Ivory Coast"
+],
+"Jurupa Valley": [
+"United States"
+],
+"Montijo": [
+"Portugal"
+],
+"Oliveira de Azem\u00e9is": [
+"Portugal"
+],
+"Pa\u00e7os de Ferreira": [
+"Portugal"
+],
+"Pombal": [
+"Portugal"
+],
+"San Francisco": [
+"Argentina",
+"United States"
+],
+"Los Angeles": [
+"United States"
+],
+"Huntington Beach": [
+"United States"
+],
+"San Jose": [
+"Philippines",
+"United States"
+],
+"Oakland": [
+"United States"
+],
+"Sacramento": [
+"United States"
+],
+"Santa Barbara": [
+"United States"
+],
+"Sunnyvale": [
+"United States"
+],
+"El Cajon": [
+"United States"
+],
+"Palm Desert": [
+"United States"
+],
+"Chico": [
+"United States"
+],
+"Pomona": [
+"United States"
+],
+"Compton": [
+"United States"
+],
+"Oceanside": [
+"United States"
+],
+"Palmdale": [
+"United States"
+],
+"Carlsbad": [
+"United States"
+],
+"Roseville": [
+"United States"
+],
+"Carson": [
+"United States"
+],
+"Moreno Valley": [
+"United States"
+],
+"Fullerton": [
+"United States"
+],
+"Antioch": [
+"United States"
+],
+"Costa Mesa": [
+"United States"
+],
+"Mission Viejo": [
+"United States"
+],
+"Citrus Heights": [
+"United States"
+],
+"San Clemente": [
+"United States"
+],
+"Pleasanton": [
+"United States"
+],
+"Dublin": [
+"United States"
+],
+"Fountain Valley": [
+"United States"
+],
+"South Gate": [
+"United States"
+],
+"Indio": [
+"United States"
+],
+"Gardena": [
+"United States"
+],
+"Brentwood": [
+"United States"
+],
+"Vacaville": [
+"United States"
+],
+"Novato": [
+"United States"
+],
+"Chino Hills": [
+"United States"
+],
+"Tustin": [
+"United States"
+],
+"South San Francisco": [
+"United States"
+],
+"Milpitas": [
+"United States"
+],
+"Laguna Niguel": [
+"United States"
+],
+"Aliso Viejo": [
+"United States"
+],
+"Siddharthanagar": [
+"Nepal"
+],
+"Nusaybin": [
+"Turkey"
+],
+"Gulariya": [
+"Nepal"
+],
+"Piedras Negras": [
+"Mexico"
+],
+"Livingstone": [
+"Zambia"
+],
+"Paso de los Libres": [
+"Argentina"
+],
+"Dajab\u00f3n": [
+"Dominican Republic"
+],
+"Marechal C\u00e2ndido Rondon": [
+"Brazil"
+],
+"Oriximin\u00e1": [
+"Brazil"
+],
+"Wroc\u0142aw": [
+"Poland"
+],
+"St. John's": [
+"Canada"
+],
+"Langenfeld": [
+"Germany"
+],
+"H\u00fcrth": [
+"Germany"
+],
+"Stolberg": [
+"Germany"
+],
+"Euskirchen": [
+"Germany"
+],
+"Eschweiler": [
+"Germany"
+],
+"Sankt Augustin": [
+"Germany"
+],
+"Hilden": [
+"Germany"
+],
+"Meerbusch": [
+"Germany"
+],
+"Willich": [
+"Germany"
+],
+"Ibbenb\u00fcren": [
+"Germany"
+],
+"Gummersbach": [
+"Germany"
+],
+"Erftstadt": [
+"Germany"
+],
+"Frechen": [
+"Germany"
+],
+"Kleve": [
+"Germany"
+],
+"Gronau": [
+"Germany"
+],
+"Krak\u00f3w": [
+"Poland"
+],
+"Cz\u0119stochowa": [
+"Poland"
+],
+"Zielona G\u00f3ra": [
+"Poland"
+],
+"Tarn\u00f3w": [
+"Poland"
+],
+"W\u0142oc\u0142awek": [
+"Poland"
+],
+"Dessie": [
+"Ethiopia"
+],
+"Jijiga": [
+"Ethiopia"
+],
+"Hawaasa": [
+"Ethiopia"
+],
+"Beawar": [
+"India"
+],
+"Bhawanipatna": [
+"India"
+],
+"Ananthapuram": [
+"India"
+],
+"Bhilwara": [
+"India"
+],
+"Bharuch": [
+"India"
+],
+"Bhagalpur": [
+"India"
+],
+"Gambela": [
+"Ethiopia"
+],
+"Taroudant": [
+"Morocco"
+],
+"Navoiy": [
+"Uzbekistan"
+],
+"Ilesa": [
+"Nigeria"
+],
+"Kaya": [
+"Burkina Faso"
+],
+"Lambayeque": [
+"Peru"
+],
+"C\u00faa": [
+"Venezuela"
+],
+"Tissemsilt": [
+"Algeria"
+],
+"Helwan": [
+"Egypt"
+],
+"Milagro": [
+"Ecuador"
+],
+"Dhule": [
+"India"
+],
+"La Chorrera": [
+"Panama"
+],
+"Klaip\u0117da": [
+"Lithuania"
+],
+"Sumbe": [
+"Angola"
+],
+"Escuintla": [
+"Guatemala"
+],
+"Kapurthala": [
+"India"
+],
+"Chinhoyi": [
+"Zimbabwe"
+],
+"Tepexpan": [
+"Mexico"
+],
+"Oulad Teima": [
+"Morocco"
+],
+"Pittsburgh": [
+"United States"
+],
+"Cebu City": [
+"Philippines"
+],
+"Davao City": [
+"Philippines"
+],
+"Caloocan": [
+"Philippines"
+],
+"Harrisburg": [
+"United States"
+],
+"Lansing": [
+"United States"
+],
+"Springfield": [
+"United States"
+],
+"Saint Paul": [
+"United States"
+],
+"Montgomery": [
+"United States"
+],
+"Little Rock": [
+"United States"
+],
+"Hartford": [
+"United States"
+],
+"Boise": [
+"United States"
+],
+"Tallahassee": [
+"United States"
+],
+"Bismarck": [
+"United States"
+],
+"Cheyenne": [
+"United States"
+],
+"Olympia": [
+"United States"
+],
+"Allentown": [
+"United States"
+],
+"Bethlehem": [
+"United States"
+],
+"Ctesiphon": [
+"Iraq"
+],
+"Kamakura": [
+"Japan"
+],
+"Erie": [
+"United States"
+],
+"Reading": [
+"United States"
+],
+"Scranton": [
+"United States"
+],
+"Berisso": [
+"Argentina"
+],
+"Negombo": [
+"Sri Lanka"
+],
+"Srikakulam": [
+"India"
+],
+"Wolaita Sodo": [
+"Ethiopia"
+],
+"Kambove": [
+"Democratic Republic of the Congo"
+],
+"Cerro de Pasco": [
+"Peru"
+],
+"Dimbokro": [
+"Ivory Coast"
+],
+"Hermonthis": [
+"Egypt"
+],
+"San Pedro de Macor\u00eds": [
+"Dominican Republic"
+],
+"San Francisco de Macor\u00eds": [
+"Dominican Republic"
+],
+"Nueva Loja": [
+"Ecuador"
+],
+"Santiago de Veraguas": [
+"Panama"
+],
+"Mawlamyine": [
+"Myanmar"
+],
+"Chivilcoy": [
+"Argentina"
+],
+"Kassala": [
+"Sudan"
+],
+"Machakos": [
+"Kenya"
+],
+"Santa Cruz del Quich\u00e9": [
+"Guatemala"
+],
+"Al Diwaniyah": [
+"Iraq"
+],
+"Barinas": [
+"Venezuela"
+],
+"Los Teques": [
+"Venezuela"
+],
+"Larkana": [
+"Pakistan"
+],
+"Mackay": [
+"Australia"
+],
+"Batala": [
+"India"
+],
+"Bathinda": [
+"India"
+],
+"Baramulla": [
+"India"
+],
+"Arys": [
+"Kazakhstan"
+],
+"Mancherial": [
+"India"
+],
+"Pruszk\u00f3w": [
+"Poland"
+],
+"Talara": [
+"Peru"
+],
+"Cabimas": [
+"Venezuela"
+],
+"Huaral": [
+"Peru"
+],
+"Allegheny": [
+"United States"
+],
+"Lunga Lunga": [
+"Kenya"
+],
+"Mai'Adua": [
+"Nigeria"
+],
+"Victoria": [
+"Canada",
+"United States"
+],
+"Maple Ridge": [
+"Canada"
+],
+"Red Deer": [
+"Canada"
+],
+"Boca Raton": [
+"United States"
+],
+"Allen": [
+"United States"
+],
+"Las Cruces": [
+"United States"
+],
+"Rio Rancho": [
+"United States"
+],
+"Fargo": [
+"United States"
+],
+"Grand Forks": [
+"United States"
+],
+"Dayton": [
+"United States"
+],
+"Albuquerque": [
+"United States"
+],
+"Oklahoma City": [
+"United States"
+],
+"Minneapolis": [
+"United States"
+],
+"Cleveland": [
+"United States"
+],
+"Columbia": [
+"United States"
+],
+"Santa Fe": [
+"United States"
+],
+"Des Moines": [
+"United States"
+],
+"Joliet": [
+"United States"
+],
+"Norman": [
+"United States"
+],
+"Topeka": [
+"United States"
+],
+"Omaha": [
+"United States"
+],
+"Tulsa": [
+"United States"
+],
+"Port Arthur": [
+"United States"
+],
+"Green Bay": [
+"United States"
+],
+"Charleston": [
+"United States"
+],
+"Nashua": [
+"United States"
+],
+"New Haven": [
+"United States"
+],
+"New Bedford": [
+"United States"
+],
+"Lowell": [
+"United States"
+],
+"Lawrence": [
+"United States"
+],
+"New Britain": [
+"United States"
+],
+"Bridgeport": [
+"United States"
+],
+"Waterbury": [
+"United States"
+],
+"Worcester": [
+"United Kingdom",
+"United States"
+],
+"Lynn": [
+"United States"
+],
+"Waltham": [
+"United States"
+],
+"Brockton": [
+"United States"
+],
+"Fall River": [
+"United States"
+],
+"Warwick": [
+"United States"
+],
+"Cranston": [
+"United States"
+],
+"Danbury": [
+"United States"
+],
+"Somerville": [
+"United States"
+],
+"Pawtucket": [
+"United States"
+],
+"Portland": [
+"United States"
+],
+"Scottsdale": [
+"United States"
+],
+"Reno": [
+"United States"
+],
+"Winston-Salem": [
+"United States"
+],
+"Durham": [
+"United States"
+],
+"Kelowna": [
+"Canada"
+],
+"Burnaby": [
+"Canada"
+],
+"Lethbridge": [
+"Canada"
+],
+"Abbotsford": [
+"Canada"
+],
+"Medicine Hat": [
+"Canada"
+],
+"Surrey": [
+"Canada"
+],
+"Airdrie": [
+"Canada"
+],
+"Kamloops": [
+"Canada"
+],
+"Prince George": [
+"Canada"
+],
+"Grande Prairie": [
+"Canada"
+],
+"Coquitlam": [
+"Canada"
+],
+"Port Coquitlam": [
+"Canada"
+],
+"Delta": [
+"Canada"
+],
+"New Westminster": [
+"Canada"
+],
+"Chilliwack": [
+"Canada"
+],
+"North Vancouver": [
+"Canada"
+],
+"Cavite City": [
+"Philippines"
+],
+"Cabadbaran": [
+"Philippines"
+],
+"Bayugan": [
+"Philippines"
+],
+"Legazpi": [
+"Philippines"
+],
+"Ligao": [
+"Philippines"
+],
+"Tabaco": [
+"Philippines"
+],
+"Isabela": [
+"Philippines"
+],
+"Lamitan": [
+"Philippines"
+],
+"Balanga": [
+"Philippines"
+],
+"Mainz": [
+"Germany"
+],
+"Batangas City": [
+"Philippines"
+],
+"Lipa": [
+"Philippines"
+],
+"Tanauan": [
+"Philippines"
+],
+"Tagbilaran": [
+"Philippines"
+],
+"Malaybalay": [
+"Philippines"
+],
+"Wuppertal": [
+"Germany"
+],
+"Malolos": [
+"Philippines"
+],
+"Meycauayan": [
+"Philippines"
+],
+"Tuguegarao": [
+"Philippines"
+],
+"Iriga": [
+"Philippines"
+],
+"Roxas City": [
+"Philippines"
+],
+"Bremerhaven": [
+"Germany"
+],
+"M\u00f6nchengladbach": [
+"Germany"
+],
+"Gelsenkirchen": [
+"Germany"
+],
+"Krefeld": [
+"Germany"
+],
+"Oberhausen": [
+"Germany"
+],
+"Rostock": [
+"Germany"
+],
+"M\u00fclheim an der Ruhr": [
+"Germany"
+],
+"Herne": [
+"Germany"
+],
+"Ludwigshafen": [
+"Germany"
+],
+"Oldenburg": [
+"Germany"
+],
+"Leverkusen": [
+"Germany"
+],
+"Wolfsburg": [
+"Germany"
+],
+"Reutlingen": [
+"Germany"
+],
+"T\u00fcbingen": [
+"Germany"
+],
+"Villingen-Schwenningen": [
+"Germany"
+],
+"Sindelfingen": [
+"Germany"
+],
+"Schw\u00e4bisch Gm\u00fcnd": [
+"Germany"
+],
+"Friedrichshafen": [
+"Germany"
+],
+"G\u00f6ppingen": [
+"Germany"
+],
+"Waiblingen": [
+"Germany"
+],
+"Ravensburg": [
+"Germany"
+],
+"Rastatt": [
+"Germany"
+],
+"B\u00f6blingen": [
+"Germany"
+],
+"Bucheon": [
+"South Korea"
+],
+"Seongnam": [
+"South Korea"
+],
+"Jeonju": [
+"South Korea"
+],
+"Cheonan": [
+"South Korea"
+],
+"San Jos\u00e9 de las Lajas": [
+"Cuba"
+],
+"Huacho": [
+"Peru"
+],
+"El Torno": [
+"Bolivia"
+],
+"Rubio": [
+"Venezuela"
+],
+"Ed\u00e9a": [
+"Cameroon"
+],
+"Eluru": [
+"India"
+],
+"Hassa": [
+"Turkey"
+],
+"Pabna": [
+"Bangladesh"
+],
+"Bumba": [
+"Democratic Republic of the Congo"
+],
+"Cazenga": [
+"Angola"
+],
+"Palakkad": [
+"India"
+],
+"Mandya": [
+"India"
+],
+"Cumilla": [
+"Bangladesh"
+],
+"Mymensingh": [
+"Bangladesh"
+],
+"Ghazipur": [
+"India"
+],
+"Mira-Bhayandar": [
+"India"
+],
+"Jagdalpur": [
+"India"
+],
+"Suwayda": [
+"Syria"
+],
+"Al Qadarif": [
+"Sudan"
+],
+"Al-Fashir": [
+"Sudan"
+],
+"Hasakah": [
+"Syria"
+],
+"Buea": [
+"Cameroon"
+],
+"El Mahalla El Kubra": [
+"Egypt"
+],
+"Bahawalpur": [
+"Pakistan"
+],
+"Galle": [
+"Sri Lanka"
+],
+"Cuman\u00e1": [
+"Venezuela"
+],
+"Urayasu": [
+"Japan"
+],
+"Siedlce": [
+"Poland"
+],
+"Benin City": [
+"Nigeria"
+],
+"Bata": [
+"Equatorial Guinea"
+],
+"Kollam": [
+"India"
+],
+"Eldoret": [
+"Kenya"
+],
+"Rajshahi": [
+"Bangladesh"
+],
+"Nampula": [
+"Mozambique"
+],
+"Trincomalee": [
+"Sri Lanka"
+],
+"Prijedor": [
+"Bosnia and Herzegovina"
+],
+"\u00d3bidos": [
+"Brazil"
+],
+"Linjiang": [
+"People's Republic of China"
+],
+"Myawaddy": [
+"Myanmar"
+],
+"Uruguaiana": [
+"Brazil"
+],
+"Arauca": [
+"Colombia"
+],
+"Marivan": [
+"Iran"
+],
+"Astara": [
+"Iran"
+],
+"Tacheng": [
+"People's Republic of China"
+],
+"Chaman": [
+"Pakistan"
+],
+"Thakh\u00e8k": [
+"Laos"
+],
+"Sangli": [
+"India"
+],
+"Nazareth": [
+"Israel"
+],
+"Chingola": [
+"Zambia"
+],
+"Malakwal": [
+"Pakistan"
+],
+"Alytus": [
+"Lithuania"
+],
+"Musumba": [
+"Democratic Republic of the Congo"
+],
+"Inhambane": [
+"Mozambique"
+],
+"Ambala": [
+"India"
+],
+"Moncton": [
+"Canada"
+],
+"Cabinda": [
+"Angola"
+],
+"Franceville": [
+"Gabon"
+],
+"Be\u015fikta\u015f": [
+"Turkey"
+],
+"Wagga Wagga": [
+"Australia"
+],
+"Ulhasnagar": [
+"India"
+],
+"Koudougou": [
+"Burkina Faso"
+],
+"Muzaffarabad": [
+"Pakistan"
+],
+"Bidar": [
+"India"
+],
+"Bahir Dar": [
+"Ethiopia"
+],
+"Sylhet": [
+"Bangladesh"
+],
+"Gardez": [
+"Afghanistan"
+],
+"Huancayo": [
+"Peru"
+],
+"Hadera": [
+"Israel"
+],
+"Urgench": [
+"Uzbekistan"
+],
+"Ibiza": [
+"Spain"
+],
+"Alor Setar": [
+"Malaysia"
+],
+"Amphawa": [
+"Thailand"
+],
+"Lashkar Gah": [
+"Afghanistan"
+],
+"Pul-e Khomri": [
+"Afghanistan"
+],
+"Aktobe": [
+"Kazakhstan"
+],
+"Taloqan": [
+"Afghanistan"
+],
+"Satkhira": [
+"Bangladesh"
+],
+"Kenitra": [
+"Morocco"
+],
+"Kallithea": [
+"Greece"
+],
+"Riobamba": [
+"Ecuador"
+],
+"I\u011fd\u0131r": [
+"Turkey"
+],
+"Karaganda": [
+"Kazakhstan"
+],
+"Shymkent": [
+"Kazakhstan"
+],
+"Ratlam": [
+"India"
+],
+"Bukoba": [
+"Tanzania"
+],
+"Ensenada": [
+"Mexico"
+],
+"Touba": [
+"Ivory Coast",
+"Senegal"
+],
+"Merca": [
+"Somalia"
+],
+"Bertoua": [
+"Cameroon"
+],
+"Korydallos": [
+"Greece"
+],
+"Maradi": [
+"Niger"
+],
+"Lichinga": [
+"Mozambique"
+],
+"Muhanga": [
+"Rwanda"
+],
+"Adlersky City District": [
+"Russia"
+],
+"Baure": [
+"Nigeria"
+],
+"El Paso\u2013Ju\u00e1rez": [
+"Mexico",
+"United States"
+],
+"Ipokia": [
+"Nigeria"
+],
+"Malkara": [
+"Turkey"
+],
+"Badajoz city": [
+"Spain"
+],
+"Yewa North": [
+"Nigeria"
+],
+"Zango": [
+"Nigeria"
+],
+"Khorgos": [
+"People's Republic of China"
+],
+"Kokdala": [
+"People's Republic of China"
+],
+"Tabatinga": [
+"Brazil"
+],
+"Rhamu": [
+"Kenya"
+],
+"Lafey": [
+"Kenya"
+],
+"Agualva-Cac\u00e9m": [
+"Portugal"
+],
+"Astana": [
+"Kazakhstan"
+],
+"Sejong": [
+"South Korea"
+],
+"Putrajaya": [
+"Malaysia"
+],
+"Ani": [
+"Turkey"
+],
+"Belas": [
+"Angola"
+],
+"Concepci\u00f3n del Uruguay": [
+"Argentina"
+],
+"Ma'arrat Nu'man": [
+"Syria"
+],
+"Wajir": [
+"Kenya"
+],
+"Mbarara City": [
+"Uganda"
+],
+"Baghlan": [
+"Afghanistan"
+],
+"Guanare": [
+"Venezuela"
+],
+"Iringa": [
+"Tanzania"
+],
+"Sur": [
+"Oman"
+],
+"Melo": [
+"Uruguay"
+],
+"Sittwe": [
+"Myanmar"
+],
+"Ferizaj": [
+"Kosovo",
+"Serbia"
+],
+"Gjilan": [
+"Kosovo"
+],
+"Assela": [
+"Ethiopia"
+],
+"Bishoftu": [
+"Ethiopia"
+],
+"Gu\u00e9ck\u00e9dougou": [
+"Guinea"
+],
+"Jezkazgan": [
+"Kazakhstan"
+],
+"Piaseczno": [
+"Poland"
+],
+"Palma Soriano": [
+"Cuba"
+],
+"Whang\u0101rei": [
+"New Zealand"
+],
+"Ngaound\u00e9r\u00e9": [
+"Cameroon"
+],
+"Barishal": [
+"Bangladesh"
+],
+"Puerto Madryn": [
+"Argentina"
+],
+"Battambang": [
+"Cambodia"
+],
+"Girga": [
+"Egypt"
+],
+"Samawah": [
+"Iraq"
+],
+"Avellaneda": [
+"Argentina"
+],
+"Gemlik": [
+"Turkey"
+],
+"Atbarah": [
+"Sudan"
+],
+"Atfih": [
+"Egypt"
+],
+"Pasig": [
+"Philippines"
+],
+"Zamboanga": [
+"Philippines"
+],
+"Taguig": [
+"Philippines"
+],
+"Cagayan de Oro": [
+"Philippines"
+],
+"Butuan": [
+"Philippines"
+],
+"Dresden": [
+"Germany"
+],
+"Chemnitz": [
+"Germany"
+],
+"Kassel": [
+"Germany"
+],
+"Offenbach am Main": [
+"Germany"
+],
+"Jena": [
+"Germany"
+],
+"Gera": [
+"Germany"
+],
+"Flensburg": [
+"Germany"
+],
+"Dessau-Ro\u00dflau": [
+"Germany"
+],
+"Neum\u00fcnster": [
+"Germany"
+],
+"Weimar": [
+"Germany"
+],
+"Las Pi\u00f1as": [
+"Philippines"
+],
+"Malabon": [
+"Philippines"
+],
+"Mandaluyong": [
+"Philippines"
+],
+"Marikina": [
+"Philippines"
+],
+"Muntinlupa": [
+"Philippines"
+],
+"Navotas": [
+"Philippines"
+],
+"Pasay": [
+"Philippines"
+],
+"Tacloban": [
+"Philippines"
+],
+"Olongapo": [
+"Philippines"
+],
+"Hillsboro": [
+"United States"
+],
+"Gresham": [
+"United States"
+],
+"Beaverton": [
+"United States"
+],
+"Puerto Princesa": [
+"Philippines"
+],
+"Eugene": [
+"United States"
+],
+"Iligan": [
+"Philippines"
+],
+"Iloilo City": [
+"Philippines"
+],
+"Lapu-Lapu": [
+"Philippines"
+],
+"General Santos": [
+"Philippines"
+],
+"Bend": [
+"United States"
+],
+"Corvallis": [
+"United States"
+],
+"San Juan": [
+"Philippines"
+],
+"Awka": [
+"Nigeria"
+],
+"Huaraz": [
+"Peru"
+],
+"Beykoz": [
+"Turkey"
+],
+"Songea": [
+"Tanzania"
+],
+"Bhiwani": [
+"India"
+],
+"Babahoyo": [
+"Ecuador"
+],
+"Bhuj": [
+"India"
+],
+"Jisr ash-Shughur": [
+"Syria"
+],
+"Bafia": [
+"Cameroon"
+],
+"Bafoussam": [
+"Cameroon"
+],
+"Bago": [
+"Myanmar",
+"Philippines"
+],
+"Baiji": [
+"Iraq"
+],
+"Beit Lahia": [
+"Palestine"
+],
+"Balkhash": [
+"Kazakhstan"
+],
+"Balykchy": [
+"Kyrgyzstan"
+],
+"Banda del R\u00edo Sal\u00ed": [
+"Argentina"
+],
+"Banes": [
+"Cuba"
+],
+"Bangor": [
+"United Kingdom"
+],
+"Bannu": [
+"Pakistan"
+],
+"Barbacena": [
+"Brazil"
+],
+"Barmer": [
+"India"
+],
+"Bauchi": [
+"Nigeria"
+],
+"Ba\u00eda Farta": [
+"Angola"
+],
+"Beed": [
+"India"
+],
+"Bekobod": [
+"Uzbekistan"
+],
+"Irapuato": [
+"Mexico"
+],
+"Kuantan": [
+"Malaysia"
+],
+"Settat": [
+"Morocco"
+],
+"Shinyanga": [
+"Tanzania"
+],
+"Maroua": [
+"Cameroon"
+],
+"Limbe": [
+"Cameroon"
+],
+"Bernal": [
+"Argentina"
+],
+"Nador": [
+"Morocco"
+],
+"Medford": [
+"United States"
+],
+"Letopolis": [
+"Egypt"
+],
+"Ptolemais Hermiou": [
+"Ancient Egypt",
+"Egypt"
+],
+"Tigard": [
+"United States"
+],
+"Nuremberg": [
+"Germany"
+],
+"Augsburg": [
+"Germany"
+],
+"Regensburg": [
+"Germany"
+],
+"Ingolstadt": [
+"Germany"
+],
+"F\u00fcrth": [
+"Germany"
+],
+"Erlangen": [
+"Germany"
+],
+"Nicosia": [
+"Cyprus"
+],
+"Bayreuth": [
+"Germany"
+],
+"Bamberg": [
+"Germany"
+],
+"Aschaffenburg": [
+"Germany"
+],
+"Salvador": [
+"Brazil"
+],
+"Tsu": [
+"Japan"
+],
+"Tokushima": [
+"Japan"
+],
+"Yamaguchi": [
+"Japan"
+],
+"Saga": [
+"Japan"
+],
+"Okara": [
+"Pakistan"
+],
+"Sheikhupura": [
+"Pakistan"
+],
+"Warnes": [
+"Bolivia"
+],
+"Abnub": [
+"Egypt"
+],
+"Skardu": [
+"Pakistan"
+],
+"Tambacounda": [
+"Senegal"
+],
+"Cagua": [
+"Venezuela"
+],
+"Les Cayes": [
+"Haiti"
+],
+"Huehuetenango": [
+"Guatemala"
+],
+"Nikaia": [
+"Greece"
+],
+"Oshakati": [
+"Namibia"
+],
+"Korhogo": [
+"Ivory Coast"
+],
+"N'dalatando": [
+"Angola"
+],
+"Carrefour": [
+"Haiti"
+],
+"Socop\u00f3": [
+"Venezuela"
+],
+"Safaga": [
+"Egypt"
+],
+"C\u00e1rdenas": [
+"Cuba"
+],
+"Olmaliq": [
+"Uzbekistan"
+],
+"Tapachula de C\u00f3rdova y Ord\u00f3\u00f1ez": [
+"Mexico"
+],
+"Kasur": [
+"Pakistan"
+],
+"Rahim Yar Khan": [
+"Pakistan"
+],
+"C\u00f3rdoba": [
+"Mexico"
+],
+"Khenifra": [
+"Morocco"
+],
+"Fada N\u2019Gourma": [
+"Burkina Faso"
+],
+"Tal Afar": [
+"Iraq"
+],
+"Chincha Alta": [
+"Peru"
+],
+"Montero": [
+"Bolivia"
+],
+"Sipe Sipe": [
+"Bolivia"
+],
+"Manta": [
+"Ecuador"
+],
+"San Fernando de Apure": [
+"Venezuela"
+],
+"Saada": [
+"Yemen"
+],
+"Puerto Barrios": [
+"Guatemala"
+],
+"Ciudad del Carmen": [
+"Mexico"
+],
+"Orlando": [
+"United States"
+],
+"St. Petersburg": [
+"United States"
+],
+"Greensboro": [
+"United States"
+],
+"Corpus Christi": [
+"United States"
+],
+"Aurora": [
+"United States"
+],
+"Colorado Springs": [
+"United States"
+],
+"Mesa": [
+"United States"
+],
+"Wichita": [
+"United States"
+],
+"Henderson": [
+"United States"
+],
+"Fort Wayne": [
+"United States"
+],
+"Chandler": [
+"United States"
+],
+"Lubbock": [
+"United States"
+],
+"Garland": [
+"United States"
+],
+"Hialeah": [
+"United States"
+],
+"Garden Grove": [
+"United States"
+],
+"Tempe": [
+"United States"
+],
+"Peoria": [
+"United States"
+],
+"Surprise": [
+"United States"
+],
+"Plano": [
+"United States"
+],
+"Irving": [
+"United States"
+],
+"Amarillo": [
+"United States"
+],
+"Grand Prairie": [
+"United States"
+],
+"Mesquite": [
+"United States"
+],
+"McKinney": [
+"United States"
+],
+"McAllen": [
+"United States"
+],
+"West Valley City": [
+"United States"
+],
+"West Jordan": [
+"United States"
+],
+"South Jordan": [
+"United States"
+],
+"Orem": [
+"United States"
+],
+"Sandy": [
+"United States"
+],
+"Ogden": [
+"United States"
+],
+"St. George": [
+"United States"
+],
+"Layton": [
+"United States"
+],
+"Taylorsville": [
+"United States"
+],
+"Haverhill": [
+"United States"
+],
+"Peabody": [
+"United States"
+],
+"Dindigul": [
+"India"
+],
+"Luanshya": [
+"Zambia"
+],
+"Bhawana": [
+"Pakistan"
+],
+"Kampong Cham": [
+"Cambodia"
+],
+"Sargodha": [
+"Pakistan"
+],
+"Chipata (Fort Jameson)": [
+"Zambia"
+],
+"Lautoka": [
+"Fiji"
+],
+"Sar\u0131yer": [
+"Turkey"
+],
+"Golmud": [
+"People's Republic of China"
+],
+"Bilaspur": [
+"India"
+],
+"La Asunci\u00f3n": [
+"Venezuela"
+],
+"Placetas": [
+"Cuba"
+],
+"Bundi": [
+"India"
+],
+"Bimbo": [
+"Central African Republic"
+],
+"Bingerville": [
+"Ivory Coast"
+],
+"Ponce": [
+"United States"
+],
+"Birnin Kebbi": [
+"Nigeria"
+],
+"Gharyan": [
+"Libya"
+],
+"Salt": [
+"Jordan"
+],
+"Osogbo": [
+"Nigeria"
+],
+"Sukkur": [
+"Pakistan"
+],
+"Ciudad de la Costa": [
+"Uruguay"
+],
+"Pathein": [
+"Myanmar"
+],
+"Solwezi": [
+"Zambia"
+],
+"La Guaira": [
+"Venezuela"
+],
+"Tahoua": [
+"Niger"
+],
+"Bocon\u00f3": [
+"Venezuela"
+],
+"Bondoukou": [
+"Ivory Coast"
+],
+"Bor": [
+"Kingdom of Egypt",
+"South Sudan"
+],
+"Brahmanbaria": [
+"Bangladesh"
+],
+"Dila": [
+"Ethiopia"
+],
+"Ebolowa": [
+"Cameroon"
+],
+"Diourbel": [
+"Senegal"
+],
+"North Bay": [
+"Canada"
+],
+"Tocuyito": [
+"Venezuela"
+],
+"Chirchiq": [
+"Uzbekistan"
+],
+"Glyfada": [
+"Greece"
+],
+"Kozan": [
+"Turkey"
+],
+"Tarapoto": [
+"Peru"
+],
+"Gujrat": [
+"Pakistan"
+],
+"Kad\u0131k\u00f6y": [
+"Turkey"
+],
+"Reconquista": [
+"Argentina"
+],
+"D\u00e9dougou": [
+"Burkina Faso"
+],
+"Tan-Tan": [
+"Morocco"
+],
+"Medininagar": [
+"India"
+],
+"Istaravshan": [
+"Tajikistan"
+],
+"Boston": [
+"United States"
+],
+"San Antonio": [
+"Paraguay",
+"United States"
+],
+"Seattle": [
+"United States"
+],
+"Miami": [
+"United States"
+],
+"Houston": [
+"United States"
+],
+"Dallas": [
+"United States"
+],
+"Fort Worth": [
+"United States"
+],
+"Memphis": [
+"United States"
+],
+"Charlotte": [
+"United States"
+],
+"Arlington": [
+"United States"
+],
+"Providence": [
+"United States"
+],
+"Tucson": [
+"United States"
+],
+"Salt Lake City": [
+"United States"
+],
+"Provo": [
+"United States"
+],
+"Atlanta": [
+"United States"
+],
+"Las Vegas": [
+"United States"
+],
+"Independence": [
+"United States"
+],
+"Euless": [
+"United States"
+],
+"Lewisville": [
+"United States"
+],
+"Davenport": [
+"United States"
+],
+"Jackson": [
+"United States"
+],
+"Myslowice, Silesian Voivodeship": [
+"Poland"
+],
+"Bia\u0142a Podlaska": [
+"Poland"
+],
+"Tumbes": [
+"Peru"
+],
+"Lindi": [
+"Tanzania"
+],
+"Tacuaremb\u00f3": [
+"Uruguay"
+],
+"Totonicap\u00e1n": [
+"Guatemala"
+],
+"Sheberghan": [
+"Afghanistan"
+],
+"Ica": [
+"Peru"
+],
+"Umm Qasr": [
+"Iraq"
+],
+"Faizabad": [
+"India"
+],
+"Matur\u00edn": [
+"Venezuela"
+],
+"Guelmim": [
+"Morocco"
+],
+"Smara": [
+"Morocco",
+"Western Sahara"
+],
+"Ali Sabieh": [
+"Djibouti"
+],
+"Bhaktapur": [
+"Nepal"
+],
+"Calabar": [
+"Nigeria"
+],
+"Teyateyaneng": [
+"Lesotho"
+],
+"Bo": [
+"Sierra Leone"
+],
+"Sokod\u00e9": [
+"Togo"
+],
+"Machilipatnam": [
+"India"
+],
+"Garissa": [
+"Kenya"
+],
+"Sancti Sp\u00edritus": [
+"Cuba"
+],
+"Spanish Town 11.": [
+"Jamaica"
+],
+"Kaolack": [
+"Senegal"
+],
+"Turkistan": [
+"Kazakhstan"
+],
+"Mostaganem": [
+"Algeria"
+],
+"Chlef": [
+"Algeria"
+],
+"Ouidah": [
+"Benin"
+],
+"Nyala": [
+"Sudan"
+],
+"Sidi Bel Abb\u00e8s": [
+"Algeria"
+],
+"Ouargla": [
+"Algeria"
+],
+"Alaminos": [
+"Philippines"
+],
+"Urdaneta": [
+"Philippines"
+],
+"Cauayan": [
+"Philippines"
+],
+"Baliwag": [
+"Philippines"
+],
+"Cabanatuan": [
+"Philippines"
+],
+"Gapan": [
+"Philippines"
+],
+"Mu\u00f1oz": [
+"Philippines"
+],
+"Mabalacat": [
+"Philippines"
+],
+"San Fernando": [
+"Philippines",
+"Trinidad and Tobago"
+],
+"Calaca": [
+"Philippines"
+],
+"Carmona": [
+"Philippines"
+],
+"General Trias": [
+"Philippines"
+],
+"Bacoor": [
+"Philippines"
+],
+"Dasmari\u00f1as": [
+"Philippines"
+],
+"Tagaytay": [
+"Philippines"
+],
+"Trece Martires": [
+"Philippines"
+],
+"Bi\u00f1an": [
+"Philippines"
+],
+"Calamba": [
+"Philippines"
+],
+"San Pablo": [
+"Philippines"
+],
+"Springdale": [
+"United States"
+],
+"Auburn": [
+"United States"
+],
+"Decatur": [
+"United States"
+],
+"Flagstaff": [
+"United States"
+],
+"Conway": [
+"United States"
+],
+"Huntsville": [
+"United States"
+],
+"Mobile": [
+"United States"
+],
+"Casa Grande": [
+"United States"
+],
+"North Little Rock": [
+"United States"
+],
+"Hoover": [
+"United States"
+],
+"Tayabas": [
+"Philippines"
+],
+"Calapan": [
+"Philippines"
+],
+"Tandag": [
+"Philippines"
+],
+"Tacurong": [
+"Philippines"
+],
+"Sorsogon City": [
+"Philippines"
+],
+"Masbate City": [
+"Philippines"
+],
+"Guihulngan": [
+"Philippines"
+],
+"El Salvador": [
+"Philippines"
+],
+"Candon": [
+"Philippines"
+],
+"Ozamiz": [
+"Philippines"
+],
+"Mati": [
+"Philippines"
+],
+"Carcar": [
+"Philippines"
+],
+"Talisay": [
+"Philippines"
+],
+"Toledo": [
+"Philippines",
+"United States"
+],
+"Dipolog": [
+"Philippines"
+],
+"Koronadal": [
+"Philippines"
+],
+"Calbayog": [
+"Philippines"
+],
+"Kisii": [
+"Kenya"
+],
+"Rudny": [
+"Kazakhstan"
+],
+"Kilifi": [
+"Kenya"
+],
+"Ipswich": [
+"Australia"
+],
+"Trelew": [
+"Argentina"
+],
+"Sefrou": [
+"Morocco"
+],
+"Gabela": [
+"Angola"
+],
+"Valera": [
+"Venezuela"
+],
+"Ezbet El Borg": [
+"Egypt"
+],
+"Kolda": [
+"Senegal"
+],
+"Chibuto": [
+"Mozambique"
+],
+"Rourkela": [
+"India"
+],
+"Nizip": [
+"Turkey"
+],
+"Tatvan": [
+"Turkey"
+],
+"Silopi": [
+"Turkey"
+],
+"Karadeniz Ere\u011fli": [
+"Turkey"
+],
+"Mafeteng": [
+"Lesotho"
+],
+"Tarim": [
+"Yemen"
+],
+"Palaio Faliro": [
+"Greece"
+],
+"Sonsonate": [
+"El Salvador"
+],
+"Cipolletti": [
+"Argentina"
+],
+"Daule": [
+"Ecuador"
+],
+"Caranavi": [
+"Bolivia"
+],
+"Monte Cristi": [
+"Ecuador"
+],
+"Coca": [
+"Ecuador"
+],
+"Rialto": [
+"United States"
+],
+"Joplin": [
+"United States"
+],
+"Pocatello": [
+"United States"
+],
+"Simi Valley": [
+"United States"
+],
+"Rockville": [
+"United States"
+],
+"Clarksville": [
+"United States"
+],
+"Hendersonville": [
+"United States"
+],
+"Pembroke Pines": [
+"United States"
+],
+"Escondido": [
+"United States"
+],
+"Hanford": [
+"United States"
+],
+"Blue Springs": [
+"United States"
+],
+"High Point": [
+"United States"
+],
+"Asheville": [
+"United States"
+],
+"Wilmington": [
+"United States"
+],
+"Chapel Hill": [
+"United States"
+],
+"Cary": [
+"United States"
+],
+"Gastonia": [
+"United States"
+],
+"Rocky Mount": [
+"United States"
+],
+"Dadu": [
+"Pakistan"
+],
+"Chulucanas": [
+"Peru"
+],
+"It\u00e1": [
+"Paraguay"
+],
+"Perico": [
+"Argentina"
+],
+"San Vicente": [
+"El Salvador"
+],
+"Thu\u1eadn An": [
+"Vietnam"
+],
+"Siguiri": [
+"Guinea"
+],
+"Dabola": [
+"Guinea"
+],
+"Grand-Lahou": [
+"Ivory Coast"
+],
+"Oum\u00e9": [
+"Ivory Coast"
+],
+"Biankouma": [
+"Ivory Coast"
+],
+"Peshawar": [
+"Pakistan"
+],
+"Dur\u00e1n": [
+"Ecuador"
+],
+"Coro": [
+"Venezuela"
+],
+"Ajloun": [
+"Jordan"
+],
+"Manbij": [
+"Syria"
+],
+"Tivaouane": [
+"Senegal"
+],
+"Muttrah": [
+"Oman"
+],
+"Ain Aouda": [
+"Morocco"
+],
+"Khairpur": [
+"Pakistan"
+],
+"Winneba": [
+"Ghana"
+],
+"Godoy Cruz": [
+"Argentina"
+],
+"Man": [
+"Ivory Coast"
+],
+"Deoghar": [
+"India"
+],
+"Tak\u00e9o": [
+"Cambodia"
+],
+"Kohat": [
+"Pakistan"
+],
+"Lashio": [
+"Myanmar"
+],
+"Hpa-An": [
+"Myanmar"
+],
+"Dome": [
+"Ghana"
+],
+"Dania": [
+"Ivory Coast"
+],
+"Moca": [
+"Dominican Republic"
+],
+"Samannud": [
+"Egypt"
+],
+"Lodhran": [
+"Pakistan"
+],
+"Pakpattan": [
+"Pakistan"
+],
+"Dera Ismail Khan": [
+"Pakistan"
+],
+"Bahawalnagar": [
+"Pakistan"
+],
+"Khushab": [
+"British Raj",
+"Pakistan"
+],
+"Gojra": [
+"Pakistan"
+],
+"Burewala": [
+"Pakistan"
+],
+"Khuzdar": [
+"Pakistan"
+],
+"Ahmedpur East": [
+"Pakistan"
+],
+"Chishtian": [
+"Pakistan"
+],
+"Tando Allahyar": [
+"Pakistan"
+],
+"Jaranwala": [
+"Pakistan"
+],
+"Vehari": [
+"Pakistan"
+],
+"Wah Cantonment": [
+"Pakistan"
+],
+"Chakwal": [
+"Pakistan"
+],
+"Mandi Bahauddin": [
+"Pakistan"
+],
+"Khanewal": [
+"Pakistan"
+],
+"Hafizabad": [
+"Pakistan"
+],
+"Kot Addu": [
+"Pakistan"
+],
+"Dholka": [
+"India"
+],
+"Dibrugarh": [
+"India"
+],
+"Du\u00e9kou\u00e9": [
+"Ivory Coast"
+],
+"Adzop\u00e9": [
+"Ivory Coast"
+],
+"Salalah": [
+"Oman"
+],
+"Valle de la Pascua": [
+"Venezuela"
+],
+"Kentau": [
+"Kazakhstan"
+],
+"Dodoma": [
+"Tanzania"
+],
+"Pretoria": [
+"South Africa"
+],
+"Saskatoon": [
+"Canada"
+],
+"Raleigh": [
+"United States"
+],
+"Sri Jayawardenepura Kotte": [
+"Sri Lanka"
+],
+"Gary": [
+"United States"
+],
+"Grand Rapids": [
+"United States"
+],
+"Grapevine": [
+"United States"
+],
+"Knoxville": [
+"United States"
+],
+"Chattanooga": [
+"United States"
+],
+"Spokane": [
+"United States"
+],
+"Missoula": [
+"United States"
+],
+"Boulder": [
+"United States"
+],
+"Tacoma": [
+"United States"
+],
+"Miami Beach": [
+"United States"
+],
+"Saint John": [
+"Canada"
+],
+"Thousand Oaks": [
+"United States"
+],
+"Oxnard": [
+"United States"
+],
+"Sparks": [
+"United States"
+],
+"Rapid City": [
+"United States"
+],
+"Fayetteville": [
+"United States"
+],
+"Casper": [
+"United States"
+],
+"Redmond": [
+"United States"
+],
+"Rockford": [
+"United States"
+],
+"Hollywood": [
+"United States"
+],
+"Mission": [
+"United States"
+],
+"Kingsport": [
+"United States"
+],
+"Naperville": [
+"United States"
+],
+"Clearwater": [
+"United States"
+],
+"Conroe": [
+"United States"
+],
+"Homestead": [
+"United States"
+],
+"Evanston": [
+"United States"
+],
+"Elgin": [
+"United States"
+],
+"Wheaton": [
+"United States"
+],
+"Bloomington": [
+"United States"
+],
+"Waukegan": [
+"United States"
+],
+"Minnetonka": [
+"United States"
+],
+"Juigalpa": [
+"Nicaragua"
+],
+"Calabozo": [
+"Venezuela"
+],
+"San Joaqu\u00edn": [
+"Bolivia"
+],
+"Paita": [
+"Peru"
+],
+"Wazirabad": [
+"Pakistan"
+],
+"Jhang": [
+"Pakistan"
+],
+"Parachinar": [
+"Pakistan"
+],
+"Caleta Olivia": [
+"Argentina"
+],
+"Guatire": [
+"Venezuela"
+],
+"Santa Rita": [
+"Venezuela"
+],
+"Mercedes": [
+"Argentina"
+],
+"Kengtung": [
+"Myanmar"
+],
+"Tortkul": [
+"Uzbekistan"
+],
+"Korogwe": [
+"Tanzania"
+],
+"Balad": [
+"Iraq"
+],
+"Afak": [
+"Iraq"
+],
+"Campana": [
+"Argentina"
+],
+"Darayya": [
+"Syria"
+],
+"Abengourou": [
+"Ivory Coast"
+],
+"Carora": [
+"Venezuela"
+],
+"Khemisset": [
+"Morocco"
+],
+"Asaba": [
+"Nigeria"
+],
+"Myitkyina": [
+"Myanmar"
+],
+"Rabwah": [
+"Pakistan"
+],
+"Basyoun": [
+"Egypt"
+],
+"Chilecito": [
+"Argentina"
+],
+"Taunggyi": [
+"Myanmar"
+],
+"Oslo": [
+"Norway"
+],
+"Montevideo": [
+"Uruguay"
+],
+"Shreveport": [
+"United States"
+],
+"Savannah": [
+"United States"
+],
+"Sugar Land": [
+"United States"
+],
+"Kidapawan": [
+"Philippines"
+],
+"Marawi": [
+"Philippines"
+],
+"Bais": [
+"Philippines"
+],
+"Tagum": [
+"Philippines"
+],
+"Cotabato City": [
+"Philippines"
+],
+"Bayawan": [
+"Philippines"
+],
+"Baybay": [
+"Philippines"
+],
+"Bislig": [
+"Philippines"
+],
+"Pagadian": [
+"Philippines"
+],
+"Bogo": [
+"Philippines"
+],
+"Borongan": [
+"Philippines"
+],
+"Panabo": [
+"Philippines"
+],
+"Canlaon": [
+"Philippines"
+],
+"Dapitan": [
+"Philippines"
+],
+"Ormoc": [
+"Philippines"
+],
+"Lower Hutt": [
+"New Zealand"
+],
+"Lira": [
+"Uganda"
+],
+"Mbale City": [
+"Uganda"
+],
+"Konibodom": [
+"Tajikistan"
+],
+"Porirua": [
+"New Zealand"
+],
+"Burzaco": [
+"Argentina"
+],
+"Monte Grande": [
+"Argentina"
+],
+"Nawabshah": [
+"Pakistan"
+],
+"Chiniot": [
+"Pakistan"
+],
+"Isa Town": [
+"Bahrain"
+],
+"Jacobabad": [
+"Pakistan"
+],
+"Usulut\u00e1n": [
+"El Salvador"
+],
+"Myeik": [
+"Myanmar"
+],
+"Dawei": [
+"Myanmar"
+],
+"Sagaing": [
+"Myanmar"
+],
+"Yafran": [
+"Libya"
+],
+"Lahad Datu": [
+"Malaysia"
+],
+"Villa Nueva": [
+"Guatemala"
+],
+"Porto Amboim": [
+"Angola"
+],
+"Rufisque": [
+"Senegal"
+],
+"M'Bour": [
+"Senegal"
+],
+"Surigao City": [
+"Philippines"
+],
+"Marondera": [
+"Zimbabwe"
+],
+"Mumias": [
+"Kenya"
+],
+"Hig\u00fcey": [
+"Dominican Republic"
+],
+"Samal": [
+"Philippines"
+],
+"Cadiz": [
+"Philippines"
+],
+"Silay": [
+"Philippines"
+],
+"Tanjay": [
+"Philippines"
+],
+"Catbalogan": [
+"Philippines"
+],
+"Digos": [
+"Philippines"
+],
+"Maasin": [
+"Philippines"
+],
+"San Carlos": [
+"Philippines",
+"Venezuela"
+],
+"Victorias": [
+"Philippines"
+],
+"Tangub": [
+"Philippines"
+],
+"Kabankalan": [
+"Philippines"
+],
+"Sipalay": [
+"Philippines"
+],
+"Escalante": [
+"Philippines"
+],
+"Oroquieta": [
+"Philippines"
+],
+"Bottrop": [
+"Germany"
+],
+"Remscheid": [
+"Germany"
+],
+"Koblenz": [
+"Germany"
+],
+"Salzgitter": [
+"Germany"
+],
+"Kaiserslautern": [
+"Germany"
+],
+"Worms": [
+"Germany"
+],
+"Wilhelmshaven": [
+"Germany"
+],
+"Delmenhorst": [
+"Germany"
+],
+"Landshut": [
+"Germany"
+],
+"Kempten": [
+"Germany"
+],
+"Schweinfurt": [
+"Germany"
+],
+"Neustadt an der Weinstra\u00dfe": [
+"Germany"
+],
+"Tarlac City": [
+"Philippines"
+],
+"Cape Town": [
+"South Africa"
+],
+"Speyer": [
+"Germany"
+],
+"Cabuyao": [
+"Philippines"
+],
+"Tabuk": [
+"Philippines"
+],
+"Batac": [
+"Philippines"
+],
+"Laoag": [
+"Philippines"
+],
+"Mandaue": [
+"Philippines"
+],
+"Acajutla": [
+"El Salvador"
+],
+"Katsina": [
+"Nigeria"
+],
+"Touggourt": [
+"Algeria"
+],
+"Gona\u00efves": [
+"Haiti"
+],
+"Puerto Vallarta": [
+"Mexico"
+],
+"Avondale": [
+"United States"
+],
+"Goodyear": [
+"United States"
+],
+"Rogers": [
+"United States"
+],
+"Dothan": [
+"United States"
+],
+"Fort Smith": [
+"United States"
+],
+"Tuscaloosa": [
+"United States"
+],
+"Trujillo": [
+"Honduras"
+],
+"Chalandri": [
+"Greece"
+],
+"Chililabombwe": [
+"Zambia"
+],
+"Mardan": [
+"Pakistan"
+],
+"Lokoja": [
+"Nigeria"
+],
+"Makurdi": [
+"Nigeria"
+],
+"Minna": [
+"Nigeria"
+],
+"Yola": [
+"Nigeria"
+],
+"Cazin": [
+"Bosnia and Herzegovina"
+],
+"R\u00edo Tercero": [
+"Argentina"
+],
+"Rangpur": [
+"Bangladesh"
+],
+"Tawau": [
+"Malaysia"
+],
+"Kpalim\u00e9": [
+"Togo"
+],
+"Puerto Cabello": [
+"Venezuela"
+],
+"Lodwar": [
+"Kenya"
+],
+"Sacaba": [
+"Bolivia"
+],
+"Guarenas": [
+"Venezuela"
+],
+"Urla": [
+"Turkey"
+],
+"Bungoma": [
+"Kenya"
+],
+"Kumba": [
+"Cameroon"
+],
+"Turmero": [
+"Venezuela"
+],
+"Kribi": [
+"Cameroon"
+],
+"Delmas": [
+"Haiti"
+],
+"Narok": [
+"Kenya"
+],
+"Nkongsamba": [
+"Cameroon"
+],
+"Dera Ghazi Khan": [
+"Pakistan"
+],
+"G\u00fcig\u00fce": [
+"Venezuela"
+],
+"Ilo": [
+"Peru"
+],
+"Moquegua": [
+"Peru"
+],
+"P\u00e9tion-Ville": [
+"Haiti"
+],
+"Navojoa": [
+"Mexico"
+],
+"Malden": [
+"United States"
+],
+"Revere": [
+"United States"
+],
+"Methuen": [
+"United States"
+],
+"Weymouth": [
+"United States"
+],
+"Norwalk": [
+"United States"
+],
+"West Haven": [
+"United States"
+],
+"Meriden": [
+"United States"
+],
+"Jonesboro": [
+"United States"
+],
+"Tadmur": [
+"Syria"
+],
+"San Lorenzo": [
+"Paraguay"
+],
+"Guadalupe": [
+"Mexico"
+],
+"Upata": [
+"Venezuela"
+],
+"Sohar": [
+"Oman"
+],
+"Loja": [
+"Ecuador"
+],
+"Ergani": [
+"Turkey"
+],
+"Ikere": [
+"Nigeria"
+],
+"Ibarra": [
+"Ecuador"
+],
+"Seeb": [
+"Oman"
+],
+"Burao": [
+"Somalia",
+"Somaliland"
+],
+"Mixco": [
+"Guatemala"
+],
+"Cox's Bazar": [
+"Bangladesh"
+],
+"Samalut": [
+"Egypt"
+],
+"Menouf": [
+"Egypt"
+],
+"Beni Mazar": [
+"Egypt"
+],
+"Port-de-Paix": [
+"Haiti"
+],
+"Blol\u00e9quin": [
+"Ivory Coast"
+],
+"Dairut": [
+"Egypt"
+],
+"Talkha": [
+"Egypt"
+],
+"S\u00e9gu\u00e9la": [
+"Ivory Coast"
+],
+"Porlamar": [
+"Venezuela"
+],
+"Ciudad Ojeda": [
+"Venezuela"
+],
+"Jalalpur Jattan": [
+"Pakistan"
+],
+"Santa Rosa de Cop\u00e1n": [
+"Honduras"
+],
+"Dhamar": [
+"Yemen"
+],
+"Durg": [
+"India"
+],
+"Santa Cruz de Barahona": [
+"Dominican Republic"
+],
+"Mor\u00f3n": [
+"Cuba"
+],
+"Boditi": [
+"Ethiopia"
+],
+"San Felipe": [
+"Venezuela"
+],
+"Lqli\u00e2a": [
+"Morocco"
+],
+"Apex": [
+"United States"
+],
+"Danao": [
+"Philippines"
+],
+"Gingoog": [
+"Philippines"
+],
+"Sagay": [
+"Philippines"
+],
+"La Carlota": [
+"Philippines"
+],
+"Passi": [
+"Philippines"
+],
+"Logan": [
+"United States"
+],
+"Murray": [
+"United States"
+],
+"Draper": [
+"United States"
+],
+"Ann Arbor": [
+"United States"
+],
+"Duluth": [
+"United States"
+],
+"Pensacola": [
+"United States"
+],
+"Cedar Rapids": [
+"United States"
+],
+"Evansville": [
+"United States"
+],
+"South Bend": [
+"United States"
+],
+"Iowa City": [
+"United States"
+],
+"Gainesville": [
+"United States"
+],
+"Sioux City": [
+"United States"
+],
+"Flint": [
+"United States"
+],
+"Gulfport": [
+"United States"
+],
+"Daytona Beach": [
+"United States"
+],
+"Fort Collins": [
+"United States"
+],
+"Fontana": [
+"United States"
+],
+"Canton": [
+"United States"
+],
+"Anderson": [
+"United States"
+],
+"Sarasota": [
+"United States"
+],
+"Terre Haute": [
+"United States"
+],
+"Yorba Linda": [
+"United States"
+],
+"Dubuque": [
+"United States"
+],
+"Owensboro": [
+"United States"
+],
+"Corona": [
+"United States"
+],
+"West Covina": [
+"United States"
+],
+"Redding": [
+"United States"
+],
+"Rancho Cucamonga": [
+"United States"
+],
+"Idaho Falls": [
+"United States"
+],
+"Tyler": [
+"United States"
+],
+"Yakima": [
+"United States"
+],
+"Warren": [
+"United States"
+],
+"Coeur d'Alene": [
+"United States"
+],
+"Overland Park": [
+"United States"
+],
+"Murfreesboro": [
+"United States"
+],
+"Lawton": [
+"United States"
+],
+"Coral Springs": [
+"United States"
+],
+"Sunrise": [
+"United States"
+],
+"Chino": [
+"United States"
+],
+"Fort Myers": [
+"United States"
+],
+"Guacara": [
+"Venezuela"
+],
+"Guasdualito": [
+"Venezuela"
+],
+"Guiglo": [
+"Ivory Coast"
+],
+"Soubr\u00e9": [
+"Ivory Coast"
+],
+"Dabou": [
+"Ivory Coast"
+],
+"Bouafl\u00e9": [
+"Ivory Coast"
+],
+"Bailundo": [
+"Angola"
+],
+"Hoima": [
+"Uganda"
+],
+"Temara": [
+"Morocco"
+],
+"Vidisha": [
+"India"
+],
+"Rajahmundry": [
+"India"
+],
+"El Oued": [
+"Algeria"
+],
+"Charsadda": [
+"Pakistan"
+],
+"Sar-e Pol": [
+"Afghanistan"
+],
+"Khenchela": [
+"Algeria"
+],
+"Kagan": [
+"Uzbekistan"
+],
+"Tikapur": [
+"Nepal"
+],
+"Iseyin": [
+"Nigeria"
+],
+"Itahari": [
+"Nepal"
+],
+"Maiquet\u00eda": [
+"Venezuela"
+],
+"Jashore": [
+"Bangladesh"
+],
+"Hanumangarh": [
+"India"
+],
+"Gondia": [
+"India"
+],
+"Gumla": [
+"India"
+],
+"Panev\u0117\u017eys": [
+"Lithuania"
+],
+"Kamsar": [
+"Guinea"
+],
+"Oued Zem": [
+"Morocco"
+],
+"Sribhumi": [
+"India"
+],
+"Khagrachari": [
+"Bangladesh"
+],
+"Khambhat": [
+"India"
+],
+"San Ram\u00f3n de la Nueva Or\u00e1n": [
+"Argentina"
+],
+"Tongi": [
+"Bangladesh"
+],
+"Nawa": [
+"Syria"
+],
+"Mooresville": [
+"United States"
+],
+"Huntersville": [
+"United States"
+],
+"Riyadh": [
+"Saudi Arabia"
+],
+"Beirut": [
+"Lebanon"
+],
+"Muscat": [
+"Oman"
+],
+"Doha": [
+"Qatar"
+],
+"Antananarivo": [
+"Madagascar"
+],
+"Baku": [
+"Azerbaijan"
+],
+"Dili": [
+"Timor-Leste"
+],
+"Wellington": [
+"New Zealand"
+],
+"Cincinnati": [
+"United States"
+],
+"Greeley": [
+"United States"
+],
+"Taunton": [
+"United States"
+],
+"Killeen": [
+"United States"
+],
+"Waco": [
+"United States"
+],
+"Frisco": [
+"United States"
+],
+"Beaumont": [
+"United States"
+],
+"Abilene": [
+"United States"
+],
+"Denton": [
+"United States"
+],
+"Midland": [
+"United States"
+],
+"Round Rock": [
+"United States"
+],
+"Wichita Falls": [
+"United States"
+],
+"Odessa": [
+"United States"
+],
+"Richardson": [
+"United States"
+],
+"Herriman": [
+"United States"
+],
+"Sioux Falls": [
+"United States"
+],
+"Galveston": [
+"United States"
+],
+"North Las Vegas": [
+"United States"
+],
+"Brookhaven": [
+"United States"
+],
+"Akron": [
+"United States"
+],
+"West Palm Beach": [
+"United States"
+],
+"Fort Lauderdale": [
+"United States"
+],
+"Billings": [
+"United States"
+],
+"Kalamazoo": [
+"United States"
+],
+"Yuba City": [
+"United States"
+],
+"Youngstown": [
+"Ohio",
+"United States"
+],
+"Cuyahoga Falls": [
+"United States"
+],
+"Lakewood": [
+"United States"
+],
+"Middletown": [
+"United States"
+],
+"San Pedro de Jujuy": [
+"Argentina"
+],
+"Jun\u00edn": [
+"Argentina"
+],
+"Punto Fijo": [
+"Venezuela"
+],
+"Tiquipaya": [
+"Bolivia"
+],
+"El Tigre": [
+"Venezuela"
+],
+"Mayar\u00ed": [
+"Cuba"
+],
+"Lab\u00e9": [
+"Guinea"
+],
+"Satpayev": [
+"Kazakhstan",
+"Soviet Union"
+],
+"Mirpur Khas": [
+"Pakistan"
+],
+"Cabo San Lucas": [
+"Mexico"
+],
+"Wadi Al-Seer": [
+"Jordan"
+],
+"Tezpur": [
+"India"
+],
+"Chokwe": [
+"Mozambique"
+],
+"Brighton and Hove": [
+"United Kingdom"
+],
+"Jalapa": [
+"Guatemala"
+],
+"Retalhuleu": [
+"Guatemala"
+],
+"Yaritagua": [
+"Venezuela"
+],
+"Magdanly": [
+"Turkmenistan"
+],
+"Salam\u00e1": [
+"Guatemala"
+],
+"Karaikudi": [
+"India"
+],
+"Oyo": [
+"Nigeria"
+],
+"Dutse": [
+"Nigeria"
+],
+"Jalingo": [
+"Nigeria"
+],
+"Lafia": [
+"Nigeria"
+],
+"Damaturu": [
+"Nigeria"
+],
+"Ikeja": [
+"Nigeria"
+],
+"Hazaribagh": [
+"India"
+],
+"Phoenix": [
+"United States"
+],
+"Austin": [
+"United States"
+],
+"North Richland Hills": [
+"United States"
+],
+"Lake Havasu City": [
+"United States"
+],
+"Maricopa": [
+"United States"
+],
+"Ankeny": [
+"United States"
+],
+"Bozeman": [
+"United States"
+],
+"Greenville": [
+"United States"
+],
+"New Braunfels": [
+"United States"
+],
+"Hacienda Heights": [
+"United States"
+],
+"Champaign": [
+"United States"
+],
+"Berwyn": [
+"United States"
+],
+"Cathedral City": [
+"United States"
+],
+"Thornton": [
+"United States"
+],
+"Texas City": [
+"United States"
+],
+"Missouri City": [
+"United States"
+],
+"Mormugao": [
+"India"
+],
+"Fresnillo": [
+"Mexico"
+],
+"Los Guayos": [
+"Venezuela"
+],
+"Tabqa": [
+"Syria"
+],
+"Al-Hajar al-Aswad": [
+"Syria"
+],
+"Maghagha": [
+"Egypt"
+],
+"Lisburn": [
+"United Kingdom"
+],
+"Ondo": [
+"Nigeria"
+],
+"Villa Tunari": [
+"Bolivia"
+],
+"Al-Rastan": [
+"Syria"
+],
+"Mangochi": [
+"Malawi"
+],
+"Anaco": [
+"Venezuela"
+],
+"Kushtia": [
+"Bangladesh"
+],
+"Nizwa": [
+"Oman"
+],
+"Bogura": [
+"Bangladesh"
+],
+"Ongole": [
+"India"
+],
+"Mandsaur": [
+"India"
+],
+"Manikganj": [
+"Bangladesh"
+],
+"Dhenkanal": [
+"India"
+],
+"Mohali": [
+"India"
+],
+"Saharsa": [
+"India"
+],
+"Gopalganj": [
+"Bangladesh"
+],
+"Benslimane": [
+"Morocco"
+],
+"Santa Teresa del Tuy": [
+"Venezuela"
+],
+"Attock": [
+"Pakistan"
+],
+"Murino": [
+"Russia"
+],
+"Errachidia": [
+"Morocco"
+],
+"M\u00e9d\u00e9a": [
+"Algeria"
+],
+"Narayanganj": [
+"Bangladesh"
+],
+"Port Fuad": [
+"Egypt"
+],
+"Uyo": [
+"Nigeria"
+],
+"Nowshera": [
+"Pakistan"
+],
+"Tibati": [
+"Cameroon"
+],
+"Glew, Buenos Aires": [
+"Argentina"
+],
+"Offa": [
+"Nigeria"
+],
+"Okene": [
+"Nigeria"
+],
+"Pakenham": [
+"Australia"
+],
+"Chuadanga": [
+"Bangladesh"
+],
+"Yara": [
+"Cuba"
+],
+"Surman": [
+"Libya"
+],
+"Agboville": [
+"Ivory Coast"
+],
+"Cotu\u00ed": [
+"Dominican Republic"
+],
+"A\u00efn Be\u00efda": [
+"Algeria"
+],
+"Ambikapur": [
+"India"
+],
+"Nkayi": [
+"Republic of the Congo"
+],
+"Hamad Town": [
+"Bahrain"
+],
+"Sidi Kacem": [
+"Morocco"
+],
+"Pujil\u00ed": [
+"Ecuador"
+],
+"Kaskelen": [
+"Kazakhstan"
+],
+"Ras al-Khaimah": [
+"United Arab Emirates"
+],
+"Bradenton": [
+"United States"
+],
+"Kissimmee": [
+"United States"
+],
+"Deerfield Beach": [
+"United States"
+],
+"Roswell": [
+"United States"
+],
+"Arvada": [
+"United States"
+],
+"Olathe": [
+"United States"
+],
+"El Monte": [
+"United States"
+],
+"Yucaipa": [
+"United States"
+],
+"Lorain": [
+"United States"
+],
+"Palm Coast": [
+"United States"
+],
+"Apopka": [
+"United States"
+],
+"Wylie": [
+"United States"
+],
+"Apple Valley": [
+"United States"
+],
+"Nampa": [
+"United States"
+],
+"Florissant": [
+"United States"
+],
+"Lakeland": [
+"United States"
+],
+"Jhenaidah": [
+"Bangladesh"
+],
+"Y\u00fcksekova district": [
+"Turkey"
+],
+"Berrechid": [
+"Morocco"
+],
+"Chelghoum La\u00efd": [
+"Algeria"
+],
+"Zanzibar City": [
+"Tanzania"
+],
+"Tiko": [
+"Cameroon"
+],
+"Nawalgarh": [
+"India"
+],
+"Kulim": [
+"Malaysia"
+],
+"Yatta": [
+"Palestine"
+],
+"Remedios de Escalada": [
+"Argentina"
+],
+"Skikda": [
+"Algeria"
+],
+"Bouskoura": [
+"Morocco"
+],
+"Washim": [
+"India"
+],
+"Viana": [
+"Angola"
+],
+"Tangail": [
+"Bangladesh"
+],
+"Seiyun": [
+"Yemen"
+],
+"Taourirt": [
+"Morocco"
+],
+"Guercif": [
+"Morocco"
+],
+"Rudrapur": [
+"India"
+],
+"Rupnagar": [
+"India"
+],
+"Narnaul": [
+"India"
+],
+"Kyzyl-Kiya": [
+"Kyrgyzstan"
+],
+"Malout": [
+"India"
+],
+"Al-Hay": [
+"Iraq"
+],
+"Nankana Sahib": [
+"Pakistan"
+],
+"Sidi Slimane": [
+"Morocco"
+],
+"Russeifa": [
+"Jordan"
+],
+"Sangolqu\u00ed": [
+"Ecuador"
+],
+"Daska": [
+"Pakistan"
+],
+"Ait Melloul": [
+"Morocco"
+],
+"Zefta": [
+"Egypt"
+],
+"Katiola": [
+"Ivory Coast"
+],
+"Issia": [
+"Ivory Coast"
+],
+"H\u012bt": [
+"Iraq"
+],
+"Dundo": [
+"Angola"
+],
+"Hashtpar": [
+"Iran"
+],
+"Bhakkar": [
+"Pakistan"
+],
+"Ti\u00e9bissou": [
+"Ivory Coast"
+],
+"Kairana": [
+"India"
+],
+"Gazipur": [
+"Bangladesh"
+],
+"Dharashiv": [
+"India"
+],
+"Ede": [
+"Netherlands"
+],
+"San Pablo del Monte": [
+"Mexico"
+],
+"Shahdol": [
+"India"
+],
+"M'diq": [
+"Morocco"
+],
+"Tiflet": [
+"Morocco"
+],
+"Baltim": [
+"Egypt"
+],
+"Ben Guerir": [
+"Morocco"
+],
+"Bentonville": [
+"United States"
+],
+"Federal Way": [
+"United States"
+],
+"Delray Beach": [
+"United States"
+],
+"Pico Rivera": [
+"United States"
+],
+"Broken Arrow": [
+"United States"
+],
+"Woodland": [
+"United States"
+],
+"Westminster": [
+"United States"
+],
+"Covina": [
+"United States"
+],
+"Temecula": [
+"United States"
+],
+"Murrieta": [
+"United States"
+],
+"Kent": [
+"United States"
+],
+"Pasco": [
+"United States"
+],
+"Kennewick": [
+"United States"
+],
+"Camarillo": [
+"United States"
+],
+"Colton": [
+"United States"
+],
+"North Charleston": [
+"United States"
+],
+"Pontiac": [
+"United States"
+],
+"Caldwell": [
+"United States"
+],
+"Lynwood": [
+"United States"
+],
+"La Mesa": [
+"United States"
+],
+"Madera": [
+"United States"
+],
+"Huntington Park": [
+"United States"
+],
+"Glendora": [
+"United States"
+],
+"Longview": [
+"United States"
+],
+"Lodi": [
+"United States"
+],
+"Marietta": [
+"United States"
+],
+"Livonia": [
+"United States"
+],
+"Hammond": [
+"United States"
+],
+"Edmond": [
+"United States"
+],
+"Woodbury": [
+"United States"
+],
+"Lake Charles": [
+"United States"
+],
+"Brooklyn Park": [
+"United States"
+],
+"Kettering": [
+"United States"
+],
+"Harlingen": [
+"United States"
+],
+"Loveland": [
+"United States"
+],
+"Bossier City": [
+"United States"
+],
+"Blaine": [
+"United States"
+],
+"Bonita Springs": [
+"United States"
+],
+"Boynton Beach": [
+"United States"
+],
+"Rosemead": [
+"United States"
+],
+"Kokomo": [
+"United States"
+],
+"Sandy Springs": [
+"United States"
+],
+"Moore": [
+"United States"
+],
+"Ocala": [
+"United States"
+],
+"Tamarac": [
+"United States"
+],
+"West Des Moines": [
+"United States"
+],
+"San Angelo": [
+"United States"
+],
+"Paramount": [
+"United States"
+],
+"Monterey Park": [
+"United States"
+],
+"Sterling Heights": [
+"United States"
+],
+"St. Cloud": [
+"United States"
+],
+"Elyria": [
+"United States"
+],
+"Largo": [
+"United States"
+],
+"Muncie": [
+"United States"
+],
+"Eagan": [
+"United States"
+],
+"Ferkess\u00e9dougou": [
+"Ivory Coast"
+],
+"Kishoreganj": [
+"Bangladesh"
+],
+"Babbila": [
+"Syria"
+],
+"Bareq": [
+"Saudi Arabia"
+],
+"Bargny": [
+"Senegal"
+],
+"Barranqueras": [
+"Argentina"
+],
+"Fkih Ben Saleh": [
+"Morocco"
+],
+"Bongouanou": [
+"Ivory Coast"
+],
+"Bonon": [
+"Ivory Coast"
+],
+"Bonoua": [
+"Ivory Coast"
+],
+"Cantaura": [
+"Venezuela"
+],
+"Bouna": [
+"Ivory Coast"
+],
+"Boundiali": [
+"Ivory Coast"
+],
+"B\u00e9oumi": [
+"Ivory Coast"
+],
+"Caripito": [
+"Venezuela"
+],
+"T\u00f4mbwa": [
+"Angola"
+],
+"Waku-Kungo": [
+"Angola"
+],
+"Chota": [
+"Peru"
+],
+"Turbat": [
+"Pakistan"
+],
+"Muridke": [
+"Pakistan"
+],
+"Arif Wala": [
+"Pakistan"
+],
+"Dipalpur": [
+"Pakistan"
+],
+"Idku": [
+"Egypt"
+],
+"Hibiscus Coast": [
+"New Zealand"
+],
+"Daleu": [
+"Ivory Coast"
+],
+"Daoukro": [
+"Ivory Coast"
+],
+"Apeldoorn": [
+"Netherlands"
+],
+"Dianra": [
+"Ivory Coast"
+],
+"Mogaung": [
+"Myanmar"
+],
+"Gujar Khan": [
+"Pakistan"
+],
+"Gabiadji": [
+"Ivory Coast"
+],
+"Montebello": [
+"United States"
+],
+"Port St. Lucie": [
+"United States"
+],
+"Davis": [
+"United States"
+],
+"Elk Grove": [
+"United States"
+],
+"Pompano Beach": [
+"United States"
+],
+"Pueblo": [
+"United States"
+],
+"Renton": [
+"United States"
+],
+"Hawthorne": [
+"United States"
+],
+"Highland": [
+"United States"
+],
+"Richland": [
+"United States"
+],
+"Bowling Green": [
+"United States"
+],
+"College Station": [
+"United States"
+],
+"Bryan": [
+"United States"
+],
+"Council Bluffs": [
+"United States"
+],
+"Miami Gardens": [
+"United States"
+],
+"Burnsville": [
+"United States"
+],
+"New Rochelle": [
+"United States"
+],
+"St. Joseph": [
+"United States"
+],
+"Miramar": [
+"United States"
+],
+"Upland": [
+"United States"
+],
+"Lake Forest": [
+"United States"
+],
+"Gaithersburg": [
+"United States"
+],
+"Redlands": [
+"United States"
+],
+"Bowie": [
+"United States"
+],
+"Milford": [
+"United States"
+],
+"Southaven": [
+"United States"
+],
+"Diamond Bar": [
+"United States"
+],
+"Johnson City": [
+"United States"
+],
+"Pflugerville": [
+"United States"
+],
+"St. Charles": [
+"United States"
+],
+"Hesperia": [
+"United States"
+],
+"Delano": [
+"United States"
+],
+"Sanford": [
+"United States"
+],
+"Baldwin Park": [
+"United States"
+],
+"Bartlett": [
+"United States"
+],
+"Battle Creek": [
+"United States"
+],
+"Baytown": [
+"United States"
+],
+"Bellflower": [
+"United States"
+],
+"Palm Bay": [
+"United States"
+],
+"Faridpur": [
+"Bangladesh"
+],
+"Matarieh": [
+"Egypt"
+],
+"Dogbo-Tota": [
+"Benin"
+],
+"San Ignacio": [
+"Paraguay"
+],
+"Jovellanos": [
+"Cuba"
+],
+"Jag\u00fcey Grande": [
+"Cuba"
+],
+"Kamalia": [
+"Pakistan"
+],
+"Mansa": [
+"India"
+],
+"Sirajganj": [
+"Bangladesh"
+],
+"Mirpur": [
+"Pakistan"
+],
+"Hub": [
+"Pakistan"
+],
+"Dera Allah Yar": [
+"Pakistan"
+],
+"Barranca": [
+"Peru"
+],
+"Timergara": [
+"Pakistan"
+],
+"Ghotki": [
+"Pakistan"
+],
+"Pattoki": [
+"Pakistan"
+],
+"Idiofa": [
+"Democratic Republic of the Congo"
+],
+"Hasilpur": [
+"Pakistan"
+],
+"Gampaha": [
+"Sri Lanka"
+],
+"Umm Ruwaba": [
+"Sudan"
+],
+"Badin": [
+"Pakistan"
+],
+"Umerkot": [
+"Pakistan"
+],
+"Youssoufia": [
+"Morocco"
+],
+"Ariha": [
+"Syria"
+],
+"Al-Tall": [
+"Syria"
+],
+"Kotri": [
+"Pakistan"
+],
+"Toba Tek Singh": [
+"Pakistan"
+],
+"Mansehra": [
+"Pakistan"
+],
+"Shibin el-Qanater": [
+"Egypt"
+],
+"Swabi": [
+"Pakistan"
+],
+"Juanju\u00ed": [
+"Peru"
+],
+"Libertad": [
+"Argentina"
+],
+"Greater Noida": [
+"India"
+],
+"Ypan\u00e9": [
+"Paraguay"
+],
+"San Juan Ostuncalco": [
+"Guatemala"
+],
+"Catia La Mar": [
+"Venezuela"
+],
+"Hosaena": [
+"Ethiopia"
+],
+"Chone": [
+"Ecuador"
+],
+"North Nicosia": [
+"Cyprus",
+"Northern Cyprus"
+],
+"Muzaffarnagar": [
+"India"
+],
+"Bhalwal": [
+"Pakistan"
+],
+"Djelfa": [
+"Algeria"
+],
+"Narsingdi": [
+"Bangladesh"
+],
+"Adiak\u00e9": [
+"Ivory Coast"
+],
+"Lee's Summit": [
+"United States"
+],
+"O'Fallon": [
+"United States"
+],
+"Rock Hill": [
+"United States"
+],
+"St. Peters": [
+"United States"
+],
+"Kandhkot": [
+"Pakistan"
+],
+"Lalamusa": [
+"Pakistan"
+],
+"Chunian": [
+"Pakistan"
+],
+"Kharian": [
+"Pakistan"
+],
+"Nilphamari": [
+"Bangladesh"
+],
+"El-Kharga Town": [
+"Egypt"
+],
+"Chowmuhani": [
+"Bangladesh"
+],
+"Al-Zulfi": [
+"Saudi Arabia"
+],
+"El Manaqil": [
+"Sudan"
+],
+"Gaibandha": [
+"Bangladesh"
+],
+"Gulistan, Balochistan": [
+"Pakistan"
+],
+"Jamalpur": [
+"Bangladesh"
+],
+"Dinajpur": [
+"Bangladesh"
+],
+"Hihya": [
+"Egypt"
+],
+"Sheikh Zayed City": [
+"Egypt"
+],
+"Sadat City": [
+"Egypt"
+],
+"Lalmonirhat": [
+"Bangladesh"
+],
+"Mian Channu": [
+"Pakistan"
+],
+"Naogaon": [
+"Bangladesh"
+],
+"Maijdee": [
+"Bangladesh"
+],
+"Pirojpur": [
+"Bangladesh"
+],
+"Sidi Bennour": [
+"Morocco"
+],
+"Sicuani": [
+"Peru"
+],
+"Farooqabad": [
+"Pakistan"
+],
+"Sreepur": [
+"Bangladesh"
+],
+"Shah Faisal Town": [
+"Pakistan"
+],
+"Geita": [
+"Tanzania"
+],
+"Bariadi": [
+"Tanzania"
+],
+"Al-Karmah": [
+"Iraq"
+],
+"Al Hamool": [
+"Egypt"
+],
+"Alafaya": [
+"United States"
+],
+"Areka": [
+"Ethiopia"
+],
+"Biba": [
+"Egypt"
+],
+"Bolgatanga": [
+"Ghana"
+],
+"Chowk Azam": [
+"Pakistan"
+],
+"Dijkot": [
+"Pakistan"
+],
+"Ghoriwala": [
+"Pakistan"
+],
+"Godavarikhani": [
+"India"
+],
+"Cusco": [
+"Peru"
+],
+"Gorakhpur": [
+"India"
+],
+"El Saff": [
+"Egypt"
+],
+"Hadejia": [
+"Nigeria"
+],
+"Dar El Salam": [
+"Egypt"
+],
+"Chungju": [
+"South Korea"
+],
+"Gangneung": [
+"South Korea"
+],
+"Geoje": [
+"South Korea"
+],
+"Gyeongsan": [
+"South Korea"
+],
+"Gongju": [
+"South Korea"
+],
+"Gwacheon": [
+"South Korea"
+],
+"Gwangmyeong": [
+"South Korea"
+],
+"Gwangyang": [
+"South Korea"
+],
+"Guri": [
+"South Korea"
+],
+"Gumi": [
+"South Korea"
+],
+"Gunsan": [
+"South Korea"
+],
+"Gunpo": [
+"South Korea"
+],
+"Gimje": [
+"South Korea"
+],
+"Gimcheon": [
+"South Korea"
+],
+"Gimpo": [
+"South Korea"
+],
+"Gimhae": [
+"South Korea"
+],
+"Naju": [
+"South Korea"
+],
+"Namyangju": [
+"South Korea"
+],
+"Namwon": [
+"South Korea"
+],
+"Nonsan": [
+"South Korea"
+],
+"Dangjin": [
+"South Korea"
+],
+"Dongducheon": [
+"South Korea"
+],
+"Donghae City": [
+"South Korea"
+],
+"Mokpo": [
+"South Korea"
+],
+"Mungyeong": [
+"South Korea"
+],
+"Miryang": [
+"South Korea"
+],
+"Gyeongju": [
+"South Korea"
+],
+"Boryeong": [
+"South Korea"
+],
+"Sacheon": [
+"South Korea"
+],
+"Samcheok": [
+"South Korea"
+],
+"Seogwipo": [
+"South Korea"
+],
+"Seosan": [
+"South Korea"
+],
+"Sokcho": [
+"South Korea"
+],
+"Suncheon": [
+"South Korea"
+],
+"Siheung": [
+"South Korea"
+],
+"Asan": [
+"South Korea"
+],
+"Andong": [
+"South Korea"
+],
+"Anseong": [
+"South Korea"
+],
+"Yangsan": [
+"South Korea"
+],
+"Yangju": [
+"South Korea"
+],
+"Yeosu": [
+"South Korea"
+],
+"Yeongju": [
+"South Korea"
+],
+"Yeongcheon": [
+"South Korea"
+],
+"Osan": [
+"South Korea"
+],
+"Wonju": [
+"South Korea"
+],
+"Uiwang": [
+"South Korea"
+],
+"Uijeongbu": [
+"South Korea"
+],
+"Icheon": [
+"South Korea"
+],
+"Iksan": [
+"South Korea"
+],
+"Jeongeup": [
+"South Korea"
+],
+"Jeju": [
+"South Korea"
+],
+"Jecheon": [
+"South Korea"
+],
+"Jinju": [
+"South Korea"
+],
+"Cheongju": [
+"South Korea"
+],
+"Chuncheon": [
+"South Korea"
+],
+"Tongyeong": [
+"South Korea"
+],
+"Paju": [
+"South Korea"
+],
+"Pyeongtaek": [
+"South Korea"
+],
+"Pocheon": [
+"South Korea"
+],
+"Pohang": [
+"South Korea"
+],
+"Hanam": [
+"South Korea"
+],
+"Sangju": [
+"South Korea"
+],
+"Suceava": [
+"Romania"
+],
+"Ia\u0219i": [
+"Romania"
+],
+"Yeoju": [
+"South Korea"
+],
+"Re\u0219i\u021ba": [
+"Romania"
+],
+"Bra\u0219ov": [
+"Romania"
+],
+"Sibiu": [
+"Romania"
+],
+"Timi\u0219oara": [
+"Romania"
+],
+"Zal\u0103u": [
+"Romania"
+],
+"Craiova": [
+"Romania"
+],
+"Larnaca": [
+"Cyprus"
+],
+"Des Plaines": [
+"United States"
+],
+"Centennial": [
+"United States"
+],
+"Everett": [
+"United States"
+],
+"Temple": [
+"United States"
+],
+"Bellingham": [
+"United States"
+],
+"Dearborn": [
+"United States"
+],
+"Grand Island": [
+"United States"
+],
+"Cape Coral": [
+"United States"
+],
+"Great Falls": [
+"United States"
+],
+"Ames": [
+"United States"
+],
+"Frederick": [
+"United States"
+]
+}
