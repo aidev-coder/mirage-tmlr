@@ -1,0 +1,6035 @@
+{
+  "detector": "saplma",
+  "model": "EleutherAI/pythia-1b",
+  "corpus": "mirage_2x2_vd279c2cae5f4.jsonl",
+  "corpus_hash": "d279c2cae5f4",
+  "domain": "all",
+  "n": 140,
+  "cell_counts": {
+    "TT": 35,
+    "TA": 35,
+    "FT": 35,
+    "FA": 35
+  },
+  "n_folds": 5,
+  "typicality_axis": "entity_freq_log10",
+  "mediation_covariates": [
+    "typicality",
+    "fragmentation",
+    "edit"
+  ],
+  "headline_layer": 8,
+  "fielded_scores_headline": {
+    "layer": 8,
+    "score": [
+      0.532161,
+      0.503185,
+      0.556587,
+      0.265465,
+      1.0,
+      0.962025,
+      0.849362,
+      0.977986,
+      0.99654,
+      0.618506,
+      0.995725,
+      4.3e-05,
+      0.467142,
+      0.895608,
+      0.994427,
+      0.350622,
+      0.766845,
+      0.989804,
+      0.0,
+      0.999998,
+      1.0,
+      0.98898,
+      0.999997,
+      0.629348,
+      0.425459,
+      0.609134,
+      0.955328,
+      0.996908,
+      1.0,
+      1.0,
+      1.0,
+      0.969933,
+      0.532569,
+      1.0,
+      0.610357,
+      0.192648,
+      0.607506,
+      0.199812,
+      0.097285,
+      0.170178,
+      0.17326,
+      0.159824,
+      0.157401,
+      0.710346,
+      0.452368,
+      0.188242,
+      0.13665,
+      0.288798,
+      0.436275,
+      0.186444,
+      0.721668,
+      0.862711,
+      0.150108,
+      0.106117,
+      0.261682,
+      0.092502,
+      0.153869,
+      0.193826,
+      0.176817,
+      0.819237,
+      0.133707,
+      0.828303,
+      0.137736,
+      0.118265,
+      0.142415,
+      0.169378,
+      0.0974,
+      0.225711,
+      0.558377,
+      0.376053,
+      0.825867,
+      0.677251,
+      0.870003,
+      0.675493,
+      0.377992,
+      0.851866,
+      0.711045,
+      0.776705,
+      0.846954,
+      0.741521,
+      0.711581,
+      0.713329,
+      0.91322,
+      0.185149,
+      0.865665,
+      0.741959,
+      0.758656,
+      0.894476,
+      0.882413,
+      0.853923,
+      0.319527,
+      0.273506,
+      0.917959,
+      0.640523,
+      0.921602,
+      0.19827,
+      0.853759,
+      0.904448,
+      0.125853,
+      0.898147,
+      0.828632,
+      0.904803,
+      0.826786,
+      0.667399,
+      0.683584,
+      1.1e-05,
+      0.001844,
+      0.5489,
+      0.065228,
+      0.400169,
+      6e-05,
+      0.048032,
+      0.001653,
+      0.000836,
+      0.000835,
+      0.041759,
+      0.130163,
+      0.074536,
+      0.047914,
+      0.133968,
+      0.0,
+      0.0,
+      0.08317,
+      0.247481,
+      0.009564,
+      0.026416,
+      0.043978,
+      0.536276,
+      0.397676,
+      0.0,
+      0.041617,
+      0.233939,
+      0.000386,
+      0.431967,
+      0.12822,
+      0.529769,
+      0.457536,
+      0.90824,
+      0.100084,
+      0.006808
+    ],
+    "cell": [
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TT",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "TA",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FT",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA",
+      "FA"
+    ],
+    "truth": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false
+    ]
+  },
+  "per_layer": [
+    {
+      "layer": 0,
+      "allcell_off_diagonal": {
+        "auroc": 0.3747,
+        "ci": [
+          0.2447,
+          0.5172
+        ],
+        "n": 70,
+        "n_boot": 1000
+      },
+      "stratified_allcell": {
+        "headline_pooled": {
+          "auroc": 0.3857,
+          "ci": [
+            0.2925,
+            0.4775
+          ],
+          "n": 140,
+          "n_boot": 1000
+        },
+        "bands": [
+          {
+            "band": 0,
+            "typicality_range": [
+              4.696333095642741,
+              5.742641897355788
+            ],
+            "n": 35,
+            "n_true": 14,
+            "n_false": 21,
+            "auroc": 0.3486,
+            "ci": [
+              0.1727,
+              0.533
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 1,
+            "typicality_range": [
+              5.742641897355788,
+              6.438382859513153
+            ],
+            "n": 35,
+            "n_true": 21,
+            "n_false": 14,
+            "auroc": 0.3214,
+            "ci": [
+              0.1556,
+              0.5151
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 2,
+            "typicality_range": [
+              6.438382859513153,
+              7.129680481291488
+            ],
+            "n": 35,
+            "n_true": 16,
+            "n_false": 19,
+            "auroc": 0.4243,
+            "ci": [
+              0.2383,
+              0.6191
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 3,
+            "typicality_range": [
+              7.129680481291488,
+              7.940518839186938
+            ],
+            "n": 35,
+            "n_true": 19,
+            "n_false": 16,
+            "auroc": 0.426,
+            "ci": [
+              0.2286,
+              0.6327
+            ],
+            "n_boot": 1000
+          }
+        ],
+        "n_bands_usable": 4,
+        "within_band_auroc_weighted": 0.3801,
+        "gap": {
+          "point": 0.0056,
+          "ci": [
+            -0.0343,
+            0.0303
+          ],
+          "excludes_zero": false
+        }
+      },
+      "mediation_allcell": {
+        "n": 140,
+        "truth_beta_marginal": -0.2245,
+        "truth_beta_marginal_ci": [
+          -0.3886,
+          -0.0605
+        ],
+        "truth_beta_partialled": -0.2347,
+        "truth_beta_partialled_ci": [
+          -0.4011,
+          -0.0682
+        ],
+        "typicality_beta": 0.0611,
+        "typicality_beta_ci": [
+          -0.1098,
+          0.232
+        ],
+        "truth_beta_shrinkage": -0.045,
+        "r2_truth_only": 0.0504,
+        "r2_joint": 0.0647,
+        "covariates": [
+          "fragmentation",
+          "edit"
+        ],
+        "assumption": "additive-linear; triangulate with stage 3a",
+        "fragmentation_beta": 0.1052,
+        "fragmentation_beta_ci": [
+          -0.0684,
+          0.2787
+        ],
+        "edit_beta": -0.0698,
+        "edit_beta_ci": [
+          -0.2375,
+          0.0979
+        ]
+      },
+      "stratified_fielded": {
+        "headline_pooled": {
+          "auroc": 0.3943,
+          "ci": [
+            0.3071,
+            0.4778
+          ],
+          "n": 140,
+          "n_boot": 1000
+        },
+        "bands": [
+          {
+            "band": 0,
+            "typicality_range": [
+              4.696333095642741,
+              5.742641897355788
+            ],
+            "n": 35,
+            "n_true": 14,
+            "n_false": 21,
+            "auroc": 0.6667,
+            "ci": [
+              0.4583,
+              0.8667
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 1,
+            "typicality_range": [
+              5.742641897355788,
+              6.438382859513153
+            ],
+            "n": 35,
+            "n_true": 21,
+            "n_false": 14,
+            "auroc": 0.7143,
+            "ci": [
+              0.5,
+              0.9333
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 2,
+            "typicality_range": [
+              6.438382859513153,
+              7.129680481291488
+            ],
+            "n": 35,
+            "n_true": 16,
+            "n_false": 19,
+            "auroc": 0.0,
+            "ci": [
+              0.0,
+              0.0
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 3,
+            "typicality_range": [
+              7.129680481291488,
+              7.940518839186938
+            ],
+            "n": 35,
+            "n_true": 19,
+            "n_false": 16,
+            "auroc": 0.1579,
+            "ci": [
+              0.0,
+              0.3333
+            ],
+            "n_boot": 1000
+          }
+        ],
+        "n_bands_usable": 4,
+        "within_band_auroc_weighted": 0.3847,
+        "gap": {
+          "point": 0.0096,
+          "ci": [
+            -0.0291,
+            0.0693
+          ],
+          "excludes_zero": false
+        }
+      },
+      "mediation_fielded": {
+        "n": 140,
+        "truth_beta_marginal": -0.2229,
+        "truth_beta_marginal_ci": [
+          -0.387,
+          -0.0588
+        ],
+        "truth_beta_partialled": -0.2157,
+        "truth_beta_partialled_ci": [
+          -0.3767,
+          -0.0547
+        ],
+        "typicality_beta": -0.2088,
+        "typicality_beta_ci": [
+          -0.3741,
+          -0.0435
+        ],
+        "truth_beta_shrinkage": 0.0325,
+        "r2_truth_only": 0.0497,
+        "r2_joint": 0.1245,
+        "covariates": [
+          "fragmentation",
+          "edit"
+        ],
+        "assumption": "additive-linear; triangulate with stage 3a",
+        "fragmentation_beta": -0.0415,
+        "fragmentation_beta_ci": [
+          -0.2095,
+          0.1264
+        ],
+        "edit_beta": 0.1781,
+        "edit_beta_ci": [
+          0.0158,
+          0.3403
+        ]
+      },
+      "adversarial": {
+        "train_n": 56,
+        "headline_heldout_diagonal": {
+          "auroc": 0.5,
+          "ci": [
+            0.5,
+            0.5
+          ],
+          "n": 14,
+          "n_boot": 1000
+        },
+        "off_diagonal": {
+          "auroc": 0.5,
+          "ci": [
+            0.5,
+            0.5
+          ],
+          "n": 70,
+          "n_boot": 1000
+        },
+        "gap": {
+          "gap": 0.0,
+          "ci": [
+            0.0,
+            0.0
+          ],
+          "excludes_zero": false,
+          "n_boot": 999
+        },
+        "off_diagonal_cells": {
+          "TA": {
+            "n": 35,
+            "mean_score": 0.4575
+          },
+          "FT": {
+            "n": 35,
+            "mean_score": 0.4575
+          }
+        }
+      },
+      "fielded_cell_scores": {
+        "TT": {
+          "n": 35,
+          "mean": 0.4926,
+          "q10": 0.4848,
+          "q50": 0.4848,
+          "q90": 0.493
+        },
+        "TA": {
+          "n": 35,
+          "mean": 0.4991,
+          "q10": 0.4991,
+          "q50": 0.4991,
+          "q90": 0.4991
+        },
+        "FT": {
+          "n": 35,
+          "mean": 0.4991,
+          "q10": 0.4991,
+          "q50": 0.4991,
+          "q90": 0.4991
+        },
+        "FA": {
+          "n": 35,
+          "mean": 0.5056,
+          "q10": 0.4848,
+          "q50": 0.493,
+          "q90": 0.5398
+        }
+      }
+    },
+    {
+      "layer": 1,
+      "allcell_off_diagonal": {
+        "auroc": 0.6314,
+        "ci": [
+          0.507,
+          0.7582
+        ],
+        "n": 70,
+        "n_boot": 1000
+      },
+      "stratified_allcell": {
+        "headline_pooled": {
+          "auroc": 0.6936,
+          "ci": [
+            0.5999,
+            0.7775
+          ],
+          "n": 140,
+          "n_boot": 1000
+        },
+        "bands": [
+          {
+            "band": 0,
+            "typicality_range": [
+              4.696333095642741,
+              5.742641897355788
+            ],
+            "n": 35,
+            "n_true": 14,
+            "n_false": 21,
+            "auroc": 0.6531,
+            "ci": [
+              0.423,
+              0.8561
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 1,
+            "typicality_range": [
+              5.742641897355788,
+              6.438382859513153
+            ],
+            "n": 35,
+            "n_true": 21,
+            "n_false": 14,
+            "auroc": 0.6701,
+            "ci": [
+              0.4832,
+              0.8568
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 2,
+            "typicality_range": [
+              6.438382859513153,
+              7.129680481291488
+            ],
+            "n": 35,
+            "n_true": 16,
+            "n_false": 19,
+            "auroc": 0.6628,
+            "ci": [
+              0.4638,
+              0.8434
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 3,
+            "typicality_range": [
+              7.129680481291488,
+              7.940518839186938
+            ],
+            "n": 35,
+            "n_true": 19,
+            "n_false": 16,
+            "auroc": 0.6974,
+            "ci": [
+              0.4965,
+              0.8668
+            ],
+            "n_boot": 1000
+          }
+        ],
+        "n_bands_usable": 4,
+        "within_band_auroc_weighted": 0.6708,
+        "gap": {
+          "point": 0.0228,
+          "ci": [
+            -0.0181,
+            0.09
+          ],
+          "excludes_zero": false
+        }
+      },
+      "mediation_allcell": {
+        "n": 140,
+        "truth_beta_marginal": 0.3439,
+        "truth_beta_marginal_ci": [
+          0.1859,
+          0.502
+        ],
+        "truth_beta_partialled": 0.3063,
+        "truth_beta_partialled_ci": [
+          0.157,
+          0.4557
+        ],
+        "typicality_beta": 0.2626,
+        "typicality_beta_ci": [
+          0.1093,
+          0.4159
+        ],
+        "truth_beta_shrinkage": 0.1094,
+        "r2_truth_only": 0.1183,
+        "r2_joint": 0.2469,
+        "covariates": [
+          "fragmentation",
+          "edit"
+        ],
+        "assumption": "additive-linear; triangulate with stage 3a",
+        "fragmentation_beta": 0.296,
+        "fragmentation_beta_ci": [
+          0.1402,
+          0.4518
+        ],
+        "edit_beta": -0.1529,
+        "edit_beta_ci": [
+          -0.3034,
+          -0.0024
+        ]
+      },
+      "stratified_fielded": {
+        "headline_pooled": {
+          "auroc": 0.6339,
+          "ci": [
+            0.5403,
+            0.7165
+          ],
+          "n": 140,
+          "n_boot": 1000
+        },
+        "bands": [
+          {
+            "band": 0,
+            "typicality_range": [
+              4.696333095642741,
+              5.742641897355788
+            ],
+            "n": 35,
+            "n_true": 14,
+            "n_false": 21,
+            "auroc": 0.7755,
+            "ci": [
+              0.61,
+              0.9167
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 1,
+            "typicality_range": [
+              5.742641897355788,
+              6.438382859513153
+            ],
+            "n": 35,
+            "n_true": 21,
+            "n_false": 14,
+            "auroc": 0.7551,
+            "ci": [
+              0.5679,
+              0.9167
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 2,
+            "typicality_range": [
+              6.438382859513153,
+              7.129680481291488
+            ],
+            "n": 35,
+            "n_true": 16,
+            "n_false": 19,
+            "auroc": 0.4507,
+            "ci": [
+              0.2599,
+              0.65
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 3,
+            "typicality_range": [
+              7.129680481291488,
+              7.940518839186938
+            ],
+            "n": 35,
+            "n_true": 19,
+            "n_false": 16,
+            "auroc": 0.8947,
+            "ci": [
+              0.7733,
+              0.9773
+            ],
+            "n_boot": 1000
+          }
+        ],
+        "n_bands_usable": 4,
+        "within_band_auroc_weighted": 0.719,
+        "gap": {
+          "point": -0.0851,
+          "ci": [
+            -0.1727,
+            0.0115
+          ],
+          "excludes_zero": false
+        }
+      },
+      "mediation_fielded": {
+        "n": 140,
+        "truth_beta_marginal": 0.1674,
+        "truth_beta_marginal_ci": [
+          0.0014,
+          0.3333
+        ],
+        "truth_beta_partialled": 0.1013,
+        "truth_beta_partialled_ci": [
+          -0.0001,
+          0.2026
+        ],
+        "typicality_beta": 0.812,
+        "typicality_beta_ci": [
+          0.708,
+          0.9161
+        ],
+        "truth_beta_shrinkage": 0.3949,
+        "r2_truth_only": 0.028,
+        "r2_joint": 0.6531,
+        "covariates": [
+          "fragmentation",
+          "edit"
+        ],
+        "assumption": "additive-linear; triangulate with stage 3a",
+        "fragmentation_beta": 0.1055,
+        "fragmentation_beta_ci": [
+          -0.0002,
+          0.2112
+        ],
+        "edit_beta": -0.0188,
+        "edit_beta_ci": [
+          -0.1209,
+          0.0833
+        ]
+      },
+      "adversarial": {
+        "train_n": 56,
+        "headline_heldout_diagonal": {
+          "auroc": 1.0,
+          "ci": [
+            1.0,
+            1.0
+          ],
+          "n": 14,
+          "n_boot": 1000
+        },
+        "off_diagonal": {
+          "auroc": 0.1437,
+          "ci": [
+            0.0683,
+            0.2378
+          ],
+          "n": 70,
+          "n_boot": 1000
+        },
+        "gap": {
+          "gap": 0.8563,
+          "ci": [
+            0.7607,
+            0.9331
+          ],
+          "excludes_zero": true,
+          "n_boot": 999
+        },
+        "off_diagonal_cells": {
+          "TA": {
+            "n": 35,
+            "mean_score": 0.4228
+          },
+          "FT": {
+            "n": 35,
+            "mean_score": 0.7082
+          }
+        }
+      },
+      "fielded_cell_scores": {
+        "TT": {
+          "n": 35,
+          "mean": 0.829,
+          "q10": 0.3692,
+          "q50": 0.9533,
+          "q90": 0.9995
+        },
+        "TA": {
+          "n": 35,
+          "mean": 0.3574,
+          "q10": 0.0589,
+          "q50": 0.25,
+          "q90": 0.8482
+        },
+        "FT": {
+          "n": 35,
+          "mean": 0.7914,
+          "q10": 0.5236,
+          "q50": 0.8562,
+          "q90": 0.9745
+        },
+        "FA": {
+          "n": 35,
+          "mean": 0.1401,
+          "q10": 0.0007,
+          "q50": 0.0473,
+          "q90": 0.3571
+        }
+      }
+    },
+    {
+      "layer": 2,
+      "allcell_off_diagonal": {
+        "auroc": 0.6343,
+        "ci": [
+          0.5085,
+          0.7584
+        ],
+        "n": 70,
+        "n_boot": 1000
+      },
+      "stratified_allcell": {
+        "headline_pooled": {
+          "auroc": 0.6906,
+          "ci": [
+            0.6022,
+            0.7764
+          ],
+          "n": 140,
+          "n_boot": 1000
+        },
+        "bands": [
+          {
+            "band": 0,
+            "typicality_range": [
+              4.696333095642741,
+              5.742641897355788
+            ],
+            "n": 35,
+            "n_true": 14,
+            "n_false": 21,
+            "auroc": 0.5544,
+            "ci": [
+              0.3367,
+              0.7614
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 1,
+            "typicality_range": [
+              5.742641897355788,
+              6.438382859513153
+            ],
+            "n": 35,
+            "n_true": 21,
+            "n_false": 14,
+            "auroc": 0.7619,
+            "ci": [
+              0.5921,
+              0.9211
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 2,
+            "typicality_range": [
+              6.438382859513153,
+              7.129680481291488
+            ],
+            "n": 35,
+            "n_true": 16,
+            "n_false": 19,
+            "auroc": 0.5757,
+            "ci": [
+              0.384,
+              0.7904
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 3,
+            "typicality_range": [
+              7.129680481291488,
+              7.940518839186938
+            ],
+            "n": 35,
+            "n_true": 19,
+            "n_false": 16,
+            "auroc": 0.8158,
+            "ci": [
+              0.6503,
+              0.9433
+            ],
+            "n_boot": 1000
+          }
+        ],
+        "n_bands_usable": 4,
+        "within_band_auroc_weighted": 0.6769,
+        "gap": {
+          "point": 0.0137,
+          "ci": [
+            -0.0239,
+            0.0853
+          ],
+          "excludes_zero": false
+        }
+      },
+      "mediation_allcell": {
+        "n": 140,
+        "truth_beta_marginal": 0.365,
+        "truth_beta_marginal_ci": [
+          0.2083,
+          0.5217
+        ],
+        "truth_beta_partialled": 0.3359,
+        "truth_beta_partialled_ci": [
+          0.1809,
+          0.491
+        ],
+        "typicality_beta": 0.2243,
+        "typicality_beta_ci": [
+          0.0651,
+          0.3835
+        ],
+        "truth_beta_shrinkage": 0.0796,
+        "r2_truth_only": 0.1332,
+        "r2_joint": 0.1883,
+        "covariates": [
+          "fragmentation",
+          "edit"
+        ],
+        "assumption": "additive-linear; triangulate with stage 3a",
+        "fragmentation_beta": 0.1495,
+        "fragmentation_beta_ci": [
+          -0.0122,
+          0.3112
+        ],
+        "edit_beta": -0.021,
+        "edit_beta_ci": [
+          -0.1772,
+          0.1352
+        ]
+      },
+      "stratified_fielded": {
+        "headline_pooled": {
+          "auroc": 0.6429,
+          "ci": [
+            0.551,
+            0.7276
+          ],
+          "n": 140,
+          "n_boot": 1000
+        },
+        "bands": [
+          {
+            "band": 0,
+            "typicality_range": [
+              4.696333095642741,
+              5.742641897355788
+            ],
+            "n": 35,
+            "n_true": 14,
+            "n_false": 21,
+            "auroc": 0.7687,
+            "ci": [
+              0.5918,
+              0.9244
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 1,
+            "typicality_range": [
+              5.742641897355788,
+              6.438382859513153
+            ],
+            "n": 35,
+            "n_true": 21,
+            "n_false": 14,
+            "auroc": 0.7347,
+            "ci": [
+              0.5374,
+              0.8915
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 2,
+            "typicality_range": [
+              6.438382859513153,
+              7.129680481291488
+            ],
+            "n": 35,
+            "n_true": 16,
+            "n_false": 19,
+            "auroc": 0.4408,
+            "ci": [
+              0.2517,
+              0.6368
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 3,
+            "typicality_range": [
+              7.129680481291488,
+              7.940518839186938
+            ],
+            "n": 35,
+            "n_true": 19,
+            "n_false": 16,
+            "auroc": 0.9211,
+            "ci": [
+              0.817,
+              0.987
+            ],
+            "n_boot": 1000
+          }
+        ],
+        "n_bands_usable": 4,
+        "within_band_auroc_weighted": 0.7163,
+        "gap": {
+          "point": -0.0734,
+          "ci": [
+            -0.1586,
+            0.0186
+          ],
+          "excludes_zero": false
+        }
+      },
+      "mediation_fielded": {
+        "n": 140,
+        "truth_beta_marginal": 0.181,
+        "truth_beta_marginal_ci": [
+          0.0155,
+          0.3465
+        ],
+        "truth_beta_partialled": 0.1162,
+        "truth_beta_partialled_ci": [
+          0.0121,
+          0.2204
+        ],
+        "typicality_beta": 0.7962,
+        "typicality_beta_ci": [
+          0.6892,
+          0.9031
+        ],
+        "truth_beta_shrinkage": 0.3579,
+        "r2_truth_only": 0.0328,
+        "r2_joint": 0.6336,
+        "covariates": [
+          "fragmentation",
+          "edit"
+        ],
+        "assumption": "additive-linear; triangulate with stage 3a",
+        "fragmentation_beta": 0.1063,
+        "fragmentation_beta_ci": [
+          -0.0023,
+          0.2149
+        ],
+        "edit_beta": -0.0234,
+        "edit_beta_ci": [
+          -0.1283,
+          0.0816
+        ]
+      },
+      "adversarial": {
+        "train_n": 56,
+        "headline_heldout_diagonal": {
+          "auroc": 0.9792,
+          "ci": [
+            0.875,
+            1.0
+          ],
+          "n": 14,
+          "n_boot": 1000
+        },
+        "off_diagonal": {
+          "auroc": 0.1608,
+          "ci": [
+            0.0711,
+            0.2695
+          ],
+          "n": 70,
+          "n_boot": 1000
+        },
+        "gap": {
+          "gap": 0.8184,
+          "ci": [
+            0.678,
+            0.9143
+          ],
+          "excludes_zero": true,
+          "n_boot": 999
+        },
+        "off_diagonal_cells": {
+          "TA": {
+            "n": 35,
+            "mean_score": 0.3756
+          },
+          "FT": {
+            "n": 35,
+            "mean_score": 0.6307
+          }
+        }
+      },
+      "fielded_cell_scores": {
+        "TT": {
+          "n": 35,
+          "mean": 0.8351,
+          "q10": 0.4645,
+          "q50": 0.9797,
+          "q90": 0.9995
+        },
+        "TA": {
+          "n": 35,
+          "mean": 0.3385,
+          "q10": 0.0239,
+          "q50": 0.2232,
+          "q90": 0.871
+        },
+        "FT": {
+          "n": 35,
+          "mean": 0.768,
+          "q10": 0.4847,
+          "q50": 0.8482,
+          "q90": 0.9842
+        },
+        "FA": {
+          "n": 35,
+          "mean": 0.1225,
+          "q10": 0.0002,
+          "q50": 0.0367,
+          "q90": 0.3882
+        }
+      }
+    },
+    {
+      "layer": 3,
+      "allcell_off_diagonal": {
+        "auroc": 0.6539,
+        "ci": [
+          0.5286,
+          0.7829
+        ],
+        "n": 70,
+        "n_boot": 1000
+      },
+      "stratified_allcell": {
+        "headline_pooled": {
+          "auroc": 0.6873,
+          "ci": [
+            0.5992,
+            0.7766
+          ],
+          "n": 140,
+          "n_boot": 1000
+        },
+        "bands": [
+          {
+            "band": 0,
+            "typicality_range": [
+              4.696333095642741,
+              5.742641897355788
+            ],
+            "n": 35,
+            "n_true": 14,
+            "n_false": 21,
+            "auroc": 0.602,
+            "ci": [
+              0.3945,
+              0.8008
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 1,
+            "typicality_range": [
+              5.742641897355788,
+              6.438382859513153
+            ],
+            "n": 35,
+            "n_true": 21,
+            "n_false": 14,
+            "auroc": 0.6803,
+            "ci": [
+              0.5033,
+              0.866
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 2,
+            "typicality_range": [
+              6.438382859513153,
+              7.129680481291488
+            ],
+            "n": 35,
+            "n_true": 16,
+            "n_false": 19,
+            "auroc": 0.6809,
+            "ci": [
+              0.4926,
+              0.8742
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 3,
+            "typicality_range": [
+              7.129680481291488,
+              7.940518839186938
+            ],
+            "n": 35,
+            "n_true": 19,
+            "n_false": 16,
+            "auroc": 0.7697,
+            "ci": [
+              0.5888,
+              0.9275
+            ],
+            "n_boot": 1000
+          }
+        ],
+        "n_bands_usable": 4,
+        "within_band_auroc_weighted": 0.6832,
+        "gap": {
+          "point": 0.0041,
+          "ci": [
+            -0.0267,
+            0.0714
+          ],
+          "excludes_zero": false
+        }
+      },
+      "mediation_allcell": {
+        "n": 140,
+        "truth_beta_marginal": 0.3456,
+        "truth_beta_marginal_ci": [
+          0.1877,
+          0.5036
+        ],
+        "truth_beta_partialled": 0.3255,
+        "truth_beta_partialled_ci": [
+          0.1663,
+          0.4846
+        ],
+        "typicality_beta": 0.146,
+        "typicality_beta_ci": [
+          -0.0174,
+          0.3094
+        ],
+        "truth_beta_shrinkage": 0.0584,
+        "r2_truth_only": 0.1195,
+        "r2_joint": 0.1445,
+        "covariates": [
+          "fragmentation",
+          "edit"
+        ],
+        "assumption": "additive-linear; triangulate with stage 3a",
+        "fragmentation_beta": 0.1109,
+        "fragmentation_beta_ci": [
+          -0.0551,
+          0.2769
+        ],
+        "edit_beta": -0.0148,
+        "edit_beta_ci": [
+          -0.1752,
+          0.1456
+        ]
+      },
+      "stratified_fielded": {
+        "headline_pooled": {
+          "auroc": 0.5971,
+          "ci": [
+            0.5026,
+            0.6831
+          ],
+          "n": 140,
+          "n_boot": 1000
+        },
+        "bands": [
+          {
+            "band": 0,
+            "typicality_range": [
+              4.696333095642741,
+              5.742641897355788
+            ],
+            "n": 35,
+            "n_true": 14,
+            "n_false": 21,
+            "auroc": 0.7483,
+            "ci": [
+              0.5758,
+              0.8882
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 1,
+            "typicality_range": [
+              5.742641897355788,
+              6.438382859513153
+            ],
+            "n": 35,
+            "n_true": 21,
+            "n_false": 14,
+            "auroc": 0.6735,
+            "ci": [
+              0.4767,
+              0.8497
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 2,
+            "typicality_range": [
+              6.438382859513153,
+              7.129680481291488
+            ],
+            "n": 35,
+            "n_true": 16,
+            "n_false": 19,
+            "auroc": 0.3947,
+            "ci": [
+              0.2237,
+              0.598
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 3,
+            "typicality_range": [
+              7.129680481291488,
+              7.940518839186938
+            ],
+            "n": 35,
+            "n_true": 19,
+            "n_false": 16,
+            "auroc": 0.7664,
+            "ci": [
+              0.5833,
+              0.91
+            ],
+            "n_boot": 1000
+          }
+        ],
+        "n_bands_usable": 4,
+        "within_band_auroc_weighted": 0.6457,
+        "gap": {
+          "point": -0.0486,
+          "ci": [
+            -0.1442,
+            0.0408
+          ],
+          "excludes_zero": false
+        }
+      },
+      "mediation_fielded": {
+        "n": 140,
+        "truth_beta_marginal": 0.1539,
+        "truth_beta_marginal_ci": [
+          -0.0125,
+          0.3202
+        ],
+        "truth_beta_partialled": 0.0836,
+        "truth_beta_partialled_ci": [
+          -0.0169,
+          0.1841
+        ],
+        "typicality_beta": 0.8223,
+        "typicality_beta_ci": [
+          0.7191,
+          0.9255
+        ],
+        "truth_beta_shrinkage": 0.4567,
+        "r2_truth_only": 0.0237,
+        "r2_joint": 0.6586,
+        "covariates": [
+          "fragmentation",
+          "edit"
+        ],
+        "assumption": "additive-linear; triangulate with stage 3a",
+        "fragmentation_beta": 0.1338,
+        "fragmentation_beta_ci": [
+          0.029,
+          0.2387
+        ],
+        "edit_beta": -0.0086,
+        "edit_beta_ci": [
+          -0.1099,
+          0.0927
+        ]
+      },
+      "adversarial": {
+        "train_n": 56,
+        "headline_heldout_diagonal": {
+          "auroc": 1.0,
+          "ci": [
+            1.0,
+            1.0
+          ],
+          "n": 14,
+          "n_boot": 1000
+        },
+        "off_diagonal": {
+          "auroc": 0.1412,
+          "ci": [
+            0.0663,
+            0.2434
+          ],
+          "n": 70,
+          "n_boot": 1000
+        },
+        "gap": {
+          "gap": 0.8588,
+          "ci": [
+            0.7625,
+            0.9348
+          ],
+          "excludes_zero": true,
+          "n_boot": 999
+        },
+        "off_diagonal_cells": {
+          "TA": {
+            "n": 35,
+            "mean_score": 0.3479
+          },
+          "FT": {
+            "n": 35,
+            "mean_score": 0.6338
+          }
+        }
+      },
+      "fielded_cell_scores": {
+        "TT": {
+          "n": 35,
+          "mean": 0.7404,
+          "q10": 0.4004,
+          "q50": 0.7727,
+          "q90": 0.9978
+        },
+        "TA": {
+          "n": 35,
+          "mean": 0.3445,
+          "q10": 0.1268,
+          "q50": 0.2989,
+          "q90": 0.6077
+        },
+        "FT": {
+          "n": 35,
+          "mean": 0.6915,
+          "q10": 0.4169,
+          "q50": 0.7455,
+          "q90": 0.9095
+        },
+        "FA": {
+          "n": 35,
+          "mean": 0.2065,
+          "q10": 0.0229,
+          "q50": 0.1603,
+          "q90": 0.4232
+        }
+      }
+    },
+    {
+      "layer": 4,
+      "allcell_off_diagonal": {
+        "auroc": 0.7461,
+        "ci": [
+          0.6232,
+          0.8602
+        ],
+        "n": 70,
+        "n_boot": 1000
+      },
+      "stratified_allcell": {
+        "headline_pooled": {
+          "auroc": 0.7347,
+          "ci": [
+            0.6435,
+            0.8162
+          ],
+          "n": 140,
+          "n_boot": 1000
+        },
+        "bands": [
+          {
+            "band": 0,
+            "typicality_range": [
+              4.696333095642741,
+              5.742641897355788
+            ],
+            "n": 35,
+            "n_true": 14,
+            "n_false": 21,
+            "auroc": 0.6599,
+            "ci": [
+              0.4499,
+              0.841
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 1,
+            "typicality_range": [
+              5.742641897355788,
+              6.438382859513153
+            ],
+            "n": 35,
+            "n_true": 21,
+            "n_false": 14,
+            "auroc": 0.7075,
+            "ci": [
+              0.524,
+              0.8882
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 2,
+            "typicality_range": [
+              6.438382859513153,
+              7.129680481291488
+            ],
+            "n": 35,
+            "n_true": 16,
+            "n_false": 19,
+            "auroc": 0.7303,
+            "ci": [
+              0.5419,
+              0.9023
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 3,
+            "typicality_range": [
+              7.129680481291488,
+              7.940518839186938
+            ],
+            "n": 35,
+            "n_true": 19,
+            "n_false": 16,
+            "auroc": 0.7829,
+            "ci": [
+              0.598,
+              0.9401
+            ],
+            "n_boot": 1000
+          }
+        ],
+        "n_bands_usable": 4,
+        "within_band_auroc_weighted": 0.7201,
+        "gap": {
+          "point": 0.0146,
+          "ci": [
+            -0.0207,
+            0.0756
+          ],
+          "excludes_zero": false
+        }
+      },
+      "mediation_allcell": {
+        "n": 140,
+        "truth_beta_marginal": 0.4065,
+        "truth_beta_marginal_ci": [
+          0.2527,
+          0.5603
+        ],
+        "truth_beta_partialled": 0.3724,
+        "truth_beta_partialled_ci": [
+          0.2207,
+          0.524
+        ],
+        "typicality_beta": 0.1613,
+        "typicality_beta_ci": [
+          0.0056,
+          0.317
+        ],
+        "truth_beta_shrinkage": 0.0841,
+        "r2_truth_only": 0.1653,
+        "r2_joint": 0.2233,
+        "covariates": [
+          "fragmentation",
+          "edit"
+        ],
+        "assumption": "additive-linear; triangulate with stage 3a",
+        "fragmentation_beta": 0.2241,
+        "fragmentation_beta_ci": [
+          0.0659,
+          0.3823
+        ],
+        "edit_beta": 0.0135,
+        "edit_beta_ci": [
+          -0.1393,
+          0.1663
+        ]
+      },
+      "stratified_fielded": {
+        "headline_pooled": {
+          "auroc": 0.5843,
+          "ci": [
+            0.4868,
+            0.6743
+          ],
+          "n": 140,
+          "n_boot": 1000
+        },
+        "bands": [
+          {
+            "band": 0,
+            "typicality_range": [
+              4.696333095642741,
+              5.742641897355788
+            ],
+            "n": 35,
+            "n_true": 14,
+            "n_false": 21,
+            "auroc": 0.6701,
+            "ci": [
+              0.4894,
+              0.8401
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 1,
+            "typicality_range": [
+              5.742641897355788,
+              6.438382859513153
+            ],
+            "n": 35,
+            "n_true": 21,
+            "n_false": 14,
+            "auroc": 0.6667,
+            "ci": [
+              0.472,
+              0.852
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 2,
+            "typicality_range": [
+              6.438382859513153,
+              7.129680481291488
+            ],
+            "n": 35,
+            "n_true": 16,
+            "n_false": 19,
+            "auroc": 0.3783,
+            "ci": [
+              0.196,
+              0.5658
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 3,
+            "typicality_range": [
+              7.129680481291488,
+              7.940518839186938
+            ],
+            "n": 35,
+            "n_true": 19,
+            "n_false": 16,
+            "auroc": 0.7138,
+            "ci": [
+              0.5066,
+              0.8864
+            ],
+            "n_boot": 1000
+          }
+        ],
+        "n_bands_usable": 4,
+        "within_band_auroc_weighted": 0.6072,
+        "gap": {
+          "point": -0.0229,
+          "ci": [
+            -0.1126,
+            0.0734
+          ],
+          "excludes_zero": false
+        }
+      },
+      "mediation_fielded": {
+        "n": 140,
+        "truth_beta_marginal": 0.1836,
+        "truth_beta_marginal_ci": [
+          0.0182,
+          0.3491
+        ],
+        "truth_beta_partialled": 0.1144,
+        "truth_beta_partialled_ci": [
+          0.006,
+          0.2227
+        ],
+        "typicality_beta": 0.7808,
+        "typicality_beta_ci": [
+          0.6695,
+          0.8921
+        ],
+        "truth_beta_shrinkage": 0.3772,
+        "r2_truth_only": 0.0337,
+        "r2_joint": 0.6033,
+        "covariates": [
+          "fragmentation",
+          "edit"
+        ],
+        "assumption": "additive-linear; triangulate with stage 3a",
+        "fragmentation_beta": 0.14,
+        "fragmentation_beta_ci": [
+          0.0269,
+          0.253
+        ],
+        "edit_beta": 0.0117,
+        "edit_beta_ci": [
+          -0.0975,
+          0.1209
+        ]
+      },
+      "adversarial": {
+        "train_n": 56,
+        "headline_heldout_diagonal": {
+          "auroc": 0.9792,
+          "ci": [
+            0.875,
+            1.0
+          ],
+          "n": 14,
+          "n_boot": 1000
+        },
+        "off_diagonal": {
+          "auroc": 0.1878,
+          "ci": [
+            0.0991,
+            0.2986
+          ],
+          "n": 70,
+          "n_boot": 1000
+        },
+        "gap": {
+          "gap": 0.7914,
+          "ci": [
+            0.6374,
+            0.8948
+          ],
+          "excludes_zero": true,
+          "n_boot": 999
+        },
+        "off_diagonal_cells": {
+          "TA": {
+            "n": 35,
+            "mean_score": 0.3812
+          },
+          "FT": {
+            "n": 35,
+            "mean_score": 0.6206
+          }
+        }
+      },
+      "fielded_cell_scores": {
+        "TT": {
+          "n": 35,
+          "mean": 0.6612,
+          "q10": 0.4515,
+          "q50": 0.5844,
+          "q90": 0.9475
+        },
+        "TA": {
+          "n": 35,
+          "mean": 0.416,
+          "q10": 0.278,
+          "q50": 0.4071,
+          "q90": 0.5711
+        },
+        "FT": {
+          "n": 35,
+          "mean": 0.6142,
+          "q10": 0.4785,
+          "q50": 0.6419,
+          "q90": 0.7498
+        },
+        "FA": {
+          "n": 35,
+          "mean": 0.3127,
+          "q10": 0.1347,
+          "q50": 0.2925,
+          "q90": 0.4827
+        }
+      }
+    },
+    {
+      "layer": 5,
+      "allcell_off_diagonal": {
+        "auroc": 0.7265,
+        "ci": [
+          0.5962,
+          0.8431
+        ],
+        "n": 70,
+        "n_boot": 1000
+      },
+      "stratified_allcell": {
+        "headline_pooled": {
+          "auroc": 0.7257,
+          "ci": [
+            0.6361,
+            0.811
+          ],
+          "n": 140,
+          "n_boot": 1000
+        },
+        "bands": [
+          {
+            "band": 0,
+            "typicality_range": [
+              4.696333095642741,
+              5.742641897355788
+            ],
+            "n": 35,
+            "n_true": 14,
+            "n_false": 21,
+            "auroc": 0.6463,
+            "ci": [
+              0.4248,
+              0.8421
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 1,
+            "typicality_range": [
+              5.742641897355788,
+              6.438382859513153
+            ],
+            "n": 35,
+            "n_true": 21,
+            "n_false": 14,
+            "auroc": 0.6633,
+            "ci": [
+              0.4402,
+              0.8409
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 2,
+            "typicality_range": [
+              6.438382859513153,
+              7.129680481291488
+            ],
+            "n": 35,
+            "n_true": 16,
+            "n_false": 19,
+            "auroc": 0.7237,
+            "ci": [
+              0.5333,
+              0.8934
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 3,
+            "typicality_range": [
+              7.129680481291488,
+              7.940518839186938
+            ],
+            "n": 35,
+            "n_true": 19,
+            "n_false": 16,
+            "auroc": 0.7895,
+            "ci": [
+              0.5987,
+              0.944
+            ],
+            "n_boot": 1000
+          }
+        ],
+        "n_bands_usable": 4,
+        "within_band_auroc_weighted": 0.7057,
+        "gap": {
+          "point": 0.02,
+          "ci": [
+            -0.0176,
+            0.0976
+          ],
+          "excludes_zero": false
+        }
+      },
+      "mediation_allcell": {
+        "n": 140,
+        "truth_beta_marginal": 0.3921,
+        "truth_beta_marginal_ci": [
+          0.2373,
+          0.547
+        ],
+        "truth_beta_partialled": 0.3469,
+        "truth_beta_partialled_ci": [
+          0.1978,
+          0.496
+        ],
+        "typicality_beta": 0.1795,
+        "typicality_beta_ci": [
+          0.0265,
+          0.3326
+        ],
+        "truth_beta_shrinkage": 0.1154,
+        "r2_truth_only": 0.1538,
+        "r2_joint": 0.2494,
+        "covariates": [
+          "fragmentation",
+          "edit"
+        ],
+        "assumption": "additive-linear; triangulate with stage 3a",
+        "fragmentation_beta": 0.236,
+        "fragmentation_beta_ci": [
+          0.0805,
+          0.3915
+        ],
+        "edit_beta": 0.1471,
+        "edit_beta_ci": [
+          -0.0031,
+          0.2973
+        ]
+      },
+      "stratified_fielded": {
+        "headline_pooled": {
+          "auroc": 0.6141,
+          "ci": [
+            0.521,
+            0.7011
+          ],
+          "n": 140,
+          "n_boot": 1000
+        },
+        "bands": [
+          {
+            "band": 0,
+            "typicality_range": [
+              4.696333095642741,
+              5.742641897355788
+            ],
+            "n": 35,
+            "n_true": 14,
+            "n_false": 21,
+            "auroc": 0.7449,
+            "ci": [
+              0.5653,
+              0.8948
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 1,
+            "typicality_range": [
+              5.742641897355788,
+              6.438382859513153
+            ],
+            "n": 35,
+            "n_true": 21,
+            "n_false": 14,
+            "auroc": 0.7075,
+            "ci": [
+              0.5,
+              0.8881
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 2,
+            "typicality_range": [
+              6.438382859513153,
+              7.129680481291488
+            ],
+            "n": 35,
+            "n_true": 16,
+            "n_false": 19,
+            "auroc": 0.4178,
+            "ci": [
+              0.2342,
+              0.6122
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 3,
+            "typicality_range": [
+              7.129680481291488,
+              7.940518839186938
+            ],
+            "n": 35,
+            "n_true": 19,
+            "n_false": 16,
+            "auroc": 0.8191,
+            "ci": [
+              0.6633,
+              0.9478
+            ],
+            "n_boot": 1000
+          }
+        ],
+        "n_bands_usable": 4,
+        "within_band_auroc_weighted": 0.6723,
+        "gap": {
+          "point": -0.0582,
+          "ci": [
+            -0.1577,
+            0.0343
+          ],
+          "excludes_zero": false
+        }
+      },
+      "mediation_fielded": {
+        "n": 140,
+        "truth_beta_marginal": 0.1873,
+        "truth_beta_marginal_ci": [
+          0.022,
+          0.3527
+        ],
+        "truth_beta_partialled": 0.1187,
+        "truth_beta_partialled_ci": [
+          0.017,
+          0.2203
+        ],
+        "typicality_beta": 0.8094,
+        "typicality_beta_ci": [
+          0.7051,
+          0.9138
+        ],
+        "truth_beta_shrinkage": 0.3666,
+        "r2_truth_only": 0.0351,
+        "r2_joint": 0.6513,
+        "covariates": [
+          "fragmentation",
+          "edit"
+        ],
+        "assumption": "additive-linear; triangulate with stage 3a",
+        "fragmentation_beta": 0.1439,
+        "fragmentation_beta_ci": [
+          0.0379,
+          0.2499
+        ],
+        "edit_beta": -0.0345,
+        "edit_beta_ci": [
+          -0.1368,
+          0.0679
+        ]
+      },
+      "adversarial": {
+        "train_n": 56,
+        "headline_heldout_diagonal": {
+          "auroc": 1.0,
+          "ci": [
+            1.0,
+            1.0
+          ],
+          "n": 14,
+          "n_boot": 1000
+        },
+        "off_diagonal": {
+          "auroc": 0.1633,
+          "ci": [
+            0.0841,
+            0.2634
+          ],
+          "n": 70,
+          "n_boot": 1000
+        },
+        "gap": {
+          "gap": 0.8367,
+          "ci": [
+            0.735,
+            0.9201
+          ],
+          "excludes_zero": true,
+          "n_boot": 999
+        },
+        "off_diagonal_cells": {
+          "TA": {
+            "n": 35,
+            "mean_score": 0.3265
+          },
+          "FT": {
+            "n": 35,
+            "mean_score": 0.5797
+          }
+        }
+      },
+      "fielded_cell_scores": {
+        "TT": {
+          "n": 35,
+          "mean": 0.7454,
+          "q10": 0.4222,
+          "q50": 0.7377,
+          "q90": 0.99
+        },
+        "TA": {
+          "n": 35,
+          "mean": 0.3446,
+          "q10": 0.1501,
+          "q50": 0.2639,
+          "q90": 0.6387
+        },
+        "FT": {
+          "n": 35,
+          "mean": 0.6681,
+          "q10": 0.399,
+          "q50": 0.7083,
+          "q90": 0.8927
+        },
+        "FA": {
+          "n": 35,
+          "mean": 0.1886,
+          "q10": 0.0,
+          "q50": 0.1211,
+          "q90": 0.4689
+        }
+      }
+    },
+    {
+      "layer": 6,
+      "allcell_off_diagonal": {
+        "auroc": 0.6988,
+        "ci": [
+          0.5725,
+          0.8175
+        ],
+        "n": 70,
+        "n_boot": 1000
+      },
+      "stratified_allcell": {
+        "headline_pooled": {
+          "auroc": 0.7513,
+          "ci": [
+            0.6648,
+            0.8282
+          ],
+          "n": 140,
+          "n_boot": 1000
+        },
+        "bands": [
+          {
+            "band": 0,
+            "typicality_range": [
+              4.696333095642741,
+              5.742641897355788
+            ],
+            "n": 35,
+            "n_true": 14,
+            "n_false": 21,
+            "auroc": 0.6429,
+            "ci": [
+              0.4242,
+              0.83
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 1,
+            "typicality_range": [
+              5.742641897355788,
+              6.438382859513153
+            ],
+            "n": 35,
+            "n_true": 21,
+            "n_false": 14,
+            "auroc": 0.6871,
+            "ci": [
+              0.4902,
+              0.8627
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 2,
+            "typicality_range": [
+              6.438382859513153,
+              7.129680481291488
+            ],
+            "n": 35,
+            "n_true": 16,
+            "n_false": 19,
+            "auroc": 0.7237,
+            "ci": [
+              0.5385,
+              0.8857
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 3,
+            "typicality_range": [
+              7.129680481291488,
+              7.940518839186938
+            ],
+            "n": 35,
+            "n_true": 19,
+            "n_false": 16,
+            "auroc": 0.9046,
+            "ci": [
+              0.7861,
+              1.0
+            ],
+            "n_boot": 1000
+          }
+        ],
+        "n_bands_usable": 4,
+        "within_band_auroc_weighted": 0.7396,
+        "gap": {
+          "point": 0.0117,
+          "ci": [
+            -0.0279,
+            0.0747
+          ],
+          "excludes_zero": false
+        }
+      },
+      "mediation_allcell": {
+        "n": 140,
+        "truth_beta_marginal": 0.436,
+        "truth_beta_marginal_ci": [
+          0.2845,
+          0.5875
+        ],
+        "truth_beta_partialled": 0.3927,
+        "truth_beta_partialled_ci": [
+          0.2471,
+          0.5383
+        ],
+        "typicality_beta": 0.2306,
+        "typicality_beta_ci": [
+          0.0811,
+          0.3801
+        ],
+        "truth_beta_shrinkage": 0.0993,
+        "r2_truth_only": 0.1901,
+        "r2_joint": 0.2838,
+        "covariates": [
+          "fragmentation",
+          "edit"
+        ],
+        "assumption": "additive-linear; triangulate with stage 3a",
+        "fragmentation_beta": 0.269,
+        "fragmentation_beta_ci": [
+          0.1171,
+          0.4209
+        ],
+        "edit_beta": 0.0113,
+        "edit_beta_ci": [
+          -0.1354,
+          0.158
+        ]
+      },
+      "stratified_fielded": {
+        "headline_pooled": {
+          "auroc": 0.579,
+          "ci": [
+            0.4878,
+            0.6649
+          ],
+          "n": 140,
+          "n_boot": 1000
+        },
+        "bands": [
+          {
+            "band": 0,
+            "typicality_range": [
+              4.696333095642741,
+              5.742641897355788
+            ],
+            "n": 35,
+            "n_true": 14,
+            "n_false": 21,
+            "auroc": 0.7279,
+            "ci": [
+              0.5349,
+              0.8878
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 1,
+            "typicality_range": [
+              5.742641897355788,
+              6.438382859513153
+            ],
+            "n": 35,
+            "n_true": 21,
+            "n_false": 14,
+            "auroc": 0.6156,
+            "ci": [
+              0.4045,
+              0.8056
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 2,
+            "typicality_range": [
+              6.438382859513153,
+              7.129680481291488
+            ],
+            "n": 35,
+            "n_true": 16,
+            "n_false": 19,
+            "auroc": 0.3882,
+            "ci": [
+              0.1941,
+              0.5789
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 3,
+            "typicality_range": [
+              7.129680481291488,
+              7.940518839186938
+            ],
+            "n": 35,
+            "n_true": 19,
+            "n_false": 16,
+            "auroc": 0.7697,
+            "ci": [
+              0.5882,
+              0.92
+            ],
+            "n_boot": 1000
+          }
+        ],
+        "n_bands_usable": 4,
+        "within_band_auroc_weighted": 0.6254,
+        "gap": {
+          "point": -0.0464,
+          "ci": [
+            -0.1437,
+            0.0443
+          ],
+          "excludes_zero": false
+        }
+      },
+      "mediation_fielded": {
+        "n": 140,
+        "truth_beta_marginal": 0.1302,
+        "truth_beta_marginal_ci": [
+          -0.0367,
+          0.2971
+        ],
+        "truth_beta_partialled": 0.0574,
+        "truth_beta_partialled_ci": [
+          -0.0471,
+          0.1618
+        ],
+        "typicality_beta": 0.8117,
+        "typicality_beta_ci": [
+          0.7044,
+          0.919
+        ],
+        "truth_beta_shrinkage": 0.5594,
+        "r2_truth_only": 0.0169,
+        "r2_joint": 0.6313,
+        "covariates": [
+          "fragmentation",
+          "edit"
+        ],
+        "assumption": "additive-linear; triangulate with stage 3a",
+        "fragmentation_beta": 0.1599,
+        "fragmentation_beta_ci": [
+          0.0509,
+          0.2688
+        ],
+        "edit_beta": 0.0029,
+        "edit_beta_ci": [
+          -0.1023,
+          0.1082
+        ]
+      },
+      "adversarial": {
+        "train_n": 56,
+        "headline_heldout_diagonal": {
+          "auroc": 1.0,
+          "ci": [
+            1.0,
+            1.0
+          ],
+          "n": 14,
+          "n_boot": 1000
+        },
+        "off_diagonal": {
+          "auroc": 0.1037,
+          "ci": [
+            0.0393,
+            0.1895
+          ],
+          "n": 70,
+          "n_boot": 1000
+        },
+        "gap": {
+          "gap": 0.8963,
+          "ci": [
+            0.8152,
+            0.9562
+          ],
+          "excludes_zero": true,
+          "n_boot": 999
+        },
+        "off_diagonal_cells": {
+          "TA": {
+            "n": 35,
+            "mean_score": 0.2744
+          },
+          "FT": {
+            "n": 35,
+            "mean_score": 0.5898
+          }
+        }
+      },
+      "fielded_cell_scores": {
+        "TT": {
+          "n": 35,
+          "mean": 0.7417,
+          "q10": 0.3754,
+          "q50": 0.8068,
+          "q90": 1.0
+        },
+        "TA": {
+          "n": 35,
+          "mean": 0.3192,
+          "q10": 0.1278,
+          "q50": 0.2463,
+          "q90": 0.6523
+        },
+        "FT": {
+          "n": 35,
+          "mean": 0.7001,
+          "q10": 0.3329,
+          "q50": 0.7572,
+          "q90": 0.8942
+        },
+        "FA": {
+          "n": 35,
+          "mean": 0.192,
+          "q10": 0.0044,
+          "q50": 0.1322,
+          "q90": 0.4231
+        }
+      }
+    },
+    {
+      "layer": 7,
+      "allcell_off_diagonal": {
+        "auroc": 0.6571,
+        "ci": [
+          0.5274,
+          0.7876
+        ],
+        "n": 70,
+        "n_boot": 1000
+      },
+      "stratified_allcell": {
+        "headline_pooled": {
+          "auroc": 0.7361,
+          "ci": [
+            0.6491,
+            0.8153
+          ],
+          "n": 140,
+          "n_boot": 1000
+        },
+        "bands": [
+          {
+            "band": 0,
+            "typicality_range": [
+              4.696333095642741,
+              5.742641897355788
+            ],
+            "n": 35,
+            "n_true": 14,
+            "n_false": 21,
+            "auroc": 0.6293,
+            "ci": [
+              0.4166,
+              0.8195
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 1,
+            "typicality_range": [
+              5.742641897355788,
+              6.438382859513153
+            ],
+            "n": 35,
+            "n_true": 21,
+            "n_false": 14,
+            "auroc": 0.6939,
+            "ci": [
+              0.5046,
+              0.8844
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 2,
+            "typicality_range": [
+              6.438382859513153,
+              7.129680481291488
+            ],
+            "n": 35,
+            "n_true": 16,
+            "n_false": 19,
+            "auroc": 0.6974,
+            "ci": [
+              0.5065,
+              0.8674
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 3,
+            "typicality_range": [
+              7.129680481291488,
+              7.940518839186938
+            ],
+            "n": 35,
+            "n_true": 19,
+            "n_false": 16,
+            "auroc": 0.8454,
+            "ci": [
+              0.6848,
+              0.9767
+            ],
+            "n_boot": 1000
+          }
+        ],
+        "n_bands_usable": 4,
+        "within_band_auroc_weighted": 0.7165,
+        "gap": {
+          "point": 0.0196,
+          "ci": [
+            -0.0228,
+            0.0824
+          ],
+          "excludes_zero": false
+        }
+      },
+      "mediation_allcell": {
+        "n": 140,
+        "truth_beta_marginal": 0.4036,
+        "truth_beta_marginal_ci": [
+          0.2496,
+          0.5576
+        ],
+        "truth_beta_partialled": 0.3556,
+        "truth_beta_partialled_ci": [
+          0.2101,
+          0.5012
+        ],
+        "typicality_beta": 0.2983,
+        "typicality_beta_ci": [
+          0.1488,
+          0.4477
+        ],
+        "truth_beta_shrinkage": 0.119,
+        "r2_truth_only": 0.1629,
+        "r2_joint": 0.2846,
+        "covariates": [
+          "fragmentation",
+          "edit"
+        ],
+        "assumption": "additive-linear; triangulate with stage 3a",
+        "fragmentation_beta": 0.2754,
+        "fragmentation_beta_ci": [
+          0.1236,
+          0.4272
+        ],
+        "edit_beta": 0.001,
+        "edit_beta_ci": [
+          -0.1456,
+          0.1476
+        ]
+      },
+      "stratified_fielded": {
+        "headline_pooled": {
+          "auroc": 0.6039,
+          "ci": [
+            0.5142,
+            0.6913
+          ],
+          "n": 140,
+          "n_boot": 1000
+        },
+        "bands": [
+          {
+            "band": 0,
+            "typicality_range": [
+              4.696333095642741,
+              5.742641897355788
+            ],
+            "n": 35,
+            "n_true": 14,
+            "n_false": 21,
+            "auroc": 0.8129,
+            "ci": [
+              0.6463,
+              0.9476
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 1,
+            "typicality_range": [
+              5.742641897355788,
+              6.438382859513153
+            ],
+            "n": 35,
+            "n_true": 21,
+            "n_false": 14,
+            "auroc": 0.6769,
+            "ci": [
+              0.4674,
+              0.8636
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 2,
+            "typicality_range": [
+              6.438382859513153,
+              7.129680481291488
+            ],
+            "n": 35,
+            "n_true": 16,
+            "n_false": 19,
+            "auroc": 0.3914,
+            "ci": [
+              0.19,
+              0.5855
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 3,
+            "typicality_range": [
+              7.129680481291488,
+              7.940518839186938
+            ],
+            "n": 35,
+            "n_true": 19,
+            "n_false": 16,
+            "auroc": 0.8289,
+            "ci": [
+              0.6829,
+              0.9565
+            ],
+            "n_boot": 1000
+          }
+        ],
+        "n_bands_usable": 4,
+        "within_band_auroc_weighted": 0.6775,
+        "gap": {
+          "point": -0.0736,
+          "ci": [
+            -0.17,
+            0.0132
+          ],
+          "excludes_zero": false
+        }
+      },
+      "mediation_fielded": {
+        "n": 140,
+        "truth_beta_marginal": 0.122,
+        "truth_beta_marginal_ci": [
+          -0.0451,
+          0.289
+        ],
+        "truth_beta_partialled": 0.054,
+        "truth_beta_partialled_ci": [
+          -0.0524,
+          0.1604
+        ],
+        "typicality_beta": 0.8002,
+        "typicality_beta_ci": [
+          0.691,
+          0.9095
+        ],
+        "truth_beta_shrinkage": 0.557,
+        "r2_truth_only": 0.0149,
+        "r2_joint": 0.6177,
+        "covariates": [
+          "fragmentation",
+          "edit"
+        ],
+        "assumption": "additive-linear; triangulate with stage 3a",
+        "fragmentation_beta": 0.15,
+        "fragmentation_beta_ci": [
+          0.039,
+          0.261
+        ],
+        "edit_beta": -0.0453,
+        "edit_beta_ci": [
+          -0.1525,
+          0.0619
+        ]
+      },
+      "adversarial": {
+        "train_n": 56,
+        "headline_heldout_diagonal": {
+          "auroc": 0.9792,
+          "ci": [
+            0.875,
+            1.0
+          ],
+          "n": 14,
+          "n_boot": 1000
+        },
+        "off_diagonal": {
+          "auroc": 0.1371,
+          "ci": [
+            0.0656,
+            0.2357
+          ],
+          "n": 70,
+          "n_boot": 1000
+        },
+        "gap": {
+          "gap": 0.842,
+          "ci": [
+            0.7148,
+            0.9303
+          ],
+          "excludes_zero": true,
+          "n_boot": 999
+        },
+        "off_diagonal_cells": {
+          "TA": {
+            "n": 35,
+            "mean_score": 0.2774
+          },
+          "FT": {
+            "n": 35,
+            "mean_score": 0.5901
+          }
+        }
+      },
+      "fielded_cell_scores": {
+        "TT": {
+          "n": 35,
+          "mean": 0.7609,
+          "q10": 0.3841,
+          "q50": 0.8674,
+          "q90": 1.0
+        },
+        "TA": {
+          "n": 35,
+          "mean": 0.2882,
+          "q10": 0.0911,
+          "q50": 0.1682,
+          "q90": 0.7294
+        },
+        "FT": {
+          "n": 35,
+          "mean": 0.7243,
+          "q10": 0.2608,
+          "q50": 0.8166,
+          "q90": 0.9295
+        },
+        "FA": {
+          "n": 35,
+          "mean": 0.1452,
+          "q10": 0.0,
+          "q50": 0.0446,
+          "q90": 0.4135
+        }
+      }
+    },
+    {
+      "layer": 8,
+      "allcell_off_diagonal": {
+        "auroc": 0.6857,
+        "ci": [
+          0.5591,
+          0.8126
+        ],
+        "n": 70,
+        "n_boot": 1000
+      },
+      "stratified_allcell": {
+        "headline_pooled": {
+          "auroc": 0.7339,
+          "ci": [
+            0.645,
+            0.8121
+          ],
+          "n": 140,
+          "n_boot": 1000
+        },
+        "bands": [
+          {
+            "band": 0,
+            "typicality_range": [
+              4.696333095642741,
+              5.742641897355788
+            ],
+            "n": 35,
+            "n_true": 14,
+            "n_false": 21,
+            "auroc": 0.602,
+            "ci": [
+              0.3783,
+              0.8
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 1,
+            "typicality_range": [
+              5.742641897355788,
+              6.438382859513153
+            ],
+            "n": 35,
+            "n_true": 21,
+            "n_false": 14,
+            "auroc": 0.6633,
+            "ci": [
+              0.4455,
+              0.8515
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 2,
+            "typicality_range": [
+              6.438382859513153,
+              7.129680481291488
+            ],
+            "n": 35,
+            "n_true": 16,
+            "n_false": 19,
+            "auroc": 0.7039,
+            "ci": [
+              0.5133,
+              0.8719
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 3,
+            "typicality_range": [
+              7.129680481291488,
+              7.940518839186938
+            ],
+            "n": 35,
+            "n_true": 19,
+            "n_false": 16,
+            "auroc": 0.8487,
+            "ci": [
+              0.6907,
+              0.9804
+            ],
+            "n_boot": 1000
+          }
+        ],
+        "n_bands_usable": 4,
+        "within_band_auroc_weighted": 0.7045,
+        "gap": {
+          "point": 0.0294,
+          "ci": [
+            -0.0167,
+            0.0943
+          ],
+          "excludes_zero": false
+        }
+      },
+      "mediation_allcell": {
+        "n": 140,
+        "truth_beta_marginal": 0.4035,
+        "truth_beta_marginal_ci": [
+          0.2495,
+          0.5575
+        ],
+        "truth_beta_partialled": 0.3591,
+        "truth_beta_partialled_ci": [
+          0.212,
+          0.5062
+        ],
+        "typicality_beta": 0.2606,
+        "typicality_beta_ci": [
+          0.1096,
+          0.4117
+        ],
+        "truth_beta_shrinkage": 0.11,
+        "r2_truth_only": 0.1628,
+        "r2_joint": 0.2692,
+        "covariates": [
+          "fragmentation",
+          "edit"
+        ],
+        "assumption": "additive-linear; triangulate with stage 3a",
+        "fragmentation_beta": 0.2784,
+        "fragmentation_beta_ci": [
+          0.125,
+          0.4318
+        ],
+        "edit_beta": -0.0191,
+        "edit_beta_ci": [
+          -0.1673,
+          0.1292
+        ]
+      },
+      "stratified_fielded": {
+        "headline_pooled": {
+          "auroc": 0.6059,
+          "ci": [
+            0.5093,
+            0.6915
+          ],
+          "n": 140,
+          "n_boot": 1000
+        },
+        "bands": [
+          {
+            "band": 0,
+            "typicality_range": [
+              4.696333095642741,
+              5.742641897355788
+            ],
+            "n": 35,
+            "n_true": 14,
+            "n_false": 21,
+            "auroc": 0.8367,
+            "ci": [
+              0.6645,
+              0.9626
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 1,
+            "typicality_range": [
+              5.742641897355788,
+              6.438382859513153
+            ],
+            "n": 35,
+            "n_true": 21,
+            "n_false": 14,
+            "auroc": 0.6837,
+            "ci": [
+              0.4672,
+              0.8768
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 2,
+            "typicality_range": [
+              6.438382859513153,
+              7.129680481291488
+            ],
+            "n": 35,
+            "n_true": 16,
+            "n_false": 19,
+            "auroc": 0.4013,
+            "ci": [
+              0.1769,
+              0.616
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 3,
+            "typicality_range": [
+              7.129680481291488,
+              7.940518839186938
+            ],
+            "n": 35,
+            "n_true": 19,
+            "n_false": 16,
+            "auroc": 0.8421,
+            "ci": [
+              0.692,
+              0.9756
+            ],
+            "n_boot": 1000
+          }
+        ],
+        "n_bands_usable": 4,
+        "within_band_auroc_weighted": 0.691,
+        "gap": {
+          "point": -0.0851,
+          "ci": [
+            -0.1778,
+            0.0013
+          ],
+          "excludes_zero": false
+        }
+      },
+      "mediation_fielded": {
+        "n": 140,
+        "truth_beta_marginal": 0.1287,
+        "truth_beta_marginal_ci": [
+          -0.0382,
+          0.2957
+        ],
+        "truth_beta_partialled": 0.0579,
+        "truth_beta_partialled_ci": [
+          -0.0499,
+          0.1658
+        ],
+        "typicality_beta": 0.7954,
+        "typicality_beta_ci": [
+          0.6847,
+          0.9062
+        ],
+        "truth_beta_shrinkage": 0.55,
+        "r2_truth_only": 0.0166,
+        "r2_joint": 0.607,
+        "covariates": [
+          "fragmentation",
+          "edit"
+        ],
+        "assumption": "additive-linear; triangulate with stage 3a",
+        "fragmentation_beta": 0.1536,
+        "fragmentation_beta_ci": [
+          0.0411,
+          0.2661
+        ],
+        "edit_beta": -0.0009,
+        "edit_beta_ci": [
+          -0.1096,
+          0.1078
+        ]
+      },
+      "adversarial": {
+        "train_n": 56,
+        "headline_heldout_diagonal": {
+          "auroc": 0.9792,
+          "ci": [
+            0.875,
+            1.0
+          ],
+          "n": 14,
+          "n_boot": 1000
+        },
+        "off_diagonal": {
+          "auroc": 0.1143,
+          "ci": [
+            0.0442,
+            0.211
+          ],
+          "n": 70,
+          "n_boot": 1000
+        },
+        "gap": {
+          "gap": 0.8649,
+          "ci": [
+            0.7346,
+            0.9543
+          ],
+          "excludes_zero": true,
+          "n_boot": 999
+        },
+        "off_diagonal_cells": {
+          "TA": {
+            "n": 35,
+            "mean_score": 0.2252
+          },
+          "FT": {
+            "n": 35,
+            "mean_score": 0.5967
+          }
+        }
+      },
+      "fielded_cell_scores": {
+        "TT": {
+          "n": 35,
+          "mean": 0.7554,
+          "q10": 0.3806,
+          "q50": 0.9553,
+          "q90": 1.0
+        },
+        "TA": {
+          "n": 35,
+          "mean": 0.2995,
+          "q10": 0.111,
+          "q50": 0.1864,
+          "q90": 0.7171
+        },
+        "FT": {
+          "n": 35,
+          "mean": 0.7097,
+          "q10": 0.2919,
+          "q50": 0.7767,
+          "q90": 0.9047
+        },
+        "FA": {
+          "n": 35,
+          "mean": 0.1623,
+          "q10": 0.0,
+          "q50": 0.048,
+          "q90": 0.5009
+        }
+      }
+    },
+    {
+      "layer": 9,
+      "allcell_off_diagonal": {
+        "auroc": 0.7429,
+        "ci": [
+          0.6175,
+          0.8631
+        ],
+        "n": 70,
+        "n_boot": 1000
+      },
+      "stratified_allcell": {
+        "headline_pooled": {
+          "auroc": 0.761,
+          "ci": [
+            0.6776,
+            0.8409
+          ],
+          "n": 140,
+          "n_boot": 1000
+        },
+        "bands": [
+          {
+            "band": 0,
+            "typicality_range": [
+              4.696333095642741,
+              5.742641897355788
+            ],
+            "n": 35,
+            "n_true": 14,
+            "n_false": 21,
+            "auroc": 0.5748,
+            "ci": [
+              0.3531,
+              0.7767
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 1,
+            "typicality_range": [
+              5.742641897355788,
+              6.438382859513153
+            ],
+            "n": 35,
+            "n_true": 21,
+            "n_false": 14,
+            "auroc": 0.7007,
+            "ci": [
+              0.507,
+              0.8673
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 2,
+            "typicality_range": [
+              6.438382859513153,
+              7.129680481291488
+            ],
+            "n": 35,
+            "n_true": 16,
+            "n_false": 19,
+            "auroc": 0.7467,
+            "ci": [
+              0.56,
+              0.9116
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 3,
+            "typicality_range": [
+              7.129680481291488,
+              7.940518839186938
+            ],
+            "n": 35,
+            "n_true": 19,
+            "n_false": 16,
+            "auroc": 0.9276,
+            "ci": [
+              0.8133,
+              1.0
+            ],
+            "n_boot": 1000
+          }
+        ],
+        "n_bands_usable": 4,
+        "within_band_auroc_weighted": 0.7374,
+        "gap": {
+          "point": 0.0236,
+          "ci": [
+            -0.0151,
+            0.1029
+          ],
+          "excludes_zero": false
+        }
+      },
+      "mediation_allcell": {
+        "n": 140,
+        "truth_beta_marginal": 0.4558,
+        "truth_beta_marginal_ci": [
+          0.306,
+          0.6056
+        ],
+        "truth_beta_partialled": 0.4263,
+        "truth_beta_partialled_ci": [
+          0.2771,
+          0.5755
+        ],
+        "typicality_beta": 0.154,
+        "typicality_beta_ci": [
+          0.0008,
+          0.3073
+        ],
+        "truth_beta_shrinkage": 0.0648,
+        "r2_truth_only": 0.2078,
+        "r2_joint": 0.248,
+        "covariates": [
+          "fragmentation",
+          "edit"
+        ],
+        "assumption": "additive-linear; triangulate with stage 3a",
+        "fragmentation_beta": 0.1608,
+        "fragmentation_beta_ci": [
+          0.0052,
+          0.3165
+        ],
+        "edit_beta": 0.0455,
+        "edit_beta_ci": [
+          -0.1048,
+          0.1959
+        ]
+      },
+      "stratified_fielded": {
+        "headline_pooled": {
+          "auroc": 0.6129,
+          "ci": [
+            0.522,
+            0.698
+          ],
+          "n": 140,
+          "n_boot": 1000
+        },
+        "bands": [
+          {
+            "band": 0,
+            "typicality_range": [
+              4.696333095642741,
+              5.742641897355788
+            ],
+            "n": 35,
+            "n_true": 14,
+            "n_false": 21,
+            "auroc": 0.8299,
+            "ci": [
+              0.6538,
+              0.958
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 1,
+            "typicality_range": [
+              5.742641897355788,
+              6.438382859513153
+            ],
+            "n": 35,
+            "n_true": 21,
+            "n_false": 14,
+            "auroc": 0.6939,
+            "ci": [
+              0.4864,
+              0.8726
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 2,
+            "typicality_range": [
+              6.438382859513153,
+              7.129680481291488
+            ],
+            "n": 35,
+            "n_true": 16,
+            "n_false": 19,
+            "auroc": 0.352,
+            "ci": [
+              0.1545,
+              0.5545
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 3,
+            "typicality_range": [
+              7.129680481291488,
+              7.940518839186938
+            ],
+            "n": 35,
+            "n_true": 19,
+            "n_false": 16,
+            "auroc": 0.8454,
+            "ci": [
+              0.6905,
+              0.9739
+            ],
+            "n_boot": 1000
+          }
+        ],
+        "n_bands_usable": 4,
+        "within_band_auroc_weighted": 0.6803,
+        "gap": {
+          "point": -0.0674,
+          "ci": [
+            -0.1541,
+            0.0148
+          ],
+          "excludes_zero": false
+        }
+      },
+      "mediation_fielded": {
+        "n": 140,
+        "truth_beta_marginal": 0.1535,
+        "truth_beta_marginal_ci": [
+          -0.0129,
+          0.3198
+        ],
+        "truth_beta_partialled": 0.0885,
+        "truth_beta_partialled_ci": [
+          -0.0249,
+          0.2019
+        ],
+        "typicality_beta": 0.7597,
+        "typicality_beta_ci": [
+          0.6433,
+          0.8761
+        ],
+        "truth_beta_shrinkage": 0.4231,
+        "r2_truth_only": 0.0235,
+        "r2_joint": 0.5659,
+        "covariates": [
+          "fragmentation",
+          "edit"
+        ],
+        "assumption": "additive-linear; triangulate with stage 3a",
+        "fragmentation_beta": 0.1153,
+        "fragmentation_beta_ci": [
+          -0.0029,
+          0.2336
+        ],
+        "edit_beta": 0.0049,
+        "edit_beta_ci": [
+          -0.1093,
+          0.1192
+        ]
+      },
+      "adversarial": {
+        "train_n": 56,
+        "headline_heldout_diagonal": {
+          "auroc": 0.9792,
+          "ci": [
+            0.875,
+            1.0
+          ],
+          "n": 14,
+          "n_boot": 1000
+        },
+        "off_diagonal": {
+          "auroc": 0.178,
+          "ci": [
+            0.0887,
+            0.2925
+          ],
+          "n": 70,
+          "n_boot": 1000
+        },
+        "gap": {
+          "gap": 0.8012,
+          "ci": [
+            0.6631,
+            0.9026
+          ],
+          "excludes_zero": true,
+          "n_boot": 999
+        },
+        "off_diagonal_cells": {
+          "TA": {
+            "n": 35,
+            "mean_score": 0.2339
+          },
+          "FT": {
+            "n": 35,
+            "mean_score": 0.5172
+          }
+        }
+      },
+      "fielded_cell_scores": {
+        "TT": {
+          "n": 35,
+          "mean": 0.7331,
+          "q10": 0.3737,
+          "q50": 0.8429,
+          "q90": 1.0
+        },
+        "TA": {
+          "n": 35,
+          "mean": 0.3231,
+          "q10": 0.1251,
+          "q50": 0.1794,
+          "q90": 0.777
+        },
+        "FT": {
+          "n": 35,
+          "mean": 0.683,
+          "q10": 0.2773,
+          "q50": 0.7799,
+          "q90": 0.8725
+        },
+        "FA": {
+          "n": 35,
+          "mean": 0.1602,
+          "q10": 0.0,
+          "q50": 0.0932,
+          "q90": 0.443
+        }
+      }
+    },
+    {
+      "layer": 10,
+      "allcell_off_diagonal": {
+        "auroc": 0.7086,
+        "ci": [
+          0.5833,
+          0.8331
+        ],
+        "n": 70,
+        "n_boot": 1000
+      },
+      "stratified_allcell": {
+        "headline_pooled": {
+          "auroc": 0.7463,
+          "ci": [
+            0.6632,
+            0.8277
+          ],
+          "n": 140,
+          "n_boot": 1000
+        },
+        "bands": [
+          {
+            "band": 0,
+            "typicality_range": [
+              4.696333095642741,
+              5.742641897355788
+            ],
+            "n": 35,
+            "n_true": 14,
+            "n_false": 21,
+            "auroc": 0.6259,
+            "ci": [
+              0.4145,
+              0.8133
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 1,
+            "typicality_range": [
+              5.742641897355788,
+              6.438382859513153
+            ],
+            "n": 35,
+            "n_true": 21,
+            "n_false": 14,
+            "auroc": 0.6905,
+            "ci": [
+              0.5034,
+              0.86
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 2,
+            "typicality_range": [
+              6.438382859513153,
+              7.129680481291488
+            ],
+            "n": 35,
+            "n_true": 16,
+            "n_false": 19,
+            "auroc": 0.7204,
+            "ci": [
+              0.5326,
+              0.9074
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 3,
+            "typicality_range": [
+              7.129680481291488,
+              7.940518839186938
+            ],
+            "n": 35,
+            "n_true": 19,
+            "n_false": 16,
+            "auroc": 0.9046,
+            "ci": [
+              0.7829,
+              0.9898
+            ],
+            "n_boot": 1000
+          }
+        ],
+        "n_bands_usable": 4,
+        "within_band_auroc_weighted": 0.7353,
+        "gap": {
+          "point": 0.011,
+          "ci": [
+            -0.0233,
+            0.0798
+          ],
+          "excludes_zero": false
+        }
+      },
+      "mediation_allcell": {
+        "n": 140,
+        "truth_beta_marginal": 0.4193,
+        "truth_beta_marginal_ci": [
+          0.2664,
+          0.5721
+        ],
+        "truth_beta_partialled": 0.3811,
+        "truth_beta_partialled_ci": [
+          0.2313,
+          0.531
+        ],
+        "typicality_beta": 0.1747,
+        "typicality_beta_ci": [
+          0.0209,
+          0.3285
+        ],
+        "truth_beta_shrinkage": 0.091,
+        "r2_truth_only": 0.1758,
+        "r2_joint": 0.2419,
+        "covariates": [
+          "fragmentation",
+          "edit"
+        ],
+        "assumption": "additive-linear; triangulate with stage 3a",
+        "fragmentation_beta": 0.2137,
+        "fragmentation_beta_ci": [
+          0.0574,
+          0.37
+        ],
+        "edit_beta": 0.0761,
+        "edit_beta_ci": [
+          -0.0749,
+          0.227
+        ]
+      },
+      "stratified_fielded": {
+        "headline_pooled": {
+          "auroc": 0.6165,
+          "ci": [
+            0.5261,
+            0.7038
+          ],
+          "n": 140,
+          "n_boot": 1000
+        },
+        "bands": [
+          {
+            "band": 0,
+            "typicality_range": [
+              4.696333095642741,
+              5.742641897355788
+            ],
+            "n": 35,
+            "n_true": 14,
+            "n_false": 21,
+            "auroc": 0.8367,
+            "ci": [
+              0.6645,
+              0.9626
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 1,
+            "typicality_range": [
+              5.742641897355788,
+              6.438382859513153
+            ],
+            "n": 35,
+            "n_true": 21,
+            "n_false": 14,
+            "auroc": 0.6667,
+            "ci": [
+              0.4572,
+              0.8599
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 2,
+            "typicality_range": [
+              6.438382859513153,
+              7.129680481291488
+            ],
+            "n": 35,
+            "n_true": 16,
+            "n_false": 19,
+            "auroc": 0.4079,
+            "ci": [
+              0.2041,
+              0.6021
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 3,
+            "typicality_range": [
+              7.129680481291488,
+              7.940518839186938
+            ],
+            "n": 35,
+            "n_true": 19,
+            "n_false": 16,
+            "auroc": 0.8553,
+            "ci": [
+              0.7038,
+              0.9965
+            ],
+            "n_boot": 1000
+          }
+        ],
+        "n_bands_usable": 4,
+        "within_band_auroc_weighted": 0.6916,
+        "gap": {
+          "point": -0.0751,
+          "ci": [
+            -0.167,
+            0.0132
+          ],
+          "excludes_zero": false
+        }
+      },
+      "mediation_fielded": {
+        "n": 140,
+        "truth_beta_marginal": 0.1398,
+        "truth_beta_marginal_ci": [
+          -0.0268,
+          0.3065
+        ],
+        "truth_beta_partialled": 0.0722,
+        "truth_beta_partialled_ci": [
+          -0.0351,
+          0.1795
+        ],
+        "typicality_beta": 0.7937,
+        "typicality_beta_ci": [
+          0.6835,
+          0.9038
+        ],
+        "truth_beta_shrinkage": 0.484,
+        "r2_truth_only": 0.0196,
+        "r2_joint": 0.6112,
+        "covariates": [
+          "fragmentation",
+          "edit"
+        ],
+        "assumption": "additive-linear; triangulate with stage 3a",
+        "fragmentation_beta": 0.1311,
+        "fragmentation_beta_ci": [
+          0.0192,
+          0.243
+        ],
+        "edit_beta": -0.0135,
+        "edit_beta_ci": [
+          -0.1216,
+          0.0946
+        ]
+      },
+      "adversarial": {
+        "train_n": 56,
+        "headline_heldout_diagonal": {
+          "auroc": 1.0,
+          "ci": [
+            1.0,
+            1.0
+          ],
+          "n": 14,
+          "n_boot": 1000
+        },
+        "off_diagonal": {
+          "auroc": 0.1306,
+          "ci": [
+            0.0515,
+            0.2319
+          ],
+          "n": 70,
+          "n_boot": 1000
+        },
+        "gap": {
+          "gap": 0.8694,
+          "ci": [
+            0.7734,
+            0.9478
+          ],
+          "excludes_zero": true,
+          "n_boot": 999
+        },
+        "off_diagonal_cells": {
+          "TA": {
+            "n": 35,
+            "mean_score": 0.1947
+          },
+          "FT": {
+            "n": 35,
+            "mean_score": 0.5725
+          }
+        }
+      },
+      "fielded_cell_scores": {
+        "TT": {
+          "n": 35,
+          "mean": 0.749,
+          "q10": 0.3662,
+          "q50": 0.9027,
+          "q90": 1.0
+        },
+        "TA": {
+          "n": 35,
+          "mean": 0.2765,
+          "q10": 0.1085,
+          "q50": 0.1561,
+          "q90": 0.7226
+        },
+        "FT": {
+          "n": 35,
+          "mean": 0.6772,
+          "q10": 0.2534,
+          "q50": 0.7728,
+          "q90": 0.89
+        },
+        "FA": {
+          "n": 35,
+          "mean": 0.153,
+          "q10": 0.0002,
+          "q50": 0.0389,
+          "q90": 0.4411
+        }
+      }
+    },
+    {
+      "layer": 11,
+      "allcell_off_diagonal": {
+        "auroc": 0.7069,
+        "ci": [
+          0.582,
+          0.8309
+        ],
+        "n": 70,
+        "n_boot": 1000
+      },
+      "stratified_allcell": {
+        "headline_pooled": {
+          "auroc": 0.7618,
+          "ci": [
+            0.6816,
+            0.8436
+          ],
+          "n": 140,
+          "n_boot": 1000
+        },
+        "bands": [
+          {
+            "band": 0,
+            "typicality_range": [
+              4.696333095642741,
+              5.742641897355788
+            ],
+            "n": 35,
+            "n_true": 14,
+            "n_false": 21,
+            "auroc": 0.6905,
+            "ci": [
+              0.483,
+              0.8693
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 1,
+            "typicality_range": [
+              5.742641897355788,
+              6.438382859513153
+            ],
+            "n": 35,
+            "n_true": 21,
+            "n_false": 14,
+            "auroc": 0.6973,
+            "ci": [
+              0.5,
+              0.86
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 2,
+            "typicality_range": [
+              6.438382859513153,
+              7.129680481291488
+            ],
+            "n": 35,
+            "n_true": 16,
+            "n_false": 19,
+            "auroc": 0.7566,
+            "ci": [
+              0.5789,
+              0.8986
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 3,
+            "typicality_range": [
+              7.129680481291488,
+              7.940518839186938
+            ],
+            "n": 35,
+            "n_true": 19,
+            "n_false": 16,
+            "auroc": 0.8717,
+            "ci": [
+              0.7138,
+              0.9868
+            ],
+            "n_boot": 1000
+          }
+        ],
+        "n_bands_usable": 4,
+        "within_band_auroc_weighted": 0.754,
+        "gap": {
+          "point": 0.0078,
+          "ci": [
+            -0.0231,
+            0.0717
+          ],
+          "excludes_zero": false
+        }
+      },
+      "mediation_allcell": {
+        "n": 140,
+        "truth_beta_marginal": 0.4519,
+        "truth_beta_marginal_ci": [
+          0.3017,
+          0.6021
+        ],
+        "truth_beta_partialled": 0.414,
+        "truth_beta_partialled_ci": [
+          0.267,
+          0.5609
+        ],
+        "typicality_beta": 0.2039,
+        "typicality_beta_ci": [
+          0.053,
+          0.3548
+        ],
+        "truth_beta_shrinkage": 0.0839,
+        "r2_truth_only": 0.2042,
+        "r2_joint": 0.2705,
+        "covariates": [
+          "fragmentation",
+          "edit"
+        ],
+        "assumption": "additive-linear; triangulate with stage 3a",
+        "fragmentation_beta": 0.1952,
+        "fragmentation_beta_ci": [
+          0.0419,
+          0.3485
+        ],
+        "edit_beta": 0.0693,
+        "edit_beta_ci": [
+          -0.0788,
+          0.2174
+        ]
+      },
+      "stratified_fielded": {
+        "headline_pooled": {
+          "auroc": 0.6369,
+          "ci": [
+            0.5454,
+            0.7187
+          ],
+          "n": 140,
+          "n_boot": 1000
+        },
+        "bands": [
+          {
+            "band": 0,
+            "typicality_range": [
+              4.696333095642741,
+              5.742641897355788
+            ],
+            "n": 35,
+            "n_true": 14,
+            "n_false": 21,
+            "auroc": 0.8401,
+            "ci": [
+              0.6733,
+              0.9626
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 1,
+            "typicality_range": [
+              5.742641897355788,
+              6.438382859513153
+            ],
+            "n": 35,
+            "n_true": 21,
+            "n_false": 14,
+            "auroc": 0.6701,
+            "ci": [
+              0.456,
+              0.8547
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 2,
+            "typicality_range": [
+              6.438382859513153,
+              7.129680481291488
+            ],
+            "n": 35,
+            "n_true": 16,
+            "n_false": 19,
+            "auroc": 0.4868,
+            "ci": [
+              0.29,
+              0.6777
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 3,
+            "typicality_range": [
+              7.129680481291488,
+              7.940518839186938
+            ],
+            "n": 35,
+            "n_true": 19,
+            "n_false": 16,
+            "auroc": 0.898,
+            "ci": [
+              0.7691,
+              0.9965
+            ],
+            "n_boot": 1000
+          }
+        ],
+        "n_bands_usable": 4,
+        "within_band_auroc_weighted": 0.7237,
+        "gap": {
+          "point": -0.0868,
+          "ci": [
+            -0.1782,
+            0.0113
+          ],
+          "excludes_zero": false
+        }
+      },
+      "mediation_fielded": {
+        "n": 140,
+        "truth_beta_marginal": 0.1807,
+        "truth_beta_marginal_ci": [
+          0.0151,
+          0.3462
+        ],
+        "truth_beta_partialled": 0.1113,
+        "truth_beta_partialled_ci": [
+          0.0114,
+          0.2112
+        ],
+        "typicality_beta": 0.8188,
+        "typicality_beta_ci": [
+          0.7163,
+          0.9213
+        ],
+        "truth_beta_shrinkage": 0.3839,
+        "r2_truth_only": 0.0326,
+        "r2_joint": 0.6631,
+        "covariates": [
+          "fragmentation",
+          "edit"
+        ],
+        "assumption": "additive-linear; triangulate with stage 3a",
+        "fragmentation_beta": 0.13,
+        "fragmentation_beta_ci": [
+          0.0258,
+          0.2342
+        ],
+        "edit_beta": -0.0131,
+        "edit_beta_ci": [
+          -0.1137,
+          0.0875
+        ]
+      },
+      "adversarial": {
+        "train_n": 56,
+        "headline_heldout_diagonal": {
+          "auroc": 1.0,
+          "ci": [
+            1.0,
+            1.0
+          ],
+          "n": 14,
+          "n_boot": 1000
+        },
+        "off_diagonal": {
+          "auroc": 0.1469,
+          "ci": [
+            0.0645,
+            0.2541
+          ],
+          "n": 70,
+          "n_boot": 1000
+        },
+        "gap": {
+          "gap": 0.8531,
+          "ci": [
+            0.7524,
+            0.9354
+          ],
+          "excludes_zero": true,
+          "n_boot": 999
+        },
+        "off_diagonal_cells": {
+          "TA": {
+            "n": 35,
+            "mean_score": 0.2031
+          },
+          "FT": {
+            "n": 35,
+            "mean_score": 0.5848
+          }
+        }
+      },
+      "fielded_cell_scores": {
+        "TT": {
+          "n": 35,
+          "mean": 0.7842,
+          "q10": 0.4173,
+          "q50": 0.8784,
+          "q90": 0.9983
+        },
+        "TA": {
+          "n": 35,
+          "mean": 0.2532,
+          "q10": 0.0795,
+          "q50": 0.1383,
+          "q90": 0.6491
+        },
+        "FT": {
+          "n": 35,
+          "mean": 0.6575,
+          "q10": 0.2566,
+          "q50": 0.7545,
+          "q90": 0.9079
+        },
+        "FA": {
+          "n": 35,
+          "mean": 0.1249,
+          "q10": 0.001,
+          "q50": 0.0396,
+          "q90": 0.3569
+        }
+      }
+    },
+    {
+      "layer": 12,
+      "allcell_off_diagonal": {
+        "auroc": 0.6865,
+        "ci": [
+          0.555,
+          0.8139
+        ],
+        "n": 70,
+        "n_boot": 1000
+      },
+      "stratified_allcell": {
+        "headline_pooled": {
+          "auroc": 0.7692,
+          "ci": [
+            0.6872,
+            0.8469
+          ],
+          "n": 140,
+          "n_boot": 1000
+        },
+        "bands": [
+          {
+            "band": 0,
+            "typicality_range": [
+              4.696333095642741,
+              5.742641897355788
+            ],
+            "n": 35,
+            "n_true": 14,
+            "n_false": 21,
+            "auroc": 0.6905,
+            "ci": [
+              0.4934,
+              0.86
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 1,
+            "typicality_range": [
+              5.742641897355788,
+              6.438382859513153
+            ],
+            "n": 35,
+            "n_true": 21,
+            "n_false": 14,
+            "auroc": 0.7041,
+            "ci": [
+              0.5105,
+              0.8953
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 2,
+            "typicality_range": [
+              6.438382859513153,
+              7.129680481291488
+            ],
+            "n": 35,
+            "n_true": 16,
+            "n_false": 19,
+            "auroc": 0.7763,
+            "ci": [
+              0.5966,
+              0.9276
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 3,
+            "typicality_range": [
+              7.129680481291488,
+              7.940518839186938
+            ],
+            "n": 35,
+            "n_true": 19,
+            "n_false": 16,
+            "auroc": 0.898,
+            "ci": [
+              0.7647,
+              1.0
+            ],
+            "n_boot": 1000
+          }
+        ],
+        "n_bands_usable": 4,
+        "within_band_auroc_weighted": 0.7672,
+        "gap": {
+          "point": 0.002,
+          "ci": [
+            -0.0292,
+            0.0631
+          ],
+          "excludes_zero": false
+        }
+      },
+      "mediation_allcell": {
+        "n": 140,
+        "truth_beta_marginal": 0.4733,
+        "truth_beta_marginal_ci": [
+          0.325,
+          0.6216
+        ],
+        "truth_beta_partialled": 0.4513,
+        "truth_beta_partialled_ci": [
+          0.3048,
+          0.5978
+        ],
+        "typicality_beta": 0.224,
+        "typicality_beta_ci": [
+          0.0736,
+          0.3744
+        ],
+        "truth_beta_shrinkage": 0.0465,
+        "r2_truth_only": 0.224,
+        "r2_joint": 0.2755,
+        "covariates": [
+          "fragmentation",
+          "edit"
+        ],
+        "assumption": "additive-linear; triangulate with stage 3a",
+        "fragmentation_beta": 0.1018,
+        "fragmentation_beta_ci": [
+          -0.051,
+          0.2546
+        ],
+        "edit_beta": -0.0572,
+        "edit_beta_ci": [
+          -0.2047,
+          0.0904
+        ]
+      },
+      "stratified_fielded": {
+        "headline_pooled": {
+          "auroc": 0.6206,
+          "ci": [
+            0.5227,
+            0.7044
+          ],
+          "n": 140,
+          "n_boot": 1000
+        },
+        "bands": [
+          {
+            "band": 0,
+            "typicality_range": [
+              4.696333095642741,
+              5.742641897355788
+            ],
+            "n": 35,
+            "n_true": 14,
+            "n_false": 21,
+            "auroc": 0.7415,
+            "ci": [
+              0.5555,
+              0.8967
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 1,
+            "typicality_range": [
+              5.742641897355788,
+              6.438382859513153
+            ],
+            "n": 35,
+            "n_true": 21,
+            "n_false": 14,
+            "auroc": 0.6735,
+            "ci": [
+              0.4706,
+              0.8532
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 2,
+            "typicality_range": [
+              6.438382859513153,
+              7.129680481291488
+            ],
+            "n": 35,
+            "n_true": 16,
+            "n_false": 19,
+            "auroc": 0.5066,
+            "ci": [
+              0.3111,
+              0.7098
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 3,
+            "typicality_range": [
+              7.129680481291488,
+              7.940518839186938
+            ],
+            "n": 35,
+            "n_true": 19,
+            "n_false": 16,
+            "auroc": 0.8092,
+            "ci": [
+              0.634,
+              0.9371
+            ],
+            "n_boot": 1000
+          }
+        ],
+        "n_bands_usable": 4,
+        "within_band_auroc_weighted": 0.6827,
+        "gap": {
+          "point": -0.0621,
+          "ci": [
+            -0.1579,
+            0.0325
+          ],
+          "excludes_zero": false
+        }
+      },
+      "mediation_fielded": {
+        "n": 140,
+        "truth_beta_marginal": 0.201,
+        "truth_beta_marginal_ci": [
+          0.0362,
+          0.3659
+        ],
+        "truth_beta_partialled": 0.1238,
+        "truth_beta_partialled_ci": [
+          0.0295,
+          0.2181
+        ],
+        "typicality_beta": 0.8418,
+        "typicality_beta_ci": [
+          0.745,
+          0.9386
+        ],
+        "truth_beta_shrinkage": 0.3841,
+        "r2_truth_only": 0.0404,
+        "r2_joint": 0.6999,
+        "covariates": [
+          "fragmentation",
+          "edit"
+        ],
+        "assumption": "additive-linear; triangulate with stage 3a",
+        "fragmentation_beta": 0.1746,
+        "fragmentation_beta_ci": [
+          0.0763,
+          0.2729
+        ],
+        "edit_beta": 0.0158,
+        "edit_beta_ci": [
+          -0.0791,
+          0.1108
+        ]
+      },
+      "adversarial": {
+        "train_n": 56,
+        "headline_heldout_diagonal": {
+          "auroc": 0.9792,
+          "ci": [
+            0.875,
+            1.0
+          ],
+          "n": 14,
+          "n_boot": 1000
+        },
+        "off_diagonal": {
+          "auroc": 0.0947,
+          "ci": [
+            0.0343,
+            0.177
+          ],
+          "n": 70,
+          "n_boot": 1000
+        },
+        "gap": {
+          "gap": 0.8845,
+          "ci": [
+            0.7676,
+            0.959
+          ],
+          "excludes_zero": true,
+          "n_boot": 999
+        },
+        "off_diagonal_cells": {
+          "TA": {
+            "n": 35,
+            "mean_score": 0.2448
+          },
+          "FT": {
+            "n": 35,
+            "mean_score": 0.6418
+          }
+        }
+      },
+      "fielded_cell_scores": {
+        "TT": {
+          "n": 35,
+          "mean": 0.7647,
+          "q10": 0.4889,
+          "q50": 0.755,
+          "q90": 0.9883
+        },
+        "TA": {
+          "n": 35,
+          "mean": 0.3108,
+          "q10": 0.0836,
+          "q50": 0.3032,
+          "q90": 0.6183
+        },
+        "FT": {
+          "n": 35,
+          "mean": 0.6578,
+          "q10": 0.3429,
+          "q50": 0.7157,
+          "q90": 0.8614
+        },
+        "FA": {
+          "n": 35,
+          "mean": 0.165,
+          "q10": 0.0102,
+          "q50": 0.1029,
+          "q90": 0.4012
+        }
+      }
+    },
+    {
+      "layer": 13,
+      "allcell_off_diagonal": {
+        "auroc": 0.6465,
+        "ci": [
+          0.5171,
+          0.7747
+        ],
+        "n": 70,
+        "n_boot": 1000
+      },
+      "stratified_allcell": {
+        "headline_pooled": {
+          "auroc": 0.7257,
+          "ci": [
+            0.6394,
+            0.8053
+          ],
+          "n": 140,
+          "n_boot": 1000
+        },
+        "bands": [
+          {
+            "band": 0,
+            "typicality_range": [
+              4.696333095642741,
+              5.742641897355788
+            ],
+            "n": 35,
+            "n_true": 14,
+            "n_false": 21,
+            "auroc": 0.6361,
+            "ci": [
+              0.423,
+              0.8152
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 1,
+            "typicality_range": [
+              5.742641897355788,
+              6.438382859513153
+            ],
+            "n": 35,
+            "n_true": 21,
+            "n_false": 14,
+            "auroc": 0.6088,
+            "ci": [
+              0.4149,
+              0.8112
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 2,
+            "typicality_range": [
+              6.438382859513153,
+              7.129680481291488
+            ],
+            "n": 35,
+            "n_true": 16,
+            "n_false": 19,
+            "auroc": 0.7401,
+            "ci": [
+              0.5492,
+              0.898
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 3,
+            "typicality_range": [
+              7.129680481291488,
+              7.940518839186938
+            ],
+            "n": 35,
+            "n_true": 19,
+            "n_false": 16,
+            "auroc": 0.8914,
+            "ci": [
+              0.76,
+              1.0
+            ],
+            "n_boot": 1000
+          }
+        ],
+        "n_bands_usable": 4,
+        "within_band_auroc_weighted": 0.7191,
+        "gap": {
+          "point": 0.0066,
+          "ci": [
+            -0.0244,
+            0.0632
+          ],
+          "excludes_zero": false
+        }
+      },
+      "mediation_allcell": {
+        "n": 140,
+        "truth_beta_marginal": 0.4047,
+        "truth_beta_marginal_ci": [
+          0.2508,
+          0.5586
+        ],
+        "truth_beta_partialled": 0.3955,
+        "truth_beta_partialled_ci": [
+          0.244,
+          0.5471
+        ],
+        "typicality_beta": 0.1842,
+        "typicality_beta_ci": [
+          0.0286,
+          0.3398
+        ],
+        "truth_beta_shrinkage": 0.0226,
+        "r2_truth_only": 0.1638,
+        "r2_joint": 0.224,
+        "covariates": [
+          "fragmentation",
+          "edit"
+        ],
+        "assumption": "additive-linear; triangulate with stage 3a",
+        "fragmentation_beta": 0.0718,
+        "fragmentation_beta_ci": [
+          -0.0863,
+          0.2299
+        ],
+        "edit_beta": -0.1679,
+        "edit_beta_ci": [
+          -0.3206,
+          -0.0151
+        ]
+      },
+      "stratified_fielded": {
+        "headline_pooled": {
+          "auroc": 0.6067,
+          "ci": [
+            0.5067,
+            0.689
+          ],
+          "n": 140,
+          "n_boot": 1000
+        },
+        "bands": [
+          {
+            "band": 0,
+            "typicality_range": [
+              4.696333095642741,
+              5.742641897355788
+            ],
+            "n": 35,
+            "n_true": 14,
+            "n_false": 21,
+            "auroc": 0.7755,
+            "ci": [
+              0.5979,
+              0.9205
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 1,
+            "typicality_range": [
+              5.742641897355788,
+              6.438382859513153
+            ],
+            "n": 35,
+            "n_true": 21,
+            "n_false": 14,
+            "auroc": 0.6701,
+            "ci": [
+              0.4556,
+              0.8641
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 2,
+            "typicality_range": [
+              6.438382859513153,
+              7.129680481291488
+            ],
+            "n": 35,
+            "n_true": 16,
+            "n_false": 19,
+            "auroc": 0.5033,
+            "ci": [
+              0.3038,
+              0.6994
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 3,
+            "typicality_range": [
+              7.129680481291488,
+              7.940518839186938
+            ],
+            "n": 35,
+            "n_true": 19,
+            "n_false": 16,
+            "auroc": 0.7993,
+            "ci": [
+              0.6299,
+              0.9333
+            ],
+            "n_boot": 1000
+          }
+        ],
+        "n_bands_usable": 4,
+        "within_band_auroc_weighted": 0.687,
+        "gap": {
+          "point": -0.0803,
+          "ci": [
+            -0.1712,
+            0.0194
+          ],
+          "excludes_zero": false
+        }
+      },
+      "mediation_fielded": {
+        "n": 140,
+        "truth_beta_marginal": 0.1503,
+        "truth_beta_marginal_ci": [
+          -0.0161,
+          0.3167
+        ],
+        "truth_beta_partialled": 0.0752,
+        "truth_beta_partialled_ci": [
+          -0.021,
+          0.1715
+        ],
+        "typicality_beta": 0.8438,
+        "typicality_beta_ci": [
+          0.745,
+          0.9426
+        ],
+        "truth_beta_shrinkage": 0.4994,
+        "r2_truth_only": 0.0226,
+        "r2_joint": 0.6873,
+        "covariates": [
+          "fragmentation",
+          "edit"
+        ],
+        "assumption": "additive-linear; triangulate with stage 3a",
+        "fragmentation_beta": 0.1557,
+        "fragmentation_beta_ci": [
+          0.0553,
+          0.2561
+        ],
+        "edit_beta": 0.0089,
+        "edit_beta_ci": [
+          -0.0881,
+          0.1058
+        ]
+      },
+      "adversarial": {
+        "train_n": 56,
+        "headline_heldout_diagonal": {
+          "auroc": 0.9583,
+          "ci": [
+            0.8182,
+            1.0
+          ],
+          "n": 14,
+          "n_boot": 1000
+        },
+        "off_diagonal": {
+          "auroc": 0.111,
+          "ci": [
+            0.0403,
+            0.1999
+          ],
+          "n": 70,
+          "n_boot": 1000
+        },
+        "gap": {
+          "gap": 0.8473,
+          "ci": [
+            0.6656,
+            0.9517
+          ],
+          "excludes_zero": true,
+          "n_boot": 999
+        },
+        "off_diagonal_cells": {
+          "TA": {
+            "n": 35,
+            "mean_score": 0.2273
+          },
+          "FT": {
+            "n": 35,
+            "mean_score": 0.5977
+          }
+        }
+      },
+      "fielded_cell_scores": {
+        "TT": {
+          "n": 35,
+          "mean": 0.7609,
+          "q10": 0.3701,
+          "q50": 0.7819,
+          "q90": 0.9953
+        },
+        "TA": {
+          "n": 35,
+          "mean": 0.2476,
+          "q10": 0.0788,
+          "q50": 0.2165,
+          "q90": 0.5193
+        },
+        "FT": {
+          "n": 35,
+          "mean": 0.6578,
+          "q10": 0.2952,
+          "q50": 0.7384,
+          "q90": 0.8862
+        },
+        "FA": {
+          "n": 35,
+          "mean": 0.1498,
+          "q10": 0.0068,
+          "q50": 0.0543,
+          "q90": 0.3838
+        }
+      }
+    },
+    {
+      "layer": 14,
+      "allcell_off_diagonal": {
+        "auroc": 0.6604,
+        "ci": [
+          0.5297,
+          0.7845
+        ],
+        "n": 70,
+        "n_boot": 1000
+      },
+      "stratified_allcell": {
+        "headline_pooled": {
+          "auroc": 0.7418,
+          "ci": [
+            0.6571,
+            0.818
+          ],
+          "n": 140,
+          "n_boot": 1000
+        },
+        "bands": [
+          {
+            "band": 0,
+            "typicality_range": [
+              4.696333095642741,
+              5.742641897355788
+            ],
+            "n": 35,
+            "n_true": 14,
+            "n_false": 21,
+            "auroc": 0.6905,
+            "ci": [
+              0.4934,
+              0.8534
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 1,
+            "typicality_range": [
+              5.742641897355788,
+              6.438382859513153
+            ],
+            "n": 35,
+            "n_true": 21,
+            "n_false": 14,
+            "auroc": 0.6156,
+            "ci": [
+              0.4214,
+              0.8044
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 2,
+            "typicality_range": [
+              6.438382859513153,
+              7.129680481291488
+            ],
+            "n": 35,
+            "n_true": 16,
+            "n_false": 19,
+            "auroc": 0.7533,
+            "ci": [
+              0.5755,
+              0.9085
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 3,
+            "typicality_range": [
+              7.129680481291488,
+              7.940518839186938
+            ],
+            "n": 35,
+            "n_true": 19,
+            "n_false": 16,
+            "auroc": 0.8914,
+            "ci": [
+              0.76,
+              1.0
+            ],
+            "n_boot": 1000
+          }
+        ],
+        "n_bands_usable": 4,
+        "within_band_auroc_weighted": 0.7377,
+        "gap": {
+          "point": 0.0041,
+          "ci": [
+            -0.0282,
+            0.0635
+          ],
+          "excludes_zero": false
+        }
+      },
+      "mediation_allcell": {
+        "n": 140,
+        "truth_beta_marginal": 0.4185,
+        "truth_beta_marginal_ci": [
+          0.2656,
+          0.5713
+        ],
+        "truth_beta_partialled": 0.4102,
+        "truth_beta_partialled_ci": [
+          0.2605,
+          0.5598
+        ],
+        "typicality_beta": 0.1972,
+        "typicality_beta_ci": [
+          0.0436,
+          0.3508
+        ],
+        "truth_beta_shrinkage": 0.0198,
+        "r2_truth_only": 0.1751,
+        "r2_joint": 0.2439,
+        "covariates": [
+          "fragmentation",
+          "edit"
+        ],
+        "assumption": "additive-linear; triangulate with stage 3a",
+        "fragmentation_beta": 0.06,
+        "fragmentation_beta_ci": [
+          -0.0961,
+          0.216
+        ],
+        "edit_beta": -0.1775,
+        "edit_beta_ci": [
+          -0.3283,
+          -0.0268
+        ]
+      },
+      "stratified_fielded": {
+        "headline_pooled": {
+          "auroc": 0.6065,
+          "ci": [
+            0.5063,
+            0.6902
+          ],
+          "n": 140,
+          "n_boot": 1000
+        },
+        "bands": [
+          {
+            "band": 0,
+            "typicality_range": [
+              4.696333095642741,
+              5.742641897355788
+            ],
+            "n": 35,
+            "n_true": 14,
+            "n_false": 21,
+            "auroc": 0.7721,
+            "ci": [
+              0.5921,
+              0.9252
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 1,
+            "typicality_range": [
+              5.742641897355788,
+              6.438382859513153
+            ],
+            "n": 35,
+            "n_true": 21,
+            "n_false": 14,
+            "auroc": 0.7143,
+            "ci": [
+              0.5076,
+              0.9059
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 2,
+            "typicality_range": [
+              6.438382859513153,
+              7.129680481291488
+            ],
+            "n": 35,
+            "n_true": 16,
+            "n_false": 19,
+            "auroc": 0.4836,
+            "ci": [
+              0.2828,
+              0.6765
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 3,
+            "typicality_range": [
+              7.129680481291488,
+              7.940518839186938
+            ],
+            "n": 35,
+            "n_true": 19,
+            "n_false": 16,
+            "auroc": 0.7928,
+            "ci": [
+              0.6233,
+              0.9317
+            ],
+            "n_boot": 1000
+          }
+        ],
+        "n_bands_usable": 4,
+        "within_band_auroc_weighted": 0.6907,
+        "gap": {
+          "point": -0.0842,
+          "ci": [
+            -0.1739,
+            0.0125
+          ],
+          "excludes_zero": false
+        }
+      },
+      "mediation_fielded": {
+        "n": 140,
+        "truth_beta_marginal": 0.1646,
+        "truth_beta_marginal_ci": [
+          -0.0014,
+          0.3306
+        ],
+        "truth_beta_partialled": 0.0929,
+        "truth_beta_partialled_ci": [
+          -0.0072,
+          0.1929
+        ],
+        "typicality_beta": 0.8237,
+        "typicality_beta_ci": [
+          0.721,
+          0.9264
+        ],
+        "truth_beta_shrinkage": 0.4357,
+        "r2_truth_only": 0.0271,
+        "r2_joint": 0.6622,
+        "covariates": [
+          "fragmentation",
+          "edit"
+        ],
+        "assumption": "additive-linear; triangulate with stage 3a",
+        "fragmentation_beta": 0.147,
+        "fragmentation_beta_ci": [
+          0.0427,
+          0.2514
+        ],
+        "edit_beta": -0.0078,
+        "edit_beta_ci": [
+          -0.1086,
+          0.093
+        ]
+      },
+      "adversarial": {
+        "train_n": 56,
+        "headline_heldout_diagonal": {
+          "auroc": 0.9583,
+          "ci": [
+            0.8182,
+            1.0
+          ],
+          "n": 14,
+          "n_boot": 1000
+        },
+        "off_diagonal": {
+          "auroc": 0.1045,
+          "ci": [
+            0.0392,
+            0.1895
+          ],
+          "n": 70,
+          "n_boot": 1000
+        },
+        "gap": {
+          "gap": 0.8538,
+          "ci": [
+            0.6643,
+            0.9485
+          ],
+          "excludes_zero": true,
+          "n_boot": 999
+        },
+        "off_diagonal_cells": {
+          "TA": {
+            "n": 35,
+            "mean_score": 0.2462
+          },
+          "FT": {
+            "n": 35,
+            "mean_score": 0.6042
+          }
+        }
+      },
+      "fielded_cell_scores": {
+        "TT": {
+          "n": 35,
+          "mean": 0.734,
+          "q10": 0.4008,
+          "q50": 0.7505,
+          "q90": 0.9872
+        },
+        "TA": {
+          "n": 35,
+          "mean": 0.284,
+          "q10": 0.1068,
+          "q50": 0.2508,
+          "q90": 0.543
+        },
+        "FT": {
+          "n": 35,
+          "mean": 0.6429,
+          "q10": 0.3467,
+          "q50": 0.7308,
+          "q90": 0.8561
+        },
+        "FA": {
+          "n": 35,
+          "mean": 0.1707,
+          "q10": 0.0113,
+          "q50": 0.0842,
+          "q90": 0.4377
+        }
+      }
+    },
+    {
+      "layer": 15,
+      "allcell_off_diagonal": {
+        "auroc": 0.6857,
+        "ci": [
+          0.5616,
+          0.8082
+        ],
+        "n": 70,
+        "n_boot": 1000
+      },
+      "stratified_allcell": {
+        "headline_pooled": {
+          "auroc": 0.7369,
+          "ci": [
+            0.6498,
+            0.8125
+          ],
+          "n": 140,
+          "n_boot": 1000
+        },
+        "bands": [
+          {
+            "band": 0,
+            "typicality_range": [
+              4.696333095642741,
+              5.742641897355788
+            ],
+            "n": 35,
+            "n_true": 14,
+            "n_false": 21,
+            "auroc": 0.6497,
+            "ci": [
+              0.4489,
+              0.8361
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 1,
+            "typicality_range": [
+              5.742641897355788,
+              6.438382859513153
+            ],
+            "n": 35,
+            "n_true": 21,
+            "n_false": 14,
+            "auroc": 0.6701,
+            "ci": [
+              0.483,
+              0.8431
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 2,
+            "typicality_range": [
+              6.438382859513153,
+              7.129680481291488
+            ],
+            "n": 35,
+            "n_true": 16,
+            "n_false": 19,
+            "auroc": 0.773,
+            "ci": [
+              0.5921,
+              0.9203
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 3,
+            "typicality_range": [
+              7.129680481291488,
+              7.940518839186938
+            ],
+            "n": 35,
+            "n_true": 19,
+            "n_false": 16,
+            "auroc": 0.8618,
+            "ci": [
+              0.7067,
+              1.0
+            ],
+            "n_boot": 1000
+          }
+        ],
+        "n_bands_usable": 4,
+        "within_band_auroc_weighted": 0.7387,
+        "gap": {
+          "point": -0.0018,
+          "ci": [
+            -0.0317,
+            0.0565
+          ],
+          "excludes_zero": false
+        }
+      },
+      "mediation_allcell": {
+        "n": 140,
+        "truth_beta_marginal": 0.4115,
+        "truth_beta_marginal_ci": [
+          0.2581,
+          0.5649
+        ],
+        "truth_beta_partialled": 0.4116,
+        "truth_beta_partialled_ci": [
+          0.2587,
+          0.5645
+        ],
+        "typicality_beta": 0.1337,
+        "typicality_beta_ci": [
+          -0.0233,
+          0.2907
+        ],
+        "truth_beta_shrinkage": -0.0002,
+        "r2_truth_only": 0.1694,
+        "r2_joint": 0.2103,
+        "covariates": [
+          "fragmentation",
+          "edit"
+        ],
+        "assumption": "additive-linear; triangulate with stage 3a",
+        "fragmentation_beta": -0.003,
+        "fragmentation_beta_ci": [
+          -0.1625,
+          0.1565
+        ],
+        "edit_beta": -0.1422,
+        "edit_beta_ci": [
+          -0.2962,
+          0.0119
+        ]
+      },
+      "stratified_fielded": {
+        "headline_pooled": {
+          "auroc": 0.5939,
+          "ci": [
+            0.4926,
+            0.6808
+          ],
+          "n": 140,
+          "n_boot": 1000
+        },
+        "bands": [
+          {
+            "band": 0,
+            "typicality_range": [
+              4.696333095642741,
+              5.742641897355788
+            ],
+            "n": 35,
+            "n_true": 14,
+            "n_false": 21,
+            "auroc": 0.7517,
+            "ci": [
+              0.5559,
+              0.9116
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 1,
+            "typicality_range": [
+              5.742641897355788,
+              6.438382859513153
+            ],
+            "n": 35,
+            "n_true": 21,
+            "n_false": 14,
+            "auroc": 0.6395,
+            "ci": [
+              0.4204,
+              0.8471
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 2,
+            "typicality_range": [
+              6.438382859513153,
+              7.129680481291488
+            ],
+            "n": 35,
+            "n_true": 16,
+            "n_false": 19,
+            "auroc": 0.4967,
+            "ci": [
+              0.2941,
+              0.6905
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 3,
+            "typicality_range": [
+              7.129680481291488,
+              7.940518839186938
+            ],
+            "n": 35,
+            "n_true": 19,
+            "n_false": 16,
+            "auroc": 0.7664,
+            "ci": [
+              0.5833,
+              0.9216
+            ],
+            "n_boot": 1000
+          }
+        ],
+        "n_bands_usable": 4,
+        "within_band_auroc_weighted": 0.6636,
+        "gap": {
+          "point": -0.0697,
+          "ci": [
+            -0.1563,
+            0.0299
+          ],
+          "excludes_zero": false
+        }
+      },
+      "mediation_fielded": {
+        "n": 140,
+        "truth_beta_marginal": 0.1397,
+        "truth_beta_marginal_ci": [
+          -0.027,
+          0.3063
+        ],
+        "truth_beta_partialled": 0.0676,
+        "truth_beta_partialled_ci": [
+          -0.0335,
+          0.1688
+        ],
+        "typicality_beta": 0.8238,
+        "typicality_beta_ci": [
+          0.7199,
+          0.9276
+        ],
+        "truth_beta_shrinkage": 0.5158,
+        "r2_truth_only": 0.0195,
+        "r2_joint": 0.6545,
+        "covariates": [
+          "fragmentation",
+          "edit"
+        ],
+        "assumption": "additive-linear; triangulate with stage 3a",
+        "fragmentation_beta": 0.1433,
+        "fragmentation_beta_ci": [
+          0.0378,
+          0.2488
+        ],
+        "edit_beta": 0.0029,
+        "edit_beta_ci": [
+          -0.099,
+          0.1048
+        ]
+      },
+      "adversarial": {
+        "train_n": 56,
+        "headline_heldout_diagonal": {
+          "auroc": 0.9375,
+          "ci": [
+            0.7576,
+            1.0
+          ],
+          "n": 14,
+          "n_boot": 1000
+        },
+        "off_diagonal": {
+          "auroc": 0.0931,
+          "ci": [
+            0.0327,
+            0.1745
+          ],
+          "n": 70,
+          "n_boot": 1000
+        },
+        "gap": {
+          "gap": 0.8444,
+          "ci": [
+            0.6458,
+            0.9518
+          ],
+          "excludes_zero": true,
+          "n_boot": 999
+        },
+        "off_diagonal_cells": {
+          "TA": {
+            "n": 35,
+            "mean_score": 0.2307
+          },
+          "FT": {
+            "n": 35,
+            "mean_score": 0.6065
+          }
+        }
+      },
+      "fielded_cell_scores": {
+        "TT": {
+          "n": 35,
+          "mean": 0.7358,
+          "q10": 0.385,
+          "q50": 0.7594,
+          "q90": 0.9947
+        },
+        "TA": {
+          "n": 35,
+          "mean": 0.2657,
+          "q10": 0.1123,
+          "q50": 0.2338,
+          "q90": 0.4869
+        },
+        "FT": {
+          "n": 35,
+          "mean": 0.6463,
+          "q10": 0.3223,
+          "q50": 0.6976,
+          "q90": 0.8618
+        },
+        "FA": {
+          "n": 35,
+          "mean": 0.1793,
+          "q10": 0.0161,
+          "q50": 0.0654,
+          "q90": 0.4461
+        }
+      }
+    },
+    {
+      "layer": 16,
+      "allcell_off_diagonal": {
+        "auroc": 0.6751,
+        "ci": [
+          0.5534,
+          0.7925
+        ],
+        "n": 70,
+        "n_boot": 1000
+      },
+      "stratified_allcell": {
+        "headline_pooled": {
+          "auroc": 0.7027,
+          "ci": [
+            0.6172,
+            0.7892
+          ],
+          "n": 140,
+          "n_boot": 1000
+        },
+        "bands": [
+          {
+            "band": 0,
+            "typicality_range": [
+              4.696333095642741,
+              5.742641897355788
+            ],
+            "n": 35,
+            "n_true": 14,
+            "n_false": 21,
+            "auroc": 0.6122,
+            "ci": [
+              0.4076,
+              0.7973
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 1,
+            "typicality_range": [
+              5.742641897355788,
+              6.438382859513153
+            ],
+            "n": 35,
+            "n_true": 21,
+            "n_false": 14,
+            "auroc": 0.6156,
+            "ci": [
+              0.42,
+              0.804
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 2,
+            "typicality_range": [
+              6.438382859513153,
+              7.129680481291488
+            ],
+            "n": 35,
+            "n_true": 16,
+            "n_false": 19,
+            "auroc": 0.7533,
+            "ci": [
+              0.5653,
+              0.9079
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 3,
+            "typicality_range": [
+              7.129680481291488,
+              7.940518839186938
+            ],
+            "n": 35,
+            "n_true": 19,
+            "n_false": 16,
+            "auroc": 0.8684,
+            "ci": [
+              0.7109,
+              1.0
+            ],
+            "n_boot": 1000
+          }
+        ],
+        "n_bands_usable": 4,
+        "within_band_auroc_weighted": 0.7124,
+        "gap": {
+          "point": -0.0097,
+          "ci": [
+            -0.0392,
+            0.0633
+          ],
+          "excludes_zero": false
+        }
+      },
+      "mediation_allcell": {
+        "n": 140,
+        "truth_beta_marginal": 0.3859,
+        "truth_beta_marginal_ci": [
+          0.2306,
+          0.5412
+        ],
+        "truth_beta_partialled": 0.3842,
+        "truth_beta_partialled_ci": [
+          0.2284,
+          0.5401
+        ],
+        "typicality_beta": 0.1241,
+        "typicality_beta_ci": [
+          -0.0359,
+          0.2841
+        ],
+        "truth_beta_shrinkage": 0.0043,
+        "r2_truth_only": 0.1489,
+        "r2_joint": 0.1801,
+        "covariates": [
+          "fragmentation",
+          "edit"
+        ],
+        "assumption": "additive-linear; triangulate with stage 3a",
+        "fragmentation_beta": 0.0074,
+        "fragmentation_beta_ci": [
+          -0.1551,
+          0.1699
+        ],
+        "edit_beta": -0.1206,
+        "edit_beta_ci": [
+          -0.2776,
+          0.0364
+        ]
+      },
+      "stratified_fielded": {
+        "headline_pooled": {
+          "auroc": 0.5835,
+          "ci": [
+            0.4813,
+            0.6732
+          ],
+          "n": 140,
+          "n_boot": 1000
+        },
+        "bands": [
+          {
+            "band": 0,
+            "typicality_range": [
+              4.696333095642741,
+              5.742641897355788
+            ],
+            "n": 35,
+            "n_true": 14,
+            "n_false": 21,
+            "auroc": 0.7449,
+            "ci": [
+              0.5433,
+              0.91
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 1,
+            "typicality_range": [
+              5.742641897355788,
+              6.438382859513153
+            ],
+            "n": 35,
+            "n_true": 21,
+            "n_false": 14,
+            "auroc": 0.6429,
+            "ci": [
+              0.4132,
+              0.8571
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 2,
+            "typicality_range": [
+              6.438382859513153,
+              7.129680481291488
+            ],
+            "n": 35,
+            "n_true": 16,
+            "n_false": 19,
+            "auroc": 0.4836,
+            "ci": [
+              0.2735,
+              0.6777
+            ],
+            "n_boot": 1000
+          },
+          {
+            "band": 3,
+            "typicality_range": [
+              7.129680481291488,
+              7.940518839186938
+            ],
+            "n": 35,
+            "n_true": 19,
+            "n_false": 16,
+            "auroc": 0.7697,
+            "ci": [
+              0.5874,
+              0.9239
+            ],
+            "n_boot": 1000
+          }
+        ],
+        "n_bands_usable": 4,
+        "within_band_auroc_weighted": 0.6603,
+        "gap": {
+          "point": -0.0768,
+          "ci": [
+            -0.1657,
+            0.0236
+          ],
+          "excludes_zero": false
+        }
+      },
+      "mediation_fielded": {
+        "n": 140,
+        "truth_beta_marginal": 0.1123,
+        "truth_beta_marginal_ci": [
+          -0.055,
+          0.2796
+        ],
+        "truth_beta_partialled": 0.0416,
+        "truth_beta_partialled_ci": [
+          -0.0615,
+          0.1447
+        ],
+        "typicality_beta": 0.8187,
+        "typicality_beta_ci": [
+          0.7128,
+          0.9246
+        ],
+        "truth_beta_shrinkage": 0.6297,
+        "r2_truth_only": 0.0126,
+        "r2_joint": 0.6408,
+        "covariates": [
+          "fragmentation",
+          "edit"
+        ],
+        "assumption": "additive-linear; triangulate with stage 3a",
+        "fragmentation_beta": 0.1465,
+        "fragmentation_beta_ci": [
+          0.039,
+          0.2541
+        ],
+        "edit_beta": -0.0171,
+        "edit_beta_ci": [
+          -0.121,
+          0.0868
+        ]
+      },
+      "adversarial": {
+        "train_n": 56,
+        "headline_heldout_diagonal": {
+          "auroc": 0.9583,
+          "ci": [
+            0.8182,
+            1.0
+          ],
+          "n": 14,
+          "n_boot": 1000
+        },
+        "off_diagonal": {
+          "auroc": 0.1012,
+          "ci": [
+            0.0358,
+            0.183
+          ],
+          "n": 70,
+          "n_boot": 1000
+        },
+        "gap": {
+          "gap": 0.8571,
+          "ci": [
+            0.6725,
+            0.9521
+          ],
+          "excludes_zero": true,
+          "n_boot": 999
+        },
+        "off_diagonal_cells": {
+          "TA": {
+            "n": 35,
+            "mean_score": 0.237
+          },
+          "FT": {
+            "n": 35,
+            "mean_score": 0.5945
+          }
+        }
+      },
+      "fielded_cell_scores": {
+        "TT": {
+          "n": 35,
+          "mean": 0.7299,
+          "q10": 0.3832,
+          "q50": 0.7785,
+          "q90": 0.9981
+        },
+        "TA": {
+          "n": 35,
+          "mean": 0.2506,
+          "q10": 0.1235,
+          "q50": 0.2275,
+          "q90": 0.4101
+        },
+        "FT": {
+          "n": 35,
+          "mean": 0.6575,
+          "q10": 0.3341,
+          "q50": 0.7078,
+          "q90": 0.8829
+        },
+        "FA": {
+          "n": 35,
+          "mean": 0.1777,
+          "q10": 0.0104,
+          "q50": 0.0906,
+          "q90": 0.4464
+        }
+      }
+    }
+  ],
+  "provenance": "measured",
+  "seed": 20260719,
+  "compute": {
+    "gpu": "H100",
+    "wall_seconds": 809.2
+  }
+}

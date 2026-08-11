@@ -1,0 +1,266 @@
+{
+  "corpus": "mirage_2x2_vd279c2cae5f4.jsonl",
+  "provenance": "measured",
+  "n_models": 18,
+  "correlation": {
+    "r": 0.4903,
+    "n": 18,
+    "ci": [
+      -0.0775,
+      0.7541
+    ],
+    "excludes_zero": false
+  },
+  "shape": {
+    "n": 18,
+    "linear": {
+      "ss": 0.1548,
+      "k": 2,
+      "aic": -81.6
+    },
+    "step": {
+      "ss": 0.065,
+      "k": 3,
+      "aic": -95.24
+    },
+    "hinge": {
+      "ss": 0.0924,
+      "k": 3,
+      "aic": -88.89,
+      "knee": 0.68,
+      "floor": 0.1425,
+      "slope": 1.5628,
+      "knee_ci": [
+        0.485,
+        0.77
+      ],
+      "floor_ci": [
+        0.1106,
+        0.1852
+      ],
+      "slope_ci": [
+        0.2487,
+        23.7638
+      ]
+    },
+    "preferred": "linear"
+  },
+  "rows": [
+    {
+      "model": "pythia-2.8b",
+      "layer": 16,
+      "in_dist": 0.875,
+      "off": 0.1665,
+      "off_ci": [
+        0.0825,
+        0.26
+      ],
+      "gap": 0.7085,
+      "recoverability": 0.314
+    },
+    {
+      "model": "pythia-70m",
+      "layer": 3,
+      "in_dist": 0.9167,
+      "off": 0.1576,
+      "off_ci": [
+        0.0773,
+        0.258
+      ],
+      "gap": 0.7591,
+      "recoverability": 0.314
+    },
+    {
+      "model": "pythia-160m",
+      "layer": 6,
+      "in_dist": 0.9375,
+      "off": 0.2473,
+      "off_ci": [
+        0.136,
+        0.3723
+      ],
+      "gap": 0.6902,
+      "recoverability": 0.3229
+    },
+    {
+      "model": "pythia-1b",
+      "layer": 8,
+      "in_dist": 0.9792,
+      "off": 0.1143,
+      "off_ci": [
+        0.0442,
+        0.211
+      ],
+      "gap": 0.8649,
+      "recoverability": 0.3591
+    },
+    {
+      "model": "Qwen2.5-0.5B",
+      "layer": 12,
+      "in_dist": 1.0,
+      "off": 0.1192,
+      "off_ci": [
+        0.0531,
+        0.213
+      ],
+      "gap": 0.8808,
+      "recoverability": 0.3767
+    },
+    {
+      "model": "pythia-410m",
+      "layer": 12,
+      "in_dist": 1.0,
+      "off": 0.1886,
+      "off_ci": [
+        0.1026,
+        0.3039
+      ],
+      "gap": 0.8114,
+      "recoverability": 0.4174
+    },
+    {
+      "model": "pythia-1.4b",
+      "layer": 12,
+      "in_dist": 1.0,
+      "off": 0.0718,
+      "off_ci": [
+        0.0245,
+        0.1409
+      ],
+      "gap": 0.9282,
+      "recoverability": 0.4474
+    },
+    {
+      "model": "pythia-6.9b",
+      "layer": 16,
+      "in_dist": 1.0,
+      "off": 0.129,
+      "off_ci": [
+        0.0538,
+        0.2258
+      ],
+      "gap": 0.871,
+      "recoverability": 0.4841
+    },
+    {
+      "model": "Qwen2.5-1.5B",
+      "layer": 14,
+      "in_dist": 0.9583,
+      "off": 0.222,
+      "off_ci": [
+        0.1171,
+        0.3397
+      ],
+      "gap": 0.7363,
+      "recoverability": 0.538
+    },
+    {
+      "model": "pythia-12b",
+      "layer": 18,
+      "in_dist": 1.0,
+      "off": 0.049,
+      "off_ci": [
+        0.0123,
+        0.1028
+      ],
+      "gap": 0.951,
+      "recoverability": 0.5479
+    },
+    {
+      "model": "Qwen2.5-7B",
+      "layer": 14,
+      "in_dist": 1.0,
+      "off": 0.1053,
+      "off_ci": [
+        0.0434,
+        0.1875
+      ],
+      "gap": 0.8947,
+      "recoverability": 0.6552
+    },
+    {
+      "model": "Qwen2.5-7B-Instruct",
+      "layer": 14,
+      "in_dist": 1.0,
+      "off": 0.1396,
+      "off_ci": [
+        0.0638,
+        0.2335
+      ],
+      "gap": 0.8604,
+      "recoverability": 0.6746
+    },
+    {
+      "model": "gemma-2-2b",
+      "layer": 13,
+      "in_dist": 1.0,
+      "off": 0.311,
+      "off_ci": [
+        0.1993,
+        0.4384
+      ],
+      "gap": 0.689,
+      "recoverability": 0.716
+    },
+    {
+      "model": "Qwen2.5-3B",
+      "layer": 18,
+      "in_dist": 1.0,
+      "off": 0.1371,
+      "off_ci": [
+        0.0662,
+        0.2366
+      ],
+      "gap": 0.8629,
+      "recoverability": 0.7363
+    },
+    {
+      "model": "Llama-3.1-8B",
+      "layer": 16,
+      "in_dist": 1.0,
+      "off": 0.1788,
+      "off_ci": [
+        0.0907,
+        0.2865
+      ],
+      "gap": 0.8212,
+      "recoverability": 0.745
+    },
+    {
+      "model": "Llama-3.1-8B-Instruct",
+      "layer": 16,
+      "in_dist": 1.0,
+      "off": 0.1853,
+      "off_ci": [
+        0.0946,
+        0.2945
+      ],
+      "gap": 0.8147,
+      "recoverability": 0.7674
+    },
+    {
+      "model": "gemma-2-9b",
+      "layer": 21,
+      "in_dist": 1.0,
+      "off": 0.4465,
+      "off_ci": [
+        0.312,
+        0.5831
+      ],
+      "gap": 0.5535,
+      "recoverability": 0.7815
+    },
+    {
+      "model": "gemma-2-9b-it",
+      "layer": 21,
+      "in_dist": 1.0,
+      "off": 0.4278,
+      "off_ci": [
+        0.295,
+        0.5677
+      ],
+      "gap": 0.5722,
+      "recoverability": 0.8664
+    }
+  ]
+}
