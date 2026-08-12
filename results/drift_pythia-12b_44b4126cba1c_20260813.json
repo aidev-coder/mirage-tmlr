@@ -1,0 +1,81 @@
+{
+  "model": "EleutherAI/pythia-12b",
+  "corpus": "mirage_2x2_v44b4126cba1c.jsonl",
+  "n_layers": 37,
+  "tap_fractions": [
+    0.6,
+    0.7,
+    0.8,
+    0.85
+  ],
+  "tap_layers": [
+    22,
+    25,
+    29,
+    31
+  ],
+  "pooling": "mean_over_tokens",
+  "provenance": "measured",
+  "probes": {
+    "drift": {
+      "in_dist": 0.9232,
+      "off": 0.0623,
+      "off_ci": [
+        0.0374,
+        0.0902
+      ],
+      "gap": 0.8608,
+      "gap_ci": [
+        0.7896,
+        0.9203
+      ],
+      "gap_excludes_zero": true,
+      "fit_stability": {
+        "n_resample": 30,
+        "drop_frac": 0.1,
+        "gap_median": 0.8959,
+        "gap_range": [
+          0.8405,
+          0.9347
+        ],
+        "gap_sd": 0.0274,
+        "off_range": [
+          0.0486,
+          0.0694
+        ]
+      }
+    },
+    "drift_concat": {
+      "in_dist": 0.9405,
+      "off": 0.0469,
+      "off_ci": [
+        0.027,
+        0.0705
+      ],
+      "gap": 0.8936,
+      "gap_ci": [
+        0.8265,
+        0.9432
+      ],
+      "gap_excludes_zero": true,
+      "fit_stability": {
+        "n_resample": 30,
+        "drop_frac": 0.1,
+        "gap_median": 0.9255,
+        "gap_range": [
+          0.8684,
+          0.9516
+        ],
+        "gap_sd": 0.0253,
+        "off_range": [
+          0.0342,
+          0.0504
+        ]
+      }
+    }
+  },
+  "compute": {
+    "gpu": "H100",
+    "wall_seconds": 134.4
+  }
+}

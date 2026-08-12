@@ -1,0 +1,1565 @@
+{
+  "detector": "semantic_entropy",
+  "model": "google/gemma-2-9b-it",
+  "corpus": "mirage_2x2_v44b4126cba1c.jsonl",
+  "k": 10,
+  "temperature": 1.0,
+  "nli_model": "microsoft/deberta-large-mnli",
+  "n": 152,
+  "clusterer": "nli",
+  "error_rate": 0.13815789473684215,
+  "provenance": "measured",
+  "records": [
+    {
+      "subject": "Ahmadpur East",
+      "greedy": "Pakistan",
+      "correct": true,
+      "semantic_entropy": 0.3250829733914482,
+      "n_clusters": 2,
+      "n_samples": 10,
+      "freq_log10": 5.265,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Al Hillah",
+      "greedy": "Iraq",
+      "correct": true,
+      "semantic_entropy": -0.0,
+      "n_clusters": 1,
+      "n_samples": 10,
+      "freq_log10": 5.441,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Al Marj",
+      "greedy": "Libya",
+      "correct": true,
+      "semantic_entropy": -0.0,
+      "n_clusters": 1,
+      "n_samples": 10,
+      "freq_log10": 4.999,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Al Quds",
+      "greedy": "Israel",
+      "correct": false,
+      "semantic_entropy": -0.0,
+      "n_clusters": 1,
+      "n_samples": 10,
+      "freq_log10": 5.579,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Alleppey",
+      "greedy": "India",
+      "correct": true,
+      "semantic_entropy": -0.0,
+      "n_clusters": 1,
+      "n_samples": 10,
+      "freq_log10": 6.695,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Alofi",
+      "greedy": "Niue",
+      "correct": true,
+      "semantic_entropy": -0.0,
+      "n_clusters": 1,
+      "n_samples": 10,
+      "freq_log10": 4.767,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Altamira",
+      "greedy": "Spain",
+      "correct": false,
+      "semantic_entropy": -0.0,
+      "n_clusters": 1,
+      "n_samples": 10,
+      "freq_log10": 6.38,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Altay",
+      "greedy": "Russia",
+      "correct": false,
+      "semantic_entropy": 0.3250829733914482,
+      "n_clusters": 2,
+      "n_samples": 10,
+      "freq_log10": 6.6,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Alto Hospicio",
+      "greedy": "Chile",
+      "correct": true,
+      "semantic_entropy": -0.0,
+      "n_clusters": 1,
+      "n_samples": 10,
+      "freq_log10": 5.225,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Amatitlan",
+      "greedy": "Guatemala",
+      "correct": true,
+      "semantic_entropy": -0.0,
+      "n_clusters": 1,
+      "n_samples": 10,
+      "freq_log10": 5.29,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Amol",
+      "greedy": "India",
+      "correct": false,
+      "semantic_entropy": 0.6730116670092565,
+      "n_clusters": 2,
+      "n_samples": 10,
+      "freq_log10": 6.493,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Antsirabe",
+      "greedy": "Madagascar",
+      "correct": true,
+      "semantic_entropy": -0.0,
+      "n_clusters": 1,
+      "n_samples": 10,
+      "freq_log10": 5.345,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Aswan",
+      "greedy": "Egypt",
+      "correct": true,
+      "semantic_entropy": -0.0,
+      "n_clusters": 1,
+      "n_samples": 10,
+      "freq_log10": 6.609,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Az Zubayr",
+      "greedy": "Saudi Arabia",
+      "correct": false,
+      "semantic_entropy": 1.4708084763221112,
+      "n_clusters": 5,
+      "n_samples": 10,
+      "freq_log10": 5.356,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Baia Farta",
+      "greedy": "Italy",
+      "correct": false,
+      "semantic_entropy": 1.0888999753452235,
+      "n_clusters": 4,
+      "n_samples": 10,
+      "freq_log10": 4.35,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Baranavichy",
+      "greedy": "Belarus",
+      "correct": true,
+      "semantic_entropy": -0.0,
+      "n_clusters": 1,
+      "n_samples": 10,
+      "freq_log10": 5.288,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Barcarena Nova",
+      "greedy": "Brazil",
+      "correct": true,
+      "semantic_entropy": 0.5004024235381879,
+      "n_clusters": 2,
+      "n_samples": 10,
+      "freq_log10": 3.973,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Beihai",
+      "greedy": "China",
+      "correct": true,
+      "semantic_entropy": -0.0,
+      "n_clusters": 1,
+      "n_samples": 10,
+      "freq_log10": 6.595,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Belgrade",
+      "greedy": "Serbia",
+      "correct": true,
+      "semantic_entropy": -0.0,
+      "n_clusters": 1,
+      "n_samples": 10,
+      "freq_log10": 6.591,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Bharuch",
+      "greedy": "India",
+      "correct": true,
+      "semantic_entropy": -0.0,
+      "n_clusters": 1,
+      "n_samples": 10,
+      "freq_log10": 6.54,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Bhavnagar",
+      "greedy": "India",
+      "correct": true,
+      "semantic_entropy": -0.0,
+      "n_clusters": 1,
+      "n_samples": 10,
+      "freq_log10": 6.637,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Braila",
+      "greedy": "Romania",
+      "correct": true,
+      "semantic_entropy": -0.0,
+      "n_clusters": 1,
+      "n_samples": 10,
+      "freq_log10": 5.608,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Bristol",
+      "greedy": "England",
+      "correct": true,
+      "semantic_entropy": -0.0,
+      "n_clusters": 1,
+      "n_samples": 10,
+      "freq_log10": 7.195,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Broken Arrow",
+      "greedy": "United States",
+      "correct": true,
+      "semantic_entropy": -0.0,
+      "n_clusters": 1,
+      "n_samples": 10,
+      "freq_log10": 6.842,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Cachoeiro de Itapemirim",
+      "greedy": "Brazil",
+      "correct": true,
+      "semantic_entropy": -0.0,
+      "n_clusters": 1,
+      "n_samples": 10,
+      "freq_log10": 5.475,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Cagua",
+      "greedy": "Venezuela",
+      "correct": true,
+      "semantic_entropy": -0.0,
+      "n_clusters": 1,
+      "n_samples": 10,
+      "freq_log10": 5.136,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Calbayog City",
+      "greedy": "Philippines",
+      "correct": true,
+      "semantic_entropy": -0.0,
+      "n_clusters": 1,
+      "n_samples": 10,
+      "freq_log10": 5.648,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Camarajibe",
+      "greedy": "Brazil",
+      "correct": true,
+      "semantic_entropy": -0.0,
+      "n_clusters": 1,
+      "n_samples": 10,
+      "freq_log10": 4.546,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Candaba",
+      "greedy": "Philippines",
+      "correct": true,
+      "semantic_entropy": -0.0,
+      "n_clusters": 1,
+      "n_samples": 10,
+      "freq_log10": 5.629,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Carlos Manuel de Cespedes",
+      "greedy": "Cuba",
+      "correct": true,
+      "semantic_entropy": -0.0,
+      "n_clusters": 1,
+      "n_samples": 10,
+      "freq_log10": 5.151,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Centro Habana",
+      "greedy": "Cuba",
+      "correct": true,
+      "semantic_entropy": -0.0,
+      "n_clusters": 1,
+      "n_samples": 10,
+      "freq_log10": 5.515,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Changde",
+      "greedy": "China",
+      "correct": true,
+      "semantic_entropy": -0.0,
+      "n_clusters": 1,
+      "n_samples": 10,
+      "freq_log10": 6.472,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Chimalhuacan",
+      "greedy": "Mexico",
+      "correct": true,
+      "semantic_entropy": -0.0,
+      "n_clusters": 1,
+      "n_samples": 10,
+      "freq_log10": 5.393,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Ciudad Guzman",
+      "greedy": "Mexico",
+      "correct": true,
+      "semantic_entropy": -0.0,
+      "n_clusters": 1,
+      "n_samples": 10,
+      "freq_log10": 5.486,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Ciudad Nezahualcoyotl",
+      "greedy": "Mexico",
+      "correct": true,
+      "semantic_entropy": -0.0,
+      "n_clusters": 1,
+      "n_samples": 10,
+      "freq_log10": 5.619,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Cleveland",
+      "greedy": "United States",
+      "correct": true,
+      "semantic_entropy": -0.0,
+      "n_clusters": 1,
+      "n_samples": 10,
+      "freq_log10": 6.46,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Coimbatore",
+      "greedy": "India",
+      "correct": true,
+      "semantic_entropy": -0.0,
+      "n_clusters": 1,
+      "n_samples": 10,
+      "freq_log10": 7.077,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Colorado Springs",
+      "greedy": "United States",
+      "correct": true,
+      "semantic_entropy": -0.0,
+      "n_clusters": 1,
+      "n_samples": 10,
+      "freq_log10": 7.321,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Columbus",
+      "greedy": "United States",
+      "correct": true,
+      "semantic_entropy": 1.3592367006650063,
+      "n_clusters": 5,
+      "n_samples": 10,
+      "freq_log10": 7.384,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Dijon",
+      "greedy": "France",
+      "correct": true,
+      "semantic_entropy": -0.0,
+      "n_clusters": 1,
+      "n_samples": 10,
+      "freq_log10": 6.96,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Durham",
+      "greedy": "United Kingdom",
+      "correct": false,
+      "semantic_entropy": 0.6108643020548935,
+      "n_clusters": 2,
+      "n_samples": 10,
+      "freq_log10": 7.547,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Eau Claire",
+      "greedy": "United States",
+      "correct": true,
+      "semantic_entropy": -0.0,
+      "n_clusters": 1,
+      "n_samples": 10,
+      "freq_log10": 6.989,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "El Tigre",
+      "greedy": "Venezuela",
+      "correct": true,
+      "semantic_entropy": -0.0,
+      "n_clusters": 1,
+      "n_samples": 10,
+      "freq_log10": 5.705,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Evansville",
+      "greedy": "United States",
+      "correct": true,
+      "semantic_entropy": -0.0,
+      "n_clusters": 1,
+      "n_samples": 10,
+      "freq_log10": 7.125,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Ferraz de Vasconcelos",
+      "greedy": "Brazil",
+      "correct": true,
+      "semantic_entropy": -0.0,
+      "n_clusters": 1,
+      "n_samples": 10,
+      "freq_log10": 5.239,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Fort Lauderdale",
+      "greedy": "United States",
+      "correct": true,
+      "semantic_entropy": -0.0,
+      "n_clusters": 1,
+      "n_samples": 10,
+      "freq_log10": 7.311,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Fukuyama",
+      "greedy": "Japan",
+      "correct": true,
+      "semantic_entropy": 0.639031859650177,
+      "n_clusters": 3,
+      "n_samples": 10,
+      "freq_log10": 6.647,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Gilbert",
+      "greedy": "Kiribati",
+      "correct": false,
+      "semantic_entropy": 1.2206072645530173,
+      "n_clusters": 4,
+      "n_samples": 10,
+      "freq_log10": 7.093,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Gomez Palacio",
+      "greedy": "Mexico",
+      "correct": true,
+      "semantic_entropy": -0.0,
+      "n_clusters": 1,
+      "n_samples": 10,
+      "freq_log10": 5.651,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Gothenburg",
+      "greedy": "Sweden",
+      "correct": true,
+      "semantic_entropy": -0.0,
+      "n_clusters": 1,
+      "n_samples": 10,
+      "freq_log10": 6.714,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Guihulngan",
+      "greedy": "Philippines",
+      "correct": true,
+      "semantic_entropy": -0.0,
+      "n_clusters": 1,
+      "n_samples": 10,
+      "freq_log10": 5.634,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Gujrat",
+      "greedy": "Pakistan",
+      "correct": true,
+      "semantic_entropy": -0.0,
+      "n_clusters": 1,
+      "n_samples": 10,
+      "freq_log10": 6.394,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Gungoren",
+      "greedy": "Turkey",
+      "correct": true,
+      "semantic_entropy": -0.0,
+      "n_clusters": 1,
+      "n_samples": 10,
+      "freq_log10": 5.299,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Gyeongsan",
+      "greedy": "South Korea",
+      "correct": true,
+      "semantic_entropy": -0.0,
+      "n_clusters": 1,
+      "n_samples": 10,
+      "freq_log10": 5.489,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Hamamatsu",
+      "greedy": "Japan",
+      "correct": true,
+      "semantic_entropy": -0.0,
+      "n_clusters": 1,
+      "n_samples": 10,
+      "freq_log10": 6.593,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Ho Chi Minh City",
+      "greedy": "Vietnam",
+      "correct": true,
+      "semantic_entropy": -0.0,
+      "n_clusters": 1,
+      "n_samples": 10,
+      "freq_log10": 6.811,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Homyel'",
+      "greedy": "Belarus",
+      "correct": true,
+      "semantic_entropy": -0.0,
+      "n_clusters": 1,
+      "n_samples": 10,
+      "freq_log10": 4.658,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Hong'an",
+      "greedy": "China",
+      "correct": true,
+      "semantic_entropy": -0.0,
+      "n_clusters": 1,
+      "n_samples": 10,
+      "freq_log10": 5.595,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Hpa-An",
+      "greedy": "Myanmar",
+      "correct": true,
+      "semantic_entropy": -0.0,
+      "n_clusters": 1,
+      "n_samples": 10,
+      "freq_log10": 5.35,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Huntington",
+      "greedy": "United States",
+      "correct": true,
+      "semantic_entropy": -0.0,
+      "n_clusters": 1,
+      "n_samples": 10,
+      "freq_log10": 7.433,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Iizuka",
+      "greedy": "Japan",
+      "correct": true,
+      "semantic_entropy": -0.0,
+      "n_clusters": 1,
+      "n_samples": 10,
+      "freq_log10": 6.378,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Jitpur",
+      "greedy": "Nepal",
+      "correct": true,
+      "semantic_entropy": -0.0,
+      "n_clusters": 1,
+      "n_samples": 10,
+      "freq_log10": 5.242,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Kadugli",
+      "greedy": "Sudan",
+      "correct": true,
+      "semantic_entropy": 0.5004024235381879,
+      "n_clusters": 2,
+      "n_samples": 10,
+      "freq_log10": 5.52,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Kakamigahara",
+      "greedy": "Japan",
+      "correct": true,
+      "semantic_entropy": -0.0,
+      "n_clusters": 1,
+      "n_samples": 10,
+      "freq_log10": 5.721,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Kampong Cham",
+      "greedy": "Cambodia",
+      "correct": true,
+      "semantic_entropy": -0.0,
+      "n_clusters": 1,
+      "n_samples": 10,
+      "freq_log10": 5.695,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Karaj",
+      "greedy": "Iran",
+      "correct": true,
+      "semantic_entropy": -0.0,
+      "n_clusters": 1,
+      "n_samples": 10,
+      "freq_log10": 6.551,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Karimnagar",
+      "greedy": "India",
+      "correct": true,
+      "semantic_entropy": -0.0,
+      "n_clusters": 1,
+      "n_samples": 10,
+      "freq_log10": 6.583,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Karlsruhe",
+      "greedy": "Germany",
+      "correct": true,
+      "semantic_entropy": -0.0,
+      "n_clusters": 1,
+      "n_samples": 10,
+      "freq_log10": 6.866,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Khabarovsk",
+      "greedy": "Russia",
+      "correct": true,
+      "semantic_entropy": -0.0,
+      "n_clusters": 1,
+      "n_samples": 10,
+      "freq_log10": 6.519,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Khenifra",
+      "greedy": "Morocco",
+      "correct": true,
+      "semantic_entropy": -0.0,
+      "n_clusters": 1,
+      "n_samples": 10,
+      "freq_log10": 5.216,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Kingstown",
+      "greedy": "Saint Vincent and the Grenadines",
+      "correct": true,
+      "semantic_entropy": -0.0,
+      "n_clusters": 1,
+      "n_samples": 10,
+      "freq_log10": 4.375,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Lake Charles",
+      "greedy": "United States",
+      "correct": true,
+      "semantic_entropy": -0.0,
+      "n_clusters": 1,
+      "n_samples": 10,
+      "freq_log10": 6.959,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Langley",
+      "greedy": "Canada",
+      "correct": true,
+      "semantic_entropy": 0.3250829733914482,
+      "n_clusters": 2,
+      "n_samples": 10,
+      "freq_log10": 6.551,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Leominster",
+      "greedy": "United Kingdom",
+      "correct": false,
+      "semantic_entropy": 0.5004024235381879,
+      "n_clusters": 2,
+      "n_samples": 10,
+      "freq_log10": 6.847,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "London",
+      "greedy": "United Kingdom",
+      "correct": false,
+      "semantic_entropy": 0.5004024235381879,
+      "n_clusters": 2,
+      "n_samples": 10,
+      "freq_log10": 8.132,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Londuimbali",
+      "greedy": "South Africa",
+      "correct": false,
+      "semantic_entropy": 0.9404479886553263,
+      "n_clusters": 4,
+      "n_samples": 10,
+      "freq_log10": 4.181,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Longueuil",
+      "greedy": "Canada",
+      "correct": true,
+      "semantic_entropy": -0.0,
+      "n_clusters": 1,
+      "n_samples": 10,
+      "freq_log10": 6.589,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Machala",
+      "greedy": "Ecuador",
+      "correct": true,
+      "semantic_entropy": -0.0,
+      "n_clusters": 1,
+      "n_samples": 10,
+      "freq_log10": 5.512,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Mandalay",
+      "greedy": "Myanmar",
+      "correct": true,
+      "semantic_entropy": -0.0,
+      "n_clusters": 1,
+      "n_samples": 10,
+      "freq_log10": 6.408,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Mary",
+      "greedy": "United States",
+      "correct": false,
+      "semantic_entropy": 1.3592367006650063,
+      "n_clusters": 5,
+      "n_samples": 10,
+      "freq_log10": 6.951,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Mbabane",
+      "greedy": "Eswatini",
+      "correct": true,
+      "semantic_entropy": 0.3250829733914482,
+      "n_clusters": 2,
+      "n_samples": 10,
+      "freq_log10": 5.248,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Mbandaka",
+      "greedy": "Democratic Republic of the Congo",
+      "correct": false,
+      "semantic_entropy": -0.0,
+      "n_clusters": 1,
+      "n_samples": 10,
+      "freq_log10": 5.719,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Meishan",
+      "greedy": "China",
+      "correct": true,
+      "semantic_entropy": -0.0,
+      "n_clusters": 1,
+      "n_samples": 10,
+      "freq_log10": 6.423,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Mianyang",
+      "greedy": "China",
+      "correct": true,
+      "semantic_entropy": -0.0,
+      "n_clusters": 1,
+      "n_samples": 10,
+      "freq_log10": 6.372,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Milwaukee",
+      "greedy": "United States",
+      "correct": true,
+      "semantic_entropy": -0.0,
+      "n_clusters": 1,
+      "n_samples": 10,
+      "freq_log10": 7.631,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Minatitlan",
+      "greedy": "Mexico",
+      "correct": true,
+      "semantic_entropy": -0.0,
+      "n_clusters": 1,
+      "n_samples": 10,
+      "freq_log10": 5.684,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Moers",
+      "greedy": "Germany",
+      "correct": true,
+      "semantic_entropy": -0.0,
+      "n_clusters": 1,
+      "n_samples": 10,
+      "freq_log10": 6.363,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Montpellier",
+      "greedy": "France",
+      "correct": true,
+      "semantic_entropy": -0.0,
+      "n_clusters": 1,
+      "n_samples": 10,
+      "freq_log10": 6.92,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Monywa",
+      "greedy": "Myanmar",
+      "correct": true,
+      "semantic_entropy": -0.0,
+      "n_clusters": 1,
+      "n_samples": 10,
+      "freq_log10": 5.606,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Mopti",
+      "greedy": "Mali",
+      "correct": true,
+      "semantic_entropy": -0.0,
+      "n_clusters": 1,
+      "n_samples": 10,
+      "freq_log10": 5.562,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Mudon",
+      "greedy": "Myanmar",
+      "correct": true,
+      "semantic_entropy": 1.1935496040981333,
+      "n_clusters": 4,
+      "n_samples": 10,
+      "freq_log10": 5.418,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Musoma",
+      "greedy": "Tanzania",
+      "correct": true,
+      "semantic_entropy": -0.0,
+      "n_clusters": 1,
+      "n_samples": 10,
+      "freq_log10": 5.447,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Nampula",
+      "greedy": "Mozambique",
+      "correct": true,
+      "semantic_entropy": -0.0,
+      "n_clusters": 1,
+      "n_samples": 10,
+      "freq_log10": 5.548,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Nanning",
+      "greedy": "China",
+      "correct": true,
+      "semantic_entropy": -0.0,
+      "n_clusters": 1,
+      "n_samples": 10,
+      "freq_log10": 6.697,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Nanqiaotou",
+      "greedy": "China",
+      "correct": true,
+      "semantic_entropy": -0.0,
+      "n_clusters": 1,
+      "n_samples": 10,
+      "freq_log10": 5.064,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Navsari",
+      "greedy": "India",
+      "correct": true,
+      "semantic_entropy": -0.0,
+      "n_clusters": 1,
+      "n_samples": 10,
+      "freq_log10": 6.448,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Neftekamsk",
+      "greedy": "Russia",
+      "correct": true,
+      "semantic_entropy": -0.0,
+      "n_clusters": 1,
+      "n_samples": 10,
+      "freq_log10": 5.652,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Newcastle",
+      "greedy": "England",
+      "correct": true,
+      "semantic_entropy": -0.0,
+      "n_clusters": 1,
+      "n_samples": 10,
+      "freq_log10": 7.175,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Norzagaray",
+      "greedy": "Philippines",
+      "correct": true,
+      "semantic_entropy": -0.0,
+      "n_clusters": 1,
+      "n_samples": 10,
+      "freq_log10": 5.643,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Osh",
+      "greedy": "Kyrgyzstan",
+      "correct": true,
+      "semantic_entropy": -0.0,
+      "n_clusters": 1,
+      "n_samples": 10,
+      "freq_log10": 6.359,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Ouargla",
+      "greedy": "Algeria",
+      "correct": true,
+      "semantic_entropy": -0.0,
+      "n_clusters": 1,
+      "n_samples": 10,
+      "freq_log10": 5.232,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Oyster Bay",
+      "greedy": "United States",
+      "correct": true,
+      "semantic_entropy": 0.6931471805599453,
+      "n_clusters": 2,
+      "n_samples": 10,
+      "freq_log10": 6.602,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Panama City",
+      "greedy": "Panama",
+      "correct": true,
+      "semantic_entropy": -0.0,
+      "n_clusters": 1,
+      "n_samples": 10,
+      "freq_log10": 6.434,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Paramaribo",
+      "greedy": "Suriname",
+      "correct": true,
+      "semantic_entropy": -0.0,
+      "n_clusters": 1,
+      "n_samples": 10,
+      "freq_log10": 5.345,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Paulista",
+      "greedy": "Brazil",
+      "correct": true,
+      "semantic_entropy": -0.0,
+      "n_clusters": 1,
+      "n_samples": 10,
+      "freq_log10": 6.444,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Port Elizabeth",
+      "greedy": "South Africa",
+      "correct": true,
+      "semantic_entropy": -0.0,
+      "n_clusters": 1,
+      "n_samples": 10,
+      "freq_log10": 6.593,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Port-Gentil",
+      "greedy": "Gabon",
+      "correct": true,
+      "semantic_entropy": -0.0,
+      "n_clusters": 1,
+      "n_samples": 10,
+      "freq_log10": 4.908,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Porto-Novo",
+      "greedy": "Benin",
+      "correct": true,
+      "semantic_entropy": -0.0,
+      "n_clusters": 1,
+      "n_samples": 10,
+      "freq_log10": 5.173,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Pouso Alegre",
+      "greedy": "Brazil",
+      "correct": true,
+      "semantic_entropy": -0.0,
+      "n_clusters": 1,
+      "n_samples": 10,
+      "freq_log10": 5.665,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Praia",
+      "greedy": "Cape Verde",
+      "correct": false,
+      "semantic_entropy": -0.0,
+      "n_clusters": 1,
+      "n_samples": 10,
+      "freq_log10": 5.408,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Prokopyevsk",
+      "greedy": "Russia",
+      "correct": true,
+      "semantic_entropy": -0.0,
+      "n_clusters": 1,
+      "n_samples": 10,
+      "freq_log10": 5.576,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Pudong",
+      "greedy": "China",
+      "correct": true,
+      "semantic_entropy": -0.0,
+      "n_clusters": 1,
+      "n_samples": 10,
+      "freq_log10": 6.848,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Pueblo",
+      "greedy": "United States",
+      "correct": true,
+      "semantic_entropy": -0.0,
+      "n_clusters": 1,
+      "n_samples": 10,
+      "freq_log10": 7.28,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Puerto Cortes",
+      "greedy": "Honduras",
+      "correct": true,
+      "semantic_entropy": -0.0,
+      "n_clusters": 1,
+      "n_samples": 10,
+      "freq_log10": 5.12,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Puerto La Cruz",
+      "greedy": "Venezuela",
+      "correct": true,
+      "semantic_entropy": -0.0,
+      "n_clusters": 1,
+      "n_samples": 10,
+      "freq_log10": 5.365,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Ratlam",
+      "greedy": "India",
+      "correct": true,
+      "semantic_entropy": -0.0,
+      "n_clusters": 1,
+      "n_samples": 10,
+      "freq_log10": 6.434,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Ribeirao das Neves",
+      "greedy": "Brazil",
+      "correct": true,
+      "semantic_entropy": -0.0,
+      "n_clusters": 1,
+      "n_samples": 10,
+      "freq_log10": 4.923,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Saidpur",
+      "greedy": "Pakistan",
+      "correct": false,
+      "semantic_entropy": 0.8018185525433372,
+      "n_clusters": 3,
+      "n_samples": 10,
+      "freq_log10": 5.68,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Saint-Pierre",
+      "greedy": "France",
+      "correct": false,
+      "semantic_entropy": -0.0,
+      "n_clusters": 1,
+      "n_samples": 10,
+      "freq_log10": 4.171,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Sale",
+      "greedy": "United Kingdom",
+      "correct": false,
+      "semantic_entropy": 0.8979457248567797,
+      "n_clusters": 3,
+      "n_samples": 10,
+      "freq_log10": 7.045,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "San Rafael",
+      "greedy": "Argentina",
+      "correct": true,
+      "semantic_entropy": 0.8018185525433372,
+      "n_clusters": 3,
+      "n_samples": 10,
+      "freq_log10": 6.439,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Santa Rosa",
+      "greedy": "United States",
+      "correct": false,
+      "semantic_entropy": -0.0,
+      "n_clusters": 1,
+      "n_samples": 10,
+      "freq_log10": 6.643,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Santiago",
+      "greedy": "Chile",
+      "correct": false,
+      "semantic_entropy": -0.0,
+      "n_clusters": 1,
+      "n_samples": 10,
+      "freq_log10": 7.232,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Santos",
+      "greedy": "Brazil",
+      "correct": true,
+      "semantic_entropy": -0.0,
+      "n_clusters": 1,
+      "n_samples": 10,
+      "freq_log10": 7.172,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Saumlaki",
+      "greedy": "Indonesia",
+      "correct": true,
+      "semantic_entropy": -0.0,
+      "n_clusters": 1,
+      "n_samples": 10,
+      "freq_log10": 5.419,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Semey",
+      "greedy": "Kazakhstan",
+      "correct": true,
+      "semantic_entropy": -0.0,
+      "n_clusters": 1,
+      "n_samples": 10,
+      "freq_log10": 5.52,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Sete Lagoas",
+      "greedy": "Brazil",
+      "correct": true,
+      "semantic_entropy": -0.0,
+      "n_clusters": 1,
+      "n_samples": 10,
+      "freq_log10": 5.681,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Shahreza",
+      "greedy": "Iran",
+      "correct": true,
+      "semantic_entropy": -0.0,
+      "n_clusters": 1,
+      "n_samples": 10,
+      "freq_log10": 5.664,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Sizhan",
+      "greedy": "China",
+      "correct": true,
+      "semantic_entropy": 0.639031859650177,
+      "n_clusters": 3,
+      "n_samples": 10,
+      "freq_log10": 5.443,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Sochi",
+      "greedy": "Russia",
+      "correct": true,
+      "semantic_entropy": -0.0,
+      "n_clusters": 1,
+      "n_samples": 10,
+      "freq_log10": 6.978,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Sparks",
+      "greedy": "United States",
+      "correct": true,
+      "semantic_entropy": -0.0,
+      "n_clusters": 1,
+      "n_samples": 10,
+      "freq_log10": 7.348,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Spartanburg",
+      "greedy": "United States",
+      "correct": true,
+      "semantic_entropy": -0.0,
+      "n_clusters": 1,
+      "n_samples": 10,
+      "freq_log10": 7.033,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Spokane",
+      "greedy": "United States",
+      "correct": true,
+      "semantic_entropy": -0.0,
+      "n_clusters": 1,
+      "n_samples": 10,
+      "freq_log10": 7.364,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Sullana",
+      "greedy": "Peru",
+      "correct": true,
+      "semantic_entropy": -0.0,
+      "n_clusters": 1,
+      "n_samples": 10,
+      "freq_log10": 5.259,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Tabriz",
+      "greedy": "Iran",
+      "correct": true,
+      "semantic_entropy": -0.0,
+      "n_clusters": 1,
+      "n_samples": 10,
+      "freq_log10": 6.581,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Tampa",
+      "greedy": "United States",
+      "correct": true,
+      "semantic_entropy": -0.0,
+      "n_clusters": 1,
+      "n_samples": 10,
+      "freq_log10": 7.308,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Tarrasa",
+      "greedy": "Spain",
+      "correct": true,
+      "semantic_entropy": -0.0,
+      "n_clusters": 1,
+      "n_samples": 10,
+      "freq_log10": 5.376,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Tatui",
+      "greedy": "Brazil",
+      "correct": true,
+      "semantic_entropy": 0.3250829733914482,
+      "n_clusters": 2,
+      "n_samples": 10,
+      "freq_log10": 5.396,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Taunggyi",
+      "greedy": "Myanmar",
+      "correct": true,
+      "semantic_entropy": -0.0,
+      "n_clusters": 1,
+      "n_samples": 10,
+      "freq_log10": 5.609,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Teziutlan",
+      "greedy": "Mexico",
+      "correct": true,
+      "semantic_entropy": -0.0,
+      "n_clusters": 1,
+      "n_samples": 10,
+      "freq_log10": 5.305,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Timon",
+      "greedy": "South Africa",
+      "correct": false,
+      "semantic_entropy": 1.8866967846580784,
+      "n_clusters": 7,
+      "n_samples": 10,
+      "freq_log10": 6.642,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Toluca",
+      "greedy": "Mexico",
+      "correct": true,
+      "semantic_entropy": -0.0,
+      "n_clusters": 1,
+      "n_samples": 10,
+      "freq_log10": 6.529,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Uppsala",
+      "greedy": "Sweden",
+      "correct": true,
+      "semantic_entropy": -0.0,
+      "n_clusters": 1,
+      "n_samples": 10,
+      "freq_log10": 6.635,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Usulutan",
+      "greedy": "El Salvador",
+      "correct": true,
+      "semantic_entropy": -0.0,
+      "n_clusters": 1,
+      "n_samples": 10,
+      "freq_log10": 4.993,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Vatican City",
+      "greedy": "Italy",
+      "correct": false,
+      "semantic_entropy": -0.0,
+      "n_clusters": 1,
+      "n_samples": 10,
+      "freq_log10": 5.657,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "West Bromwich",
+      "greedy": "England",
+      "correct": true,
+      "semantic_entropy": -0.0,
+      "n_clusters": 1,
+      "n_samples": 10,
+      "freq_log10": 6.523,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Yavatmal",
+      "greedy": "India",
+      "correct": true,
+      "semantic_entropy": -0.0,
+      "n_clusters": 1,
+      "n_samples": 10,
+      "freq_log10": 6.44,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Yinchuan",
+      "greedy": "China",
+      "correct": true,
+      "semantic_entropy": -0.0,
+      "n_clusters": 1,
+      "n_samples": 10,
+      "freq_log10": 6.472,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Zhangye",
+      "greedy": "China",
+      "correct": true,
+      "semantic_entropy": -0.0,
+      "n_clusters": 1,
+      "n_samples": 10,
+      "freq_log10": 6.544,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Zhuji",
+      "greedy": "China",
+      "correct": true,
+      "semantic_entropy": -0.0,
+      "n_clusters": 1,
+      "n_samples": 10,
+      "freq_log10": 6.429,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Zibo",
+      "greedy": "China",
+      "correct": true,
+      "semantic_entropy": -0.0,
+      "n_clusters": 1,
+      "n_samples": 10,
+      "freq_log10": 6.469,
+      "clusterer": "nli"
+    },
+    {
+      "subject": "Zielona Gora",
+      "greedy": "Poland",
+      "correct": true,
+      "semantic_entropy": -0.0,
+      "n_clusters": 1,
+      "n_samples": 10,
+      "freq_log10": 5.718,
+      "clusterer": "nli"
+    }
+  ],
+  "detects_errors_auroc": {
+    "auroc": 0.7761,
+    "ci": [
+      0.6614,
+      0.8844
+    ],
+    "n": 152,
+    "n_boot": 1000
+  },
+  "entropy_on_correct_by_frequency": {
+    "median_log10_freq": 5.718,
+    "rare_mean_entropy": 0.0586,
+    "n_rare": 65,
+    "common_mean_entropy": 0.0579,
+    "n_common": 66,
+    "rare_minus_common": 0.0007,
+    "separates_rare_from_common_auroc": {
+      "auroc": 0.514,
+      "ci": [
+        0.4652,
+        0.5646
+      ],
+      "n": 131,
+      "n_boot": 1000
+    }
+  },
+  "corr_entropy_frequency": 0.0524,
+  "compute": {
+    "gpu": "H100",
+    "wall_seconds": 218.9
+  }
+}

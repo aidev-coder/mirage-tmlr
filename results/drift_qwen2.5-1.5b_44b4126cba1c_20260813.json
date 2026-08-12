@@ -1,0 +1,81 @@
+{
+  "model": "Qwen/Qwen2.5-1.5B",
+  "corpus": "mirage_2x2_v44b4126cba1c.jsonl",
+  "n_layers": 29,
+  "tap_fractions": [
+    0.6,
+    0.7,
+    0.8,
+    0.85
+  ],
+  "tap_layers": [
+    17,
+    20,
+    22,
+    24
+  ],
+  "pooling": "mean_over_tokens",
+  "provenance": "measured",
+  "probes": {
+    "drift": {
+      "in_dist": 0.974,
+      "off": 0.1032,
+      "off_ci": [
+        0.0707,
+        0.1378
+      ],
+      "gap": 0.8708,
+      "gap_ci": [
+        0.8204,
+        0.9099
+      ],
+      "gap_excludes_zero": true,
+      "fit_stability": {
+        "n_resample": 30,
+        "drop_frac": 0.1,
+        "gap_median": 0.899,
+        "gap_range": [
+          0.8658,
+          0.9249
+        ],
+        "gap_sd": 0.0173,
+        "off_range": [
+          0.07,
+          0.1037
+        ]
+      }
+    },
+    "drift_concat": {
+      "in_dist": 0.947,
+      "off": 0.0706,
+      "off_ci": [
+        0.0419,
+        0.1039
+      ],
+      "gap": 0.8764,
+      "gap_ci": [
+        0.8003,
+        0.9337
+      ],
+      "gap_excludes_zero": true,
+      "fit_stability": {
+        "n_resample": 30,
+        "drop_frac": 0.1,
+        "gap_median": 0.9191,
+        "gap_range": [
+          0.8843,
+          0.9396
+        ],
+        "gap_sd": 0.0164,
+        "off_range": [
+          0.0531,
+          0.0778
+        ]
+      }
+    }
+  },
+  "compute": {
+    "gpu": "H100",
+    "wall_seconds": 42.9
+  }
+}
