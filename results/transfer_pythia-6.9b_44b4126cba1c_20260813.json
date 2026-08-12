@@ -3,44 +3,47 @@
   "model": "EleutherAI/pythia-6.9b",
   "layer": 16,
   "corpus": "mirage_2x2_v44b4126cba1c.jsonl",
-  "n_train": 16329,
+  "n_train": 9270,
   "n_test": 608,
+  "n_am_rows": 16329,
+  "n_dropped_leak": 6882,
+  "n_dropped_dup": 177,
   "in_distribution_on_am": {
-    "auroc": 0.9202,
+    "auroc": 0.8796,
     "ci": [
-      0.9115,
-      0.9289
+      0.8638,
+      0.8956
     ],
-    "n": 3266,
+    "n": 1854,
     "n_boot": 1000
   },
   "frequency_read_among_true_only": {
-    "auroc": 0.6755,
+    "auroc": 0.6386,
     "ci": [
-      0.6113,
-      0.7352
+      0.5755,
+      0.7012
     ],
     "n": 304,
     "n_boot": 1000
   },
   "disagreement_auroc": {
-    "auroc": 0.929,
+    "auroc": 0.8818,
     "ci": [
-      0.8975,
-      0.9537
+      0.845,
+      0.9141
     ],
     "n": 304,
     "n_boot": 1000
   },
   "cell_means": {
-    "TT": 0.9209,
-    "TA": 0.8257,
-    "FT": 0.2359,
-    "FA": 0.3178
+    "TT": 0.7296,
+    "TA": 0.5688,
+    "FT": 0.1255,
+    "FA": 0.151
   },
   "provenance": "measured",
   "compute": {
     "gpu": "H100",
-    "wall_seconds": 220.1
+    "wall_seconds": 222.0
   }
 }

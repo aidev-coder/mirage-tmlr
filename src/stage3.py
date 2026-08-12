@@ -255,24 +255,53 @@ def run_transfer(substrate, corpus_path, am_dir=None, layer=None, seed=0,
     from .probes.saplma import SaplmaProbe
     from .stats import auroc_with_ci
 
+    import csv as _csv
+    import re as _re
+
+    items = load_corpus(corpus_path)
+
+    # Our corpora are themselves derived from these files, so 75 percent of the
+    # authored corpus appears verbatim in them. Training without this exclusion
+    # trains on the test set. Excluding by SUBJECT ENTITY rather than by exact
+    # string, because the same subject under a swapped object teaches the item.
+    blocked = set()
+    for other in sorted((_ROOT / "data" / "corpus").glob("mirage_2x2_v*.jsonl")):
+        for it in load_corpus(other):
+            for e in it.get("entities", ()):
+                if e:
+                    blocked.add(str(e).strip().lower())
+
+    def _subject(text):
+        m = _re.match(r"^(.*?)\s+(is|was|has|are|were|can|does|contains|belongs)\b", text)
+        return (m.group(1) if m else text).strip().lower()
+
     am_dir = Path(am_dir or (_ROOT / "data" / "raw" / "azaria_mitchell"))
+    seen, n_raw, n_leak, n_dup = set(), 0, 0, 0
     train_texts, train_y = [], []
     for csv in sorted(am_dir.glob("*_true_false.csv")):
         if csv.name.startswith("neg_"):
             continue
         with open(csv, encoding="utf-8-sig") as fh:
-            import csv as _csv
             for row in _csv.DictReader(fh):
                 s = (row.get("statement") or "").strip()
                 lab = (row.get("label") or "").strip()
-                if s and lab in ("0", "1"):
-                    train_texts.append(s)
-                    train_y.append(lab == "1")
+                if not s or lab not in ("0", "1"):
+                    continue
+                n_raw += 1
+                if _subject(s) in blocked:
+                    n_leak += 1
+                    continue
+                if s in seen:
+                    n_dup += 1
+                    continue
+                seen.add(s)
+                train_texts.append(s)
+                train_y.append(lab == "1")
     train_y = np.array(train_y)
-    print(f"[transfer] training on {len(train_texts)} A&M statements "
+    print(f"[transfer] A&M rows {n_raw}; dropped {n_leak} sharing a subject with our "
+          f"corpora and {n_dup} duplicates; training on {len(train_texts)} "
           f"({train_y.mean():.1%} true)", flush=True)
 
-    items = load_corpus(corpus_path)
     test_texts = [it["text"] for it in items]
     cells = np.array([it["cell"] for it in items])
     truth = np.array([bool(it["truth"]) for it in items])
@@ -302,6 +331,7 @@ def run_transfer(substrate, corpus_path, am_dir=None, layer=None, seed=0,
     out = {"experiment": "transfer_am_to_crossed", "model": substrate.model_id,
            "layer": int(L), "corpus": Path(corpus_path).name,
            "n_train": len(train_texts), "n_test": len(items),
+           "n_am_rows": n_raw, "n_dropped_leak": n_leak, "n_dropped_dup": n_dup,
            "in_distribution_on_am": in_dist,
            "frequency_read_among_true_only": freq_read,
            "disagreement_auroc": off_auroc,

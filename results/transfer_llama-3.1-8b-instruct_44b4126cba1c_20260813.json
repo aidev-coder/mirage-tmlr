@@ -3,44 +3,47 @@
   "model": "meta-llama/Llama-3.1-8B-Instruct",
   "layer": 16,
   "corpus": "mirage_2x2_v44b4126cba1c.jsonl",
-  "n_train": 16329,
+  "n_train": 9270,
   "n_test": 608,
+  "n_am_rows": 16329,
+  "n_dropped_leak": 6882,
+  "n_dropped_dup": 177,
   "in_distribution_on_am": {
-    "auroc": 0.981,
+    "auroc": 0.9708,
     "ci": [
-      0.9777,
-      0.9844
+      0.9647,
+      0.977
     ],
-    "n": 3266,
+    "n": 1854,
     "n_boot": 1000
   },
   "frequency_read_among_true_only": {
-    "auroc": 0.5715,
+    "auroc": 0.6198,
     "ci": [
-      0.5089,
-      0.6358
+      0.5553,
+      0.6826
     ],
     "n": 304,
     "n_boot": 1000
   },
   "disagreement_auroc": {
-    "auroc": 0.9976,
+    "auroc": 0.9972,
     "ci": [
-      0.9936,
-      1.0
+      0.993,
+      0.9997
     ],
     "n": 304,
     "n_boot": 1000
   },
   "cell_means": {
-    "TT": 0.9822,
-    "TA": 0.9827,
-    "FT": 0.0229,
-    "FA": 0.0513
+    "TT": 0.9626,
+    "TA": 0.9541,
+    "FT": 0.0219,
+    "FA": 0.0819
   },
   "provenance": "measured",
   "compute": {
     "gpu": "H100",
-    "wall_seconds": 333.1
+    "wall_seconds": 309.4
   }
 }

@@ -3,44 +3,47 @@
   "model": "google/gemma-2-9b-it",
   "layer": 21,
   "corpus": "mirage_2x2_vd279c2cae5f4.jsonl",
-  "n_train": 16329,
+  "n_train": 9270,
   "n_test": 140,
+  "n_am_rows": 16329,
+  "n_dropped_leak": 6882,
+  "n_dropped_dup": 177,
   "in_distribution_on_am": {
-    "auroc": 0.9838,
+    "auroc": 0.9779,
     "ci": [
-      0.9807,
-      0.9869
+      0.9729,
+      0.9828
     ],
-    "n": 3266,
+    "n": 1854,
     "n_boot": 1000
   },
   "frequency_read_among_true_only": {
-    "auroc": 0.5461,
+    "auroc": 0.6416,
     "ci": [
-      0.4126,
-      0.6818
+      0.502,
+      0.7731
     ],
     "n": 70,
     "n_boot": 1000
   },
   "disagreement_auroc": {
-    "auroc": 0.9045,
+    "auroc": 0.8988,
     "ci": [
-      0.8282,
-      0.9714
+      0.8069,
+      0.9826
     ],
     "n": 70,
     "n_boot": 1000
   },
   "cell_means": {
-    "TT": 0.9995,
-    "TA": 0.9982,
-    "FT": 0.6622,
-    "FA": 0.1776
+    "TT": 0.9769,
+    "TA": 0.9994,
+    "FT": 0.5555,
+    "FA": 0.2831
   },
   "provenance": "measured",
   "compute": {
     "gpu": "H100",
-    "wall_seconds": 311.8
+    "wall_seconds": 265.9
   }
 }

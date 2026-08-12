@@ -3,44 +3,47 @@
   "model": "Qwen/Qwen2.5-7B-Instruct",
   "layer": 14,
   "corpus": "mirage_2x2_v44b4126cba1c.jsonl",
-  "n_train": 16329,
+  "n_train": 9270,
   "n_test": 608,
+  "n_am_rows": 16329,
+  "n_dropped_leak": 6882,
+  "n_dropped_dup": 177,
   "in_distribution_on_am": {
-    "auroc": 0.9721,
+    "auroc": 0.9574,
     "ci": [
-      0.9678,
-      0.9765
+      0.9494,
+      0.9652
     ],
-    "n": 3266,
+    "n": 1854,
     "n_boot": 1000
   },
   "frequency_read_among_true_only": {
-    "auroc": 0.6446,
+    "auroc": 0.5848,
     "ci": [
-      0.584,
-      0.7079
+      0.5236,
+      0.6454
     ],
     "n": 304,
     "n_boot": 1000
   },
   "disagreement_auroc": {
-    "auroc": 0.9976,
+    "auroc": 0.993,
     "ci": [
-      0.9939,
-      0.9999
+      0.9841,
+      0.9986
     ],
     "n": 304,
     "n_boot": 1000
   },
   "cell_means": {
-    "TT": 0.9691,
-    "TA": 0.9439,
-    "FT": 0.0234,
-    "FA": 0.0823
+    "TT": 0.9437,
+    "TA": 0.9205,
+    "FT": 0.0138,
+    "FA": 0.0561
   },
   "provenance": "measured",
   "compute": {
     "gpu": "H100",
-    "wall_seconds": 233.4
+    "wall_seconds": 167.3
   }
 }
