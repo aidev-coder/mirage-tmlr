@@ -470,10 +470,30 @@ def harvest_fn(model_id: str, topic: str, max_subjects: int = 400) -> dict:
     return out
 
 
+@app.function(image=image, gpu=GPU, volumes=VOLUMES, secrets=SECRETS,
+              timeout=4 * 3600)
+@_timed
+def transfer_run(model_id: str, corpus_name: str, layer: int | None = None,
+                 seed: int = 0) -> dict:
+    """Train the probe on the field's own true/false dataset, test on our crossed
+    corpus. Answers whether frequency reading is taught by our training cells or
+    is already present in a probe trained the standard way."""
+    _setup()
+    from src.stage3 import run_transfer
+    from src.substrate import Substrate
+
+    sub = Substrate(model_id, cache_dir="/root/activations")
+    out = run_transfer(sub, f"/root/mirage/data/corpus/{corpus_name}",
+                       layer=layer, seed=seed, commit_fn=activations.commit)
+    activations.commit()
+    hf_cache.commit()
+    return out
+
+
 @app.local_entrypoint()
 def main(stage: str = "sanity", model: str = "", max_per_topic: int = 0,
          batch_size: int = 32, fast: bool = True, corpus: str = "", seed: int = 0,
-         detector: str = "saplma", domain: str = ""):
+         detector: str = "saplma", domain: str = "", layer: int = -1):
     """
     modal run mirage/modal_app.py --stage sanity                     # Stage 0, all models
     modal run mirage/modal_app.py --stage stage1 --model <id>        # Stage 1, one model
@@ -655,6 +675,33 @@ def main(stage: str = "sanity", model: str = "", max_per_topic: int = 0,
             print(f"{r['model']}: taps {r['tap_layers']} | drift in-dist {d_['in_dist']:.3f} "
                   f"off {d_['off']:.3f} gap {d_['gap']:+.3f} | concat off {c_['off']:.3f} "
                   f"gap {c_['gap']:+.3f} -> {o}")
+
+    elif stage == "transfer":
+        from datetime import date
+        corpus_name = corpus
+        if not corpus_name:
+            cdir = _HERE / "data" / "corpus"
+            corpus_name = sorted(cdir.glob("mirage_2x2_v*.jsonl"),
+                                 key=lambda p: p.stat().st_mtime)[-1].name
+        chs = Path(corpus_name).stem.split("_v")[-1]
+        ids_tr = [m.strip() for m in model.split(",") if m.strip()] or [
+            "Qwen/Qwen2.5-7B-Instruct", "meta-llama/Llama-3.1-8B-Instruct",
+            "google/gemma-2-9b-it", "EleutherAI/pythia-6.9b"]
+        kw = {"corpus_name": corpus_name, "layer": layer if layer >= 0 else None}
+        for r in transfer_run.map(ids_tr, kwargs=kw, order_outputs=False,
+                                  return_exceptions=True):
+            if isinstance(r, Exception):
+                print(f"SKIPPED (failed): {type(r).__name__}: {str(r)[:200]}")
+                continue
+            sh = r["model"].split("/")[-1].lower()
+            o = _HERE / "results" / f"transfer_{sh}_{chs}_{date.today():%Y%m%d}.json"
+            o.write_text(json.dumps(r, indent=2, default=_json_default))
+            print(f"{r['model']}: A&M held-out {r['in_distribution_on_am']['auroc']:.3f} | "
+                  f"frequency-read among TRUE ONLY "
+                  f"{r['frequency_read_among_true_only']['auroc']:.3f} "
+                  f"{r['frequency_read_among_true_only']['ci']} | "
+                  f"disagreement {r['disagreement_auroc']['auroc']:.3f} | "
+                  f"cells {r['cell_means']} -> {o}")
 
     elif stage == "semantic":
         from datetime import date

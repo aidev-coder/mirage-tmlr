@@ -1,0 +1,46 @@
+{
+  "experiment": "transfer_am_to_crossed",
+  "model": "Qwen/Qwen2.5-7B-Instruct",
+  "layer": 14,
+  "corpus": "mirage_2x2_vd279c2cae5f4.jsonl",
+  "n_train": 16329,
+  "n_test": 140,
+  "in_distribution_on_am": {
+    "auroc": 0.9721,
+    "ci": [
+      0.9678,
+      0.9765
+    ],
+    "n": 3266,
+    "n_boot": 1000
+  },
+  "frequency_read_among_true_only": {
+    "auroc": 0.6098,
+    "ci": [
+      0.4596,
+      0.7458
+    ],
+    "n": 70,
+    "n_boot": 1000
+  },
+  "disagreement_auroc": {
+    "auroc": 0.8824,
+    "ci": [
+      0.7906,
+      0.96
+    ],
+    "n": 70,
+    "n_boot": 1000
+  },
+  "cell_means": {
+    "TT": 0.9875,
+    "TA": 0.9947,
+    "FT": 0.6605,
+    "FA": 0.7367
+  },
+  "provenance": "measured",
+  "compute": {
+    "gpu": "H100",
+    "wall_seconds": 243.4
+  }
+}

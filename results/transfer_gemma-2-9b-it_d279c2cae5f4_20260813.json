@@ -1,0 +1,46 @@
+{
+  "experiment": "transfer_am_to_crossed",
+  "model": "google/gemma-2-9b-it",
+  "layer": 21,
+  "corpus": "mirage_2x2_vd279c2cae5f4.jsonl",
+  "n_train": 16329,
+  "n_test": 140,
+  "in_distribution_on_am": {
+    "auroc": 0.9838,
+    "ci": [
+      0.9807,
+      0.9869
+    ],
+    "n": 3266,
+    "n_boot": 1000
+  },
+  "frequency_read_among_true_only": {
+    "auroc": 0.5461,
+    "ci": [
+      0.4126,
+      0.6818
+    ],
+    "n": 70,
+    "n_boot": 1000
+  },
+  "disagreement_auroc": {
+    "auroc": 0.9045,
+    "ci": [
+      0.8282,
+      0.9714
+    ],
+    "n": 70,
+    "n_boot": 1000
+  },
+  "cell_means": {
+    "TT": 0.9995,
+    "TA": 0.9982,
+    "FT": 0.6622,
+    "FA": 0.1776
+  },
+  "provenance": "measured",
+  "compute": {
+    "gpu": "H100",
+    "wall_seconds": 311.8
+  }
+}

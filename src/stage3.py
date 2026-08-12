@@ -231,3 +231,84 @@ def run(substrate, corpus_path: str | Path, detector: str = "saplma",
         "provenance": "measured",
         "seed": seed,
     }
+
+
+def run_transfer(substrate, corpus_path, am_dir=None, layer=None, seed=0,
+                 batch_size=32, commit_fn=None) -> dict:
+    """Train the probe on the FIELD'S dataset, test on our crossed corpus.
+
+    Every other result here trains on our own congruent cells, where entity
+    frequency and truth agree because we made them agree. That is a statement
+    about what the standard recipe does when the alignment is present, not about
+    the published datasets. This asks the other question: a probe trained exactly
+    as the field trains one, on Azaria and Mitchell's true/false statements, is
+    then asked (a) can its score separate common from rare among items that are
+    ALL TRUE, and (b) what does it do on the disagreement cells.
+
+    The row-swap construction behind that dataset roughly preserves entity
+    frequency across truth, so a probe reading only frequency has nothing to gain
+    there. If frequency reading shows up anyway, it was not taught by the training
+    distribution.
+    """
+    import numpy as np
+
+    from .probes.saplma import SaplmaProbe
+    from .stats import auroc_with_ci
+
+    am_dir = Path(am_dir or (_ROOT / "data" / "raw" / "azaria_mitchell"))
+    train_texts, train_y = [], []
+    for csv in sorted(am_dir.glob("*_true_false.csv")):
+        if csv.name.startswith("neg_"):
+            continue
+        with open(csv, encoding="utf-8-sig") as fh:
+            import csv as _csv
+            for row in _csv.DictReader(fh):
+                s = (row.get("statement") or "").strip()
+                lab = (row.get("label") or "").strip()
+                if s and lab in ("0", "1"):
+                    train_texts.append(s)
+                    train_y.append(lab == "1")
+    train_y = np.array(train_y)
+    print(f"[transfer] training on {len(train_texts)} A&M statements "
+          f"({train_y.mean():.1%} true)", flush=True)
+
+    items = load_corpus(corpus_path)
+    test_texts = [it["text"] for it in items]
+    cells = np.array([it["cell"] for it in items])
+    truth = np.array([bool(it["truth"]) for it in items])
+
+    H_tr = substrate.hidden_states_matrix(train_texts, batch_size=batch_size)
+    H_te = substrate.hidden_states_matrix(test_texts, batch_size=batch_size)
+    L = layer if layer is not None else H_tr.shape[1] // 2
+    if commit_fn:
+        commit_fn()
+
+    probe = SaplmaProbe(seed=seed).fit(H_tr[:, L, :].astype(np.float64), train_y)
+    s = np.asarray(probe.score(H_te[:, L, :].astype(np.float64)))
+
+    # held-out slice of the training distribution, for a like-for-like headline
+    rng = np.random.default_rng(seed)
+    idx = rng.permutation(len(train_texts))
+    cut = int(0.8 * len(idx))
+    p2 = SaplmaProbe(seed=seed).fit(H_tr[idx[:cut], L, :].astype(np.float64), train_y[idx[:cut]])
+    in_dist = auroc_with_ci(train_y[idx[cut:]],
+                            np.asarray(p2.score(H_tr[idx[cut:], L, :].astype(np.float64))), seed=seed)
+
+    true_only = np.isin(cells, ["TT", "TA"])
+    freq_read = auroc_with_ci((cells[true_only] == "TT"), s[true_only], seed=seed)
+    off = np.isin(cells, ["TA", "FT"])
+    off_auroc = auroc_with_ci(truth[off], s[off], seed=seed)
+
+    out = {"experiment": "transfer_am_to_crossed", "model": substrate.model_id,
+           "layer": int(L), "corpus": Path(corpus_path).name,
+           "n_train": len(train_texts), "n_test": len(items),
+           "in_distribution_on_am": in_dist,
+           "frequency_read_among_true_only": freq_read,
+           "disagreement_auroc": off_auroc,
+           "cell_means": {c: round(float(s[cells == c].mean()), 4)
+                          for c in ("TT", "TA", "FT", "FA")},
+           "provenance": "measured"}
+    print(f"[transfer] A&M held-out {in_dist['auroc']:.3f} | "
+          f"frequency-read among TRUE only {freq_read['auroc']:.3f} {freq_read['ci']} | "
+          f"disagreement {off_auroc['auroc']:.3f} | cells {out['cell_means']}", flush=True)
+    return out

@@ -1,0 +1,46 @@
+{
+  "experiment": "transfer_am_to_crossed",
+  "model": "EleutherAI/pythia-6.9b",
+  "layer": 16,
+  "corpus": "mirage_2x2_v44b4126cba1c.jsonl",
+  "n_train": 16329,
+  "n_test": 608,
+  "in_distribution_on_am": {
+    "auroc": 0.9202,
+    "ci": [
+      0.9115,
+      0.9289
+    ],
+    "n": 3266,
+    "n_boot": 1000
+  },
+  "frequency_read_among_true_only": {
+    "auroc": 0.6755,
+    "ci": [
+      0.6113,
+      0.7352
+    ],
+    "n": 304,
+    "n_boot": 1000
+  },
+  "disagreement_auroc": {
+    "auroc": 0.929,
+    "ci": [
+      0.8975,
+      0.9537
+    ],
+    "n": 304,
+    "n_boot": 1000
+  },
+  "cell_means": {
+    "TT": 0.9209,
+    "TA": 0.8257,
+    "FT": 0.2359,
+    "FA": 0.3178
+  },
+  "provenance": "measured",
+  "compute": {
+    "gpu": "H100",
+    "wall_seconds": 220.1
+  }
+}

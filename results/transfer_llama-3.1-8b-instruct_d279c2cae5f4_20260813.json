@@ -1,0 +1,46 @@
+{
+  "experiment": "transfer_am_to_crossed",
+  "model": "meta-llama/Llama-3.1-8B-Instruct",
+  "layer": 16,
+  "corpus": "mirage_2x2_vd279c2cae5f4.jsonl",
+  "n_train": 16329,
+  "n_test": 140,
+  "in_distribution_on_am": {
+    "auroc": 0.981,
+    "ci": [
+      0.9777,
+      0.9844
+    ],
+    "n": 3266,
+    "n_boot": 1000
+  },
+  "frequency_read_among_true_only": {
+    "auroc": 0.6555,
+    "ci": [
+      0.5195,
+      0.7845
+    ],
+    "n": 70,
+    "n_boot": 1000
+  },
+  "disagreement_auroc": {
+    "auroc": 0.8767,
+    "ci": [
+      0.7829,
+      0.9567
+    ],
+    "n": 70,
+    "n_boot": 1000
+  },
+  "cell_means": {
+    "TT": 0.9782,
+    "TA": 0.9743,
+    "FT": 0.6215,
+    "FA": 0.2469
+  },
+  "provenance": "measured",
+  "compute": {
+    "gpu": "H100",
+    "wall_seconds": 324.2
+  }
+}
