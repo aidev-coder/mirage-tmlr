@@ -17,3 +17,8 @@ data/raw/*
 data/activations/
 *.npz
 *.pt
+paper/*.aux
+paper/*.log
+paper/*.out
+paper/*.blg
+paper/*.bbl
