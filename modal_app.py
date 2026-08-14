@@ -474,7 +474,7 @@ def harvest_fn(model_id: str, topic: str, max_subjects: int = 400) -> dict:
               timeout=4 * 3600)
 @_timed
 def transfer_run(model_id: str, corpus_name: str, layer: int | None = None,
-                 seed: int = 0, subsample_n: int = 0) -> dict:
+                 seed: int = 0, subsample_n: int = 0, am_dir: str = "") -> dict:
     """Train the probe on the field's own true/false dataset, test on our crossed
     corpus. Answers whether frequency reading is taught by our training cells or
     is already present in a probe trained the standard way."""
@@ -484,6 +484,7 @@ def transfer_run(model_id: str, corpus_name: str, layer: int | None = None,
 
     sub = Substrate(model_id, cache_dir="/root/activations")
     out = run_transfer(sub, f"/root/mirage/data/corpus/{corpus_name}",
+                       am_dir=(f"/root/mirage/data/raw/{am_dir}" if am_dir else None),
                        layer=layer, seed=seed, commit_fn=activations.commit,
                        subsample_n=subsample_n)
     activations.commit()
@@ -491,11 +492,84 @@ def transfer_run(model_id: str, corpus_name: str, layer: int | None = None,
     return out
 
 
+@app.function(image=image, gpu=GPU, volumes=VOLUMES, secrets=SECRETS,
+              timeout=4 * 3600)
+@_timed
+def ppl_baseline_run(reference_model: str, am_dir: str = "azaria_mitchell_official",
+                     seed: int = 0) -> dict:
+    """Reference perplexity as a standalone detector, with no hidden states read.
+
+    Answers two things the probe results cannot. Whether a trivial plausibility
+    heuristic matches the probes on our corpora, and whether it also matches them on
+    the field's own dataset, where falsehoods are unattested row swaps and a
+    perplexity reader should therefore do well by construction.
+    """
+    _setup()
+    import csv as _csv
+    import json as _json
+    from pathlib import Path as _P
+
+    import numpy as _np
+
+    from src.stage3 import load_corpus
+    from src.stats import auroc_with_ci
+    from src.substrate import Substrate
+    from src.typicality import reference_perplexity
+
+    ref = Substrate(reference_model, cache_dir="/root/activations")
+    out = {"reference_model": reference_model, "provenance": "measured", "splits": {}}
+
+    for tag, ch in (("authored", "v44b4126cba1c"), ("harvested", "vd279c2cae5f4")):
+        items = load_corpus(f"/root/mirage/data/corpus/mirage_2x2_{ch}.jsonl")
+        texts = [it["text"] for it in items]
+        truth = _np.array([bool(it["truth"]) for it in items])
+        cells = _np.array([it["cell"] for it in items])
+        sc = -reference_perplexity(texts, ref)
+        dia, off = _np.isin(cells, ["TT", "FA"]), _np.isin(cells, ["TA", "FT"])
+        ton = _np.isin(cells, ["TT", "TA"])
+        out["splits"][tag] = {
+            "n": len(items),
+            "diagonal": auroc_with_ci(truth[dia], sc[dia], seed=seed),
+            "off_diagonal": auroc_with_ci(truth[off], sc[off], seed=seed),
+            "frequency_read_true_only": auroc_with_ci((cells[ton] == "TT"), sc[ton], seed=seed),
+            "median_ppl_by_cell": {c: round(float(_np.median(-sc[cells == c])), 2)
+                                   for c in ("TT", "TA", "FT", "FA")},
+        }
+        print(f"[ppl] {tag}: diag {out['splits'][tag]['diagonal']['auroc']:.3f} "
+              f"off {out['splits'][tag]['off_diagonal']['auroc']:.3f}", flush=True)
+
+    rows, labs = [], []
+    for csvf in sorted(_P(f"/root/mirage/data/raw/{am_dir}").glob("*_true_false.csv")):
+        if csvf.name.startswith("neg_"):
+            continue
+        with open(csvf, encoding="utf-8-sig") as fh:
+            for r in _csv.DictReader(fh):
+                st = (r.get("statement") or "").strip()
+                lb = (r.get("label") or "").strip()
+                if st and lb in ("0", "1"):
+                    rows.append(st)
+                    labs.append(lb == "1")
+    labs = _np.array(labs)
+    rng = _np.random.default_rng(seed)
+    hold = rng.permutation(len(rows))[: int(0.2 * len(rows))]
+    sc_am = -reference_perplexity([rows[i] for i in hold], ref)
+    out["splits"]["am_heldout"] = {
+        "n": int(len(hold)), "n_total": len(rows), "am_dir": am_dir,
+        "auroc": auroc_with_ci(labs[hold], sc_am, seed=seed),
+    }
+    print(f"[ppl] A&M held-out ({len(hold)} of {len(rows)}): "
+          f"{out['splits']['am_heldout']['auroc']['auroc']:.3f} "
+          f"{out['splits']['am_heldout']['auroc']['ci']}", flush=True)
+    hf_cache.commit()
+    activations.commit()
+    return out
+
+
 @app.local_entrypoint()
 def main(stage: str = "sanity", model: str = "", max_per_topic: int = 0,
          batch_size: int = 32, fast: bool = True, corpus: str = "", seed: int = 0,
          detector: str = "saplma", domain: str = "", layer: int = -1,
-         subsample_n: int = 0):
+         subsample_n: int = 0, am_dir: str = ""):
     """
     modal run mirage/modal_app.py --stage sanity                     # Stage 0, all models
     modal run mirage/modal_app.py --stage stage1 --model <id>        # Stage 1, one model
@@ -690,7 +764,7 @@ def main(stage: str = "sanity", model: str = "", max_per_topic: int = 0,
             "Qwen/Qwen2.5-7B-Instruct", "meta-llama/Llama-3.1-8B-Instruct",
             "google/gemma-2-9b-it", "EleutherAI/pythia-6.9b"]
         kw = {"corpus_name": corpus_name, "layer": layer if layer >= 0 else None,
-              "subsample_n": subsample_n}
+              "subsample_n": subsample_n, "am_dir": am_dir}
         for r in transfer_run.map(ids_tr, kwargs=kw, order_outputs=False,
                                   return_exceptions=True):
             if isinstance(r, Exception):
@@ -705,6 +779,23 @@ def main(stage: str = "sanity", model: str = "", max_per_topic: int = 0,
                   f"{r['frequency_read_among_true_only']['ci']} | "
                   f"disagreement {r['disagreement_auroc']['auroc']:.3f} | "
                   f"cells {r['cell_means']} -> {o}")
+
+    elif stage == "pplbase":
+        from datetime import date
+        refs = [m.strip() for m in model.split(",") if m.strip()] or [
+            "Qwen/Qwen2.5-7B-Instruct", "allenai/OLMo-2-1124-7B"]
+        for r in ppl_baseline_run.map(refs, kwargs={"am_dir": am_dir or "azaria_mitchell_official"},
+                                      order_outputs=False, return_exceptions=True):
+            if isinstance(r, Exception):
+                print(f"SKIPPED (failed): {type(r).__name__}: {str(r)[:200]}")
+                continue
+            sh = r["reference_model"].split("/")[-1].lower()
+            o = _HERE / "results" / f"pplbase_{sh}_{date.today():%Y%m%d}.json"
+            o.write_text(json.dumps(r, indent=2, default=_json_default))
+            sp = r["splits"]
+            print(f"{r['reference_model']}: authored off {sp['authored']['off_diagonal']['auroc']:.3f} "
+                  f"| harvested off {sp['harvested']['off_diagonal']['auroc']:.3f} "
+                  f"| A&M held-out {sp['am_heldout']['auroc']['auroc']:.3f} -> {o}")
 
     elif stage == "semantic":
         from datetime import date

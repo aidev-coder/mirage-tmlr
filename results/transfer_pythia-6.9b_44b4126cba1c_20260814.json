@@ -4,123 +4,124 @@
   "size_control": {
     "subsample_n": 304,
     "reps": 5,
-    "disagreement_mean": 0.52,
-    "disagreement_min": 0.3971,
-    "disagreement_max": 0.5956,
-    "frequency_read_mean": 0.5973,
-    "frequency_read_min": 0.4926,
-    "frequency_read_max": 0.6723,
+    "disagreement_mean": 0.5413,
+    "disagreement_min": 0.4606,
+    "disagreement_max": 0.644,
+    "frequency_read_mean": 0.6521,
+    "frequency_read_min": 0.5364,
+    "frequency_read_max": 0.7506,
     "per_rep": [
       {
         "rep": 0,
         "n_train": 304,
-        "true_frac": 0.4836,
-        "disagreement_auroc": 0.5956,
-        "frequency_read_among_true_only": 0.4926,
+        "true_frac": 0.5033,
+        "disagreement_auroc": 0.5403,
+        "frequency_read_among_true_only": 0.5364,
         "cell_means": {
-          "TT": 0.6152,
-          "TA": 0.5821,
-          "FT": 0.4616,
-          "FA": 0.5574
+          "TT": 0.8533,
+          "TA": 0.834,
+          "FT": 0.81,
+          "FA": 0.7289
         }
       },
       {
         "rep": 1,
         "n_train": 304,
-        "true_frac": 0.4605,
-        "disagreement_auroc": 0.3971,
-        "frequency_read_among_true_only": 0.6723,
+        "true_frac": 0.4737,
+        "disagreement_auroc": 0.581,
+        "frequency_read_among_true_only": 0.6737,
         "cell_means": {
-          "TT": 0.5821,
-          "TA": 0.4755,
-          "FT": 0.5419,
-          "FA": 0.4396
+          "TT": 0.7625,
+          "TA": 0.6107,
+          "FT": 0.5406,
+          "FA": 0.4715
         }
       },
       {
         "rep": 2,
         "n_train": 304,
-        "true_frac": 0.5164,
-        "disagreement_auroc": 0.5296,
-        "frequency_read_among_true_only": 0.569,
+        "true_frac": 0.523,
+        "disagreement_auroc": 0.4606,
+        "frequency_read_among_true_only": 0.7506,
         "cell_means": {
-          "TT": 0.644,
-          "TA": 0.4998,
-          "FT": 0.4846,
-          "FA": 0.4187
+          "TT": 0.6891,
+          "TA": 0.4529,
+          "FT": 0.4866,
+          "FA": 0.3889
         }
       },
       {
         "rep": 3,
         "n_train": 304,
-        "true_frac": 0.4572,
-        "disagreement_auroc": 0.5148,
-        "frequency_read_among_true_only": 0.6544,
+        "true_frac": 0.5099,
+        "disagreement_auroc": 0.4804,
+        "frequency_read_among_true_only": 0.6724,
         "cell_means": {
-          "TT": 0.3954,
-          "TA": 0.2139,
-          "FT": 0.1982,
-          "FA": 0.1164
+          "TT": 0.536,
+          "TA": 0.4043,
+          "FT": 0.4187,
+          "FA": 0.351
         }
       },
       {
         "rep": 4,
         "n_train": 304,
-        "true_frac": 0.5033,
-        "disagreement_auroc": 0.5631,
-        "frequency_read_among_true_only": 0.5982,
+        "true_frac": 0.5066,
+        "disagreement_auroc": 0.644,
+        "frequency_read_among_true_only": 0.6274,
         "cell_means": {
-          "TT": 0.4882,
-          "TA": 0.3841,
-          "FT": 0.2562,
-          "FA": 0.2517
+          "TT": 0.7933,
+          "TA": 0.751,
+          "FT": 0.5754,
+          "FA": 0.6477
         }
       }
     ]
   },
   "layer": 16,
   "corpus": "mirage_2x2_v44b4126cba1c.jsonl",
-  "n_train": 9270,
+  "n_train": 4991,
   "n_test": 608,
-  "n_am_rows": 16329,
-  "n_dropped_leak": 6882,
-  "n_dropped_dup": 177,
+  "n_am_rows": 6330,
+  "n_dropped_leak": 1329,
+  "n_dropped_dup": 10,
+  "am_dir": "azaria_mitchell_official",
   "in_distribution_on_am": {
-    "auroc": 0.8796,
+    "auroc": 0.853,
     "ci": [
-      0.8638,
-      0.8956
+      0.8309,
+      0.8759
     ],
-    "n": 1854,
+    "n": 999,
     "n_boot": 1000
   },
   "frequency_read_among_true_only": {
-    "auroc": 0.6386,
+    "auroc": 0.6898,
     "ci": [
-      0.5755,
-      0.7012
+      0.6278,
+      0.7494
     ],
     "n": 304,
     "n_boot": 1000
   },
   "disagreement_auroc": {
-    "auroc": 0.8818,
+    "auroc": 0.6969,
     "ci": [
-      0.845,
-      0.9141
+      0.6395,
+      0.7563
     ],
     "n": 304,
     "n_boot": 1000
   },
   "cell_means": {
-    "TT": 0.7296,
-    "TA": 0.5688,
-    "FT": 0.1255,
-    "FA": 0.151
+    "TT": 0.7695,
+    "TA": 0.4791,
+    "FT": 0.202,
+    "FA": 0.0966
   },
   "provenance": "measured",
   "compute": {
     "gpu": "H100",
-    "wall_seconds": 241.1
+    "wall_seconds": 126.0
   }
 }

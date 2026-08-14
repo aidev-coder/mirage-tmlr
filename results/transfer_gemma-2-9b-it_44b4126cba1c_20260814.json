@@ -4,123 +4,124 @@
   "size_control": {
     "subsample_n": 304,
     "reps": 5,
-    "disagreement_mean": 0.9924,
-    "disagreement_min": 0.9865,
-    "disagreement_max": 0.9965,
-    "frequency_read_mean": 0.515,
-    "frequency_read_min": 0.4198,
-    "frequency_read_max": 0.6266,
+    "disagreement_mean": 0.9898,
+    "disagreement_min": 0.9844,
+    "disagreement_max": 0.9919,
+    "frequency_read_mean": 0.5255,
+    "frequency_read_min": 0.4548,
+    "frequency_read_max": 0.6147,
     "per_rep": [
       {
         "rep": 0,
         "n_train": 304,
-        "true_frac": 0.4836,
-        "disagreement_auroc": 0.9965,
-        "frequency_read_among_true_only": 0.4198,
+        "true_frac": 0.5033,
+        "disagreement_auroc": 0.9844,
+        "frequency_read_among_true_only": 0.4687,
         "cell_means": {
-          "TT": 0.8154,
-          "TA": 0.8906,
-          "FT": 0.0341,
-          "FA": 0.1119
+          "TT": 0.8338,
+          "TA": 0.8409,
+          "FT": 0.143,
+          "FA": 0.2181
         }
       },
       {
         "rep": 1,
         "n_train": 304,
-        "true_frac": 0.4605,
+        "true_frac": 0.4737,
         "disagreement_auroc": 0.9919,
-        "frequency_read_among_true_only": 0.6266,
+        "frequency_read_among_true_only": 0.546,
         "cell_means": {
-          "TT": 0.8466,
-          "TA": 0.7802,
-          "FT": 0.0327,
-          "FA": 0.069
+          "TT": 0.9844,
+          "TA": 0.9883,
+          "FT": 0.1239,
+          "FA": 0.226
         }
       },
       {
         "rep": 2,
         "n_train": 304,
-        "true_frac": 0.5164,
-        "disagreement_auroc": 0.9865,
-        "frequency_read_among_true_only": 0.5077,
+        "true_frac": 0.523,
+        "disagreement_auroc": 0.9907,
+        "frequency_read_among_true_only": 0.6147,
         "cell_means": {
-          "TT": 0.7408,
-          "TA": 0.7402,
-          "FT": 0.0667,
-          "FA": 0.1153
+          "TT": 0.8812,
+          "TA": 0.8433,
+          "FT": 0.0826,
+          "FA": 0.1387
         }
       },
       {
         "rep": 3,
         "n_train": 304,
-        "true_frac": 0.4572,
-        "disagreement_auroc": 0.9934,
-        "frequency_read_among_true_only": 0.4712,
+        "true_frac": 0.5099,
+        "disagreement_auroc": 0.9907,
+        "frequency_read_among_true_only": 0.5431,
         "cell_means": {
-          "TT": 0.8858,
-          "TA": 0.8998,
-          "FT": 0.0638,
-          "FA": 0.1091
+          "TT": 0.9381,
+          "TA": 0.9304,
+          "FT": 0.108,
+          "FA": 0.2012
         }
       },
       {
         "rep": 4,
         "n_train": 304,
-        "true_frac": 0.5033,
-        "disagreement_auroc": 0.9935,
-        "frequency_read_among_true_only": 0.5497,
+        "true_frac": 0.5066,
+        "disagreement_auroc": 0.9913,
+        "frequency_read_among_true_only": 0.4548,
         "cell_means": {
-          "TT": 0.942,
-          "TA": 0.937,
-          "FT": 0.0451,
-          "FA": 0.0968
+          "TT": 0.9359,
+          "TA": 0.9423,
+          "FT": 0.1003,
+          "FA": 0.1888
         }
       }
     ]
   },
   "layer": 21,
   "corpus": "mirage_2x2_v44b4126cba1c.jsonl",
-  "n_train": 9270,
+  "n_train": 4991,
   "n_test": 608,
-  "n_am_rows": 16329,
-  "n_dropped_leak": 6882,
-  "n_dropped_dup": 177,
+  "n_am_rows": 6330,
+  "n_dropped_leak": 1329,
+  "n_dropped_dup": 10,
+  "am_dir": "azaria_mitchell_official",
   "in_distribution_on_am": {
-    "auroc": 0.9742,
+    "auroc": 0.9817,
     "ci": [
-      0.9687,
-      0.9794
+      0.9752,
+      0.9875
     ],
-    "n": 1854,
+    "n": 999,
     "n_boot": 1000
   },
   "frequency_read_among_true_only": {
-    "auroc": 0.6077,
+    "auroc": 0.5742,
     "ci": [
-      0.5441,
-      0.6683
+      0.5112,
+      0.6361
     ],
     "n": 304,
     "n_boot": 1000
   },
   "disagreement_auroc": {
-    "auroc": 0.9924,
+    "auroc": 0.9724,
     "ci": [
-      0.9825,
-      0.9983
+      0.955,
+      0.9854
     ],
     "n": 304,
     "n_boot": 1000
   },
   "cell_means": {
-    "TT": 0.9331,
-    "TA": 0.9312,
-    "FT": 0.0263,
-    "FA": 0.034
+    "TT": 0.7825,
+    "TA": 0.652,
+    "FT": 0.0284,
+    "FA": 0.0336
   },
   "provenance": "measured",
   "compute": {
     "gpu": "H100",
-    "wall_seconds": 207.4
+    "wall_seconds": 157.8
   }
 }

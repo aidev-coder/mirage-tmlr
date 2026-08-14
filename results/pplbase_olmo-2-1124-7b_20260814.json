@@ -1,0 +1,96 @@
+{
+  "reference_model": "allenai/OLMo-2-1124-7B",
+  "provenance": "measured",
+  "splits": {
+    "authored": {
+      "n": 608,
+      "diagonal": {
+        "auroc": 0.839,
+        "ci": [
+          0.7918,
+          0.8829
+        ],
+        "n": 304,
+        "n_boot": 1000
+      },
+      "off_diagonal": {
+        "auroc": 0.7964,
+        "ci": [
+          0.7462,
+          0.843
+        ],
+        "n": 304,
+        "n_boot": 1000
+      },
+      "frequency_read_true_only": {
+        "auroc": 0.5412,
+        "ci": [
+          0.4744,
+          0.605
+        ],
+        "n": 304,
+        "n_boot": 1000
+      },
+      "median_ppl_by_cell": {
+        "TT": 19.14,
+        "TA": 22.03,
+        "FT": 66.68,
+        "FA": 68.51
+      }
+    },
+    "harvested": {
+      "n": 140,
+      "diagonal": {
+        "auroc": 0.898,
+        "ci": [
+          0.8149,
+          0.9615
+        ],
+        "n": 70,
+        "n_boot": 1000
+      },
+      "off_diagonal": {
+        "auroc": 0.711,
+        "ci": [
+          0.5798,
+          0.8278
+        ],
+        "n": 70,
+        "n_boot": 1000
+      },
+      "frequency_read_true_only": {
+        "auroc": 0.591,
+        "ci": [
+          0.4584,
+          0.7214
+        ],
+        "n": 70,
+        "n_boot": 1000
+      },
+      "median_ppl_by_cell": {
+        "TT": 13.55,
+        "TA": 16.65,
+        "FT": 26.74,
+        "FA": 31.78
+      }
+    },
+    "am_heldout": {
+      "n": 1266,
+      "n_total": 6330,
+      "am_dir": "azaria_mitchell_official",
+      "auroc": {
+        "auroc": 0.711,
+        "ci": [
+          0.6828,
+          0.7382
+        ],
+        "n": 1266,
+        "n_boot": 1000
+      }
+    }
+  },
+  "compute": {
+    "gpu": "H100",
+    "wall_seconds": 208.5
+  }
+}

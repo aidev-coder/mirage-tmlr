@@ -1,0 +1,96 @@
+{
+  "reference_model": "Qwen/Qwen2.5-7B-Instruct",
+  "provenance": "measured",
+  "splits": {
+    "authored": {
+      "n": 608,
+      "diagonal": {
+        "auroc": 0.8614,
+        "ci": [
+          0.8175,
+          0.8995
+        ],
+        "n": 304,
+        "n_boot": 1000
+      },
+      "off_diagonal": {
+        "auroc": 0.8301,
+        "ci": [
+          0.7841,
+          0.8715
+        ],
+        "n": 304,
+        "n_boot": 1000
+      },
+      "frequency_read_true_only": {
+        "auroc": 0.5307,
+        "ci": [
+          0.4622,
+          0.5922
+        ],
+        "n": 304,
+        "n_boot": 1000
+      },
+      "median_ppl_by_cell": {
+        "TT": 17.08,
+        "TA": 21.64,
+        "FT": 70.2,
+        "FA": 83.86
+      }
+    },
+    "harvested": {
+      "n": 140,
+      "diagonal": {
+        "auroc": 0.9192,
+        "ci": [
+          0.8437,
+          0.9763
+        ],
+        "n": 70,
+        "n_boot": 1000
+      },
+      "off_diagonal": {
+        "auroc": 0.7698,
+        "ci": [
+          0.6447,
+          0.8726
+        ],
+        "n": 70,
+        "n_boot": 1000
+      },
+      "frequency_read_true_only": {
+        "auroc": 0.5127,
+        "ci": [
+          0.379,
+          0.6536
+        ],
+        "n": 70,
+        "n_boot": 1000
+      },
+      "median_ppl_by_cell": {
+        "TT": 12.6,
+        "TA": 12.1,
+        "FT": 26.59,
+        "FA": 42.47
+      }
+    },
+    "am_heldout": {
+      "n": 1266,
+      "n_total": 6330,
+      "am_dir": "azaria_mitchell_official",
+      "auroc": {
+        "auroc": 0.7182,
+        "ci": [
+          0.691,
+          0.746
+        ],
+        "n": 1266,
+        "n_boot": 1000
+      }
+    }
+  },
+  "compute": {
+    "gpu": "H100",
+    "wall_seconds": 110.4
+  }
+}
