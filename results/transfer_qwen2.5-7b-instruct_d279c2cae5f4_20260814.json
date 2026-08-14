@@ -1,0 +1,65 @@
+{
+  "experiment": "transfer_am_to_crossed",
+  "model": "Qwen/Qwen2.5-7B-Instruct",
+  "size_control": null,
+  "layer": 14,
+  "corpus": "mirage_2x2_vd279c2cae5f4.jsonl",
+  "n_train": 4991,
+  "n_test": 140,
+  "n_am_rows": 6330,
+  "n_dropped_leak": 1329,
+  "n_dropped_dup": 10,
+  "am_dir": "azaria_mitchell_official",
+  "in_distribution_on_am": {
+    "auroc": 0.9478,
+    "ci": [
+      0.9353,
+      0.9601
+    ],
+    "n": 999,
+    "n_boot": 1000
+  },
+  "in_distribution_leave_one_topic_out": {
+    "per_topic": {
+      "animals": 0.8682,
+      "cities": 0.9356,
+      "companies": 0.8995,
+      "elements": 0.7567,
+      "facts": 0.906,
+      "generated": 0.7908,
+      "inventions": 0.9413
+    },
+    "mean": 0.8712,
+    "min": 0.7567,
+    "max": 0.9413
+  },
+  "frequency_read_among_true_only": {
+    "auroc": 0.778,
+    "ci": [
+      0.6565,
+      0.8818
+    ],
+    "n": 70,
+    "n_boot": 1000
+  },
+  "disagreement_auroc": {
+    "auroc": 0.7673,
+    "ci": [
+      0.6405,
+      0.8665
+    ],
+    "n": 70,
+    "n_boot": 1000
+  },
+  "cell_means": {
+    "TT": 0.9524,
+    "TA": 0.8128,
+    "FT": 0.4331,
+    "FA": 0.3311
+  },
+  "provenance": "measured",
+  "compute": {
+    "gpu": "H100",
+    "wall_seconds": 205.7
+  }
+}

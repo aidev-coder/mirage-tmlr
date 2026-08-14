@@ -277,7 +277,7 @@ def run_transfer(substrate, corpus_path, am_dir=None, layer=None, seed=0,
 
     am_dir = Path(am_dir or (_ROOT / "data" / "raw" / "azaria_mitchell"))
     seen, n_raw, n_leak, n_dup = set(), 0, 0, 0
-    train_texts, train_y = [], []
+    train_texts, train_y, train_topic = [], [], []
     for csv in sorted(am_dir.glob("*_true_false.csv")):
         if csv.name.startswith("neg_"):
             continue
@@ -297,6 +297,7 @@ def run_transfer(substrate, corpus_path, am_dir=None, layer=None, seed=0,
                 seen.add(s)
                 train_texts.append(s)
                 train_y.append(lab == "1")
+                train_topic.append(csv.name.replace("_true_false.csv", ""))
     train_y = np.array(train_y)
     print(f"[transfer] A&M rows {n_raw}; dropped {n_leak} sharing a subject with our "
           f"corpora and {n_dup} duplicates; training on {len(train_texts)} "
@@ -322,6 +323,26 @@ def run_transfer(substrate, corpus_path, am_dir=None, layer=None, seed=0,
     p2 = SaplmaProbe(seed=seed).fit(H_tr[idx[:cut], L, :].astype(np.float64), train_y[idx[:cut]])
     in_dist = auroc_with_ci(train_y[idx[cut:]],
                             np.asarray(p2.score(H_tr[idx[cut:], L, :].astype(np.float64))), seed=seed)
+
+    # Azaria and Mitchell evaluate leave-one-topic-out; a random split over the pooled
+    # topics is an easier test, so quoting a random-split number beside their reported
+    # accuracy would compare protocols rather than methods. Both are reported.
+    topics_arr = np.asarray(train_topic)
+    per_topic = {}
+    for t in sorted(set(train_topic)):
+        te = topics_arr == t
+        if te.sum() < 20 or len(set(train_y[~te])) < 2 or len(set(train_y[te])) < 2:
+            continue
+        pt = SaplmaProbe(seed=seed).fit(H_tr[~te, L, :].astype(np.float64), train_y[~te])
+        per_topic[t] = auroc_with_ci(
+            train_y[te], np.asarray(pt.score(H_tr[te, L, :].astype(np.float64))), seed=seed)["auroc"]
+    _v = list(per_topic.values())
+    loto = {"per_topic": per_topic,
+            "mean": round(float(np.mean(_v)), 4) if _v else None,
+            "min": round(float(np.min(_v)), 4) if _v else None,
+            "max": round(float(np.max(_v)), 4) if _v else None}
+    print(f"[transfer] leave-one-topic-out mean {loto['mean']} range [{loto['min']}, {loto['max']}] "
+          f"| random-split {in_dist['auroc']:.3f}", flush=True)
 
     true_only = np.isin(cells, ["TT", "TA"])
     freq_read = auroc_with_ci((cells[true_only] == "TT"), s[true_only], seed=seed)
@@ -374,6 +395,7 @@ def run_transfer(substrate, corpus_path, am_dir=None, layer=None, seed=0,
            "n_am_rows": n_raw, "n_dropped_leak": n_leak, "n_dropped_dup": n_dup,
            "am_dir": Path(am_dir).name,
            "in_distribution_on_am": in_dist,
+           "in_distribution_leave_one_topic_out": loto,
            "frequency_read_among_true_only": freq_read,
            "disagreement_auroc": off_auroc,
            "cell_means": {c: round(float(s[cells == c].mean()), 4)
