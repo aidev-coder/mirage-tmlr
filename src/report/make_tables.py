@@ -81,7 +81,7 @@ def diagnosis_table(domain: str | None = None) -> str:
         for r in rows]
     lines.append("")
     lines.append("`*` = CI excludes zero. Overlapping CIs are not a difference (the project's standing directive §1.5).")
-    lines.append("In-dist = held-out diagonal (the field's reported number). Off-diagonal = honest "
+    lines.append("In-dist = held-out diagonal (the field's reported number). Off-diagonal = "
                  "truth detection on TA+FT. FT mean P(true) is the fluent-lie cell: BELOW 0.5 means "
                  "the probe correctly rejects fluent falsehood. Recoverability = truth β under an "
                  "all-cell (fairly trained) probe, typicality+fragmentation partialled out.")

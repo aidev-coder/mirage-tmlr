@@ -189,7 +189,7 @@ def _v3_rows(corpus: str | None = None):
 
 def fig_benchmark_blindness(out: str | Path | None = None, corpus: str | None = None):
     """The instrument-validity result. Every probe scores ~1.0 by the measure the
-    field reports (held-out diagonal). Their honest off-diagonal scores span 0.11
+    field reports (held-out diagonal). Their off-diagonal scores span 0.11
     to 0.97. The benchmark cannot tell a frequency readout from a truth probe."""
     import matplotlib
     matplotlib.use("Agg")
@@ -205,18 +205,18 @@ def fig_benchmark_blindness(out: str | Path | None = None, corpus: str | None = 
     ax.scatter([r["in_dist"] for r in rows], y, s=54, marker="D", color="#48a",
                zorder=3, label="in-distribution (what the field reports)")
     ax.scatter([r["off"] for r in rows], y, s=54, color="#c44", zorder=3,
-               label="off-diagonal (honest)")
+               label="off-diagonal")
     ax.axvline(0.5, ls="--", lw=.8, color="gray")
     ax.set_yticks(y); ax.set_yticklabels([r["model"] for r in rows], fontsize=8)
     ax.set_ylim(-0.7, len(rows) - 0.3)
     ax.set_xlabel("AUROC"); ax.set_xlim(0, 1.05)
     ax.text(0.512, -0.6, "chance", fontsize=8, color="gray")
     # ranges read from the data, never hardcoded: the previous title still claimed
-    # 0.11 to 0.97 from a retracted corpus while plotting different numbers
+    # 0.11 to 0.97 from a superseded corpus while plotting different numbers
     ind = [r["in_dist"] for r in rows]
     off = [r["off"] for r in rows]
     ax.set_title(f"the benchmark reports {min(ind):.2f} to {max(ind):.2f} for every probe;\n"
-                 f"honest truth detection ranges from {min(off):.2f} to {max(off):.2f}"
+                 f"off-diagonal AUROC ranges from {min(off):.2f} to {max(off):.2f}"
                  f"   (n={len(rows)} models)", fontsize=10)
     ax.legend(fontsize=8, loc="upper left", framealpha=.92)
     fig.tight_layout()
@@ -227,7 +227,7 @@ def fig_benchmark_blindness(out: str | Path | None = None, corpus: str | None = 
 
 def fig_recoverability_mechanism(out: str | Path | None = None, corpus: str | None = None):
     """The mechanism: below a recoverability knee the probe is pinned near a floor
-    and extra recoverability buys nothing; above it, honest performance climbs.
+    and extra recoverability buys nothing; above it, off-diagonal AUROC climbs.
 
     Draws the HINGE, not a regression line. The earlier version fitted a straight
     line, which model comparison rejects (AIC hinge -90.1 vs linear -60.7 on the
@@ -288,7 +288,7 @@ def fig_recoverability_mechanism(out: str | Path | None = None, corpus: str | No
                 transform=ax.transAxes, fontsize=8.5, va="top")
     ax.axhline(0.5, ls=":", lw=.8, color="gray")
     ax.set_xlabel("truth recoverability  (β with fair training)")
-    ax.set_ylabel("honest off-diagonal AUROC")
+    ax.set_ylabel("off-diagonal AUROC")
     ax.set_title("below the knee, more recoverable truth buys nothing", fontsize=10)
     fig.tight_layout()
     out = Path(out or RESULTS / "fig_recoverability_mechanism.png")
