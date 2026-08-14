@@ -295,3 +295,48 @@ D-002 above, dated 2026-07-09 and introduced in commit e17707f, which names the 
 cites that hash in the same format as D-023, so a hashed registration does not sit beside
 an unhashed claim of one. D-007 (2026-07-xx) records the later promotion of the secondary
 axis to primary, which is the divergence section 2 reports.
+
+## D-024 - Canonical recoverability estimator, and the ladder's status (2026-08-14)
+
+Registered BEFORE the cross-fitted estimates exist, to close a degrees-of-freedom leak
+between two items of the same batch.
+
+The problem. D-023's ladder was run with recoverability as currently defined: the truth
+coefficient from `mediation_allcell`, partialled on typicality, fragmentation and edit,
+computed on out-of-fold all-cell probe scores. A separate batch item (D12 in the review's
+numbering) will produce a cross-fitted variant. If the cross-fitted variant then becomes
+the paper's canonical measure - which is the point of running it - the registered knee
+test will have been conducted on a non-canonical estimator, and the choice of which ladder
+to report would be made AFTER both exist. That is the post-hoc selection D-023 was written
+to prevent, reappearing one level up.
+
+DECISION, fixed now.
+  1. The CANONICAL recoverability estimator for the paper is the cross-fitted one, if it
+     is computed successfully. Not the current one.
+  2. If the cross-fitted estimator differs materially from the current one - defined as
+     Spearman rho below 0.95 across the 18 models, or any model moving by more than 0.05 -
+     the D-023 ladder is re-run EXACTLY ONCE under the canonical estimator, and that run
+     is the registered result.
+  3. Tonight's ladder (d45330b, verdict INDETERMINATE) is then relabelled a PILOT and
+     reported as such, with its numbers kept in the appendix rather than deleted.
+  4. If the two estimators agree by the test in (2), tonight's ladder stands as the
+     registered result and no re-run occurs.
+  5. The D-023 criterion (|k(608) - k(100)| > W with W = 0.230, monotone on >= 3 of 5
+     rungs) is unchanged and applies to whichever ladder is registered.
+
+No third run. If the re-run under (2) also lands indeterminate, the paper reports
+indeterminate and stops.
+
+## D-025 - Dilution decomposition is exploratory, not registered (2026-08-14)
+
+The secondary design's stillness (knee shift 0.031 against the primary's 0.137) suggests
+the primary drift is attenuation in the x-measurement rather than the threshold moving.
+That is currently an assertion consistent with the data, not a measurement of it.
+
+DECISION. The forward simulation testing it - inject rung-matched noise into the full-608
+recoverability values, refit, compare simulated k(n) and slope(n) against observed - is
+labelled EXPLORATORY in the paper regardless of outcome. It cannot convert the registered
+INDETERMINATE into a null or a positive. Its only admissible role is to say whether an
+identified artifactual mechanism reproduces the observed drift, and it must report both
+targets (knee trajectory AND slope trajectory), since attenuation predicts both and
+matching only one is not support.
