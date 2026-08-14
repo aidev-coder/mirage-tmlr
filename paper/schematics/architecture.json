@@ -1,0 +1,59 @@
+{
+  "figure": "fig_architecture",
+  "figma_file": "nfgCoisadD4hJN2ARJSg0z",
+  "figma_node": "3:2",
+  "note": "Authoritative text for the architecture schematic. Every quantity here must also appear in an artifact under results/, and the checker enforces it.",
+  "title": "Where each detector reads",
+  "subtitle": "The three detectors compared here differ in what they are allowed to touch. Only one of them opens the model.",
+  "input": {
+    "kicker": "STATEMENT",
+    "lines": [
+      "“Paris is a city in France.”",
+      "“Monywa is a city in Brazil.”",
+      "one item, one of four cells"
+    ]
+  },
+  "model": {
+    "kicker": "LANGUAGE MODEL  ·  weights frozen",
+    "layers": ["layer L", "⋮", "mid-depth layer   ◀  read here", "⋮", "layer 1"],
+    "note": "all layers swept; mid-depth is the reported one"
+  },
+  "detectors": [
+    {
+      "kicker": "READS HIDDEN STATES",
+      "title": "Linear probe",
+      "opens_model": true,
+      "lines": [
+        "Trained on the diagonal, where truth and frequency agree",
+        "Six architectures, four research groups",
+        "1 of 18 beats the baseline below"
+      ]
+    },
+    {
+      "kicker": "READS NO HIDDEN STATES",
+      "title": "Reference perplexity",
+      "opens_model": false,
+      "lines": [
+        "Scores the sentence under OLMo-2-7B, outside all four probed families",
+        "Nothing trained; 0.830 off-diagonal"
+      ]
+    },
+    {
+      "kicker": "READS NO HIDDEN STATES",
+      "title": "Semantic entropy",
+      "opens_model": false,
+      "lines": [
+        "Samples the model and clusters the answers",
+        "Nothing trained; detects its errors at 0.758-0.822"
+      ]
+    }
+  ],
+  "evaluation": {
+    "kicker": "EVALUATED ON",
+    "pills": [
+      {"label": "TT + FA  (diagonal)", "detail": "held out; this is the published number"},
+      {"label": "TA + FT  (off-diagonal)", "detail": "never trained on; what the probe is worth"}
+    ]
+  },
+  "legend": "Solid outline: the detector reads inside the model.   Dashed outline: it does not.   All three are scored on the same items, and the probe's margin over them is measured by resampling those items in pairs."
+}
