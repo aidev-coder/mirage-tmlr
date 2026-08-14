@@ -239,6 +239,24 @@ CRITERION. Let W be the width of the bootstrap interval on the knee at the refer
 |k(608) - k(100)| > W, AND the shift is monotone in n across at least three of the five
 rungs, so a single noisy rung cannot trigger it.
 
+AMENDMENT (2026-08-14, before any curve exists). The registration left one degree of
+freedom unpinned: whether recoverability is re-measured at each rung or held at its
+full-608 estimate. The two designs answer different questions, and leaving the choice
+open would let it be made after seeing curves, which is the selection this registration
+exists to prevent.
+
+  PRIMARY, and the version that can rewrite section 3.2: BOTH axes measured at n. At each
+  rung, the off-diagonal probe is trained at n AND recoverability is re-measured with fair
+  all-cell training at the same n. This tests whether the representational claim is an
+  artifact of probe data budget.
+
+  SECONDARY, reported alongside: off-diagonal at n against recoverability held at its
+  full-608 estimate. This tests whether small-n probes track the best-case representation
+  measure.
+
+  If the two designs disagree, the disagreement is itself the reported finding and neither
+  is presented alone.
+
 CONSEQUENCE, fixed in advance.
   - Migration -> section 3.2 is REWRITTEN, not rescoped. The hinge becomes a claim about
     the standard protocol's probe regime at realistic training sizes, and the phrase
@@ -248,7 +266,32 @@ CONSEQUENCE, fixed in advance.
   - Shift between 0.5W and W, or non-monotone -> reported as indeterminate at this corpus
     size, with no claim either way, and the curve is published as measured.
 
-Known limitation of this design, stated now. Our corpus caps at 608, so the ladder cannot
-reach the 4,991 and 9,270 sizes that produced the B6 anomaly. A null result therefore
-bounds migration only within 100-608 and does not rule out a knee that moves at the sizes
-the field actually trains on. That limitation goes in the section whichever way it falls.
+Known limitation, and the consequence is ASYMMETRIC. Our corpus caps at 608, so the ladder
+cannot reach the 4,991 and 9,270 sizes that produced the B6 anomaly. The two outcomes are
+therefore not mirror images, and both final sentences are written here, before either is
+needed:
+
+  POSITIVE within 100-608 -> section 3.2 is rewritten regardless of field scale. Migration
+  anywhere falsifies "a property of the representation, not of the probe" as stated. The
+  sentence becomes: "The knee moves with training size across the range we can test, so
+  the hinge describes the standard protocol's probe regime rather than the representation."
+
+  NULL within 100-608 -> field scale stays open, and the extrapolation burden falls on the
+  only instruments touching 1,458-9,270: B6's size-matched pythia arm and the two-arm
+  1,458 control. The sentence becomes: "The knee is stable across a 6x range of training
+  size, from 100 to 608 items. We cannot test the sizes the field trains at; the one
+  below-knee model we measured there moves substantially with size, so the representational
+  reading is asserted only within the range tested."
+
+Either way section 3.2's wording is conditional on the reachable range, and the two
+sentences differ only in direction.
+
+### Note on prior registration practice (added 2026-08-14)
+
+Section 2's phrase "we preregistered a plan to measure typicality three ways" refers to
+D-002 above, dated 2026-07-09 and introduced in commit e17707f, which names the primary
+(cross-family reference perplexity), secondary (infini-gram entity frequency) and tertiary
+(substrate self-perplexity, flagged circular and excluded from assignment) axes. The paper
+cites that hash in the same format as D-023, so a hashed registration does not sit beside
+an unhashed claim of one. D-007 (2026-07-xx) records the later promotion of the secondary
+axis to primary, which is the divergence section 2 reports.
