@@ -290,6 +290,13 @@ Within the Pythia family, going from 70m to 12b does not clean the probe up. Off
 
 The natural question is what the probes buy over something trivial. We scored every statement by its perplexity under a reference model and used the negated value as a truth detector, with nothing trained.
 
+\begin{figure}[t]
+\centering
+\includegraphics[width=\linewidth]{figs/fig_architecture.png}
+\caption{What each detector is allowed to read. The probe taps one layer of a frozen model and is trained on the diagonal; the two comparators never open the model at all. All three are scored on the same items, and the probe's margin over them is measured by resampling those items in pairs. Solid outline marks a detector that reads inside the model, dashed one that does not.}
+\label{fig:architecture}
+\end{figure}
+
 {\footnotesize\raggedright\sloppy \emph{source: \texttt{results/pplbase\_qwen2.5-7b-instruct\_20260814.json}, \texttt{results/pplbase\_olmo-2-1124-7b\_20260814.json}}\par}
 
 \begin{table}[t]
