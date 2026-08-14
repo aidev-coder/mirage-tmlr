@@ -156,7 +156,7 @@ def main() -> int:
             ha="right", va="center", zorder=5)
 
     arrow(ax, [anchor(N["n5"], "right"), anchor(N["n7"], "left")], "solid",
-          "TT+FA diagonal,\ntrained on", lofs=(0, 3.2))
+          "TT+FA diagonal,\ntrained on", lofs=(0, 4.6))
     arrow(ax, [anchor(N["n5"], "bottom"), (N["n5"]["x"], 24), (anchor(N["n8"], "left")[0], 24)],
           "solid", "TA+FT, evaluated only", lpos=0.34, lofs=(-2.0, -3.6), ha="left")
     arrow(ax, [anchor(N["n6"], "bottom"), (N["n6"]["x"], 34), (N["n8"]["x"] + 9, 34),
@@ -166,8 +166,8 @@ def main() -> int:
     # e8: the transfer experiment, down the left margin, bypassing n4 and n5 entirely
     arrow(ax, [anchor(N["n1"], "left"), (6, N["n1"]["y"]), (6, 51),
                (N["n7"]["x"] - 10, 51), (N["n7"]["x"] - 10, anchor(N["n7"], "top")[1])],
-          "dashed", "transfer: trained on their data, evaluated on ours",
-          lpos=0.62, lofs=(0, 1.2))
+          "dashed", "transfer: trained on their data,\nevaluated on ours",
+          lpos=0.62, lofs=(-16, 1.6))
 
     arrow(ax, [anchor(N["n7"], "bottom"), anchor(N["n8"], "top")], "solid",
           "probe scores", lofs=(1.4, 0.2), ha="left")

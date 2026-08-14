@@ -4,6 +4,8 @@
 \usepackage{url}
 \usepackage{booktabs}
 \usepackage{graphicx}
+\usepackage{float}
+\usepackage{array}
 
 \title{The Benchmark Cannot Tell You Whether Your Probe Works}
 
@@ -22,10 +24,10 @@
 
 \begin{abstract}
 
-A linear probe trained on a language model's hidden states separates true statements from false ones and reports a high AUROC, which is read as evidence that the model represents truth internally. In the datasets these probes are trained on, true statements are also the ordinary ones, so a probe that learned only ``familiar means true'' would report the same number. We built a corpus of 608 statements crossing truth against entity frequency and evaluated 18 models from 70M to 12B parameters. Trained the standard way and then stripped of every false statement, our probes separate common entities from rare ones among statements that are all true at AUROC 0.766 to 0.961. Truth is constant throughout, so that signal is not truth. Across 98 probe-model pairs spanning six architectures from four groups, the published score predicts the off-diagonal score at Spearman 0.198 with a model-clustered interval of [-0.177, 0.387]; restricted to probes the benchmark itself would endorse the correlation rises to 0.453, and 33 of those 64 endorsed pairs are still below chance. A detector reading no hidden states at all, perplexity under a reference model, reaches 0.830 on the same off-diagonal split, and under a paired per-item test exactly 1 of 18 probes beats it, 2 tie and 15 lose. On a second corpus whose falsehoods are a model's own errors, no probe trained on the field's data beats it either. Training composition governs both failures: the field's own released dataset, decontaminated and entity-excluded to 4,991 rows, still trains a probe on pythia-6.9b that sorts common from rare among exclusively true statements at 0.954 [0.895, 0.992], measured on the true items of our natural-error corpus. We release the build-time gates, which flag four of our own five corpora, and the registrations under which two of our own conclusions were withdrawn.
+A linear probe trained on a language model's hidden states separates true statements from false ones and reports a high AUROC, which is read as evidence that the model represents truth internally. In the datasets these probes are trained on, true statements are also the ordinary ones, so a probe that learned only ``familiar means true'' would report the same number. We built a corpus of 608 statements crossing truth against entity frequency and evaluated 18 models from 70M to 12B parameters. Trained the standard way and then stripped of every false statement, our probes separate common entities from rare ones among statements that are all true at AUROC 0.766 to 0.961. Truth is constant throughout, so that signal is not truth. Across 98 probe-model pairs spanning six architectures from four groups, the published score predicts the off-diagonal score at Spearman 0.198 with a model-clustered interval of [-0.177, 0.387]; restricted to probes the benchmark itself would endorse the correlation rises to 0.453, and 33 of those 64 endorsed pairs are still below chance. A detector reading no hidden states at all, perplexity under a reference model, reaches 0.830 on the same off-diagonal split, and under a paired per-item test exactly 1 of 18 probes beats it, 2 tie and 15 lose. On a second corpus whose falsehoods are a model's own errors, no probe trained on the field's data beats it either. Training composition governs both failures: the field's own released dataset, decontaminated and entity-excluded to 4,991 rows, still trains a probe on pythia-6.9b that sorts common from rare among exclusively true statements at 0.940 [0.879, 0.988], measured on the true items of our natural-error corpus. We release the build-time gates, which flag four of our own five corpora, and the registrations under which two of our own conclusions were withdrawn.
 
 \end{abstract}
-\section{1. Introduction}
+\section{Introduction}
 
 The claim under audit is that a language model's hidden states encode whether a statement is true, and that a small classifier reading those states detects falsehood. Azaria and Mitchell report 71-83\% accuracy across base models with this method \citep{azaria2023internal}, and the approach has been extended in several directions since \citep{marks2023geometry,burns2023discovering,burger2024truth}. There is a second reading of the same evidence. In the datasets these classifiers are trained and tested on, true statements are also the ordinary ones and false statements are also the odd ones, so a classifier that learned only ``familiar means true'' would produce the same numbers. We can put a figure on how far that alternative goes. Take our classifiers trained the standard way, discard every false statement, and ask them to separate common entities from rare ones among statements that are all true: AUROC \textbf{0.766 to 0.961} across 18 models, mean 0.909. Truth is held constant throughout. Whatever produces those scores is not truth.
 
@@ -35,11 +37,11 @@ The benchmark's blindness is narrower than we first reported, and we state the c
 
 The comparison that makes this concrete needs no hidden states. Perplexity under a reference model, with nothing trained, reaches \textbf{0.830} on our off-diagonal split and \textbf{0.770} on a corpus of a model's own errors. Under a paired per-item bootstrap, resampling the same items for both detectors, \textbf{1 of 18 probes beats it}, two tie and fifteen lose. So the question is not merely whether probes read truth or frequency, but whether reading hidden states buys anything over a plausibility heuristic. The single probe that wins does so by 0.064 [0.014, 0.117]. The worst loses by 0.752.
 
-None of this indicts the method in general, and one experiment shows why. Training a probe on Azaria and Mitchell's released dataset instead of our diagonal, decontaminated because 75.3\% of our authored items appear verbatim in those files, gives off-diagonal AUROC of 0.697 to 0.981 with no collapse. Their construction does not teach the shortcut nearly as hard as ours does. But it teaches it: the frequency read is 0.574 to 0.690 there, every interval excluding chance, and evaluated on the true items of our natural-error corpus pythia-6.9b reaches \textbf{0.954 [0.895, 0.992]} (Table in §5.2). The alignment between truth and familiarity is a spectrum, partial in a published dataset and total in corpora built without a check for it, and the published number is roughly constant across that whole range.
+None of this indicts the method in general, and one experiment shows why. Training a probe on Azaria and Mitchell's released dataset instead of our diagonal, decontaminated because 75.3\% of our authored items appear verbatim in those files, gives off-diagonal AUROC of 0.697 to 0.981 with no collapse. Their construction does not teach the shortcut nearly as hard as ours does. But it teaches it: the frequency read is 0.574 to 0.690 there, every interval excluding chance, and evaluated on the true items of our natural-error corpus pythia-6.9b reaches \textbf{0.940 [0.879, 0.988]} (Table in §5.2). The alignment between truth and familiarity is a spectrum, partial in a published dataset and total in corpora built without a check for it, and the published number is roughly constant across that whole range.
 
 We also report what we got wrong, because it is the reason to trust the rest. Five corpora were built and four had defects we found ourselves. Two conclusions were withdrawn after pre-registered tests refused them. One experiment we had already written into a draft turned out to have been trained on its own evaluation set. Section 9 gives that history with the gates that now catch each class.
 
-\section{2. What we built}
+\section{What we built}
 
 A corpus of 608 statements crossing truth against entity frequency: 152 in each of four cells, drawn from three domains (cities, companies, inventions).
 
@@ -87,7 +89,7 @@ Five properties are enforced at build time rather than checked afterwards, and \
 
 The hidden state canaries pass: a probe predicting ``was this edited'' from activations reaches 0.481 [0.373, 0.580], and a probe predicting truth from tokenization features alone reaches 0.417 [0.318, 0.506]. Both intervals contain chance.
 
-\subsection{2.1 What we got wrong first, and why the corpus looks like this}
+\subsection{What we got wrong first, and why the corpus looks like this}
 
 Four earlier corpora produced clean, large, cross-model effects that we believed at the time. Each was an artifact of our own construction, and each is worth stating because the checks that catch them are cheap and are now released.
 
@@ -101,13 +103,13 @@ The fourth is the subtlest and we found it only by running an invariant test tha
 
 The corpus described above is the fifth attempt. On it, that same bound is \textbf{+0.0000}: a perfect edit shortcut scores 0.500 on the diagonal and 0.500 off it.
 
-\section{3. The result}
+\section{The result}
 
 We train each probe the way the field does, on the diagonal where truth and typicality agree, and then evaluate it two ways. On a held-out diagonal split, which is what gets reported. And on the off-diagonal only, which is what the probe is worth when it can no longer lean on the correlation.
 
 {\footnotesize\raggedright\sloppy \emph{source: \texttt{results/stage3\_saplma\_*\_44b4126cba1c\_*.json}}\par}
 
-\begin{table}[t]
+\begin{table}[H]
 \centering
 \small
 \resizebox{\linewidth}{!}{%
@@ -146,13 +148,13 @@ Gemma-2-9b & 0.990 & 0.823 [0.77, 0.87] & +0.167 [0.115, 0.216] & 0.917 \\
 
 The in-distribution column spans 0.24 of the metric. The off-diagonal column spans 0.81. Every gap is positive and every confidence interval excludes zero, including Gemma-2-9b-it at +0.083 [0.015, 0.131].
 
-\subsection{3.1 How much the benchmark actually tells you}
+\subsection{How much the benchmark actually tells you}
 
 Pooling every probe and model pair we ran, six architectures from four research groups across eighteen models, gives 98 pairs. The pairs are not independent: they share 18 models, so an item-level bootstrap counts one phenomenon up to six times. Both intervals are reported.
 
 {\footnotesize\raggedright\sloppy \emph{source: \texttt{results/stage3\_saplma\_*.json}, \texttt{results/extlayers\_summary\_44b4126cba1c.json}, \texttt{results/drift\_*.json} via \texttt{src/report/d\_batch\_local.py}}\par}
 
-\begin{table}[t]
+\begin{table}[H]
 \centering
 \small
 \resizebox{\linewidth}{!}{%
@@ -173,7 +175,7 @@ The clustered interval is half again as wide and contains zero. But the pooled f
 
 {\footnotesize\raggedright\sloppy \emph{source: same pooled set, via \texttt{src/report/d11\_and\_counts.py}}\par}
 
-\begin{table}[t]
+\begin{table}[H]
 \centering
 \small
 \resizebox{\linewidth}{!}{%
@@ -196,7 +198,7 @@ No model fails under every architecture, and the quantitative form matters becau
 
 {\footnotesize\raggedright\sloppy \emph{source: \texttt{results/stage3\_saplma\_*.json}, \texttt{results/extlayers\_summary\_44b4126cba1c.json}, \texttt{results/drift\_*.json} via \texttt{src/report/d11\_and\_counts.py}}\par}
 
-\begin{table}[t]
+\begin{table}[H]
 \centering
 \small
 \resizebox{\linewidth}{!}{%
@@ -235,7 +237,7 @@ Every model has at least one architecture above chance, so 0 of 18 fail everywhe
 \label{fig:cells}
 \end{figure}
 
-\subsection{3.2 Why it happens, and in what shape}
+\subsection{Why it happens, and in what shape}
 
 The last column of the results table is recoverability: how well truth can be linearly decoded from the same hidden states when the probe is trained on decorrelated data instead of the diagonal, as a partial regression coefficient with typicality, fragmentation and edit provenance held out (Appendix A.3). It is a property of the representation, not of the probe.
 
@@ -264,7 +266,7 @@ We settled the functional form with new data rather than by fit quality. At an e
 
 {\footnotesize\raggedright\sloppy \emph{source: \texttt{results/knee\_ladder\_fit\_44b4126cba1c\_20260814.json}, from \texttt{results/nladdercf\_*.json}}\par}
 
-\begin{table}[t]
+\begin{table}[H]
 \centering
 \small
 \resizebox{\linewidth}{!}{%
@@ -292,17 +294,19 @@ Had the threshold been chosen afterwards, a perfectly monotone knee and a perfec
 \label{fig:ladder}
 \end{figure}
 
+One question the registration pre-identified now has an answer. Cross-fitting removes the shared-item noise between the two axes by construction, so the pilot and registered ladders together test whether the small-n slope drift was that noise. It largely was: the registered ladder's slope falls at every rung relative to the pilot, and four of five rungs land inside the interval a noise-only simulation predicts, against two of five for the pilot.
+
 Four clauses are therefore all this section supports. The hinge describes the measured regime. Its location is stable when recoverability is measured at full precision: holding it at the full-corpus estimate leaves the knee within 0.031 across the ladder. The pre-registered migration test is indeterminate at our corpus sizes. And the 1,458 to 9,270 training-set regime, where §5 shows the below-knee floor is escapable, is outside the ladder's reach and unclaimed.
 
 One rival account is excluded. Because a training-free perplexity reader scores 0.830 off-diagonal (§4), ``truth signal'' as measured could be truth-plus-plausibility. Partialling reference perplexity out of recoverability, using OLMo-2-7B which is outside all four probed families, moves it by 0.026 on average, maximum 0.068, Spearman 0.992. The hinge is not tracking fluency recovery.
 
 The relation does not cover natural error. On the harvested corpus of §7, the same measurement gives 0.490 [-0.077, 0.754], and the hinge is no longer preferred. The account describes falsehoods we wrote.
 
-\subsection{3.3 Scale is not the variable}
+\subsection{Scale is not the variable}
 
 Within the Pythia family, going from 70m to 12b does not clean the probe up. Off-diagonal AUROC across that whole ladder stays between 0.079 and 0.253 while recoverability climbs from -0.026 to 0.585. Parameter count is not what determines whether a probe reads truth. What moves the number is whether the model has a linearly accessible truth representation for the probe to find.
 
-\section{4. A detector that reads no hidden states}
+\section{A detector that reads no hidden states}
 
 The natural question is what the probes buy over something trivial. We scored every statement by its perplexity under a reference model and used the negated value as a truth detector, with nothing trained.
 
@@ -315,7 +319,7 @@ The natural question is what the probes buy over something trivial. We scored ev
 
 {\footnotesize\raggedright\sloppy \emph{source: \texttt{results/pplbase\_qwen2.5-7b-instruct\_20260814.json}, \texttt{results/pplbase\_olmo-2-1124-7b\_20260814.json}}\par}
 
-\begin{table}[t]
+\begin{table}[H]
 \centering
 \small
 \resizebox{\linewidth}{!}{%
@@ -340,7 +344,7 @@ The comparison must use the same probe the results table reports. An earlier ver
 
 {\footnotesize\raggedright\sloppy \emph{source: \texttt{results/paired\_*\_44b4126cba1c\_*.json} via \texttt{src/stage3.py::run\_paired\_baseline}}\par}
 
-\begin{table}[t]
+\begin{table}[H]
 \centering
 \small
 \resizebox{\linewidth}{!}{%
@@ -372,6 +376,8 @@ pythia-1b & 0.078 & 0.830 & -0.752 & [-0.805, -0.697] & loses \\
 
 \textbf{One probe of eighteen beats a detector that reads nothing.} Gemma-2-9b-it wins by 0.064 [0.014, 0.117]. Two tie. Fifteen lose, the worst by 0.752.
 
+The probe column here is a refit of the section 3 estimator on different GPU hardware, so it reproduces that table to within 0.031 rather than exactly; Llama-3.1-8B-Instruct is the largest such difference (0.862 against 0.831). The comparison within this table is unaffected, because both detectors are scored on the same items from the same fit.
+
 \begin{figure}[t]
 \centering
 \includegraphics[width=\linewidth]{figs/fig05_bracket.png}
@@ -383,7 +389,7 @@ Two things this does not show. The baseline does not read truth; it reads statem
 
 What remains is the comparison that matters. The baseline is training-free and stable, 0.71 to 0.83 across every corpus and split measured. The probes span 0.056 to 0.99 across the same terrain. A zero-variance heuristic brackets them: they buy 0.06 to 0.15 over it exactly where the alignment is intact, and pay up to 0.77 where it is not, and the published number does not say which regime you are in.
 
-\section{5. Training composition governs the collapse}
+\section{Training composition governs the collapse}
 
 Every result above trains on our own diagonal, where entity frequency and truth agree because we made them agree. That is a statement about what the standard recipe does when the alignment is present, not about the datasets the field uses. We tested the difference directly, and the test needed two repairs before it was worth reporting.
 
@@ -391,9 +397,9 @@ The first is contamination. Our authored corpus is derived from Azaria and Mitch
 
 The second is provenance. The directory we first trained on was a modified derivative: three files byte-identical to the release, one renamed, and a 10,000-row \texttt{cities\_true\_false.csv} absent from the published artifact entirely. We fetched the published artifact (\texttt{true-false-dataset.zip}, sha256 \texttt{f21fa017...}, 6,330 rows, per-file manifest committed under \texttt{data/raw/azaria\_mitchell\_official/}) and reran on it. \textbf{All numbers below use the published artifact}, 4,991 rows after decontamination.
 
-{\footnotesize\raggedright\sloppy \emph{source: \texttt{results/transfer\_*\_44b4126cba1c\_20260814.json} (official artifact)}\par}
+{\footnotesize\raggedright\sloppy \emph{source: \texttt{results/transfer\_*\_44b4126cba1c\_20260814.json} (official artifact); the leave-one-topic-out column from \texttt{results/transfer\_*\_d279c2cae5f4\_20260814.json}, which carries it, since it is a property of the training set and not of the corpus being evaluated}\par}
 
-\begin{table}[t]
+\begin{table}[H]
 \centering
 \small
 \resizebox{\linewidth}{!}{%
@@ -415,13 +421,13 @@ There is no collapse. \textbf{So the 0.08 floor is caused by the training compos
 
 Training size is a rival explanation, since 4,991 rows against our 304 differs in size as well as composition. Matching the size at 304 rows over five subsamples: gemma-2-9b-it 0.990, Qwen2.5-7B-Instruct 0.963, Llama-3.1-8B-Instruct 0.929, so no collapse. \textbf{pythia-6.9b falls to 0.541.} For the three strong models composition is confirmed against size; for the below-knee model, size and composition contribute comparably, and §3.2's hinge sits in exactly that regime.
 
-\subsection{5.2 The same probes on natural error}
+\subsection{The same probes on natural error}
 
 Applying those probes unchanged to the harvested corpus is what §7 rests on, so the table belongs here rather than in prose.
 
 {\footnotesize\raggedright\sloppy \emph{source: \texttt{results/transfer\_*\_d279c2cae5f4\_*.json} (official artifact, all topics)}\par}
 
-\begin{table}[t]
+\begin{table}[H]
 \centering
 \small
 \resizebox{\linewidth}{!}{%
@@ -437,15 +443,15 @@ pythia-6.9b & 0.309 & 0.940 [0.879, 0.988] & 0.579 \\
 \end{tabular}}
 \end{table}
 
-Detection falls to 0.278-0.767, below the 0.770 a training-free baseline reaches on the same corpus, and the false-common column shows why: the probes place a model's real errors at 0.191 to 0.433 rather than near zero. The frequency read rises rather than falls, and \textbf{pythia-6.9b reaches 0.954 [0.895, 0.992]} --- the strongest single piece of evidence in the paper that the field's own released data teaches the shortcut, since nothing about that number involves our diagonal.
+Detection falls to 0.309-0.767, below the 0.770 a training-free baseline reaches on the same corpus, and the false-common column shows why: the probes place a model's real errors at 0.191 to 0.433 rather than near zero. The frequency read rises rather than falls, and \textbf{pythia-6.9b reaches 0.940 [0.879, 0.988]} --- the strongest single piece of evidence in the paper that the field's own released data teaches the shortcut, since nothing about that number involves our diagonal.
 
-\subsection{5.3 Topical overlap, not just alignment}
+\subsection{Topical overlap, not just alignment}
 
 Our first, contaminated run of this experiment accidentally ran a control we would not have thought to design. Its unidentified 10,000-row cities file matches the harvested corpus's domain exactly, and it produced far better natural-error detection than the field's real topical mix does. Isolating that on nameable data, with both arms at 892 rows and evaluated on the harvested corpus:
 
 {\footnotesize\raggedright\sloppy \emph{source: \texttt{results/transfer\_cities\_*\_d279c2cae5f4\_*.json} and the size-matched arm of \texttt{results/transfer\_*\_d279c2cae5f4\_*.json}}\par}
 
-\begin{table}[t]
+\begin{table}[H]
 \centering
 \small
 \resizebox{\linewidth}{!}{%
@@ -465,13 +471,13 @@ Topic-matched training is at least as good in all four and better than the size-
 
 The cost sits in the same arm. Those cities-only probes score \textbf{0.945 to 0.998} on A\&M held-out, the highest benchmark numbers anywhere in this project, while rating the model's own real errors 0.905, 0.975, 0.964 and 0.535 on a zero-to-one scale, that is, as true.
 
-\subsection{5.4 What the probes reject}
+\subsection{What the probes reject}
 
 Holding probe weights fixed and changing only which corpus supplies the false-common cell. These are mean probe scores on a zero-to-one scale, not AUROC.
 
-{\footnotesize\raggedright\sloppy \emph{source: \texttt{results/transfer\_*\_44b4126cba1c\_*.json} and \texttt{results/transfer\_*\_d279c2cae5f4\_*.json}, official artifact}\par}
+{\footnotesize\raggedright\sloppy \emph{source: \texttt{results/transfer\_*\_44b4126cba1c\_*.json} and \texttt{results/transfer\_*\_d279c2cae5f4\_*.json}, official artifact; the difference column computed via subtraction of the two}\par}
 
-\begin{table}[t]
+\begin{table}[H]
 \centering
 \small
 \resizebox{\linewidth}{!}{%
@@ -489,7 +495,7 @@ pythia-6.9b & 0.202 & 0.312 & +0.110 \\
 
 Our authored false-common items are made by swapping a country, which is how Azaria and Mitchell's false statements are made too. The probe rejects them at 0.006 to 0.202. The harvested items are wrong answers a model produced, and the same weights place them at 0.191 to 0.433. The difference is plausibility: a random swap is usually implausible, while a model's chosen error is a plausible co-occurrence almost by definition. A classifier reading hidden states cannot mark false the statements models find plausible, and a model's errors are drawn from exactly that set.
 
-\section{6. The benchmark cannot select a layer either}
+\section{The benchmark cannot select a layer either}
 
 Every result above reads one layer per model. The literature disagrees about which layer carries truth, so we swept all of them, across eighteen models and four probe architectures.
 
@@ -497,11 +503,11 @@ It can say almost nothing, and the reason is saturation. Gradient-trained logist
 
 Published selection rules do not rescue this. Averaged over 72 probe-model pairs, the ``earliest informative layer'' criterion lands on layers averaging \textbf{0.333 off-diagonal and forfeits 0.337} against the best layer available. Fixed fractional depths in the upper third, as used by \citep{hussain2026parallax}, average 0.507 to 0.533. Our own mid-depth choice averages 0.503, marginally the worst of the fixed rules, and we report that rather than presenting our layer as neutral. Every headline number in §3 uses that mid-depth layer.
 
-\subsection{6.1 Five probe architectures, four research groups}
+\subsection{Five probe architectures, four research groups}
 
 {\footnotesize\raggedright\sloppy \emph{source: \texttt{results/extlayers\_summary\_44b4126cba1c.json}}\par}
 
-\begin{table}[t]
+\begin{table}[H]
 \centering
 \small
 \resizebox{\linewidth}{!}{%
@@ -521,17 +527,17 @@ TTPD matters most. It comes from a different group, models truth as a two-dimens
 
 CCS is the weakest and we report it as such. It clears the 0.70 in-distribution floor on only 7 of 18 models and fails to reach it at any layer on every Pythia, so on the models where the confound is largest it cannot adjudicate. Restricted to the models where it is adequately powered its correlation is 0.228 [-0.507, 0.961], indistinguishable from zero at n = 7. The unrestricted 0.676 above is computed partly over models where CCS has no diagonal signal to lose and should not be read as support.
 
-\subsection{6.2 A multi-layer, multi-token probe is more confounded, not less}
+\subsection{A multi-layer, multi-token probe is more confounded, not less}
 
 DRIFT \citep{hussain2026parallax} taps four upper-depth layers, mean-pools each over all tokens, and uses differences between layer pairs, so it reads how the residual stream changes with depth rather than where it sits. On eight models spanning the recoverability range it is strong in-distribution, 0.894 to 1.000, and its off-diagonal AUROC is 0.056 to 0.523. On Gemma-2-9b-it, where single-layer probes reach 0.89 to 0.99, DRIFT reaches 0.387. Recoverability predicts its off-diagonal score at 0.477 [-0.098, 0.872], which includes zero at eight models, so we do not claim the mechanism for DRIFT. Its own concat ablation is worse still on six of the eight.
 
-\subsection{6.3 The probe is unrelated to the model it reads}
+\subsection{The probe is unrelated to the model it reads}
 
 On each model's own hallucinations, statements it generated and got wrong, the probe and the model's own behaviour disagree. Behaviour is the model's affirmation probability for the claim.
 
-{\footnotesize\raggedright\sloppy \emph{source: \texttt{results/gendis\_*\_cities\_20260807.json}}\par}
+{\footnotesize\raggedright\sloppy \emph{source: \texttt{results/gendis\_*\_cities\_20260807.json}, discordance computed via \texttt{src/report/d\_batch\_local.py} from the per-item records}\par}
 
-\begin{table}[t]
+\begin{table}[H]
 \centering
 \small
 \resizebox{\linewidth}{!}{%
@@ -548,11 +554,11 @@ Qwen2.5-7B-Instruct & 19 & 0.559 & 0.313 & 7/19 = 0.368 [0.163, 0.616] \\
 
 Discordance counts items where the probe crosses 0.5 upward while behaviour crosses downward, which is scale-free where the two means are not. It must be read against what independence predicts, not against zero: with these marginals, two unrelated verdicts would give 0.581, 0.540 and 0.360. Observed values of 0.529, 0.529 and 0.368 sit at or just below that, and every interval contains the independence value. Intervals are wide at this n and this is a supporting measurement. Composition: only items surviving the frequency-cache fix are included, so every entity is resolved and hence common, and the contrast is measured on the common stratum alone. So the supportable claim is independence, not contradiction: on its own errors, the probe's verdict carries no information about the model's own. That is what a knowledge-recall account \citep{cheang2026really} predicts, and it is what cuts against reading probe output as the model's belief. A contradiction claim would need discordance ABOVE the independence expectation, and these data do not show it.
 
-\subsection{6.4 A sampling-based detector shows no frequency penalty}
+\subsection{A sampling-based detector shows no frequency penalty}
 
 Semantic entropy \citep{farquhar2024semantic} never looks at the residual stream. On three instruction-tuned models --- Qwen2.5-7B-Instruct, Llama-3.1-8B-Instruct and Gemma-2-9b-it, 180 subjects each --- it detects each model's own errors at 0.776, 0.822 and 0.758. Restricted to statements each model got right, the exact contrast that exposes the probes, it separates rare true from common true at \textbf{0.514 [0.465, 0.565], 0.500 [0.440, 0.561] and 0.509 [0.474, 0.546]}, chance on all three. So the frequency confound is a property of linear readouts of hidden states, not of the model's own uncertainty.
 
-\section{7. A second corpus, with falsehoods we did not write}
+\section{A second corpus, with falsehoods we did not write}
 
 Everything above rests on statements we constructed, which is the obvious objection: we built the thing we measured, and two of our five attempts manufactured the effect we were hunting.
 
@@ -560,19 +566,21 @@ The second corpus's false statements are mistakes a model actually made. We aske
 
 \textbf{The central finding survives.} Every model scores 0.875 to 1.000 on the benchmark. Off-diagonal, all eighteen fall between \textbf{0.049 and 0.447}. Per-cell mean probe scores across the eighteen are 0.904 true-common, 0.254 true-rare, \textbf{0.661 false-common}, 0.087 false-rare: probes rate a model's errors above true statements about rare entities.
 
-\textbf{But ``no detector works here'' is false and we correct it.} Two internals-free methods clear the bar all eighteen probes miss: semantic entropy at 0.758 to 0.822, and reference perplexity at 0.770. Probes trained on the field's own data reach 0.278 to 0.767 on it (§5.2), and none of them beats the perplexity baseline. Natural error is detectable. Reading hidden states is what fails.
+\textbf{But ``no detector works here'' is false and we correct it.} Two internals-free methods clear the bar all eighteen probes miss: semantic entropy at 0.758 to 0.822, and reference perplexity at 0.770. Probes trained on the field's own data reach 0.309 to 0.767 on it (§5.1), and none of them beats the perplexity baseline. Natural error is detectable. Reading hidden states is what fails.
 
 \textbf{The mechanism does not survive.} Recoverability and off-diagonal AUROC correlate at 0.490 [-0.077, 0.754], against 0.821 on the authored corpus, and model comparison no longer prefers the hinge.
 
+One sibling check, since the generator's base model is among the eighteen. Qwen2.5-1.5B is the base of Qwen2.5-1.5B-Instruct, which produced these errors, so a probe on it might be expected to treat them differently. It does not: it rates the false-common cell at 0.712 against 0.658 for the other seventeen, sixth of eighteen, sitting inside the pack rather than apart from it.
+
 Three reasons to treat this corpus as provisional. Its false-common cell is capped at 35 items because models rarely err about famous places, which is itself a fact about natural errors. Its tokenization canary reads 0.636 [0.397, 0.866], passing only because the interval is wide at this size. And roughly three thousand candidate items were dropped for want of frequency counts, which is what holds it at 140.
 
-\section{8. What this means for practice}
+\section{What this means for practice}
 
 A detector built this way, deployed on a model where truth is not linearly available, does not fail randomly. It fails as a function of how common the subject is, flagging true statements about less common entities and passing fluent falsehoods about famous ones --- the precise inversion of what a verification tool is for, and worst on the long-tail knowledge where verification matters most.
 
-Three consequences follow. A probe should be compared against a training-free plausibility baseline before it is believed, because most of ours lose to one. Its training set should overlap the deployment distribution topically, because §5.3 shows that matters more than volume. And the reported number should never be the only number: it ranks endorsed probes at 0.453 while half of them are below chance.
+Three consequences follow. A probe should be compared against a training-free plausibility baseline before it is believed, because most of ours lose to one. Its training set should overlap the deployment distribution topically, because §5.2 shows that matters more than volume. And the reported number should never be the only number: it ranks endorsed probes at 0.453 while half of them are below chance.
 
-\section{9. The tool, and our own record}
+\section{The tool, and our own record}
 
 We release what we used to check ourselves, because four of our own corpora failed and so did one of our experiments.
 
@@ -582,7 +590,7 @@ The probe auditor takes any detector with \texttt{fit} and \texttt{score} and re
 
 We also suggest reporting a second interval this literature does not. The usual bootstrap resamples the evaluation set with the fitted probe held fixed, so it cannot see instability in the fit itself. Refitting on repeated 90\% subsamples shows this matters for some architectures and not others: mass-mean probing on Pythia-1.4b moves across [+0.045, +0.586] where its reported interval is [+0.373, +0.593].
 
-\subsection{9.1 Gates for experiments, not just for corpora}
+\subsection{Gates for experiments, not just for corpora}
 
 Every experiment in this paper ran outside any equivalent check, and several failed the way corpora did. The record, because it is the argument for the tooling:
 
@@ -594,13 +602,13 @@ Every experiment in this paper ran outside any equivalent check, and several fai
 
 The released tooling therefore carries two registers. \textbf{Corpus gates}, the five in §2, which run inside \texttt{finalize()}. And \textbf{experiment gates}: entity-level exclusion between any training and evaluation set, a provenance manifest recording source URL, retrieval date, sha256 and expected row count for every file under \texttt{data/}, and a manuscript checker that lints the prose, the figure-generation source, and every three-decimal number in the draft against the artifact directory. Explained historical findings live in a ledger the checker prints but does not fail on, because a gate that fails on every run stops being read.
 
-\section{10. Compute}
+\section{Compute}
 
 Everything here runs on a single GPU per job. The largest model is 9B in bfloat16, roughly 18GB of weights, which fits in 24GB with headroom for batched activation extraction. Part of the work ran on H100 for speed and the rest on A10G, with no change to any result.
 
 {\footnotesize\raggedright\sloppy \emph{source: run inventory over \texttt{results/*.json}}\par}
 
-\begin{table}[t]
+\begin{table}[H]
 \centering
 \small
 \resizebox{\linewidth}{!}{%
@@ -611,7 +619,8 @@ Everything here runs on a single GPU per job. The largest model is 9B in bfloat1
 Distinct models & 18, from 70M to 12B parameters, four families \\
 Committed GPU run artifacts & over 200 \\
 Corpus builds reaching the gates & 5 \\
-Corpus versions built, of which superseded & 5, of which 4 \\
+Corpus versions built & 5 \\
+Of those, superseded after a gate caught a defect & 4 \\
 GPU classes used & H100 and A10G, one card per job \\
 \bottomrule
 \end{tabular}}
@@ -619,7 +628,7 @@ GPU classes used & H100 and A10G, one card per job \\
 
 \textbf{We cannot give an exact GPU-hour or dollar total and would rather say so than estimate one.} No runtime was recorded until late in the work, and the project moved through five cloud workspaces as prepaid credits were exhausted, three of which are no longer accessible. Every run from the final stage onward records its wall-clock seconds and GPU class into its artifact. We note the cost of the corrections specifically: four of the five corpora were rebuilt after a defect was found, and each rebuild invalidated every downstream result on that corpus.
 
-\section{11. Where it is thin}
+\section{Where it is thin}
 
 Three domains, English, one template family per domain, all subject-object factual statements. Whether this holds for multi-clause claims, reasoning chains, or open generation is untested.
 
@@ -631,7 +640,7 @@ n = 608 is small. It shrank from a previous 720 because balancing edit provenanc
 
 {\footnotesize\raggedright\sloppy \emph{source: string match against \texttt{data/raw/azaria\_mitchell\_official/} and \texttt{data/raw/azaria\_mitchell/}}\par}
 
-\begin{table}[t]
+\begin{table}[H]
 \centering
 \small
 \resizebox{\linewidth}{!}{%
@@ -649,13 +658,13 @@ FA & 152 & 77 & 50.7\% \\
 
 Chi-square 199.1, p = 6.5e-43. Post-2023 models may have trained on those files, labels included. Both a novelty reader and a label-memoriser would score TT and TA high, and TA is the cell that collapses. Either would have rescued the collapsing cell, so neither can be what the probes read. Within the false cells, attestedness is identical at 50.7\% while the fielded probe scores FT 0.56 and FA 0.05, which rules out novelty-reading directly.
 
-\textbf{The transfer experiment is four models.} It carries the scope claim of §5 on four models rather than eighteen, at mid-depth rather than each model's headline layer, and its frequency-read column disagrees across them, with pythia-6.9b at 0.954 against 0.574 to 0.690 for the rest.
+\textbf{The transfer experiment is four models.} It carries the scope claim of §5 on four models rather than eighteen, at mid-depth rather than each model's headline layer, and its frequency-read column disagrees across them, with pythia-6.9b at 0.940 against 0.574 to 0.690 for the rest.
 
 \textbf{The knee's status is undetermined}, bounded to training sizes from 100 to 608. Nothing here reaches the 1,458 to 9,270 regime where §5 shows the below-knee floor is escapable.
 
 Recoverability is measured as a linear readout, the same shape as most probes. That it also predicts DRIFT rules out the narrow version of that circularity, not every version. TTPD is our reimplementation from published equations rather than the authors' code. Our EigenScore variant \citep{chen2024inside} reads truth too poorly here to adjudicate and is reported as inconclusive.
 
-\section{12. Related work}
+\section{Related work}
 
 That internal-state probes read something other than truth has been observed before. \citep{levinstein2023still} show they fail on negation and generalise poorly. \citep{farquhar2023challenges} show unsupervised probes latch onto salient non-knowledge features. \citep{cheang2026really} give a mechanistic account on which probes track parametric knowledge recall, which our §6.3 dissociation supports directly. \citep{seo2026quantifying} decompose benchmark performance by question-side information and find heavy shortcut exploitation.
 
@@ -665,9 +674,10 @@ Our frequency axis descends from work on entity popularity and long-tail factual
 
 We differ from all of these in what we measure. Those results establish that a confound exists. We quantify how much of a reported number it accounts for, on a corpus verified to decorrelate the axis and gated against five construction failures we committed ourselves, and we show what the reported number does and does not carry: it ranks endorsed probes at 0.453, and half of those are below chance.
 
-\section{Appendix A: Experimental setup}
+\appendix
+\section{Experimental setup}
 
-\subsection{A.1 Models, probes and layers}
+\subsection{Models, probes and layers}
 
 Eighteen substrates: Pythia 70m/160m/410m/1b/1.4b/2.8b/6.9b/12b, Qwen2.5 0.5B/1.5B/3B/7B/7B-Instruct, Llama-3.1-8B and -Instruct, Gemma-2 2b/9b/9b-it. All loaded in bfloat16; hidden states taken at the final token of the statement.
 
@@ -675,17 +685,16 @@ Our probe is a SAPLMA-style feedforward classifier on the last-token hidden stat
 
 The headline layer is mid-depth for every model. §6 reports the full sweep and the cost of that choice: 0.503 average against 0.507 to 0.533 for upper-third rules.
 
-\subsection{A.2 Statistical conventions}
+\subsection{Statistical conventions}
 
 Every derived statistic is named once here; the prose refers to this table rather than re-specifying.
 
 {\footnotesize\raggedright\sloppy \emph{source: conventions, not measurements}\par}
 
-\begin{table}[t]
+\begin{table}[H]
 \centering
 \small
-\resizebox{\linewidth}{!}{%
-\begin{tabular}{lr}
+\begin{tabular}{>{\raggedright\arraybackslash}p{0.134\linewidth} >{\raggedright\arraybackslash}p{0.746\linewidth}}
 \toprule
 \textbf{quantity} & \textbf{definition} \\
 \midrule
@@ -693,30 +702,29 @@ AUROC interval & percentile bootstrap over the evaluation set, 1000+ resamples, 
 refit interval & probe refitted on repeated 90\% subsamples (§9) \\
 paired comparison & both detectors scored on the same resampled items, difference taken within resample \\
 clustered bootstrap & resampling models rather than pairs, for any statistic pooled over probe-model pairs \\
-standardized separation & mean difference divided by the total standard deviation, not the pooled within-group one; the two differ by 19\% on the large effects here \\
-Cliff's delta & standard non-parametric effect size, reported with its exact p \\
+standardized separation & mean difference divided by the total standard deviation rather than the pooled within-group one; the two differ by 19\% on the large effects reported here \\
+Cliff's delta & non-parametric effect size, reported with its exact p \\
 discordance interval & exact binomial (Clopper-Pearson) \\
 extraction noise & half-precision extraction gives repeat runs differing by up to 0.003 \\
-refit reproduction spread & re-fitting the same probe with the same seed and split on different GPU hardware reproduces a tabulated off-diagonal AUROC to within about 0.020 (Qwen2.5-3B 0.536 against 0.516). Differences below that between tables computed on different runs are not evidence \\
+refit reproduction spread & re-fitting the same probe with the same seed and split on different GPU hardware reproduces a tabulated off-diagonal AUROC to within 0.031 across the eighteen models (largest: Llama-3.1-8B-Instruct, 0.862 in section 3 against 0.831 in section 4; Qwen2.5-3B 0.536 against 0.516). Differences below that between tables computed on different runs are not evidence, and the two tables are not interchangeable at that precision \\
 \bottomrule
-\end{tabular}}
+\end{tabular}
 \end{table}
 
-\subsection{A.3 Recoverability}
+\subsection{Recoverability}
 
 Recoverability is the standardized truth coefficient from a regression of out-of-fold all-cell probe scores on truth, with entity frequency, tokenization fragmentation and edit provenance partialled out. Probe scores are five-fold cross-fitted, so no item is scored by a probe that saw it.
 
 The canonical estimator is \textbf{cross-fitted across items} (D-024): recoverability is estimated on one half of the corpus, stratified by cell, and the off-diagonal probe evaluated on the other, then swapped and averaged, so the two quantities share no item. Same-sample and cross-fitted estimates correlate at Spearman 0.9856 but differ by up to 0.165 on individual models, which is why the estimator is named rather than assumed.
 
-\subsection{A.4 Data provenance}
+\subsection{Data provenance}
 
 {\footnotesize\raggedright\sloppy \emph{source: file hashes computed at build time}\par}
 
-\begin{table}[t]
+\begin{table}[H]
 \centering
 \small
-\resizebox{\linewidth}{!}{%
-\begin{tabular}{lr}
+\begin{tabular}{>{\raggedright\arraybackslash}p{0.160\linewidth} >{\raggedright\arraybackslash}p{0.720\linewidth}}
 \toprule
 \textbf{artifact} & \textbf{identifier} \\
 \midrule
@@ -727,20 +735,19 @@ frequency source & infini-gram, index \texttt{v4\_dolma-v1\_7\_llama} (Dolma 1.7
 A\&M released dataset & \texttt{true-false-dataset.zip}, sha256 \texttt{f21fa017...}, 6,330 rows, per-file manifest committed \\
 reference LMs & Qwen2.5-7B-Instruct (inside the probed set) and OLMo-2-1124-7B (outside all four families) \\
 \bottomrule
-\end{tabular}}
+\end{tabular}
 \end{table}
 
 Entity frequency is a proxy: only Pythia's pretraining corpus is public, so counts are measured against Dolma for every model, with per-family mismatch unquantified.
 
-\subsection{A.5 Registrations}
+\subsection{Registrations}
 
 {\footnotesize\raggedright\sloppy \emph{source: \texttt{notes/decisions.md}}\par}
 
-\begin{table}[t]
+\begin{table}[H]
 \centering
 \small
-\resizebox{\linewidth}{!}{%
-\begin{tabular}{lrr}
+\begin{tabular}{>{\raggedright\arraybackslash}p{0.134\linewidth} >{\raggedright\arraybackslash}p{0.218\linewidth} >{\raggedright\arraybackslash}p{0.529\linewidth}}
 \toprule
 \textbf{id} & \textbf{commit} & \textbf{content} \\
 \midrule
@@ -749,7 +756,7 @@ D-023 & \texttt{040b283}, amended \texttt{acab56a} & knee-migration criterion, b
 D-024 & \texttt{331f983} & canonical recoverability estimator, one re-run, pilot relabelling \\
 D-025 & \texttt{331f983} & dilution decomposition fixed as exploratory before it was run \\
 \bottomrule
-\end{tabular}}
+\end{tabular}
 \end{table}
 \bibliography{references}
 \bibliographystyle{tmlr}
