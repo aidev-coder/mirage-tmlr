@@ -1,0 +1,199 @@
+{
+  "experiment": "recoverability_n_ladder",
+  "model": "Qwen/Qwen2.5-7B",
+  "estimator": "crossfitted",
+  "corpus": "mirage_2x2_v44b4126cba1c.jsonl",
+  "layer": 14,
+  "recoverability_full_corpus": 0.8619,
+  "rungs": [
+    100,
+    200,
+    300,
+    450,
+    608
+  ],
+  "reps": 5,
+  "rows": [
+    {
+      "n": 100,
+      "rung": 100,
+      "rep": 0,
+      "recoverability_at_n": 0.7601,
+      "off_diagonal_at_n": 0.6864
+    },
+    {
+      "n": 100,
+      "rung": 100,
+      "rep": 1,
+      "recoverability_at_n": 0.6663,
+      "off_diagonal_at_n": 0.7359
+    },
+    {
+      "n": 100,
+      "rung": 100,
+      "rep": 2,
+      "recoverability_at_n": 0.7056,
+      "off_diagonal_at_n": 0.6624
+    },
+    {
+      "n": 100,
+      "rung": 100,
+      "rep": 3,
+      "recoverability_at_n": 0.5956,
+      "off_diagonal_at_n": 0.626
+    },
+    {
+      "n": 100,
+      "rung": 100,
+      "rep": 4,
+      "recoverability_at_n": 0.5815,
+      "off_diagonal_at_n": 0.5769
+    },
+    {
+      "n": 200,
+      "rung": 200,
+      "rep": 0,
+      "recoverability_at_n": 0.8363,
+      "off_diagonal_at_n": 0.6592
+    },
+    {
+      "n": 200,
+      "rung": 200,
+      "rep": 1,
+      "recoverability_at_n": 0.6882,
+      "off_diagonal_at_n": 0.5616
+    },
+    {
+      "n": 200,
+      "rung": 200,
+      "rep": 2,
+      "recoverability_at_n": 0.745,
+      "off_diagonal_at_n": 0.6656
+    },
+    {
+      "n": 200,
+      "rung": 200,
+      "rep": 3,
+      "recoverability_at_n": 0.5643,
+      "off_diagonal_at_n": 0.5664
+    },
+    {
+      "n": 200,
+      "rung": 200,
+      "rep": 4,
+      "recoverability_at_n": 0.8278,
+      "off_diagonal_at_n": 0.72
+    },
+    {
+      "n": 300,
+      "rung": 300,
+      "rep": 0,
+      "recoverability_at_n": 0.8196,
+      "off_diagonal_at_n": 0.7873
+    },
+    {
+      "n": 300,
+      "rung": 300,
+      "rep": 1,
+      "recoverability_at_n": 0.7862,
+      "off_diagonal_at_n": 0.6285
+    },
+    {
+      "n": 300,
+      "rung": 300,
+      "rep": 2,
+      "recoverability_at_n": 0.7851,
+      "off_diagonal_at_n": 0.6908
+    },
+    {
+      "n": 300,
+      "rung": 300,
+      "rep": 3,
+      "recoverability_at_n": 0.7802,
+      "off_diagonal_at_n": 0.6209
+    },
+    {
+      "n": 300,
+      "rung": 300,
+      "rep": 4,
+      "recoverability_at_n": 0.7106,
+      "off_diagonal_at_n": 0.55
+    },
+    {
+      "n": 448,
+      "rung": 450,
+      "rep": 0,
+      "recoverability_at_n": 0.8434,
+      "off_diagonal_at_n": 0.7217
+    },
+    {
+      "n": 448,
+      "rung": 450,
+      "rep": 1,
+      "recoverability_at_n": 0.8524,
+      "off_diagonal_at_n": 0.7077
+    },
+    {
+      "n": 448,
+      "rung": 450,
+      "rep": 2,
+      "recoverability_at_n": 0.8209,
+      "off_diagonal_at_n": 0.6311
+    },
+    {
+      "n": 448,
+      "rung": 450,
+      "rep": 3,
+      "recoverability_at_n": 0.7933,
+      "off_diagonal_at_n": 0.626
+    },
+    {
+      "n": 448,
+      "rung": 450,
+      "rep": 4,
+      "recoverability_at_n": 0.8096,
+      "off_diagonal_at_n": 0.7385
+    },
+    {
+      "n": 608,
+      "rung": 608,
+      "rep": 0,
+      "recoverability_at_n": 0.8431,
+      "off_diagonal_at_n": 0.6995
+    },
+    {
+      "n": 608,
+      "rung": 608,
+      "rep": 1,
+      "recoverability_at_n": 0.8298,
+      "off_diagonal_at_n": 0.6731
+    },
+    {
+      "n": 608,
+      "rung": 608,
+      "rep": 2,
+      "recoverability_at_n": 0.8175,
+      "off_diagonal_at_n": 0.6963
+    },
+    {
+      "n": 608,
+      "rung": 608,
+      "rep": 3,
+      "recoverability_at_n": 0.8305,
+      "off_diagonal_at_n": 0.6907
+    },
+    {
+      "n": 608,
+      "rung": 608,
+      "rep": 4,
+      "recoverability_at_n": 0.8369,
+      "off_diagonal_at_n": 0.7261
+    }
+  ],
+  "registration": "decisions.md D-023 (040b283, amended acab56a)",
+  "provenance": "measured",
+  "compute": {
+    "gpu": "H100",
+    "wall_seconds": 153.5
+  }
+}

@@ -1,7 +1,83 @@
 {
   "experiment": "transfer_am_to_crossed",
   "model": "google/gemma-2-9b-it",
-  "size_control": null,
+  "size_control": {
+    "subsample_n": 892,
+    "reps": 5,
+    "disagreement_mean": 0.7229,
+    "disagreement_min": 0.5918,
+    "disagreement_max": 0.8424,
+    "frequency_read_mean": 0.6428,
+    "frequency_read_min": 0.5396,
+    "frequency_read_max": 0.7478,
+    "per_rep": [
+      {
+        "rep": 0,
+        "n_train": 892,
+        "true_frac": 0.5022,
+        "disagreement_auroc": 0.6963,
+        "frequency_read_among_true_only": 0.6229,
+        "cell_means": {
+          "TT": 0.9471,
+          "TA": 0.9953,
+          "FT": 0.8906,
+          "FA": 0.3308
+        }
+      },
+      {
+        "rep": 1,
+        "n_train": 892,
+        "true_frac": 0.4877,
+        "disagreement_auroc": 0.6833,
+        "frequency_read_among_true_only": 0.6955,
+        "cell_means": {
+          "TT": 0.672,
+          "TA": 0.4419,
+          "FT": 0.339,
+          "FA": 0.0392
+        }
+      },
+      {
+        "rep": 2,
+        "n_train": 892,
+        "true_frac": 0.4877,
+        "disagreement_auroc": 0.8008,
+        "frequency_read_among_true_only": 0.6082,
+        "cell_means": {
+          "TT": 0.6951,
+          "TA": 0.6266,
+          "FT": 0.3425,
+          "FA": 0.0881
+        }
+      },
+      {
+        "rep": 3,
+        "n_train": 892,
+        "true_frac": 0.5,
+        "disagreement_auroc": 0.8424,
+        "frequency_read_among_true_only": 0.5396,
+        "cell_means": {
+          "TT": 0.9404,
+          "TA": 0.9776,
+          "FT": 0.8167,
+          "FA": 0.5024
+        }
+      },
+      {
+        "rep": 4,
+        "n_train": 892,
+        "true_frac": 0.5235,
+        "disagreement_auroc": 0.5918,
+        "frequency_read_among_true_only": 0.7478,
+        "cell_means": {
+          "TT": 0.7753,
+          "TA": 0.5687,
+          "FT": 0.5154,
+          "FA": 0.1157
+        }
+      }
+    ]
+  },
   "layer": 21,
   "corpus": "mirage_2x2_vd279c2cae5f4.jsonl",
   "n_train": 4991,
@@ -10,6 +86,7 @@
   "n_dropped_leak": 1329,
   "n_dropped_dup": 10,
   "am_dir": "azaria_mitchell_official",
+  "topics": "all",
   "in_distribution_on_am": {
     "auroc": 0.9814,
     "ci": [
@@ -60,6 +137,6 @@
   "provenance": "measured",
   "compute": {
     "gpu": "H100",
-    "wall_seconds": 225.1
+    "wall_seconds": 320.5
   }
 }

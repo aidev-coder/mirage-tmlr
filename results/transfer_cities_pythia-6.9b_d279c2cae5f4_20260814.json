@@ -1,0 +1,58 @@
+{
+  "experiment": "transfer_am_to_crossed",
+  "model": "EleutherAI/pythia-6.9b",
+  "size_control": null,
+  "layer": 16,
+  "corpus": "mirage_2x2_vd279c2cae5f4.jsonl",
+  "n_train": 892,
+  "n_test": 140,
+  "n_am_rows": 1458,
+  "n_dropped_leak": 558,
+  "n_dropped_dup": 8,
+  "am_dir": "azaria_mitchell_official",
+  "topics": "cities",
+  "in_distribution_on_am": {
+    "auroc": 0.9451,
+    "ci": [
+      0.9131,
+      0.9726
+    ],
+    "n": 179,
+    "n_boot": 1000
+  },
+  "in_distribution_leave_one_topic_out": {
+    "per_topic": {},
+    "mean": null,
+    "min": null,
+    "max": null
+  },
+  "frequency_read_among_true_only": {
+    "auroc": 0.9494,
+    "ci": [
+      0.8907,
+      0.9894
+    ],
+    "n": 70,
+    "n_boot": 1000
+  },
+  "disagreement_auroc": {
+    "auroc": 0.231,
+    "ci": [
+      0.1304,
+      0.3449
+    ],
+    "n": 70,
+    "n_boot": 1000
+  },
+  "cell_means": {
+    "TT": 0.7139,
+    "TA": 0.3622,
+    "FT": 0.5354,
+    "FA": 0.3198
+  },
+  "provenance": "measured",
+  "compute": {
+    "gpu": "H100",
+    "wall_seconds": 40.0
+  }
+}

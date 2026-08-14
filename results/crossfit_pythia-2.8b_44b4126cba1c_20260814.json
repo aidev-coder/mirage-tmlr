@@ -1,0 +1,30 @@
+{
+  "experiment": "crossfit_recoverability",
+  "model": "EleutherAI/pythia-2.8b",
+  "corpus": "mirage_2x2_v44b4126cba1c.jsonl",
+  "layer": 16,
+  "recoverability_same_sample": 0.1021,
+  "recoverability_crossfitted": 0.0791,
+  "off_diagonal_crossfitted": 0.1082,
+  "recoverability_net_of_plausibility": 0.0481,
+  "plausibility_source": "OLMo-2-1124-7B reference perplexity",
+  "folds": [
+    {
+      "n_train": 304,
+      "n_eval": 304,
+      "recoverability": 0.0576,
+      "off_diagonal": 0.1139
+    },
+    {
+      "n_train": 304,
+      "n_eval": 304,
+      "recoverability": 0.1007,
+      "off_diagonal": 0.1025
+    }
+  ],
+  "provenance": "measured",
+  "compute": {
+    "gpu": "H100",
+    "wall_seconds": 31.8
+  }
+}

@@ -234,7 +234,8 @@ def run(substrate, corpus_path: str | Path, detector: str = "saplma",
 
 
 def run_transfer(substrate, corpus_path, am_dir=None, layer=None, seed=0,
-                 batch_size=32, commit_fn=None, subsample_n=0, subsample_reps=5) -> dict:
+                 batch_size=32, commit_fn=None, subsample_n=0, subsample_reps=5,
+                 topics="") -> dict:
     """Train the probe on the FIELD'S dataset, test on our crossed corpus.
 
     Every other result here trains on our own congruent cells, where entity
@@ -278,8 +279,11 @@ def run_transfer(substrate, corpus_path, am_dir=None, layer=None, seed=0,
     am_dir = Path(am_dir or (_ROOT / "data" / "raw" / "azaria_mitchell"))
     seen, n_raw, n_leak, n_dup = set(), 0, 0, 0
     train_texts, train_y, train_topic = [], [], []
+    keep_topics = {t.strip() for t in topics.split(",") if t.strip()}
     for csv in sorted(am_dir.glob("*_true_false.csv")):
         if csv.name.startswith("neg_"):
+            continue
+        if keep_topics and csv.name.replace("_true_false.csv", "") not in keep_topics:
             continue
         with open(csv, encoding="utf-8-sig") as fh:
             for row in _csv.DictReader(fh):
@@ -393,7 +397,7 @@ def run_transfer(substrate, corpus_path, am_dir=None, layer=None, seed=0,
            "layer": int(L), "corpus": Path(corpus_path).name,
            "n_train": len(train_texts), "n_test": len(items),
            "n_am_rows": n_raw, "n_dropped_leak": n_leak, "n_dropped_dup": n_dup,
-           "am_dir": Path(am_dir).name,
+           "am_dir": Path(am_dir).name, "topics": topics or "all",
            "in_distribution_on_am": in_dist,
            "in_distribution_leave_one_topic_out": loto,
            "frequency_read_among_true_only": freq_read,
@@ -409,7 +413,7 @@ def run_transfer(substrate, corpus_path, am_dir=None, layer=None, seed=0,
 
 def run_nladder(substrate, corpus_path, rungs=(100, 200, 300, 450, 608), reps=5,
                 n_folds=5, batch_size=32, device=None, seed=20260814,
-                commit_fn=None) -> dict:
+                commit_fn=None, crossfit=False) -> dict:
     """The pre-registered training-size ladder (decisions.md D-023, amended 2026-08-14).
 
     Section 3.2 calls the hinge a property of the representation. B6 showed a below-knee
@@ -460,14 +464,32 @@ def run_nladder(substrate, corpus_path, rungs=(100, 200, 300, 450, 608), reps=5,
                            size=min(per_cell, int((cells == c).sum())), replace=False)
                 for c in ("TT", "TA", "FT", "FA")])
             rng.shuffle(idx)
-            off = np.flatnonzero(np.isin(cells[idx], OFF_DIAGONAL))
-            fielded = _fielded_oof_scores(Xl[idx], truth[idx], cells[idx], device, n_folds, seed)
-            rows.append({
-                "n": int(len(idx)), "rung": int(n), "rep": int(rep),
-                "recoverability_at_n": round(_recoverability(idx), 4),
-                "off_diagonal_at_n": round(
-                    float(auroc_with_ci(truth[idx][off], fielded[off], seed=seed)["auroc"]), 4),
-            })
+            if crossfit:
+                # D-024: the canonical estimator measures recoverability and the
+                # off-diagonal on disjoint halves, so they share no item.
+                a = np.concatenate([rng.permutation(idx[cells[idx] == c])[: max(1, int((cells[idx] == c).sum()) // 2)]
+                                    for c in ("TT", "TA", "FT", "FA")])
+                b = np.array([i for i in idx if i not in set(a.tolist())])
+                rec, offs = [], []
+                for tr, te in ((a, b), (b, a)):
+                    if len(tr) < 8 or len(te) < 8:
+                        continue
+                    rec.append(_recoverability(tr))
+                    f = _fielded_oof_scores(Xl[te], truth[te], cells[te], device, n_folds, seed)
+                    o = np.flatnonzero(np.isin(cells[te], OFF_DIAGONAL))
+                    offs.append(float(auroc_with_ci(truth[te][o], f[o], seed=seed)["auroc"]))
+                rows.append({"n": int(len(idx)), "rung": int(n), "rep": int(rep),
+                             "recoverability_at_n": round(float(np.mean(rec)), 4),
+                             "off_diagonal_at_n": round(float(np.mean(offs)), 4)})
+            else:
+                off = np.flatnonzero(np.isin(cells[idx], OFF_DIAGONAL))
+                fielded = _fielded_oof_scores(Xl[idx], truth[idx], cells[idx], device, n_folds, seed)
+                rows.append({
+                    "n": int(len(idx)), "rung": int(n), "rep": int(rep),
+                    "recoverability_at_n": round(_recoverability(idx), 4),
+                    "off_diagonal_at_n": round(
+                        float(auroc_with_ci(truth[idx][off], fielded[off], seed=seed)["auroc"]), 4),
+                })
         got = [r for r in rows if r["rung"] == n]
         print(f"  [ladder n={n}] rec {np.mean([r['recoverability_at_n'] for r in got]):.3f} "
               f"off {np.mean([r['off_diagonal_at_n'] for r in got]):.3f}", flush=True)
@@ -475,8 +497,97 @@ def run_nladder(substrate, corpus_path, rungs=(100, 200, 300, 450, 608), reps=5,
             commit_fn()
 
     return {"experiment": "recoverability_n_ladder", "model": substrate.model_id,
+            "estimator": "crossfitted" if crossfit else "same_sample",
             "corpus": Path(corpus_path).name, "layer": int(L),
             "recoverability_full_corpus": round(rec_full, 4),
             "rungs": list(rungs), "reps": int(reps), "rows": rows,
             "registration": "decisions.md D-023 (040b283, amended acab56a)",
             "provenance": "measured"}
+
+
+def run_crossfit(substrate, corpus_path, ppl_artifact=None, n_folds=5, batch_size=32,
+                 device=None, seed=20260814, commit_fn=None) -> dict:
+    """Cross-fitted recoverability, and recoverability net of plausibility.
+
+    Two things the review asked for, sharing one extraction.
+
+    D12: recoverability and off-diagonal AUROC are currently estimated on the same 608
+    items, so shared sampling noise inflates their correlation. Here the corpus is split
+    in half by cell; recoverability is measured on one half and the off-diagonal probe
+    evaluated on the other, then swapped and averaged. The two quantities no longer share
+    an item.
+
+    C8 follow-on: a training-free perplexity reader scores 0.830 off-diagonal, so
+    "truth signal" as currently measured is truth-plus-plausibility. Reference perplexity
+    enters the mediation as a further covariate. If the truth coefficient collapses, the
+    hinge was tracking fluency recovery. The perplexity comes from OLMo, which is outside
+    all four probed families, so partialling it out does not reintroduce the circularity
+    the baseline comparison was careful to avoid.
+    """
+    from .eval.adversarial_split import DIAGONAL, OFF_DIAGONAL
+    from .stats import auroc_with_ci
+
+    items = load_corpus(corpus_path)
+    corpus_hash = Path(corpus_path).stem.split("_v")[-1]
+    texts = [it["text"] for it in items]
+    truth = np.array([bool(it["truth"]) for it in items])
+    cells = np.array([it["cell"] for it in items])
+    typ = np.array([it["typicality"]["entity_freq_log10"] for it in items], dtype=float)
+    edited = np.array([bool(it.get("edited")) for it in items])
+
+    H = _extract_or_load(substrate, texts, corpus_hash, batch_size, commit_fn)
+    L = H.shape[1] // 2
+    Xl = H[:, L, :]
+
+    neg_ppl = None
+    if ppl_artifact and Path(ppl_artifact).exists():
+        a = json.loads(Path(ppl_artifact).read_text(encoding="utf-8"))
+        for sp in a.get("splits", {}).values():
+            if isinstance(sp, dict) and sp.get("per_item_text") == texts:
+                neg_ppl = np.asarray(sp["per_item_neg_ppl"], dtype=float)
+                break
+
+    def _rec(idx, extra=None):
+        sub = [items[i] for i in idx]
+        cov = {"fragmentation": _fragmentation_oof(sub, truth[idx], substrate.tokenizer,
+                                                   n_folds, seed),
+               "edit": _edit_oof(Xl[idx], edited[idx], device, n_folds, seed)}
+        if extra is not None:
+            cov["plausibility"] = extra[idx]
+        oof = _oof_scores(Xl[idx], truth[idx], device, n_folds, seed)
+        return float(mediation(oof, truth[idx], typ[idx], covariates=cov)["truth_beta_partialled"])
+
+    rng = np.random.default_rng(seed)
+    half_a = np.concatenate([rng.permutation(np.flatnonzero(cells == c))[: int((cells == c).sum()) // 2]
+                             for c in ("TT", "TA", "FT", "FA")])
+    mask_a = np.zeros(len(items), dtype=bool)
+    mask_a[half_a] = True
+    folds = []
+    for train_mask in (mask_a, ~mask_a):
+        tr = np.flatnonzero(train_mask)
+        te = np.flatnonzero(~train_mask)
+        rec = _rec(tr)
+        f = _fielded_oof_scores(Xl[te], truth[te], cells[te], device, n_folds, seed)
+        off = np.flatnonzero(np.isin(cells[te], OFF_DIAGONAL))
+        folds.append({"n_train": int(len(tr)), "n_eval": int(len(te)),
+                      "recoverability": round(rec, 4),
+                      "off_diagonal": round(float(auroc_with_ci(truth[te][off], f[off],
+                                                                seed=seed)["auroc"]), 4)})
+
+    full = np.arange(len(items))
+    rec_full = _rec(full)
+    rec_net_ppl = _rec(full, neg_ppl) if neg_ppl is not None else None
+
+    out = {"experiment": "crossfit_recoverability", "model": substrate.model_id,
+           "corpus": Path(corpus_path).name, "layer": int(L),
+           "recoverability_same_sample": round(rec_full, 4),
+           "recoverability_crossfitted": round(float(np.mean([f["recoverability"] for f in folds])), 4),
+           "off_diagonal_crossfitted": round(float(np.mean([f["off_diagonal"] for f in folds])), 4),
+           "recoverability_net_of_plausibility": (round(rec_net_ppl, 4)
+                                                  if rec_net_ppl is not None else None),
+           "plausibility_source": "OLMo-2-1124-7B reference perplexity" if neg_ppl is not None else None,
+           "folds": folds, "provenance": "measured"}
+    print(f"[crossfit] {substrate.model_id}: same-sample {rec_full:.4f} | "
+          f"cross-fitted {out['recoverability_crossfitted']:.4f} | "
+          f"net of plausibility {out['recoverability_net_of_plausibility']}", flush=True)
+    return out

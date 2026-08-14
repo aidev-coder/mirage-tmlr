@@ -1,0 +1,30 @@
+{
+  "experiment": "crossfit_recoverability",
+  "model": "Qwen/Qwen2.5-1.5B",
+  "corpus": "mirage_2x2_v44b4126cba1c.jsonl",
+  "layer": 14,
+  "recoverability_same_sample": 0.8354,
+  "recoverability_crossfitted": 0.8017,
+  "off_diagonal_crossfitted": 0.462,
+  "recoverability_net_of_plausibility": 0.8122,
+  "plausibility_source": "OLMo-2-1124-7B reference perplexity",
+  "folds": [
+    {
+      "n_train": 304,
+      "n_eval": 304,
+      "recoverability": 0.7865,
+      "off_diagonal": 0.5055
+    },
+    {
+      "n_train": 304,
+      "n_eval": 304,
+      "recoverability": 0.8169,
+      "off_diagonal": 0.4186
+    }
+  ],
+  "provenance": "measured",
+  "compute": {
+    "gpu": "H100",
+    "wall_seconds": 18.9
+  }
+}

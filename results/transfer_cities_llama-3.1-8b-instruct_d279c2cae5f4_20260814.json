@@ -1,0 +1,58 @@
+{
+  "experiment": "transfer_am_to_crossed",
+  "model": "meta-llama/Llama-3.1-8B-Instruct",
+  "size_control": null,
+  "layer": 16,
+  "corpus": "mirage_2x2_vd279c2cae5f4.jsonl",
+  "n_train": 892,
+  "n_test": 140,
+  "n_am_rows": 1458,
+  "n_dropped_leak": 558,
+  "n_dropped_dup": 8,
+  "am_dir": "azaria_mitchell_official",
+  "topics": "cities",
+  "in_distribution_on_am": {
+    "auroc": 0.9984,
+    "ci": [
+      0.9953,
+      1.0
+    ],
+    "n": 179,
+    "n_boot": 1000
+  },
+  "in_distribution_leave_one_topic_out": {
+    "per_topic": {},
+    "mean": null,
+    "min": null,
+    "max": null
+  },
+  "frequency_read_among_true_only": {
+    "auroc": 0.6057,
+    "ci": [
+      0.4498,
+      0.7518
+    ],
+    "n": 70,
+    "n_boot": 1000
+  },
+  "disagreement_auroc": {
+    "auroc": 0.5869,
+    "ci": [
+      0.4407,
+      0.7166
+    ],
+    "n": 70,
+    "n_boot": 1000
+  },
+  "cell_means": {
+    "TT": 0.9699,
+    "TA": 0.9806,
+    "FT": 0.9752,
+    "FA": 0.8908
+  },
+  "provenance": "measured",
+  "compute": {
+    "gpu": "H100",
+    "wall_seconds": 45.9
+  }
+}

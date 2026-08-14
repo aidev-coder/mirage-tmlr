@@ -474,7 +474,8 @@ def harvest_fn(model_id: str, topic: str, max_subjects: int = 400) -> dict:
               timeout=4 * 3600)
 @_timed
 def transfer_run(model_id: str, corpus_name: str, layer: int | None = None,
-                 seed: int = 0, subsample_n: int = 0, am_dir: str = "") -> dict:
+                 seed: int = 0, subsample_n: int = 0, am_dir: str = "",
+                 topics: str = "") -> dict:
     """Train the probe on the field's own true/false dataset, test on our crossed
     corpus. Answers whether frequency reading is taught by our training cells or
     is already present in a probe trained the standard way."""
@@ -486,7 +487,7 @@ def transfer_run(model_id: str, corpus_name: str, layer: int | None = None,
     out = run_transfer(sub, f"/root/mirage/data/corpus/{corpus_name}",
                        am_dir=(f"/root/mirage/data/raw/{am_dir}" if am_dir else None),
                        layer=layer, seed=seed, commit_fn=activations.commit,
-                       subsample_n=subsample_n)
+                       subsample_n=subsample_n, topics=topics)
     activations.commit()
     hf_cache.commit()
     return out
@@ -534,6 +535,8 @@ def ppl_baseline_run(reference_model: str, am_dir: str = "azaria_mitchell_offici
             "frequency_read_true_only": auroc_with_ci((cells[ton] == "TT"), sc[ton], seed=seed),
             "median_ppl_by_cell": {c: round(float(_np.median(-sc[cells == c])), 2)
                                    for c in ("TT", "TA", "FT", "FA")},
+            "per_item_neg_ppl": [round(float(v), 6) for v in sc],
+            "per_item_text": [it["text"] for it in items],
         }
         print(f"[ppl] {tag}: diag {out['splits'][tag]['diagonal']['auroc']:.3f} "
               f"off {out['splits'][tag]['off_diagonal']['auroc']:.3f}", flush=True)
@@ -568,7 +571,8 @@ def ppl_baseline_run(reference_model: str, am_dir: str = "azaria_mitchell_offici
 @app.function(image=image, gpu=GPU, volumes=VOLUMES, secrets=SECRETS,
               timeout=6 * 3600)
 @_timed
-def nladder_run(model_id: str, corpus_name: str, reps: int = 5) -> dict:
+def nladder_run(model_id: str, corpus_name: str, reps: int = 5,
+                crossfit: bool = False) -> dict:
     """Pre-registered training-size ladder for the knee (D-023)."""
     _setup()
     from src.stage3 import run_nladder
@@ -576,7 +580,25 @@ def nladder_run(model_id: str, corpus_name: str, reps: int = 5) -> dict:
 
     sub = Substrate(model_id, cache_dir="/root/activations")
     out = run_nladder(sub, f"/root/mirage/data/corpus/{corpus_name}", reps=reps,
-                      device="cuda", commit_fn=activations.commit)
+                      device="cuda", commit_fn=activations.commit, crossfit=crossfit)
+    activations.commit()
+    hf_cache.commit()
+    return out
+
+
+@app.function(image=image, gpu=GPU, volumes=VOLUMES, secrets=SECRETS,
+              timeout=6 * 3600)
+@_timed
+def crossfit_run(model_id: str, corpus_name: str, ppl_artifact: str = "") -> dict:
+    """Cross-fitted recoverability (D12) and recoverability net of plausibility (C8)."""
+    _setup()
+    from src.stage3 import run_crossfit
+    from src.substrate import Substrate
+
+    sub = Substrate(model_id, cache_dir="/root/activations")
+    out = run_crossfit(sub, f"/root/mirage/data/corpus/{corpus_name}",
+                       ppl_artifact=(f"/root/mirage/results/{ppl_artifact}" if ppl_artifact else None),
+                       device="cuda", commit_fn=activations.commit)
     activations.commit()
     hf_cache.commit()
     return out
@@ -586,7 +608,7 @@ def nladder_run(model_id: str, corpus_name: str, reps: int = 5) -> dict:
 def main(stage: str = "sanity", model: str = "", max_per_topic: int = 0,
          batch_size: int = 32, fast: bool = True, corpus: str = "", seed: int = 0,
          detector: str = "saplma", domain: str = "", layer: int = -1,
-         subsample_n: int = 0, am_dir: str = ""):
+         subsample_n: int = 0, am_dir: str = "", topics: str = ""):
     """
     modal run mirage/modal_app.py --stage sanity                     # Stage 0, all models
     modal run mirage/modal_app.py --stage stage1 --model <id>        # Stage 1, one model
@@ -781,14 +803,15 @@ def main(stage: str = "sanity", model: str = "", max_per_topic: int = 0,
             "Qwen/Qwen2.5-7B-Instruct", "meta-llama/Llama-3.1-8B-Instruct",
             "google/gemma-2-9b-it", "EleutherAI/pythia-6.9b"]
         kw = {"corpus_name": corpus_name, "layer": layer if layer >= 0 else None,
-              "subsample_n": subsample_n, "am_dir": am_dir}
+              "subsample_n": subsample_n, "am_dir": am_dir, "topics": topics}
         for r in transfer_run.map(ids_tr, kwargs=kw, order_outputs=False,
                                   return_exceptions=True):
             if isinstance(r, Exception):
                 print(f"SKIPPED (failed): {type(r).__name__}: {str(r)[:200]}")
                 continue
             sh = r["model"].split("/")[-1].lower()
-            o = _HERE / "results" / f"transfer_{sh}_{chs}_{date.today():%Y%m%d}.json"
+            sfx = ("_" + topics.replace(",", "-")) if topics else ""
+            o = _HERE / "results" / f"transfer{sfx}_{sh}_{chs}_{date.today():%Y%m%d}.json"
             o.write_text(json.dumps(r, indent=2, default=_json_default))
             print(f"{r['model']}: A&M held-out {r['in_distribution_on_am']['auroc']:.3f} | "
                   f"frequency-read among TRUE ONLY "
@@ -806,15 +829,41 @@ def main(stage: str = "sanity", model: str = "", max_per_topic: int = 0,
             for p in (_HERE / "results").glob("stage3_saplma_*.json")
             if json.loads(p.read_text(encoding="utf-8")).get("corpus") == corpus_name})
         print(f"nladder over {len(ids)} models")
-        for r in nladder_run.map(ids, kwargs={"corpus_name": corpus_name},
+        for r in nladder_run.map(ids, kwargs={"corpus_name": corpus_name,
+                                              "crossfit": bool(subsample_n)},
                                  order_outputs=False, return_exceptions=True):
             if isinstance(r, Exception):
                 print(f"SKIPPED (failed): {type(r).__name__}: {str(r)[:200]}")
                 continue
             sh = r["model"].split("/")[-1].lower()
-            o = _HERE / "results" / f"nladder_{sh}_{chs}_{date.today():%Y%m%d}.json"
+            tag = "nladdercf" if r.get("estimator") == "crossfitted" else "nladder"
+            o = _HERE / "results" / f"{tag}_{sh}_{chs}_{date.today():%Y%m%d}.json"
             o.write_text(json.dumps(r, indent=2, default=_json_default))
             print(f"{r['model']}: rec_full {r['recoverability_full_corpus']} -> {o}")
+
+    elif stage == "crossfit":
+        from datetime import date
+        corpus_name = corpus or "mirage_2x2_v44b4126cba1c.jsonl"
+        chs = Path(corpus_name).stem.split("_v")[-1]
+        pa = sorted((_HERE / "results").glob("pplbase_olmo*.json"))
+        pa_name = pa[-1].name if pa else ""
+        ids = [m.strip() for m in model.split(",") if m.strip()] or sorted({
+            json.loads(p.read_text(encoding="utf-8"))["model"]
+            for p in (_HERE / "results").glob("stage3_saplma_*.json")
+            if json.loads(p.read_text(encoding="utf-8")).get("corpus") == corpus_name})
+        print(f"crossfit over {len(ids)} models, plausibility from {pa_name or 'NONE'}")
+        for r in crossfit_run.map(ids, kwargs={"corpus_name": corpus_name,
+                                               "ppl_artifact": pa_name},
+                                  order_outputs=False, return_exceptions=True):
+            if isinstance(r, Exception):
+                print(f"SKIPPED (failed): {type(r).__name__}: {str(r)[:200]}")
+                continue
+            sh = r["model"].split("/")[-1].lower()
+            o = _HERE / "results" / f"crossfit_{sh}_{chs}_{date.today():%Y%m%d}.json"
+            o.write_text(json.dumps(r, indent=2, default=_json_default))
+            print(f"{r['model']}: same {r['recoverability_same_sample']} | "
+                  f"crossfit {r['recoverability_crossfitted']} | "
+                  f"net-ppl {r['recoverability_net_of_plausibility']} -> {o}")
 
     elif stage == "pplbase":
         from datetime import date

@@ -1,0 +1,30 @@
+{
+  "experiment": "crossfit_recoverability",
+  "model": "google/gemma-2-9b-it",
+  "corpus": "mirage_2x2_v44b4126cba1c.jsonl",
+  "layer": 21,
+  "recoverability_same_sample": 0.9062,
+  "recoverability_crossfitted": 0.8978,
+  "off_diagonal_crossfitted": 0.9372,
+  "recoverability_net_of_plausibility": 0.9227,
+  "plausibility_source": "OLMo-2-1124-7B reference perplexity",
+  "folds": [
+    {
+      "n_train": 304,
+      "n_eval": 304,
+      "recoverability": 0.8981,
+      "off_diagonal": 0.9392
+    },
+    {
+      "n_train": 304,
+      "n_eval": 304,
+      "recoverability": 0.8974,
+      "off_diagonal": 0.9351
+    }
+  ],
+  "provenance": "measured",
+  "compute": {
+    "gpu": "H100",
+    "wall_seconds": 38.0
+  }
+}
