@@ -591,3 +591,84 @@ def run_crossfit(substrate, corpus_path, ppl_artifact=None, n_folds=5, batch_siz
           f"cross-fitted {out['recoverability_crossfitted']:.4f} | "
           f"net of plausibility {out['recoverability_net_of_plausibility']}", flush=True)
     return out
+
+
+def run_paired_baseline(substrate, corpus_path, ppl_artifact=None, seed=20260719,
+                        batch_size=32, n_boot=4000, commit_fn=None) -> dict:
+    """Probe minus training-free baseline, paired on the same items.
+
+    An earlier version of this comparison read the whole-corpus out-of-fold scores while
+    the results table reports the adversarial split, so its differences did not equal the
+    tabulated AUROC minus the baseline and were not the quantity the prose defined. This
+    reproduces the SAME estimator as the table -- same seed, same 80/20 diagonal split,
+    same probe -- keeps the per-item off-diagonal scores, and resamples those items for
+    both detectors together so the difference is paired.
+    """
+    from .eval.adversarial_split import DIAGONAL, OFF_DIAGONAL
+    from .probes.saplma import SaplmaProbe
+    from .stats import auroc_with_ci
+
+    items = load_corpus(corpus_path)
+    corpus_hash = Path(corpus_path).stem.split("_v")[-1]
+    texts = [it["text"] for it in items]
+    truth = np.array([bool(it["truth"]) for it in items])
+    cells = np.array([it["cell"] for it in items])
+
+    neg_ppl = None
+    if ppl_artifact and Path(ppl_artifact).exists():
+        a = json.loads(Path(ppl_artifact).read_text(encoding="utf-8"))
+        for sp in a.get("splits", {}).values():
+            if isinstance(sp, dict) and sp.get("per_item_text") == texts:
+                neg_ppl = np.asarray(sp["per_item_neg_ppl"], dtype=float)
+                break
+    if neg_ppl is None:
+        neg_ppl = -np.array([it["typicality"]["reference_ppl"] for it in items], dtype=float)
+        ppl_src = "corpus reference_ppl"
+    else:
+        ppl_src = Path(ppl_artifact).name
+
+    H = _extract_or_load(substrate, texts, corpus_hash, batch_size, commit_fn)
+    L = H.shape[1] // 2
+    X = H[:, L, :]
+
+    rng = np.random.default_rng(seed)
+    diag_idx = np.flatnonzero(np.isin(cells, DIAGONAL))
+    off_idx = np.flatnonzero(np.isin(cells, OFF_DIAGONAL))
+    perm = rng.permutation(diag_idx)
+    train_idx = perm[: int(0.8 * len(perm))]
+
+    probe = SaplmaProbe(seed=seed).fit(X[train_idx].astype(np.float64), truth[train_idx])
+    s_off = np.asarray(probe.score(X[off_idx].astype(np.float64)), dtype=float)
+    p_off = neg_ppl[off_idx]
+    y_off = truth[off_idx]
+
+    def _au(y, s):
+        y = np.asarray(y, dtype=bool)
+        if y.all() or (~y).all():
+            return float("nan")
+        r = np.argsort(np.argsort(s)) + 1.0
+        n1, n0 = int(y.sum()), int((~y).sum())
+        return float((r[y].sum() - n1 * (n1 + 1) / 2) / (n1 * n0))
+
+    a_probe, a_base = _au(y_off, s_off), _au(y_off, p_off)
+    rb = np.random.default_rng(seed)
+    diffs = []
+    for _ in range(n_boot):
+        i = rb.integers(0, len(y_off), len(y_off))
+        if y_off[i].all() or (~y_off[i]).all():
+            continue
+        diffs.append(_au(y_off[i], s_off[i]) - _au(y_off[i], p_off[i]))
+    lo, hi = np.percentile(diffs, [2.5, 97.5])
+
+    out = {"experiment": "paired_probe_minus_baseline", "model": substrate.model_id,
+           "corpus": Path(corpus_path).name, "layer": int(L), "n_off_diagonal": int(len(y_off)),
+           "probe_off_diagonal_auroc": round(a_probe, 4),
+           "baseline_off_diagonal_auroc": round(a_base, 4),
+           "delta": round(a_probe - a_base, 4),
+           "delta_ci": [round(float(lo), 4), round(float(hi), 4)],
+           "beats_baseline": bool(lo > 0), "loses_to_baseline": bool(hi < 0),
+           "estimator": "adversarial split, same seed and split as the results table",
+           "baseline_source": ppl_src, "provenance": "measured"}
+    print(f"[paired] {substrate.model_id}: probe {a_probe:.4f} - baseline {a_base:.4f} = "
+          f"{out['delta']:+.4f} [{lo:+.4f}, {hi:+.4f}]", flush=True)
+    return out

@@ -1,0 +1,23 @@
+{
+  "experiment": "paired_probe_minus_baseline",
+  "model": "EleutherAI/pythia-410m",
+  "corpus": "mirage_2x2_v44b4126cba1c.jsonl",
+  "layer": 12,
+  "n_off_diagonal": 304,
+  "probe_off_diagonal_auroc": 0.1296,
+  "baseline_off_diagonal_auroc": 0.8302,
+  "delta": -0.7006,
+  "delta_ci": [
+    -0.7628,
+    -0.6353
+  ],
+  "beats_baseline": false,
+  "loses_to_baseline": true,
+  "estimator": "adversarial split, same seed and split as the results table",
+  "baseline_source": "corpus reference_ppl",
+  "provenance": "measured",
+  "compute": {
+    "gpu": "H100",
+    "wall_seconds": 7.5
+  }
+}

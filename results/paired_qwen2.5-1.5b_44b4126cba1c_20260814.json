@@ -1,0 +1,23 @@
+{
+  "experiment": "paired_probe_minus_baseline",
+  "model": "Qwen/Qwen2.5-1.5B",
+  "corpus": "mirage_2x2_v44b4126cba1c.jsonl",
+  "layer": 14,
+  "n_off_diagonal": 304,
+  "probe_off_diagonal_auroc": 0.4556,
+  "baseline_off_diagonal_auroc": 0.8302,
+  "delta": -0.3746,
+  "delta_ci": [
+    -0.4534,
+    -0.2972
+  ],
+  "beats_baseline": false,
+  "loses_to_baseline": true,
+  "estimator": "adversarial split, same seed and split as the results table",
+  "baseline_source": "corpus reference_ppl",
+  "provenance": "measured",
+  "compute": {
+    "gpu": "H100",
+    "wall_seconds": 3.9
+  }
+}

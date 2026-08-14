@@ -604,6 +604,25 @@ def crossfit_run(model_id: str, corpus_name: str, ppl_artifact: str = "") -> dic
     return out
 
 
+@app.function(image=image, gpu=GPU, volumes=VOLUMES, secrets=SECRETS,
+              timeout=4 * 3600)
+@_timed
+def paired_run(model_id: str, corpus_name: str, ppl_artifact: str = "") -> dict:
+    """Probe minus training-free baseline, paired, on the table's own estimator."""
+    _setup()
+    from src.stage3 import run_paired_baseline
+    from src.substrate import Substrate
+
+    sub = Substrate(model_id, cache_dir="/root/activations")
+    out = run_paired_baseline(sub, f"/root/mirage/data/corpus/{corpus_name}",
+                              ppl_artifact=(f"/root/mirage/results/{ppl_artifact}"
+                                            if ppl_artifact else None),
+                              commit_fn=activations.commit)
+    activations.commit()
+    hf_cache.commit()
+    return out
+
+
 @app.local_entrypoint()
 def main(stage: str = "sanity", model: str = "", max_per_topic: int = 0,
          batch_size: int = 32, fast: bool = True, corpus: str = "", seed: int = 0,
@@ -840,6 +859,29 @@ def main(stage: str = "sanity", model: str = "", max_per_topic: int = 0,
             o = _HERE / "results" / f"{tag}_{sh}_{chs}_{date.today():%Y%m%d}.json"
             o.write_text(json.dumps(r, indent=2, default=_json_default))
             print(f"{r['model']}: rec_full {r['recoverability_full_corpus']} -> {o}")
+
+    elif stage == "paired":
+        from datetime import date
+        corpus_name = corpus or "mirage_2x2_v44b4126cba1c.jsonl"
+        chs = Path(corpus_name).stem.split("_v")[-1]
+        pa = sorted((_HERE / "results").glob("pplbase_qwen*.json"))
+        pa_name = pa[-1].name if pa else ""
+        ids = [m.strip() for m in model.split(",") if m.strip()] or sorted({
+            json.loads(p.read_text(encoding="utf-8"))["model"]
+            for p in (_HERE / "results").glob("stage3_saplma_*.json")
+            if json.loads(p.read_text(encoding="utf-8")).get("corpus") == corpus_name})
+        print(f"paired over {len(ids)} models, baseline from {pa_name or 'corpus field'}")
+        for r in paired_run.map(ids, kwargs={"corpus_name": corpus_name,
+                                             "ppl_artifact": pa_name},
+                                order_outputs=False, return_exceptions=True):
+            if isinstance(r, Exception):
+                print(f"SKIPPED (failed): {type(r).__name__}: {str(r)[:200]}")
+                continue
+            sh = r["model"].split("/")[-1].lower()
+            o = _HERE / "results" / f"paired_{sh}_{chs}_{date.today():%Y%m%d}.json"
+            o.write_text(json.dumps(r, indent=2, default=_json_default))
+            print(f"{r['model']}: {r['probe_off_diagonal_auroc']} - {r['baseline_off_diagonal_auroc']}"
+                  f" = {r['delta']:+.4f} {r['delta_ci']}")
 
     elif stage == "crossfit":
         from datetime import date

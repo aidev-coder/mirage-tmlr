@@ -1,0 +1,23 @@
+{
+  "experiment": "paired_probe_minus_baseline",
+  "model": "google/gemma-2-9b-it",
+  "corpus": "mirage_2x2_v44b4126cba1c.jsonl",
+  "layer": 21,
+  "n_off_diagonal": 304,
+  "probe_off_diagonal_auroc": 0.8942,
+  "baseline_off_diagonal_auroc": 0.8302,
+  "delta": 0.064,
+  "delta_ci": [
+    0.0138,
+    0.1166
+  ],
+  "beats_baseline": true,
+  "loses_to_baseline": false,
+  "estimator": "adversarial split, same seed and split as the results table",
+  "baseline_source": "corpus reference_ppl",
+  "provenance": "measured",
+  "compute": {
+    "gpu": "H100",
+    "wall_seconds": 20.1
+  }
+}
