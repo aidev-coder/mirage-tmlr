@@ -173,7 +173,8 @@ def main() -> None:
             if done % 200 == 0 or done == len(todo):
                 OUT.parent.mkdir(parents=True, exist_ok=True)
                 OUT.write_text(json.dumps(cache, indent=0), encoding="utf-8")
-                print(f"  {done}/{len(todo)} (last: {entity}={c}) "
+                safe = entity.encode("ascii", "backslashreplace").decode("ascii")
+                print(f"  {done}/{len(todo)} (last: {safe}={c}) "
                       f"unresolved so far: {len(failed)}", flush=True)
 
     with ThreadPoolExecutor(max_workers=args.workers) as pool:

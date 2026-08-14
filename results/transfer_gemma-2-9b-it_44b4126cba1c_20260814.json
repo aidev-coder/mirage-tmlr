@@ -1,0 +1,126 @@
+{
+  "experiment": "transfer_am_to_crossed",
+  "model": "google/gemma-2-9b-it",
+  "size_control": {
+    "subsample_n": 304,
+    "reps": 5,
+    "disagreement_mean": 0.9924,
+    "disagreement_min": 0.9865,
+    "disagreement_max": 0.9965,
+    "frequency_read_mean": 0.515,
+    "frequency_read_min": 0.4198,
+    "frequency_read_max": 0.6266,
+    "per_rep": [
+      {
+        "rep": 0,
+        "n_train": 304,
+        "true_frac": 0.4836,
+        "disagreement_auroc": 0.9965,
+        "frequency_read_among_true_only": 0.4198,
+        "cell_means": {
+          "TT": 0.8154,
+          "TA": 0.8906,
+          "FT": 0.0341,
+          "FA": 0.1119
+        }
+      },
+      {
+        "rep": 1,
+        "n_train": 304,
+        "true_frac": 0.4605,
+        "disagreement_auroc": 0.9919,
+        "frequency_read_among_true_only": 0.6266,
+        "cell_means": {
+          "TT": 0.8466,
+          "TA": 0.7802,
+          "FT": 0.0327,
+          "FA": 0.069
+        }
+      },
+      {
+        "rep": 2,
+        "n_train": 304,
+        "true_frac": 0.5164,
+        "disagreement_auroc": 0.9865,
+        "frequency_read_among_true_only": 0.5077,
+        "cell_means": {
+          "TT": 0.7408,
+          "TA": 0.7402,
+          "FT": 0.0667,
+          "FA": 0.1153
+        }
+      },
+      {
+        "rep": 3,
+        "n_train": 304,
+        "true_frac": 0.4572,
+        "disagreement_auroc": 0.9934,
+        "frequency_read_among_true_only": 0.4712,
+        "cell_means": {
+          "TT": 0.8858,
+          "TA": 0.8998,
+          "FT": 0.0638,
+          "FA": 0.1091
+        }
+      },
+      {
+        "rep": 4,
+        "n_train": 304,
+        "true_frac": 0.5033,
+        "disagreement_auroc": 0.9935,
+        "frequency_read_among_true_only": 0.5497,
+        "cell_means": {
+          "TT": 0.942,
+          "TA": 0.937,
+          "FT": 0.0451,
+          "FA": 0.0968
+        }
+      }
+    ]
+  },
+  "layer": 21,
+  "corpus": "mirage_2x2_v44b4126cba1c.jsonl",
+  "n_train": 9270,
+  "n_test": 608,
+  "n_am_rows": 16329,
+  "n_dropped_leak": 6882,
+  "n_dropped_dup": 177,
+  "in_distribution_on_am": {
+    "auroc": 0.9742,
+    "ci": [
+      0.9687,
+      0.9794
+    ],
+    "n": 1854,
+    "n_boot": 1000
+  },
+  "frequency_read_among_true_only": {
+    "auroc": 0.6077,
+    "ci": [
+      0.5441,
+      0.6683
+    ],
+    "n": 304,
+    "n_boot": 1000
+  },
+  "disagreement_auroc": {
+    "auroc": 0.9924,
+    "ci": [
+      0.9825,
+      0.9983
+    ],
+    "n": 304,
+    "n_boot": 1000
+  },
+  "cell_means": {
+    "TT": 0.9331,
+    "TA": 0.9312,
+    "FT": 0.0263,
+    "FA": 0.034
+  },
+  "provenance": "measured",
+  "compute": {
+    "gpu": "H100",
+    "wall_seconds": 207.4
+  }
+}

@@ -234,7 +234,7 @@ def run(substrate, corpus_path: str | Path, detector: str = "saplma",
 
 
 def run_transfer(substrate, corpus_path, am_dir=None, layer=None, seed=0,
-                 batch_size=32, commit_fn=None) -> dict:
+                 batch_size=32, commit_fn=None, subsample_n=0, subsample_reps=5) -> dict:
     """Train the probe on the FIELD'S dataset, test on our crossed corpus.
 
     Every other result here trains on our own congruent cells, where entity
@@ -328,7 +328,47 @@ def run_transfer(substrate, corpus_path, am_dir=None, layer=None, seed=0,
     off = np.isin(cells, ["TA", "FT"])
     off_auroc = auroc_with_ci(truth[off], s[off], seed=seed)
 
+    # Training on 9,270 rows against our 304-item diagonal varies alignment, size and
+    # topical breadth at once, so "no collapse" is also consistent with "our training
+    # set was simply too small". Refit on random subsets matched to our diagonal's size
+    # and see whether the collapse appears.
+    size_control = None
+    if subsample_n:
+        rows = []
+        for rep in range(subsample_reps):
+            rng_s = np.random.default_rng(1000 + rep)
+            pick = rng_s.choice(len(train_texts), size=min(subsample_n, len(train_texts)),
+                                replace=False)
+            ps = SaplmaProbe(seed=seed).fit(H_tr[pick, L, :].astype(np.float64),
+                                            train_y[pick])
+            ss = np.asarray(ps.score(H_te[:, L, :].astype(np.float64)))
+            rows.append({
+                "rep": rep,
+                "n_train": int(len(pick)),
+                "true_frac": round(float(train_y[pick].mean()), 4),
+                "disagreement_auroc": auroc_with_ci(truth[off], ss[off], seed=seed)["auroc"],
+                "frequency_read_among_true_only":
+                    auroc_with_ci((cells[true_only] == "TT"), ss[true_only], seed=seed)["auroc"],
+                "cell_means": {c: round(float(ss[cells == c].mean()), 4)
+                               for c in ("TT", "TA", "FT", "FA")},
+            })
+        dis = [r["disagreement_auroc"] for r in rows]
+        frq = [r["frequency_read_among_true_only"] for r in rows]
+        size_control = {"subsample_n": int(subsample_n), "reps": int(subsample_reps),
+                        "disagreement_mean": round(float(np.mean(dis)), 4),
+                        "disagreement_min": round(float(np.min(dis)), 4),
+                        "disagreement_max": round(float(np.max(dis)), 4),
+                        "frequency_read_mean": round(float(np.mean(frq)), 4),
+                        "frequency_read_min": round(float(np.min(frq)), 4),
+                        "frequency_read_max": round(float(np.max(frq)), 4),
+                        "per_rep": rows}
+        print(f"[transfer] SIZE CONTROL n={subsample_n} x{subsample_reps}: "
+              f"disagreement {np.mean(dis):.3f} [{np.min(dis):.3f}, {np.max(dis):.3f}] | "
+              f"frequency-read {np.mean(frq):.3f} [{np.min(frq):.3f}, {np.max(frq):.3f}]",
+              flush=True)
+
     out = {"experiment": "transfer_am_to_crossed", "model": substrate.model_id,
+           "size_control": size_control,
            "layer": int(L), "corpus": Path(corpus_path).name,
            "n_train": len(train_texts), "n_test": len(items),
            "n_am_rows": n_raw, "n_dropped_leak": n_leak, "n_dropped_dup": n_dup,

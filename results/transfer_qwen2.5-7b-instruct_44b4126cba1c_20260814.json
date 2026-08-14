@@ -1,0 +1,126 @@
+{
+  "experiment": "transfer_am_to_crossed",
+  "model": "Qwen/Qwen2.5-7B-Instruct",
+  "size_control": {
+    "subsample_n": 304,
+    "reps": 5,
+    "disagreement_mean": 0.942,
+    "disagreement_min": 0.878,
+    "disagreement_max": 0.9742,
+    "frequency_read_mean": 0.6322,
+    "frequency_read_min": 0.4815,
+    "frequency_read_max": 0.7083,
+    "per_rep": [
+      {
+        "rep": 0,
+        "n_train": 304,
+        "true_frac": 0.4836,
+        "disagreement_auroc": 0.9742,
+        "frequency_read_among_true_only": 0.4815,
+        "cell_means": {
+          "TT": 0.7062,
+          "TA": 0.7586,
+          "FT": 0.1368,
+          "FA": 0.2267
+        }
+      },
+      {
+        "rep": 1,
+        "n_train": 304,
+        "true_frac": 0.4605,
+        "disagreement_auroc": 0.9517,
+        "frequency_read_among_true_only": 0.6501,
+        "cell_means": {
+          "TT": 0.8287,
+          "TA": 0.7281,
+          "FT": 0.1101,
+          "FA": 0.1425
+        }
+      },
+      {
+        "rep": 2,
+        "n_train": 304,
+        "true_frac": 0.5164,
+        "disagreement_auroc": 0.878,
+        "frequency_read_among_true_only": 0.6161,
+        "cell_means": {
+          "TT": 0.6616,
+          "TA": 0.5434,
+          "FT": 0.1433,
+          "FA": 0.1225
+        }
+      },
+      {
+        "rep": 3,
+        "n_train": 304,
+        "true_frac": 0.4572,
+        "disagreement_auroc": 0.9493,
+        "frequency_read_among_true_only": 0.7049,
+        "cell_means": {
+          "TT": 0.9175,
+          "TA": 0.7508,
+          "FT": 0.0737,
+          "FA": 0.0989
+        }
+      },
+      {
+        "rep": 4,
+        "n_train": 304,
+        "true_frac": 0.5033,
+        "disagreement_auroc": 0.9569,
+        "frequency_read_among_true_only": 0.7083,
+        "cell_means": {
+          "TT": 0.9428,
+          "TA": 0.8136,
+          "FT": 0.0851,
+          "FA": 0.1112
+        }
+      }
+    ]
+  },
+  "layer": 14,
+  "corpus": "mirage_2x2_v44b4126cba1c.jsonl",
+  "n_train": 9270,
+  "n_test": 608,
+  "n_am_rows": 16329,
+  "n_dropped_leak": 6882,
+  "n_dropped_dup": 177,
+  "in_distribution_on_am": {
+    "auroc": 0.9574,
+    "ci": [
+      0.9494,
+      0.9652
+    ],
+    "n": 1854,
+    "n_boot": 1000
+  },
+  "frequency_read_among_true_only": {
+    "auroc": 0.5848,
+    "ci": [
+      0.5236,
+      0.6454
+    ],
+    "n": 304,
+    "n_boot": 1000
+  },
+  "disagreement_auroc": {
+    "auroc": 0.993,
+    "ci": [
+      0.9841,
+      0.9986
+    ],
+    "n": 304,
+    "n_boot": 1000
+  },
+  "cell_means": {
+    "TT": 0.9437,
+    "TA": 0.9205,
+    "FT": 0.0138,
+    "FA": 0.0561
+  },
+  "provenance": "measured",
+  "compute": {
+    "gpu": "H100",
+    "wall_seconds": 188.6
+  }
+}

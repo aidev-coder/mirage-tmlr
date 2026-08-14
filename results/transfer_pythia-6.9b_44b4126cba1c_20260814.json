@@ -1,0 +1,126 @@
+{
+  "experiment": "transfer_am_to_crossed",
+  "model": "EleutherAI/pythia-6.9b",
+  "size_control": {
+    "subsample_n": 304,
+    "reps": 5,
+    "disagreement_mean": 0.52,
+    "disagreement_min": 0.3971,
+    "disagreement_max": 0.5956,
+    "frequency_read_mean": 0.5973,
+    "frequency_read_min": 0.4926,
+    "frequency_read_max": 0.6723,
+    "per_rep": [
+      {
+        "rep": 0,
+        "n_train": 304,
+        "true_frac": 0.4836,
+        "disagreement_auroc": 0.5956,
+        "frequency_read_among_true_only": 0.4926,
+        "cell_means": {
+          "TT": 0.6152,
+          "TA": 0.5821,
+          "FT": 0.4616,
+          "FA": 0.5574
+        }
+      },
+      {
+        "rep": 1,
+        "n_train": 304,
+        "true_frac": 0.4605,
+        "disagreement_auroc": 0.3971,
+        "frequency_read_among_true_only": 0.6723,
+        "cell_means": {
+          "TT": 0.5821,
+          "TA": 0.4755,
+          "FT": 0.5419,
+          "FA": 0.4396
+        }
+      },
+      {
+        "rep": 2,
+        "n_train": 304,
+        "true_frac": 0.5164,
+        "disagreement_auroc": 0.5296,
+        "frequency_read_among_true_only": 0.569,
+        "cell_means": {
+          "TT": 0.644,
+          "TA": 0.4998,
+          "FT": 0.4846,
+          "FA": 0.4187
+        }
+      },
+      {
+        "rep": 3,
+        "n_train": 304,
+        "true_frac": 0.4572,
+        "disagreement_auroc": 0.5148,
+        "frequency_read_among_true_only": 0.6544,
+        "cell_means": {
+          "TT": 0.3954,
+          "TA": 0.2139,
+          "FT": 0.1982,
+          "FA": 0.1164
+        }
+      },
+      {
+        "rep": 4,
+        "n_train": 304,
+        "true_frac": 0.5033,
+        "disagreement_auroc": 0.5631,
+        "frequency_read_among_true_only": 0.5982,
+        "cell_means": {
+          "TT": 0.4882,
+          "TA": 0.3841,
+          "FT": 0.2562,
+          "FA": 0.2517
+        }
+      }
+    ]
+  },
+  "layer": 16,
+  "corpus": "mirage_2x2_v44b4126cba1c.jsonl",
+  "n_train": 9270,
+  "n_test": 608,
+  "n_am_rows": 16329,
+  "n_dropped_leak": 6882,
+  "n_dropped_dup": 177,
+  "in_distribution_on_am": {
+    "auroc": 0.8796,
+    "ci": [
+      0.8638,
+      0.8956
+    ],
+    "n": 1854,
+    "n_boot": 1000
+  },
+  "frequency_read_among_true_only": {
+    "auroc": 0.6386,
+    "ci": [
+      0.5755,
+      0.7012
+    ],
+    "n": 304,
+    "n_boot": 1000
+  },
+  "disagreement_auroc": {
+    "auroc": 0.8818,
+    "ci": [
+      0.845,
+      0.9141
+    ],
+    "n": 304,
+    "n_boot": 1000
+  },
+  "cell_means": {
+    "TT": 0.7296,
+    "TA": 0.5688,
+    "FT": 0.1255,
+    "FA": 0.151
+  },
+  "provenance": "measured",
+  "compute": {
+    "gpu": "H100",
+    "wall_seconds": 241.1
+  }
+}
