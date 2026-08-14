@@ -34,7 +34,8 @@ def baselines(src: Sources, split: str):
 def main() -> int:
     style()
     src = Sources()
-    fig, axes = plt.subplots(1, 2, figsize=(DOUBLE, 3.4), sharey=True)
+    fig, axes = plt.subplots(1, 2, figsize=(DOUBLE, 3.6), sharey=True,
+                             layout="constrained")
 
     for ax, (ch, split, name) in zip(axes, [(CORPUS, "authored", "authored corpus, n = 608"),
                                             (HARVEST, "harvested", "harvested corpus, n = 140")]):
@@ -43,7 +44,7 @@ def main() -> int:
         lo, hi = min(base.values()), max(base.values())
 
         ax.axhspan(lo, hi, color=OI["orange"], alpha=0.22, lw=0, zorder=0,
-                   label="perplexity baseline (training-free), two reference models")
+                   label="perplexity baseline, two reference LMs")
         for v in base.values():
             ax.axhline(v, lw=1.0, color=OI["orange"], zorder=1)
         chance(ax, "y", label=(ax is axes[0]))
@@ -51,13 +52,16 @@ def main() -> int:
         ax.scatter(range(len(pr)), [p[1] for p in pr], s=26, color=OI["blue"], zorder=3,
                    label="probes (trained, hidden states)")
         ax.set_xticks([])
-        ax.set_xlabel(f"18 models, ordered by off-diagonal AUROC\n{name}")
+        ax.set_xlabel(name, fontsize=8)
         ax.set_ylim(0, 1.02)
 
     axes[0].set_ylabel("off-diagonal AUROC")
-    axes[0].legend(loc="upper left", frameon=False, fontsize=7)
-    fig.suptitle("Probes against a detector that reads no hidden states", x=0.09,
-                 ha="left", fontsize=9.5)
+    axes[0].legend(loc="upper left", frameon=False, fontsize=7.5)
+    for ax in axes:
+        ax.margins(x=0.06)
+    fig.suptitle("Probes against a detector that reads no hidden states\n"
+                 "18 models per panel, ordered by off-diagonal AUROC",
+                 x=0.01, ha="left", fontsize=9.5)
     save(fig, "fig05_bracket", src, "Probes against the training-free baseline")
     return 0
 

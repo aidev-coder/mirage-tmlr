@@ -24,6 +24,7 @@ import numpy as np
 
 from ._common import (CORPUS, OI, RESULTS, SINGLE, Sources, chance, need, plt, save,
                       short, style)
+from ._declutter import place_labels
 
 
 def same_sample(src: Sources):
@@ -73,7 +74,7 @@ def main() -> int:
     src = Sources()
     pts, fit = (same_sample if a.estimator == "same_sample" else canonical)(src)
 
-    fig, ax = plt.subplots(figsize=(SINGLE, 4.0))
+    fig, ax = plt.subplots(figsize=(SINGLE, 4.1), layout="constrained")
     chance(ax, "y")
 
     lo, hi = fit["knee_ci"]
@@ -89,11 +90,11 @@ def main() -> int:
         ax.plot(g, fit["floor"] + fit["slope"] * np.maximum(0.0, g - fit["knee"]),
                 lw=1.2, color=OI["vermillion"], zorder=2, label="hinge fit (from artifact)")
 
-    rng = np.random.default_rng(0)                    # fixed seed: reruns are identical
-    for (x, yv, name) in pts:
-        ax.annotate(name, (x, yv), (x + 0.012 + rng.uniform(0, 0.004),
-                                    yv + rng.uniform(-0.013, 0.013)),
-                    fontsize=6.0, color="#5A6068", annotation_clip=False)
+    # Deterministic placement: each label takes the first offset that collides with
+    # nothing already placed. No jitter, and unresolved collisions are reported.
+    _, unresolved = place_labels(ax, [(p[0], p[1]) for p in pts], [p[2] for p in pts])
+    if unresolved:
+        print(f"  label collisions unresolved: {', '.join(unresolved)}")
 
     note = f"r = {fit['r']:.3f}"
     if fit["r_ci"]:
@@ -106,7 +107,8 @@ def main() -> int:
     ax.set_ylabel("off-diagonal AUROC")
     ax.set_title(fit["label"], loc="left")
     ax.set_ylim(0, 1.02)
-    ax.legend(loc="lower right", frameon=False)
+    ax.legend(loc="upper center", bbox_to_anchor=(0.5, -0.13), ncol=4,
+              frameon=False, fontsize=7.5)
     save(fig, f"fig03_hinge_{a.estimator}", src, "Recoverability against off-diagonal AUROC")
     return 0
 
