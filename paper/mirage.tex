@@ -417,6 +417,13 @@ pythia-6.9b & 0.853 & 0.698 & 0.697 & 0.690 [0.628, 0.749] \\
 
 All columns are AUROC. Azaria and Mitchell evaluate leave-one-topic-out, so that is the column comparable to their reported accuracy; a random split over pooled topics is an easier test and flatters by 0.03 to 0.15. Their probes are also in-distribution while the perplexity baseline of §4 is zero-shot, so the margin over 0.718 is not like-for-like.
 
+\begin{figure}[t]
+\centering
+\includegraphics[width=\linewidth]{figs/fig08_spectrum.png}
+\caption{Each point is one detector under one training regime. The x axis is the frequency read among statements that are all true, so truth is constant and any separation is familiarity; the y axis is the number the field reports. The three regimes sit at 0.513 to 0.591, 0.574 to 0.690 and 0.766 to 0.961 on that axis while the reported score stays between 0.761 and 0.998 throughout.}
+\label{fig:spectrum}
+\end{figure}
+
 There is no collapse. \textbf{So the 0.08 floor is caused by the training composition we impose, not by the method and not by the field's data.} But the frequency read is present in every model, 0.574 to 0.690 with every interval excluding chance, so their construction teaches the shortcut weakly rather than not at all. That is the left anchor of the alignment spectrum, measured on nameable data.
 
 Training size is a rival explanation, since 4,991 rows against our 304 differs in size as well as composition. Matching the size at 304 rows over five subsamples: gemma-2-9b-it 0.990, Qwen2.5-7B-Instruct 0.963, Llama-3.1-8B-Instruct 0.929, so no collapse. \textbf{pythia-6.9b falls to 0.541.} For the three strong models composition is confirmed against size; for the below-knee model, size and composition contribute comparably, and §3.2's hinge sits in exactly that regime.
@@ -498,6 +505,13 @@ Our authored false-common items are made by swapping a country, which is how Aza
 \section{The benchmark cannot select a layer either}
 
 Every result above reads one layer per model. The literature disagrees about which layer carries truth, so we swept all of them, across eighteen models and four probe architectures.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\linewidth]{figs/fig07_layers.png}
+\caption{Logistic regression on Gemma-2-9b-it. Thirty-seven layers tie on the number the field reports, within 0.01 of its maximum, while off-diagonal AUROC across those same layers spans 0.015 to 0.875. The lower panel shows the other three saturating models on a normalised depth axis. Both series are AUROC.}
+\label{fig:layers}
+\end{figure}
 
 It can say almost nothing, and the reason is saturation. Gradient-trained logistic regression scores in-distribution AUROC within 0.01 of its maximum at many layers simultaneously: 37 layers on Gemma-2-9b-it, 35 on Gemma-2-9b, 29 on Llama-3.1-8B-Instruct, 22 on Qwen2.5-7B-Instruct. Across the layers it scores indistinguishably, off-diagonal AUROC ranges from 0.015 to 0.875. Mass-mean probing and TTPD mostly have a unique best layer with zero spread, because their in-distribution scores top out below 1.0 and never saturate. The benchmark loses the ability to discriminate exactly where it reports a perfect score.
 

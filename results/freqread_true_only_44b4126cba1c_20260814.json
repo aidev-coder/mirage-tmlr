@@ -1,0 +1,192 @@
+{
+  "experiment": "frequency_read_true_only",
+  "note": "AUROC separating common from rare entities among statements that are all true, using the diagonal-trained (fielded) probe. Truth is constant across this contrast.",
+  "corpus": "mirage_2x2_v44b4126cba1c.jsonl",
+  "n_models": 18,
+  "min": 0.7656,
+  "max": 0.9607,
+  "mean": 0.9093,
+  "rows": [
+    {
+      "model": "EleutherAI/pythia-6.9b",
+      "layer": 16,
+      "n_true_items": 304,
+      "frequency_read_true_only": 0.9607,
+      "ci": [
+        0.9361,
+        0.9811
+      ]
+    },
+    {
+      "model": "EleutherAI/pythia-12b",
+      "layer": 18,
+      "n_true_items": 304,
+      "frequency_read_true_only": 0.9552,
+      "ci": [
+        0.9261,
+        0.9786
+      ]
+    },
+    {
+      "model": "EleutherAI/pythia-410m",
+      "layer": 12,
+      "n_true_items": 304,
+      "frequency_read_true_only": 0.9514,
+      "ci": [
+        0.9253,
+        0.9744
+      ]
+    },
+    {
+      "model": "Qwen/Qwen2.5-7B",
+      "layer": 14,
+      "n_true_items": 304,
+      "frequency_read_true_only": 0.9437,
+      "ci": [
+        0.9157,
+        0.9702
+      ]
+    },
+    {
+      "model": "EleutherAI/pythia-1b",
+      "layer": 8,
+      "n_true_items": 304,
+      "frequency_read_true_only": 0.9434,
+      "ci": [
+        0.9159,
+        0.9691
+      ]
+    },
+    {
+      "model": "Qwen/Qwen2.5-1.5B",
+      "layer": 14,
+      "n_true_items": 304,
+      "frequency_read_true_only": 0.9389,
+      "ci": [
+        0.91,
+        0.9629
+      ]
+    },
+    {
+      "model": "EleutherAI/pythia-1.4b",
+      "layer": 12,
+      "n_true_items": 304,
+      "frequency_read_true_only": 0.9351,
+      "ci": [
+        0.8994,
+        0.9656
+      ]
+    },
+    {
+      "model": "meta-llama/Llama-3.1-8B",
+      "layer": 16,
+      "n_true_items": 304,
+      "frequency_read_true_only": 0.9333,
+      "ci": [
+        0.904,
+        0.9612
+      ]
+    },
+    {
+      "model": "Qwen/Qwen2.5-0.5B",
+      "layer": 12,
+      "n_true_items": 304,
+      "frequency_read_true_only": 0.932,
+      "ci": [
+        0.8999,
+        0.9584
+      ]
+    },
+    {
+      "model": "Qwen/Qwen2.5-7B-Instruct",
+      "layer": 14,
+      "n_true_items": 304,
+      "frequency_read_true_only": 0.9274,
+      "ci": [
+        0.894,
+        0.9566
+      ]
+    },
+    {
+      "model": "EleutherAI/pythia-2.8b",
+      "layer": 16,
+      "n_true_items": 304,
+      "frequency_read_true_only": 0.9174,
+      "ci": [
+        0.882,
+        0.9507
+      ]
+    },
+    {
+      "model": "Qwen/Qwen2.5-3B",
+      "layer": 18,
+      "n_true_items": 304,
+      "frequency_read_true_only": 0.9056,
+      "ci": [
+        0.871,
+        0.9382
+      ]
+    },
+    {
+      "model": "google/gemma-2-9b",
+      "layer": 21,
+      "n_true_items": 304,
+      "frequency_read_true_only": 0.8942,
+      "ci": [
+        0.8532,
+        0.9299
+      ]
+    },
+    {
+      "model": "EleutherAI/pythia-70m",
+      "layer": 3,
+      "n_true_items": 304,
+      "frequency_read_true_only": 0.8889,
+      "ci": [
+        0.848,
+        0.926
+      ]
+    },
+    {
+      "model": "meta-llama/Llama-3.1-8B-Instruct",
+      "layer": 16,
+      "n_true_items": 304,
+      "frequency_read_true_only": 0.8793,
+      "ci": [
+        0.8382,
+        0.915
+      ]
+    },
+    {
+      "model": "google/gemma-2-2b",
+      "layer": 13,
+      "n_true_items": 304,
+      "frequency_read_true_only": 0.8557,
+      "ci": [
+        0.8126,
+        0.8962
+      ]
+    },
+    {
+      "model": "EleutherAI/pythia-160m",
+      "layer": 6,
+      "n_true_items": 304,
+      "frequency_read_true_only": 0.8389,
+      "ci": [
+        0.7923,
+        0.8862
+      ]
+    },
+    {
+      "model": "google/gemma-2-9b-it",
+      "layer": 21,
+      "n_true_items": 304,
+      "frequency_read_true_only": 0.7656,
+      "ci": [
+        0.7101,
+        0.8169
+      ]
+    }
+  ],
+  "provenance": "measured"
+}

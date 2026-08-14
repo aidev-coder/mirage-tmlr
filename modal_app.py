@@ -623,6 +623,30 @@ def paired_run(model_id: str, corpus_name: str, ppl_artifact: str = "") -> dict:
     return out
 
 
+def _write_artifact(path: Path, payload: dict) -> Path:
+    """Never overwrite an existing artifact with different content.
+
+    A published number became untraceable because a rerun wrote over its source under the
+    same filename, leaving two runs interleaved across the paper with no way to tell which
+    was which. Writing is now content-addressed on collision: identical content is a no-op,
+    different content lands beside the original with a short content hash in the name.
+    """
+    import hashlib
+
+    text = json.dumps(payload, indent=2, default=_json_default)
+    if path.exists():
+        old = path.read_text(encoding="utf-8")
+        if old == text:
+            return path
+        h = hashlib.sha256(text.encode("utf-8")).hexdigest()[:8]
+        alt = path.with_name(f"{path.stem}__{h}{path.suffix}")
+        alt.write_text(text, encoding="utf-8")
+        print(f"  REFUSED to overwrite {path.name}; wrote {alt.name} instead")
+        return alt
+    path.write_text(text, encoding="utf-8")
+    return path
+
+
 @app.local_entrypoint()
 def main(stage: str = "sanity", model: str = "", max_per_topic: int = 0,
          batch_size: int = 32, fast: bool = True, corpus: str = "", seed: int = 0,
@@ -725,7 +749,7 @@ def main(stage: str = "sanity", model: str = "", max_per_topic: int = 0,
                 dt = f"_{domain}" if domain else ""
                 ch = Path(corpus_name).stem.split("_v")[-1]
                 o = _HERE / "results" / f"stage3_{r['detector']}_{sh}{dt}_{ch}_{date.today():%Y%m%d}.json"
-                o.write_text(json.dumps(r, indent=2, default=_json_default))
+                o = _write_artifact(o, r)
                 el = r["per_layer"][r["headline_layer"]]
                 print(f"{r['model']}: L{r['headline_layer']} off-diag "
                       f"{el['adversarial']['off_diagonal'].get('auroc')} "
@@ -804,7 +828,7 @@ def main(stage: str = "sanity", model: str = "", max_per_topic: int = 0,
                 continue
             sh = r["model"].split("/")[-1].lower()
             o = _HERE / "results" / f"drift_{sh}_{chd}_{date.today():%Y%m%d}.json"
-            o.write_text(json.dumps(r, indent=2, default=_json_default))
+            o = _write_artifact(o, r)
             d_, c_ = r["probes"]["drift"], r["probes"]["drift_concat"]
             print(f"{r['model']}: taps {r['tap_layers']} | drift in-dist {d_['in_dist']:.3f} "
                   f"off {d_['off']:.3f} gap {d_['gap']:+.3f} | concat off {c_['off']:.3f} "
@@ -831,7 +855,7 @@ def main(stage: str = "sanity", model: str = "", max_per_topic: int = 0,
             sh = r["model"].split("/")[-1].lower()
             sfx = ("_" + topics.replace(",", "-")) if topics else ""
             o = _HERE / "results" / f"transfer{sfx}_{sh}_{chs}_{date.today():%Y%m%d}.json"
-            o.write_text(json.dumps(r, indent=2, default=_json_default))
+            o = _write_artifact(o, r)
             print(f"{r['model']}: A&M held-out {r['in_distribution_on_am']['auroc']:.3f} | "
                   f"frequency-read among TRUE ONLY "
                   f"{r['frequency_read_among_true_only']['auroc']:.3f} "
@@ -857,7 +881,7 @@ def main(stage: str = "sanity", model: str = "", max_per_topic: int = 0,
             sh = r["model"].split("/")[-1].lower()
             tag = "nladdercf" if r.get("estimator") == "crossfitted" else "nladder"
             o = _HERE / "results" / f"{tag}_{sh}_{chs}_{date.today():%Y%m%d}.json"
-            o.write_text(json.dumps(r, indent=2, default=_json_default))
+            o = _write_artifact(o, r)
             print(f"{r['model']}: rec_full {r['recoverability_full_corpus']} -> {o}")
 
     elif stage == "paired":
@@ -879,7 +903,7 @@ def main(stage: str = "sanity", model: str = "", max_per_topic: int = 0,
                 continue
             sh = r["model"].split("/")[-1].lower()
             o = _HERE / "results" / f"paired_{sh}_{chs}_{date.today():%Y%m%d}.json"
-            o.write_text(json.dumps(r, indent=2, default=_json_default))
+            o = _write_artifact(o, r)
             print(f"{r['model']}: {r['probe_off_diagonal_auroc']} - {r['baseline_off_diagonal_auroc']}"
                   f" = {r['delta']:+.4f} {r['delta_ci']}")
 
@@ -902,7 +926,7 @@ def main(stage: str = "sanity", model: str = "", max_per_topic: int = 0,
                 continue
             sh = r["model"].split("/")[-1].lower()
             o = _HERE / "results" / f"crossfit_{sh}_{chs}_{date.today():%Y%m%d}.json"
-            o.write_text(json.dumps(r, indent=2, default=_json_default))
+            o = _write_artifact(o, r)
             print(f"{r['model']}: same {r['recoverability_same_sample']} | "
                   f"crossfit {r['recoverability_crossfitted']} | "
                   f"net-ppl {r['recoverability_net_of_plausibility']} -> {o}")
@@ -918,7 +942,7 @@ def main(stage: str = "sanity", model: str = "", max_per_topic: int = 0,
                 continue
             sh = r["reference_model"].split("/")[-1].lower()
             o = _HERE / "results" / f"pplbase_{sh}_{date.today():%Y%m%d}.json"
-            o.write_text(json.dumps(r, indent=2, default=_json_default))
+            o = _write_artifact(o, r)
             sp = r["splits"]
             print(f"{r['reference_model']}: authored off {sp['authored']['off_diagonal']['auroc']:.3f} "
                   f"| harvested off {sp['harvested']['off_diagonal']['auroc']:.3f} "
@@ -943,7 +967,7 @@ def main(stage: str = "sanity", model: str = "", max_per_topic: int = 0,
                 continue
             sh = r["model"].split("/")[-1].lower()
             o = _HERE / "results" / f"semantic_entropy_{sh}_{chs}_{date.today():%Y%m%d}.json"
-            o.write_text(json.dumps(r, indent=2, default=_json_default))
+            o = _write_artifact(o, r)
             fb = r.get("entropy_on_correct_by_frequency", {})
             print(f"{r['model']}: n={r['n']} err={r['error_rate']:.3f} "
                   f"detects-errors {r.get('detects_errors_auroc', {}).get('auroc')} | "
