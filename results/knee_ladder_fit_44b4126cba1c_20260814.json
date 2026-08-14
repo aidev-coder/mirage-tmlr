@@ -1,0 +1,59 @@
+{
+  "experiment": "knee_ladder_fit",
+  "estimator": "crossfitted",
+  "n_models": 18,
+  "registration": "D-023 040b283 amended acab56a; canonical estimator D-024 331f983",
+  "rungs": [
+    {
+      "rung": 100,
+      "knee": 0.4414,
+      "knee_ci": [
+        0.397,
+        0.5237
+      ],
+      "slope": 1.5325
+    },
+    {
+      "rung": 200,
+      "knee": 0.5206,
+      "knee_ci": [
+        0.3483,
+        0.5736
+      ],
+      "slope": 2.2097
+    },
+    {
+      "rung": 300,
+      "knee": 0.5724,
+      "knee_ci": [
+        0.2693,
+        0.6367
+      ],
+      "slope": 2.2816
+    },
+    {
+      "rung": 450,
+      "knee": 0.6321,
+      "knee_ci": [
+        0.378,
+        0.7103
+      ],
+      "slope": 2.8389
+    },
+    {
+      "rung": 608,
+      "knee": 0.6588,
+      "knee_ci": [
+        0.4234,
+        0.6993
+      ],
+      "slope": 3.1387
+    }
+  ],
+  "shift": 0.2174,
+  "W_registered": 0.23,
+  "monotone_steps": 4,
+  "n_steps": 4,
+  "verdict": "INDETERMINATE",
+  "provenance": "measured"
+}

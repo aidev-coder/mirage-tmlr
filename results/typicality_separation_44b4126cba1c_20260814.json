@@ -1,0 +1,10 @@
+{
+  "experiment": "typicality_separation",
+  "standardization": "total_sd",
+  "frequency_typical_vs_atypical": 1.0823,
+  "frequency_true_vs_false": 0.0315,
+  "logppl_true_vs_false": 1.171,
+  "logppl_typical_vs_atypical": 0.0359,
+  "note": "pooled-within-group SD gives 1.286/0.031/1.444/0.036; the two differ by 19 percent",
+  "provenance": "measured"
+}
