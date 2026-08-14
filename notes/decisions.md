@@ -340,3 +340,20 @@ INDETERMINATE into a null or a positive. Its only admissible role is to say whet
 identified artifactual mechanism reproduces the observed drift, and it must report both
 targets (knee trajectory AND slope trajectory), since attenuation predicts both and
 matching only one is not support.
+
+### D-024 margin note (added 2026-08-14, before the cross-fitted estimates exist)
+
+Pre-identified natural experiment. Cross-fitting removes the shared-item correlation
+between recoverability and off-diagonal AUROC by construction, because the two stop being
+estimated from the same subsample. So if D-024 fires and the ladder is re-run under the
+canonical estimator, the pilot-versus-registered comparison answers the open question from
+the dilution simulation without any extra machinery:
+
+  - cross-fitted ladder's SLOPE trajectory drops toward the injected-noise simulation
+      -> the slope residual was shared x-y sampling noise, not structure.
+  - it does not drop
+      -> the residual survives removal of the shared-noise channel and "real structure"
+         has its first actual evidence.
+
+Recorded now so the comparison is pre-identified rather than noticed afterwards. No extra
+run is to be engineered for it.
