@@ -139,8 +139,8 @@ Gemma-2-9b & 0.990 & 0.823 [0.77, 0.87] & +0.167 [0.115, 0.216] & 0.917 \\
 
 \begin{figure}[t]
 \centering
-\includegraphics[width=\linewidth]{figs/fig_blindness_figma.png}
-\caption{Every probe scores 0.76 to 1.00 on the split the field reports (diamond, in-distribution AUROC) and 0.08 to 0.89 once truth and entity frequency are pulled apart (circle, off-diagonal AUROC, with its 95\% bootstrap interval). Models are ordered by off-diagonal AUROC.}
+\includegraphics[width=\linewidth]{figs/fig02_dumbbell.png}
+\caption{Every probe scores 0.76 to 1.00 on the split the field reports (diamond, in-distribution AUROC) and 0.08 to 0.89 once truth and entity frequency are pulled apart (circle, off-diagonal AUROC with its 95\% bootstrap interval). Models are ordered by off-diagonal AUROC.}
 \label{fig:blindness}
 \end{figure}
 
@@ -228,6 +228,13 @@ gemma-2-9b-it & 6 & 0.989 \\
 
 Every model has at least one architecture above chance, so 0 of 18 fail everywhere. But eight of them clear 0.5 by less than 0.1, and intervals are stored for only one of these best-of rows, so ``no model is unprobeable'' is a statement about point estimates and should be read as such. What it does rule out is the strong version: architectures disagree per model far more than a ``some models are simply unprobeable'' account predicts.
 
+\begin{figure}[t]
+\centering
+\includegraphics[width=\linewidth]{figs/fig06_cells.png}
+\caption{Mean probe score in each cell, models ordered by recoverability. The scale is a probe score from zero to one, not AUROC. Rows near the top rate false-common items as true and true-rare items as false.}
+\label{fig:cells}
+\end{figure}
+
 \subsection{3.2 Why it happens, and in what shape}
 
 The last column of the results table is recoverability: how well truth can be linearly decoded from the same hidden states when the probe is trained on decorrelated data instead of the diagonal, as a partial regression coefficient with typicality, fragmentation and edit provenance held out (Appendix A.3). It is a property of the representation, not of the probe.
@@ -244,8 +251,8 @@ That equation is the \textbf{same-sample} fit, kept because the figure and the A
 
 \begin{figure}[t]
 \centering
-\includegraphics[width=\linewidth]{figs/fig_recoverability_mechanism.png}
-\caption{Below the knee, more recoverable truth buys nothing}
+\includegraphics[width=\linewidth]{figs/fig03_hinge_same_sample.png}
+\caption{Off-diagonal AUROC against truth recoverability, one point per model. The hinge is the fit stored in the artifact, not refitted here; the shaded band is the knee's 95\% bootstrap interval. Below the knee, additional recoverability buys nothing.}
 \label{fig:mechanism}
 \end{figure}
 
@@ -274,7 +281,16 @@ We settled the functional form with new data rather than by fit quality. At an e
 \end{tabular}}
 \end{table}
 
-The shift is \textbf{0.217 against a bound of 0.230}, monotone on all four steps: \textbf{indeterminate} by the registered rule, thirteen thousandths under the threshold. Had the threshold been chosen afterwards, a perfectly monotone knee and a perfectly monotone slope would have been written up as migration. Under D-024 the paper reports indeterminate and stops.
+The shift is \textbf{0.217 against a bound of 0.230}, monotone on all four steps: \textbf{indeterminate} by the registered rule, thirteen thousandths under the threshold.
+
+Had the threshold been chosen afterwards, a perfectly monotone knee and a perfectly monotone slope would have been written up as migration. Under D-024 the paper reports indeterminate and stops.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\linewidth]{figs/fig04_ladder.png}
+\caption{Fitted knee against probe training size, both registered designs, with the bound fixed in advance. Points and intervals only: the registered test returned indeterminate, so no trend is drawn.}
+\label{fig:ladder}
+\end{figure}
 
 Four clauses are therefore all this section supports. The hinge describes the measured regime. Its location is stable when recoverability is measured at full precision: holding it at the full-corpus estimate leaves the knee within 0.031 across the ladder. The pre-registered migration test is indeterminate at our corpus sizes. And the 1,458 to 9,270 training-set regime, where §5 shows the below-knee floor is escapable, is outside the ladder's reach and unclaimed.
 
@@ -355,6 +371,13 @@ pythia-1b & 0.078 & 0.830 & -0.752 & [-0.805, -0.697] & loses \\
 \end{table}
 
 \textbf{One probe of eighteen beats a detector that reads nothing.} Gemma-2-9b-it wins by 0.064 [0.014, 0.117]. Two tie. Fifteen lose, the worst by 0.752.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\linewidth]{figs/fig05_bracket.png}
+\caption{Off-diagonal AUROC for every probe against the training-free perplexity baseline, one panel per corpus. The band spans the two reference models. On the harvested corpus every probe sits below it.}
+\label{fig:bracket}
+\end{figure}
 
 Two things this does not show. The baseline does not read truth; it reads statement plausibility, and both corpora align plausibility with truth by construction, since authored falsehoods are unattested swaps and harvested ones are a small model's errors scored by a larger reference. On a corpus of attested falsehoods, widely repeated misconceptions with low perplexity, it would fail or invert. That region is unpopulated in both our corpora and bounds the deployment claims in §8. And its flat frequency read, 0.531 and 0.513, is guaranteed by our construction, since we built the corpus so that frequency and perplexity decorrelate at Spearman 0.058; it is a design property echoing back, not a discovery.
 
