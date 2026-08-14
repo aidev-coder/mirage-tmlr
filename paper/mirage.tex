@@ -1,6 +1,6 @@
 \documentclass[10pt]{article}
 \usepackage{tmlr}
-\usepackage{hyperref}
+\usepackage[hypertexnames=false]{hyperref}
 \usepackage{url}
 \usepackage{booktabs}
 \usepackage{graphicx}
@@ -89,7 +89,7 @@ Five properties are enforced at build time rather than checked afterwards, and \
 
 The hidden state canaries pass: a probe predicting ``was this edited'' from activations reaches 0.481 [0.373, 0.580], and a probe predicting truth from tokenization features alone reaches 0.417 [0.318, 0.506]. Both intervals contain chance.
 
-\subsection{What we got wrong first, and why the corpus looks like this}
+\subsection{Four construction artifacts, and the gates that catch them}
 
 Four earlier corpora produced clean, large, cross-model effects that we believed at the time. Each was an artifact of our own construction, and each is worth stating because the checks that catch them are cheap and are now released.
 
@@ -598,6 +598,8 @@ Three consequences follow. A probe should be compared against a training-free pl
 
 We release what we used to check ourselves, because four of our own corpora failed and so did one of our experiments.
 
+One condition on the corpus release. The authored corpus is derived from Azaria and Mitchell's released dataset and 75.3\% of its statements appear verbatim in those files, so it is a derived work and is attributed as such. The published artifact carries no licence terms of its own, so we release the corpus subject to whatever terms the source dataset carries, and the tooling and gates --- which contain none of that content --- under a permissive licence independently.
+
 The corpus auditor takes any candidate decorrelation corpus and runs seven checks: crossing, FT yield, composition, duplicates, domain share, edit balance, and given a GPU the two hidden-state canaries. Run against our own history it flags the first corpus on composition, duplicates and domain share, the third on duplicates, the fourth on edit balance, and clears the fifth. A tool that cannot catch its author's mistakes will not catch anyone else's.
 
 The probe auditor takes any detector with \texttt{fit} and \texttt{score} and returns the triple this paper argues every such paper should publish: in-distribution, off-diagonal, and the gap with a bootstrap interval, plus the per-cell breakdown. It is symmetric by construction and tested to be.
@@ -640,7 +642,7 @@ GPU classes used & H100 and A10G, one card per job \\
 \end{tabular}}
 \end{table}
 
-\textbf{We cannot give an exact GPU-hour or dollar total and would rather say so than estimate one.} No runtime was recorded until late in the work, and the project moved through five cloud workspaces as prepaid credits were exhausted, three of which are no longer accessible. Every run from the final stage onward records its wall-clock seconds and GPU class into its artifact. We note the cost of the corrections specifically: four of the five corpora were rebuilt after a defect was found, and each rebuild invalidated every downstream result on that corpus.
+\textbf{A reconstructed lower bound, and what is not recoverable.} Of 288 committed artifacts, 123 carry a wall-clock record, and those sum to \textbf{9.6 GPU-hours} across Stage 3, the layer sweeps, the transfer arms, the ladders and the baselines. That is a floor rather than a total: the 165 earlier artifacts predate the instrumentation, and they include the most expensive work in the project, five corpus builds and the full all-layer sweeps. Hidden-state extraction dominates and is cached per model and corpus, so re-running the reported results costs far less than producing them did. Two further limits on precision. The project moved through five cloud workspaces as prepaid credits were exhausted, three of which are no longer accessible, so billing cannot be reconciled against the artifacts. And the GPU class recorded inside each artifact reflects the module default rather than the hardware actually allocated when a run was launched with an override, so we report the measured hours without attributing them per device; the work ran on H100 and A10G only. We note the cost of the corrections specifically: four of the five corpora were rebuilt after a defect was found, and each rebuild invalidated every downstream result on that corpus.
 
 \section{Where it is thin}
 
@@ -648,7 +650,7 @@ Three domains, English, one template family per domain, all subject-object factu
 
 n = 608 is small. It shrank from a previous 720 because balancing edit provenance inside every cell costs items, and we would rather report 608 with no exploitable construction shortcut.
 
-\textbf{Half the authored corpus rests on a file we cannot name.} The cities domain, 304 of 608 items, is generated from the 10,000-row file described in §5, which is not part of the published artifact it was filed under. We verified its labels against Wikidata: of 255 checkable city items, 12 disagree, and inspection attributes ten to gaps in the gazetteer. The remaining two are the direction that matters. \emph{Santiago is a city in Mexico} and \emph{Geneva is a city in United States} are labelled false in our false-common cell and are probably true. The mechanism is systematic: that cell is built by swapping a country into a \textbf{common} city name, and common city names are exactly the ones with namesakes worldwide. The risk concentrates by construction in the cell the argument depends on. Wikidata's coverage is incomplete, so 2 of 255 is a floor. The fix is a build gate rejecting any swapped pair a multi-valued gazetteer attests; it is not yet in the released gates. This works against the effect we report: true statements sitting in the false cell make a truth-reading probe look worse, not better.
+\textbf{One source file has unverified provenance, so we verified its labels independently.} The cities domain, 304 of 608 items, is generated from the 10,000-row file described in §5, which is not part of the published artifact it was filed under. Unknown origin is not the same as unreliable content, and the second is checkable: we verified its labels against Wikidata: of 255 checkable city items, 12 disagree, and inspection attributes ten to gaps in the gazetteer. The remaining two are the direction that matters. \emph{Santiago is a city in Mexico} and \emph{Geneva is a city in United States} are labelled false in our false-common cell and are probably true. The mechanism is systematic: that cell is built by swapping a country into a \textbf{common} city name, and common city names are exactly the ones with namesakes worldwide. The risk concentrates by construction in the cell the argument depends on. Wikidata's coverage is incomplete, so 2 of 255 is a floor. The fix is a build gate rejecting any swapped pair a multi-valued gazetteer attests; it is not yet in the released gates. This works against the effect we report: true statements sitting in the false cell make a truth-reading probe look worse, not better.
 
 \textbf{String attestedness is a live confound and it also cuts the conservative way.} Every true item in our corpus appears verbatim in public Azaria and Mitchell files; half the false ones do. Matching is exact string, so near-misses are uncounted and the 100\% figures are if anything understated.
 
@@ -679,6 +681,10 @@ Chi-square 199.1, p = 6.5e-43. Post-2023 models may have trained on those files,
 Recoverability is measured as a linear readout, the same shape as most probes. That it also predicts DRIFT rules out the narrow version of that circularity, not every version. TTPD is our reimplementation from published equations rather than the authors' code. Our EigenScore variant \citep{chen2024inside} reads truth too poorly here to adjudicate and is reported as inconclusive.
 
 \section{Related work}
+
+Probing classifiers have a long methodological literature, and two of its results bear directly on this paper. \citep{alain2017probes} introduced linear probes on intermediate representations; \citep{belinkov2022probing} surveys what they can and cannot establish. \citep{hewitt2019control} is the closest methodological ancestor: control tasks ask whether a probe reads the property it claims or a shortcut available in the representation, which is our question with typicality as the shortcut and a corpus rather than a random-label control as the instrument.
+
+The design also has a direct ancestor outside probing. \citep{mccoy2019hans} train on data where a heuristic and the label agree, then test where they disagree, and find models collapse --- the same move as our diagonal and off-diagonal, in natural language inference. \citep{gururangan2018artifacts} show the artifacts that make such collapses possible are already present in widely used corpora, and \citep{geirhos2020shortcut} give the general account of shortcut learning our result is an instance of. For hallucination detection as a task, \citep{ji2023hallucination} survey the setting.
 
 That internal-state probes read something other than truth has been observed before. \citep{levinstein2023still} show they fail on negation and generalise poorly. \citep{farquhar2023challenges} show unsupervised probes latch onto salient non-knowledge features. \citep{cheang2026really} give a mechanistic account on which probes track parametric knowledge recall, which our §6.3 dissociation supports directly. \citep{seo2026quantifying} decompose benchmark performance by question-side information and find heavy shortcut exploitation.
 
@@ -772,6 +778,8 @@ D-025 & \texttt{331f983} & dilution decomposition fixed as exploratory before it
 \bottomrule
 \end{tabular}
 \end{table}
+\phantomsection
+\addcontentsline{toc}{section}{References}
 \bibliography{references}
 \bibliographystyle{tmlr}
 

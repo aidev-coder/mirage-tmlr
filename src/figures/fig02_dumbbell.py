@@ -30,7 +30,8 @@ def main() -> int:
     data = rows(src)
     y = list(range(len(data)))[::-1]
 
-    fig, ax = plt.subplots(figsize=(DOUBLE, 0.30 * len(data) + 1.5))
+    fig, ax = plt.subplots(figsize=(DOUBLE, 0.30 * len(data) + 1.9),
+                           layout="constrained")
     chance(ax, "x")
 
     for yi, r in zip(y, data):
@@ -49,7 +50,8 @@ def main() -> int:
     ax.set_xlabel("AUROC")
     ax.set_title("The benchmark reports 0.76 to 1.00 for every probe;\n"
                  "off-diagonal AUROC ranges from 0.08 to 0.89", loc="left")
-    ax.legend(loc="lower right", frameon=False)
+    ax.legend(loc="upper center", bbox_to_anchor=(0.5, -0.10), ncol=3,
+              frameon=False, fontsize=7.5)
     ax.margins(y=0.02)
     save(fig, "fig02_dumbbell", src, "In-distribution against off-diagonal AUROC")
     return 0
