@@ -1,0 +1,192 @@
+{
+  "figure": "fig01_dataflow",
+  "note": "Study dataflow. Every edge is a factual claim. Three errors from an earlier draft are asserted against in src/figures/fig01_dataflow.py::validate and the script raises rather than renders if any recurs: the A&M dataset must not feed corpus construction as training data (its role is the transfer path into probe training), the baselines must have no incoming corpus edge, and the checker must be an audit layer rather than a downstream sink. Subtitles carrying counts use {placeholders} filled from artifacts; nothing numeric is typed here.",
+  "legend": [
+    {
+      "style": "solid",
+      "text": "data flow"
+    },
+    {
+      "style": "dashed",
+      "text": "contrast under audit"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "n1",
+      "title": "A&M released dataset",
+      "sub": "{am_rows} rows, sha-pinned",
+      "x": 26,
+      "y": 88,
+      "w": 38,
+      "h": 11
+    },
+    {
+      "id": "n2",
+      "title": "Infini-gram counts",
+      "sub": "Dolma 1.7 frequencies",
+      "x": 78,
+      "y": 88,
+      "w": 34,
+      "h": 11
+    },
+    {
+      "id": "n3",
+      "title": "Qwen2.5-1.5B-Instruct errors",
+      "sub": "Wikidata-checked",
+      "x": 136,
+      "y": 88,
+      "w": 44,
+      "h": 11
+    },
+    {
+      "id": "n4",
+      "title": "Corpus construction",
+      "sub": "entity swap + frequency crossing",
+      "x": 46,
+      "y": 66,
+      "w": 40,
+      "h": 11
+    },
+    {
+      "id": "n5",
+      "title": "Authored corpus",
+      "sub": "n = {authored_n}, 2x2 crossed",
+      "x": 46,
+      "y": 44,
+      "w": 34,
+      "h": 11
+    },
+    {
+      "id": "n6",
+      "title": "Harvested corpus",
+      "sub": "n = {harvested_n} natural errors",
+      "x": 138,
+      "y": 66,
+      "w": 38,
+      "h": 11
+    },
+    {
+      "id": "n7",
+      "title": "Probe training",
+      "sub": "18 models, 6 architectures",
+      "x": 100,
+      "y": 44,
+      "w": 34,
+      "h": 11
+    },
+    {
+      "id": "n8",
+      "title": "Evaluation",
+      "sub": "same items, paired",
+      "x": 100,
+      "y": 24,
+      "w": 32,
+      "h": 11
+    },
+    {
+      "id": "n9",
+      "title": "Training-free baselines",
+      "sub": "perplexity, semantic entropy",
+      "x": 148,
+      "y": 24,
+      "w": 40,
+      "h": 12,
+      "annotation": "reads text and sampled outputs; never opens the model"
+    },
+    {
+      "id": "n10",
+      "title": "Checker and registrations",
+      "sub": "manifests, parity gates, D-002 to D-025",
+      "x": 86,
+      "y": 8,
+      "w": 160,
+      "h": 10,
+      "layer": true
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "from": "n1",
+      "to": "n4",
+      "label": "source statements",
+      "style": "solid"
+    },
+    {
+      "id": "e2",
+      "from": "n2",
+      "to": "n4",
+      "label": "frequency axis",
+      "style": "solid"
+    },
+    {
+      "id": "e3",
+      "from": "n3",
+      "to": "n6",
+      "label": "wrong answers only",
+      "style": "solid"
+    },
+    {
+      "id": "e4",
+      "from": "n4",
+      "to": "n5",
+      "label": "through five gates",
+      "style": "solid",
+      "gate": true
+    },
+    {
+      "id": "e5",
+      "from": "n5",
+      "to": "n7",
+      "label": "TT+FA diagonal, trained on",
+      "style": "solid"
+    },
+    {
+      "id": "e6",
+      "from": "n5",
+      "to": "n8",
+      "label": "TA+FT, evaluated only",
+      "style": "solid"
+    },
+    {
+      "id": "e7",
+      "from": "n6",
+      "to": "n8",
+      "label": "evaluated only, never trained on",
+      "style": "solid"
+    },
+    {
+      "id": "e8",
+      "from": "n1",
+      "to": "n7",
+      "label": "transfer: trained on their data, evaluated on ours",
+      "style": "dashed",
+      "route": "left_margin"
+    },
+    {
+      "id": "e9",
+      "from": "n7",
+      "to": "n8",
+      "label": "probe scores",
+      "style": "solid"
+    },
+    {
+      "id": "e10",
+      "from": "n9",
+      "to": "n8",
+      "label": "scored on the same items",
+      "style": "solid"
+    }
+  ],
+  "audit": {
+    "layer": "n10",
+    "touches": [
+      "n4",
+      "n7",
+      "n8"
+    ],
+    "style": "dashed",
+    "legend": "audited"
+  }
+}

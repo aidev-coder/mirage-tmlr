@@ -45,9 +45,9 @@ A corpus of 608 statements crossing truth against entity frequency: 152 in each 
 
 \begin{figure}[t]
 \centering
-\includegraphics[width=\linewidth]{figs/fig_apparatus.png}
-\caption{The audit apparatus. Probes are trained on the diagonal, where truth and entity frequency agree, and tested on the off-diagonal, where they disagree. Two training-free detectors are scored on the same items. Five gates run inside the corpus build and refuse to write a corpus that fails them; four earlier builds were discarded that way.}
-\label{fig:apparatus}
+\includegraphics[width=\linewidth]{figs/fig01_dataflow.png}
+\caption{The study dataflow. Solid edges carry data; the dashed edge is the transfer experiment of §5, which trains on the released dataset and evaluates on ours, bypassing our corpus entirely. The five build-time gates sit on the edge out of corpus construction rather than beside it, because a corpus that fails one is never written. The training-free baselines take no corpus input, and the checker spans every stage rather than sitting downstream of it.}
+\label{fig:dataflow}
 \end{figure}
 
 \begin{figure}[t]
