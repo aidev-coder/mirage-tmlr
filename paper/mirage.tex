@@ -344,7 +344,7 @@ Every result above reads one layer per model. The literature disagrees about whi
 
 It can say almost nothing, and the reason is saturation. Gradient-trained logistic regression scores in-distribution AUROC within 0.01 of its maximum at many layers simultaneously: 37 layers on Gemma-2-9b-it, 35 on Gemma-2-9b, 29 on Llama-3.1-8B-Instruct, 22 on Qwen2.5-7B-Instruct. Across the layers it scores indistinguishably, off-diagonal AUROC ranges from 0.015 to 0.875. Mass-mean probing and TTPD mostly have a unique best layer with zero spread, because their in-distribution scores top out below 1.0 and never saturate. The benchmark loses the ability to discriminate exactly where it reports a perfect score.
 
-Published selection rules do not rescue this. Averaged over 72 probe-model pairs, the ``earliest informative layer'' criterion lands on layers averaging \textbf{0.333 off-diagonal and forfeits 0.337} against the best layer available. Fixed fractional depths in the upper third, as used by [hussain2026parallax], average 0.507 to 0.533. Our own mid-depth choice averages 0.503, marginally the worst of the fixed rules, and we report that rather than presenting our layer as neutral. Every headline number in §3 uses that mid-depth layer.
+Published selection rules do not rescue this. Averaged over 72 probe-model pairs, the ``earliest informative layer'' criterion lands on layers averaging \textbf{0.333 off-diagonal and forfeits 0.337} against the best layer available. Fixed fractional depths in the upper third, as used by \citep{hussain2026parallax}, average 0.507 to 0.533. Our own mid-depth choice averages 0.503, marginally the worst of the fixed rules, and we report that rather than presenting our layer as neutral. Every headline number in §3 uses that mid-depth layer.
 
 \subsection{6.1 Five probe architectures, four research groups}
 
@@ -356,10 +356,10 @@ Published selection rules do not rescue this. Averaged over 72 probe-model pairs
 \toprule
 \textbf{Probe} & \textbf{Origin} & \textbf{Shape} & \textbf{r(recoverability, off-diagonal)} \\
 \midrule
-Logistic regression & [marks2023geometry] & gradient descent, single layer & 0.859 [0.773, 0.933] \\
-Mass mean & [marks2023geometry] & closed-form mean difference & 0.826 [0.719, 0.932] \\
-TTPD & [burger2024truth] & two-dimensional truth subspace & 0.813 [0.672, 0.931] \\
-CCS & [burns2023discovering] & unsupervised, contrast consistency & 0.676 [0.515, 0.818] \\
+Logistic regression & \citep{marks2023geometry} & gradient descent, single layer & 0.859 [0.773, 0.933] \\
+Mass mean & \citep{marks2023geometry} & closed-form mean difference & 0.826 [0.719, 0.932] \\
+TTPD & \citep{burger2024truth} & two-dimensional truth subspace & 0.813 [0.672, 0.931] \\
+CCS & \citep{burns2023discovering} & unsupervised, contrast consistency & 0.676 [0.515, 0.818] \\
 \bottomrule
 \end{tabular}}
 \end{table}
@@ -370,7 +370,7 @@ CCS is the weakest and we report it as such. It clears the 0.70 in-distribution 
 
 \subsection{6.2 A multi-layer, multi-token probe is more confounded, not less}
 
-DRIFT [hussain2026parallax] taps four upper-depth layers, mean-pools each over all tokens, and uses differences between layer pairs, so it reads how the residual stream changes with depth rather than where it sits. On eight models spanning the recoverability range it is strong in-distribution, 0.894 to 1.000, and its off-diagonal AUROC is 0.056 to 0.523. On Gemma-2-9b-it, where single-layer probes reach 0.89 to 0.99, DRIFT reaches 0.387. Recoverability predicts its off-diagonal score at 0.477 [-0.098, 0.872], which includes zero at eight models, so we do not claim the mechanism for DRIFT. Its own concat ablation is worse still on six of the eight.
+DRIFT \citep{hussain2026parallax} taps four upper-depth layers, mean-pools each over all tokens, and uses differences between layer pairs, so it reads how the residual stream changes with depth rather than where it sits. On eight models spanning the recoverability range it is strong in-distribution, 0.894 to 1.000, and its off-diagonal AUROC is 0.056 to 0.523. On Gemma-2-9b-it, where single-layer probes reach 0.89 to 0.99, DRIFT reaches 0.387. Recoverability predicts its off-diagonal score at 0.477 [-0.098, 0.872], which includes zero at eight models, so we do not claim the mechanism for DRIFT. Its own concat ablation is worse still on six of the eight.
 
 \subsection{6.3 The probe contradicts the model it reads}
 
@@ -391,11 +391,11 @@ Qwen2.5-7B-Instruct & 19 & 0.559 & 0.313 & 7/19 = 0.368 [0.163, 0.616] \\
 \end{tabular}}
 \end{table}
 
-Discordance counts items where the probe crosses 0.5 upward while behaviour crosses downward, which is scale-free where the two means are not. Intervals are wide at this n and this is a supporting measurement. Composition: only items surviving the frequency-cache fix are included, so every entity is resolved and hence common, and the contrast is measured on the common stratum alone. This is the dissociation [cheang2026really] predicts from a knowledge-recall account, and it cuts against reading probe output as the model's belief.
+Discordance counts items where the probe crosses 0.5 upward while behaviour crosses downward, which is scale-free where the two means are not. Intervals are wide at this n and this is a supporting measurement. Composition: only items surviving the frequency-cache fix are included, so every entity is resolved and hence common, and the contrast is measured on the common stratum alone. This is the dissociation \citep{cheang2026really} predicts from a knowledge-recall account, and it cuts against reading probe output as the model's belief.
 
 \subsection{6.4 A sampling-based detector shows no frequency penalty}
 
-Semantic entropy [farquhar2024semantic] never looks at the residual stream. On three instruction-tuned models --- Qwen2.5-7B-Instruct, Llama-3.1-8B-Instruct and Gemma-2-9b-it, 180 subjects each --- it detects each model's own errors at 0.776, 0.822 and 0.758. Restricted to statements each model got right, the exact contrast that exposes the probes, it separates rare true from common true at \textbf{0.514 [0.465, 0.565], 0.500 [0.440, 0.561] and 0.509 [0.474, 0.546]}, chance on all three. So the frequency confound is a property of linear readouts of hidden states, not of the model's own uncertainty.
+Semantic entropy \citep{farquhar2024semantic} never looks at the residual stream. On three instruction-tuned models --- Qwen2.5-7B-Instruct, Llama-3.1-8B-Instruct and Gemma-2-9b-it, 180 subjects each --- it detects each model's own errors at 0.776, 0.822 and 0.758. Restricted to statements each model got right, the exact contrast that exposes the probes, it separates rare true from common true at \textbf{0.514 [0.465, 0.565], 0.500 [0.440, 0.561] and 0.509 [0.474, 0.546]}, chance on all three. So the frequency confound is a property of linear readouts of hidden states, not of the model's own uncertainty.
 
 \section{7. A second corpus, with falsehoods we did not write}
 
@@ -494,15 +494,15 @@ Chi-square 199.1, p = 6.5e-43. Post-2023 models may have trained on those files,
 
 \textbf{The knee's status is undetermined}, bounded to training sizes from 100 to 608. Nothing here reaches the 1,458 to 9,270 regime where §5 shows the below-knee floor is escapable.
 
-Recoverability is measured as a linear readout, the same shape as most probes. That it also predicts DRIFT rules out the narrow version of that circularity, not every version. TTPD is our reimplementation from published equations rather than the authors' code. Our EigenScore variant [chen2024inside] reads truth too poorly here to adjudicate and is reported as inconclusive.
+Recoverability is measured as a linear readout, the same shape as most probes. That it also predicts DRIFT rules out the narrow version of that circularity, not every version. TTPD is our reimplementation from published equations rather than the authors' code. Our EigenScore variant \citep{chen2024inside} reads truth too poorly here to adjudicate and is reported as inconclusive.
 
 \section{12. Related work}
 
-That internal-state probes read something other than truth has been observed before. [levinstein2023still] show they fail on negation and generalise poorly. [farquhar2023challenges] show unsupervised probes latch onto salient non-knowledge features. [cheang2026really] give a mechanistic account on which probes track parametric knowledge recall, which our §6.3 dissociation supports directly. [seo2026quantifying] decompose benchmark performance by question-side information and find heavy shortcut exploitation.
+That internal-state probes read something other than truth has been observed before. \citep{levinstein2023still} show they fail on negation and generalise poorly. \citep{farquhar2023challenges} show unsupervised probes latch onto salient non-knowledge features. \citep{cheang2026really} give a mechanistic account on which probes track parametric knowledge recall, which our §6.3 dissociation supports directly. \citep{seo2026quantifying} decompose benchmark performance by question-side information and find heavy shortcut exploitation.
 
-Our frequency axis descends from work on entity popularity and long-tail factual accuracy. [mallen2023trust] show model accuracy falls with subject popularity and that retrieval helps precisely there; [kandpal2023large] show factual accuracy tracks pretraining occurrence count. Those results establish that frequency governs what a model knows. We show it also governs what a probe reports about what the model knows, which is a different claim about a different instrument.
+Our frequency axis descends from work on entity popularity and long-tail factual accuracy. \citep{mallen2023trust} show model accuracy falls with subject popularity and that retrieval helps precisely there; \citep{kandpal2023large} show factual accuracy tracks pretraining occurrence count. Those results establish that frequency governs what a model knows. We show it also governs what a probe reports about what the model knows, which is a different claim about a different instrument.
 
-[hussain2026parallax] are closest in spirit. They show that four of six popular hallucination benchmarks embed the reference answer in the prompt, so a text-similarity baseline with no access to internals reaches 0.98 AUROC on HaluEval. Their artifact is lexical and lives in existing corpora; ours is distributional and required building a corpus to expose. Our §4 result is the distributional sibling of theirs: a trivial baseline matches or beats the field's methods, so the benchmark is substantially measuring construction.
+\citep{hussain2026parallax} are closest in spirit. They show that four of six popular hallucination benchmarks embed the reference answer in the prompt, so a text-similarity baseline with no access to internals reaches 0.98 AUROC on HaluEval. Their artifact is lexical and lives in existing corpora; ours is distributional and required building a corpus to expose. Our §4 result is the distributional sibling of theirs: a trivial baseline matches or beats the field's methods, so the benchmark is substantially measuring construction.
 
 We differ from all of these in what we measure. Those results establish that a confound exists. We quantify how much of a reported number it accounts for, on a corpus verified to decorrelate the axis and gated against five construction failures we committed ourselves, and we show what the reported number does and does not carry: it ranks endorsed probes at 0.453, and half of those are below chance.
 
@@ -512,7 +512,7 @@ We differ from all of these in what we measure. Those results establish that a c
 
 Eighteen substrates: Pythia 70m/160m/410m/1b/1.4b/2.8b/6.9b/12b, Qwen2.5 0.5B/1.5B/3B/7B/7B-Instruct, Llama-3.1-8B and -Instruct, Gemma-2 2b/9b/9b-it. All loaded in bfloat16; hidden states taken at the final token of the statement.
 
-Our probe is a SAPLMA-style feedforward classifier on the last-token hidden state, trained with a fixed seed and five-fold cross-fitting. Four external probes are vendored unmodified except TTPD, reimplemented from published equations and validated on synthetic activations where both directions are known by construction. CCS is normalized per side, as in [burns2023discovering]; an offset-invariance test distinguishes this from shared-statistic normalization (0.000000 versus 0.124955 under a per-side shift).
+Our probe is a SAPLMA-style feedforward classifier on the last-token hidden state, trained with a fixed seed and five-fold cross-fitting. Four external probes are vendored unmodified except TTPD, reimplemented from published equations and validated on synthetic activations where both directions are known by construction. CCS is normalized per side, as in \citep{burns2023discovering}; an offset-invariance test distinguishes this from shared-statistic normalization (0.000000 versus 0.124955 under a per-side shift).
 
 The headline layer is mid-depth for every model. §6 reports the full sweep and the cost of that choice: 0.503 average against 0.507 to 0.533 for upper-third rules.
 
