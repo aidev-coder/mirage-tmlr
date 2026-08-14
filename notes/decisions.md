@@ -212,3 +212,43 @@ Every resolved §4 open decision gets an entry: date, decision, reasoning, who d
 - Decision: fix by construction, not by regression. `_balance_by_domain` now draws `edited` 50/50 within EVERY cell, so edit provenance is orthogonal to truth and to typicality by design. New hard `finalize()` gate `edit_balance_check` (max per-cell spread 0.02) plus the same check in the released `run_check.py`. Both retracted corpora fail it.
 - Note D-012 already partialled an edit covariate out of the MEDIATION arm; the ADVERSARIAL arm that produces the headline gap never had that control. This closes it at the source instead.
 - Cost: n falls again (balancing on the smaller of edited/unedited within each cell). Accepted.
+
+## D-023 - Pre-registered criterion for the recoverability-vs-n curve (2026-08-14)
+
+Registered BEFORE the curve is computed. Neither the owner-side reviewer nor I knows the
+answer at the time of this commit. Recorded so the outcome meets a decision rule rather
+than a story about one.
+
+Context. B6 showed pythia-6.9b, a below-knee model, reaching 0.882 off-diagonal when its
+probe is trained on 9,270 derivative rows and 0.697 on 4,991 official rows, against 0.122
+from our 304-item diagonal. Section 3.2 currently calls the hinge "a property of the
+representation, not of the probe". If the knee moves with training size, that sentence is
+false and the section describes a data-budget regime instead.
+
+Deviation from the proposed wording, stated. The proposal conditions on "two or more
+below-knee models", but the hinge is fitted ACROSS models, not per model - there is one
+knee per fit. So migration is defined on the fitted knee itself.
+
+PROCEDURE. Refit recoverability (fair all-cell training) and the hinge at training sizes
+n in {100, 200, 300, 450, 608} drawn from our crossed corpus, 5 subsamples per rung, all
+18 models at each rung. The knee k(n) is refitted at each rung with its own bootstrap
+interval.
+
+CRITERION. Let W be the width of the bootstrap interval on the knee at the reference fit
+(currently k = 0.765, interval [0.57, 0.80], so W = 0.23). The knee has MIGRATED if
+|k(608) - k(100)| > W, AND the shift is monotone in n across at least three of the five
+rungs, so a single noisy rung cannot trigger it.
+
+CONSEQUENCE, fixed in advance.
+  - Migration -> section 3.2 is REWRITTEN, not rescoped. The hinge becomes a claim about
+    the standard protocol's probe regime at realistic training sizes, and the phrase
+    "property of the representation" is withdrawn.
+  - No migration -> the representational reading survives and the section states the
+    scope explicitly: the knee is stable across a 6x range of training size.
+  - Shift between 0.5W and W, or non-monotone -> reported as indeterminate at this corpus
+    size, with no claim either way, and the curve is published as measured.
+
+Known limitation of this design, stated now. Our corpus caps at 608, so the ladder cannot
+reach the 4,991 and 9,270 sizes that produced the B6 anomaly. A null result therefore
+bounds migration only within 100-608 and does not rule out a knee that moves at the sizes
+the field actually trains on. That limitation goes in the section whichever way it falls.
