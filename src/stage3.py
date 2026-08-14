@@ -405,3 +405,78 @@ def run_transfer(substrate, corpus_path, am_dir=None, layer=None, seed=0,
           f"frequency-read among TRUE only {freq_read['auroc']:.3f} {freq_read['ci']} | "
           f"disagreement {off_auroc['auroc']:.3f} | cells {out['cell_means']}", flush=True)
     return out
+
+
+def run_nladder(substrate, corpus_path, rungs=(100, 200, 300, 450, 608), reps=5,
+                n_folds=5, batch_size=32, device=None, seed=20260814,
+                commit_fn=None) -> dict:
+    """The pre-registered training-size ladder (decisions.md D-023, amended 2026-08-14).
+
+    Section 3.2 calls the hinge a property of the representation. B6 showed a below-knee
+    model reaching 0.882 off-diagonal when its probe is trained on 9,270 rows against
+    0.122 from our 304-item diagonal, so the knee may be a data-budget artifact instead.
+
+    PRIMARY design: both axes measured at n. Recoverability is re-fitted with fair
+    all-cell training at each rung, and the off-diagonal probe is trained at the same n.
+    SECONDARY: off-diagonal at n against recoverability held at its full-corpus estimate.
+
+    Returns per-model values; the hinge is fitted across models afterwards, since there
+    is one knee per fit rather than one per model.
+    """
+    from .eval.adversarial_split import OFF_DIAGONAL
+    from .stats import auroc_with_ci
+
+    items = load_corpus(corpus_path)
+    corpus_hash = Path(corpus_path).stem.split("_v")[-1]
+    texts = [it["text"] for it in items]
+    truth = np.array([bool(it["truth"]) for it in items])
+    cells = np.array([it["cell"] for it in items])
+    typicality = np.array([it["typicality"]["entity_freq_log10"] for it in items], dtype=float)
+    edited = np.array([bool(it.get("edited")) for it in items])
+
+    H = _extract_or_load(substrate, texts, corpus_hash, batch_size, commit_fn)
+    L = H.shape[1] // 2
+    Xl = H[:, L, :]
+
+    def _recoverability(idx):
+        sub = [items[i] for i in idx]
+        frag = _fragmentation_oof(sub, truth[idx], substrate.tokenizer, n_folds, seed)
+        edit = _edit_oof(Xl[idx], edited[idx], device, n_folds, seed)
+        oof = _oof_scores(Xl[idx], truth[idx], device, n_folds, seed)
+        med = mediation(oof, truth[idx], typicality[idx],
+                        covariates={"fragmentation": frag, "edit": edit})
+        return float(med["truth_beta_partialled"])
+
+    full_idx = np.arange(len(items))
+    rec_full = _recoverability(full_idx)
+
+    rows = []
+    for n in rungs:
+        per_cell = max(1, n // 4)
+        for rep in range(reps):
+            rng = np.random.default_rng(seed + 97 * rep + n)
+            idx = np.concatenate([
+                rng.choice(np.flatnonzero(cells == c),
+                           size=min(per_cell, int((cells == c).sum())), replace=False)
+                for c in ("TT", "TA", "FT", "FA")])
+            rng.shuffle(idx)
+            off = np.flatnonzero(np.isin(cells[idx], OFF_DIAGONAL))
+            fielded = _fielded_oof_scores(Xl[idx], truth[idx], cells[idx], device, n_folds, seed)
+            rows.append({
+                "n": int(len(idx)), "rung": int(n), "rep": int(rep),
+                "recoverability_at_n": round(_recoverability(idx), 4),
+                "off_diagonal_at_n": round(
+                    float(auroc_with_ci(truth[idx][off], fielded[off], seed=seed)["auroc"]), 4),
+            })
+        got = [r for r in rows if r["rung"] == n]
+        print(f"  [ladder n={n}] rec {np.mean([r['recoverability_at_n'] for r in got]):.3f} "
+              f"off {np.mean([r['off_diagonal_at_n'] for r in got]):.3f}", flush=True)
+        if commit_fn:
+            commit_fn()
+
+    return {"experiment": "recoverability_n_ladder", "model": substrate.model_id,
+            "corpus": Path(corpus_path).name, "layer": int(L),
+            "recoverability_full_corpus": round(rec_full, 4),
+            "rungs": list(rungs), "reps": int(reps), "rows": rows,
+            "registration": "decisions.md D-023 (040b283, amended acab56a)",
+            "provenance": "measured"}

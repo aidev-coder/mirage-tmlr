@@ -565,6 +565,23 @@ def ppl_baseline_run(reference_model: str, am_dir: str = "azaria_mitchell_offici
     return out
 
 
+@app.function(image=image, gpu=GPU, volumes=VOLUMES, secrets=SECRETS,
+              timeout=6 * 3600)
+@_timed
+def nladder_run(model_id: str, corpus_name: str, reps: int = 5) -> dict:
+    """Pre-registered training-size ladder for the knee (D-023)."""
+    _setup()
+    from src.stage3 import run_nladder
+    from src.substrate import Substrate
+
+    sub = Substrate(model_id, cache_dir="/root/activations")
+    out = run_nladder(sub, f"/root/mirage/data/corpus/{corpus_name}", reps=reps,
+                      device="cuda", commit_fn=activations.commit)
+    activations.commit()
+    hf_cache.commit()
+    return out
+
+
 @app.local_entrypoint()
 def main(stage: str = "sanity", model: str = "", max_per_topic: int = 0,
          batch_size: int = 32, fast: bool = True, corpus: str = "", seed: int = 0,
@@ -779,6 +796,25 @@ def main(stage: str = "sanity", model: str = "", max_per_topic: int = 0,
                   f"{r['frequency_read_among_true_only']['ci']} | "
                   f"disagreement {r['disagreement_auroc']['auroc']:.3f} | "
                   f"cells {r['cell_means']} -> {o}")
+
+    elif stage == "nladder":
+        from datetime import date
+        corpus_name = corpus or "mirage_2x2_v44b4126cba1c.jsonl"
+        chs = Path(corpus_name).stem.split("_v")[-1]
+        ids = [m.strip() for m in model.split(",") if m.strip()] or sorted({
+            json.loads(p.read_text(encoding="utf-8"))["model"]
+            for p in (_HERE / "results").glob("stage3_saplma_*.json")
+            if json.loads(p.read_text(encoding="utf-8")).get("corpus") == corpus_name})
+        print(f"nladder over {len(ids)} models")
+        for r in nladder_run.map(ids, kwargs={"corpus_name": corpus_name},
+                                 order_outputs=False, return_exceptions=True):
+            if isinstance(r, Exception):
+                print(f"SKIPPED (failed): {type(r).__name__}: {str(r)[:200]}")
+                continue
+            sh = r["model"].split("/")[-1].lower()
+            o = _HERE / "results" / f"nladder_{sh}_{chs}_{date.today():%Y%m%d}.json"
+            o.write_text(json.dumps(r, indent=2, default=_json_default))
+            print(f"{r['model']}: rec_full {r['recoverability_full_corpus']} -> {o}")
 
     elif stage == "pplbase":
         from datetime import date
