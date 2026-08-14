@@ -45,6 +45,13 @@ A corpus of 608 statements crossing truth against entity frequency: 152 in each 
 
 \begin{figure}[t]
 \centering
+\includegraphics[width=\linewidth]{figs/fig_apparatus.png}
+\caption{The audit apparatus. Probes are trained on the diagonal, where truth and entity frequency agree, and tested on the off-diagonal, where they disagree. Two training-free detectors are scored on the same items. Five gates run inside the corpus build and refuse to write a corpus that fails them; four earlier builds were discarded that way.}
+\label{fig:apparatus}
+\end{figure}
+
+\begin{figure}[t]
+\centering
 \small
 \begin{tabular}{@{}l|p{0.36\linewidth}|p{0.36\linewidth}@{}}
 & \textbf{Common} & \textbf{Rare} \\
