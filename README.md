@@ -49,7 +49,11 @@ python -m src.substrate --sanity           # Stage 0 gate (GPU box)
 
 ## Provenance
 
-MIRAGE is the successor of the prior project (this repository's root). the prior project's certification audit showed
-its published 14.3% natural-violation rate was 100% measurement artifact (see
-`research/axiom_mining/output/TIER1_REEXTRACTION_REPORT.md`). MIRAGE relocates that
-instrument-validity question to internal-state hallucination detectors.
+MIRAGE is the successor to an earlier, unpublished project by the same authors. That project's
+certification audit found that its own published 14.3% natural-violation rate was entirely a
+measurement artifact of the extraction stage rather than a property of the data. MIRAGE relocates
+the same instrument-validity question to internal-state hallucination detectors.
+
+The standing directive, guardrails and stage gates are in `the project's standing directive`. `HASH_MAP.md` maps the
+registration commits cited in the paper to their equivalents here, since this repository's history
+was rewritten for anonymisation and every hash changed.
