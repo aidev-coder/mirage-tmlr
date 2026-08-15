@@ -10,7 +10,7 @@ Every resolved §4 open decision gets an entry: date, decision, reasoning, who d
 - **Decision:** Scaffold lives at `mirage/` inside the parent project repository, on the session's
   designated branch. Extraction to a standalone `mirage` repo is planned once one exists;
   the directory is self-contained to make that a pure copy.
-- **Reasoning:** Current agent session is scoped to `the project repository` only; creating and
+- **Reasoning:** Current agent session is scoped to the project repository only; creating and
   pushing a new repository is outside its authorization. Self-containment preserved (own
   README, .gitignore, requirements, configs).
 - **Decided by:** Owner approved agent recommendation in session (2026-07-09). **Provisional** —
