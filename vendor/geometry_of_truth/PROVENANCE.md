@@ -5,7 +5,7 @@
     https://raw.githubusercontent.com/saprmarks/geometry-of-truth/main/probes.py
 
 Repo: https://github.com/saprmarks/geometry-of-truth (Marks & Tegmark, "The Geometry
-of Truth", already cited in notes/related_work.md and the manuscript §Related
+of Truth", already cited in the related-work section of the paper
 Work as the optimistic baseline MIRAGE audits).
 
 Commit pinned (last commit touching this file as of fetch): `2ac52d739c7fc4550659b11a589f9a04d2e42011`, 2024-02-01.
