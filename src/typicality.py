@@ -13,7 +13,7 @@ functions of the same forward pass; a mediation analysis conditioning on
 self-perplexity partly conditions on the probe itself (see D-002 reasoning).
 
 Axis agreement (Spearman) is computed and reported — disagreement between the
-three axes is itself a finding (the project's standing directive §1.6), not a nuisance to hide.
+three axes is itself a finding (.6), not a nuisance to hide.
 """
 
 from __future__ import annotations

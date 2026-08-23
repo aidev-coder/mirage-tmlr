@@ -13,7 +13,7 @@ Results are written back to mirage/results/ locally by the entrypoint, so the
 artifact lands in the repo the same as a local run. Activations persist in a
 Modal Volume between runs (recomputing hidden states is the main cost, §5).
 
-Hardware target per the project's standing directive §5: single A10G (24 GB) — 8B models in bf16 fit
+Hardware target per: single A10G (24 GB) — 8B models in bf16 fit
 (~16 GB weights + activations headroom). If a model OOMs, that is a flag for
 the owner, not a reason to silently shard.
 """
@@ -128,7 +128,7 @@ def _timed(fn):
               timeout=3600)
 @_timed
 def stage0_sanity(model_id: str) -> dict:
-    """Stage 0 gate for one model (the project's standing directive §3 Stage 0)."""
+    """Stage 0 gate for one model ( Stage 0)."""
     _setup()
     from src.substrate import Substrate
 
@@ -144,7 +144,7 @@ def stage0_sanity(model_id: str) -> dict:
 @_timed
 def stage1_saplma(model_id: str, max_per_topic: int = 0,
                   batch_size: int = 32, fast: bool = True) -> dict:
-    """Stage 1 SAPLMA headline reproduction for one model (the project's standing directive §3 Stage 1).
+    """Stage 1 SAPLMA headline reproduction for one model ( Stage 1).
 
     Requires data/raw/ to be populated locally BEFORE `modal run` (the image
     ships the local mirage/ tree, so run `python mirage/data/raw/fetch.py` first).
@@ -176,7 +176,7 @@ def stage2_build(reference_model: str, canary_model: str,
                  version: int = 2) -> dict:
     """Stage 2 GPU stage: score typicality + run the 3 gates; return scored items
     + reports. finalize() is run locally by the entrypoint so the corpus lands in
-    the repo (the project's standing directive §3 Stage 2; probes stay HELD per D-006)."""
+    the repo ( Stage 2; probes stay HELD per D-006)."""
     _setup()
     from src.build_corpus import score_and_gate
     from src.substrate import Substrate
@@ -324,7 +324,7 @@ def semantic_entropy_run(model_id: str, corpus_name: str, k: int = 10,
 @_timed
 def external_layer_sweep(model_id: str, corpus_name: str, probe_specs: list[str],
                          seed: int = 0) -> dict:
-    """Audit external probes at every layer, per the project's standing directive §4.3, rather than at the
+    """Audit external probes at every layer, per.3, rather than at the
     single mid-depth layer our own SAPLMA sweep picks."""
     _setup()
     import importlib
@@ -1107,4 +1107,4 @@ def main(stage: str = "sanity", model: str = "", max_per_topic: int = 0,
     else:
         raise SystemExit(f"unknown stage: {stage}")
 
-    print("reminder: commit the artifact + a the project notebook entry (the project's standing directive §3/§7)")
+    print("reminder: commit the artifact + a the project notebook entry ()")

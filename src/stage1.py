@@ -8,7 +8,7 @@ Protocol, faithful to Azaria & Mitchell (2023):
     held-out topic; repeat over topics; report per-topic and mean AUROC
   - layers: full sweep, never a cherry-picked best layer (D-004)
 
-Gate (the project's standing directive §3 Stage 1): mean held-out-topic AUROC at the literature's
+Gate ( Stage 1): mean held-out-topic AUROC at the literature's
 reported layers lands roughly in 0.7-0.9. Below that, the reproduction is
 broken and the audit cannot proceed.
 

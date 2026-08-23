@@ -8,7 +8,7 @@ Clustering backends:
   nli    bidirectional-entailment via an NLI cross-encoder (faithful; GPU box)
   exact  normalized string match — a WEAK FALLBACK for plumbing tests only.
          Any result produced with it is tagged so it can never silently reach
-         a table (the project's standing directive §1.2/§1.3).
+         a table (.2/§1.3).
 """
 
 from __future__ import annotations

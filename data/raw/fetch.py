@@ -1,6 +1,6 @@
 """
 Fetch the Stage-1 training/eval sets into data/raw/ (gitignored — this script
-IS the reproducibility artifact; the project's standing directive §2).
+IS the reproducibility artifact;).
 
 Sets (configs/probes.yaml `training_data`):
   azaria_mitchell   The "true-false dataset" (Azaria & Mitchell 2023): six CSVs

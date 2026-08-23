@@ -49,7 +49,7 @@ Every resolved §4 open decision gets an entry: date, decision, reasoning, who d
   edit-signature shortcut. The combination covers both failure modes.
 - **Decided by:** Owner approved agent recommendation in session (2026-07-09).
   **Note:** the concrete source datasets and the edit pipeline's implementation still require
-  owner review at the Stage 2 gate, including the external-reviewer step (the project's standing directive §7).
+  owner review at the Stage 2 gate, including the external-reviewer step ().
 
 ## D-004 — Layer choice (§4.3)
 
@@ -57,7 +57,7 @@ Every resolved §4 open decision gets an entry: date, decision, reasoning, who d
 - **Decision:** Sweep every layer; report the full curve. Additionally overlay the
   layer-wise AUROC of a *typicality* probe on the same axis — co-peaking layers are
   evidence for the confound and belong in Figure 1.
-- **Reasoning:** Per the project's standing directive §4.3, cherry-picking the best layer is itself the confound
+- **Reasoning:** Per.3, cherry-picking the best layer is itself the confound
   being hunted. The overlay turns the sweep from a robustness check into evidence.
 - **Decided by:** Owner approved agent recommendation in session (2026-07-09).
 
@@ -138,7 +138,7 @@ Every resolved §4 open decision gets an entry: date, decision, reasoning, who d
   plan (no clean corpus exists to run it on); the three builds + harvest yield ARE
   the evidence. Constructive half: release the build-attempt harness as a
   "hardness probe" any future corpus/probe must pass.
-- **Reasoning:** the project's standing directive §0 pre-authorizes "corpus can't be built cleanly" as an
+- **Reasoning:** pre-authorizes "corpus can't be built cleanly" as an
   equally-publishable outcome; §6 says lead with the audit. The obstacle is more
   novel than the original gap-measurement plan.
 - **Decided by:** owner ("continue"); agent recommended after exhaustive attempts.

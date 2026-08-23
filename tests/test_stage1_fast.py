@@ -7,7 +7,7 @@ construction; this pins mechanics and one correctness invariant that MUST hold:
 
 If that fails, the fast path reads padding instead of the real last token and
 every Stage-1 AUROC is silently wrong — exactly the "instrument measuring
-itself" trap (the project's standing directive §4).
+itself" trap ().
 """
 from __future__ import annotations
 

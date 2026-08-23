@@ -4,7 +4,7 @@ GPU SAPLMA probe — faithful architecture (Azaria & Mitchell 2023), fast.
 Same net as `saplma.py` (ReLU MLP 256-128-64 -> 1 logit) but in torch on the
 GPU, so a full layer sweep (n_layers x leave-one-topic-out folds = hundreds of
 fits) runs in minutes instead of the hours sklearn takes on CPU while the GPU
-sits idle (the project's standing directive §5, compute discipline).
+sits idle (, compute discipline).
 
 Device-agnostic: falls back to CPU (used by the plumbing test). Standardization,
 early stopping, and the bootstrap-CI AUROC are unchanged from the sklearn path,

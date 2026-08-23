@@ -6,7 +6,7 @@ Model: probe_score ~ truth + typicality (standardized OLS).
 If truth's coefficient dies when typicality enters, the probe is confounded.
 
 Assumption flag: OLS mediation assumes an additive-linear score surface. Stage 3a
-(stratified AUROC) is the nonparametric triangulation partner; per the project's standing directive §3
+(stratified AUROC) is the nonparametric triangulation partner; per
 Stage 3, direction-disagreement between them must be investigated, not averaged.
 """
 

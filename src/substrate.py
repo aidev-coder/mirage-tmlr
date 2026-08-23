@@ -4,7 +4,7 @@ Stage 0 — Substrate: uniform per-layer hidden-state extraction.
 Returns, for any (model, text, token position), the stack of hidden states across
 all layers as a numpy array [n_layers+1, d_model] (index 0 = embeddings).
 Activations are cached to disk keyed by (model, text, position) hash; recomputing
-hidden states is the main compute cost (the project's standing directive §5).
+hidden states is the main compute cost ().
 
 torch/transformers are imported lazily so the Stage-3 eval stack and tests stay
 runnable on a CPU-only box without them.

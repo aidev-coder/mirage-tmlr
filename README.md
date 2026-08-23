@@ -54,6 +54,6 @@ certification audit found that its own published 14.3% natural-violation rate wa
 measurement artifact of the extraction stage rather than a property of the data. MIRAGE relocates
 the same instrument-validity question to internal-state hallucination detectors.
 
-The standing directive, guardrails and stage gates are in `the project's standing directive`. `HASH_MAP.md` maps the
+`HASH_MAP.md` maps the
 registration commits cited in the paper to their equivalents here, since this repository's history
 was rewritten for anonymisation and every hash changed.

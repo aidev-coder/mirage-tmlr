@@ -1,5 +1,5 @@
 """
-Shared statistics. House rule (the project's standing directive §1.5): every AUROC ships with a
+Shared statistics. House rule (.5): every AUROC ships with a
 bootstrap CI (≥1000 resamples), and overlapping CIs are never called a difference.
 """
 

@@ -3,7 +3,7 @@ SAPLMA-style probe (Azaria & Mitchell 2023, "The Internal State of an LLM
 Knows When It's Lying"): a small feedforward classifier on the last-token
 hidden state of a chosen layer.
 
-Faithful-reproduction notes (the project's standing directive §6 — audit the strongest real version):
+Faithful-reproduction notes ( — audit the strongest real version):
   - architecture matches the paper: 3 ReLU hidden layers (256, 128, 64), sigmoid out;
   - trained per-layer; §4.3 requires sweeping ALL layers and reporting the curve.
 """

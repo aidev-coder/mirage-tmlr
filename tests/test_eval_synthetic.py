@@ -1,7 +1,7 @@
 """
 Synthetic self-test of the Stage-3 eval stack (CPU, no models, ~1 min).
 
-Per the project's standing directive §1.4 the instrument may be measuring itself — so before any real
+Per.4 the instrument may be measuring itself — so before any real
 probe is audited, the audit tools themselves are validated on a world where the
 ground truth is known BY CONSTRUCTION:
 

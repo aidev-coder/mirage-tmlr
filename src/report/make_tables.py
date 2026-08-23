@@ -1,7 +1,7 @@
 """
 Stage 4 — the diagnosis table, regenerated from results/stage3_*.json ONLY.
 
-Tables are generated, never authored (the project's standing directive §2). Any number in the writeup
+Tables are generated, never authored (). Any number in the writeup
 that cannot be traced to a results artifact via this script does not exist.
 
 The spine of the paper is the consistency of the gap across models. Per model,
@@ -80,7 +80,7 @@ def diagnosis_table(domain: str | None = None) -> str:
         f"| {r['gap']} | {r['ft_mean']} | {r['strat_gap']} | {r['recover_auroc']} | {r['recover']} |"
         for r in rows]
     lines.append("")
-    lines.append("`*` = CI excludes zero. Overlapping CIs are not a difference (the project's standing directive §1.5).")
+    lines.append("`*` = CI excludes zero. Overlapping CIs are not a difference (.5).")
     lines.append("In-dist = held-out diagonal (the field's reported number). Off-diagonal = "
                  "truth detection on TA+FT. FT mean P(true) is the fluent-lie cell: BELOW 0.5 means "
                  "the probe correctly rejects fluent falsehood. Recoverability = truth β under an "

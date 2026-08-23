@@ -17,6 +17,6 @@
 | saplma | Llama-3.1-8B | 16 | 0.993 [0.981, 1.000] | 0.974 [0.963, 0.983] | +0.020 [+0.003, +0.033]* | 0.127 | -0.006 [-0.013, +0.001] | 0.982 [0.970, 0.993] | 0.889 |
 | saplma | Llama-3.1-8B-Instruct | 16 | 0.970 [0.932, 0.996] | 0.856 [0.819, 0.888] | +0.114 [+0.063, +0.164]* | 0.150 | -0.015 [-0.023, -0.007]* | 0.987 [0.977, 0.995] | 0.913 |
 
-`*` = CI excludes zero. Overlapping CIs are not a difference (the project's standing directive §1.5).
+`*` = CI excludes zero. Overlapping CIs are not a difference (.5).
 In-dist = held-out diagonal (the field's reported number). Off-diagonal = honest truth detection on TA+FT. FT mean P(true) is the fluent-lie cell: BELOW 0.5 means the probe correctly rejects fluent falsehood. Recoverability = truth β under an all-cell (fairly trained) probe, typicality+fragmentation partialled out.
 Domain scope: all, cities. A POOLED (all-domain) row is NOT a valid headline for this corpus: domain is confounded with truth across the diagonal/off-diagonal split, which by itself drives the off-diagonal below chance (see notes/weakness_audit.md A1). Use domain="cities".

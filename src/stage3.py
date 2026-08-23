@@ -10,7 +10,7 @@ Probe scores feeding 3a/3b are OUT-OF-FOLD (K-fold cross-fitted): every item is
 scored by a probe that never saw it, so the stratified/mediation numbers are not
 train-set-optimistic. 3c does its own diagonal->off-diagonal split.
 
-Layers are swept in full (D-004 / the project's standing directive §4.3); the mid-depth canary layer is
+Layers are swept in full (D-004 /.3); the mid-depth canary layer is
 reported as the headline but never as a cherry-picked best.
 
 Output: results/stage3_<detector>_<model>_<date>.json — full per-layer curves for

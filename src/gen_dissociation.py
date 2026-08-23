@@ -37,7 +37,7 @@ DIAGONAL = ("TT", "FA")
 # ("<city> is a city in ___") makes the model answer with containing regions and
 # demonyms ("Shan State of Myanmar", "the Indian state of ..."), and scoring those
 # needs a matcher whose leniency we would end up tuning against the error rate —
-# the exact knob the project's standing directive §1.1 forbids. This keeps the model generating the fact
+# the exact knob.1 forbids. This keeps the model generating the fact
 # from parametric memory while leaving ground truth unambiguous.
 ASK = ("In which country is {s} located? "
        "Reply with ONLY the country name and nothing else.")

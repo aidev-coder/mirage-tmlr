@@ -4,7 +4,7 @@ Stage 2 — Decorrelation corpus: build + VERIFY the crossed truth x typicality 
 This module currently implements the GATES, not the generation. Generation
 (symmetric entity swaps, natural-error harvesting — decisions.md D-003) is
 deliberately unimplemented until the Stage-2 design has owner signoff and has
-been seen by an external reviewer (the project's standing directive §3 Stage 2 gate, §7).
+been seen by an external reviewer ( Stage 2 gate, §7).
 
 Gates implemented here (thresholds in configs/corpus.yaml):
   1. crossing gate      the axes must actually be crossed: within each truth
