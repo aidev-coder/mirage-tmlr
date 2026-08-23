@@ -9,7 +9,7 @@ check what was registered and when without trusting either hash.
 
 | paper cites | this repository | registration |
 |---|---|---|
-| `e17707f` | `f5da1c0` | MIRAGE scaffold: validity audit of internal-state hallucination detectors |
-| `040b283` | `1cc81da` | Pre-register the knee-migration criterion |
-| `acab56a` | `3dbe725` | Amend the knee registration before any curve |
-| `331f983` | `b4e0787` | Register the canonical recoverability estimator |
+| `e17707f` | `29630f3` | MIRAGE scaffold: validity audit of internal-state hallucination detectors |
+| `040b283` | `de563d5` | Pre-register the knee-migration criterion |
+| `acab56a` | `8c95956` | Amend the knee registration before any curve |
+| `331f983` | `aaeca01` | Register the canonical recoverability estimator |
