@@ -381,7 +381,7 @@ The practical reading is narrower than a warning about probes. A reported score 
 
 ## 8. Released tools
 
-We release what we used to check ourselves, because four of our own corpora failed and so did one of our experiments. The corpus, the auditors, the gates, every result artifact and the full decision log are in the anonymised repository at `https://anonymous.4open.science/r/mirage-tmlr-0B81`, pinned at commit `518da5e`; A.5 records what was pre-registered and when.
+We release what we used to check ourselves, because four of our own corpora failed and so did one of our experiments. The corpus, the auditors, the gates, every result artifact and the full decision log are in the anonymised repository at `https://anonymous.4open.science/r/mirage-tmlr-0B81`, pinned at commit `de68a12`; A.5 records what was pre-registered and when.
 
 The authored corpus is derived from Azaria and Mitchell's released dataset and 75.3% of its statements appear verbatim in those files, and is attributed as a derived work. The published artifact carries no licence terms of its own, so we release the corpus subject to whatever terms the source dataset carries, and the tooling and gates — which contain none of that content — under a permissive licence independently.
 
@@ -521,7 +521,7 @@ One source file has unverified provenance, so we verified its labels independent
 
 ### A.5 Registrations
 
-The anonymised repository released for review is at `https://anonymous.4open.science/r/mirage-tmlr-0B81`, pinned at commit `518da5e`. Its history has been rewritten to remove author identity, so every commit hash there differs from the ones cited below. `HASH_MAP.md` in that repository maps each cited hash to its rewritten equivalent, and `notes/decisions.md` quotes every registration in full with its date, so what was registered and when can be checked without relying on either hash.
+The anonymised repository released for review is at `https://anonymous.4open.science/r/mirage-tmlr-0B81`, pinned at commit `de68a12`. Its history has been rewritten to remove author identity, so every commit hash there differs from the ones cited below. `HASH_MAP.md` in that repository maps each cited hash to its rewritten equivalent, and `notes/decisions.md` quotes every registration in full with its date, so what was registered and when can be checked without relying on either hash.
 
 *source: `notes/decisions.md`*
 
